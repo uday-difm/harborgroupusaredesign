@@ -14,16 +14,16 @@ const Logo = ({ className }) => (
     />
 );
 export const Footer = () => {
-    const quickLinks = [
-        { name: 'For Brokers', href: '#' },
-        { name: 'Resources & FAQ', href: '#' },
-        { name: 'Help Center', href: '#' },
-        { name: 'Career', href: '#' },
-        { name: 'Contact Us', href: '#' },
+      const quickLinks = [
+        { name: 'For Brokers', href: '/for-brokers' },
+        { name: 'Resources & FAQ', href: '/resources-faq' },
+        { name: 'Help Center', href: '/contact' },
+        { name: 'Career', href: '/careers' },
+      //  { name: 'Contact Us', href: '/contact' },
     ];
     const legalPages = [
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms Of Service', href: '#' },
+        { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Terms Of Service', href: '/terms-and-conditions' },
     ];
     const socialLinks = [
         { icon: <Instagram size={20} />, href: '#', name: 'Instagram' },
