@@ -1,62 +1,126 @@
 "use client";
 
 import React  from 'react';
-import {  ArrowRight , ShieldCheck} from 'lucide-react';
+import { ArrowRight, Shield, HeartPulse } from 'lucide-react';
+import Image from 'next/image';
 
 
 export const HeroSection = () => {
     return (
-        <section className="relative bg-sky-50 overflow-hidden">
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Left Column: Text Content */}
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-indigo-900 tracking-tight">
-                            Brighter &<br/> Healthier Future!
-                        </h1>
-                        <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-gray-600">
-                            Finding Your Ideal Health Plan with <span className="font-semibold text-sky-600">Harbor Group USA</span>
-                        </p>
-                        <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-md text-gray-500">
-                            Securing your Future with Unmatched Expertise in Health Plans and Benefits.
-                        </p>
-                        <div className="mt-8">
-                            <a 
-                                href="#" 
-                                className="group inline-flex items-center justify-center px-8 py-4 bg-sky-500 text-white font-bold rounded-lg shadow-lg hover:bg-sky-600 transform transition-all duration-300 hover:scale-105"
-                            >
-                                GET A FREE QUOTE TODAY!
-                                <ArrowRight className="w-5 h-5 ml-3 transition-transform duration-300 transform group-hover:translate-x-1" />
-                            </a>
-                        </div>
-                    </div>
+    // <div className="relative bg-gradient-to-b from-white to-gray-100 overflow-hidden h-screen">
+     <div className="relative animated-gradient-bg overflow-hidden h-screen">
+      {/* Animated background glows */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-sky-900/50 rounded-full filter blur-3xl animate-pulse-slow"></div>
+          <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-indigo-900/50 rounded-full filter blur-3xl animate-pulse-slow" style={{animationDelay: '2s'}}></div>
+      </div>
 
-                    {/* Right Column: Image */}
-                    <div className="relative">
-                        {/* Background Shapes */}
-                        <div className="absolute -top-12 -right-12 w-72 h-72 bg-sky-200 rounded-full opacity-50 filter blur-xl"></div>
-                        <div className="absolute -bottom-12 -left-12 w-72 h-72 bg-indigo-200 rounded-full opacity-50 filter blur-xl"></div>
-                        
-                        <div className="relative z-10">
-                            <img 
-                                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/hero.jpeg" 
-                                alt="Doctor with patient" 
-                                className="rounded-3xl shadow-2xl w-full h-auto object-cover"
-                                onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/38bdf8/ffffff?text=Our+Promise'; }}
-                            />
-                             <div className="absolute -bottom-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-lg flex items-center space-x-3">
-                                <div className="bg-green-100 p-3 rounded-full">
-                                    <ShieldCheck className="h-6 w-6 text-green-600" />
-                                </div>
-                                <div>
-                                    <p className="font-bold text-indigo-900">100% Secure</p>
-                                    <p className="text-xs text-gray-500">Your data is safe with us</p>
-                                </div>
-                            </div>
-                        </div>
+      <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center py-20 md:py-28">
+          
+          {/* --- Left Column: Text Content --- */}
+          <div className="text-center lg:text-left">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-indigo-900 tracking-tight animate-fade-in-up"
+            >
+              A Brighter & <br />
+              <span className="text-sky-500">Healthier Future!</span>
+            </h1>
+
+            <p 
+              className="mt-6 max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl text-gray-600 animate-fade-in-up" 
+              style={{ animationDelay: '0.2s' }}
+            >
+             Finding Your Ideal Health Plan with Harbor Group USA
+            </p>
+            
+            <p 
+              className="mt-4 max-w-2xl mx-auto lg:mx-0 text-base text-gray-500 animate-fade-in-up"
+              style={{ animationDelay: '0.4s' }}
+            >
+             Securing your Future with Unmatched Expertise in Health Plans and Benefits.
+            </p>
+
+            <div 
+              className="mt-10 animate-fade-in-up" 
+              style={{ animationDelay: '0.6s' }}
+            >
+              <a
+                href="#"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-sky-500 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-sky-300/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 focus:ring-offset-white"
+              >
+                Get a Free Quote Today!
+                <ArrowRight className="ml-3 -mr-1 h-6 w-6" />
+              </a>
+            </div>
+          </div>
+
+          {/* --- Right Column: Image Composition --- */}
+          <div className="relative h-80 lg:h-[450px] flex items-center justify-center animate-fade-in" style={{animationDelay: '0.5s'}}>
+            <div className="absolute w-full h-full max-w-md">
+                {/* Background Shape */}
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-300 to-indigo-300 rounded-3xl transform -rotate-6"></div>
+                
+                {/* Image Container */}
+                <div className="absolute inset-0 p-2">
+                    <div className="relative w-full h-full bg-gray-300 rounded-2xl shadow-2xl overflow-hidden transform rotate-3">
+                        <Image 
+                            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Brighter-&-Healthier-Future.webp" 
+                            alt="Doctor consulting with a patient"
+                            className="w-full h-full object-cover"
+                            width={600}
+                            height={400}
+                            //onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x600/e2e8f0/a3a3a3?text=Health+Plan'; }}
+                        />
                     </div>
                 </div>
+
+                {/* Floating Icon */}
+                <div className="absolute -top-5 -left-5 flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg float-1">
+                    <HeartPulse className="w-8 h-8 text-sky-500" />
+                </div>
             </div>
-        </section>
-    );
-};
+          </div>
+
+        </div>
+      </div>
+      
+      {/* This style block is necessary for the custom animations. */}
+      <style jsx global>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        @keyframes fade-in {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes float-1 {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+        }
+        .float-1 {
+          animation: float-1 5s infinite ease-in-out;
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% { transform: scale(1); opacity: 0.2; }
+          50% { transform: scale(1.2); opacity: 0.4; }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 8s infinite ease-in-out;
+        }
+      `}</style>
+    </div>
+  );
+}

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, Phone, Briefcase, BarChart, Building2, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin, Send, Mailbox, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import {  Phone,  Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
 
 
 // --- Logo Component ---
@@ -65,17 +66,17 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16">
                     {/* Logo and About */}
                     <div className="space-y-4">
-                        <a href="#" className="inline-block">
+                        <Link href="/" className="inline-block">
                            <Logo className="h-16 w-auto" />
-                        </a>
+                        </Link>
                         <p className="text-sm text-gray-600">
                            At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
                         </p>
                          <div className="flex space-x-4">
                             {socialLinks.map((link) => (
-                                <a key={link.name} href={link.href} aria-label={link.name} className="text-gray-400 hover:text-sky-500 transition-colors">
+                                <Link key={link.name} href={link.href} aria-label={link.name} className="text-gray-400 hover:text-sky-500 transition-colors">
                                     {link.icon}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </div>
@@ -92,7 +93,7 @@ export const Footer = () => {
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Legal</h4>
                         <ul className="mt-4 space-y-3">
-                            {legalPages.map(link => <li key={link.name}><a href={link.href} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</a></li>)}
+                            {legalPages.map(link => <li key={link.name}><Link href={link.href} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
                     

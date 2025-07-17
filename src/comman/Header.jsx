@@ -1,34 +1,23 @@
 "use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 
-// To use this component, you'll need lucide-react:
-// npm install lucide-react
-// Or you can replace the icons with your own SVGs.
-import { Menu, X, ChevronDown, Phone, Briefcase, BarChart, Building2 } from 'lucide-react';
-
-// --- Logo Component ---
-// Uses the direct URL for the Harbor Group logo.
 const Logo = () => (
-    <Image 
+    <img
         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
-        alt="Harbor Group USA Logo" 
-        className="h-14 w-auto"
+        alt="Harbor Group USA Logo"
+        className="h-12 md:h-14 w-auto" // Slightly smaller on mobile
         onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
-        width={600}
-                  height={400}
     />
 );
 
-// --- Navigation Data ---
-// Updated to match the new image provided.
 const navLinks = [
     { name: 'About', href: '/about-health' },
     { name: 'Major Medical', href: '/major-medical-plan' },
     {
         name: 'Plans',
-        href: '/health-plans',
+        href: '/health-plans', // This link won't be matched directly
         dropdown: [
             { name: 'Medical', href: '/medical-plan' },
             { name: 'Dental', href: '/dental-care-plan' },
@@ -42,12 +31,11 @@ const navLinks = [
             { name: 'Lifestyle', href: '/lifestyle-plan' },
             { name: 'Pet', href: '/pet-plan' },
             { name: 'Rx', href: '/rx-plan' },
-
         ]
     },
     {
         name: 'For',
-        href: '/for',
+        href: '/for', // This link won't be matched directly
         dropdown: [
             { name: 'For Brokers', href: '/for-brokers' },
             { name: 'For Individuals', href: '/for-individuals' },
@@ -58,68 +46,117 @@ const navLinks = [
 ];
 
 // --- Main Header Component ---
-export const Header = () => {
+export const Header =()=> {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState('About');
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [currentPath, setCurrentPath] = useState('');
+    const headerRef = useRef(null);
 
-    const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-    const handleMobileDropdown = (linkName) => setOpenDropdown(openDropdown === linkName ? null : linkName);
+    // Set the current path from the window.location on component mount
+    useEffect(() => {
+        setCurrentPath(window.location.pathname);
+    }, []);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleMobileDropdown = (linkName) => {
+        setOpenDropdown(openDropdown === linkName ? null : linkName);
+    };
+
+    // Close mobile menu on clicks outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (headerRef.current && !headerRef.current.contains(event.target)) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+    
+    // Disable body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMobileMenuOpen]);
 
     const colors = {
-        primary: 'text-indigo-900', 
+        primary: 'text-indigo-900',
         accent: 'text-sky-500',
         accentBg: 'bg-sky-500',
         accentBgHover: 'hover:bg-sky-600',
         underline: 'bg-sky-500',
     };
+    
+    // Function to check if a link or any of its dropdown children are active
+    const isLinkActive = (link) => {
+        if (currentPath === link.href) {
+            return true;
+        }
+        if (link.dropdown) {
+            return link.dropdown.some(item => item.href === currentPath);
+        }
+        return false;
+    };
 
     return (
-        <header className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-200">
+        <header ref={headerRef} className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-200">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-24">
+                <div className="flex items-center justify-between h-20 md:h-24">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <a href="#" className="flex items-center">
+                        <a href="/" className="flex items-center">
                             <Logo />
                         </a>
                     </div>
 
                     {/* --- Desktop Navigation --- */}
-                    <div className="hidden lg:flex lg:items-center lg:flex-grow lg:justify-center lg:space-x-8">
-                        {navLinks.map((link) => (
-                            <div key={link.name} className={`relative ${link.dropdown ? 'group' : ''}`}>
-                                <a
-                                    href={link.href}
-                                    className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${
-                                        activeLink === link.name ? colors.accent : colors.primary
-                                    } hover:${colors.accent} flex items-center`}
-                                    onClick={() => setActiveLink(link.name)}
-                                >
-                                    {link.name}
-                                    {link.dropdown && <ChevronDown className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />}
-                                    <span className={`absolute -bottom-1 left-0 w-full h-0.5 ${colors.underline} transform scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 ${activeLink === link.name ? 'scale-x-100' : ''}`}></span>
-                                </a>
+                    <nav className="hidden lg:flex lg:items-center lg:flex-grow lg:justify-center lg:space-x-8">
+                        {navLinks.map((link) => {
+                            const isActive = isLinkActive(link);
+                            return (
+                                <div key={link.name} className={`relative ${link.dropdown ? 'group' : ''}`}>
+                                    <a
+                                        href={link.href}
+                                        className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${
+                                            isActive ? colors.accent : colors.primary
+                                        } hover:${colors.accent} flex items-center`}
+                                        onClick={(e) => {
+                                            if (link.dropdown) e.preventDefault();
+                                        }}
+                                    >
+                                        {link.name}
+                                        {link.dropdown && <ChevronDown className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />}
+                                        <span className={`absolute -bottom-1 left-0 w-full h-0.5 ${colors.underline} transform scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 ${isActive ? 'scale-x-100' : ''}`}></span>
+                                    </a>
 
-                                {/* --- Dropdown Menu --- */}
-                                {link.dropdown && (
-                                    <div className="absolute z-20 left-1/2 -translate-x-1/2 mt-5 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-all duration-300 invisible group-hover:visible transform scale-95 group-hover:scale-100">
-                                        <div className="py-2">
-                                            {link.dropdown.map((item) => (
-                                                <a
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    className={`block px-4 py-2 text-sm ${colors.primary} hover:bg-gray-100 hover:${colors.accent}`}
-                                                >
-                                                    {item.name}
-                                                </a>
-                                            ))}
+                                    {/* --- Dropdown Menu --- */}
+                                    {link.dropdown && (
+                                        <div className="absolute z-20 left-1/2 -translate-x-1/2 mt-4 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-all duration-300 invisible group-hover:visible transform scale-95 group-hover:scale-100">
+                                            <div className="py-2">
+                                                {link.dropdown.map((item) => (
+                                                    <a
+                                                        key={item.name}
+                                                        href={item.href}
+                                                        className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary} hover:bg-gray-100 hover:${colors.accent}`}
+                                                    >
+                                                        {item.name}
+                                                    </a>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </nav>
 
                     {/* --- Desktop Contact Info --- */}
                     <div className="hidden lg:flex items-center space-x-4">
@@ -135,7 +172,7 @@ export const Header = () => {
                     
                     {/* --- Mobile Menu Button --- */}
                     <div className="lg:hidden flex items-center">
-                        <button onClick={toggleMobileMenu} type="button" className={`p-2 rounded-md ${colors.primary}`}>
+                        <button onClick={toggleMobileMenu} type="button" className={`p-2 rounded-md ${colors.primary} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500`}>
                             <span className="sr-only">Open main menu</span>
                             {isMobileMenuOpen ? <X className="block h-7 w-7" /> : <Menu className="block h-7 w-7" />}
                         </button>
@@ -144,40 +181,59 @@ export const Header = () => {
             </div>
 
             {/* --- Mobile Menu --- */}
-            <div className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-xl transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'transform translate-y-0' : 'transform -translate-y-[110%]'}`} id="mobile-menu">
-                <div className="px-4 pt-2 pb-3 space-y-2 sm:px-5">
-                    {navLinks.map((link) => (
-                        <div key={link.name}>
-                            <div className="flex justify-between items-center">
-                                <a href={link.href} className={`w-full text-left block px-3 py-3 rounded-md text-lg font-semibold ${activeLink === link.name ? colors.accent : colors.primary} hover:bg-gray-100`} onClick={() => { setActiveLink(link.name); if (!link.dropdown) setIsMobileMenuOpen(false); }}>
-                                    {link.name}
-                                </a>
-                                {link.dropdown && (
-                                    <button onClick={() => handleMobileDropdown(link.name)} className="p-2 text-slate-500">
-                                        <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
-                                    </button>
-                                )}
-                            </div>
-                            {link.dropdown && openDropdown === link.name && (
-                                <div className="pl-4 mt-2 space-y-2">
-                                    {link.dropdown.map(item => (
-                                        <a key={item.name} href={item.href} className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:bg-gray-100 hover:text-sky-600">
-                                            {item.name}
+            {/* Overlay */}
+            <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity lg:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleMobileMenu}></div>
+
+            <div className={`lg:hidden fixed top-0 left-0 h-full w-full max-w-xs bg-white z-40 shadow-xl transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`} id="mobile-menu">
+                <div className="flex flex-col h-full">
+                    {/* Mobile Menu Header */}
+                    <div className="flex items-center justify-between p-4 border-b">
+                        <a href="/" onClick={toggleMobileMenu}><Logo /></a>
+                        <button onClick={toggleMobileMenu} className="p-2">
+                           <X className="h-7 w-7 text-gray-600"/>
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu Links */}
+                    <div className="flex-grow overflow-y-auto p-4 space-y-2">
+                        {navLinks.map((link) => {
+                            const isActive = isLinkActive(link);
+                            return (
+                                <div key={link.name}>
+                                    <div className="flex justify-between items-center rounded-md hover:bg-gray-50">
+                                        <a href={link.href} className={`w-full text-left block px-3 py-3 text-lg font-semibold ${isActive ? colors.accent : colors.primary}`} onClick={() => { if (!link.dropdown) setIsMobileMenuOpen(false); }}>
+                                            {link.name}
                                         </a>
-                                    ))}
+                                        {link.dropdown && (
+                                            <button onClick={() => handleMobileDropdown(link.name)} className="p-3 text-slate-500">
+                                                <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
+                                            </button>
+                                        )}
+                                    </div>
+                                    {link.dropdown && openDropdown === link.name && (
+                                        <div className="pl-6 mt-1 space-y-1 border-l-2 border-sky-100">
+                                            {link.dropdown.map(item => (
+                                                <a key={item.name} href={item.href} onClick={toggleMobileMenu} className={`block px-3 py-2 rounded-md text-base font-medium ${currentPath === item.href ? 'text-sky-600 font-semibold' : 'text-slate-600'} hover:bg-gray-100 hover:text-sky-600`}>
+                                                    {item.name}
+                                                </a>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-                <div className="pt-4 pb-5 border-t border-gray-200 px-5">
-                    <div className="flex items-center">
-                        <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500`}>
-                            <Phone className="h-6 w-6" />
-                        </a>
-                        <div className="ml-4">
-                            <p className="text-sm text-gray-500">Call Us</p>
-                            <p className={`text-base font-semibold ${colors.primary}`}>+1 516-210-6887</p>
+                            );
+                        })}
+                    </div>
+
+                    {/* Mobile Menu Footer (Contact) */}
+                    <div className="p-4 border-t border-gray-200">
+                        <div className="flex items-center">
+                            <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500`}>
+                                <Phone className="h-6 w-6" />
+                            </a>
+                            <div className="ml-4">
+                                <p className="text-sm text-gray-500">Call Us</p>
+                                <p className={`text-base font-semibold ${colors.primary}`}>+1 516-210-6887</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -185,5 +241,3 @@ export const Header = () => {
         </header>
     );
 };
-
-
