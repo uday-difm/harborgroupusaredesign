@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import {  ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 
 // --- NEW FAQ Section ---
 export const FaqSection = () => {
@@ -46,9 +47,9 @@ export const FaqSection = () => {
                             </div>
                         ))}
                          <div className="pt-6 text-left">
-                            <a href="#" className="inline-block bg-sky-500 text-white font-bold px-8 py-3 rounded-lg shadow-md hover:bg-sky-600 transition-colors">
+                            <Link href="/resources-faq" className="inline-block bg-sky-500 text-white font-bold px-8 py-3 rounded-lg shadow-md hover:bg-sky-600 transition-colors">
                                 VIEW MORE
-                            </a>
+                            </Link>
                         </div>
                     </div>
                      {/* Right Column: Title and Image */}
