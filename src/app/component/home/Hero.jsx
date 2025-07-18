@@ -8,7 +8,7 @@ import Image from 'next/image';
 export const HeroSection = () => {
     return (
     // <div className="relative bg-gradient-to-b from-white to-gray-100 overflow-hidden h-screen">
-     <div className="relative animated-gradient-bg overflow-hidden h-screen">
+     <div className="relative animated-gradient-bg overflow-hidden h-screen ">
       {/* Animated background glows */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-sky-900/50 rounded-full filter blur-3xl animate-pulse-slow"></div>

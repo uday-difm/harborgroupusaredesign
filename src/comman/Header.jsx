@@ -2,13 +2,16 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import Image from 'next/image';
 
 const Logo = () => (
-    <img
+    <Image
         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
         alt="Harbor Group USA Logo"
         className="h-12 md:h-14 w-auto" // Slightly smaller on mobile
-        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
+        width={600}
+        height={400}
+       
     />
 );
 

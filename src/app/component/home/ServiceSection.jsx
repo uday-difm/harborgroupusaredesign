@@ -6,18 +6,18 @@ import { ArrowRight, PlusSquare, Smile, Eye, HeartPulse, Layers, FlaskConical, B
 
 export const ServicesSection = () => {
     const services = [
-        { name: 'Medical', icon: <PlusSquare />, href: '#'},
-        { name: 'Dental', icon: <Smile />, href: '#', highlighted: true },
-        { name: 'Vision', icon: <Eye />, href: '#' },
-        { name: 'Term Life', icon: <HeartPulse />, href: '#' },
-        { name: 'Bundles', icon: <Layers />, href: '#' },
-        { name: 'Limited med', icon: <FlaskConical />, href: '#' },
-        { name: 'Accident', icon: <Bone />, href: '#' },
-        { name: 'Hospital', icon: <HospitalIcon />, href: '#' },
-        { name: 'Critical', icon: <HeartCrack />, href: '#' },
-        { name: 'Lifestyle', icon: <Bike />, href: '#' },
-        { name: 'Pet', icon: <Dog />, href: '#' },
-        { name: 'Rx', icon: <Pill />, href: '#' },
+        { name: 'Medical', icon: <PlusSquare />, href: '/medical-plan'},
+        { name: 'Dental', icon: <Smile />, href: "/dental-care-plan/", highlighted: true },
+        { name: 'Vision', icon: <Eye />, href: '/vision-plan' },
+        { name: 'Term Life', icon: <HeartPulse />, href: '/term-life' },
+        { name: 'Bundles', icon: <Layers />, href: '/bundles-plan' },
+        { name: 'Limited med', icon: <FlaskConical />, href: '/limited-med' },
+        { name: 'Accident', icon: <Bone />, href: '/accident-plan' },
+        { name: 'Hospital', icon: <HospitalIcon />, href: '/hospital-plan' },
+        { name: 'Critical', icon: <HeartCrack />, href: '/critical-plan' },
+        { name: 'Lifestyle', icon: <Bike />, href: '/lifestyle-plan' },
+        { name: 'Pet', icon: <Dog />, href: '/pet' },
+        { name: 'Rx', icon: <Pill />, href: '/rx-plan' },
     ];
 
     return (
@@ -28,7 +28,7 @@ export const ServicesSection = () => {
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">Our Services</h2>
                         <p className="mt-3 text-lg text-gray-600">Individual or group, we've got the perfect health plan for you.</p>
                     </div>
-                    <a href="#" className="mt-6 md:mt-0 flex-shrink-0 inline-block bg-sky-500 text-white font-bold px-6 py-3 rounded-lg shadow-md hover:bg-sky-600 transition-colors">
+                    <a href="/contact" className="mt-6 md:mt-0 flex-shrink-0 inline-block bg-sky-500 text-white font-bold px-6 py-3 rounded-lg shadow-md hover:bg-sky-600 transition-colors">
                         CONTACT US
                     </a>
                 </div>
