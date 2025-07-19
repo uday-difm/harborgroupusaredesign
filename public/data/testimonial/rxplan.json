@@ -1,0 +1,17 @@
+ [
+  {
+    "name": "John",
+    "testimonial": "Harbor Group's Accident Plans are a financial safety net. Simple application, quick verification, and straightforward coverage make unexpected accidents easier to handle. It's the support you need when life takes an unexpected turn.",
+    "rating": 5
+  },
+  {
+    "name": "David",
+    "testimonial": "Critical Plans from The Harbor Group became our financial backbone during a health crisis. Simple claims, flexible payouts—this plan delivers when it matters most.",
+    "rating": 5
+  },
+  {
+    "name": "Sarah",
+    "testimonial": "The Rx Plans keep my family's health and budget in sync. Affordable prescription coverage and flexibility between generic and brand-name meds make healthcare stress-free.",
+    "rating": 5
+  }
+]

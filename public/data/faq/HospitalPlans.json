@@ -1,0 +1,22 @@
+ [
+  {
+    "question": "What expenses are covered under Hospital Plans?",
+    "answer": "Hospital Plans cover a range of expenses, including room charges, surgeries, and other related medical procedures."
+  },
+  {
+    "question": "Can I choose any hospital for my treatment under the Hospital Plan?",
+    "answer": "Yes, depending on your Hospital Plan, you may be able to choose any hospital for treatment. However, some plans may have network restrictions or preferred providers."
+  },
+  {
+    "question": "Is emergency hospitalization covered under the plan?",
+    "answer": "Yes, emergency hospitalization is typically covered under most Hospital Plans, though some plans may have specific requirements or co-pays."
+  },
+  {
+    "question": "What is the process for filing a hospitalization claim?",
+    "answer": "To file a hospitalization claim, you'll need to submit a claim form along with your medical bills and supporting documentation. The specific process may vary based on your plan."
+  },
+  {
+    "question": "Are pre-existing conditions covered under Hospital Plans?",
+    "answer": "Pre-existing conditions may be covered under some Hospital Plans, but there could be waiting periods or exclusions. It’s important to review your plan’s terms for specific details."
+  }
+]

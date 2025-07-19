@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-export default function page() {
+export default function Careers() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,7 +61,7 @@ export default function page() {
         {/* Left Section - Content */}
         <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0">
           <h1 className="text-sm sm:text-base font-semibold text-blue-600 uppercase tracking-wider mb-2 animate-slide-in-top">
-            Career's
+            Career&apos;s
           </h1>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight animate-slide-in-left">
             Welcome to Harbor Group USA <span className="text-sky-500">Careers Page!</span>
@@ -73,7 +73,7 @@ export default function page() {
 
         {/* Right Section - Contact Form */}
         <div className="md:w-1/2 bg-white p-8 rounded-2xl shadow-lg animate-fade-in-delay-form">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Get in touch with us for career's</h3>
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Get in touch with us for career&apos;s</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="sr-only">Your name</label>
