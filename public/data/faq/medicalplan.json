@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What does the Medical Plan cover?",
+    "answer": "Our Medical Plan provides coverage for a wide range of health services, including hospitalization, doctor visits, prescription medications, preventive care, and more."
+  },
+  {
+    "question": "How do I claim medical expenses?",
+    "answer": "To claim medical expenses, you can submit a claim form online or through our mobile app. Be sure to keep your receipts and any necessary documentation for the claim."
+  },
+  {
+    "question": "Can I add family members to my Medical Plan?",
+    "answer": "Yes, family members can be added to your plan during the enrollment process or within a specified period after an event such as marriage or the birth of a child."
+  },
+  {
+    "question": "Are pre-existing conditions covered under the Medical Plan?",
+    "answer": "Yes, our plan covers pre-existing conditions. However, there may be certain waiting periods and conditions, so it's important to review the policy details for specific information."
+  },
+  {
+    "question": "How often can I schedule routine check-ups with the Medical Plan?",
+    "answer": "Routine check-ups are typically covered once a year under the Medical Plan, though specific guidelines may vary depending on the type of plan."
+  },
+  {
+    "question": "Can I choose my doctor with the Medical Plan?",
+    "answer": "Yes, depending on your plan, you can choose from a network of doctors. However, some plans may require referrals or prior approval for certain specialists."
+  },
+  {
+    "question": "Is emergency room (ER) care covered under the Medical Plan?",
+    "answer": "Yes, emergency room visits are covered under the plan. However, co-pays or deductibles may apply depending on your plan type and the hospital network."
+  },
+  {
+    "question": "What is the waiting period for coverage to begin?",
+    "answer": "The waiting period for coverage to begin typically ranges from 30 to 90 days, depending on the type of coverage and policy details."
+  },
+  {
+    "question": "Can I change my coverage during the policy period?",
+    "answer": "Yes, you can change your coverage during the policy period under certain circumstances, such as life events (marriage, birth of a child, etc.). Please refer to your policy terms for specific guidelines."
+  }
+]

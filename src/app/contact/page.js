@@ -10,7 +10,7 @@ export default function ContactPage() {
         <div className="lg:w-1/2 text-center lg:text-left animate-fade-in-up">
           <h1 className="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Get In Touch</h1>
           <p className="text-xl text-gray-700 max-w-lg mx-auto lg:mx-0">
-            Connect with us! Your questions matter. Fill the form; we're here, ready to assist you.
+            Connect with us! Your questions matter. Fill the form; we&apos;re here, ready to assist you.
           </p>
         </div>
 

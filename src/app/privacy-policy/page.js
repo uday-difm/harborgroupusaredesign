@@ -52,7 +52,7 @@ export default function page() {
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Cookies</h2>
             <p className="text-base leading-relaxed">
-              Our website uses cookies, also known as 'browser cookies,' to enhance your browsing experience. These cookies are essential for certain functions, such as shopping baskets and electronic invoicing. You can manage cookies through your web browser settings.
+              Our website uses cookies, also known as &apos; browser cookies,&apos; to enhance your browsing experience. These cookies are essential for certain functions, such as shopping baskets and electronic invoicing. You can manage cookies through your web browser settings.
             </p>
           </div>
 

@@ -20,7 +20,7 @@ export default function page() {
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Introduction</h2>
             <p className="text-base leading-relaxed">
-              Welcome to The Harbor Group's digital platform (<a href="https://www.harborgroupusa.com/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.harborgroupusa.com/</a>). Before proceeding, carefully read and understand these terms and conditions outlined below. By clicking the "I Agree" button or utilizing our website, you acknowledge and agree to be bound by this legally binding agreement between you and The Harbor Group.
+              Welcome to The Harbor Group&apos;s digital platform (<a href="https://www.harborgroupusa.com/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://www.harborgroupusa.com/</a>). Before proceeding, carefully read and understand these terms and conditions outlined below. By clicking the &quot;I Agree&quot; button or utilizing our website, you acknowledge and agree to be bound by this legally binding agreement between you and The Harbor Group.
             </p>
           </div>
 
@@ -36,10 +36,10 @@ export default function page() {
           <div>
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Definitions</h2>
             <ul className="list-disc list-inside space-y-2 pl-4">
-              <li><strong className="font-semibold">"Company" or "The Harbor Group":</strong> Refers to The Harbor Group, the organization providing health plan services.</li>
-              <li><strong className="font-semibold">"User" or "You":</strong> Anyone accessing our website or utilizing our services.</li>
-              <li><strong className="font-semibold">"Terms and Conditions":</strong> This document and any subsequent amendments.</li>
-              <li><strong className="font-semibold">"Third-Party Services":</strong> Unaffiliated entities providing services to The Harbor Group.</li>
+              <li><strong className="font-semibold">&quot;Company&quot; or &quot;The Harbor Group&quot;:</strong> Refers to The Harbor Group, the organization providing health plan services.</li>
+              <li><strong className="font-semibold">&quot;User&quot; or &quot;You&quot;:</strong> Anyone accessing our website or utilizing our services.</li>
+              <li><strong className="font-semibold">&quot;Terms and Conditions&quot;:</strong> This document and any subsequent amendments.</li>
+              <li><strong className="font-semibold">&quot;Third-Party Services&quot;:</strong> Unaffiliated entities providing services to The Harbor Group.</li>
             </ul>
           </div>
 
@@ -48,7 +48,7 @@ export default function page() {
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Liability</h2>
             <ol className="list-decimal list-inside space-y-2 pl-4">
               <li>No party excludes or limits liability for death, personal injury caused by negligence, fraudulent misrepresentation, or any liability that cannot be excluded or limited under the law.</li>
-              <li>The Harbor Group is not liable for loss of business, use, profit, anticipated profit, contracts, revenues, goodwill, or anticipated savings; product recall costs; damage to the client's reputation; or consequential, special, or indirect loss or damage.</li>
+              <li>The Harbor Group is not liable for loss of business, use, profit, anticipated profit, contracts, revenues, goodwill, or anticipated savings; product recall costs; damage to the client&apos;s reputation; or consequential, special, or indirect loss or damage.</li>
             </ol>
           </div>
 
@@ -69,7 +69,7 @@ export default function page() {
             <h2 className="text-2xl font-bold text-gray-800 mb-3">Employment and Internships</h2>
             <ol className="list-decimal list-inside space-y-2 pl-4">
               <li>Individuals interested in internships must provide full disclosure of personal details.</li>
-              <li>The company's internship program aims to enhance the professional growth of aspiring individuals.</li>
+              <li>The company&apos;s internship program aims to enhance the professional growth of aspiring individuals.</li>
               <li>Interns are selected through various platforms and undergo screening, interviews, and orientation.</li>
               <li>Successful interns may be offered employment based on company rules and policies.</li>
             </ol>
@@ -91,7 +91,7 @@ export default function page() {
               <li>The magazine is printed and distributed by The Harbor Group.</li>
               <li>The company is not responsible for delays beyond its control.</li>
               <li>The company showcases merchandise on its webpage; however, sales and services are handled by third-party agencies.</li>
-              <li>Users are responsible for understanding and complying with third-party agencies' terms and conditions.</li>
+              <li>Users are responsible for understanding and complying with third-party agencies &apos; terms and conditions.</li>
             </ol>
           </div>
 
