@@ -8,6 +8,7 @@ import { EligibilityCriteria } from '../component/visionplan/EligibilityCriteria
 import { LayeredCosts } from '../component/visionplan/LayeredCosts'
 import { Network } from '../component/visionplan/Network'
 import { FluidWaveCTA } from '../component/visionplan/FluidWaveCTA'
+import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 
 export default function page() {
   return (
@@ -19,8 +20,8 @@ export default function page() {
      <LayeredCosts/>
      <Network/>
      <FAQSection/>
-     <FluidWaveCTA/>
+     <GetYourPersonalizedMedicalPlan title = "Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage" link ="ENROLL IN VISION CARE"/>
      <TestimonialSection/>
-    </>
+ </>
   )
 }

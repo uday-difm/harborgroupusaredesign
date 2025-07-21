@@ -1,0 +1,179 @@
+"use client";
+import React from 'react'
+
+export default function NetworkForm() {
+     const gradientStops = (id) => (
+    <defs>
+      <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
+      </linearGradient>
+    </defs>
+  );
+
+  return (
+    <>
+     {/* Existing Section: Network and Contact Form - Enhanced Left Side without Image */}
+      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-fadeIn">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column: Network Info with Enhanced Design */}
+          <div className="bg-white p-8 rounded-xl shadow-lg text-center lg:text-left relative overflow-hidden">
+            {/* Abstract background pattern for uniqueness */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none">
+              <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <pattern id="pattern-circles" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <circle cx="5" cy="5" r="2" fill="#3B82F6" /> {/* Blue-500 for subtle dots */}
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)" />
+              </svg>
+            </div>
+
+            <div className="relative z-10"> {/* Ensure content is above the pattern */}
+              {/* Large, stylized Network Icon */}
+              <svg className="w-28 h-28 mx-auto mb-6" fill="none" stroke="url(#iconGradient3)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                {gradientStops("iconGradient3")}
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+              <h2 className="text-4xl font-extrabold text-blue-800 mb-4">Our Extensive Network</h2>
+              <p className="text-lg text-gray-700 mb-8">
+                Connect with a vast network of top-tier professionals and resources, ensuring unparalleled support and comprehensive solutions for your loved ones, wherever they are.
+              </p>
+              <ul className="space-y-4 text-left">
+                <li className="flex items-center text-gray-700">
+                  <svg className="w-6 h-6" fill="none" stroke="url(#iconGradient4)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {gradientStops("iconGradient4")}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Experienced Health Plan Professionals
+                </li>
+                <li className="flex items-center text-gray-700">
+                  <svg className="w-6 h-6" fill="none" stroke="url(#iconGradient5)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {gradientStops("iconGradient5")}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Nationwide Coverage
+                </li>
+                <li className="flex items-center text-gray-700">
+                  <svg className="w-6 h-6" fill="none" stroke="url(#iconGradient6)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {gradientStops("iconGradient6")}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Reliable Partnerships
+                </li>
+                <li className="flex items-center text-gray-700">
+                  <svg className="w-6 h-6" fill="none" stroke="url(#iconGradient7)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {gradientStops("iconGradient7")}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Dedicated Support
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Column: Contact Form */}
+          <div className="bg-blue-50 p-8 rounded-xl shadow-lg">
+            <h3 className="text-2xl font-bold text-blue-800 mb-6">Get in Touch</h3>
+            <form className="space-y-6">
+              {/* Name and Email in one row */}
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-1">
+                  <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-2">Your name*</label>
+                  <input type="text" id="name" name="name" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="John Doe" required />
+                </div>
+                <div className="flex-1">
+                  <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Your email*</label>
+                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com" required />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-gray-700 text-sm font-medium mb-2">Your message</label>
+                <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y" placeholder="How can we help you?"></textarea>
+              </div>
+              <div className="flex items-start">
+                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1" required />
+                <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
+                  By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="#" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
+                </label>
+              </div>
+              <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+                SUBMIT
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Tailwind CSS Custom Animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes bounceIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+          70% {
+            transform: scale(0.9);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+        .animate-bounceIn {
+          animation: bounceIn 0.8s ease-out forwards;
+        }
+
+        /* Removed slideInLeft as image is removed */
+
+        /* Delayed Fade In for cards (if needed for future sections) */
+        @keyframes delayFadeIn {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-delayFadeIn {
+          animation: delayFadeIn 0.8s ease-out forwards;
+          animation-delay: 0.2s;
+        }
+        .animate-delayFadeIn-2 {
+          animation: delayFadeIn 0.8s ease-out forwards;
+          animation-delay: 0.4s;
+        }
+        .animate-delayFadeIn-3 {
+          animation: delayFadeIn 0.8s ease-out forwards;
+          animation-delay: 0.6s;
+        }
+      `}</style>
+    </>
+  )
+}
