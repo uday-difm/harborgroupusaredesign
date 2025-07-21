@@ -6,7 +6,7 @@ import { EligibilityCriteriaSection } from '../component/majormedical/Eligibilit
 import { HowToApply } from '../component/medicalplan/HowToApply'
 import { CostOptions } from '../component/medicalplan/CostOptions'
 import { TestimonialSection } from '../component/home/TestimonialSection'
-import { GetYourPersonalizedMedicalPlan } from '../component/medicalplan/GetYourPersonalizedMedicalPlan'
+import { GetYourPersonalizedMedicalPlan } from '../../comman/GetYourPersonalizedMedicalPlan'
 // import { Faqplan } from '../component/medicalplan/'
 import { FAQSection } from '../component/medicalplan/FAQSection'
 
@@ -21,7 +21,7 @@ export default function page() {
       <HowToApply/>
       <CostOptions/>
         <FAQSection/>
-      <GetYourPersonalizedMedicalPlan/>
+      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Medical Plan" link ="GET STARTED" />
       <TestimonialSection/>
     </div>
   )
