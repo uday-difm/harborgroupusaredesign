@@ -6,8 +6,8 @@ import { NetworkContact } from '../component/limitedmedplans/NetworkContact'
 import { EligibilityCriteria } from '../component/limitedmedplans/EligibilityCriteria'
 import { CostOptions } from '../component/limitedmedplans/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
-import { FAQSection } from '../component/medicalplan/FAQSection'
-import { TestimonialSection } from '../component/home/TestimonialSection'
+import { FaqLimitedMedPlans } from '../component/limitedmedplans/FaqLimitedMedPlans'
+import { TestimonialLimitedmed } from '../component/limitedmedplans/TestimonialLimitedmed'
 
 export default function page() {
   return (
@@ -19,8 +19,8 @@ export default function page() {
     <EligibilityCriteria/>
     <CostOptions/>
     <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Limited Med Plans" link = "GET STARTED"/>
-    <FAQSection/>
-    <TestimonialSection/>
+    <FaqLimitedMedPlans/>
+    <TestimonialLimitedmed/>
     </>
   )
 }

@@ -5,7 +5,7 @@ export const BenefitsofDentalCarePlan = () => {
     <section className='bg-gradient-to-br from-blue-50 to-white'>
     <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4 animate-slide-in-down">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 animate-slide-in-down">
           Unlock the Benefits of Our Dental Care Plan
         </h2>
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto animate-slide-in-down delay-100">
@@ -17,9 +17,9 @@ export const BenefitsofDentalCarePlan = () => {
         {/* Left Column: Service Cards */}
         <div className="space-y-8">
           {/* Preventive Services Card */}
-          <div className="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-blue-400 transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-200">
-            <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <div className="bg-white p-8 rounded-3xl shadow-lg   transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.001 12.001 0 002.944 12c0 2.873.843 5.485 2.308 7.373L12 22l6.748-2.627A12.001 12.001 0 0021.056 12c0-2.873-.843-5.485-2.308-7.373z" />
               </svg>
               Preventive Services
@@ -32,9 +32,9 @@ export const BenefitsofDentalCarePlan = () => {
           </div>
 
           {/* Basic Services Card */}
-          <div className="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-blue-400 transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-300">
-            <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <div className="bg-white p-8 rounded-3xl shadow-lg  transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-300">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
               </svg>
               Basic Services
@@ -47,9 +47,9 @@ export const BenefitsofDentalCarePlan = () => {
           </div>
 
           {/* Major Services Card */}
-          <div className="bg-white p-8 rounded-3xl shadow-lg border-l-8 border-blue-400 transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-400">
-            <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <div className="bg-white p-8 rounded-3xl shadow-lg  transform transition-transform duration-500 hover:scale-[1.02] animate-fade-in-left delay-400">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-9 w-9 mr-4 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0l-1.5 1.5L9 17.25" />
               </svg>
               Major Services
@@ -64,8 +64,8 @@ export const BenefitsofDentalCarePlan = () => {
         </div>
 
         {/* Right Column: Contact Form Section */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border-r-8 border-blue-400 animate-fade-in-right delay-500">
-          <h3 className="text-3xl md:text-4xl font-bold text-blue-800 mb-8 text-center">Get in Touch with Us</h3>
+        <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl  animate-fade-in-right delay-500">
+          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Get in Touch with Us</h3>
           <form className="max-w-md mx-auto space-y-6">
             <div>
               <label htmlFor="name" className="block text-gray-700 text-base font-medium mb-2">Your Name*</label>

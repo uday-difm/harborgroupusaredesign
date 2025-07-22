@@ -2,41 +2,28 @@
 
 
 import React from 'react'
+import Image from 'next/image';
 
 export const HeroSection = () => {
-
-     const gradientStops = (id) => (
-    <defs>
-      <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
-      </linearGradient>
-    </defs>
-  );
-
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
-
-      {/* Hero Section for Limited Med Plans - Enhanced Design */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-200 text-blue-900"> {/* Lighter blue gradient background */}
-        {/* Background Image with subtle overlay */}
-        <img
-          className="absolute inset-0 w-full  object-contain opacity-60" /* Further adjusted opacity for softer feel */
-          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/limited-med-plan-hero-section.jpeg" // image_ad06a9.jpg (Limited Med Plans Hero Background)
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-200 text-blue-900">
+        <Image 
+        width= {600}
+        height = {400}
+          className="absolute inset-0 w-full  object-contain opacity-60"
+          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/limited-med-plan-hero-section.jpeg" 
           alt="Couple looking at a scenic view"
         />
-        {/* Subtle blue overlay to blend with the image and logo colors */}
-        <div className="absolute inset-0 bg-blue-50 opacity-70"></div> {/* Even lighter blue overlay */}
-
-        {/* Abstract background pattern for uniqueness - radial pulses */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none animate-radialPulse"> {/* New radialPulse animation */}
+        <div className="absolute inset-0 bg-blue-50 opacity-70"></div> 
+        <div className="absolute inset-0 opacity-30 pointer-events-none animate-radialPulse"> 
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
               <filter id="blurFilterMedV2" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="4" /> {/* Increased blur */}
+                <feGaussianBlur in="SourceGraphic" stdDeviation="4" /> 
               </filter>
               <radialGradient id="radialGradientPulse" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.15" /> {/* Blue-400 with more opacity */}
+                <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.15" /> 
                 <stop offset="100%" stopColor="#60A5FA" stopOpacity="0" />
               </radialGradient>
             </defs>
@@ -44,23 +31,20 @@ export const HeroSection = () => {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-center"> {/* Centered content */}
-          {/* Text Content */}
-          <div className="max-w-4xl animate-slideInUp"> {/* New slideInUp animation */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
-              Limited Med Plans <br className="hidden sm:block"/> offering coverage for specific needs
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-center"> 
+          <div className="max-w-7xl animate-slideInUp">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
+              Limited Med Plans <br className="hidden sm:block"/>  coverage for specific needs
             </h1>
-            <p className="text-lg sm:text-xl text-blue-800 mb-10 max-w-2xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
               Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It's not just a plan; it's a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
             </p>
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
             </button>
           </div>
         </div>
       </section>
-
-      {/* Tailwind CSS Custom Animations */}
       <style jsx>{`
         @keyframes fadeIn {
           from {

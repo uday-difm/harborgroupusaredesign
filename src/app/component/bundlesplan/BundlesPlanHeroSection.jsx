@@ -33,9 +33,7 @@ export const BundlesPlanHeroSection = () => {
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 items-center relative z-10 p-4 sm:p-6 lg:p-8">
-          {/* Left Column: Text Content */}
           <div className="text-center lg:text-left animate-slideInLeft">
-            {/* Adjusted text color for readability on light background */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
               Combine and Save!
             </h1>
@@ -44,7 +42,7 @@ export const BundlesPlanHeroSection = () => {
               Forget managing multiple plans - our meticulously crafted Bundles Plans are designed to fit your family's unique needs and safeguard your health. It's more than just a plan; it's your unified health solution!
             </p>
             {/* Button remains blue with white text */}
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
             </button>
           </div>

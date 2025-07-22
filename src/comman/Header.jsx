@@ -16,6 +16,7 @@ const Logo = () => (
 );
 
 const navLinks = [
+    {name : 'Home', href: '/'},
     { name: 'About', href: '/about-health' },
     { name: 'Major Medical', href: '/major-medical-plan' },
     {

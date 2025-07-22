@@ -46,20 +46,13 @@ export const Network = () => {
         `}
       </style>
 
-      {/* Abstract Background Elements */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        {/* Large, rotating square */}
         <div className="w-[120vw] h-[120vw] bg-sky-100 opacity-20 transform rotate-45 animate-rotateSubtle"></div>
-        {/* Smaller, rotating square */}
         <div className="absolute w-[80vw] h-[80vw] bg-blue-100 opacity-20 transform -rotate-30 animate-rotateSubtle" style={{ animationDelay: '5s', animationDirection: 'reverse' }}></div>
       </div>
-
-      {/* Main Content Container - Overlapping Sections */}
       <div className="max-w-7xl w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl animate-fadeInScaleUp">
-
-        {/* Left Section: Network Information - Slightly elevated and distinct */}
         <div className="bg-white p-8 md:p-12 flex flex-col justify-center rounded-l-3xl lg:rounded-r-none animate-slideInFromLeft delay-200">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 drop-shadow-sm">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-6 drop-shadow-sm">
             Network
           </h2>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">

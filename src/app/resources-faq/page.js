@@ -1,8 +1,8 @@
 import React from 'react'
 import { ResourcesHelpCenterPage } from '../component/resourcesfaq/ResourcesHelpCenterPage'
 import { Faq } from '../component/resourcesfaq/Faq'
-import { TestimonialSection } from '../component/home/TestimonialSection'
 import { LatestArticles } from '../component/resourcesfaq/LatestArticles'
+import { TestimonialResource } from '../component/resourcesfaq/TestimonialResource'
 
 export default function page() {
   return (
@@ -10,7 +10,7 @@ export default function page() {
       <ResourcesHelpCenterPage/>
       <Faq/>
       <LatestArticles/>
-      <TestimonialSection/>
+      <TestimonialResource/>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { RequestCallbackSection } from '../component/majormedical/RequestCallbac
 import { HowToApplySection } from '../component/majormedical/HowToApplySection'
 import { DetailedPlanDescriptions } from '../component/majormedical/DetailedPlanDescriptions'
 import { CignaPlans } from '../component/majormedical/CignaPlans'
+import { TestimonialMajorMedical } from '../component/majormedical/TestimonialMajorMedical'
 
 export default function page() {
   return (
@@ -21,6 +22,7 @@ export default function page() {
       <HowToApplySection/>
       <DetailedPlanDescriptions/>
       <CignaPlans/>
+      <TestimonialMajorMedical/>
     </>
   )
 }
