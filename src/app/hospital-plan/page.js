@@ -4,12 +4,14 @@ import { Yourhealthmatters } from '../component/hospitalplan/Yourhealthmatters'
 import { ConnectWithUS } from '../component/hospitalplan/ConnectWithUS'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 import { HowToApply } from '../component/medicalplan/HowToApply'
-import { FAQSection } from '../component/medicalplan/FAQSection'
-import { TestimonialSection } from '../component/home/TestimonialSection'
+import { FAQSection } from '../../comman/FAQSection'
+// import { TestimonialSection } from '../component/home/TestimonialSection'
 import { BenefitsofHospitalPlan } from '../component/hospitalplan/BenefitsofHospitalPlan'
 import { Network } from '../component/hospitalplan/Network'
 import { CostOptionshospital } from '../component/hospitalplan/CostOptionshospital'
 import { EligibilitycriteriaofHospital } from '../component/hospitalplan/EligibilitycriteriaofHospital'
+import { FaqHospitalPlan } from '../component/hospitalplan/FaqHospitalPlan'
+import { TestimonialHospitalPlan } from '../component/hospitalplan/TestimonialHospitalPlan'
 
 export default function page() {
   return (
@@ -23,8 +25,9 @@ export default function page() {
       <CostOptionshospital/>
       <EligibilitycriteriaofHospital/>
       <HowToApply/>
-      <FAQSection/>
-      <TestimonialSection/>
+      <FaqHospitalPlan/>
+      {/* <TestimonialSection/> */}
+      <TestimonialHospitalPlan/>
     </>
   )
 }

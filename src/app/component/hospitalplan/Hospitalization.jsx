@@ -50,13 +50,13 @@ export const   Hospitalization = ()=>{
         <div className="max-w-7xl mx-auto flex flex-col items-start justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-left">
           {/* Text Content */}
           <div className="max-w-3xl animate-slideInLeft">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-xl text-blue-900 animate-textGlowLight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl text-blue-900 animate-textGlowLight">
               Specialized Plans For Hospitalization Expenses
             </h1>
-            <p className="text-lg sm:text-xl text-blue-800 mb-10 max-w-xl mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
               Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies.
             </p>
-            <button className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <button className="bg-sky-400 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
             </button>
           </div>

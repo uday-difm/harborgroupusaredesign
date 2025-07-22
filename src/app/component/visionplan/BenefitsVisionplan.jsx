@@ -34,7 +34,7 @@ export const BenefitsVisionplan = () => {
 
       {/* Section Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 drop-shadow-sm">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 drop-shadow-sm">
           Benefits of Vision Plan
         </h2>
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed">

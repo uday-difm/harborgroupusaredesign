@@ -6,8 +6,10 @@ import { EligibilityCriteria } from '../component/bundlesplan/EligibilityCriteri
 import { HowToApply } from '../component/medicalplan/HowToApply'
 import { Network } from '../component/bundlesplan/Network'
 import { CostOptions } from '../component/bundlesplan/CostOptions'
-import { FAQSection } from '../component/medicalplan/FAQSection'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
+import { FaqBundlesplan } from '../component/bundlesplan/FaqBundlesplan'
+import { TestimonialBundlesplan } from '../component/bundlesplan/TestimonialBundlesplan'
+
 
 export default function page() {
   return (
@@ -19,8 +21,9 @@ export default function page() {
      <HowToApply/>
      <Network/>
      <CostOptions/>
+        <FaqBundlesplan/>
      <GetYourPersonalizedMedicalPlan title ="Get Your Personalized Bundles Plans" link = "GET STARTED"/>
-     <FAQSection/>
+     <TestimonialBundlesplan/>
     </>
   )
 }

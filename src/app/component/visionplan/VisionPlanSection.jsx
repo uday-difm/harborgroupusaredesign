@@ -21,13 +21,13 @@ export const VisionPlanSection = () => {
 
         {/* Content */}
         <div className="relative z-10 text-center p-6 max-w-4xl mx-auto animate-fadeInUp">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
             Clear Vision, Clear Path – Your Future Starts Here
           </h1>
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
             Unlock unparalleled clarity and precision with our bespoke vision plans. We ensure your eyesight is not just corrected, but truly optimized for life's every moment.
           </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+          <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
             Discover Your Perfect Plan
           </button>
         </div>

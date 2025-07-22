@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image';
 
 export const AccidentHero = () => {
-      const mainIconGradient = (
+  const mainIconGradient = (
     <defs>
       <linearGradient id="mainIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
@@ -14,7 +14,7 @@ export const AccidentHero = () => {
   );
   return (
     <>
-    
+
     <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
 
       {/* Hero Section for Accident Coverage - NEW UNIQUE DESIGN (Geometric Overlay) */}
@@ -26,7 +26,7 @@ export const AccidentHero = () => {
           alt="Medical professional assisting a patient"
           width={600}
           height= {400}
-          
+
         />
         {/* Multi-stop gradient overlay pulling from logo colors */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-200 to-transparent opacity-60"></div> {/* Darker blue to light blue gradient */}
@@ -51,13 +51,15 @@ export const AccidentHero = () => {
 
         <div className="max-w-7xl mx-auto flex flex-col items-start justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-left">
           {/* Text Content */}
-          <div className="max-w-6xl animate-slideInLeft">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
+          {/* Modified this div to center its content */}
+          <div className="max-w-6xl animate-slideInLeft w-full flex flex-col items-center">
+            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold mb-6 leading-tight text-center drop-shadow-xl animate-textGlowLight">
               Coverage for unexpected accidents to ease financial burdens
             </h1>
-            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
-             Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
+              Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
             </p>
+            {/* Button is now centered because its parent is a flex column with items-center */}
             <button className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}
               GET STARTED
             </button>

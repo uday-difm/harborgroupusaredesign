@@ -3,7 +3,7 @@ import { HeroAbout } from '../component/about/HeroAbout'
 import { OurHistory } from '../component/about/OurHistory'
 import FounderSection from '../component/about/FounderSection'
 import { BlogSection } from '../component/about/BlogPostCard'
-import { TestimonialSection } from '../component/home/TestimonialSection'
+import { TestimonialAbout } from '../component/about/TestimonialAbout'
 
 export default function About() {
   return (
@@ -11,7 +11,7 @@ export default function About() {
       <HeroAbout/>
       <OurHistory/>
       <FounderSection/>
-      <TestimonialSection/>
+      <TestimonialAbout/>
       <BlogSection/>
       
     </>

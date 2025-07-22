@@ -5,10 +5,9 @@ import { MedicalPlanBenefitsSection } from '../component/medicalplan/MedicalPlan
 import { EligibilityCriteriaSection } from '../component/majormedical/EligibilityCriteriaSection'
 import { HowToApply } from '../component/medicalplan/HowToApply'
 import { CostOptions } from '../component/medicalplan/CostOptions'
-import { TestimonialSection } from '../component/home/TestimonialSection'
 import { GetYourPersonalizedMedicalPlan } from '../../comman/GetYourPersonalizedMedicalPlan'
-// import { Faqplan } from '../component/medicalplan/'
-import { FAQSection } from '../component/medicalplan/FAQSection'
+import { MedicalPlanFaq } from '../component/medicalplan/MedicalPlanFaq'
+import { TestimonialMedicalPlan } from '../component/medicalplan/TestimonialMedicalPlan'
 
 
 export default function page() {
@@ -20,9 +19,9 @@ export default function page() {
       <EligibilityCriteriaSection/>
       <HowToApply/>
       <CostOptions/>
-        <FAQSection/>
+        <MedicalPlanFaq/>
       <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Medical Plan" link ="GET STARTED" />
-      <TestimonialSection/>
+      <TestimonialMedicalPlan/>
     </div>
   )
 }
