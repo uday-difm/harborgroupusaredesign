@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image'; 
 import Link from 'next/link';
 
@@ -10,6 +10,81 @@ export const MedicalFormLanding = () => {
   const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
   const softGrayBg = '#F0F2F5'; // A very light gray for background
   const white = '#FFFFFF';
+
+
+  // State for form data and error/success messages
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    consent: false,
+  });
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError('');
+    setMessage('');
+    setIsSubmitting(true);
+
+    // Validation
+    if (!formData.name || !formData.email || !formData.message || !formData.consent) {
+      setError('All fields are required, and you must agree to the terms.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Log the form data (for debugging)
+    console.log('Form Data Submitted:', formData);
+
+    try {
+      const response = await fetch('/api/medicalplan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message); // Success message
+        setFormData({ name: '', email: '', message: '', consent: false }); // Clear form
+      } else {
+        setError(data.error || 'An error occurred. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
@@ -48,13 +123,17 @@ export const MedicalFormLanding = () => {
           </h3>
           <p className="text-gray-600 mb-6">And Receive Your Consultation</p>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2 text-left">Name*</label>
                 <input
                   type="text"
                   id="name"
+                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
                   style={{ '--tw-ring-color': `${accentLightBlue}80` }}
                   placeholder="Your Name"
@@ -65,6 +144,9 @@ export const MedicalFormLanding = () => {
                 <input
                   type="email"
                   id="email"
+                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
                   style={{ '--tw-ring-color': `${accentLightBlue}80` }}
                   placeholder="Your Email"
@@ -76,6 +158,9 @@ export const MedicalFormLanding = () => {
               <textarea
                 id="message"
                 rows="5"
+                 name="message"
+                value={formData.message}
+                onChange={handleInputChange}
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 resize-none"
                 style={{ '--tw-ring-color': `${accentLightBlue}80` }}
                 placeholder="Type your message here..."
@@ -85,21 +170,29 @@ export const MedicalFormLanding = () => {
               <input
                 type="checkbox"
                 id="consent"
+                 name="consent"
+                checked={formData.consent}
+                onChange={handleInputChange}
                 className="mt-1 mr-2 accent-current" // Using accent-current to inherit color from parent if set
                 style={{ color: accentLightBlue }}
               />
               <label htmlFor="consent" className="text-gray-600 text-sm text-left">
-                By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="#" className="underline" style={{ color: primaryDarkBlue }}>terms and conditions</a>.
+                By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="underline" style={{ color: primaryDarkBlue }}>terms and conditions</Link>.
               </label>
             </div>
-            <button
+             <button
               type="submit"
               className="w-full px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75"
               style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}
+              disabled={isSubmitting}
             >
-              Submit
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
+          
           </form>
+             {/* Display error or success message */}
+          {error && <div className="mt-4 text-red-500">{error}</div>}
+          {message && <div className="mt-4 text-green-500">{message}</div>}
         </div>
       </div>
 

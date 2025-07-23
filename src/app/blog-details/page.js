@@ -1,7 +1,70 @@
-import React from 'react'
+"use client";
+
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+
+// Popup Component for "Be the First to Know"
+const BlogSubscribePopup = ({ onClose }) => {
+  return (
+    // Added onClick handler to the transparent overlay div
+    <div
+      className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 font-inter"
+      onClick={(e) => {
+        // Close popup only if the click is on the overlay itself, not on its children
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+    >
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-lg mx-auto relative p-6 sm:p-8 text-center"> {/* Changed max-w-md to max-w-lg to increase width */}
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold"
+          aria-label="Close popup"
+        >
+          &times;
+        </button>
+
+        {/* Title */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+          Be the First to Know
+        </h2>
+        {/* Description */}
+        <p className="text-gray-600 mb-6 text-sm sm:text-base">
+          Get immediate updates on our newest blog posts. Whether it's the latest
+          trends, helpful tips, or personal stories, you'll be the first to read them.
+        </p>
+
+        {/* Input and Button */}
+        <div className="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          />
+          <button className="bg-blue-500 text-white py-3 px-6 rounded-md font-semibold text-base hover:bg-blue-600 transition duration-300 shadow-md">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function page() {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 3000); // Show popup after 3 seconds
+
+    return () => clearTimeout(timer); // Clean up the timer
+  }, []);
+
   return (
     <div>
        <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
@@ -123,6 +186,8 @@ export default function page() {
         </div>
       </div>
     </section>
+     {/* Render the popup if showPopup is true */}
+        {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
     </div>
   )
 }

@@ -19,7 +19,7 @@ export const DetailedPlanDescriptions = () => {
     {
       name: 'Ultra 1000',
       deductible: 'Individual deductible of $1,000 family deductible of $2,000. Individual max out of pocket $5,000, family max out of pocket $10,000.',
-      coverage: 'Preventive care covered 100%, primary care copay $20, specialist care copay $40, urgent care $40, and so on.',
+      coverage: 'Preventive care covered 100%, primary care copay $20, specialist care copay $40, urgent care $90, and so on.',
       prescription: 'Generic $15, preferred brand $65, non-preferred brand $85.',
     },
   ];
@@ -98,7 +98,7 @@ export const DetailedPlanDescriptions = () => {
                 Additional details:
               </h3>
               <p className="text-gray-600 ml-7">
-                Additional details about laboratory, radiology services, emergency room, inpatient, and outpatient services.
+               Additional details about laboratory, radiology services, emergency room, inpatient, and outpatient services.
               </p>
             </div>
           </div>

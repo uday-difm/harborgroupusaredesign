@@ -1,9 +1,73 @@
-import React from 'react'
+"use client";
+
+import React, { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link';
 
 export const ApplyNowSection = ()=> {
+   const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    terms: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccessMessage('');
+    setErrorMessage('');
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message || !formData.terms) {
+      setErrorMessage('All fields are required, and you must agree to the terms.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // API Call to submit the form data
+    try {
+      const response = await fetch('/api/petplan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage('Your application has been submitted successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          terms: false,
+        });
+      } else {
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-white overflow-hidden" id="pet-plan-form">
       {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
@@ -31,7 +95,7 @@ export const ApplyNowSection = ()=> {
               Apply Now
             </h2>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name and Email Inputs in one row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Use grid for responsiveness */}
                 {/* Name Input */}
@@ -43,7 +107,8 @@ export const ApplyNowSection = ()=> {
                     type="text"
                     id="name"
                     name="name"
-                    required
+                     value={formData.name}
+                    onChange={handleChange}
                     className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
                     placeholder="John Doe"
                   />
@@ -58,7 +123,8 @@ export const ApplyNowSection = ()=> {
                     type="email"
                     id="email"
                     name="email"
-                    required
+                     value={formData.email}
+                    onChange={handleChange}
                     className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
                     placeholder="john.doe@example.com"
                   />
@@ -76,6 +142,8 @@ export const ApplyNowSection = ()=> {
                   rows="5"
                   className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg resize-y"
                   placeholder="Tell us more about your pet and needs..."
+                   value={formData.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
 
@@ -85,13 +153,14 @@ export const ApplyNowSection = ()=> {
                   id="terms"
                   name="terms"
                   type="checkbox"
-                  required
+                  checked={formData.terms}
+                  onChange={handleChange}
                   className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
                 />
                 <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
                   By Submitting you allow our team to reach out to you via email or phone as submitted
-                  information by you and you also allow to agree to our <a href="#" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and
-                  conditions</a>.
+                  information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms/" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and
+                  conditions</Link>.
                 </label>
               </div>
 
@@ -100,11 +169,19 @@ export const ApplyNowSection = ()=> {
                 <button
                   type="submit"
                   className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-xl font-semibold text-white bg-gradient-to-r from-sky-400 to-sky-400 hover:from-sky-400 hover:to-sky-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
+              disabled={isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
                 </button>
               </div>
             </form>
+             {/* Show success or error messages */}
+            {successMessage && (
+              <div className="mt-4 text-green-500">{successMessage}</div>
+            )}
+            {errorMessage && (
+              <div className="mt-4 text-red-500">{errorMessage}</div>
+            )}
           </div>
         </div>
       </div>
