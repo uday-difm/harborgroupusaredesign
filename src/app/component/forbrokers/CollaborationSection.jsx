@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const CollaborationSection = () => {
   return (
@@ -27,9 +28,11 @@ export const CollaborationSection = () => {
           <p className="text-lg sm:text-xl leading-relaxed mb-8 text-gray-700">
             Your gateway to a mutually beneficial partnership with Harbor Group USA awaits. Explore how collaborating with us can open doors to exclusive benefits for both you and your clients. Join forces with us today.
           </p>
-          <button className="self-start px-8 py-4 bg-sky-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-75">
+        
+          <Link href="#broker-form" className="self-start px-8 py-4 bg-sky-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-sky-400 transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-75">
             APPLY NOW
-          </button>
+          </Link>
+          
         </div>
       </div>
     </section>

@@ -53,7 +53,7 @@ export const BlogSection = ()=> {
             </p>
             <div className="mt-8">
               <a
-                href="#"
+                href="/blogs"
                 className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sky-500 hover:bg-sky-600"
               >
                 VIEW ALL

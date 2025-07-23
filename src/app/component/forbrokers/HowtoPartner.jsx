@@ -17,7 +17,7 @@ export const HowtoPartner = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden" id="broker-form"
       style={{ backgroundColor: softGray }}
     >
       {/* Animated Background Gradients/Shapes */}

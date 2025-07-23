@@ -19,7 +19,7 @@ export default function page() {
       <Eligibilityofaccidental/>
       <HowToApply/>
       <FaqAccidentplan/>
-      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Accident Plan" link = "GET STARTED"/>
+      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Accident Plan" link = "GET STARTED" url="#accident-plan-form"/>
       <TestimonialAccidentPlan/>
     </>
   )

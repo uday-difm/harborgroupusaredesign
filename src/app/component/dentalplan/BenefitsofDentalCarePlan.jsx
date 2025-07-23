@@ -2,7 +2,7 @@ import React from 'react';
 
 export const BenefitsofDentalCarePlan = () => {
   return (
-    <section className='bg-gradient-to-br from-blue-50 to-white'>
+    <section className='bg-gradient-to-br from-blue-50 to-white' id ="dental-form">
     <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 animate-slide-in-down">

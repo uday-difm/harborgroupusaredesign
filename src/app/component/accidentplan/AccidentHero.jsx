@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const AccidentHero = () => {
   const mainIconGradient = (
@@ -60,9 +61,9 @@ export const AccidentHero = () => {
               Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
             </p>
             {/* Button is now centered because its parent is a flex column with items-center */}
-            <button className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}
+            <Link href="#accident-plan-form" className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}
               GET STARTED
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const GetYourPersonalizedMedicalPlan = ({ title, link }) => {
+export const GetYourPersonalizedMedicalPlan = ({ title, link , url}) => {
   return (
     <div>
       {/* New Section: Get Your Personalized Medical Plan - Enhanced Design */}
@@ -17,8 +17,8 @@ export const GetYourPersonalizedMedicalPlan = ({ title, link }) => {
         <h2 className="text-4xl lg:text-5xl font-extrabold mb-8 text-center text-blue-900 relative z-10">
           {title || 'Get Your Personalized Medical Plan'}
         </h2>
-        <Link href={link || '#medical-form'} className="bg-blue-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 relative z-10">
-          GET STARTED
+        <Link href={url || '#medical-form'} className="bg-blue-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 relative z-10">
+          {link}
         </Link>
       </div>
     </div>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 export const StartPlanSection = () => {
   return (
     <>
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden" id="rx-plan-form">
       {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
@@ -28,7 +28,7 @@ export const StartPlanSection = () => {
 
           {/* Right Column: Form Section */}
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-8 leading-tight">
+            <h2 className="text-4xl font-extrabold text-indigo-900 mb-8 leading-tight">
               Start your plan today!
             </h2>
 

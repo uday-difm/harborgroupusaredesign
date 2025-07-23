@@ -12,7 +12,7 @@ export const NetworkContact = () => {
   return (
     <>
          {/* New Section: Connect & Network (from image_ac2573.png) */}
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> {/* Align items to start for form/list top alignment */}
           {/* Left Column: Connect With Us Form */}
           <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInLeft">

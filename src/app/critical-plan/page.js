@@ -19,7 +19,7 @@ export default function page() {
     <Eligibilitycriteria/>
     <HowToApply/>
    <FaqCriticalPlan/>
-    <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Critical Plan" link = "GET STARTED" />
+    <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Critical Plan" link = "GET STARTED" url="#critical-plan-form"/>
       <TestimonialCriticalPlan/>
     </>
   )

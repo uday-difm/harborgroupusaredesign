@@ -3,6 +3,7 @@
 
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const HeroSection = () => {
   return (
@@ -39,9 +40,9 @@ export const HeroSection = () => {
             <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
               Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It's not just a plan; it's a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
             </p>
-            <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#limited-med-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
-            </button>
+            </Link>
           </div>
         </div>
       </section>

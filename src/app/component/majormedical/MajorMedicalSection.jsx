@@ -66,7 +66,7 @@ export const MajorMedicalSection = () => {
           <div className="mt-12 md:mt-10 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
               <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">For Members Only</p>
               <a
-                  href="#"
+                  href="#lifestyle-plan-form"
                   className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-sky-500 hover:bg-sky-600 shadow-2xl shadow-sky-500/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
                   GET NOW

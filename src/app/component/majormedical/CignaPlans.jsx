@@ -1,253 +1,135 @@
 import React from 'react';
 
-// Main App component
-export const CignaPlans= () => {
+// Define the data for the Cigna Plans table
+const cignaPlansData = {
+  header: 'Cigna Plans',
+  sections: [
+    {
+      title: 'Major Medical Plans',
+      rows: [
+        { label: 'Network', plans: { 'Ultra 6000': '...', 'Ultra 2000': 'Cigna', 'Ultra 1000': 'Cigna' } },
+        { label: 'Plan Availability', plans: { 'Ultra 6000': 'All 50 States', 'Ultra 2000': 'All 50 States', 'Ultra 1000': 'All 50 States' } },
+      ],
+    },
+    {
+      title: 'Benefits',
+      rows: [
+        { label: 'Individual Deductible', plans: { 'Ultra 6000': '$6,000', 'Ultra 2000': '$3,000', 'Ultra 1000': '$1,000' } },
+        { label: 'Family Deductible', plans: { 'Ultra 6000': '$12,000', 'Ultra 2000': '$6,000', 'Ultra 1000': '$2,000' } },
+        { label: 'Individual Max Out of Pocket', plans: { 'Ultra 6000': '$9,450', 'Ultra 2000': '$8,450', 'Ultra 1000': '$5,000' } },
+        { label: 'Family Max Out of Pocket', plans: { 'Ultra 6000': '$18,900', 'Ultra 2000': '$16,900', 'Ultra 1000': '$10,000' } },
+        { label: 'Coinsurance', plans: { 'Ultra 6000': '30%', 'Ultra 2000': '70%', 'Ultra 1000': '80%' } },
+        { label: 'Preventive Care', plans: { 'Ultra 6000': 'Covered 100%', 'Ultra 2000': 'Covered 100%', 'Ultra 1000': 'Covered 100%' } },
+        { label: 'Lifetime Maximum', plans: { 'Ultra 6000': 'No Maximum', 'Ultra 2000': 'No Maximum', 'Ultra 1000': 'No Maximum' } },
+        { label: 'Primary Care Copay', plans: { 'Ultra 6000': '$30', 'Ultra 2000': '$20', 'Ultra 1000': '$20' } },
+        { label: 'Specialist Care Copay', plans: { 'Ultra 6000': '$60', 'Ultra 2000': '$40', 'Ultra 1000': '$40' } },
+        { label: 'Urgent Care', plans: { 'Ultra 6000': '$90', 'Ultra 2000': '$60', 'Ultra 1000': '$40' } },
+      ],
+    },
+    {
+      title: 'Laboratory',
+      rows: [
+        { label: 'Diagnostic Test', plans: { 'Ultra 6000': '$30 copay/Visit', 'Ultra 2000': '$30 copay/Visit', 'Ultra 1000': 'Deductible then 20%' } },
+      ],
+    },
+    {
+      title: 'Radiology Services',
+      rows: [
+        { label: 'Facility (CT, PET, MRI) up to plan allowance', plans: { 'Ultra 6000': '30% of plan allowable, deductible does not apply', 'Ultra 2000': '30% of plan allowable, deductible does not apply', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Professional Fees (CT, PET, MRI)', plans: { 'Ultra 6000': 'Professional Fees 20% after deductible', 'Ultra 2000': 'Professional Fees 20% after deductible', 'Ultra 1000': 'Deductible then 20%' } },
+      ],
+    },
+    {
+      title: 'Facility & Professional Services',
+      rows: [
+        { label: 'Emergency Room - Professional Fee', plans: { 'Ultra 6000': '30% after deductible. Out of network is subject to plan allowable fee.', 'Ultra 2000': '30% after deductible. Out of network is subject to plan allowable fee.', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Emergency Room - Facility', plans: { 'Ultra 6000': '30% of plan allowable, deductible does not apply', 'Ultra 2000': '30% of plan allowable, deductible does not apply', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Inpatient Hospital - Physician Fees', plans: { 'Ultra 6000': 'Deductible then 30%', 'Ultra 2000': 'Deductible then 30%', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Inpatient - Facility', plans: { 'Ultra 6000': 'Deductible then 30%', 'Ultra 2000': 'Deductible then 30%', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Outpatient - Physician', plans: { 'Ultra 6000': '30% of plan allowable, subject to plan allowable fee', 'Ultra 2000': '30% of plan allowable, subject to plan allowable fee', 'Ultra 1000': 'Deductible then 20%' } },
+        { label: 'Outpatient Hospital - Facility', plans: { 'Ultra 6000': '30% of plan allowable, deductible does not apply', 'Ultra 2000': '30% of plan allowable, deductible does not apply', 'Ultra 1000': 'Deductible then 20%' } },
+      ],
+    },
+    {
+      title: 'Out of Network',
+      rows: [
+        { label: 'Deductible', plans: { 'Ultra 6000': '$12,000/$24,000', 'Ultra 2000': '$6,000/$12,000', 'Ultra 1000': '$2,000/$4,000' } },
+        { label: 'MOOP', plans: { 'Ultra 6000': '$18,900/$37,800', 'Ultra 2000': '$16,900/$33,800', 'Ultra 1000': '$10,000/$20,000' } },
+        { label: 'Coinsurance', plans: { 'Ultra 6000': '40%', 'Ultra 2000': '40%', 'Ultra 1000': '40%' } },
+        { label: 'Reimbursement', plans: { 'Ultra 6000': 'Plans Allowable Fee', 'Ultra 2000': 'Plans Allowable Fee', 'Ultra 1000': 'Plans Allowable Fee' } },
+      ],
+    },
+    {
+      title: 'Prescription Drug Benefit',
+      rows: [
+        { label: 'Generic', plans: { 'Ultra 6000': '$15', 'Ultra 2000': '$15', 'Ultra 1000': '$15' } },
+        { label: 'Preferred Brand', plans: { 'Ultra 6000': '$65', 'Ultra 2000': '$65', 'Ultra 1000': '$65' } },
+        { label: 'Non-Preferred Brand', plans: { 'Ultra 6000': '$100', 'Ultra 2000': '$100', 'Ultra 1000': '$65' } },
+      ],
+    },
+  ],
+};
+
+export const CignaPlans = () => {
+  const planNames = ['Ultra 6000', 'Ultra 2000', 'Ultra 1000'];
+
   return (
-    <div className="min-h-screen bg-gray-100 p-4 sm:p-8 flex items-center justify-center font-inter">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-6xl">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center py-6 text-blue-800">Cigna Plans</h1>
-        {/* Re-added overflow-x-auto to allow horizontal scrolling for wider content on smaller screens */}
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-blue-700 text-white">
-              <tr>
-                <th scope="col" className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider w-1/4">
-                  Major Medical Plans
-                </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider w-1/4">
-                  Ultra 9000
-                </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-medium uppercase tracking-wider w-1/4">
-                  Ultra 8000
-                </th>
-                <th scope="col" className="px-3 py-3 text-center text-xs font-font-medium uppercase tracking-wider w-1/4">
-                  Ultra 5000
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {/* Plan Information */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Plan Information
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Network</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Open Access Plus</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Open Access Plus</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Open Access Plus</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Plan Availability</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">All 50 States</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">All 50 States</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">All 50 States</td>
-              </tr>
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8 font-inter flex flex-col items-center">
+      {/* Main Title */}
+      <h1 className="text-3xl sm:text-4xl font-bold text-indigo-900 mb-6 sm:mb-8 rounded-lg">
+        {cignaPlansData.header}
+      </h1>
 
-              {/* Benefits Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Benefits
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Individual Deductible</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$4,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$3,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$7,000</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Family Deductible</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$7,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$6,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$14,000</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Individual Max Out of Pocket</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$8,500</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$8,500</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$9,100</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Family Max Out of Pocket</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$18,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$18,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$18,200</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Coinsurance</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">70 %</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">70 %</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">60%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Prevention Care</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Covered 100%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Covered 100%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Covered 100%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Lifetime Maximum</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">No Maximum</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">No Maximum</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">No Maximum</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Primary Care Copay</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$30</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$30</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$30</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Specialist Care Copay</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$60</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$60</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$60</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Urgent Care</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$80</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$80</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$80</td>
-              </tr>
-
-              {/* Laboratory Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Laboratory
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Diagnostic Test</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$30 copay/visit</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$30 copay/visit</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-
-              {/* Radiology Services Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Radiology Services
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Facility (CT, PET, MRI) up to plan allowance</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Facility: 30% of plan allowance, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Facility: 30% of plan allowance, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Professional Fees</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Professional: 30% after deductible</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Professional: 30% after deductible</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-
-              {/* Facility & Professional Services Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Facility & Professional Services
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Emergency Room - Professional Fee</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% after deductible Out of network is subject to plan allowable fee.</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% after deductible Out of network is subject to plan allowable fee.</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Emergency Room - Facility</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% of plan allowable, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% of plan allowable, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Inpatient Hospital - Physician</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Inpatient - Facility</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Outpatient Hospital - Physician</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% after deductible, subject to plan allowable fee</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% after deductible, subject to plan allowable fee</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Outpatient Hospital - Facility</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% of plan allowable, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">30% of plan allowable, deductible does not apply</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Deductible then 30%</td>
-              </tr>
-
-              {/* Out of Network Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Out of Network
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-medium text-gray-700">Deductible</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$7,000/$14,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$6,000/$12,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$10,000/$20,000</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">MOOP</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$18,000/$37,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$18,000/$37,000</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$20,000/$40,000</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Coinsurance</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">40%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">40%</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">40%</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Reimbursement</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Plan Allowable Fee</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Plan Allowable Fee</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Plan Allowable Fee</td>
-              </tr>
-
-              {/* Prescription Drug Benefit Section */}
-              <tr className="bg-blue-50">
-                <td className="px-3 py-3 whitespace-nowrap text-sm font-semibold text-gray-900" colSpan="4">
-                  Prescription Drug Benefit
-                </td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Generic</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$15</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$15</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$15</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Preferred Brand</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$50</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$50</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$50</td>
-              </tr>
-              <tr>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">Non-Preferred Brand</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$100</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-center text-gray-900">$100</td>
-                <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-900">$100</td>
-              </tr>
-            </tbody>
-          </table>
+      {/* Table Container */}
+      <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
+        {/* Table Header Row */}
+        <div className="grid grid-cols-4 bg-sky-500 text-white font-semibold text-sm sm:text-base lg:text-lg rounded-t-lg">
+          <div className="p-3 sm:p-4 border-r border-blue-500 flex items-center justify-center text-center">
+            Major Medical Plans
+          </div>
+          {planNames.map((planName, index) => (
+            <div key={index} className={`p-3 sm:p-4 flex items-center justify-center text-center ${index < planNames.length - 1 ? 'border-r border-blue-500' : ''}`}>
+              {planName}
+            </div>
+          ))}
         </div>
+
+        {/* Table Content */}
+        {cignaPlansData.sections.map((section, sectionIndex) => (
+          <React.Fragment key={sectionIndex}>
+            {/* Section Title Row */}
+            <div className="grid grid-cols-4 bg-blue-100 text-blue-800 font-bold text-sm sm:text-base border-t border-gray-200">
+              <div className="col-span-4 p-3 sm:p-4 text-center">
+                {section.title}
+              </div>
+            </div>
+
+            {/* Section Rows */}
+            {section.rows.map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                className={`grid grid-cols-4 text-gray-800 text-xs sm:text-sm ${
+                  rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                } border-t border-gray-200`}
+              >
+                <div className="p-3 sm:p-4 border-r border-gray-200 flex items-center">
+                  {row.label}
+                </div>
+                {planNames.map((planName, planIndex) => (
+                  <div
+                    key={planIndex}
+                    className={`p-3 sm:p-4 flex items-center justify-center text-center ${
+                      planIndex < planNames.length - 1 ? 'border-r border-gray-200' : ''
+                    }`}
+                  >
+                    {row.plans[planName]}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
 };
-
-

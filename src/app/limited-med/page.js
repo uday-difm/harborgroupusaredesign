@@ -18,7 +18,7 @@ export default function page() {
     <NetworkContact/>
     <EligibilityCriteria/>
     <CostOptions/>
-    <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Limited Med Plans" link = "GET STARTED"/>
+    <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Limited Med Plans" link = "GET STARTED" url="#limited-med-form"/>
     <FaqLimitedMedPlans/>
     <TestimonialLimitedmed/>
     </>

@@ -18,7 +18,7 @@ export default function page() {
     <Eligibilitycriteria/>
     <CostOptions/>
       <HowToApply/>
-      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Term Life Plan" link ="GET STARTED"/>
+      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Term Life Plan" link ="GET STARTED" url="#term-form"/>
       <FaqTermlife/>
       <TestimonialTermLife/>
     </>

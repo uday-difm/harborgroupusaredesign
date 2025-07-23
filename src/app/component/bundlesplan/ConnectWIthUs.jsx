@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const ConnectWIthUs = () => {
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="bundles-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Image with unique styling */}
           <div className="flex justify-center  animate-slideInLeft">
