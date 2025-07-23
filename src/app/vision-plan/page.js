@@ -19,7 +19,7 @@ export default function page() {
      <LayeredCosts/>
      <Network/>
    <FaqVisionPlan/>
-     <GetYourPersonalizedMedicalPlan title = "Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage" link ="ENROLL IN VISION CARE"/>
+     <GetYourPersonalizedMedicalPlan title = "Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage" link ="ENROLL IN VISION CARE" url="#vision-form"/>
      <TestimonialVisionPlan/>
  </>
   )

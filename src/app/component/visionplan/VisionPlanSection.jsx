@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 
 // Main App component
 export const VisionPlanSection = () => {
@@ -27,9 +28,9 @@ export const VisionPlanSection = () => {
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
             Unlock unparalleled clarity and precision with our bespoke vision plans. We ensure your eyesight is not just corrected, but truly optimized for life's every moment.
           </p>
-          <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
-            Discover Your Perfect Plan
-          </button>
+          <Link href= "#vision-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+           GET NOW
+          </Link>
         </div>
       </section>
 

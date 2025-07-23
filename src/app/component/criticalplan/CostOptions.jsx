@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react'
+import Link from 'next/link';
 
 export const CostOptions = ()=> {
   return (
@@ -60,9 +61,11 @@ export const CostOptions = ()=> {
               </div>
             </div>
           </div>
-           <button className="mt-12 py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn bg-sky-400 text-white font-bold" >
+          <Link href="#critical-plan-form">
+           <button   className="mt-12 py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn bg-sky-400 text-white font-bold" >
             GET NOW
           </button>
+          </Link>
         </div>
       </section>
     </>

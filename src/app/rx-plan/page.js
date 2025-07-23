@@ -22,7 +22,7 @@ export default function page() {
       <HowToApply/>
       <StartPlanSection/>
       <FaqRxplan/>
-      <GetYourPersonalizedMedicalPlan title = "Start your Rx plan today!" link ="GET STARTED" />
+      <GetYourPersonalizedMedicalPlan title = "Start your Rx plan today!" link ="GET STARTED" url="#rx-plan-form"/>
       {/* <TestimonialSection/> */}
       <TestimonialRxPlan/>
     </>

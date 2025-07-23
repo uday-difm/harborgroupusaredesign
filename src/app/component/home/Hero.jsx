@@ -46,7 +46,7 @@ export const HeroSection = () => {
               style={{ animationDelay: '0.6s' }}
             >
               <a
-                href="#"
+                href="#h-form"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-sky-500 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-sky-300/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 focus:ring-offset-white"
               >
                 Get a Free Quote Today!

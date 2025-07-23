@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const ConnectWithUS = ()=>{
   return (
     <>
-       <section className="relative w-full bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+       <section className="relative w-full bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" id="hospital-plan-form">
         {/* Subtle animated background pattern (waves) */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
@@ -50,7 +50,7 @@ export const ConnectWithUS = ()=>{
                 <label htmlFor="contactMessageNew" className="block text-gray-700 text-sm font-medium mb-2">Your message</label>
                 <textarea id="contactMessageNew" name="contactMessageNew" rows="6" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y h-full" placeholder="How can we help you?"></textarea> {/* Added h-full */}
               </div>
-              <div className="flex items-start">
+              <div className="flex items-start mt-3">
                 <input type="checkbox" id="contactTermsNew" name="contactTermsNew" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1" required />
                 <label htmlFor="contactTermsNew" className="ml-2 text-sm text-gray-700">
                   By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="#" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.

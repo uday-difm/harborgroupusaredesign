@@ -22,7 +22,7 @@ export default function page() {
      <Network/>
      <CostOptions/>
         <FaqBundlesplan/>
-     <GetYourPersonalizedMedicalPlan title ="Get Your Personalized Bundles Plans" link = "GET STARTED"/>
+     <GetYourPersonalizedMedicalPlan title ="Get Your Personalized Bundles Plans" link = "GET STARTED" url="#bundles-form"/>
      <TestimonialBundlesplan/>
     </>
   )

@@ -2,17 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const   Hospitalization = ()=>{
- const blueGradient = (id) => (
-    <defs>
-      <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
-      </linearGradient>
-    </defs>
-  );
-
   return (
     <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
 
@@ -56,9 +48,9 @@ export const   Hospitalization = ()=>{
             <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
               Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies.
             </p>
-            <button className="bg-sky-400 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#hospital-plan-form" className="bg-sky-400 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
-            </button>
+            </Link>
           </div>
         </div>
       </section>

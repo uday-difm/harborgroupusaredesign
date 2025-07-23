@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const Hero = () => {
   return (
@@ -27,9 +28,9 @@ export const Hero = () => {
             Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need.
           </p>
           
-          <button className="bg-sky-400 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+          <Link href="#term-form" className="bg-sky-400 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
             GET STARTED
-          </button>
+          </Link>
         </div>
       </section>
 

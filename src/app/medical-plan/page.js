@@ -20,7 +20,7 @@ export default function page() {
       <HowToApply/>
       <CostOptions/>
         <MedicalPlanFaq/>
-      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Medical Plan" link ="GET STARTED" />
+      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Medical Plan" link ="GET STARTED" url="#medical-form"/>
       <TestimonialMedicalPlan/>
     </div>
   )

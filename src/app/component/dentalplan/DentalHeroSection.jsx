@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export const DentalHeroSection = () => {
   return (
@@ -22,9 +23,9 @@ export const DentalHeroSection = () => {
             Discover a new standard of dental wellness with plans designed for your comfort, health, and lasting confidence.
           </p>
           {/* Action Button */}
-          <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-12 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 uppercase tracking-wide text-lg animate-fade-in delay-400">
-            Begin Your Journey
-          </button>
+          <Link href="#dental-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-12 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 uppercase tracking-wide text-lg animate-fade-in delay-400">
+           START NOW
+          </Link>
         </div>
       </header>
     </div>

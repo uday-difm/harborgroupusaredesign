@@ -2,17 +2,18 @@
 
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const BundlesPlanHeroSection = () => {
  // Define the light blue gradient for icons (kept for consistency, though not used in this single-section view)
-  const gradientStops = (id) => (
-    <defs>
-      <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
-      </linearGradient>
-    </defs>
-  );
+  // const gradientStops = (id) => (
+  //   <defs>
+  //     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
+  //       <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+  //       <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
+  //     </linearGradient>
+  //   </defs>
+  // );
 
   return (
  <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
@@ -42,9 +43,9 @@ export const BundlesPlanHeroSection = () => {
               Forget managing multiple plans - our meticulously crafted Bundles Plans are designed to fit your family's unique needs and safeguard your health. It's more than just a plan; it's your unified health solution!
             </p>
             {/* Button remains blue with white text */}
-            <button className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#bundles-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
-            </button>
+            </Link>
           </div>
 
           {/* Right Column: Image with unique styling */}

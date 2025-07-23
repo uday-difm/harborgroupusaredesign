@@ -21,7 +21,7 @@ export default function page() {
       <ConnectWithUS/>
       <BenefitsofHospitalPlan/>
       <Network/>
-      <GetYourPersonalizedMedicalPlan title = "Start your Hospital Plans today!" link ="GET STARTED" />
+      <GetYourPersonalizedMedicalPlan title = "Start your Hospital Plans today!" link ="GET STARTED" url="#hospital-plan-form"/>
       <CostOptionshospital/>
       <EligibilitycriteriaofHospital/>
       <HowToApply/>

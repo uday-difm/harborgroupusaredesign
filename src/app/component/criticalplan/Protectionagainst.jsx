@@ -42,7 +42,7 @@ export const Protectionagainst = ()=> {
       </svg>
 
       {/* Hero Section - Critical Illness Protection */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900">
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900" id="critical-plan-form"> 
         {/* Background Image from user upload */}
         <Image
         width={600}

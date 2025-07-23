@@ -3,7 +3,7 @@ import React from 'react';
 // Main App component (can be integrated into your existing App or a new page)
 export const Network = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 font-inter py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 font-inter py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden" id = "vision-form">
       {/* Custom CSS for animations */}
       <style>
         {`

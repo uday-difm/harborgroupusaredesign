@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const ConnectWithUs = () => {
   return (
     <>
-        <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch"> {/* Changed items-start to items-stretch */}
           {/* Left Column: Connect With Us Form */}
           <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInLeft flex flex-col h-full"> {/* Added flex flex-col h-full */}

@@ -23,7 +23,7 @@ export default function page() {
      <RequestCallback/>
      <HowToApply/>
      <FaqLifestyleplan/>
-     <GetYourPersonalizedMedicalPlan title="Let's get started with lifestyle plans" link ="GET STARTED"/>
+     <GetYourPersonalizedMedicalPlan title="Let's get started with lifestyle plans" link ="GET STARTED" url="#lifestyle-plan-form"/>
      {/* <TestimonialSection/> */}
      <TestimonialLifeStylePlan/>
      
