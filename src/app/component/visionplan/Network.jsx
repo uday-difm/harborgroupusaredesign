@@ -1,7 +1,83 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 
 // Main App component (can be integrated into your existing App or a new page)
 export const Network = () => {
+    // State for form data, error messages, and submission status
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    terms: false,
+  });
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError('');
+    setMessage('');
+    setIsSubmitting(true);
+
+    // Validation
+    if (!formData.name || !formData.email || !formData.message || !formData.terms) {
+      setError('All fields are required, and you must agree to the terms.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Log form data (for debugging)
+    console.log('Form Data Submitted:', formData);
+
+    try {
+      // Making the API call
+      const response = await fetch('/api/visionplan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message); // Success message
+        setFormData({ name: '', email: '', message: '', terms: false }); // Clear form
+      } else {
+        setError(data.error || 'An error occurred. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 font-inter py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden" id = "vision-form">
       {/* Custom CSS for animations */}
@@ -83,7 +159,7 @@ export const Network = () => {
 
         {/* Right Section: Contact Form - Overlapping and distinct color */}
         <div className="p-8 md:p-12 bg-sky-100 bg-opacity-90 flex flex-col justify-center rounded-r-3xl lg:rounded-l-none animate-slideInFromRight delay-300">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-lg font-medium mb-2 text-gray-800">Your name*</label>
               <input
@@ -92,7 +168,8 @@ export const Network = () => {
                 name="name"
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-70 border border-sky-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 text-gray-800 transition duration-300"
                 placeholder="Enter your name"
-                required
+                value={formData.name}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -103,7 +180,8 @@ export const Network = () => {
                 name="email"
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-70 border border-sky-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 text-gray-800 transition duration-300"
                 placeholder="Enter your email"
-                required
+                value={formData.email}
+                onChange={handleInputChange}
               />
             </div>
             <div>
@@ -114,6 +192,8 @@ export const Network = () => {
                 rows="4"
                 className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-70 border border-sky-300 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-400 text-gray-800 transition duration-300"
                 placeholder="Type your message here..."
+                 value={formData.message}
+                onChange={handleInputChange}
               ></textarea>
             </div>
             <div className="flex items-start">
@@ -122,20 +202,25 @@ export const Network = () => {
                 id="terms"
                 name="terms"
                 className="mt-1 mr-2 rounded text-sky-400 focus:ring-sky-400"
-                required
+                checked={formData.terms}
+                onChange={handleInputChange}
               />
               <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
-                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="#" className="underline text-blue-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
+                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="underline text-blue-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
               </label>
             </div>
             <button
               type="submit"
               className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-sky-600 text-white font-bold text-lg rounded-lg shadow-md hover:from-blue-600 hover:to-sky-700 transform hover:scale-105 transition-all duration-300 ease-in-out
                            focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-75"
+             disabled={isSubmitting}
             >
-              SUBMIT
+              {isSubmitting ? 'Submitting...' : 'SUBMIT'}
             </button>
           </form>
+            {/* Display error or success message */}
+          {error && <div className="mt-4 text-red-500">{error}</div>}
+          {message && <div className="mt-4 text-green-500">{message}</div>}
         </div>
       </div>
     </div>

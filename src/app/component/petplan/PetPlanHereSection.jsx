@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const PetPlanHereSection = () => {
 
@@ -26,9 +27,11 @@ export const PetPlanHereSection = () => {
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
             Extend your care to your four-legged family members with Pet Plans at Harbor Group USA. Our Pet Plans are designed to offer tailored protection for your beloved pets, ensuring their health and well-being are prioritized.
           </p>
+          <Link href="#pet-plan-form">
           <button className="py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 bg-sky-400 text-white font-bold" >
             JOIN US NOW
           </button>
+          </Link>
         </div>
       </section>
   );

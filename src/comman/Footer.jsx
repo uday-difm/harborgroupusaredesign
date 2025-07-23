@@ -2,38 +2,77 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import {  Phone,  Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { Phone, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
 
 
 // --- Logo Component ---
 const Logo = ({ className }) => (
-    <img 
+    <img
         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
-        alt="Harbor Group USA Logo" 
+        alt="Harbor Group USA Logo"
         className={className || "h-14 w-auto"}
-        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
+        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
     />
 );
 export const Footer = () => {
-      const quickLinks = [
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+
+    const quickLinks = [
         { name: 'For Brokers', href: '/for-brokers' },
         { name: 'Resources & FAQ', href: '/resources-faq' },
         { name: 'Help Center', href: '/contact' },
         { name: 'Career', href: '/careers' },
-      //  { name: 'Contact Us', href: '/contact' },
+        //  { name: 'Contact Us', href: '/contact' },
     ];
     const legalPages = [
         { name: 'Privacy Policy', href: '/privacy-policy' },
         { name: 'Terms Of Service', href: '/terms-and-conditions' },
     ];
     const socialLinks = [
-        { icon: <Instagram size={20} />, href: '#', name: 'Instagram' },
-        { icon: <Facebook size={20} />, href: '#', name: 'Facebook' },
-        { icon: <Twitter size={20} />, href: '#', name: 'Twitter' },
-        { icon: <Linkedin size={20} />, href: '#', name: 'LinkedIn' },
-               { icon: <Youtube size={20} />, href: '#', name: 'YouTube' },
+        { icon: <Instagram size={20} />, href: 'https://www.instagram.com/harborgroupusa/', name: 'Instagram' },
+        { icon: <Facebook size={20} />, href: 'https://www.facebook.com/theharborgroupusa/', name: 'Facebook' },
+        { icon: <Twitter size={20} />, href: 'https://x.com/HarborUsa', name: 'Twitter' },
+        { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/company/harbor-group-usa/', name: 'LinkedIn' },
+        { icon: <Youtube size={20} />, href: 'https://www.youtube.com/@harborgroupusa', name: 'YouTube' },
     ];
-    
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+
+        // Clear previous error/message
+        setError('');
+        setMessage('');
+
+        if (!email || !email.includes('@')) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessage(data.message);
+                setEmail('');
+            } else {
+                setError(data.message);
+            }
+        } catch (err) {
+            setError('An error occurred, please try again later.');
+        }
+    };
+
+
     return (
         <footer className="bg-gray-100 pt-16">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,20 +85,27 @@ export const Footer = () => {
                                 Stay informed, stay connected – sign up now for a wealth of curated information tailored just for you! 🌐✉️
                             </p>
                         </div>
-                        <form className="flex-shrink-0 w-full lg:w-auto">
+                        <form className="flex-shrink-0 w-full lg:w-auto" onSubmit={handleSubscribe}>
                             <div className="flex items-center bg-white rounded-lg p-1.5">
-                                <Mail className="h-5 w-5 text-gray-400 mx-3"/>
-                                <input 
-                                    type="email" 
+                                <Mail className="h-5 w-5 text-gray-400 mx-3" />
+                                <input
+                                    type="email"
                                     placeholder="Enter your email"
                                     className="w-full bg-transparent text-gray-800 focus:outline-none"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 <button type="submit" className="bg-sky-500 text-white font-semibold px-5 py-2.5 rounded-md hover:bg-sky-600 transition-colors">
                                     Subscribe
                                 </button>
                             </div>
+                            {/* Error / Success Messages */}
+                            {error && <div className="mt-4 text-red-500">{error}</div>}
+                            {message && <div className="mt-4 text-green-500">{message}</div>}
                         </form>
+
                     </div>
+
                 </div>
 
                 {/* Main Footer Content */}
@@ -67,12 +113,12 @@ export const Footer = () => {
                     {/* Logo and About */}
                     <div className="space-y-4">
                         <Link href="/" className="inline-block">
-                           <Logo className="h-16 w-auto" />
+                            <Logo className="h-16 w-auto" />
                         </Link>
                         <p className="text-sm text-gray-600">
-                           At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
+                            At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
                         </p>
-                         <div className="flex space-x-4">
+                        <div className="flex space-x-4">
                             {socialLinks.map((link) => (
                                 <Link key={link.name} href={link.href} aria-label={link.name} className="text-gray-400 hover:text-sky-500 transition-colors">
                                     {link.icon}
@@ -96,7 +142,7 @@ export const Footer = () => {
                             {legalPages.map(link => <li key={link.name}><Link href={link.href} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
-                    
+
                     {/* Contact Info */}
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Contact Us</h4>
@@ -109,7 +155,7 @@ export const Footer = () => {
                                 <Phone className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
                                 <span className="text-gray-600 group-hover:text-sky-500 transition-colors">+1 516-218-6887</span>
                             </a>
-                             <a href="tel:+17542299273" className="flex items-center group">
+                            <a href="tel:+17542299273" className="flex items-center group">
                                 <Phone className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
                                 <span className="text-gray-600 group-hover:text-sky-500 transition-colors">+1 754-229-9273</span>
                             </a>
@@ -117,19 +163,19 @@ export const Footer = () => {
 
                         {/* Business Hours Section */}
                         <div className="mt-6">
-                             <h4 className="text-base font-semibold text-indigo-900">Business Hours</h4>
-                             <div className="mt-4 space-y-3 text-sm">
+                            <h4 className="text-base font-semibold text-indigo-900">Business Hours</h4>
+                            <div className="mt-4 space-y-3 text-sm">
                                 <div className="flex items-start">
                                     <Clock className="mr-3 h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
                                     <span className="text-gray-600">
-                                        Monday - Friday - 9 am to 5 pm<br/>
+                                        Monday - Friday - 9 am to 5 pm<br />
                                         Saturday, Sunday - Closed
                                     </span>
                                 </div>
                                 <p className="text-gray-600">
                                     After submitting your information to us, a licensed agent will contact you within 24 hours.
                                 </p>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>

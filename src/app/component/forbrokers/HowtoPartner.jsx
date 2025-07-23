@@ -1,26 +1,95 @@
-import React from 'react';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
 
-// Main App component (or this can be a standalone component to be imported)
 export const HowtoPartner = () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const darkAccentBlue = '#0D1B3A'; // A darker, richer blue for accent
-  const lightBlueBg = '#4CAFDE'; // Lighter blue from the logo background (approximate)
-  const softGray = '#F0F2F5'; // A very light gray for background
+  const primaryBlue = '#1A2E5B'; 
+  const darkAccentBlue = '#0D1B3A'; 
+  const lightBlueBg = '#4CAFDE'; 
+  const softGray = '#F0F2F5'; 
 
-  // Placeholder for plans data
   const plans = [
     "Medical Plans", "Dental Plans", "Vision Plans", "Term Life Plans",
-    "Group Benefit", "Limited Med Plans", "Accident Plans", "Hospital Plans",
+    "Group Benefit or Bundles", "Limited Med Plans", "Accident Plans", "Hospital Plans",
     "Critical Plans", "Lifestyle Plans", "Pet Plans", "Rx Plans"
   ];
+ // Form data state
+  const [formData, setFormData] = useState({
+    name: "",
+    state: "",
+    dob: "",
+    plans: "",
+    email: "",
+    phone: "",
+    terms: false,
+  });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Handle form data change
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+  // Log form data to the console
+    console.log("Form data submitted:", formData);
+    // Basic validation
+    if (!formData.name || !formData.state || !formData.dob || !formData.plans || !formData.email || !formData.phone || !formData.terms) {
+      setErrorMessage("All fields are required, and you must agree to the terms.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Make API call
+      const response = await fetch("/api/forbrokers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      
+
+      if (response.ok) {
+        setSuccessMessage("Your application has been submitted successfully!");
+        setFormData({
+          name: "",
+          state: "",
+          dob: "",
+          plans: "",
+          email: "",
+          phone: "",
+          terms: false,
+        });
+      } else {
+        setErrorMessage(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden" id="broker-form"
       style={{ backgroundColor: softGray }}
     >
-      {/* Animated Background Gradients/Shapes */}
       <div
         className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
         style={{ backgroundColor: lightBlueBg, transform: 'translate(-70%, -70%)' }}
@@ -33,17 +102,13 @@ export const HowtoPartner = () => {
         className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
         style={{ backgroundColor: primaryBlue, transform: 'translate(30%, -30%)' }}
       ></div>
-
-      {/* Main Content Area - A large, sweeping card */}
       <div
         className="relative z-10 w-full max-w-7xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fadeInUp"
       >
-        {/* Left Section: How to Partner Info with Sweeping Background */}
         <div
           className="lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-center lg:text-left relative overflow-hidden"
           style={{ background: `linear-gradient(135deg, ${primaryBlue} 0%, ${darkAccentBlue} 100%)` }}
         >
-          {/* Decorative SVG Wave/Pattern */}
           <svg
             className="absolute bottom-0 left-0 w-full h-auto z-0 opacity-20"
             viewBox="0 0 1440 320"
@@ -52,7 +117,7 @@ export const HowtoPartner = () => {
             <path fill="#ffffff" fillOpacity="1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,128C672,128,768,192,864,202.7C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
           </svg>
 
-          <div className="relative z-10"> {/* Ensure text is above SVG */}
+          <div className="relative z-10"> 
             <h2
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white animate-textFadeIn"
             >
@@ -89,8 +154,6 @@ export const HowtoPartner = () => {
             </div>
           </div>
         </div>
-
-        {/* Right Section: Join Us Form - Clean & Integrated */}
         <div
           className="lg:w-1/2 p-8 md:p-12 lg:p-16 bg-white flex flex-col justify-center animate-slideInRight"
         >
@@ -100,7 +163,7 @@ export const HowtoPartner = () => {
           >
             Join <span style={{ color: darkAccentBlue }}>Us</span>
           </h2>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
                 Name*
@@ -108,10 +171,13 @@ export const HowtoPartner = () => {
               <input
                 type="text"
                 id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Full Name"
-                required
+                
               />
             </div>
             <div>
@@ -121,10 +187,13 @@ export const HowtoPartner = () => {
               <input
                 type="text"
                 id="state"
+                value={formData.state}
+                onChange={handleChange}
+                name="state"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your State"
-                required
+                
               />
             </div>
             <div>
@@ -134,9 +203,12 @@ export const HowtoPartner = () => {
               <input
                 type="date"
                 id="dob"
+                value={formData.dob}
+                onChange={handleChange}
+                name="dob"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                required
+               
               />
             </div>
             <div>
@@ -145,9 +217,12 @@ export const HowtoPartner = () => {
               </label>
               <select
                 id="plans"
+                 value={formData.plans}
+                onChange={handleChange}
+                name="plans"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 bg-white appearance-none"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                required
+                
               >
                 <option value="">Select plan</option>
                 {plans.map((plan) => (
@@ -162,10 +237,13 @@ export const HowtoPartner = () => {
               <input
                 type="email"
                 id="email"
+                 value={formData.email}
+                onChange={handleChange}
+                name="email"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="you@example.com"
-                required
+           
               />
             </div>
             <div>
@@ -175,10 +253,13 @@ export const HowtoPartner = () => {
               <input
                 type="tel"
                 id="phone"
+                 value={formData.phone}
+                onChange={handleChange}
+                name="phone"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Phone Number"
-                required
+               
               />
             </div>
 
@@ -186,15 +267,18 @@ export const HowtoPartner = () => {
               <input
                 type="checkbox"
                 id="terms"
+                 checked={formData.terms}
+                onChange={handleChange}
+                name="terms"
                 className="h-5 w-5 rounded focus:ring-2 mt-1"
                 style={{ borderColor: lightBlueBg, accentColor: darkAccentBlue }}
-                required
+              
               />
               <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
                 By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
-                <a href="#" className="font-medium underline" style={{ color: darkAccentBlue }}>
+                <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
                   SMS and Marketing terms and conditions.
-                </a>
+                </Link>
               </label>
             </div>
 
@@ -205,10 +289,18 @@ export const HowtoPartner = () => {
                 backgroundColor: darkAccentBlue,
                 borderColor: darkAccentBlue,
               }}
-            >
-              SUBMIT
-            </button>
+            disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
           </form>
+           {/* Show success or error messages */}
+            {successMessage && (
+              <div className="mt-4 text-green-500">{successMessage}</div>
+            )}
+            {errorMessage && (
+              <div className="mt-4 text-red-500">{errorMessage}</div>
+            )}
         </div>
       </div>
 

@@ -1,6 +1,85 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 export const BenefitsofDentalCarePlan = () => {
+
+   // State for form data, error messages, and submission status
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+    terms: false,
+  });
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError('');
+    setMessage('');
+    setIsSubmitting(true);
+
+    // Validation
+    if (!formData.name || !formData.email || !formData.message || !formData.terms) {
+      setError('All fields are required, and you must agree to the terms.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Log form data (for debugging)
+    console.log('Form Data Submitted:', formData);
+
+    try {
+      // Making the API call
+      const response = await fetch('/api/dentalplan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message); // Success message
+        setFormData({ name: '', email: '', message: '', terms: false }); // Clear form
+      } else {
+        setError(data.error || 'An error occurred. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className='bg-gradient-to-br from-blue-50 to-white' id ="dental-form">
     <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden">
@@ -66,12 +145,15 @@ export const BenefitsofDentalCarePlan = () => {
         {/* Right Column: Contact Form Section */}
         <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl  animate-fade-in-right delay-500">
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Get in Touch with Us</h3>
-          <form className="max-w-md mx-auto space-y-6">
+          <form className="max-w-md mx-auto space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-gray-700 text-base font-medium mb-2">Your Name*</label>
               <input
                 type="text"
                 id="name"
+                 name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                 className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 bg-blue-50"
                 placeholder="Enter your name"
               />
@@ -81,6 +163,9 @@ export const BenefitsofDentalCarePlan = () => {
               <input
                 type="email"
                 id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                 className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 bg-blue-50"
                 placeholder="Enter your email"
               />
@@ -90,23 +175,32 @@ export const BenefitsofDentalCarePlan = () => {
               <textarea
                 id="message"
                 rows="6"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                 className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-200 bg-blue-50"
                 placeholder="Type your message here..."
               ></textarea>
             </div>
             <div className="flex items-start">
-              <input type="checkbox" id="terms" className="mt-1 h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500" />
+              <input type="checkbox" id="terms" className="mt-1 h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"  name="terms"
+                  checked={formData.terms}
+                  onChange={handleInputChange}/>
               <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
-                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="#" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and conditions</a>.
+                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and conditions</Link>.
               </label>
             </div>
             <button
               type="submit"
               className="w-full bg-sky-400 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 uppercase tracking-wide text-lg"
-            >
-              SUBMIT
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </form>
+             {/* Display error or success message */}
+            {error && <div className="mt-4 text-red-500">{error}</div>}
+            {message && <div className="mt-4 text-green-500">{message}</div>}
         </div>
       </div>
     </div>

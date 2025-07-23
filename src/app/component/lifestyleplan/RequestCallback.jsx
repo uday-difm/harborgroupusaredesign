@@ -7,11 +7,13 @@ export const RequestCallback = () => {
     name: '',
     email: '',
     message: '',
-    agreeTerms: false,
+    terms: false,
   });
 
   const [showMessage, setShowMessage] = useState(false);
   const [messageContent, setMessageContent] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const showMessageBox = (message) => {
     setMessageContent(message);
@@ -31,17 +33,54 @@ export const RequestCallback = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError('');
 
-    console.log('Form submitted:', formData);
-    showMessageBox('Thank you for your submission! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-      agreeTerms: false,
-    });
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message || !formData.terms) {
+      setError("All fields are required, and you must agree to the terms.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // API Call to submit the form data
+      const response = await fetch('/api/lifestyleplan', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        showMessageBox('Thank you for your submission! We will get back to you soon.');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          agreeTerms: false,
+        });
+      } else {
+        setError(data.error || 'Something went wrong, please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,18 +90,14 @@ export const RequestCallback = () => {
         <h1 className={`text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-4 leading-tight`}>
           Request a Call Back?
         </h1>
-        {/* Removed dotted line separator as it was not present in your provided code */}
-
-        {/* Content Section: Image and Form - Added items-stretch for equal height */}
         <div className="md:flex md:space-x-8 items-stretch">
-          {/* Left Section: Image - Added relative and min-h for Image fill layout */}
           <div className="md:w-1/2 mb-8 md:mb-0 relative min-h-[300px] rounded-lg overflow-hidden shadow-md">
             <Image
-              src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Lifestyle-plan-hero-section.jpeg" // Path to your main image
+              src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Lifestyle-plan-hero-section.jpeg" 
               alt="Doctor using a tablet"
-              layout="fill" // Use layout="fill" to make image fill its parent
-              objectFit="cover" // Cover the area while maintaining aspect ratio
-              className="rounded-lg" // Apply rounded corners to the image itself
+              layout="fill" 
+              objectFit="cover" 
+              className="rounded-lg"
             />
           </div>
 
@@ -79,7 +114,6 @@ export const RequestCallback = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required
                   className={`w-full px-4 py-2 rounded-md border-gray-300 border focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200`}
                 />
               </div>
@@ -91,9 +125,8 @@ export const RequestCallback = () => {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
+                 value={formData.email}
                   onChange={handleChange}
-                  required
                   className={`w-full px-4 py-2 rounded-md border-gray-300 border focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200`}
                 />
               </div>
@@ -114,32 +147,32 @@ export const RequestCallback = () => {
               <div className="flex items-start">
                 <input
                   type="checkbox"
-                  id="agreeTerms"
-                  name="agreeTerms"
-                  checked={formData.agreeTerms}
+                  id="terms"
+                  name="terms"
+                checked={formData.terms}
                   onChange={handleChange}
-                  required
+                  
                   className="mt-1 mr-2 rounded text-teal-500 focus:ring-teal-400"
                 />
-                <label htmlFor="agreeTerms" className={`text-sm text-gray-600`}>
+                <label htmlFor="terms" className={`text-sm text-gray-600`}>
                   By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our {" "}
-                  <a href="#" className={`font-semibold text-sky-600 hover:underline`}>SMS</a> and {" "}
-                  <a href="#" className={`font-semibold text-sky-600 hover:underline`}>Marketing terms and conditions</a>.
+                  <a href="/sms-and-marketing-terms" className={`font-semibold text-sky-600 hover:underline`}>SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
 
               <button
                 type="submit"
                 className={`w-full py-3 px-6 rounded-md font-semibold text-lg bg-sky-400 text-white hover:bg-sky-600 transition duration-300 ease-in-out shadow-md hover:shadow-lg`}
+             disabled={isSubmitting}
               >
-                SUBMIT
+                {isSubmitting ? "Submitting..." : "SUBMIT"}
               </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Custom Message Box */}
+     {/* Custom Message Box */}
       {showMessage && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm mx-auto">
@@ -153,6 +186,9 @@ export const RequestCallback = () => {
           </div>
         </div>
       )}
+
+      {/* Display error message if exists */}
+      {error && <div className="mt-4 text-red-500">{error}</div>}
     </div>
   );
 };

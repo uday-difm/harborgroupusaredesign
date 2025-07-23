@@ -9,6 +9,9 @@ import { HowToApplySection } from '../component/majormedical/HowToApplySection'
 import { DetailedPlanDescriptions } from '../component/majormedical/DetailedPlanDescriptions'
 import { CignaPlans } from '../component/majormedical/CignaPlans'
 import { TestimonialMajorMedical } from '../component/majormedical/TestimonialMajorMedical'
+import { PhcsPlansTable } from '../component/majormedical/PhcsPlansTable'
+import { PlanDescriptions } from '../component/majormedical/PlanDescriptions'
+import { QualcarePlansTable } from '../component/majormedical/QualcarePlansTable'
 
 export default function page() {
   return (
@@ -22,6 +25,10 @@ export default function page() {
       <HowToApplySection/>
       <DetailedPlanDescriptions/>
       <CignaPlans/>
+      <DetailedPlanDescriptions/>
+      <PhcsPlansTable/>
+      <PlanDescriptions/>
+      <QualcarePlansTable/>
       <TestimonialMajorMedical/>
     </>
   )
