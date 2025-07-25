@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import axios from 'axios';
-import DashboardLayout from 'pages/components/DashboardLayout';
-import { baseUrl } from '@lib/config';
+import DashboardLayout from '@/app/component/DashboardLayout';
+
 
 const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
@@ -52,7 +52,7 @@ export default function UpdateBlog() {
 
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/dashboard/blog/${id}`);
+        const res = await axios.get(`/api/dashboard/edit-blog/${id}`);
         const data = res.data;
         setValues({
           title: data.blog_title || '',
@@ -121,7 +121,7 @@ export default function UpdateBlog() {
     }
 
     try {
-      const url = `${baseUrl}/api/dashboard/updateblog/${id}`;
+      const url = `/api/dashboard/updateblog/${id}`;
       const res = await fetch(url, {
         method: 'PUT',
         body: formData,
@@ -149,7 +149,8 @@ export default function UpdateBlog() {
   };
 
   return (
-    <DashboardLayout>
+   <DashboardLayout>
+        
       <Head>
         <title>Update Blog</title>
         <meta name="description" content="Update a blog post" />
@@ -301,6 +302,6 @@ export default function UpdateBlog() {
           </form>
         </div>
       </div>
-    </DashboardLayout>
+  </DashboardLayout>
   );
 }

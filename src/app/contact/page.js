@@ -98,8 +98,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 font-sans text-gray-800 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center gap-16">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 font-sans text-gray-800 flex items-center justify-center py-16 px-4  lg:px-8">
+      <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center gap-10">
 
         {/* Left Section: Get In Touch Text */}
         <div className="lg:w-1/2 text-center lg:text-left animate-fade-in-up">

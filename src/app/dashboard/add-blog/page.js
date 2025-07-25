@@ -25,45 +25,18 @@ const editorConfig = {
     minHeight: 500,
 };
 
-// export async function getStaticProps() {
-//   try {
-//     const categories = await axios.get(`/api/category/fetch`);
-
-//     if (categories.status === 200 && Array.isArray(categories.data)) {
-//       return {
-//         props: {
-//           categories: categories.data,
-//         },
-//       };
-//     } else {
-//       console.error('No categories found or invalid response structure.');
-//       return {
-//         props: {
-//           categories: [],
-//         },
-//       };
-//     }
-//   } catch (error) {
-//     console.error('Error fetching categories:', error);
-//     return {
-//       props: {
-//         categories: [],
-//       },
-//     };
-//   }
-// }
-
 const AddBlog = () => {
     const [values, setValues] = useState({
-        title: '',
-        slug: '',
-        tag: '',
-        image: null,
+        blogTitle: '', // Changed from 'title' to 'blogTitle' to match API
+        manualBlogSlug: '', // Changed from 'slug' to 'manualBlogSlug' to match API
+        tags: '', // Changed from 'tag' to 'tags' to match API
+        featureImage: null, // Changed from 'image' to 'featureImage' to match API
         date: '',
         time: '09:00',
-        category: '',
+        blogCategory: '', // Changed from 'category' to 'blogCategory' to match API
         description: '',
         content: '',
+        blogPublisherId: 'some-publisher-id', // Placeholder: You'll need to get this from your authentication system
     });
     const [categories, setCategories] = useState([]); // State to hold categories
     const [loading, setLoading] = useState(false);
@@ -92,61 +65,90 @@ const AddBlog = () => {
         const { name, value } = e.target;
         setValues((prev) => ({ ...prev, [name]: value }));
     };
-
     const handleFileChange = (e) => {
-        setValues((prev) => ({ ...prev, image: e.target.files[0] }));
+        setValues((prev) => ({ ...prev, featureImage: e.target.files[0] })); 
     };
 
-   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+ const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Check if required fields are filled
-    const required = ['title', 'slug', 'date', 'category', 'description', 'content'];
-    if (required.some((key) => values[key] === '')) {
-        alert('Please fill in all required fields');
+    const requiredFields = [
+        'blogTitle',
+        'tags',
+        'featureImage',
+        'date',
+        'time',
+        'blogCategory',
+        'description',
+        'content',
+    ];
+
+    const missingFields = requiredFields.filter(key => {
+        if (key === 'featureImage') {
+            return !values[key]; 
+        }
+        return !values[key] || values[key].trim() === '';
+    });
+
+    if (missingFields.length > 0) {
+        console.error(`Please fill in all required fields: ${missingFields.join(', ')}`);
+        alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
         return;
     }
 
-    // Log form data to console
-    console.log("Form Data:", values);  // This will print the current form data
-
     setLoading(true);
-
-    // Create FormData to send the form data
     const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => formData.append(key, value));
+    formData.append('blogTitle', values.blogTitle);
+    formData.append('tags', values.tags);
+    if (values.manualBlogSlug) {
+        formData.append('manualBlogSlug', values.manualBlogSlug);
+    }
+    formData.append('featureImage', values.featureImage); 
+    formData.append('date', values.date);
+    formData.append('time', values.time);
+    formData.append('blogCategory', values.blogCategory);
+    formData.append('description', values.description);
+    formData.append('content', values.content);
+    formData.append('blogPublisherId', values.blogPublisherId); // Ensure this field is included
 
-    // Log the FormData as well
+    // Log form data for debugging
     for (let pair of formData.entries()) {
         console.log(pair[0] + ': ' + pair[1]);
     }
 
     try {
-        const res = await axios.post('/api/dashboard/addblog', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
+        const response = await fetch('/api/dashboard/addblog', {
+            method: 'POST',
+            body: formData, 
         });
 
-        if (res.data.message) {
-            alert(res.data.message);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const res = await response.json();
+        if (res.message) {
+            console.log('Success:', res.message);
+            alert(res.message);
             setValues({
-                title: '',
-                slug: '',
-                tag: '',
-                image: null,
+                blogTitle: '',
+                manualBlogSlug: '',
+                tags: '',
+                featureImage: null,
                 date: '',
                 time: '09:00',
-                category: '',
+                blogCategory: '',
                 description: '',
                 content: '',
+                blogPublisherId: 'some-publisher-id',
             });
             if (imageInputRef.current) imageInputRef.current.value = null;
         } else {
-            console.error("Error:", res.data.message);
+            console.error('Error:', res.message || 'Unknown error occurred.');
+            alert('Error: ' + (res.message || 'Unknown error occurred.'));
         }
     } catch (err) {
-        console.error("Submission error:", err);
+        console.error('Submission error:', err);
+        alert('Submission error: ' + (err.message || 'Unknown error occurred.'));
     } finally {
         setLoading(false);
     }
@@ -154,10 +156,8 @@ const AddBlog = () => {
 
     return (
         <DashboardLayout>
-
             <title>Add Blog</title>
             <meta name="description" content="Add a new blog post" />
-
 
             <div className="px-4 sm:px-6 lg:px-8 py-8">
                 <div className="rounded border border-stroke bg-white shadow-md dark:border-strokedark dark:bg-boxdark">
@@ -174,7 +174,9 @@ const AddBlog = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter Title"
-
+                                        name="blogTitle" // Added name prop
+                                        value={values.blogTitle} // Added value prop
+                                        onChange={handleChange} // Added onChange prop
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     />
                                 </div>
@@ -183,10 +185,9 @@ const AddBlog = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter Tags"
-                                        name="tag"
-                                        value={values.tag}
+                                        name="tags" // Changed from 'tag' to 'tags'
+                                        value={values.tags} // Changed from 'tag' to 'tags'
                                         onChange={handleChange}
-
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     />
                                 </div>
@@ -198,10 +199,9 @@ const AddBlog = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter Slug"
-                                    name="slug"
-                                    value={values.slug}
+                                    name="manualBlogSlug" // Changed from 'slug' to 'manualBlogSlug'
+                                    value={values.manualBlogSlug} // Changed from 'slug' to 'manualBlogSlug'
                                     onChange={handleChange}
-
                                     className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                 />
                                 <p className="text-sm text-gray-500 dark:text-gray-300">If left blank, a slug will be automatically generated from the title.</p>
@@ -214,10 +214,10 @@ const AddBlog = () => {
                                     <input
                                         type="file"
                                         ref={imageInputRef}
+                                        name="featureImage"
                                         onChange={handleFileChange}
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     />
-
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-6">
@@ -235,21 +235,22 @@ const AddBlog = () => {
                                         <label className="mb-2 block text-black dark:text-white">Time</label>
                                         <input
                                             type="time"
+                                            name="time" // Added name prop
                                             value={values.time || '09:00'}
-                                            onChange={handleChange}
+                                            onChange={handleChange} // Added onChange prop
                                             className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                         />
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Category, Add Category, Description */}
+                            {/* Category, Description */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="mb-2 block text-black dark:text-white">Blog Category</label>
                                     <select
-                                        name="category"
-                                        value={values.category}
+                                        name="blogCategory" // Changed from 'category' to 'blogCategory'
+                                        value={values.blogCategory} // Changed from 'category' to 'blogCategory'
                                         onChange={handleChange}
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     >
@@ -264,7 +265,6 @@ const AddBlog = () => {
                                             <option disabled>No Categories Available</option>
                                         )}
                                     </select>
-
                                 </div>
 
                                 <div>
@@ -294,18 +294,27 @@ const AddBlog = () => {
                                 <button
                                     type="button"
                                     className="rounded border border-stroke py-2 px-6 text-black hover:bg-gray-100 dark:border-strokedark dark:text-white"
-                                    onClick={() => setValues({ ...values, content: '' })}
+                                    onClick={() => setValues({
+                                        blogTitle: '',
+                                        manualBlogSlug: '',
+                                        tags: '',
+                                        featureImage: null,
+                                        date: '',
+                                        time: '09:00',
+                                        blogCategory: '',
+                                        description: '',
+                                        content: '',
+                                        blogPublisherId: 'some-publisher-id',
+                                    })}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    //   onClick={(e) => handleSubmit(e, '1')}
-                                    className={`rounded bg-sky-400 py-2 px-6 text-white hover:bg-opacity-90 `}
+                                    className={`rounded bg-sky-400 py-2 px-6 text-white hover:bg-opacity-90 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     disabled={loading}>
                                     {loading ? 'Submitting...' : 'Post'}
                                 </button>
-
                             </div>
                         </div>
                     </form>
