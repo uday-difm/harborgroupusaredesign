@@ -8,15 +8,15 @@ import Image from 'next/image';
 export const HeroSection = () => {
     return (
     // <div className="relative bg-gradient-to-b from-white to-gray-100 overflow-hidden h-screen">
-     <div className="relative animated-gradient-bg overflow-hidden h-screen ">
+     <div className="relative animated-gradient-bg py-20 lg:py-50">
       {/* Animated background glows */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-sky-900/50 rounded-full filter blur-3xl animate-pulse-slow"></div>
           <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-indigo-900/50 rounded-full filter blur-3xl animate-pulse-slow" style={{animationDelay: '2s'}}></div>
       </div>
 
-      <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center py-20 md:py-28">
+      <div className="relative max-w-screen-xl flex items-center justify-center  mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* --- Left Column: Text Content --- */}
           <div className="text-center lg:text-left">
