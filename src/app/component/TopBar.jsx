@@ -22,7 +22,7 @@ export default function TopBar() {
 
   const handleLogout = async () => {
     try {
-      await fetch(`/api/dashboard/admin/logout`, {
+      await fetch(`/api/dashboard/logout`, {
         method: 'POST',
         credentials: 'include',
       });

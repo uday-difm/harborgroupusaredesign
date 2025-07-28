@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import axios from 'axios';
 import DashboardLayout from '@/app/component/DashboardLayout';
+import useRoute from 'next/navigation'
 
 
 const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
