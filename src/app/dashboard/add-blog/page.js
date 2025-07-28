@@ -66,93 +66,93 @@ const AddBlog = () => {
         setValues((prev) => ({ ...prev, [name]: value }));
     };
     const handleFileChange = (e) => {
-        setValues((prev) => ({ ...prev, featureImage: e.target.files[0] })); 
+        setValues((prev) => ({ ...prev, featureImage: e.target.files[0] }));
     };
 
- const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    const requiredFields = [
-        'blogTitle',
-        'tags',
-        'featureImage',
-        'date',
-        'time',
-        'blogCategory',
-        'description',
-        'content',
-    ];
+        const requiredFields = [
+            'blogTitle',
+            'tags',
+            'featureImage',
+            'date',
+            'time',
+            'blogCategory',
+            'description',
+            'content',
+        ];
 
-    const missingFields = requiredFields.filter(key => {
-        if (key === 'featureImage') {
-            return !values[key]; 
-        }
-        return !values[key] || values[key].trim() === '';
-    });
-
-    if (missingFields.length > 0) {
-        console.error(`Please fill in all required fields: ${missingFields.join(', ')}`);
-        alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
-        return;
-    }
-
-    setLoading(true);
-    const formData = new FormData();
-    formData.append('blogTitle', values.blogTitle);
-    formData.append('tags', values.tags);
-    if (values.manualBlogSlug) {
-        formData.append('manualBlogSlug', values.manualBlogSlug);
-    }
-    formData.append('featureImage', values.featureImage); 
-    formData.append('date', values.date);
-    formData.append('time', values.time);
-    formData.append('blogCategory', values.blogCategory);
-    formData.append('description', values.description);
-    formData.append('content', values.content);
-    formData.append('blogPublisherId', values.blogPublisherId); // Ensure this field is included
-
-    // Log form data for debugging
-    for (let pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-    }
-
-    try {
-        const response = await fetch('/api/dashboard/addblog', {
-            method: 'POST',
-            body: formData, 
+        const missingFields = requiredFields.filter(key => {
+            if (key === 'featureImage') {
+                return !values[key];
+            }
+            return !values[key] || values[key].trim() === '';
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (missingFields.length > 0) {
+            console.error(`Please fill in all required fields: ${missingFields.join(', ')}`);
+            alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
+            return;
         }
-        const res = await response.json();
-        if (res.message) {
-            console.log('Success:', res.message);
-            alert(res.message);
-            setValues({
-                blogTitle: '',
-                manualBlogSlug: '',
-                tags: '',
-                featureImage: null,
-                date: '',
-                time: '09:00',
-                blogCategory: '',
-                description: '',
-                content: '',
-                blogPublisherId: 'some-publisher-id',
+
+        setLoading(true);
+        const formData = new FormData();
+        formData.append('blogTitle', values.blogTitle);
+        formData.append('tags', values.tags);
+        if (values.manualBlogSlug) {
+            formData.append('manualBlogSlug', values.manualBlogSlug);
+        }
+        formData.append('featureImage', values.featureImage);
+        formData.append('date', values.date);
+        formData.append('time', values.time);
+        formData.append('blogCategory', values.blogCategory);
+        formData.append('description', values.description);
+        formData.append('content', values.content);
+        formData.append('blogPublisherId', values.blogPublisherId); // Ensure this field is included
+
+        // Log form data for debugging
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        try {
+            const response = await fetch('/api/dashboard/addblog', {
+                method: 'POST',
+                body: formData,
             });
-            if (imageInputRef.current) imageInputRef.current.value = null;
-        } else {
-            console.error('Error:', res.message || 'Unknown error occurred.');
-            alert('Error: ' + (res.message || 'Unknown error occurred.'));
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const res = await response.json();
+            if (res.message) {
+                console.log('Success:', res.message);
+                alert(res.message);
+                setValues({
+                    blogTitle: '',
+                    manualBlogSlug: '',
+                    tags: '',
+                    featureImage: null,
+                    date: '',
+                    time: '09:00',
+                    blogCategory: '',
+                    description: '',
+                    content: '',
+                    blogPublisherId: 'some-publisher-id',
+                });
+                if (imageInputRef.current) imageInputRef.current.value = null;
+            } else {
+                console.error('Error:', res.message || 'Unknown error occurred.');
+                alert('Error: ' + (res.message || 'Unknown error occurred.'));
+            }
+        } catch (err) {
+            console.error('Submission error:', err);
+            alert('Submission error: ' + (err.message || 'Unknown error occurred.'));
+        } finally {
+            setLoading(false);
         }
-    } catch (err) {
-        console.error('Submission error:', err);
-        alert('Submission error: ' + (err.message || 'Unknown error occurred.'));
-    } finally {
-        setLoading(false);
-    }
-};
+    };
 
     return (
         <DashboardLayout>
