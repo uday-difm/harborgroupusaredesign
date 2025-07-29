@@ -98,6 +98,16 @@ export default function ContactPage() {
   };
 
   return (
+    <>
+     <title>Contact Harbor Group USA | Get in Touch Today</title>
+        <meta name="keywords" content="Harbor Group USA, contact Harbor Group, customer support, health plan inquiries, Plans contact, get in touch, medical coverage help, Plans assistance"/>        
+        <meta name="description" content="Reach out to The Harbor Group USA for all your health needs. Dedicated support to help you navigate your health care options."/>
+        <meta property="og:title" content="Contact Harbor Group USA | Get in Touch Today" />
+        <meta property="og:description" content="Reach out to The Harbor Group USA for all your health needs. Dedicated support to help you navigate your health care options." />
+        <link rel="canonical" href="https://harborgroupusa.com/contact/" />
+        <meta property="og:url" content="https://harborgroupusa.com/contact/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
+   
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 font-sans text-gray-800 flex items-center justify-center py-16 px-4  lg:px-8">
       <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center gap-10">
 
@@ -173,5 +183,6 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+     </>
   );
 }

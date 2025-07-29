@@ -19,6 +19,16 @@ export default function page() {
   ];
   return (
     <>
+      <title>Harbor Group USA Medical Plans | Affordable Coverage</title>
+        <meta name="keywords" content="Harbor Group, medical plan, health coverage, employee benefits, affordable Plans, PPO plan, group health, family coverage, wellness, healthcare"/>        
+        <meta name="description" content="Explore affordable, flexible medical plans from Harbor Group USA with top-tier coverage and employee benefits."/>
+        <meta property="og:title" content="Harbor Group USA Medical Plans | Affordable Coverage" />
+        <meta property="og:description" content="Explore affordable, flexible medical plans from Harbor Group USA with top-tier coverage and employee benefits." />
+        <link rel="canonical" href="https://harborgroupusa.com/health-plans/" />
+        <meta property="og:url" content="https://harborgroupusa.com/health-plans/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
+
+
      <ServicesSection/> 
       <section className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${accentLightBlue}10)` }}>
       {/* Animated Background Gradients/Shapes - subtle movement */}

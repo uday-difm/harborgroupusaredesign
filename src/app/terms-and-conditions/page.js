@@ -4,6 +4,15 @@ import React from 'react'
 
 export default function page() {
   return (
+    <>
+      <title>Terms & Conditions | Harbor Group USA</title>
+        <meta name="keywords" content="Harbor Group USA, terms and conditions, website terms, user agreement, legal terms, service agreement, usage policy, site rules"/>        
+        <meta name="description" content="Read the terms and conditions for using Harbor Group USA’s website and services, including user responsibilities, limitations, and legal guidelines."/>
+        <meta property="og:title" content="Terms & Conditions | Harbor Group USA" />
+        <meta property="og:description" content="Read the terms and conditions for using Harbor Group USA’s website and services, including user responsibilities, limitations, and legal guidelines." />
+        <link rel="canonical" href="https://harborgroupusa.com/privacy-policy/" />
+        <meta property="og:url" content="https://harborgroupusa.com/privacy-policy/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-inter overflow-hidden">
       <div className="relative bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-5xl w-full text-left transform transition-all duration-700 ease-out animate-fade-in-up">
 
@@ -175,5 +184,6 @@ export default function page() {
         }
       `}</style>
     </div>
+    </>
   );
 }

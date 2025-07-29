@@ -12,6 +12,14 @@ import { TestimonialAccidentPlan } from '../component/accidentplan/TestimonialAc
 export default function page() {
   return (
     <>
+      <title>Harbor Group Accident Plan | Unexpected Protection</title>
+        <meta name="keywords" content="Harbor Group, accident plan, injury coverage, employee benefits, emergency support, sudden injury care, affordable protection, recovery benefits, workplace accident, group benefits"/>        
+        <meta name="description" content="Harbor Group’s accident plan offers financial support for sudden injuries, helping you recover with less stress and more security."/>
+        <meta property="og:title" content="Harbor Group Accident Plan | Unexpected Protection" />
+        <meta property="og:description" content="Harbor Group’s accident plan offers financial support for sudden injuries, helping you recover with less stress and more security." />
+        <link rel="canonical" href="https://harborgroupusa.com/accident-plan/" />
+        <meta property="og:url" content="https://harborgroupusa.com/accident-plan/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
       <AccidentHero/>
       <Benefitsofaccident/>
       <ConnectWithUs/>

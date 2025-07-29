@@ -12,6 +12,14 @@ import { TestimonialTermLife } from '../component/termlife/TestimonialTermLife'
 export default function page() {
   return (
     <>
+    <title>Term Life Plan | The Harbor Group USA</title>
+        <meta name="keywords" content="Harbor Group, term life, employee benefits, financial protection, family support, life coverage, affordable plans, group benefits, peace of mind, long-term care"/>        
+        <meta name="description" content="Harbor Group USA offers top-rated, affordable term life insurance plans to protect your family's future with trusted coverage."/>
+        <meta property="og:title" content="Term Life Plan | The Harbor Group USA" />
+        <meta property="og:description" content="Harbor Group USA offers top-rated, affordable term life insurance plans to protect your family's future with trusted coverage." />
+        <link rel="canonical" href="https://harborgroupusa.com/term-life/" />
+        <meta property="og:url" content="https://harborgroupusa.com/term-life/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
     <Hero/>
     <ProtectionOverview/>
     <NetworkForm/>

@@ -6,7 +6,7 @@ export async function GET(req) {
   try {
     // Correct SQL query to fetch blogs where blog_status is "0" and order by blog_date_time DESC
         const query = `
-      SELECT blog_id, blog_title, blog_feature_image, 
+      SELECT blog_id, blog_title, blog_slug, blog_feature_image, 
         DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
       FROM blogs 
       WHERE blog_status = 0 
