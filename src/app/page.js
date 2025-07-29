@@ -31,6 +31,68 @@ const HarborGroupUSALogo = () => {
 
 // Popup Component (copied from the cigna-plans-table Canvas)
 const QuotePopup = ({ onClose }) => {
+
+    const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState(''); // optional
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState('');
+
+    const handleSubmit = async () => {
+  setSubmitting(true);
+  setMessage('');
+
+  // Email Regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Phone number should be exactly 10 digits
+  const phoneRegex = /^\d{10}$/;
+
+  // Validation
+  if (!name.trim()) {
+    setMessage('Please enter your name.');
+    setSubmitting(false);
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    setMessage('Please enter a valid email address.');
+    setSubmitting(false);
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    setMessage('Phone number must be 10 digits.');
+    setSubmitting(false);
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/freequote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email }),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      setMessage('Thank you! We received your request.');
+      setName('');
+      setEmail('');
+      setPhone('');
+      setTimeout(onClose, 3000);
+    } else {
+      setMessage(result.message || 'Submission failed.');
+    }
+  } catch (err) {
+    console.error(err);
+    setMessage('An error occurred.');
+  } finally {
+    setSubmitting(false);
+  }
+};
+
   return (
     // Changed bg-black bg-opacity-50 to bg-transparent to remove the black background overlay
     <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 font-inter">
@@ -60,6 +122,7 @@ const QuotePopup = ({ onClose }) => {
           <div className="relative">
             <input
               type="text"
+              value={name} onChange={e => setName(e.target.value)}
               placeholder="Name"
               className="w-full p-3 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -70,6 +133,7 @@ const QuotePopup = ({ onClose }) => {
           <div className="relative">
             <input
               type="tel"
+               value={phone} onChange={e => setPhone(e.target.value)}
               placeholder="Phone Number"
               className="w-full p-3 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -80,6 +144,7 @@ const QuotePopup = ({ onClose }) => {
           <div className="relative">
             <input
               type="email"
+              value={email} onChange={e => setEmail(e.target.value)}
               placeholder="Enter your email address"
               className="w-full p-3 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -91,9 +156,18 @@ const QuotePopup = ({ onClose }) => {
         </div>
 
         {/* Button */}
-        <button className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold text-lg hover:bg-blue-700 transition duration-300 shadow-md">
-          GET YOUR QUOTE
+         {/* Submit Button */}
+        <button
+          onClick={handleSubmit}
+          disabled={submitting}
+          className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold text-lg hover:bg-blue-700 transition duration-300 shadow-md"
+        >
+          {submitting ? 'Submitting...' : 'GET YOUR QUOTE'}
         </button>
+
+        {message && (
+          <p className="mt-4 text-center text-sm text-green-600">{message}</p>
+        )}
       </div>
     </div>
   );

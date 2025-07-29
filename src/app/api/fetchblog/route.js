@@ -1,27 +1,42 @@
 import pool from "../../../../lib/mysql";
 import { NextResponse } from 'next/server'; 
 
-// The API handler for fetching data from the database
 export async function GET(req) {
   try {
-    // Correct SQL query to fetch blogs where blog_status is "0" and order by blog_date_time DESC
-    const query = `SELECT blog_id, blog_title, blog_feature_image, 
-        DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
-      FROM blogs 
-      WHERE blog_status = 0 
-      ORDER BY blog_date_time DESC`;
+    const query = `
+      SELECT 
+        b.blog_id, 
+        b.blog_slug, 
+        b.blog_title, 
+        b.blog_description, 
+        b.blog_feature_image, 
+        DATE_FORMAT(b.blog_date_time, '%Y-%m-%d') AS formatted_blog_date,
+        c.category AS blog_category
+      FROM blogs b
+      LEFT JOIN categories c ON b.blog_category_id = c.id
+      WHERE b.blog_status = 0 
+      ORDER BY b.blog_date_time DESC
+    `;
 
-    // Execute the query using the pool connection
     const [rows] = await pool.execute(query);
 
-    // Return the fetched rows as a JSON response
+    // Trim blog_description to 150 characters, add "..." if longer
+    const trimmedRows = rows.map(row => {
+      if (row.blog_description.length > 150) {
+        return {
+          ...row,
+          blog_description: row.blog_description.slice(0, 150) + '...',
+        };
+      }
+      return row;
+    });
+
     return NextResponse.json({
       message: 'Blogs fetched successfully.',
-      data: rows, // This will be the result of your query
+      data: trimmedRows,
     });
   } catch (error) {
     console.error('Error fetching blogs:', error);
-    // Use NextResponse to return a response with error status
     return NextResponse.json(
       { 
         message: 'Error fetching blogs.',
