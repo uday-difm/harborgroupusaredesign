@@ -4,6 +4,17 @@ import React from 'react'
 
 export default function page() {
  return (
+  <>
+
+   <title>Privacy Policy | Harbor Group USA</title>
+        <meta name="keywords" content="Harbor Group USA, privacy policy, data protection, personal information, user privacy, website privacy, data usage policy, online security"/>        
+        <meta name="description" content="Review Harbor Group USA’s privacy policy to understand how we collect, use, and protect your personal information across our website and services."/>
+        <meta property="og:title" content="Privacy Policy | Harbor Group USA" />
+        <meta property="og:description" content="Review Harbor Group USA’s privacy policy to understand how we collect, use, and protect your personal information across our website and services." />
+        <link rel="canonical" href="https://harborgroupusa.com/privacy-policy/" />
+        <meta property="og:url" content="https://harborgroupusa.com/privacy-policy/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
+ 
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-inter overflow-hidden">
       <div className="relative bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-5xl w-full text-left transform transition-all duration-700 ease-out animate-fade-in-up">
 
@@ -126,6 +137,7 @@ export default function page() {
         }
       `}</style>
     </div>
+     </>
   );
 }
 

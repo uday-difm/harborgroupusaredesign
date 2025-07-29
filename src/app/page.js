@@ -186,7 +186,14 @@ export default function Home() {
   }, []);
   return (
     <>
-   
+        <title>Harbor Group USA | Affordable Health Plans</title>
+        <meta name="keywords" content="Harbor Group USA, real estate services, property management, trusted real estate, commercial property management, residential property management, real estate solutions"/>        
+        <meta name="description" content=" Harbor Group USA offers expert real estate services, property management, and investment solutions to help you find and manage your ideal property."/>
+        <meta property="og:title" content="Harbor Group USA | Affordable Health Plans" />
+        <meta property="og:description" content="Harbor Group USA offers expert real estate services, property management, and investment solutions to help you find and manage your ideal property." />
+        <link rel="canonical" href="https://harborgroupusa.com/" />
+        <meta property="og:url" content="https://harborgroupusa.com/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
     <HeroSection/>
     <ServicesSection/>
     <WholesaleGeneralAgency/>

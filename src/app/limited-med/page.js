@@ -12,6 +12,14 @@ import { TestimonialLimitedmed } from '../component/limitedmedplans/TestimonialL
 export default function page() {
   return (
     <>
+     <title>Limited Med Plan | The Harbor Group USA</title>
+        <meta name="keywords" content="Harbor Group, limited med, essential care, basic health plan, affordable coverage, employee benefits, routine care, medical access, group health, simplified benefits"/>        
+        <meta name="description" content="Get an essential health plan with The Harbor Group Limited Med Plan, which covers basic medical needs without overextending your budget."/>
+        <meta property="og:title" content="Limited Med Plan | The Harbor Group USA" />
+        <meta property="og:description" content="Get an essential health plan with The Harbor Group Limited Med Plan, which covers basic medical needs without overextending your budget." />
+        <link rel="canonical" href="https://harborgroupusa.com/limited-med/" />
+        <meta property="og:url" content="https://harborgroupusa.com/limited-med/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
     <HeroSection/>
     <BenefitsOfLimitedMed/>
     <HowToApply/>

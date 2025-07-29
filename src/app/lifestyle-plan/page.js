@@ -15,6 +15,14 @@ import { TestimonialLifeStylePlan } from '../component/lifestyleplan/Testimonial
 export default function page() {
   return (
     <>
+     <title>Lifestyle Plan | The Harbor Group USA</title>
+        <meta name="keywords" content="Harbor Group, lifestyle plan, wellness benefits, employee perks, mental health, fitness access, healthy living, work-life balance, lifestyle coverage, group wellness."/>        
+        <meta name="description" content="Adapt your coverage with The Harbor Group USA Lifestyle Plan. Flexible options that evolve with your lifestyle needs and preferences."/>
+        <meta property="og:title" content="Lifestyle Plan | The Harbor Group USA" />
+        <meta property="og:description" content="Adapt your coverage with The Harbor Group USA Lifestyle Plan. Flexible options that evolve with your lifestyle needs and preferences." />
+        <link rel="canonical" href="https://harborgroupusa.com/lifestyle-plan/" />
+        <meta property="og:url" content="https://harborgroupusa.com/lifestyle-plan/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
      <LifeStyleHeroSection/> 
      <BenefitsofLifestylePlan/>
      <NetworkLifestylePlan/>

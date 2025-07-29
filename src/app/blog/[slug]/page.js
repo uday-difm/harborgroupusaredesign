@@ -7,11 +7,11 @@ import { useParams } from 'next/navigation';
 
 // Popup Component for "Be the First to Know"
 const BlogSubscribePopup = ({ onClose }) => {
-      const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
 
-      const handleSubscribe = async () => {
+    const handleSubscribe = async () => {
         setMessage('');
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,6 +46,7 @@ const BlogSubscribePopup = ({ onClose }) => {
         }
     };
     return (
+
         // Added onClick handler to the transparent overlay div
         <div
             className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 font-inter"
@@ -80,12 +81,12 @@ const BlogSubscribePopup = ({ onClose }) => {
                 <div className="flex flex-col sm:flex-row gap-3">
                     <input
                         type="email"
-                          value={email}
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email address"
                         className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                     />
-                       <button
+                    <button
                         onClick={handleSubscribe}
                         disabled={loading}
                         className="bg-blue-500 text-white py-3 px-6 rounded-md font-semibold text-base hover:bg-blue-600 transition duration-300 shadow-md"
@@ -93,7 +94,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                         {loading ? 'Subscribing...' : 'Subscribe'}
                     </button>
                 </div>
-                  {message && (
+                {message && (
                     <p className="mt-4 text-sm text-center text-gray-700">{message}</p>
                 )}
             </div>
@@ -149,6 +150,7 @@ export default function page() {
     console.log("tags:", tags);
 
     return (
+
         <div className="max-w-4xl mx-auto px-4 py-12">
             <h1 className="text-4xl font-bold mb-4">{blog.blog_title}</h1>
             <p className="text-gray-500 mb-6">Published on {blog.formatted_blog_date}</p>
@@ -186,9 +188,8 @@ export default function page() {
                 </div>
             )}
 
-              {/* 👇 Popup rendered here conditionally */}
-    {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
+            {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
         </div>
-        
+
     );
 }
