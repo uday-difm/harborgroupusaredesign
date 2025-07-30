@@ -2,7 +2,15 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>
+    <>
+     <title>Terms & Conditions for SMS & Marketing | Harbor Group USA</title>
+        <meta name="keywords" content="SMS terms, marketing terms, text messages, privacy policy, data protection, communication consent, opt-out, health plans, legal terms, terms of service"/>        
+        <meta name="description" content="Understand Harbor Group USA's SMS and marketing communication terms. Get details on opting in/out and how your privacy is protected."/>
+        <meta property="og:title" content="Terms & Conditions for SMS & Marketing | Harbor Group USA" />
+        <meta property="og:description" content="Understand Harbor Group USA's SMS and marketing communication terms. Get details on opting in/out and how your privacy is protected." />
+        <link rel="canonical" href="https://harborgroupusa.com/sms-and-marketing-terms/" />
+        <meta property="og:url" content="https://harborgroupusa.com/sms-and-marketing-terms/" />
+        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
        <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
       {/* Subtle background pattern for unique texture */}
       <div className="absolute inset-0 opacity-10" style={{
@@ -74,6 +82,6 @@ export default function page() {
         </div>
       </div>
     </section>
-    </div>
+    </>
   )
 }

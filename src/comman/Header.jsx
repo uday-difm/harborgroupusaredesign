@@ -11,12 +11,12 @@ const Logo = () => (
         className="h-12 md:h-14 w-auto" // Slightly smaller on mobile
         width={600}
         height={400}
-       
+
     />
 );
 
 const navLinks = [
-    {name : 'Home', href: '/'},
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about-health' },
     { name: 'Major Medical', href: '/major-medical-plan' },
     {
@@ -50,9 +50,10 @@ const navLinks = [
 ];
 
 // --- Main Header Component ---
-export const Header =()=> {
+export const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
+    const [openDesktopDropdown, setOpenDesktopDropdown] = useState(null);
     const [currentPath, setCurrentPath] = useState('');
     const headerRef = useRef(null);
 
@@ -81,7 +82,7 @@ export const Header =()=> {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-    
+
     // Disable body scroll when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
@@ -98,7 +99,7 @@ export const Header =()=> {
         accentBgHover: 'hover:bg-sky-600',
         underline: 'bg-sky-500',
     };
-    
+
     // Function to check if a link or any of its dropdown children are active
     const isLinkActive = (link) => {
         if (currentPath === link.href) {
@@ -125,31 +126,44 @@ export const Header =()=> {
                     <nav className="hidden lg:flex lg:items-center lg:flex-grow lg:justify-center lg:space-x-8">
                         {navLinks.map((link) => {
                             const isActive = isLinkActive(link);
+                            const isOpen = openDesktopDropdown === link.name;
+
                             return (
-                                <div key={link.name} className={`relative ${link.dropdown ? 'group' : ''}`}>
+                                <div
+                                    key={link.name}
+                                    className="relative group"
+                                    onMouseEnter={() => setOpenDesktopDropdown(link.name)}
+                                    onMouseLeave={() => setOpenDesktopDropdown(null)}
+                                >
                                     <a
                                         href={link.href}
-                                        className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${
-                                            isActive ? colors.accent : colors.primary
-                                        } hover:${colors.accent} flex items-center`}
-                                        onClick={(e) => {
-                                            if (link.dropdown) e.preventDefault();
-                                        }}
+                                        className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${isActive ? colors.accent : colors.primary
+                                            } hover:${colors.accent} flex items-center focus:outline-none`}
                                     >
                                         {link.name}
-                                        {link.dropdown && <ChevronDown className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />}
-                                        <span className={`absolute -bottom-1 left-0 w-full h-0.5 ${colors.underline} transform scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 ${isActive ? 'scale-x-100' : ''}`}></span>
+                                        {link.dropdown && (
+                                            <ChevronDown
+                                                className={`ml-1.5 h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+                                                    }`}
+                                            />
+                                        )}
+                                        <span
+                                            className={`absolute -bottom-1 left-0 w-full h-0.5 ${colors.underline
+                                                } transform scale-x-0 transition-transform duration-300 ease-out ${isActive || isOpen ? 'scale-x-100' : ''
+                                                }`}
+                                        />
                                     </a>
 
-                                    {/* --- Dropdown Menu --- */}
-                                    {link.dropdown && (
-                                        <div className="absolute z-20 left-1/2 -translate-x-1/2 mt-4 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-all duration-300 invisible group-hover:visible transform scale-95 group-hover:scale-100">
+                                    {/* Dropdown */}
+                                    {link.dropdown && isOpen && (
+                                        <div className="absolute z-20 left-1/2 -translate-x-1/2 mt-4 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                                             <div className="py-2">
                                                 {link.dropdown.map((item) => (
                                                     <a
                                                         key={item.name}
                                                         href={item.href}
-                                                        className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary} hover:bg-gray-100 hover:${colors.accent}`}
+                                                        className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary
+                                                            } hover:bg-gray-100 hover:${colors.accent}`}
                                                     >
                                                         {item.name}
                                                     </a>
@@ -173,7 +187,7 @@ export const Header =()=> {
                             <Phone className="h-6 w-6" />
                         </a>
                     </div>
-                    
+
                     {/* --- Mobile Menu Button --- */}
                     <div className="lg:hidden flex items-center">
                         <button onClick={toggleMobileMenu} type="button" className={`p-2 rounded-md ${colors.primary} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500`}>
@@ -194,7 +208,7 @@ export const Header =()=> {
                     <div className="flex items-center justify-between p-4 border-b">
                         <a href="/" onClick={toggleMobileMenu}><Logo /></a>
                         <button onClick={toggleMobileMenu} className="p-2">
-                           <X className="h-7 w-7 text-gray-600"/>
+                            <X className="h-7 w-7 text-gray-600" />
                         </button>
                     </div>
 
