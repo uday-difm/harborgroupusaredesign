@@ -2,7 +2,8 @@
 import pool from "../../../../../lib/mysql";
 import { NextResponse } from 'next/server'; 
 
-export async function GET(req, { params }) {
+export async function GET(req, context) {
+   const { params } = await context;
   const { slug } = params;
 
   if (!slug) {

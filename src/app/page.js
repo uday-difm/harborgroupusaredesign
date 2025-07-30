@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FaqSection } from "./component/home/FaqSection";
 import HealthPlanQuoteToday from "./component/home/HealthPlanQuoteToday";
@@ -12,15 +12,13 @@ import { WholesaleGeneralAgency } from "./component/home/WholesaleGeneralAgency"
 import { WhyChooseUsSection } from "./component/home/WhyChooseUs";
 
 
-// Placeholder for the Harbor Group USA Logo
 const HarborGroupUSALogo = () => {
   return (
     <div className="w-20 h-20   flex items-center justify-center mx-auto mb-4 overflow-hidden">
-      {/* Replaced text with a placeholder image. In a real app, you would use your actual logo image. */}
       <Image
       width={600}
       height={400}
-        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" // Placeholder image URL
+        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" 
         alt="Harbor Group USA Logo"
         className="w-full h-full object-cover "
         
@@ -29,26 +27,36 @@ const HarborGroupUSALogo = () => {
   );
 };
 
-// Popup Component (copied from the cigna-plans-table Canvas)
 const QuotePopup = ({ onClose }) => {
-
+  const popupRef = useRef(null);
     const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState(''); // optional
+  const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+
+
+ useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
 
     const handleSubmit = async () => {
   setSubmitting(true);
   setMessage('');
 
-  // Email Regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Phone number should be exactly 10 digits
   const phoneRegex = /^\d{10}$/;
-
-  // Validation
   if (!name.trim()) {
     setMessage('Please enter your name.');
     setSubmitting(false);
@@ -94,10 +102,8 @@ const QuotePopup = ({ onClose }) => {
 };
 
   return (
-    // Changed bg-black bg-opacity-50 to bg-transparent to remove the black background overlay
     <div className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 font-inter">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md mx-auto relative p-6 sm:p-8">
-        {/* Close Button */}
+      <div ref={popupRef} className="bg-white rounded-lg shadow-xl w-full max-w-md mx-auto relative p-6 sm:p-8">
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold"
@@ -105,19 +111,13 @@ const QuotePopup = ({ onClose }) => {
         >
           &times;
         </button>
-
-        {/* Logo */}
         <HarborGroupUSALogo />
-
-        {/* Title and Subtitle */}
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-2">
           Get Your Free Quote Today
         </h2>
         <p className="text-gray-600 text-center mb-6 text-sm sm:text-base">
           Find Your Perfect Fit: Discover Health Plans Tailored to Your Needs!
         </p>
-
-        {/* Input Fields */}
         <div className="space-y-4 mb-6">
           <div className="relative">
             <input
@@ -154,9 +154,6 @@ const QuotePopup = ({ onClose }) => {
             </svg>
           </div>
         </div>
-
-        {/* Button */}
-         {/* Submit Button */}
         <button
           onClick={handleSubmit}
           disabled={submitting}
@@ -180,9 +177,9 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 3000); // Show popup after 3 seconds
+    }, 3000); 
 
-    return () => clearTimeout(timer); // Clean up the timer
+    return () => clearTimeout(timer);
   }, []);
   return (
     <>
@@ -201,7 +198,6 @@ export default function Home() {
     <HealthPlanQuoteToday/>
     <FaqSection/>
     <TestimonialHome/>
-    {/* Render the popup if showPopup is true */}
       {showPopup && <QuotePopup onClose={() => setShowPopup(false)} />}
     </>
   );
