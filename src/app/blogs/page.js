@@ -8,7 +8,7 @@ export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(10);
+  const [visibleCount, setVisibleCount] = useState(8);
 
   // Fetch blog data when component mounts
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function Blogs() {
   }, []);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 10);
+    setVisibleCount((prev) => prev + 8);
   };
 
 
@@ -53,14 +53,14 @@ export default function Blogs() {
   }
   return (
     <>
-       <title>Harbor Group USA Blog | Health & Plans Insights</title>
-        <meta name="keywords" content="Harbor Group USA, health blog, Plans insights, major medical plans, healthcare tips, wellness blog, health Plans advice, medical coverage updates"/>        
-        <meta name="description" content="Read expert articles from Harbor Group USA on major medical plans, health Plans tips, and wellness strategies for individuals and businesses."/>
-        <meta property="og:title" content="Harbor Group USA Blog | Health & Plans Insights" />
-        <meta property="og:description" content="Read expert articles from Harbor Group USA on major medical plans, health Plans tips, and wellness strategies for individuals and businesses." />
-        <link rel="canonical" href="https://harborgroupusa.com/blogs/" />
-        <meta property="og:url" content="https://harborgroupusa.com/blogs/" />
-        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
+      <title>Harbor Group USA Blog | Health & Plans Insights</title>
+      <meta name="keywords" content="Harbor Group USA, health blog, Plans insights, major medical plans, healthcare tips, wellness blog, health Plans advice, medical coverage updates" />
+      <meta name="description" content="Read expert articles from Harbor Group USA on major medical plans, health Plans tips, and wellness strategies for individuals and businesses." />
+      <meta property="og:title" content="Harbor Group USA Blog | Health & Plans Insights" />
+      <meta property="og:description" content="Read expert articles from Harbor Group USA on major medical plans, health Plans tips, and wellness strategies for individuals and businesses." />
+      <link rel="canonical" href="https://harborgroupusa.com/blogs/" />
+      <meta property="og:url" content="https://harborgroupusa.com/blogs/" />
+      <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-sans antialiased flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
         {/* Page Header Section */}
         <header className="text-center mb-16 max-w-3xl mx-auto">
@@ -76,11 +76,11 @@ export default function Blogs() {
         {/* Blog Posts Grid Section */}
         <main className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Individual Animated Blog Post Card */}
-          {blogs.map((blog) => (
+          {blogs.slice(0, visibleCount).map((blog) => (
             <div key={blog.blog_id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden flex flex-col cursor-pointer">
               <div className="relative w-full h-52 overflow-hidden">
                 <Image
-                  src={blog.blog_feature_image }
+                  src={blog.blog_feature_image}
                   alt={blog.blog_title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   width={600}

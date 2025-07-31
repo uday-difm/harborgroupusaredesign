@@ -13,8 +13,8 @@ export async function PUT(req) {
     // SQL query to update the blog_status from 0 to 1 for the specified blog_id
     const query = `
       UPDATE blogs
-      SET blog_status = 1
-      WHERE blog_status = 0 AND blog_id = ?
+      SET blog_status = "1"
+      WHERE blog_status = "0" AND blog_id = ?
     `;
 
     // Execute the query using the pool connection

@@ -5,7 +5,7 @@ export default function page() {
     <>
      <title>Terms & Conditions for SMS & Marketing | Harbor Group USA</title>
         <meta name="keywords" content="SMS terms, marketing terms, text messages, privacy policy, data protection, communication consent, opt-out, health plans, legal terms, terms of service"/>        
-        <meta name="description" content="Understand Harbor Group USA's SMS and marketing communication terms. Get details on opting in/out and how your privacy is protected."/>
+        <meta name="description" content="Understand Harbor Group USA&apos;s SMS and marketing communication terms. Get details on opting in/out and how your privacy is protected."/>
         <meta property="og:title" content="Terms & Conditions for SMS & Marketing | Harbor Group USA" />
         <meta property="og:description" content="Understand Harbor Group USA's SMS and marketing communication terms. Get details on opting in/out and how your privacy is protected." />
         <link rel="canonical" href="https://harborgroupusa.com/sms-and-marketing-terms/" />

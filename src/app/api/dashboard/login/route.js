@@ -42,7 +42,7 @@ export async function POST(request) {
       { 
         id: adminUser.id, 
         email: adminUser.email,
-        role: 'dashboard' // This matches what your middleware checks for
+        role: 'admin' // This matches what your middleware checks for
       },
       process.env.JWT_SECRET_KEY,
       { expiresIn: rememberMe ? "7d" : "1h" } 
@@ -52,7 +52,7 @@ export async function POST(request) {
     const userWithoutPassword = {
       id: adminUser.id,
       email: adminUser.email,
-      role: 'dashboard'
+      role: 'admin'
     };
 
     // 4. Create the JSON response

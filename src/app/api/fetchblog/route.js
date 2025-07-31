@@ -14,7 +14,7 @@ export async function GET(req) {
         c.category AS blog_category
       FROM blogs b
       LEFT JOIN categories c ON b.blog_category_id = c.id
-      WHERE b.blog_status = 0 
+      WHERE b.blog_status ="0"
       ORDER BY b.blog_date_time DESC
     `;
 

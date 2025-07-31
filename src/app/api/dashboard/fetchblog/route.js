@@ -8,7 +8,7 @@ export async function GET(req) {
     const query = `SELECT blog_id, blog_title, blog_feature_image, 
         DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
       FROM blogs 
-      WHERE blog_status = 0 
+      WHERE blog_status = "0" 
       ORDER BY blog_date_time DESC`;
 
     // Execute the query using the pool connection

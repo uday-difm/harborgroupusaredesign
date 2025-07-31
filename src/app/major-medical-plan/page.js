@@ -19,9 +19,9 @@ export default function page() {
 
        <title>Major Medical Plans | Harbor Group USA</title>
         <meta name="keywords" content="Harbor Group USA, major medical plans, health Plans, affordable medical coverage, individual health plans, business health plans, comprehensive health Plans"/>        
-        <meta name="description" content="Explore Harbor Group USA’s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses."/>
+        <meta name="description" content="Explore Harbor Group USA&apos;s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses."/>
         <meta property="og:title" content="Major Medical Plans | Harbor Group USA" />
-        <meta property="og:description" content="Explore Harbor Group USA’s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
+        <meta property="og:description" content="Explore Harbor Group USA&apos;s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
         <link rel="canonical" href="https://harborgroupusa.com/major-medical-plan/" />
         <meta property="og:url" content="https://harborgroupusa.com/major-medical-plan/" />
         <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />

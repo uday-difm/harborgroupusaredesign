@@ -2,10 +2,10 @@
 import DashboardLayout from '@/app/component/DashboardLayout'
 import React, { useState } from "react";
 
-export default function page() {
-      const [category, setCategory] = useState(""); // State for input value
+export default function AddCategory() {
+      const [category, setCategory] = useState( ); // State for input value
   const [loading, setLoading] = useState(false); // Loading state to show loading state
-  const [message, setMessage] = useState(""); // To show success or error message
+  const [message, setMessage] = useState( ); // To show success or error message
 
    const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the form from reloading the page

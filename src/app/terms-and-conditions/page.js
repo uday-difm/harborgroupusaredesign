@@ -7,9 +7,9 @@ export default function page() {
     <>
       <title>Terms & Conditions | Harbor Group USA</title>
         <meta name="keywords" content="Harbor Group USA, terms and conditions, website terms, user agreement, legal terms, service agreement, usage policy, site rules"/>        
-        <meta name="description" content="Read the terms and conditions for using Harbor Group USA’s website and services, including user responsibilities, limitations, and legal guidelines."/>
+        <meta name="description" content="Read the terms and conditions for using Harbor Group USA&apos;s website and services, including user responsibilities, limitations, and legal guidelines."/>
         <meta property="og:title" content="Terms & Conditions | Harbor Group USA" />
-        <meta property="og:description" content="Read the terms and conditions for using Harbor Group USA’s website and services, including user responsibilities, limitations, and legal guidelines." />
+        <meta property="og:description" content="Read the terms and conditions for using Harbor Group USA&apos;s website and services, including user responsibilities, limitations, and legal guidelines." />
         <link rel="canonical" href="https://harborgroupusa.com/privacy-policy/" />
         <meta property="og:url" content="https://harborgroupusa.com/privacy-policy/" />
         <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
