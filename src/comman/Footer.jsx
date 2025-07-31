@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { Phone, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin, ChevronUp } from 'lucide-react';
 
 
 // --- Logo Component ---
@@ -14,17 +14,18 @@ const Logo = ({ className }) => (
         onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
     />
 );
+
 export const Footer = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
+    const [isBackToTopVisible, setIsBackToTopVisible] = useState(false); // State for back-to-top button visibility
 
     const quickLinks = [
         { name: 'For Brokers', href: '/for-brokers' },
         { name: 'Resources & FAQ', href: '/resources-faq' },
         { name: 'Help Center', href: '/contact' },
         { name: 'Career', href: '/careers' },
-        //  { name: 'Contact Us', href: '/contact' },
     ];
     const legalPages = [
         { name: 'Privacy Policy', href: '/privacy-policy' },
@@ -40,8 +41,6 @@ export const Footer = () => {
 
     const handleSubscribe = async (e) => {
         e.preventDefault();
-
-        // Clear previous error/message
         setError('');
         setMessage('');
 
@@ -49,7 +48,6 @@ export const Footer = () => {
             setError('Please enter a valid email address.');
             return;
         }
-
         try {
             const response = await fetch('/api/subscribe', {
                 method: 'POST',
@@ -58,9 +56,7 @@ export const Footer = () => {
                 },
                 body: JSON.stringify({ email }),
             });
-
             const data = await response.json();
-
             if (response.ok) {
                 setMessage(data.message);
                 setEmail('');
@@ -71,6 +67,28 @@ export const Footer = () => {
             setError('An error occurred, please try again later.');
         }
     };
+
+    const toggleBackToTopVisibility = () => {
+        if (window.scrollY > 300) { 
+            setIsBackToTopVisible(true);
+        } else {
+            setIsBackToTopVisible(false);
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleBackToTopVisibility);
+        return () => {
+            window.removeEventListener('scroll', toggleBackToTopVisibility);
+        };
+    }, []);
 
 
     return (
@@ -112,7 +130,7 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16">
                     {/* Logo and About */}
                     <div className="space-y-4">
-                        <Link href="/" className="inline-block">
+                        <Link href="/" className="inline-block" onClick={scrollToTop}>
                             <Logo className="h-16 w-auto" />
                         </Link>
                         <p className="text-sm text-gray-600">
@@ -120,7 +138,7 @@ export const Footer = () => {
                         </p>
                         <div className="flex space-x-4">
                             {socialLinks.map((link) => (
-                                <Link key={link.name} href={link.href} aria-label={link.name} className="text-gray-400 hover:text-sky-500 transition-colors">
+                                <Link key={link.name} href={link.href} aria-label={link.name} onClick={scrollToTop} className="text-gray-400 hover:text-sky-500 transition-colors">
                                     {link.icon}
                                 </Link>
                             ))}
@@ -131,7 +149,7 @@ export const Footer = () => {
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Quick Links</h4>
                         <ul className="mt-4 space-y-3">
-                            {quickLinks.map(link => <li key={link.name}><a href={link.href} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</a></li>)}
+                            {quickLinks.map(link => <li key={link.name}><Link href={link.href} onClick={scrollToTop} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
 
@@ -139,7 +157,7 @@ export const Footer = () => {
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Legal</h4>
                         <ul className="mt-4 space-y-3">
-                            {legalPages.map(link => <li key={link.name}><Link href={link.href} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
+                            {legalPages.map(link => <li key={link.name}><Link href={link.href} onClick={scrollToTop} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
 
@@ -184,9 +202,20 @@ export const Footer = () => {
             {/* Bottom Bar */}
             <div className="bg-gray-200">
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
-                    <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Harbor Group USA. All Rights Reserved.</p>
+                    <p className="text-sm text-gray-500">© {new Date().getFullYear()} Harbor Group USA. All Rights Reserved.</p>
                 </div>
             </div>
+
+            {/* Back to Top Button */}
+            {isBackToTopVisible && (
+                <button
+                    onClick={scrollToTop}
+                    className="fixed bottom-6 right-6 p-3 bg-indigo-900 text-white rounded-full shadow-lg hover:bg-sky-500 transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 z-50"
+                    aria-label="Back to top"
+                >
+                    <ChevronUp size={24} />
+                </button>
+            )}
         </footer>
     );
 };

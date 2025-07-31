@@ -4,7 +4,7 @@ import pool from "../../../../../lib/mysql"; // Ensure the import path is correc
 export async function GET(req) {
   try {
     // Fetch categories from the database
-    const [rows] = await pool.execute('SELECT * FROM categories'); // This fetches all categories from the database
+    const [rows] = await pool.execute('SELECT * FROM categories WHERE status = "0"'); // This fetches all categories from the database
 
     // Log the categories to the console for debugging
     console.log("Categories from the database:", rows);

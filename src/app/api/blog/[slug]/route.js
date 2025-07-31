@@ -18,7 +18,7 @@ export async function GET(req, context) {
       SELECT blog_id, blog_slug, blog_title, blog_description, blog_tag, blog_feature_image, blog_content,
              DATE_FORMAT(blog_date_time, '%Y-%m-%d') AS formatted_blog_date
       FROM blogs 
-      WHERE blog_status = 0 AND blog_slug = ?
+      WHERE blog_status = "0" AND blog_slug = ?
       ORDER BY blog_date_time DESC
     `;
 

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import DashboardLayout from '@/app/component/DashboardLayout';
+import { useRouter } from 'next/navigation';
 
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
@@ -27,29 +28,56 @@ const editorConfig = {
 
 const AddBlog = () => {
     const [values, setValues] = useState({
-        blogTitle: '', // Changed from 'title' to 'blogTitle' to match API
-        manualBlogSlug: '', // Changed from 'slug' to 'manualBlogSlug' to match API
-        tags: '', // Changed from 'tag' to 'tags' to match API
-        featureImage: null, // Changed from 'image' to 'featureImage' to match API
+        blogTitle: '', 
+        manualBlogSlug: '',
+        tags: '',
+        featureImage: null, 
         date: '',
         time: '09:00',
-        blogCategory: '', // Changed from 'category' to 'blogCategory' to match API
+        blogCategory: '', 
         description: '',
         content: '',
-        blogPublisherId: 'some-publisher-id', // Placeholder: You'll need to get this from your authentication system
+        blogPublisherId: 'some-publisher-id', 
     });
-    const [categories, setCategories] = useState([]); // State to hold categories
+    const [categories, setCategories] = useState([]); 
     const [loading, setLoading] = useState(false);
     const imageInputRef = useRef(null);
+      const [user, setUser] = useState(null);
+    const [loadingUser, setLoadingUser] = useState(true);
+    const [userError, setUserError] = useState(null);
+     const router = useRouter();
 
-    // Fetch categories on component mount
+      useEffect(() => {
+        const fetchUserData = async () => {
+          try {
+            const response = await fetch('/api/dashboard/user', {
+              credentials: 'include' // Important: include cookies
+            });
+            
+            if (response.ok) {
+              const data = await response.json();
+              setUser(data.user);
+            } else if (response.status === 401 || response.status === 403) {
+              router.push('/dashboard/login');
+            } else {
+              const errorData = await response.json();
+              setUserError(errorData.error || 'Failed to fetch user data.');
+            }
+          } catch (err) {
+            setUserError('An unexpected error occurred while fetching user data.');
+            console.error('Fetch user error:', err);
+          } finally {
+            setLoadingUser(false);
+          }
+        };
+    
+        fetchUserData();
+      }, [router]);
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                // Make sure the endpoint is correct
-                const response = await axios.get('/api/dashboard/fatchcategory'); // Correct API endpoint
-
-                // Check if categories are returned
+                const response = await axios.get('/api/dashboard/fatchcategory'); 
                 if (response.data && response.data.categories) {
                     setCategories(response.data.categories);
                 }
@@ -57,8 +85,7 @@ const AddBlog = () => {
                 console.error('Error fetching categories:', error);
             }
         };
-
-        fetchCategories(); // Call fetchCategories when the component mounts
+        fetchCategories(); 
     }, []);
 
     const handleChange = (e) => {

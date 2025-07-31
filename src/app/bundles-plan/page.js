@@ -16,9 +16,9 @@ export default function page() {
     <>
         <title>Harbor Group USA Bundles Plan | Smarter Benefits</title>
         <meta name="keywords" content="Harbor Group, bundles plan, employee benefits, combined coverage, group plans, medical dental vision, affordable benefits, flexible plans, full coverage, smart benefits"/>        
-        <meta name="description" content="Simplify your coverage with Harbor Group’s bundles plan—combining medical, dental, vision, and more for complete protection."/>
+        <meta name="description" content="Simplify your coverage with Harbor Group&apos;s bundles plan—combining medical, dental, vision, and more for complete protection."/>
         <meta property="og:title" content="Harbor Group USA Bundles Plan | Smarter Benefits" />
-        <meta property="og:description" content="Simplify your coverage with Harbor Group’s bundles plan—combining medical, dental, vision, and more for complete protection." />
+        <meta property="og:description" content="Simplify your coverage with Harbor Group&apos;s bundles plan—combining medical, dental, vision, and more for complete protection." />
         <link rel="canonical" href="https://harborgroupusa.com/bundles-plan/" />
         <meta property="og:url" content="https://harborgroupusa.com/bundles-plan/" />
         <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />

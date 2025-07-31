@@ -1,4 +1,4 @@
-import pool from "../../../../../lib/mysql";
+import pool from "../../../../lib/mysql";
 import { NextResponse } from 'next/server'; 
 
 // The API handler for fetching data from the database
@@ -11,7 +11,7 @@ export async function GET(req) {
       FROM blogs 
       WHERE blog_status = "0"
       ORDER BY blog_date_time DESC 
-      LIMIT 10
+      LIMIT 3
     `;
 
 

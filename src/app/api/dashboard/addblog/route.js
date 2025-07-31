@@ -49,7 +49,7 @@ export async function POST(req) {
       !imageFile
     ) {
       return NextResponse.json(
-        { message: 'All required fields are missing. Please provide: Blog Title, Tags, Description, Content, Blog Category ID, Blog Publisher ID, Date, Time, and Feature Image.' },
+        { message: 'All required fields are missing.' },
         { status: 400 }
       );
     }
@@ -113,7 +113,7 @@ export async function POST(req) {
       blogTag,     // Maps to blog_tag
       blogCategoryId,
       blogPublisherId, // Added the blogPublisherId
-      'active',  // Assuming blog_status as 'active' by default
+      '1',  // Assuming blog_status as 'active' by default
       featureImage,
       content,     // Maps to blog_content
       blogDateTime,

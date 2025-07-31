@@ -22,7 +22,8 @@ export const ResourcesHelpCenterPage = () => {
         style={{ backgroundColor: primaryDarkBlue, transform: 'translate(70%, 70%)' }}
       ></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto text-center  p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white }}>
+      <div className="relative z-10 max-w-6xl mx-auto text-center  p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white, borderRadius: '1.5rem', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}>
+        {/* Header with Title and Description */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
           Welcome to Our Resources & Help Center
         </h2>
@@ -30,7 +31,7 @@ export const ResourcesHelpCenterPage = () => {
           At The Harbor Group, we are committed to providing you with the knowledge and assistance you need to make informed decisions about your coverage. Explore our Resources & Help Center to access a wealth of educational materials, guides, and a comprehensive knowledge base.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6 animate-fade-in-up delay-200">
-          <Link href="/plan" className="px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg hover:transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75 animate-button-pop" style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}>
+          <Link href="/health-plans" className="px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg hover:transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75 animate-button-pop" style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}>
             KNOW ABOUT PLANS
           </Link>
           <Link href="/privacy-policy" className="px-8 py-4 font-bold text-lg rounded-full shadow-lg hover:transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75 animate-button-pop delay-100" style={{ backgroundColor: accentLightBlue + '30', color: primaryDarkBlue, '--tw-ring-color': `${accentLightBlue}80` }}>

@@ -5,13 +5,46 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import DashboardLayout from "../component/DashboardLayout";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function DashboardHome() {
   const [blogs, setBlogs] = useState([]); // Initialize blogs state as an empty array
   const [totalBlogs, setTotalBlogs] = useState(0); // Total blogs count for the card
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
+  const [loadingUser, setLoadingUser] = useState(true);
+  const [userError, setUserError] = useState(null);
+  const [user, setUser] = useState(null);
   const router = useRouter();
+
+
+  // Fetch user data on component mount
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('/api/dashboard/user', {
+          credentials: 'include' // Important: include cookies
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setUser(data.user);
+        } else if (response.status === 401 || response.status === 403) {
+          router.push('/dashboard/login');
+        } else {
+          const errorData = await response.json();
+          setUserError(errorData.error || 'Failed to fetch user data.');
+        }
+      } catch (err) {
+        setUserError('An unexpected error occurred while fetching user data.');
+        console.error('Fetch user error:', err);
+      } finally {
+        setLoadingUser(false);
+      }
+    };
+
+    fetchUserData();
+  }, [router]);
 
   // Fetch blogs when the component mounts
   useEffect(() => {
@@ -116,7 +149,9 @@ export default function DashboardHome() {
                   >
                     <td className="py-3 font-medium">{`${index + 1}`}</td>
                     <td className="py-3">
-                      <img
+                      <Image
+                    width={100}
+                    height={100}
                         src={blog.blog_feature_image}
                         alt="Blog"
                         className="h-12 w-20 object-cover rounded-md shadow-sm"

@@ -73,8 +73,8 @@ const BlogSubscribePopup = ({ onClose }) => {
                 </h2>
                 {/* Description */}
                 <p className="text-gray-600 mb-6 text-sm sm:text-base">
-                    Get immediate updates on our newest blog posts. Whether it's the latest
-                    trends, helpful tips, or personal stories, you'll be the first to read them.
+                    Get immediate updates on our newest blog posts. Whether it&apos;s the latest
+                    trends, helpful tips, or personal stories, you&apos;ll be the first to read them.
                 </p>
 
                 {/* Input and Button */}
@@ -102,7 +102,7 @@ const BlogSubscribePopup = ({ onClose }) => {
     );
 };
 
-export default function page() {
+export default function BlogDetail() {
     const { slug } = useParams(); // ← Get the slug from the dynamic route
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);

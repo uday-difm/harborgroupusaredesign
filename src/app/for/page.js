@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 export default function page() {
   return (
@@ -30,9 +31,9 @@ export default function page() {
             </p>
           </div>
           <div className="mt-auto"> {/* Pushes button to the bottom */}
-            <button className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
+            <Link href="/for-brokers" className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
               Explore More
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -47,9 +48,9 @@ export default function page() {
             </p>
           </div>
           <div className="mt-auto"> {/* Pushes button to the bottom */}
-            <button className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
+            <Link href = "/for-individuals" className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
               Explore More
-            </button>
+            </Link>
           </div>
         </div>
       </div>
