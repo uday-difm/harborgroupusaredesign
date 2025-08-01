@@ -51,7 +51,7 @@ export const EligibilityCriteriaSection = () => {
                    Our Major Medical Plans are accessible to individuals and families residing in the United States.
                 </CriteriaItem>
                 <CriteriaItem icon={Clock} title="Age Eligibility" delay="0.5s">
-                    Tailored to cover individuals of all ages, ensuring coverage throughout various life stages.
+                   Tailored to cover individuals of all ages, ensuring coverage throughout various life stages.
                 </CriteriaItem>
                 <CriteriaItem icon={Heart} title="Ideal for a Balanced Lifestyle" delay="0.7s">
                     Perfect for those who prioritize maintaining a balanced and fulfilling Major Medical.

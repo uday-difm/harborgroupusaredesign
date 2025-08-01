@@ -20,7 +20,7 @@ export const CostOptions = () => {
             Cost Options and Coverage Scenarios
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Budget-friendly, priority-focused. Find your perfect Bundles Plan for complete health protection along with flexible cost options.
+          Budget-friendly, priority-focused. Find your perfect Bundles Plan for complete health protection along with flexible cost options.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -33,7 +33,7 @@ export const CostOptions = () => {
                     {gradientStops("costIconGradient1")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Explore different premium plans for varying levels of coverage.
+                 Explore different premium plans for varying levels of coverage.
                 </li>
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#costIconGradient2)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@ export const CostOptions = () => {
                     {gradientStops("costIconGradient4")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Know your costs upfront, ensuring financial transparency and financial planning.
+              Know your costs upfront, ensuring financial transparency and financial planning.
                 </li>
               </ul>
             </div>
@@ -75,14 +75,14 @@ export const CostOptions = () => {
                     {gradientStops("costIconGradient5")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Delve into clearly defined coverage scenarios for medical, accident, and critical illness events, tailored to your family’s specific health concerns.
+                 Delve into clearly defined coverage scenarios for medical, accident, and critical illness events, tailored to your family’s specific health concerns.
                 </li>
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#costIconGradient6)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("costIconGradient6")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Easily understand what’s covered and plan accordingly for a health protection journey.
+                 Easily understand what’s covered and plan accordingly for a health protection journey.
                 </li>
               </ul>
             </div>

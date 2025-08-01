@@ -8,22 +8,22 @@ export const WhyChooseUsSection = () => {
         {
             icon: <Users />,
             title: "Experienced Professionals",
-            description: "Our experienced team will guide you through the complexities of health plans."
+            description: "Our experienced team will guide you through the complexities of health plans"
         },
         {
             icon: <Target />,
             title: "Tailored Solutions",
-            description: "Get a custom-built health plan that delivers the support and coverage according to your specific needs."
+            description: "Get a custom-built health plan that delivers the support and coverage according to your specific needs"
         },
         {
             icon: <Zap />,
             title: "Reliable Support",
-            description: "Get instant, expert assistance with our 24/7 guaranteed uptime support."
+            description: "Get instant, expert assistance with our 24/7 guaranteed uptime support"
         },
         {
             icon: <Timer />,
             title: "Fast Turnaround Time",
-            description: "Get a quote in hours & set up your plan in days, not weeks. We prioritize time, so you can access critical health coverage swiftly."
+            description: "Get a quote in hours & set up your plan in days, not weeks. We prioritize time, so you can access critical health coverage swiftly"
         }
     ];
     
@@ -37,7 +37,7 @@ export const WhyChooseUsSection = () => {
                     {/* Left Column: Accordion */}
                     <div className="space-y-8">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
-                            Why choose Harbor Group USA health plan?
+                            Why choose Harbor Group USA health plan ?
                         </h2>
                         <div className="space-y-4">
                             {reasons.map((reason, index) => (

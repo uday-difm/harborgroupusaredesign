@@ -20,7 +20,7 @@ export const Eligibilitycriteria = () => {
             Eligibility criteria for Term Life Plans
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Open to individuals and families, our Term Life Plan ensures that comprehensive financial protection is within reach.
+             Open to individuals and families, our Term Life Plan ensures that comprehensive financial protection is within reach.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
@@ -32,7 +32,7 @@ export const Eligibilitycriteria = () => {
               </svg>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">Resident of the United States</h3>
               <p className="text-gray-700 leading-relaxed">
-                Our Term Life Plan is accessible to individuals and families currently residing in the United States.
+               Our Term Life Plan is accessible to individuals and families currently residing in the United States.
               </p>
             </div>
 

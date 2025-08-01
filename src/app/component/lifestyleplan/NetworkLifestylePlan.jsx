@@ -30,7 +30,7 @@ export const NetworkLifestylePlan = () => {
           {/* Header */}
           <p className={`text-sm font-semibold text-sky-400 mb-2 flex items-center`}>
             <span className="inline-block w-6 h-0.5 bg-sky-400 mr-2 rounded-full"></span>
-            Know about our network
+           Know about our network
           </p>
           <h1 className={`text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-6 leading-tight`}>
             Network
@@ -38,7 +38,7 @@ export const NetworkLifestylePlan = () => {
 
           {/* Introduction */}
           <p className={`text-lg text-gray-600 mb-8 leading-relaxed`}>
-            Accessing support for your lifestyle needs is effortless with our extensive network of experienced professionals.
+           Accessing support for your lifestyle needs is effortless with our extensive network of experienced professionals.
           </p>
 
           {/* Benefits List */}

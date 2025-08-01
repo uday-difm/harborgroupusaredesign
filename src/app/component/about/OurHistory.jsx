@@ -55,7 +55,7 @@ export const OurHistory = ()=> {
                 Our History
               </p>
               <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
-                Get Expert Advice and Start Saving
+              Get Expert Advice and Start Saving
               </h2>
               <p className="mt-6 text-lg text-gray-700">
               Founded with a mission of excellence in the field of Health Coverage Plans, Harbor Group USA has grown into a trusted name in the healthcare services industry. Our commitment to navigating the complex landscape of health services has remained steadfast since the beginning.
@@ -80,12 +80,12 @@ export const OurHistory = ()=> {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <ValueCard icon={ShieldCheck} title="Integrity" delay="0.6s">
-                  Integrity is paramount in all our dealings. We adhere to the highest ethical standards, ensuring transparency.
+                 Integrity is paramount in all our dealings. We adhere to the highest ethical standards, ensuring transparency.
               </ValueCard>
               <ValueCard icon={Eye} title="Transparency" delay="0.8s">
-                 We believe in clear and open communication. Transparency is key to building trust.
+              We believe in clear and open communication. Transparency is key to building trust.
               </ValueCard>
-              <ValueCard icon={TrendingUp} title="Unwavering Commitment" delay="1s">
+              <ValueCard icon={TrendingUp} title="Unwavering Commitment to Client Success" delay="1s">
                 The success of our clients is at the heart of everything we do. We are dedicated to going above and beyond to help our clients.
               </ValueCard>
             </div>

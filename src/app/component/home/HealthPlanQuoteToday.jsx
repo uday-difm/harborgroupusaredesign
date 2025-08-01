@@ -92,7 +92,7 @@ export default function HealthPlanQuoteToday() {
             Get In Touch
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-            Get Your Free Health Plan Quote Today!
+           Get Your Free Health Plan Quote Today!
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

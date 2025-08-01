@@ -48,9 +48,9 @@ export const BlogSection = ()=> {
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
               Insights & Ideas Corner
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
+            {/* <p className="mt-4 text-lg text-gray-600">
               Stay updated with the latest news, tips, and insights from the healthcare industry.
-            </p>
+            </p> */}
             <div className="mt-8">
               <a
                 href="/blogs"

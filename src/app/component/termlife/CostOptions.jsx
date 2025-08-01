@@ -22,7 +22,7 @@ export const CostOptions = ()=> {
             Cost Options and Coverage Scenarios
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Your Financial Shield! Explore flexible options tailored to your needs.
+          Your Financial Shield!
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -34,7 +34,11 @@ export const CostOptions = ()=> {
               </svg>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">Flexible Premium Options</h3>
               <p className="text-gray-700 leading-relaxed">
-                Explore a range of premium options tailored to different levels of coverage. Customize your plan to align precisely with your family's financial priorities.
+            Explore a range of premium options tailored to different levels of coverage.
+              </p>
+
+                 <p className="text-gray-700 leading-relaxed">
+            Customize your plan to align precisely with your family's financial priorities.
               </p>
             </div>
 
@@ -46,7 +50,11 @@ export const CostOptions = ()=> {
               </svg>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">Transparent Co-pay Structure</h3>
               <p className="text-gray-700 leading-relaxed">
-                Get an easy-to-understand co-payment structure for premiums to ensure clarity. Know your costs upfront, fostering financial transparency throughout your term.
+               Get an easy-to-understand co-payment structure for premiums to ensure clarity.
+              </p>
+
+              <p className="text-gray-700 leading-relaxed">
+               Know your costs upfront, fostering financial transparency throughout your term.
               </p>
             </div>
 
@@ -58,7 +66,11 @@ export const CostOptions = ()=> {
               </svg>
               <h3 className="text-2xl font-bold text-blue-800 mb-4">Varied Coverage Scenarios</h3>
               <p className="text-gray-700 leading-relaxed">
-                Explore our clearly defined coverage scenarios with various life stages and financial needs. Easily understand what's covered, and plan accordingly for your family's financial security.
+               Explore our clearly defined coverage scenarios with various life stages and financial needs.
+              </p>
+
+               <p className="text-gray-700 leading-relaxed">
+             Easily understand what's covered, and plan accordingly for your family's financial security.
               </p>
             </div>
           </div>

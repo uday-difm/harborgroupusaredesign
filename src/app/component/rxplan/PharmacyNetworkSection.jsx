@@ -28,7 +28,7 @@ export const PharmacyNetworkSection = () => {
           {/* Right Column: Content Section - Dynamic Feature Cards */}
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-gray-900">
             <h2 className="text-4xl font-extrabold mb-6 leading-tight text-indigo-900">
-              Network
+           Network
             </h2>
             <p className="text-lg leading-relaxed mb-10 text-gray-600">
               Accessing support for your medication needs is seamless with our extensive network of experienced professionals.
@@ -45,7 +45,7 @@ export const PharmacyNetworkSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Qualified Pharmacy Professionals</h3>
                   <p className="text-base text-gray-600">
-                    Ensure tailored guidance for your unique medication requirements.
+                 Ensure tailored guidance for your unique medication requirements
                   </p>
                 </div>
               </div>
@@ -60,7 +60,7 @@ export const PharmacyNetworkSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Nationwide Coverage</h3>
                   <p className="text-base text-gray-600">
-                    Find a qualified pharmacy conveniently, ensuring accessibility for your medication needs.
+                   Find a qualified pharmacy conveniently, ensuring accessibility for your medication needs
                   </p>
                 </div>
               </div>
@@ -75,7 +75,7 @@ export const PharmacyNetworkSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Dedicated Support</h3>
                   <p className="text-base text-gray-600">
-                    Our support team is ready to assist in connecting you with in-network pharmacies.
+                    Our support team is ready to assist in connecting you with in-network pharmacies
                   </p>
                 </div>
               </div>

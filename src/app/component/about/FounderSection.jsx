@@ -40,10 +40,10 @@ export default function FounderSection() {
             
             <div className="mt-8 text-base text-gray-700 space-y-5">
                 <p>
-                 Founded by Douglas Muhlbauer, Harbor Group USA was established with a mission of excellence in health coverage plans. Over the years, it has become a trusted name in the healthcare services industry, guiding clients through the complexities of health coverage with care, transparency, and expertise. With a deep understanding of the ever-changing landscape, Harbor Group USA remains committed to providing personalized solutions that meet the unique needs of every client.
+               Founded by <b>Douglas Muhlbauer, Harbor Group USA</b> was established with a mission of excellence in health coverage plans. Over the years, it has become a trusted name in the healthcare services industry, guiding clients through the complexities of health coverage with care, transparency, and expertise. With a deep understanding of the ever-changing landscape, Harbor Group USA remains committed to providing personalized solutions that meet the unique needs of every client.
                 </p>
                 <p>
-              Douglas Muhlbauer, an industry expert and advocate for healthcare reform, is also the author of Breaking the Monopoly: The Fight for Affordability, a book that exposes the monopolistic structure of the healthcare system and its impact on consumers. His insights, experience, and commitment to driving change continue to shape Harbor Group USA’s approach, ensuring clients receive the best guidance in navigating their health coverage options.
+          Douglas Muhlbauer, an industry expert and advocate for healthcare reform, is also the author of <b>Breaking the Monopoly: The Fight for Affordability,</b> a book that exposes the monopolistic structure of the healthcare system and its impact on consumers. His insights, experience, and commitment to driving change continue to shape Harbor Group USA’s approach, ensuring clients receive the best guidance in navigating their health coverage options.
                 </p>
             </div>
 

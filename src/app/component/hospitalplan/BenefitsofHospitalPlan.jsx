@@ -14,7 +14,7 @@ export const BenefitsofHospitalPlan = () => {
      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Benefits of Hospital Plan
+           Benefits of Hospital Plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
         At Harbor Group USA, we understand the significance of dedicated hospitalization coverage. Our Hospital Plans offer straightforward benefits to ease the burden of hospital expenses.

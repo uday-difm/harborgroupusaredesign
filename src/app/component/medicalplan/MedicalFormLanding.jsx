@@ -106,7 +106,7 @@ export const MedicalFormLanding = () => {
         {/* Left Content Section */}
         <div className="text-white lg:text-left text-center p-6 lg:p-0 animate-slide-in-left">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
-            Medical Plans for Complete Health Coverage
+           Medical Plans for Complete Health Coverage
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed mb-8 animate-fade-in-up delay-100">
         Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions – all in one comprehensive medical cost sharing plans without much hassle.

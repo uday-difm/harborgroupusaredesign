@@ -10,7 +10,7 @@ export const HowtoPartner = () => {
 
   const plans = [
     "Medical Plans", "Dental Plans", "Vision Plans", "Term Life Plans",
-    "Group Benefit or Bundles", "Limited Med Plans", "Accident Plans", "Hospital Plans",
+    "Group Benefit", "Limited Med Plans", "Accident Plans", "Hospital Plans",
     "Critical Plans", "Lifestyle Plans", "Pet Plans", "Rx Plans"
   ];
  // Form data state

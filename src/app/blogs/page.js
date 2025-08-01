@@ -3,6 +3,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -77,7 +78,9 @@ export default function Blogs() {
         <main className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Individual Animated Blog Post Card */}
           {blogs.slice(0, visibleCount).map((blog) => (
+            
             <div key={blog.blog_id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden flex flex-col cursor-pointer">
+             <Link href={`/blog/${blog.blog_slug}`} className="hover:no-underline">
               <div className="relative w-full h-52 overflow-hidden">
                 <Image
                   src={blog.blog_feature_image}
@@ -90,8 +93,10 @@ export default function Blogs() {
                   {blog.blog_category}
                 </span>
               </div>
+              </Link>
 
               <div className="p-6 flex flex-col flex-grow">
+                <Link href={`/blog/${blog.blog_slug}`} className="hover:no-underline">
                 <p className="text-sm text-gray-500 mb-3 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -110,16 +115,16 @@ export default function Blogs() {
                   </svg>
                   {blog.formatted_blog_date}
                 </p>
-
-                <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-snug">
+               
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-snug ">
                   {blog.blog_title}
                 </h2>
 
                 <p className="text-gray-700 leading-relaxed mb-6 flex-grow">
                   {blog.blog_description}
                 </p>
-
-                <a
+               </Link>
+                <Link
                   href={`/blog/${blog.blog_slug}`}
                   className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-500 text-base font-semibold rounded-full text-blue-600 hover:bg-blue-500 hover:text-white transition-all duration-200 self-start group"
                 >
@@ -136,7 +141,7 @@ export default function Blogs() {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

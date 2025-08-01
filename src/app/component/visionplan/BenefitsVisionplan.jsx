@@ -38,7 +38,7 @@ export const BenefitsVisionplan = () => {
           Benefits of Vision Plan
         </h2>
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-          Our comprehensive and stand-alone vision plans are designed to keep your eyes healthy and your wallet happy.
+          Our comprehensive and stand alone vision plans are designed to keep your eyes healthy and your wallet happy.
         </p>
       </div>
 
@@ -60,13 +60,13 @@ export const BenefitsVisionplan = () => {
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
-              Regular check-ups to monitor and maintain your eye health
+        Regular check-ups to monitor and maintain your eye health
             </li>
             <li className="flex items-start">
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
-              Early detection of potential issues to ensure proactive care
+           Early detection of potential issues to ensure proactive care
             </li>
           </ul>
         </div>
@@ -85,7 +85,7 @@ export const BenefitsVisionplan = () => {
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
-              Exclusively discounted eye surgeries for improved long-term vision
+             Exclusively discounted eye surgeries for improved long-term vision
             </li>
             <li className="flex items-start">
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
@@ -137,13 +137,13 @@ export const BenefitsVisionplan = () => {
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
-              Affordable access to high-quality eyewear
+             Affordable access to high-quality eyewear
             </li>
             <li className="flex items-start">
               <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
-              Stay in style with trendy eyewear without breaking the bank
+             Stay in style with trendy eyewear without breaking the bank
             </li>
           </ul>
         </div>

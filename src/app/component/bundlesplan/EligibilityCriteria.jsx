@@ -15,10 +15,10 @@ export const EligibilityCriteria = () => {
       <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility Criteria for the Bundles Plans
+           Eligibility Criteria for the Bundles Plans
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            These plans are open to individuals and families, making it accessible for everyone seeking a combination of plans.
+           These plans are open to individuals and families, making it accessible for everyone seeking a combination of plans.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -30,7 +30,7 @@ export const EligibilityCriteria = () => {
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Citizenship or Legal Residency</h3>
               <p className="text-gray-700 leading-relaxed">
-                US citizenship or legal residency status is a prerequisite.
+               US citizenship or legal residency status is a prerequisite
               </p>
             </div>
 
@@ -42,7 +42,7 @@ export const EligibilityCriteria = () => {
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Age Eligibility</h3>
               <p className="text-gray-700 leading-relaxed">
-                Tailored for individuals aged 18 to 100 years.
+               Tailored for individuals aged 18 to 100 years
               </p>
             </div>
 
@@ -54,7 +54,7 @@ export const EligibilityCriteria = () => {
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Income Verification</h3>
               <p className="text-gray-700 leading-relaxed">
-                Certain plans may require proof of income to determine eligibility.
+               Certain plans may require proof of income to determine eligibility
               </p>
             </div>
           </div>

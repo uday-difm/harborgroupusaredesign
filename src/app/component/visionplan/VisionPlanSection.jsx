@@ -23,10 +23,11 @@ export const VisionPlanSection = () => {
         {/* Content */}
         <div className="relative z-10 text-center p-6 max-w-4xl mx-auto animate-fadeInUp">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
-            Clear Vision, Clear Path – Your Future Starts Here
+          Clear vision, clear path - our vision plans keep your focus right!
           </h1>
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Unlock unparalleled clarity and precision with our bespoke vision plans. We ensure your eyesight is not just corrected, but truly optimized for life's every moment.
+           Our vision service plans go beyond just seeing – they’re designed to keep your eyesight sharp and your outlook on life crystal clear.
+            From routine eye exams to prescription eyewear, we’re dedicated to ensuring your vision is at its best.
           </p>
           <Link href= "#vision-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
            GET NOW

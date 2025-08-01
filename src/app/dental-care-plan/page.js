@@ -9,6 +9,7 @@ import { DentalNetworkSection } from '../component/dentalplan/DentalNetworkSecti
 import { DentalCostsCoverageSection } from '../component/dentalplan/DentalCostsCoverageSection'
 import { FaqDentalplan } from '../component/dentalplan/FaqDentalplan'
 import { TestimonialDentalPlan } from '../component/dentalplan/TestimonialDentalPlan'
+import { DentalEligbility } from '../component/dentalplan/DentalEligbility'
 
 export default function page() {
   return (
@@ -24,7 +25,8 @@ export default function page() {
       <DentalHeroSection/>
 <BenefitsofDentalCarePlan/>  
 <DentalNetworkSection/>
-        <EligibilityCriteriaSection/>
+        {/* <EligibilityCriteriaSection/> */}
+        <DentalEligbility/>
         <HowToApply/>
         <DentalCostsCoverageSection/>
         <FaqDentalplan/>

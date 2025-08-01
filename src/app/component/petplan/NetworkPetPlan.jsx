@@ -20,7 +20,7 @@ export const NetworkPetPlan = () => {
             Network
           </h2>
           <p className="mt-4 text-lg text-gray-600 leading-relaxed text-center">
-            Accessing top-notch veterinary support for your pets is effortless with our extensive network of experienced professionals. We connect you with the best, ensuring your beloved companions receive the care they deserve.
+           Accessing top-notch veterinary support for your pets is effortless with our extensive network of experienced professionals
           </p>
         </div>
 
@@ -33,20 +33,20 @@ export const NetworkPetPlan = () => {
                 <svg className="h-7 w-7 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Qualified Veterinary Professionals
+               Qualified Veterinary Professionals
               </h3>
               <ul className="space-y-3 text-gray-700 text-lg">
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Tap into a network of seasoned veterinary professionals.</span>
+                  <span>Tap into a network of seasoned veterinary professionals</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Ensure your pets receive the best guidance for their specific health needs.</span>
+                  <span>Ensure your pets receive the best guidance for their specific health needs</span>
                 </li>
               </ul>
             </div>
@@ -57,20 +57,20 @@ export const NetworkPetPlan = () => {
                 <svg className="h-7 w-7 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5M3 17h9m9 0V5a2 2 0 00-2-2h-2.5M21 17h-9m0 0v4m0-4h.5M9 17H7m7 0h2" />
                 </svg>
-                Nationwide Coverage
+               Nationwide Coverage
               </h3>
               <ul className="space-y-3 text-gray-700 text-lg">
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Benefit from our expansive network covering every corner of the United States.</span>
+                  <span>Benefit from our expansive network covering every corner of the United States</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Find a qualified veterinary professional conveniently, ensuring accessibility for your pets.</span>
+                  <span>Find a qualified veterinary professional conveniently, ensuring accessibility for your pets</span>
                 </li>
               </ul>
             </div>
@@ -88,13 +88,13 @@ export const NetworkPetPlan = () => {
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Our support team is ready to assist in connecting you with in-network veterinary professionals.</span>
+                  <span>Our support team is ready to assist in connecting you with in-network veterinary professionals</span>
                 </li>
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Enjoy peace of mind with our dedicated network support for all your pet health inquiries and needs.</span>
+                  <span>Enjoy peace of mind with our dedicated network support for all your pet health inquiries and needs</span>
                 </li>
               </ul>
             </div>

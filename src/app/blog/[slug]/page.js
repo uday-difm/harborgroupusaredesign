@@ -173,7 +173,7 @@ export default function BlogDetail() {
 
             {/* Tags */}
             {tags.length > 0 && (
-                <div className="mt-12 text-center">
+                <div className="mt-12 ">
                     <h3 className="text-xl font-bold text-gray-900 mb-4">Tags:</h3>
                     <div className="flex flex-wrap justify-center gap-3">
                         {tags.map((tag, idx) => (

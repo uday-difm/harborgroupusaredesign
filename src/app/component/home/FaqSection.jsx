@@ -13,11 +13,11 @@ export const FaqSection = () => {
         },
         {
             question: "Are pre-existing conditions covered under the Medical Plan?",
-            answer: "Coverage for pre-existing conditions varies by plan. We offer specific plans that are designed to cover pre-existing conditions, and our team can help you find the right one for your needs."
+            answer: "Yes, our plan covers pre-existing conditions. However, there may be certain waiting periods and conditions, so it's important to review the policy details for specific information."
         },
         {
             question: "How often can I schedule routine check-ups with the Medical Plan?",
-            answer: "Most of our plans include annual routine check-ups at no extra cost. Some plans may offer more frequent visits. We recommend checking the specific details of your chosen plan."
+            answer: "You can schedule routine check-ups as needed, depending on your health needs. There are no strict limitations, and we encourage regular preventive care."
         }
     ];
 

@@ -19,7 +19,7 @@ export const EligibilityCriteria = () =>{
             Eligibility criteria of Limited med plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage.
+           This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -53,7 +53,7 @@ export const EligibilityCriteria = () =>{
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Specific Health Needs</h3>
               <p className="text-gray-700 leading-relaxed">
-             Perfect for those who require focused medical coverage for specific health condition
+            Perfect for those who require focused medical coverage for specific health conditions.
               </p>
             </div>
           </div>

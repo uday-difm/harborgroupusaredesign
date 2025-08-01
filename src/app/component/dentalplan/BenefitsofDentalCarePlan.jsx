@@ -85,7 +85,7 @@ export const BenefitsofDentalCarePlan = () => {
     <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 animate-slide-in-down">
-          Unlock the Benefits of Our Dental Care Plan
+         Benefits of Dental Care Plan
         </h2>
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto animate-slide-in-down delay-100">
           Get regular checkups and cleanings to prevent problems, along with expert care for any bigger issues like crowns and root canals. Our practical solutions for your dental needs will help you get a healthy, confident smile!

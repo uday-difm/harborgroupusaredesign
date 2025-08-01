@@ -38,10 +38,10 @@ export const EligibilityCriteria = () => {
       {/* Section Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100">
         <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 drop-shadow-sm">
-          Eligibility Criteria of Vision Plan
+         Eligibility Criteria of Vision Plan
         </h2>
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-          We ensure everyone can access affordable and essential eye care.
+          We ensure everyone can access affordable and essential eye care. 
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export const EligibilityCriteria = () => {
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Citizenship or Legal Residency</h3>
           <p className="text-gray-600 leading-relaxed">
-            Citizenship or Legal Residency - US citizenship or legal residency status is a prerequisite.
+        Citizenship or Legal Residency -US citizenship or legal residency status is a prerequisite.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export const EligibilityCriteria = () => {
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Income Verification</h3>
           <p className="text-gray-600 leading-relaxed">
-            Income Verification - Certain plans may require proof of income to determine eligibility
+           Income Verification-Certain plans may require proof of income to determine eligibility
           </p>
         </div>
 

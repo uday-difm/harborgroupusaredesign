@@ -12,10 +12,10 @@ export const RxBenefits = () => {
 
       <div className="relative max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
-          Benefits of Rx Plan
+      Benefits of Rx Plan
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-       At The Harbor Group, we recognize the importance of easy access to medication. Our Rx Plans offer a range of simple, affordable, and professional benefits to address your specific medication requirements.
+      At The Harbor Group, we recognize the importance of easy access to medication. Our Rx Plans offer a range of simple, affordable, and professional benefits to address your specific medication requirements.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -31,7 +31,7 @@ export const RxBenefits = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Affordable Coverage</h3>
               <p className="text-gray-600 leading-relaxed">
-               Affordable coverage for various prescription medications, easing financial strain
+             Affordable coverage for various prescription medications, easing financial strain
               </p>
             </div>
 
@@ -45,7 +45,7 @@ export const RxBenefits = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Efficient Claims</h3>
               <p className="text-gray-600 leading-relaxed">
-                Simple and efficient claims process for peace of mind and ready support
+              Simple and efficient claims process for peace of mind and ready support
               </p>
             </div>
 
@@ -59,7 +59,7 @@ export const RxBenefits = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Flexible Options</h3>
               <p className="text-gray-600 leading-relaxed">
-               Flexible medication options for personalized health needs
+              Flexible medication options for personalized health needs
               </p>
             </div>
 

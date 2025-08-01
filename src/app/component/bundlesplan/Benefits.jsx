@@ -19,7 +19,7 @@ export const Benefits = () => {
             Benefits Of Bundles Plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Prioritize your family's health with a range of benefits to keep them protected and thriving.
+           Prioritize your family’s health with a range of benefits to keep them protected and thriving.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -39,7 +39,7 @@ export const Benefits = () => {
                     {gradientStops("benefitIconGradient2")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Early detection of potential health issues for precisely-tailored, timely intervention
+                 Early detection of potential health issues for precisely-tailored, timely intervention
                 </li>
               </ul>
             </div>
@@ -53,14 +53,14 @@ export const Benefits = () => {
                     {gradientStops("benefitIconGradient3")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  A seamless combination of multiple plans in one combo package
+                A seamless combination of multiple plans in one combo package
                 </li>
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient4)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("benefitIconGradient4")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Ensure 360 degree protection for unexpected health issues
+                 Ensure 360 degree protection for unexpected health issues
                 </li>
               </ul>
             </div>
@@ -74,7 +74,7 @@ export const Benefits = () => {
                     {gradientStops("benefitIconGradient5")}
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  Tailor your plan with lifestyle add-ons for personalized coverage
+                 Tailor your plan with lifestyle add-ons for personalized coverage
                 </li>
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient6)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

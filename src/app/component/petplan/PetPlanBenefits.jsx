@@ -62,7 +62,7 @@ export  const PetPlanBenefits = () => {
               Benefits of Pet Plan
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 text-justify">
-              At Harbor Group USA, we recognize the significance of your pets’ health. Our Pet Plans offer a range of easy, simple, and professional benefits to cater to the unique needs of your furry friends.
+             At Harbor Group USA, we recognize the significance of your pets’ health. Our Pet Plans offer a range of easy, simple, and professional benefits to cater to the unique needs of your furry friends.
             </p>
             <ul className="space-y-4 text-justify">
               <li className="flex items-start text-gray-600">

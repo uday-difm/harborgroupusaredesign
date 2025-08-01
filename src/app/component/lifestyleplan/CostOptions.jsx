@@ -19,7 +19,7 @@ export const CostOptions = () => {
           {/* Header */}
           <p className={`text-sm font-semibold text-sky-400 mb-2 flex items-center`}>
             <span className="inline-block w-6 h-0.5 bg-sky-400 mr-2 rounded-full"></span>
-            Know about Cost Options
+            Know about Cost Options 
           </p>
           <h1 className={`text-3xl sm:text-4xl font-extrabold text-indigo-900 mb-6 leading-tight`}>
             Cost Options and Coverage Scenarios
@@ -27,7 +27,7 @@ export const CostOptions = () => {
 
           {/* Introduction */}
           <p className={`text-lg text-gray-600 mb-8 leading-relaxed`}>
-           Our Lifestyle Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs for maintaining a balanced lifestyle.
+          Our Lifestyle Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs for maintaining a balanced lifestyle.
           </p>
 
           {/* Benefits List */}

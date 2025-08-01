@@ -22,7 +22,7 @@ export const Eligibilitycriteria = () => {
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility criteria of Critical Plan
+           Eligibility criteria of Critical Plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
             This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage.
@@ -39,7 +39,7 @@ export const Eligibilitycriteria = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Citizenship or Legal Residency</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
-                US citizenship or legal residency status is a prerequisite.
+               US citizenship or legal residency status is a prerequisite.
               </p>
             </div>
 
@@ -67,7 +67,7 @@ export const Eligibilitycriteria = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Financial Security</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
-                Perfect for who prioritize added financial security during critical health situations.
+               Perfect for who prioritize added financial security during critical health situations.
               </p>
             </div>
           </div>

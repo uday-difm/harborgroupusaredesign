@@ -105,12 +105,10 @@ const BenefitsSection = () => {
       {/* Header Section */}
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-indigo-900 leading-tight mb-4">
-          Benefits of Lifestyle Plan
+         Benefits of Lifestyle Plan
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          At Harbor Group USA, we understand the significance of maintaining a
-          balanced and fulfilling lifestyle. Our Lifestyle Plans offer a range
-          of benefits to cater to your specific needs.
+         At Harbor Group USA, we understand the significance of maintaining a balanced and fulfilling lifestyle. Our Lifestyle Plans offer a range of benefits to cater to your specific needs.
         </p>
         {/* <div className="flex justify-center mt-6">
           <span className="inline-block w-24 h-1 bg-sky-400 rounded-full"></span>

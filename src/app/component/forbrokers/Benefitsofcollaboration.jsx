@@ -12,7 +12,7 @@ export const Benefitsofcollaboration = () => {
   const benefits = [
     {
       title: "Competitive Rates",
-      description: "Stay ahead in the competitive landscape with access to our competitive prices. Our partnerships are designed to empower you with pricing advantages, giving your clients cost-effective options.",
+      description: "Stay ahead in the competitive landscape with access to our competitive rates. Our partnerships are designed to empower you with pricing advantages, giving your clients cost-effective options.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.592 1L21 12l-4.408 3.592c-.512.388-1.482.908-2.592.908m-10 0c-1.11 0-2.08-.402-2.592-1L3 12l4.408-3.592c.512-.388 1.482-.908 2.592-.908m7.5 4H12m-7.5 0H12" />
@@ -21,7 +21,7 @@ export const Benefitsofcollaboration = () => {
     },
     {
       title: "Comprehensive Support",
-      description: "Benefit from our dedicated support system. As a partner, you're not alone. Our team is here to assist you in navigating processes, clarifying queries, and ensuring a smooth collaboration.",
+      description: "Benefit from our dedicated support system. As a partner, you're not alone. Our team is here to assist you in navigating through processes, clarifying queries, and ensuring a smooth collaboration.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 0A9.953 9.953 0 0112 12.5c-2.686 0-5.177-1.109-6.97-2.902l-3.536-3.536m3.536 3.536L5.636 18.364m0 0A9.953 9.953 0 0012 11.5c2.686 0 5.177 1.109 6.97 2.902l3.536 3.536m-3.536-3.536L5.636 5.636" />
@@ -39,7 +39,7 @@ export const Benefitsofcollaboration = () => {
     },
     {
       title: "Exclusive Access",
-      description: "Unlock exclusive resources and information. Being a Harbor Group partner means gaining access to insights, updates, and tools that enhance your capabilities and keep you well-informed.",
+      description: " Unlock exclusive resources and information. Being a Harbor Group partner means gaining access to insights, updates, and tools that enhance your capabilities and keep you well-informed.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 7a2 2 0 012 2v5a2 2 0 01-2 2H9a2 2 0 01-2-2V9a2 2 0 012-2h6z" />

@@ -17,10 +17,10 @@ export const Eligibilityofaccidental = () => {
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility of accidental plan
+        Eligibility of accidental plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Open to individuals and families, our Accident Plans ensure that coverage for unexpected accidents is within reach, designed to meet your specific criteria.
+           Open to individuals and families, our Accident Plans ensure that coverage for unexpected accidents is within reach, designed to meet your specific criteria.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
@@ -31,7 +31,7 @@ export const Eligibilityofaccidental = () => {
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Resident of the US</h3>
               <p className="text-gray-600 leading-relaxed">
-                Our Accident Plans are accessible to individuals and families residing in the United States.
+              Our Accident Plans are accessible to individuals and families residing in the United States.
               </p>
             </div>
 
@@ -40,9 +40,9 @@ export const Eligibilityofaccidental = () => {
               <svg className="w-16 h-16 mx-auto mb-6" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Age Eligibility</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Age Eligibility Resident of the US</h3>
               <p className="text-gray-600 leading-relaxed">
-                Tailored to cover individuals aged 18 to 65 years, ensuring robust coverage throughout various life stages.
+              Tailored to cover individuals aged 18 to 65 years, ensuring robust coverage throughout various life stages.
               </p>
             </div>
 
@@ -53,7 +53,7 @@ export const Eligibilityofaccidental = () => {
               </svg>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Citizenship</h3>
               <p className="text-gray-600 leading-relaxed">
-                US citizenship or legal residency status is a prerequisite for enrollment in our Accident Plans.
+               US citizenship or legal residency status is a prerequisite for enrollment in our Accident Plans.
               </p>
             </div>
           </div>

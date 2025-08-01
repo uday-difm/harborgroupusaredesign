@@ -22,10 +22,10 @@ export const Hero = () => {
             Protection for your loved ones with a comprehensive term life plan
           </h1>
           <p className="text-lg sm:text-xl text-gray-200 mb-4 max-w-2xl mx-auto drop-shadow-md">
-            Secure your family's future – our life plans are meticulously crafted to offer more than just financial assurance.
+            Secure your family’s future — our life plans are meticulously crafted to offer more than just financial assurance. 
           </p>
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
-            Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need.
+           Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need.
           </p>
           
           <Link href="#term-form" className="bg-sky-400 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full shadow-xl transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">

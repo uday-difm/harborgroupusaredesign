@@ -133,10 +133,10 @@ export const NetworkContact = () => {
           {/* Right Column: Network Information */}
           <div className="bg-blue-50 p-8 rounded-xl shadow-lg animate-slideInRight">
             <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
-              Network
+             Network
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
-              Accessing top-notch support for your targeted medical needs is effortless with our extensive network of experienced professionals.
+             Accessing top-notch support for your targeted medical needs is effortless with our extensive network of experienced professionals.
             </p>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Specialized Healthcare Professionals</h3>
             <ul className="space-y-3 text-gray-700 text-left mb-6">
@@ -169,7 +169,7 @@ export const NetworkContact = () => {
                   {gradientStops("networkIconGradient4")}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                Enjoy peace of mind with our dedicated support for all your targeted medical inquiries and needs
+               Enjoy peace of mind with our dedicated support for all your targeted medical inquiries and needs
               </li>
             </ul>
           </div>

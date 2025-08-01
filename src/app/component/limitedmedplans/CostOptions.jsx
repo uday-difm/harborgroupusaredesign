@@ -9,7 +9,7 @@ export const CostOptions = () => {
       <section className="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Cost Options and Coverage Scenarios
+    Cost Options and Coverage Scenarios
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
            Our Limited Med Plans provide flexible options to suit your targeted health needs, with straightforward coverage scenarios.
@@ -24,7 +24,7 @@ export const CostOptions = () => {
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                 Explore different premium plans designed for varying levels of specialized coverage
+                Explore different premium plans designed for varying levels of specialized coverage
                 </li>
                 <li className="flex items-start">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +68,7 @@ export const CostOptions = () => {
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                 Easily understand what's covered and plan accordingly for your targeted health protection
+                Easily understand what's covered and plan accordingly for your targeted health protection
                 </li>
               </ul>
             </div>
