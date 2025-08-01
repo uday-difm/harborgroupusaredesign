@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/comman/Header";
 import { Footer } from "@/comman/Footer";
 import { usePathname } from "next/navigation";  // Correct hook for client-side navigation
+import CookiesBanner from "@/comman/CookiesBanner";
 
 
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         {!isDashboardPage && <Header />}
         {children}
              {!isDashboardPage && <Footer />}
+             <CookiesBanner/>
       </body>
     </html>
   );
