@@ -17,7 +17,7 @@ export const Yourhealthmatters = () =>{
               Your health matters
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 animate-fadeInUp delay-100">
-              Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies. Discover a simple and effective solution that focuses on your peace of mind during challenging times. It's not just a plan; it's a specialized approach to ensuring your financial well-being during hospitalization.
+             Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies. Discover a simple and effective solution that focuses on your peace of mind during challenging times. It’s not just a plan; it’s a specialized approach to ensuring your financial well-being during hospitalization.
             </p>
           </div>
            {/* Left Column: Image/Visual */}

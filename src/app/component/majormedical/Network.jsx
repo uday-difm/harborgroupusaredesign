@@ -44,10 +44,10 @@ export const NetworkSection = () => {
               Know about Our Network
             </p>
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
-              A Network Built Around You
+              Network 
             </h2>
             <p className="mt-6 text-lg text-gray-600">
-              Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care.
+          Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care.
             </p>
             
             {/* Benefits List */}
@@ -56,13 +56,16 @@ export const NetworkSection = () => {
                     Available in all 50 states.
                 </BenefitItem>
                 <BenefitItem icon={Hospital} title="Extensive Provider Network" delay="0.4s">
-                    Access to top-tier hospitals and specialists.
+                   Access to top-tier hospitals and specialists.
                 </BenefitItem>
                 <BenefitItem icon={UserCheck} title="Primary Care Physicians" delay="0.6s">
                     Ensure you receive comprehensive and continuous care.
                 </BenefitItem>
+                  <BenefitItem icon={UserSquare} title="Specialist Access" delay="0.7s">
+                   Easy referrals to specialists for specific health needs.
+                </BenefitItem>
                 <BenefitItem icon={Award} title="Quality Care" delay="0.8s">
-                    High standards of care across the network to ensure optimal health outcomes.
+                   High standards of care across the network to ensure optimal health outcomes.
                 </BenefitItem>
             </div>
           </div>

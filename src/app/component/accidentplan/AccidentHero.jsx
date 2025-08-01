@@ -55,10 +55,10 @@ export const AccidentHero = () => {
           {/* Modified this div to center its content */}
           <div className="max-w-6xl animate-slideInLeft w-full flex flex-col items-center">
             <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold mb-6 leading-tight text-center drop-shadow-xl animate-textGlowLight">
-              Coverage for unexpected accidents to ease financial burdens
+             Coverage for unexpected accidents to ease financial burdens
             </h1>
             <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
-              Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
+           Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
             </p>
             {/* Button is now centered because its parent is a flex column with items-center */}
             <Link href="#accident-plan-form" className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}

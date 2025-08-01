@@ -141,10 +141,10 @@ export const Protectionagainst = ()=> {
           {/* Left Column: Text Content */}
           <div className="max-w-3xl lg:w-1/2 animate-slideInLeft mb-8 lg:mb-0">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl text-indigo-900 animate-textGlow"> {/* Changed text-white to text-blue-900 */}
-              Protection against critical illnesses for added security
+             Protection against critical illnesses for added security
             </h1>
             <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl mx-auto lg:mx-0 text-justify drop-shadow-md animate-fadeInUp delay-100"> {/* Changed text-gray-100 to text-blue-800 */}
-              Safeguard your loved-ones with our Critical Plans at Harbor Group USA. Offering added security against the uncertainties of life, our Critical Plans provide protection specifically crafted to shield you from the financial impact of critical illnesses.
+             Safeguard your loved-ones with our Critical Plans at Harbor Group USA. Offering added security against the uncertainties of life, our Critical Plans provide protection specifically crafted to shield you from the financial impact of critical illnesses.
             </p>
           </div>
 

@@ -34,7 +34,7 @@ export const CostOptionshospital = ()=>{
               Cost Options and Coverage Scenarios
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
-              Our Hospital Plans provide flexible options to suit your hospitalization needs, with straightforward coverage scenarios
+            Our Hospital Plans provide flexible options to suit your hospitalization needs, with straightforward coverage scenarios
             </p>
 
             <div className="space-y-4 text-left">

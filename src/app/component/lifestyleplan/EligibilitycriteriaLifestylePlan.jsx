@@ -46,10 +46,10 @@ export const EligibilitycriteriaLifestylePlan = () =>{
       <div className="max-w-4xl w-full  overflow-hidden p-6 sm:p-10 text-center">
         {/* Header Section */}
         <h1 className={`text-3xl sm:text-4xl font-extrabold text-indigo-900 mb-4 leading-tight`}>
-          Eligibility criteria of Lifestyle Plan
+       Eligibility criteria of Lifestyle Plan
         </h1>
         <p className={`text-lg text-gray-600 mb-12 max-w-2xl mx-auto`}>
-          Open to individuals and families, our Lifestyle Plans ensure that comprehensive support for your lifestyle needs is within reach.
+        Open to individuals and families, our Lifestyle Plans ensure that comprehensive support for your lifestyle needs is within reach.
         </p>
 
         {/* Criteria Grid */}

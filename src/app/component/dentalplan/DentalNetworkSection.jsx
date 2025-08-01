@@ -10,10 +10,10 @@ export const DentalNetworkSection = () => {
 
       <div className="text-center mb-16 relative z-10">
         <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 animate-slide-in-down">
-          Our Expansive Network of Care
+          Network
         </h2>
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto animate-slide-in-down delay-100">
-          Connect with a trusted network of dental professionals dedicated to your oral health. Our comprehensive coverage ensures quality care is always within reach.
+         Access our established network of experienced dentists focused on preventive and restorative care. Regular check-ups, specialist access, and convenient locations simplify your journey to optimal oral health, for you and your family.
         </p>
       </div>
 
@@ -27,7 +27,7 @@ export const DentalNetworkSection = () => {
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Preventive Services</h3>
           <p className="text-gray-600 mb-6 text-base leading-relaxed">
-            Dental examinations, Bitewing X-Rays, Fluoride Treatments (Frequency limitations apply), Space Maintainers.
+           Network options for Preventive Services like Dental examinations, Bitewing X-Rays, Fluoride Treatments (Frequency limitations apply), Space Maintainers
           </p>
           <ul className="space-y-3">
             <li className="flex items-center text-blue-700 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-sm">
@@ -54,7 +54,7 @@ export const DentalNetworkSection = () => {
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Basic Services</h3>
           <p className="text-gray-600 mb-6 text-base leading-relaxed">
-            Fillings, Simple Extractions, Oral Surgery, Periodontics, Root Canals (Endodontics), Sealants.
+          Network options for basic services like Fillings, Simple Extractions, Oral Surgery, Periodontics, Root Canals (Endodontics), Sealants
           </p>
           <ul className="space-y-3">
             <li className="flex items-center text-blue-700 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-sm">
@@ -81,7 +81,7 @@ export const DentalNetworkSection = () => {
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Major Services</h3>
           <p className="text-gray-600 mb-6 text-base leading-relaxed">
-            Crowns & Gold Restorations, Bridgework, Full & Partial Dentures, Dentures Repair and Implants.
+            Network options for major services like Crowns & Gold Restorations, Bridgework, Full & Partial Dentures, Dentures Repair and Implants
           </p>
           <ul className="space-y-3">
             <li className="flex items-center text-blue-700 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-sm">

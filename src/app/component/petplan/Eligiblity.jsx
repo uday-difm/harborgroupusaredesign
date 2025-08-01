@@ -10,10 +10,10 @@ export const Eligibility = () => {
 
       <div className="relative max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
-          Eligibility Criteria of Pet Plan
+         Eligibility criteria of Pet Plan
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-          Open to pet owners, our Pet Plans ensure that comprehensive health protection for your furry friends is within reach.
+Open to pet owners, our Pet Plans ensure that comprehensive health protection for your furry friends is within reach
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -44,7 +44,7 @@ export const Eligibility = () => {
               Age Eligibility
             </h3>
             <p className="text-lg leading-relaxed opacity-90">
-              Tailored to cover individual pet owners aged 18 to 100 years, ensuring coverage throughout various life stages.
+             Tailored to cover individual pet owners aged 18 to 100 years, ensuring coverage throughout various life stages.
             </p>
           </div>
 
@@ -59,7 +59,7 @@ export const Eligibility = () => {
               Pet Ownership
             </h3>
             <p className="text-lg leading-relaxed opacity-90">
-              Our Pet Plans are accessible to individuals with beloved pets in their care.
+            Our Pet Plans are accessible to individuals with beloved pets in their care.
             </p>
           </div>
 

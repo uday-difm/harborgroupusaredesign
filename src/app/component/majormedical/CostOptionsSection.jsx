@@ -30,10 +30,10 @@ export const CostOptionsSection = () => {
             Know about Cost Options
           </p>
           <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
-            Cost Options and Coverage Scenarios
+           Cost Options and Coverage Scenarios
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-            Our Major Medical Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs for maintaining a balanced Major Medical.
+          Our Major Medical Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs for maintaining a balanced Major Medical.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export const CostOptionsSection = () => {
                                 <div>
                                     <h3 className="text-lg font-bold text-indigo-900">Customizable Plans</h3>
                                     <p className="mt-1 text-base text-gray-600">
-                                        Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care.
+                                    Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care.
                                     </p>
                                 </div>
                             </div>

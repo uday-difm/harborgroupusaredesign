@@ -22,7 +22,7 @@ export const HeroAbout = () =>{
               At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
             </p>
             <p className="mt-4 text-lg text-gray-600 text-justify">
-             With a track record that spans a considerable period, we’ve accumulated valuable know-how about healthcare. Our focus is straightforward – helping individuals and businesses navigate the healthcare world. We believe in being upfront, honest, and always putting you first.
+           With a track record that spans a considerable period, we’ve accumulated valuable know-how about healthcare. Our focus is straightforward – helping individuals and businesses navigate the healthcare world. We believe in being upfront, honest, and always putting you first.
             </p>
           </div>
 

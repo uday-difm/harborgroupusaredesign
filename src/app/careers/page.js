@@ -1,5 +1,6 @@
     "use client";
 
+import Link from 'next/link';
     import React, { useState } from 'react'
 
     export default function Careers() {
@@ -72,7 +73,7 @@
               <h1 className="text-sm sm:text-base font-semibold text-blue-600 uppercase tracking-wider mb-2 animate-slide-in-top">
                 Career&apos;s
               </h1>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight animate-slide-in-left">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-indigo-900 mb-6 leading-tight animate-slide-in-left">
                 Welcome to Harbor Group USA <span className="text-sky-500">Careers Page!</span>
               </h2>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed animate-fade-in-delay-text">
@@ -146,7 +147,7 @@
                     required
                   />
                   <label htmlFor="agreeToTerms" className="ml-3 text-sm text-gray-600">
-                    By submitting, you allow us to send you SMS and marketing terms and conditions.
+                    By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</Link>.
                   </label>
                 </div>
                 <button

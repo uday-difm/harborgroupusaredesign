@@ -8,10 +8,10 @@ export const BenefitsofCriticalplan = () => {
        <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Benefits of Critical Plan
+         Benefits of Critical plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-           At Harbor Group USA, we understand the importance of financial security during critical health moments. Our Critical Plans offer a range of easy, simple, and professional benefits to cater to your specific needs.
+          At Harbor Group USA, we understand the importance of financial security during critical health moments. Our Critical Plans offer a range of easy, simple, and professional benefits to cater to your specific needs.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center"> {/* Changed gap-12 to gap-16 */}

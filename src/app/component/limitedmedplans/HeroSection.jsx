@@ -35,10 +35,11 @@ export const HeroSection = () => {
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-center"> 
           <div className="max-w-7xl animate-slideInUp">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
-              Limited Med Plans <br className="hidden sm:block"/>  coverage for specific needs
+             Limited Med Plans <br className="hidden sm:block"/> offering coverage for specific needs
+
             </h1>
             <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
-              Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It's not just a plan; it's a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
+            Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It’s not just a plan; it’s a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
             </p>
             <Link href="#limited-med-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED

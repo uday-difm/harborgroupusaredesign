@@ -16,11 +16,11 @@ export const DentalHeroSection = () => {
         <div className="relative z-10 bg-white-800 bg-opacity-70 p-8 md:p-16  max-w-4xl mx-auto text-center animate-fade-in-up">
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl font-extrabold text-indigo-900 mb-6 leading-tight animate-slide-in-left">
-            Your Radiant Smile, <span className="text-indigo-900">Our Gentle Care.</span>
+           360 degree dental care plans <span className="text-indigo-900">to ensure your oral health.</span>   
           </h1>
           {/* Subheading */}
           <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto animate-slide-in-right delay-200">
-            Discover a new standard of dental wellness with plans designed for your comfort, health, and lasting confidence.
+            Say goodbye to dental worries! Our dental care plans keep your smile healthy and your wallet happy. It’s affordable and easy to use!
           </p>
           {/* Action Button */}
           <Link href="#dental-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-12 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 uppercase tracking-wide text-lg animate-fade-in delay-400">

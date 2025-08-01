@@ -33,10 +33,10 @@ export const BenefitsOfLimitedMed = () => {
           {/* Left Column: Text Content */}
           <div className="text-center lg:text-left animate-slideInLeft">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-6 leading-tight animate-fadeInUp">
-              Benefits Of Limited Med Plans
+             Benefits Of Limited Med Plans
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 animate-fadeInUp delay-100">
-              At Harbor Group USA, we understand the importance of targeted medical coverage. Our Limited Med Plans offer a range of benefits to cater to your specific health needs.
+             At Harbor Group USA, we understand the importance of targeted medical coverage. Our Limited Med Plans offer a range of benefits to cater to your specific health needs.
             </p>
             <ul className="space-y-4 text-gray-700 text-left lg:text-left animate-fadeInUp delay-200">
               <li className="flex items-start">
@@ -44,7 +44,7 @@ export const BenefitsOfLimitedMed = () => {
                   {gradientStops("benefitIconGradient1")}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span className="text-lg">We offer specialized medical coverage tailored to your targeted health concerns</span>
+                <span className="text-lg">We offer specialized medical coverage talored to your targeted health concerns</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-7 h-7 mr-3 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient2)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -74,7 +74,7 @@ export const CostOptions = () => {
 
           {/* Conclusion */}
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-           Choose from various plans crafted to meet different financial requirements. We ensure you get the coverage you need at a price you can afford. Contact our Agents for specific cost breakdowns and payment options.
+         Choose from various plans crafted to meet different financial requirements. We ensure you get the coverage you need at a price you can afford. Contact our Agents for specific cost breakdowns and payment options.
           </p>
         </div>
       </div>

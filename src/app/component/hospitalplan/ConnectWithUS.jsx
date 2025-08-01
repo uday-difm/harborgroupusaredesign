@@ -107,7 +107,7 @@ export const ConnectWithUS = ()=>{
 
           {/* Right Column: Contact Form */}
           <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInRight flex flex-col h-full"> 
-            <h3 className="text-2xl font-bold text-indigo-900 mb-4 text-center">Send Us a Message</h3>
+            <h3 className="text-2xl font-bold text-indigo-900 mb-4 text-center">Connect With US</h3>
             <form className="space-y-6 flex-grow flex flex-col" onSubmit={handleSubmit}> 
               <div className="flex-grow"> 
                 <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-2">Your name*</label>

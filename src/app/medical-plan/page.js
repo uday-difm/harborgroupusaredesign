@@ -8,6 +8,7 @@ import { CostOptions } from '../component/medicalplan/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '../../comman/GetYourPersonalizedMedicalPlan'
 import { MedicalPlanFaq } from '../component/medicalplan/MedicalPlanFaq'
 import { TestimonialMedicalPlan } from '../component/medicalplan/TestimonialMedicalPlan'
+import { MedicalEligibilityCriteriaSection } from '../component/medicalplan/MedicalEligibilityCriteriaSection'
 
 
 export default function page() {
@@ -24,7 +25,8 @@ export default function page() {
       <MedicalFormLanding/>
       <CoverageOptionsSection/>
       <MedicalPlanBenefitsSection/>
-      <EligibilityCriteriaSection/>
+      {/* <EligibilityCriteriaSection/> */}
+      <MedicalEligibilityCriteriaSection/>
       <HowToApply/>
       <CostOptions/>
         <MedicalPlanFaq/>

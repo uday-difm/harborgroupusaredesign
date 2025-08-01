@@ -19,7 +19,7 @@ export const DentalCostsCoverageSection = () => {
         <div className="flex-1 bg-white p-8 rounded-3xl shadow-xl  border-blue-400 transform transition-all duration-500 hover:shadow-2xl hover:translate-y-[-10px] animate-fade-in-left delay-200">
           <h3 className="text-3xl font-bold text-blue-800 mb-6 text-center">Costs Options</h3>
           <p className="text-gray-600 mb-8 text-base leading-relaxed text-center">
-            Understanding the financial aspects of your dental plan is simple with our clear overview.
+            Understanding the costs and coverage options is crucial. Here’s a simplified overview.
           </p>
 
           <div className="space-y-8">
@@ -35,7 +35,7 @@ export const DentalCostsCoverageSection = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
-                  Affordable monthly premiums tailored to fit your budget.
+                 Affordable monthly premiums tailored to fit your budget.
                 </li>
               </ul>
             </div>
@@ -52,7 +52,7 @@ export const DentalCostsCoverageSection = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
-                  Minimal out-of-pocket expenses for preventive services.
+                 Minimal out-of-pocket expenses for preventive services.
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 mt-1 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

@@ -11,7 +11,7 @@ export const CostOption = () =>{
 
       <div className="relative max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
-          Cost Options and Coverage Scenarios
+         Cost Options and Coverage Scenarios
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
           Our Rx Plans provide easy, affordable, and professional options to suit your financial needs for medication.
@@ -27,20 +27,20 @@ export const CostOption = () =>{
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Tailored Premium Options
+             Tailored Premium Options
             </h3>
             <ul className="space-y-3 text-gray-600 text-lg text-left">
               <li className="flex items-start">
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Explore different premium plans designed for varying levels of medication coverage.</span>
+                <span>Explore different premium plans designed for varying levels of medication coverage</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Tailor your plan to align precisely with your financial priorities for medication.</span>
+                <span>Tailor your plan to align precisely with your financial priorities for medication</span>
               </li>
             </ul>
           </div>
@@ -61,13 +61,13 @@ export const CostOption = () =>{
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Benefit from an easy-to-understand co-payment structure for prescription medications.</span>
+                <span>Benefit from an easy-to-understand co-payment structure for prescription medications</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Know your medication costs upfront, ensuring financial transparency.</span>
+                <span>Know your medication costs upfront, ensuring financial transparency</span>
               </li>
             </ul>
           </div>
@@ -81,20 +81,20 @@ export const CostOption = () =>{
                 </svg>
               </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Comprehensive Medication Coverage
+             Comprehensive Medication Coverage
             </h3>
             <ul className="space-y-3 text-gray-600 text-lg text-left">
               <li className="flex items-start">
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Delve into clearly defined coverage scenarios for various prescription medications.</span>
+                <span>Delve into clearly defined coverage scenarios for various prescription medications</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span>Easily understand what's covered, allowing you to plan accordingly for your medication needs.</span>
+                <span>Easily understand what's covered, allowing you to plan accordingly for your medication needs</span>
               </li>
             </ul>
           </div>

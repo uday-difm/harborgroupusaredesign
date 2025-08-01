@@ -31,10 +31,10 @@ export const EligibilitycriteriaofHospital = ()=> {
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility Criteria Of Hospital Plan
+            Eligibility criteria of Hospital Plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Open to individuals and families, our Hospital Plans ensure that specialized hospitalization coverage is within reach, tailored to meet your specific criteria.
+           Open to individuals and families, our Hospital Plans ensure that specialized hospitalization coverage is within reach, tailored to meet your specific criteria.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
@@ -62,7 +62,7 @@ export const EligibilitycriteriaofHospital = ()=> {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Age Eligibility</h3>
               <p className="text-gray-700 text-sm leading-relaxed">
-                Tailored to cover individuals aged 18 to 100 years, ensuring robust coverage throughout various life stages.
+               Tailored to cover individuals aged 18 to 100 years, ensuring robust coverage throughout various life stages.
               </p>
             </div>
 

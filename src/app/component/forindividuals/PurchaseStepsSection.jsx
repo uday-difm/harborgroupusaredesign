@@ -10,10 +10,10 @@ export const PurchaseStepsSection = () =>{
 
       <div className="relative max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
-          How to Purchase Our Individual Plans
+         How to Purchase Our Individual Plans
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-          At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
+         At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -42,7 +42,7 @@ export const PurchaseStepsSection = () =>{
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Compare Plans</h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Review and compare different plans to find the one that aligns with your preferences and budget
+               Review and compare different plans to find the one that aligns with your preferences and budget
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export const PurchaseStepsSection = () =>{
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Select Your Plan</h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-               Once you've found the perfect fit, select your plan and proceed to the application
+              Once you've found the perfect fit, select your plan and proceed to the application
               </p>
             </div>
           </div>

@@ -17,7 +17,7 @@ export const Network = () => {
      <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Network
+           Network
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
             Accessing top-notch support for your hospitalization needs is effortless with our extensive network of experienced professionals.

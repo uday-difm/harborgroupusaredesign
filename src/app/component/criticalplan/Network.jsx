@@ -29,7 +29,7 @@ export const Network =() => {
                 Network
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
-                Accessing support for critical health moments is effortless with our extensive network of experienced professionals.
+             Accessing support for critical health moments is effortless with our extensive network of experienced professionals.
               </p>
               <ul className="space-y-4 text-left">
                 <li className="flex items-start text-gray-600">
@@ -42,7 +42,7 @@ export const Network =() => {
                 </li>
                 <li className="flex items-start text-gray-700">
                <svg className="w-6 h-6 text-sky-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                  <span>Our expansive network covers every corner of the United States, to provide you with critical coverage at your convenience</span>
+                  <span>Your expansive network covers every corner of the United States, to provide you with critical coverage at your convenience</span>
                 </li>
                 <li className="flex items-start text-gray-700">
                  <svg className="w-6 h-6 text-sky-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>

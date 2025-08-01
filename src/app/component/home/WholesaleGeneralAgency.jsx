@@ -9,22 +9,22 @@ export const WholesaleGeneralAgency = () => {
         {
             icon: <Target className="h-7 w-7 text-sky-500" />,
             title: "Our Goal",
-            description: "Compare all options to find you the best plan for the lowest possible premium."
+            description: "Compare all the options to find you the best plan available for the lowest possible premium!"
         },
         {
             icon: <BrainCircuit className="h-7 w-7 text-sky-500" />,
             title: "Knowledge",
-            description: "We make sure your health is protected and guide you through the complexities of ACA."
+            description: "We make sure your health is protected. Got confused with ACA We'll guide you through it!"
         },
         {
             icon: <BarChart3 className="h-7 w-7 text-sky-500" />,
             title: "Expert Analysis",
-            description: "Our experts analyze everything from medical needs to your budget to create a personalized plan."
+            description: "Our experts analyze everything from medical needs to your budget to create a personalized plan!"
         },
         {
             icon: <Award className="h-7 w-7 text-sky-500" />,
             title: "Industry Best Practices",
-            description: "Our consultants cover all healthcare needs, from health to life and employee benefits."
+            description: "Our consultants cover all healthcare needs, from health and medical to life and employee benefits!"
         }
     ];
 
@@ -33,13 +33,13 @@ export const WholesaleGeneralAgency = () => {
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div>
                  <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
-                                Harbor Group USA is a Retail and Wholesale General Agency
+                               Harbor Group USA is a Retail and Wholesale General Agency
                             </h2>
                              <h3 className="mt-4 text-xl font-semibold text-sky-600">
                                 Finding Your Ideal Health Plan with Harbor Group USA
                             </h3>
                             <p className="mt-6 text-gray-600 mb-10">
-                                We offer a range of consulting services, all designed to help you find the best plan you are comfortable with. Whether you're looking for an individual health plan or a group health plan, we have you covered. We will find you precisely what you need.
+                              We offer a range of consulting services, all designed to help you find the best plan you are comfortable with. Whether you’re looking for an individual health plan or a group health plan, we have you covered. We will find you precisely what you need.
                             </p>
                              </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

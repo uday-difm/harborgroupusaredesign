@@ -9,7 +9,7 @@ export const CostOptions = ()=> {
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-          Cost Options and Coverage Scenarios
+         Cost Options and Coverage Scenarios
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
            Our Critical Plans provide easy, simple, and professional options to suit your financial needs during critical health moments.
@@ -40,10 +40,10 @@ export const CostOptions = ()=> {
               <div className="bg-white p-6 rounded-xl shadow-lg text-center md:text-right flex-grow">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Comprehensive Coverage Scenarios</h3>
                 <p className="text-gray-600">
-                Delve into clearly defined coverage scenarios for critical health events
+               Delve into clearly defined coverage scenarios for critical health events
                 </p>
                 <p className="text-gray-600">
-              Easily understand what’s covered, allowing you to plan accordingly for added financial security
+            Easily understand what’s covered, allowing you to plan accordingly for added financial security
                 </p>
               </div>
             </div>
@@ -56,7 +56,7 @@ export const CostOptions = ()=> {
               <div className="bg-white p-6 rounded-xl shadow-lg text-center md:text-left flex-grow">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Transparent Payout Structure</h3>
                 <p className="text-gray-600">
-                  Benefit from an easy-to-understand payout structure for critical health conditions
+                 Benefit from an easy-to-understand payout structure for critical health conditions
                 </p>
               </div>
             </div>

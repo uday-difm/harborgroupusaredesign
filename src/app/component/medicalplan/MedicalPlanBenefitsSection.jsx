@@ -54,10 +54,10 @@ export const MedicalPlanBenefitsSection = () => {
         {/* Right Content Section */}
         <div className="md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center animate-slide-in-right">
           <h2 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
-           Benefits of our best cost sharing medical plans
+          Benefits of our best cost sharing medical plans
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed mb-8 text-gray-700 animate-fade-in-up delay-100">
-            Get everything you need to stay healthy, from doctor visits and mental health support to preventive care and more. Whether you need regular checkups, vaccines, screenings, or expert help with a long-term condition, we’ve got your health covered!
+           Get everything you need to stay healthy, from doctor visits and mental health support to preventive care and more. Whether you need regular checkups, vaccines, screenings, or expert help with a long-term condition, we’ve got your health covered!
           </p>
           <div className="space-y-4">
             {benefitsList.map((benefit, index) => (

@@ -31,12 +31,12 @@ export const HealthCoverage = () => {
         <div className="md:w-1/2 md:pr-8">
           {/* Section Header with subtle animation */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight ">
-            Simplifying Your Path to <span className="text-blue-700">Health Coverage!</span>
+           Simplifying Your Path to<span className="text-blue-700">Health Coverage!</span>
           </h1>
 
           {/* Section Description with subtle animation */}
           <p className="text-base sm:text-lg text-gray-700 mb-10 leading-relaxed animate-fade-in-delay-text">
-            Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customised to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalised coverage, we've got you covered. With an Individual Health Plan from The Harbor Group, you can rest assured knowing that your health and vitality are in good hands. Take the first step towards a healthier future today.
+           Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customised to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalised coverage, we've got you covered. With an Individual Health Plan from The Harbor Group, you can rest assured knowing that your health and vitality are in good hands. Take the first step towards a healthier future today.
           </p>
 
           {/* Call to Action Button with interactive animation */}
@@ -60,7 +60,7 @@ export const HealthCoverage = () => {
       </div>
 
       {/* Consultant Request Modal */}
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fade-in-modal">
           <div className="bg-white rounded-xl shadow-2xl p-6 w-full max-w-md transform transition-all duration-300 ease-out animate-scale-in">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Request a Consultant</h2>
@@ -112,7 +112,7 @@ export const HealthCoverage = () => {
             </form>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Custom CSS for animations */}
       <style jsx>{`

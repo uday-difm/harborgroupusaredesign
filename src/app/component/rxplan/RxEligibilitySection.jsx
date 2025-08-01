@@ -14,7 +14,7 @@ export const RxEligibilitySection = () => {
           Eligibility Criteria of Rx
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-          Accessing support for your medication needs is seamless with our extensive network of experienced professionals.
+         Accessing support for your medication needs is seamless with our extensive network of experienced professionals.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -27,10 +27,10 @@ export const RxEligibilitySection = () => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Resident of the United States
+             Resident of the United States                
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed opacity-90">
-              Our Rx Plans are accessible to individuals and families residing in the United States.
+             Our Rx Plans are accessible to individuals and families residing in the United States
             </p>
           </div>
 
@@ -45,7 +45,7 @@ export const RxEligibilitySection = () => {
               Age Eligibility
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed opacity-90">
-              Tailored to cover individuals aged 18 to 100 years, ensuring comprehensive coverage throughout various life stages.
+             Tailored to cover individuals aged 18 to 100 years, ensuring comprehensive coverage throughout various life stages
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export const RxEligibilitySection = () => {
               Citizenship
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed opacity-90">
-              US citizenship or legal residency status is a prerequisite for enrollment in our Rx Plans.
+             US citizenship or legal residency status is a prerequisite for enrollment in our Rx Plans
             </p>
           </div>
 
@@ -75,7 +75,7 @@ export const RxEligibilitySection = () => {
               Ideal for Medication Financial Support
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed opacity-90">
-              Perfect for those who prioritize affordable solutions for their medication needs.
+              Perfect for those who prioritize affordable solutions for their medication needs
             </p>
           </div>
         </div>

@@ -42,10 +42,10 @@ export const MajorMedicalSection = () => {
               Major Medical Plans
             </p>
             <h1 className="mt-2 text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-              Comprehensive Healthcare Coverage
+            Comprehensive Healthcare Coverage with Our Major Medical Plans
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-200">
-            Prioritizing overall well-being is essential. Our Major Medical Plans are crafted to deliver extensive healthcare coverage, ensuring top-notch care without financial stress. These plans offer a wide range of benefits tailored to diverse needs, including comprehensive medical coverage, preventive care services, and flexible options to suit various budgets and requirements.
+           Prioritizing overall well-being is essential. Our Major Medical Plans are crafted to deliver extensive healthcare coverage, ensuring top-notch care without financial stress. These plans offer a wide range of benefits tailored to diverse needs, including comprehensive medical coverage, preventive care services, and flexible options to suit various budgets and requirements.
             </p>
           </div>
 
