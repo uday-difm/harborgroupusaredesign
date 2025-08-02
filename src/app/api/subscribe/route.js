@@ -19,7 +19,7 @@ export async function POST(request) {
 
     // Check if the email is already subscribed
     const [existingEmail] = await pool.query(
-      "SELECT id FROM `subscribers` WHERE email = ?",
+      "SELECT id FROM `subscribers` WHERE `email` = ?",
       [email.trim()]
     );
 

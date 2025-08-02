@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import pool from '../../../../lib/mysql';
+import { sendMail } from '../../../../lib/nodemailer';
+import { generateEmailTemplate } from '../../../../lib/emailTemplate';
 
 export async function POST(req) {
   try {
@@ -16,6 +18,26 @@ export async function POST(req) {
     const query = `INSERT INTO freequote (name, email) VALUES (?, ?)`;
     const [result] = await pool.execute(query, [name, email]);
 
+    // Email content
+    const emailContent = generateEmailTemplate({
+      subject: '📝 New Free Quote Request',
+      body: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>Free Quote Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+        </div>
+      `,
+      footer: '© 2025 YourCompany. All rights reserved.',
+    });
+
+    // Send notification email
+    await sendMail({
+      to: "anisha.yadav@revcued.com",
+      subject: '📝 New Free Quote Submission',
+      html: emailContent,
+    });
+
     return NextResponse.json({
       message: 'Free quote submitted successfully.',
       data: { id: result.insertId, name, email },
@@ -28,3 +50,4 @@ export async function POST(req) {
     );
   }
 }
+

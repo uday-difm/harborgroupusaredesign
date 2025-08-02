@@ -1,5 +1,7 @@
 
 import pool from "../../../../lib/mysql";
+import { sendMail } from "../../../../lib/nodemailer";
+import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 
 export async function POST(req) {
   try {
@@ -17,6 +19,27 @@ export async function POST(req) {
        VALUES (?, ?, ?)`,
       [fullname, phonenumber, emailaddress]
     );
+
+   // Email content
+    const emailContent = generateEmailTemplate({
+      subject: "📩 New Contact Us Submission",
+      body: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>New Contact Us Request</h2>
+          <p><strong>Name:</strong> ${fullname}</p>
+          <p><strong>Phone Number:</strong> ${phonenumber}</p>
+          <p><strong>Email Address:</strong> ${emailaddress}</p>
+        </div>
+      `,
+      footer: "© 2025 YourCompany. All rights reserved.",
+    });
+
+    // Send email to admin (or whoever handles inquiries)
+    await sendMail({
+      to:  "anisha.yadav@revcued.com",
+      subject: "📬 New Contact Us Form Submission",
+      html: emailContent,
+    });
 
     return new Response(
       JSON.stringify({

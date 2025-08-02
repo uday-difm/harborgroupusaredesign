@@ -95,7 +95,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                     </button>
                 </div>
                 {message && (
-                    <p className="mt-4 text-sm text-center text-gray-700">{message}</p>
+                    <p className="mt-4 text-sm text-center text-green-700">{message}</p>
                 )}
             </div>
         </div>
