@@ -44,13 +44,11 @@ useEffect(() => {
     .then((res) => res.json())
     .then((data) => {
       console.log("Fetched blog data:", data);
-
-      // ✅ Correctly access blog list from the response
       if (Array.isArray(data.data)) {
         setBlogs(data.data);
       } else {
         console.error("Unexpected response format:", data);
-        setBlogs([]); // prevent crash
+        setBlogs([]);
       }
 
       setLoading(false);
@@ -66,8 +64,6 @@ useEffect(() => {
     <div className="bg-gray-50 py-20 md:py-28">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-
-          {/* --- Left Column: Section Header --- */}
           <div className="lg:col-span-1 animate-fade-in-up">
             <p className="text-base font-semibold text-sky-500 uppercase tracking-wide">
               Our Blog
