@@ -3,7 +3,6 @@ import React from 'react'
 export const PurchaseStepsSection = () =>{
   return (
    <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
-      {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
       }}></div>
@@ -26,7 +25,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Visit Our Website</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
               Navigate to our user-friendly website to explore the variety of plans we offer
               </p>
             </div>
@@ -41,7 +40,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Compare Plans</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
                Review and compare different plans to find the one that aligns with your preferences and budget
               </p>
             </div>
@@ -56,7 +55,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Select Your Plan</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
               Once you've found the perfect fit, select your plan and proceed to the application
               </p>
             </div>
@@ -71,7 +70,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Contact our Agent</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
                 Contact our agent through their referred numbers mentioned on our website
               </p>
             </div>
@@ -86,7 +85,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Verification Process</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
                Expect a swift verification process to ensure accuracy and eligibility
               </p>
             </div>
@@ -101,7 +100,7 @@ export const PurchaseStepsSection = () =>{
             </div>
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Confirmation</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
                 Receive prompt confirmation of your enrollment along with detailed plan information
               </p>
             </div>

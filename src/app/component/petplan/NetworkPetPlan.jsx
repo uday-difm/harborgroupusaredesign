@@ -2,19 +2,14 @@
 
 import React from 'react';
 
-
-// Main App component that renders the NetworkFeatures component
 export const NetworkPetPlan = () => {
   return (
  <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
-      {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
       }}></div>
 
-      {/* Content Wrapper for max-width and centering */}
-      <div className="relative max-w-7xl mx-auto space-y-8"> {/* Changed to space-y for vertical spacing between rows */}
-        {/* Top Row: Network Introduction Card (full width) */}
+      <div className="relative max-w-7xl mx-auto space-y-8">
         <div className=" p-8 ">
           <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-6 text-center">
             Network
@@ -23,11 +18,8 @@ export const NetworkPetPlan = () => {
            Accessing top-notch veterinary support for your pets is effortless with our extensive network of experienced professionals
           </p>
         </div>
-
-        {/* Bottom Row: Detailed Network Features Card (full width, containing inner scrollable cards) */}
         <div className=" p-8 ">
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Qualified Veterinary Professionals */}
             <div className="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,7 +27,7 @@ export const NetworkPetPlan = () => {
                 </svg>
                Qualified Veterinary Professionals
               </h3>
-              <ul className="space-y-3 text-gray-700 text-lg">
+              <ul className="space-y-3 text-gray-700 text-lg text-justify">
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -50,8 +42,6 @@ export const NetworkPetPlan = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Nationwide Coverage */}
             <div className="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +49,7 @@ export const NetworkPetPlan = () => {
                 </svg>
                Nationwide Coverage
               </h3>
-              <ul className="space-y-3 text-gray-700 text-lg">
+              <ul className="space-y-3 text-gray-700 text-lg text-justify">
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -74,8 +64,6 @@ export const NetworkPetPlan = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Dedicated Support */}
             <div className="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-blue-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -83,7 +71,7 @@ export const NetworkPetPlan = () => {
                 </svg>
                 Dedicated Support
               </h3>
-              <ul className="space-y-3 text-gray-700 text-lg">
+              <ul className="space-y-3 text-gray-700 text-lg text-justify">
                 <li className="flex items-start">
                   <svg className="h-6 w-6 text-sky-500 flex-shrink-0 mr-2 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import {  ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // --- NEW FAQ Section ---
 export const FaqSection = () => {
@@ -61,7 +62,9 @@ export const FaqSection = () => {
                             Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
                         </p>
                         <div className="relative">
-                            <img 
+                            <Image
+                                width={600}
+                                height={400}
                                 src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
                                 alt="Doctor answering questions"
                                 className="rounded-2xl shadow-xl w-full h-auto object-cover"

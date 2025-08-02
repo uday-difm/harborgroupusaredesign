@@ -67,7 +67,7 @@ const StepCard = ({ iconPath, title, description }) => {
         </svg>
       </div>
       <h2 className="text-2xl font-bold text-gray-900 mb-3">{title}</h2>
-      <p className="text-base text-gray-600 leading-relaxed">{description}</p>
+      <p className="text-base text-gray-600 leading-relaxed text-justify">{description}</p>
     </div>
   );
 };

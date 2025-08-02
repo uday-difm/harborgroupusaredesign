@@ -57,7 +57,7 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Citizenship or Legal Residency</h3>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed text-justify">
         Citizenship or Legal Residency -US citizenship or legal residency status is a prerequisite.
           </p>
         </div>
@@ -71,7 +71,7 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Age Eligibility</h3>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed text-justify">
             Age-Tailored for individuals aged 18 to 100 years
           </p>
         </div>
@@ -86,7 +86,7 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Income Verification</h3>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-600 leading-relaxed text-justify">
            Income Verification-Certain plans may require proof of income to determine eligibility
           </p>
         </div>

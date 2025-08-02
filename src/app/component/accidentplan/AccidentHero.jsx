@@ -19,21 +19,18 @@ export const AccidentHero = () => {
     <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
 
       {/* Hero Section for Accident Coverage - NEW UNIQUE DESIGN (Geometric Overlay) */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white text-blue-900"> {/* Start with a white background */}
-        {/* Background Image - more prominent, but still filtered */}
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white text-blue-900"> 
         <Image
-          className="absolute inset-0 w-full h-full object-cover opacity-60 filter grayscale contrast-120" /* More prominent, desaturated, higher contrast */
-          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident.jpg" // image_ab30b4.png (Accident Coverage Hero Background)
+          className="absolute inset-0 w-full h-full object-cover opacity-60 filter grayscale contrast-120" 
+          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident.jpg"
           alt="Medical professional assisting a patient"
           width={600}
           height= {400}
 
         />
         {/* Multi-stop gradient overlay pulling from logo colors */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-200 to-transparent opacity-60"></div> {/* Darker blue to light blue gradient */}
-        <div className="absolute inset-0 bg-blue-50 opacity-30"></div> {/* Additional light blue overlay */}
-
-        {/* Abstract animated geometric shapes (triangles) using logo colors */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-200 to-transparent opacity-60"></div> 
+        <div className="absolute inset-0 bg-blue-50 opacity-30"></div> 
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -51,16 +48,15 @@ export const AccidentHero = () => {
         </div>
 
         <div className="max-w-7xl mx-auto flex flex-col items-start justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-left">
-          {/* Text Content */}
-          {/* Modified this div to center its content */}
+        
           <div className="max-w-6xl animate-slideInLeft w-full flex flex-col items-center">
             <h1 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold mb-6 leading-tight text-center drop-shadow-xl animate-textGlowLight">
              Coverage for unexpected accidents to ease financial burdens
             </h1>
-            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 ">
            Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
             </p>
-            {/* Button is now centered because its parent is a flex column with items-center */}
+         
             <Link href="#accident-plan-form" className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}
               GET STARTED
             </Link>

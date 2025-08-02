@@ -18,7 +18,7 @@ export const CostOptions = () => {
           {/* Plan Cards Container */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12">
             {/* 2500 Classic Plan Card */}
-            <div className="bg-white border border-indigo-200 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="bg-white border border-indigo-200 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-justify">
               <h2 className="text-2xl sm:text-3xl font-bold text-sky-500 mb-6 text-left">
                 2500 Classic Plan Highlights
               </h2>

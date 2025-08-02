@@ -55,7 +55,7 @@ export const CostOptionsSection = () => {
 
                     {/* Right Column: Text and Options */}
                     <div className="p-8 md:p-12">
-                        <ul className="space-y-6">
+                        <ul className="space-y-6 text-justify">
                             <BenefitListItem delay="0.5s">
                                 <strong className="text-indigo-900">Higher Deductibles, Lower Premiums:</strong> Lower monthly payments, higher out-of-pocket costs.
                             </BenefitListItem>
@@ -75,7 +75,7 @@ export const CostOptionsSection = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold text-indigo-900">Customizable Plans</h3>
-                                    <p className="mt-1 text-base text-gray-600">
+                                    <p className="mt-1 text-base text-gray-600 text-justify">
                                     Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care.
                                     </p>
                                 </div>

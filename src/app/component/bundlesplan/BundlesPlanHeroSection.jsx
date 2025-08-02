@@ -5,23 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const BundlesPlanHeroSection = () => {
- // Define the light blue gradient for icons (kept for consistency, though not used in this single-section view)
-  // const gradientStops = (id) => (
-  //   <defs>
-  //     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-  //       <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-  //       <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
-  //     </linearGradient>
-  //   </defs>
-  // );
 
   return (
  <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
 
-      {/* Hero Section for Combine and Save - Enhanced Design with Light Colors */}
-      {/* Changed background to a radial gradient for more depth */}
+    
        <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900">
-        {/* Abstract background pattern for uniqueness - subtle, animated circles */}
         <div className="absolute inset-0 opacity-20 pointer-events-none animate-bgPulse">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -38,22 +27,20 @@ export const BundlesPlanHeroSection = () => {
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
               Combine and save!
             </h1>
-            {/* Adjusted text color for readability on light background */}
-            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
+          
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 text-justify">
             Forget managing multiple plans – our meticulously crafted Bundles Plans are designed to fit your family’s unique needs and safeguard your health. It’s more than just a plan; it’s your unified health solution!
             </p>
-            {/* Button remains blue with white text */}
+
             <Link href="#bundles-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
             </Link>
           </div>
-
-          {/* Right Column: Image with unique styling */}
           <div className="flex justify-center  animate-slideInRight">
             <Image
             width={600}
             height={400}
-              className="w-full max-w-md h-auto rounded-xl shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" /* Removed rotate-6 and hover:rotate-0 */
+              className="w-full max-w-md h-auto rounded-xl shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" 
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/combine-and-save.jpeg"
               alt="Doctor's hand stacking health-related blocks"
               
@@ -62,7 +49,6 @@ export const BundlesPlanHeroSection = () => {
         </div>
       </section>
 
-      {/* Tailwind CSS Custom Animations */}
        <style jsx>{`
         @keyframes fadeIn {
           from {

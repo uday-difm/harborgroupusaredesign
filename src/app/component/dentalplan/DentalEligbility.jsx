@@ -33,7 +33,7 @@ export const  DentalEligbility = ()=> {
         </div>
 
         {/* Cards Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-justify">
           <EligibilityCard 
             icon={Home} 
             title="Citizenship or Legal Residency"

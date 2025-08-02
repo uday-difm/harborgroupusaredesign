@@ -10,7 +10,7 @@ export const TestimonialResource = () => {
    useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await fetch('/data/testimonial/resourcesfaq.json'); // Replace with your API endpoint
+        const response = await fetch('/data/testimonial/resourcesfaq.json');
         const data = await response.json();
         setTestimonials(data);
       } catch (error) {

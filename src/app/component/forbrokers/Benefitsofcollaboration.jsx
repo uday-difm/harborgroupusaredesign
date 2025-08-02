@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
-// Main App component (or this can be a standalone component to be imported)
 export const Benefitsofcollaboration = () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const darkAccentBlue = '#0D1B3A'; // A darker, richer blue for accent
-  const lightBlueBg = '#4CAFDE'; // Lighter blue from the logo background (approximate)
-  const softGray = '#F0F2F5'; // A very light gray for background
+
+  const primaryBlue = '#1A2E5B'; 
+  const darkAccentBlue = '#0D1B3A'; 
+  const lightBlueBg = '#4CAFDE'; 
+  const softGray = '#F0F2F5'; 
 
   const benefits = [
     {
@@ -54,7 +52,6 @@ export const Benefitsofcollaboration = () => {
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden"
       style={{ backgroundColor: softGray }}
     >
-      {/* Animated Background Gradients/Shapes */}
       <div
         className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
         style={{ backgroundColor: lightBlueBg, transform: 'translate(-70%, -70%)' }}
@@ -67,22 +64,18 @@ export const Benefitsofcollaboration = () => {
         className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
         style={{ backgroundColor: primaryBlue, transform: 'translate(30%, -30%)' }}
       ></div>
-
-      {/* Main Content Area - A large, sweeping card */}
       <div
         className="relative z-10 w-full max-w-7xl  rounded-3xl overflow-hidden flex flex-col animate-fadeInUp"
       >
-        {/* Top Section: Header and Image as a cohesive unit */}
         <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] overflow-hidden flex items-end justify-center p-8 md:p-12 lg:p-16">
           <Image
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Benefits-of-collaboration.jpeg" // Placeholder for your image_403383.png
+            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Benefits-of-collaboration.jpeg" 
             alt="Benefits of Collaboration Header"
             className="absolute inset-0 w-full h-full object-cover animate-zoomIn "
             width={600}
             height={400}
 
           />
-          {/* Stronger gradient overlay for text readability */}
           <div
             className="absolute inset-0"
             style={{
@@ -99,7 +92,6 @@ export const Benefitsofcollaboration = () => {
           </div>
         </div>
 
-        {/* Benefits Grid Section - Floating above the bottom of the image */}
         <div
           className="relative z-20 -mt-20 sm:-mt-24 lg:-mt-32 mx-auto w-11/12 md:w-5/6 lg:w-4/5  p-8 md:p-12 lg:p-16 grid grid-cols-1 md:grid-cols-2 gap-8 animate-slideInUp"
         >
@@ -115,13 +107,11 @@ export const Benefitsofcollaboration = () => {
                   {benefit.title}
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              <p className="text-gray-600 leading-relaxed text-justify">{benefit.description}</p>
             </div>
           ))}
         </div>
       </div>
-
-      {/* Tailwind CSS Custom Animations */}
       <style jsx>{`
         @keyframes blob {
           0% {

@@ -87,36 +87,31 @@ export const MedicalFormLanding = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
-      {/* Background Image with Overlay */}
+    <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}  id="medical-form">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg" // Placeholder for your medical background image
+          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg"
           alt="Medical Background"
           layout="fill"
           objectFit="cover"
           quality={100}
           className="animate-fade-in"
         />
-        {/* Darker overlay for text readability */}
         <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${primaryDarkBlue}D0, ${primaryDarkBlue}A0, transparent)` }}></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Content Section */}
         <div className="text-white lg:text-left text-center p-6 lg:p-0 animate-slide-in-left">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
            Medical Plans for Complete Health Coverage
           </h2>
-          <p className="text-lg sm:text-xl leading-relaxed mb-8 animate-fade-in-up delay-100">
+          <p className="text-lg sm:text-xl leading-relaxed mb-8 animate-fade-in-up delay-100 text-justify">
         Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions – all in one comprehensive medical cost sharing plans without much hassle.
           </p>
           <Link href="/contact" className="px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75 animate-fade-in-up delay-200" style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}>
             GET STARTED
           </Link>
         </div>
-
-        {/* Right Form Section */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 " style={{ backgroundColor: white }}>
           <h3 className="text-3xl font-extrabold mb-2" style={{ color: primaryDarkBlue }}>
             Fill Out The Form
@@ -173,7 +168,7 @@ export const MedicalFormLanding = () => {
                  name="consent"
                 checked={formData.consent}
                 onChange={handleInputChange}
-                className="mt-1 mr-2 accent-current" // Using accent-current to inherit color from parent if set
+                className="mt-1 mr-2 accent-current"
                 style={{ color: accentLightBlue }}
               />
               <label htmlFor="consent" className="text-gray-600 text-sm text-left">
@@ -190,14 +185,10 @@ export const MedicalFormLanding = () => {
             </button>
           
           </form>
-             {/* Display error or success message */}
           {error && <div className="mt-4 text-red-500">{error}</div>}
           {message && <div className="mt-4 text-green-500">{message}</div>}
         </div>
       </div>
-
-      {/* Tailwind CSS Custom Animations */}
-      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}
       <style jsx>{`
         @keyframes fadeIn {
           from { opacity: 0; }

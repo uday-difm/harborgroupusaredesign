@@ -4,7 +4,6 @@ export const RxEligibilitySection = () => {
   return (
     <>
       <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
-      {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
       }}></div>
@@ -18,7 +17,6 @@ export const RxEligibilitySection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Eligibility Card 1: Resident of the United States */}
           <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
             <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
               <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -29,7 +27,7 @@ export const RxEligibilitySection = () => {
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
              Resident of the United States                
             </h3>
-            <p className="text-lg text-gray-600 leading-relaxed opacity-90">
+            <p className="text-lg text-gray-600 leading-relaxed opacity-90 ">
              Our Rx Plans are accessible to individuals and families residing in the United States
             </p>
           </div>

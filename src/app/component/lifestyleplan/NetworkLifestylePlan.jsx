@@ -37,7 +37,7 @@ export const NetworkLifestylePlan = () => {
           </h1>
 
           {/* Introduction */}
-          <p className={`text-lg text-gray-600 mb-8 leading-relaxed`}>
+          <p className={`text-lg text-gray-600 mb-8 leading-relaxed text-justify`}>
            Accessing support for your lifestyle needs is effortless with our extensive network of experienced professionals.
           </p>
 

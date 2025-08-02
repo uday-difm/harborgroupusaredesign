@@ -79,12 +79,12 @@ export const LatestArticles = () => {
                     className="transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
                   />
                 </div>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-3" style={{ color: primaryDarkBlue }}>
+                <div className="p-6 flex flex-col flex-grow text-jistify">
+                  <h3 className="text-xl font-bold mb-3 text-justify" style={{ color: primaryDarkBlue }}>
                     {article.blog_title}
                   </h3>
-                  <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow">
-                    {article.blog_description?.slice(0, 140)}...
+                  <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow text-justify">
+                    {article.blog_description}
                   </p>
                   <a
                     href={`/blog/${article.blog_slug}`}

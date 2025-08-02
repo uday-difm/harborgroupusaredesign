@@ -3,10 +3,9 @@
 import React from 'react';
 
 export const CoverageOptionsSection = () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryDarkBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
-  const softGrayBg = '#F0F2F5'; // A very light gray for background
+  const primaryDarkBlue = '#1A2E5B'; 
+  const accentLightBlue = '#4CAFDE'; 
+  const softGrayBg = '#F0F2F5'; 
   const white = '#FFFFFF';
 
   const keyFeatures = [
@@ -20,7 +19,6 @@ export const CoverageOptionsSection = () => {
 
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
-      {/* Animated Background Gradients/Shapes - subtle movement */}
       <div
         className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
         style={{ backgroundColor: accentLightBlue + '20', transform: 'translate(-70%, -70%)' }}

@@ -86,7 +86,7 @@ export const DetailedPlanDescriptions = () => {
                 </svg>
                 Prescription Drug Benefits:
               </h3>
-              <p className="text-gray-600 ml-7">{plan.prescription}</p>
+              <p className="text-gray-600 ml-7 ">{plan.prescription}</p>
             </div>
 
             {/* Additional details section */}
