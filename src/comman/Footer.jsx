@@ -4,22 +4,20 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin, ChevronUp } from 'lucide-react';
 
-
-// --- Logo Component ---
-const Logo = ({ className }) => (
-    <img
-        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
-        alt="Harbor Group USA Logo"
-        className={className || "h-14 w-auto"}
-        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
-    />
-);
+// const Logo = ({ className }) => (
+//     <img
+//         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
+//         alt="Harbor Group USA Logo"
+//         className={className || "h-14 w-auto"}
+//         onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x50/002060/ffffff?text=Harbor+Group'; }}
+//     />
+// );
 
 export const Footer = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
-    const [isBackToTopVisible, setIsBackToTopVisible] = useState(false); // State for back-to-top button visibility
+    const [isBackToTopVisible, setIsBackToTopVisible] = useState(false); 
 
     const quickLinks = [
         { name: 'For Brokers', href: '/for-brokers' },
@@ -94,7 +92,6 @@ export const Footer = () => {
     return (
         <footer className="bg-gray-100 pt-16">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Newsletter Section */}
                 <div className="relative bg-indigo-900 rounded-2xl p-8 md:p-12 overflow-hidden">
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
                         <div>
@@ -111,27 +108,20 @@ export const Footer = () => {
                                     placeholder="Enter your email"
                                     className="w-full bg-transparent text-gray-800 focus:outline-none"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
+                                    onChange={(e) => setEmail(e.target.value)}/>
                                 <button type="submit" className="bg-sky-500 text-white font-semibold px-5 py-2.5 rounded-md hover:bg-sky-600 transition-colors">
                                     Subscribe
                                 </button>
                             </div>
-                            {/* Error / Success Messages */}
                             {error && <div className="mt-4 text-red-500">{error}</div>}
                             {message && <div className="mt-4 text-green-500">{message}</div>}
                         </form>
-
                     </div>
-
                 </div>
-
-                {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16">
-                    {/* Logo and About */}
                     <div className="space-y-4">
                         <Link href="/" className="inline-block" onClick={scrollToTop}>
-                            <Logo className="h-16 w-auto" />
+                           <span className="text-2xl font-bold text-indigo-900">Harbor Group USA</span>
                         </Link>
                         <p className="text-sm text-gray-600">
                             At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
@@ -144,24 +134,18 @@ export const Footer = () => {
                             ))}
                         </div>
                     </div>
-
-                    {/* Quick Links */}
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Quick Links</h4>
                         <ul className="mt-4 space-y-3">
                             {quickLinks.map(link => <li key={link.name}><Link href={link.href} onClick={scrollToTop} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
-
-                    {/* Legal Links */}
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Legal</h4>
                         <ul className="mt-4 space-y-3">
                             {legalPages.map(link => <li key={link.name}><Link href={link.href} onClick={scrollToTop} className="text-sm text-gray-600 hover:text-sky-500 transition-colors">{link.name}</Link></li>)}
                         </ul>
                     </div>
-
-                    {/* Contact Info */}
                     <div>
                         <h4 className="text-base font-semibold text-indigo-900">Contact Us</h4>
                         <div className="mt-4 space-y-3 text-sm">
@@ -178,8 +162,6 @@ export const Footer = () => {
                                 <span className="text-gray-600 group-hover:text-sky-500 transition-colors">+1 754-229-9273</span>
                             </a>
                         </div>
-
-                        {/* Business Hours Section */}
                         <div className="mt-6">
                             <h4 className="text-base font-semibold text-indigo-900">Business Hours</h4>
                             <div className="mt-4 space-y-3 text-sm">
@@ -198,15 +180,11 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Bottom Bar */}
             <div className="bg-gray-200">
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
                     <p className="text-sm text-gray-500">© {new Date().getFullYear()} Harbor Group USA. All Rights Reserved.</p>
                 </div>
             </div>
-
-            {/* Back to Top Button */}
             {isBackToTopVisible && (
                 <button
                     onClick={scrollToTop}

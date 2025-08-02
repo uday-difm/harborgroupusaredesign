@@ -234,7 +234,9 @@ export default function UpdateBlog() {
 
                   {/* Show existing image if no new image is selected */}
                   {!selectedImage && existingImage && (
-                    <img
+                    <Image
+                      width={100} 
+                      height={60}
                       src={`${existingImage}`}
                       alt="Current Blog Feature"
                       className="h-20 mt-2 rounded border"
