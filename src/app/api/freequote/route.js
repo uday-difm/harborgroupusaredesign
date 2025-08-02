@@ -33,7 +33,7 @@ export async function POST(req) {
 
     // Send notification email
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+        to: "support@harborgroupusa.com",
       subject: '📝 New Free Quote Submission',
       html: emailContent,
     });

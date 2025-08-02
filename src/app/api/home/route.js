@@ -41,7 +41,7 @@ export async function POST(req) {
 
     // Send email notification to your admin/support
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+        to: "support@harborgroupusa.com",
       subject: "📩Get Your Free Health Plan Quote Submission",
       html: emailContent,
     });

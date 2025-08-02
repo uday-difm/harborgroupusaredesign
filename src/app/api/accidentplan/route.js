@@ -39,7 +39,8 @@ export async function POST(req) {
 
     // Send email
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+      //  to: "support@harborgroupusa.com",
+      to: "support@harborgroupusa.com",
       subject: "🚑 Accident Plan Form Submission",
       html,
     });

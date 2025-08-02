@@ -42,7 +42,8 @@ export async function POST(req) {
 
     // Send email notification (to you or to the user)
     await sendMail({
-      to: 'anisha.yadav@revcued.com', // Set in .env
+      //to: 'anisha.yadav@revcued.com', 
+       to: "support@harborgroupusa.com",
       subject: "📬 New Bundle Plan Form Submission",
       html: emailContent,
     });

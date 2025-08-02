@@ -41,7 +41,8 @@ export async function POST(req) {
 
     // Send email to internal team
     await sendMail({
-      to:  "anisha.yadav@revcued.com",
+      //to:  "anisha.yadav@revcued.com",
+       to: "support@harborgroupusa.com",
       subject: "📨 New Critical Plan Form Submission",
       html: emailContent,
     });
