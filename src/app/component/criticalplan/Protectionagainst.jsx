@@ -104,23 +104,17 @@ export const Protectionagainst = ()=> {
          
         </defs>
       </svg>
-
-      {/* Hero Section - Critical Illness Protection */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900" id="critical-plan-form"> 
-        {/* Background Image from user upload */}
         <Image
         width={600}
         height={400}
           className="absolute inset-0 w-full h-full object-cover opacity-70"
-          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Critical-plan-hero-section.jpeg" // image_9d247a.jpg
+          src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Critical-plan-hero-section.jpeg"
           alt="Hands with subtle medical background"
          
         />
-        {/* Gradient Overlay for light and decent color */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 opacity-60"></div>
         <div className="absolute inset-0 bg-blue-50 opacity-40"></div>
-
-        {/* Abstract background pattern: subtle, animated geometric shapes */}
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -128,7 +122,7 @@ export const Protectionagainst = ()=> {
                 <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
               </filter>
             </defs>
-            <g fill="#60A5FA" filter="url(#shapeBlur)"> {/* Blue-400 for shapes */}
+            <g fill="#60A5FA" filter="url(#shapeBlur)"> 
               <circle cx="10" cy="10" r="8" opacity="0.15" className="animate-shapeFloat1" />
               <rect x="80" y="20" width="12" height="12" rx="3" ry="3" opacity="0.1" className="animate-shapeFloat2" />
               <polygon points="30,85 40,95 20,95" opacity="0.12" className="animate-shapeFloat3" />
@@ -140,10 +134,10 @@ export const Protectionagainst = ()=> {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 p-4 sm:p-6 lg:p-8 text-center lg:text-left">
           {/* Left Column: Text Content */}
           <div className="max-w-3xl lg:w-1/2 animate-slideInLeft mb-8 lg:mb-0">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl text-indigo-900 animate-textGlow"> {/* Changed text-white to text-blue-900 */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 leading-tight drop-shadow-xl text-indigo-900 animate-textGlow"> 
              Protection against critical illnesses for added security
             </h1>
-            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl mx-auto lg:mx-0 text-justify drop-shadow-md animate-fadeInUp delay-100"> {/* Changed text-gray-100 to text-blue-800 */}
+            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl mx-auto lg:mx-0 text-justify drop-shadow-md animate-fadeInUp delay-100 text-justify">
              Safeguard your loved-ones with our Critical Plans at Harbor Group USA. Offering added security against the uncertainties of life, our Critical Plans provide protection specifically crafted to shield you from the financial impact of critical illnesses.
             </p>
           </div>
@@ -152,13 +146,13 @@ export const Protectionagainst = ()=> {
           <div className="w-full lg:w-1/2 max-w-md bg-white p-8 rounded-xl shadow-lg animate-slideInRight">
             <h3 className="text-2xl font-bold text-indigo-900 mb-6 text-center">Your Information</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="flex flex-col sm:flex-row gap-6"> {/* Added flex utilities for row layout and gap */}
-                <div className="flex-1"> {/* Added flex-1 to make them take equal width */}
+              <div className="flex flex-col sm:flex-row gap-6"> 
+                <div className="flex-1"> 
                   <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-2">Your name*</label>
                   <input type="text" id="name" name="name" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="Your name" value={formData.name}
                   onChange={handleInputChange} />
                 </div>
-                <div className="flex-1"> {/* Added flex-1 to make them take equal width */}
+                <div className="flex-1"> 
                   <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Your email*</label>
                   <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com" value={formData.email}
                   onChange={handleInputChange} />
@@ -181,7 +175,6 @@ export const Protectionagainst = ()=> {
                 {isSubmitting ? "Submitting..." : "SUBMIT"}
               </button>
             </form>
-               {/* Display error or success message */}
             {error && <div className="mt-4 text-red-500">{error}</div>}
             {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
           </div>

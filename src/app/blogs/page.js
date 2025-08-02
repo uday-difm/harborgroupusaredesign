@@ -74,20 +74,16 @@ export default function Blogs() {
       <meta property="og:url" content="https://harborgroupusa.com/blogs/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-sans antialiased flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
-        {/* Page Header Section */}
         <header className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-6xl font-extrabold text-gray-900 mb-6 tracking-tight leading-tight animate-fade-in-down">
             Our Insights
           </h1>
-          <div className="h-2 w-24 bg-blue-600 mx-auto mb-8 rounded-full animate-scale-in"></div> {/* Animated Underline */}
+          <div className="h-2 w-24 bg-blue-600 mx-auto mb-8 rounded-full animate-scale-in"></div>
           <p className="text-xl text-gray-700 leading-relaxed animate-fade-in-up">
             Explore our latest articles and thought leadership on healthcare, wellness, and industry trends.
           </p>
         </header>
-
-        {/* Blog Posts Grid Section */}
         <main className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Individual Animated Blog Post Card */}
           {blogs.slice(0, visibleCount).map((blog) => (
             
             <div key={blog.blog_id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out overflow-hidden flex flex-col cursor-pointer">
@@ -127,11 +123,11 @@ export default function Blogs() {
                   {blog.formatted_blog_date}
                 </p>
                
-                <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-snug ">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 leading-snug text-justify">
                   {blog.blog_title}
                 </h2>
 
-                <p className="text-gray-700 leading-relaxed mb-6 flex-grow">
+                <p className="text-gray-700 leading-relaxed mb-6 flex-grow text-justify">
                   {blog.blog_description}
                 </p>
                </Link>

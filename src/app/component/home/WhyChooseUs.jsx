@@ -55,7 +55,7 @@ export const WhyChooseUsSection = () => {
                                         <ChevronDown className={`h-6 w-6 text-gray-400 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`} />
                                     </button>
                                     <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-40 mt-4' : 'max-h-0'}`}>
-                                        <p className="pl-14 text-gray-600">{reason.description}</p>
+                                        <p className="pl-14 text-gray-600 text-justify">{reason.description}</p>
                                     </div>
                                 </div>
                             ))}

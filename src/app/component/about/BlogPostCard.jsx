@@ -86,14 +86,13 @@ useEffect(() => {
           </div>
 
           {/* --- Right Column: Blog Posts --- */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 text-justify">
            {Array.isArray(blogs) && blogs.slice(0, 2).map((blog, i) => (
               <BlogPostCard
                 key={blog.blog_id }
                 image={blog.blog_feature_image}
                 category={blog.category}
                 title={blog.blog_title}
-              
                 date={blog.formatted_blog_date}
                 delay={`${0.2 + i * 0.2}s`}
               />

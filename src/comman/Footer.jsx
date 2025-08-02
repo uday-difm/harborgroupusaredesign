@@ -123,7 +123,7 @@ export const Footer = () => {
                         <Link href="/" className="inline-block" onClick={scrollToTop}>
                            <span className="text-2xl font-bold text-indigo-900">Harbor Group USA</span>
                         </Link>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 text-justify">
                             At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
                         </p>
                         <div className="flex space-x-4">
@@ -172,7 +172,7 @@ export const Footer = () => {
                                         Saturday, Sunday - Closed
                                     </span>
                                 </div>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 text-justify">
                                     After submitting your information to us, a licensed agent will contact you within 24 hours.
                                 </p>
                             </div>

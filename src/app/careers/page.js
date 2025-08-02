@@ -23,13 +23,10 @@ import Link from 'next/link';
       const handleSubmit = (e) => {
         e.preventDefault();
         if (!formData.agreeToTerms) {
-          // In a real app, you'd show a user-friendly message, not alert
           console.log('Please agree to the SMS and marketing terms and conditions.');
           return;
         }
-        // In a real application, you would send this data to a server
         console.log('Career inquiry submitted:', formData);
-        // Reset form or show success message
         setFormData({
           name: '',
           email: '',
@@ -37,7 +34,6 @@ import Link from 'next/link';
           message: '',
           agreeToTerms: false,
         });
-        // You could also show a success message here
       };
 
       return (
@@ -58,17 +54,10 @@ import Link from 'next/link';
             backgroundPosition: 'center',
           }}
         >
-          {/* Gradient Overlay to lighten the image and add a subtle tint */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 to-white/70"></div>
-
-          {/* Main Content Card */}
           <div className="relative  rounded-3xl  p-8 md:p-12 max-w-6xl w-full text-left transform transition-all duration-700 ease-out animate-fade-in-up md:flex md:items-center md:justify-between z-10">
-
-            {/* Decorative Blob/Shape */}
             <div className="absolute -top-10 -right-10 w-48 h-48 bg-sky-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob-1 hidden md:block"></div>
             <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob-2 hidden md:block"></div>
-
-            {/* Left Section - Content */}
             <div className="md:w-1/2 md:pr-12 mb-8 md:mb-0">
               <h1 className="text-sm sm:text-base font-semibold text-blue-600 uppercase tracking-wider mb-2 animate-slide-in-top">
                 Career&apos;s
@@ -76,7 +65,7 @@ import Link from 'next/link';
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-indigo-900 mb-6 leading-tight animate-slide-in-left">
                 Welcome to Harbor Group USA <span className="text-sky-500">Careers Page!</span>
               </h2>
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed animate-fade-in-delay-text">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed animate-fade-in-delay-text text-justify">
                 At Harbor Group USA, we believe in fostering a workplace where talent thrives, innovation flourishes, and employees are empowered to make a real impact in the world of health plans. As a leading provider of Health Plans in the United States, we are dedicated to ensuring the well-being of individuals and families by offering comprehensive and affordable healthcare coverage. Explore careers with us and join a team committed to transforming healthcare.
               </p>
             </div>

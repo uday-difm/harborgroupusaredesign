@@ -24,8 +24,8 @@ export const Network = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 mt-10 text-left">
             {/* Network List - Column 1 */}
-            <ul className="space-y-4 animate-delayFadeIn">
-              <li className="flex items-center text-gray-700">
+            <ul className="space-y-4 animate-delayFadeIn text-justify">
+              <li className="flex items-center text-gray-700 ">
                 <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   {mainIconGradient}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>

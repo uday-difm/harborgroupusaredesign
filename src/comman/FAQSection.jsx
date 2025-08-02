@@ -27,7 +27,7 @@ const FAQItem = ({ question, answer }) => {
         </svg>
       </button>
       {isOpen && (
-        <p className="mt-3 text-gray-600 leading-relaxed animate-fadeIn">
+        <p className="mt-3 text-gray-600 leading-relaxed animate-fadeIn text-justify">
           {answer}
         </p>
       )}

@@ -26,7 +26,7 @@ export const Benefits = () => {
             {/* Holistic Health Assessments Card */}
             <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Holistic Health Assessments</h3>
-              <ul className="space-y-3 text-gray-600 text-left">
+              <ul className="space-y-3 text-gray-600 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient1)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("benefitIconGradient1")}
@@ -47,7 +47,7 @@ export const Benefits = () => {
             {/* Integrated Coverage Card */}
             <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-2">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Integrated Coverage</h3>
-              <ul className="space-y-3 text-gray-700 text-left">
+              <ul className="space-y-3 text-gray-700 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient3)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("benefitIconGradient3")}
@@ -68,7 +68,7 @@ export const Benefits = () => {
             {/* Customizable Lifestyle Add-ons Card */}
             <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-3">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Customizable Lifestyle Add-ons</h3>
-              <ul className="space-y-3 text-gray-700 text-left">
+              <ul className="space-y-3 text-gray-700 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient5)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("benefitIconGradient5")}

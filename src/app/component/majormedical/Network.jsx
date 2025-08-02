@@ -46,7 +46,7 @@ export const NetworkSection = () => {
             <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
               Network 
             </h2>
-            <p className="mt-6 text-lg text-gray-600">
+            <p className="mt-6 text-lg text-gray-600 text-justify">
           Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care.
             </p>
             

@@ -1,45 +1,37 @@
 "use client";
 
 import React from 'react';
-
-// Main App component for the new pet plan benefits page
 export  const PetPlanBenefits = () => {
-  // Define a primary blue gradient for consistency and visual appeal
+
   const primaryBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 1}} /> {/* Tailwind blue-400 */}
-      <stop offset="100%" style={{stopColor: '#3B82F6', stopOpacity: 1}} /> {/* Tailwind blue-500 */}
+      <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: '#3B82F6', stopOpacity: 1}} /> 
     </linearGradient>
   );
 
-  // Define a lighter blue gradient for subtle accents
   const lightBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#BFDBFE', stopOpacity: 1}} /> {/* Tailwind blue-200 */}
-      <stop offset="100%" style={{stopColor: '#93C5FD', stopOpacity: 1}} /> {/* Tailwind blue-300 */}
+      <stop offset="0%" style={{stopColor: '#BFDBFE', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: '#93C5FD', stopOpacity: 1}} />
     </linearGradient>
   );
-
-  // Define a gradient for general buttons
   const buttonGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> {/* Tailwind sky-500 */}
-      <stop offset="100%" style={{stopColor: '#2563EB', stopOpacity: 1}} /> {/* Tailwind blue-600 */}
+      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: '#2563EB', stopOpacity: 1}} /> 
     </linearGradient>
   );
 
-  // Define a gradient for icons (reused from new-page-design)
   const gradientStops = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> {/* Sky-500 */}
-      <stop offset="100%" style={{stopColor: '#0891B2', stopOpacity: 1}} /> {/* Cyan-600 */}
+      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: '#0891B2', stopOpacity: 1}} /> 
     </linearGradient>
   );
 
   return (
     <div className=" bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
-
-      {/* Global SVG for gradient definitions */}
       <svg width="0" height="0" className="absolute">
         <defs>
           {primaryBlueGradient("primaryBlueGradient")}
@@ -52,11 +44,8 @@ export  const PetPlanBenefits = () => {
           {gradientStops("iconGradient5")}
         </defs>
       </svg>
-
-      {/* Benefits of Pet Plan Section */}
       <section className="w-full px-4 sm:px-4 lg:px-6 py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column: Text Content */}
           <div className="text-center lg:text-left animate-slideInLeft">
             <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 leading-tight">
               Benefits of Pet Plan
@@ -97,12 +86,10 @@ export  const PetPlanBenefits = () => {
               </li>
             </ul>
           </div>
-
-          {/* Right Column: Image */}
           <div className="flex justify-center  animate-slideInRight">
             <img
               className="w-full max-w-md h-auto rounded-xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
-              src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/pet-plan-benefit.jpeg" // image_10b57e.jpg (Pet Plan Image)
+              src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/pet-plan-benefit.jpeg" 
               alt="Veterinarian examining a dog"
             />
           </div>

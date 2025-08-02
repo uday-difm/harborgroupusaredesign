@@ -65,7 +65,7 @@ export const WholesaleGeneralAgency = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold text-indigo-900">{feature.title}</h4>
-                                    <p className="mt-1 text-gray-600">{feature.description}</p>
+                                    <p className="mt-1 text-gray-600 text-justify">{feature.description}</p>
                                 </div>
                             </div>
                         ))}

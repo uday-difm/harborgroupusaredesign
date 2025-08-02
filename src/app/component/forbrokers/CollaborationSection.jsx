@@ -6,7 +6,6 @@ export const CollaborationSection = () => {
   return (
     <section className="h-screen flex items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100 font-inter">
       <div className="max-w-6xl mx-auto md:flex md:flex-row-reverse">
-        {/* Image Section */}
         <div className="md:w-1/2 flex items-center justify-center p-6 md:p-12">
           <div className="relative w-full h-80 md:h-full">
             <Image
@@ -15,17 +14,14 @@ export const CollaborationSection = () => {
               alt="Hands collaborating"
               width={600}
               height={400}
-
             />
           </div>
         </div>
-
-        {/* Content Section */}
         <div className="md:w-1/2 p-8 md:p-12 flex flex-col  text-gray-800">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-indigo-900">
             Collaborate with Us!
           </h1>
-          <p className="text-lg sm:text-xl leading-relaxed mb-8 text-gray-700">
+          <p className="text-lg sm:text-xl leading-relaxed mb-8 text-gray-700 text-justify">
            Your gateway to a mutually beneficial partnership with Harbor Group USA awaits. Explore how collaborating with us can open doors to exclusive benefits for both you and your clients. Join forces with us today
           </p>
         

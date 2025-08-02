@@ -80,7 +80,7 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                     </div>
 
                     {/* Text */}
-                    <div className="text-sm text-gray-500">{testimonial.testimonial}</div>
+                    <div className="text-sm text-gray-500 text-justify">{testimonial.testimonial}</div>
                   </div>
                 </div>
               ))

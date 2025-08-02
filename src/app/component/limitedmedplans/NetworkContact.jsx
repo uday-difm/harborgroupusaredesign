@@ -6,8 +6,8 @@ export const NetworkContact = () => {
       const gradientStops = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
+        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> 
+        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} />
       </linearGradient>
     </defs>
   );
@@ -32,13 +32,12 @@ export const NetworkContact = () => {
     }));
   };
 
-  // Email validation function
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
 
-  // Handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,7 +45,6 @@ export const NetworkContact = () => {
     setSuccessMessage("");
     setIsSubmitting(true);
 
-    // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError("All fields are required, and you must agree to the terms.");
       setIsSubmitting(false);
@@ -60,7 +58,7 @@ export const NetworkContact = () => {
     }
 
     try {
-      // API Call
+
       const response = await fetch("/api/limitedmed", {
         method: "POST",
         headers: {
@@ -72,8 +70,8 @@ export const NetworkContact = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setSuccessMessage(data.message); // Success message from the API
-        setFormData({ name: "", email: "", message: "", terms: false }); // Clear form
+        setSuccessMessage(data.message); 
+        setFormData({ name: "", email: "", message: "", terms: false }); 
       } else {
         setError(data.error || "An error occurred. Please try again.");
       }
@@ -87,10 +85,8 @@ export const NetworkContact = () => {
 
   return (
     <>
-         {/* New Section: Connect & Network (from image_ac2573.png) */}
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> {/* Align items to start for form/list top alignment */}
-          {/* Left Column: Connect With Us Form */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> 
           <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInLeft">
             <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
               Connect With Us
@@ -125,21 +121,18 @@ export const NetworkContact = () => {
                 {isSubmitting ? 'Submitting...' : 'SUBMIT'}
               </button>
             </form>
-              {/* Display error or success message */}
             {error && <div className="mt-4 text-red-500">{error}</div>}
             {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
           </div>
-
-          {/* Right Column: Network Information */}
           <div className="bg-blue-50 p-8 rounded-xl shadow-lg animate-slideInRight">
             <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
              Network
             </h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
+            <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 text-justify">
              Accessing top-notch support for your targeted medical needs is effortless with our extensive network of experienced professionals.
             </p>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Specialized Healthcare Professionals</h3>
-            <ul className="space-y-3 text-gray-700 text-left mb-6">
+            <ul className="space-y-3 text-gray-700 text-left mb-6 text-justify">
               <li className="flex items-center">
                 <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#networkIconGradient1)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   {gradientStops("networkIconGradient1")}
@@ -156,7 +149,7 @@ export const NetworkContact = () => {
               </li>
             </ul>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Dedicated Support</h3>
-            <ul className="space-y-3 text-gray-600 text-left">
+            <ul className="space-y-3 text-gray-600 text-left text-justify">
               <li className="flex items-center">
                 <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#networkIconGradient3)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   {gradientStops("networkIconGradient3")}

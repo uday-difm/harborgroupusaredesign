@@ -42,7 +42,7 @@ export const EligibilityCriteriaSection = () => {
 
         {/* --- Main Content Grid --- */}
         <div className="mt-20 max-w-4xl mx-auto">
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 text-justify">
                 {/* Connecting Lines - Decorative */}
                 <div className="hidden md:block absolute w-px h-full bg-sky-200 top-0 left-1/2 -translate-x-1/2"></div>
                 <div className="hidden md:block absolute h-px w-full bg-sky-200 top-1/2 -translate-y-1/2"></div>

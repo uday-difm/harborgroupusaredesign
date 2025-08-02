@@ -124,7 +124,7 @@ export const HowtoPartner = () => {
               How to <span style={{ color: lightBlueBg }}>Partner</span> 
             </h2>
             <p
-              className="text-lg sm:text-xl leading-relaxed mb-8 text-white text-opacity-80 animate-textFadeIn animation-delay-300"
+              className="text-lg sm:text-xl leading-relaxed mb-8 text-white text-opacity-80 animate-textFadeIn animation-delay-300 text-justify"
             >
               At Harbor Group USA, we believe in the power of collaboration, and we look forward to the possibility of working together.
             </p>

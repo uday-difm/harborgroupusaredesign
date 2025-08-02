@@ -34,7 +34,7 @@ export default function ProtectionOverview() {
               <h3 className="text-2xl font-bold text-blue-800 mb-4">
                Comprehensive Financial Safeguard
               </h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 From the anticipated financial obligations to the unforeseen contingencies, each facet is meticulously addressed, providing a robust foundation for the financial security of your loved ones.
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function ProtectionOverview() {
               <h3 className="text-2xl font-bold text-blue-800 mb-4">
                Tailored Coverage
               </h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed text-justify">
                 Get a Term Life Plan built around your family’s specific needs and goals. Whether it’s covering college expenses, paying off bills, or fulfilling their dreams, we work with you to create a personalized plan that provides peace of mind, not just generic coverage.
               </p>
             </div>

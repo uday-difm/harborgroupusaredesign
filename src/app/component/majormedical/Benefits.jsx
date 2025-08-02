@@ -51,7 +51,7 @@ export const BenefitsSection = ()=> {
             </h2>
             
             {/* Benefits List */}
-            <div className="mt-10 space-y-10">
+            <div className="mt-10 space-y-10 text-justify">
                 <BenefitItem icon={ShieldCheck} title="Comprehensive Coverage" delay="0.4s">
                     Our plans provide extensive coverage for medical services, including preventive care, chronic condition management, and emergency services, ensuring that all your healthcare needs are met.
                 </BenefitItem>

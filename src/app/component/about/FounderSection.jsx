@@ -38,11 +38,11 @@ export default function FounderSection() {
               Douglas Muhlbauer
             </h2>
             
-            <div className="mt-8 text-base text-gray-700 space-y-5">
+            <div className="mt-8 text-base text-gray-700 space-y-5 text-justify">
                 <p>
                Founded by <b>Douglas Muhlbauer, Harbor Group USA</b> was established with a mission of excellence in health coverage plans. Over the years, it has become a trusted name in the healthcare services industry, guiding clients through the complexities of health coverage with care, transparency, and expertise. With a deep understanding of the ever-changing landscape, Harbor Group USA remains committed to providing personalized solutions that meet the unique needs of every client.
                 </p>
-                <p>
+                <p >
           Douglas Muhlbauer, an industry expert and advocate for healthcare reform, is also the author of <b>Breaking the Monopoly: The Fight for Affordability,</b> a book that exposes the monopolistic structure of the healthcare system and its impact on consumers. His insights, experience, and commitment to driving change continue to shape Harbor Group USA’s approach, ensuring clients receive the best guidance in navigating their health coverage options.
                 </p>
             </div>
@@ -57,7 +57,7 @@ export default function FounderSection() {
                         </div>
                         <div>
                             <h3 className="font-bold text-indigo-900">Author & Advocate</h3>
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className="text-sm text-gray-600 mt-1 text-justify">
                                 Douglas is the author of <strong className="text-gray-800">Breaking the Monopoly: The Fight for Affordability</strong>, exposing the healthcare system's impact on consumers.
                             </p>
                         </div>

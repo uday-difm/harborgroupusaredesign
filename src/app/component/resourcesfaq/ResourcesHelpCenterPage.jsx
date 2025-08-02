@@ -4,15 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 
 export const ResourcesHelpCenterPage = () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryDarkBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
-  const softGrayBg = '#F0F2F5'; // A very light gray for background
+  const primaryDarkBlue = '#1A2E5B'; 
+  const accentLightBlue = '#4CAFDE'; 
+  const softGrayBg = '#F0F2F5';
   const white = '#FFFFFF';
 
   return (
     <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}10)` }}>
-      {/* Animated Background Gradients/Shapes */}
       <div
         className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
         style={{ backgroundColor: accentLightBlue, transform: 'translate(-70%, -70%)' }}
@@ -23,7 +21,6 @@ export const ResourcesHelpCenterPage = () => {
       ></div>
 
       <div className="relative z-10 max-w-6xl mx-auto text-center  p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white, borderRadius: '1.5rem', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}>
-        {/* Header with Title and Description */}
         <h2 className="text-2xl sm:text-5xl lg:text-4xl font-extrabold leading-tight mb-6 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
        Welcome to Our Resources & Help Center
         </h2>
@@ -39,9 +36,6 @@ export const ResourcesHelpCenterPage = () => {
           </Link>
         </div>
       </div>
-
-      {/* Tailwind CSS Custom Animations */}
-      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}
       <style jsx>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }

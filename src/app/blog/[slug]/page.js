@@ -4,8 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useParams } from 'next/navigation';
 
-
-// Popup Component for "Be the First to Know"
 const BlogSubscribePopup = ({ onClose }) => {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
@@ -46,19 +44,15 @@ const BlogSubscribePopup = ({ onClose }) => {
         }
     };
     return (
-
-        // Added onClick handler to the transparent overlay div
         <div
             className="fixed inset-0 bg-transparent flex items-center justify-center z-50 p-4 font-inter"
             onClick={(e) => {
-                // Close popup only if the click is on the overlay itself, not on its children
                 if (e.target === e.currentTarget) {
                     onClose();
                 }
             }}
         >
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-lg mx-auto relative p-6 sm:p-8 text-center"> {/* Changed max-w-md to max-w-lg to increase width */}
-                {/* Close Button */}
+            <div className="bg-white rounded-lg shadow-xl w-full max-w-lg mx-auto relative p-6 sm:p-8 text-center">
                 <button
                     onClick={onClose}
                     className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold"
@@ -66,18 +60,14 @@ const BlogSubscribePopup = ({ onClose }) => {
                 >
                     &times;
                 </button>
-
-                {/* Title */}
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
                     Be the First to Know
                 </h2>
-                {/* Description */}
+
                 <p className="text-gray-600 mb-6 text-sm sm:text-base">
                     Get immediate updates on our newest blog posts. Whether it&apos;s the latest
                     trends, helpful tips, or personal stories, you&apos;ll be the first to read them.
                 </p>
-
-                {/* Input and Button */}
                 <div className="flex flex-col sm:flex-row gap-3">
                     <input
                         type="email"
@@ -103,7 +93,7 @@ const BlogSubscribePopup = ({ onClose }) => {
 };
 
 export default function BlogDetail() {
-    const { slug } = useParams(); // ← Get the slug from the dynamic route
+    const { slug } = useParams();
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -141,72 +131,74 @@ export default function BlogDetail() {
     }, [slug]);
 
 
-   
+
     if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="flex flex-col items-center">
-          {/* SVG Loader Icon */}
-          <svg className="animate-spin h-10 w-10 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          <p className="text-lg text-gray-700">Loading blogs...</p>
-        </div>
-      </div>
-    );
-  }
+        return (
+            <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+                <div className="flex flex-col items-center">
+                    <svg className="animate-spin h-10 w-10 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p className="text-lg text-gray-700">Loading blogs...</p>
+                </div>
+            </div>
+        );
+    }
 
-  if (error) {
-    return <div className="text-center text-red-600 text-lg mt-10">Error: {error}</div>;
-  }
+    if (error) {
+        return <div className="text-center text-red-600 text-lg mt-10">Error: {error}</div>;
+    }
     if (!blog) return <div className="p-10 text-center">No blog found.</div>;
-
-    // Convert comma-separated tags to array
     const tags = blog.blog_tag ? blog.blog_tag.split(',').map(tag => tag.trim()) : [];
     console.log("tags:", tags);
 
     return (
+        <>
+          <title>{blog ?blog.blog_title : ""}</title>
+        <meta property="og:title" content={blog ? blog.blog_title : ""}/>
+        <meta name="description" content={blog ? blog.blog_description : ""}/>
+        <meta property="og:description" content={blog ? blog.blog_description : ""}/>
+        <meta property="og:image" content={blog ? blog.blog_feature_image : ""}/>
+        <meta name="keywords" content={blog ? blog.blog_tag : ""} />
+        <link rel="canonical" href={`https://harborgroupusa.com/blogs/${slug}`} />
+        <meta property="og:url" content={`https://harborgroupusa.com/blogs/${slug}`} />
 
-        <div className="max-w-4xl mx-auto px-4 py-12">
-            <h1 className="text-4xl font-bold mb-4">{blog.blog_title}</h1>
-            <p className="text-gray-500 mb-6">Published on {blog.formatted_blog_date}</p>
+            <div className="max-w-4xl mx-auto px-4 py-12">
+                <h1 className="text-4xl font-bold mb-4">{blog.blog_title}</h1>
+                <p className="text-gray-500 mb-6">Published on {blog.formatted_blog_date}</p>
 
-            {blog.blog_feature_image && (
-                <Image
-                    src={blog.blog_feature_image}
-                    alt={blog.blog_title}
-                    width={800}
-                    height={400}
-                    className="w-full rounded-lg shadow mb-6 object-cover"
+                {blog.blog_feature_image && (
+                    <Image
+                        src={blog.blog_feature_image}
+                        alt={blog.blog_title}
+                        width={800}
+                        height={400}
+                        className="w-full rounded-lg shadow mb-6 object-cover"
+                    />
+                )}
+                <div
+                    className="prose max-w-none mb-10 text-justify"
+                    dangerouslySetInnerHTML={{ __html: blog.blog_content }}
                 />
-            )}
-
-            {/* Render blog_content as HTML (if it contains HTML) */}
-            <div
-                className="prose max-w-none mb-10 text-justify"
-                dangerouslySetInnerHTML={{ __html: blog.blog_content }}
-            />
-
-            {/* Tags */}
-            {tags.length > 0 && (
-                <div className="mt-12 ">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">Tags:</h3>
-                    <div className="flex flex-wrap justify-center gap-3">
-                        {tags.map((tag, idx) => (
-                            <span
-                                key={idx}
-                                className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
-                            >
-                                {tag}
-                            </span>
-                        ))}
+                {tags.length > 0 && (
+                    <div className="mt-12 ">
+                        <h3 className="text-xl font-bold text-gray-900 mb-4">Tags:</h3>
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {tags.map((tag, idx) => (
+                                <span
+                                    key={idx}
+                                    className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
 
-            {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
-        </div>
-
+                {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
+            </div>
+        </>
     );
 }
