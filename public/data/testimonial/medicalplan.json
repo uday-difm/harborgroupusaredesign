@@ -2,7 +2,8 @@
  [
   {
     "name": "Jane M",
-    "testimonial": "The comprehensive coverage of medical plan with Harbor Group USA, provided me the support I needed during a recent hospitalization. It truly goes beyond the basics!"
+    "testimonial": "The comprehensive coverage of medical plan with Harbor Group USA, provided me the support I needed during a recent hospitalization. It truly goes beyond the basics!",
+      "image": "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/testimonial/4.jpg"
   },
   {
     "name": "David R",
@@ -10,7 +11,8 @@
   },
   {
     "name": "Emily S",
-    "testimonial": "The innovative wellness programs are a transformative game-changer. I've never felt more supported in managing my health and making sustained positive lifestyle changes."
+    "testimonial": "The innovative wellness programs are a transformative game-changer. I've never felt more supported in managing my health and making sustained positive lifestyle changes.",
+     "image": "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/testimonial/3.jpg"
   },
   {
     "name": "John L",

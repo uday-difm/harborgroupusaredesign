@@ -8,7 +8,7 @@ export const TestimonialSection = ({ testimonials = [] }) => {
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    setCurrent(0); // reset to first when testimonials change
+    setCurrent(0); // Reset to first when testimonials change
 
     if (intervalRef.current) clearInterval(intervalRef.current);
 
@@ -34,24 +34,13 @@ export const TestimonialSection = ({ testimonials = [] }) => {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
             What Our Clients Say
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
             We are proud to have helped so many businesses and individuals find their perfect health plan.
           </p>
         </div>
 
-        <div className="mt-16 relative">
+        <div className="mt-1 relative">
           <div className="relative overflow-hidden w-full" style={{ height: "28rem" }}>
-            {/* ✅ Only show avatar when there are testimonials */}
-            {testimonials.length > 0 && currentTestimonial?.avatar && (
-              <div className="absolute -top-8 left-1/2 -translate-x-1/2 z-20">
-                <img
-                  src={currentTestimonial.avatar}
-                  alt={currentTestimonial.name}
-                  className="w-20 h-20 rounded-full border-4 border-gray-50 shadow-md"
-                />
-              </div>
-            )}
-
             {testimonials.length === 0 ? (
               <div className="flex items-center justify-center h-full text-gray-500">
                 No testimonials yet. Please check back later.
@@ -60,26 +49,38 @@ export const TestimonialSection = ({ testimonials = [] }) => {
               testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                  className="absolute inset-0 transition-opacity duration-700 ease-in-out flex items-center justify-center"
                   style={{
                     opacity: index === current ? 1 : 0,
                     zIndex: index === current ? 10 : 1,
                   }}
                 >
-                  <div className="h-full flex flex-col items-center justify-center p-4">
-                    <div className="relative max-w-2xl mx-auto w-full bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-200">
-                      <div className="mt-12 text-center">
-                        <div className="flex justify-center mb-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                        <div className="mt-6">
-                          <div className="font-bold text-indigo-900 text-lg">{testimonial.name}</div>
-                          <div className="text-sm text-gray-500">{testimonial.testimonial}</div>
-                        </div>
+                  <div className="relative max-w-2xl w-full bg-gray-50 p-8 pt-16 rounded-2xl shadow-lg border border-gray-200 text-center">
+                    {/* ✅ Avatar overlapping border */}
+                    {testimonial.image && (
+                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-20 h-20 rounded-full object-cover border-2 border-white shadow"
+                        />
                       </div>
+                    )}
+
+                    {/* Stars */}
+                    <div className="flex justify-center mb-3 mt-2">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                      ))}
                     </div>
+
+                    {/* Name */}
+                    <div className="font-bold text-indigo-900 text-lg mb-2">
+                      {testimonial.name}
+                    </div>
+
+                    {/* Text */}
+                    <div className="text-sm text-gray-500">{testimonial.testimonial}</div>
                   </div>
                 </div>
               ))

@@ -1,4 +1,6 @@
 import pool from "../../../../lib/mysql";
+import { sendMail } from "../../../../lib/nodemailer";
+import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 
 export async function POST(req) {
   try {
@@ -23,6 +25,28 @@ export async function POST(req) {
       [name, email, message]
     );
 
+     // Create email content
+    const emailContent = generateEmailTemplate({
+      subject: "🏥 New Hospital Plan Request",
+      body: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>Hospital Plan Inquiry</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        </div>
+      `,
+      footer: "© 2025 YourCompany. All rights reserved.",
+    });
+
+    // Send notification email to admin
+    await sendMail({
+      to: "anisha.yadav@revcued.com",
+      subject: "🏥 New Hospital Plan Submission",
+      html: emailContent,
+    });
+
+    // Respond with success
     return new Response(
       JSON.stringify({
         message: "Form submitted and email sent!",
@@ -31,7 +55,7 @@ export async function POST(req) {
       { status: 201, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error processing contact form:", error); // Log the error for debugging
+    console.error("Error processing hospital plan form:", error);
     return new Response(
       JSON.stringify({ message: "Internal Server Error", error: error.message }),
       { status: 500, headers: { "Content-Type": "application/json" } }

@@ -1,14 +1,17 @@
 [
   {
     "name": "David S",
-    "testimonial": "Exceptional coverage! The immediate access to basic services is a game-changer for busy individuals like me. Plus, the network dentists are highly skilled and provide top-notch care."
+    "testimonial": "Exceptional coverage! The immediate access to basic services is a game-changer for busy individuals like me. Plus, the network dentists are highly skilled and provide top-notch care.",
+    "image": "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/testimonial/15.jpg"
   },
   {
     "name": "Alex M",
-    "testimonial": "Affordable and comprehensive. From routine check-ups to major procedures, this plan has my dental needs covered. Highly recommended!"
+    "testimonial": "Affordable and comprehensive. From routine check-ups to major procedures, this plan has my dental needs covered. Highly recommended!",
+    "image" : "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/testimonial/16.jpg"
   },
   {
     "name": "Sarah J",
-    "testimonial": "Exceptional coverage! The immediate access to basic services is a game-changer for busy individuals like me. Plus, the network dentists are highly skilled and provide top-notch care."
+    "testimonial": "Exceptional coverage! The immediate access to basic services is a game-changer for busy individuals like me. Plus, the network dentists are highly skilled and provide top-notch care.",
+    "image": "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/testimonial/17.jpg"
   }
 ]

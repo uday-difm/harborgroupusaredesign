@@ -1,4 +1,6 @@
 import pool from "../../../../lib/mysql";
+import { sendMail } from "../../../../lib/nodemailer";
+import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 
 export async function POST(req) {
   try {
@@ -23,6 +25,24 @@ export async function POST(req) {
       [name, email, message]
     );
 
+       // Create email content using your custom template
+    const emailHtml = generateEmailTemplate({
+      subject: "📝 New Term Life Submission",
+      body: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `,
+      footer: "© 2025 YourCompany. All rights reserved.",
+    });
+
+    // Send email notification to admin or desired recipient
+    await sendMail({
+      to: "anisha.yadav@revcued.com",
+      subject: "📝 New Term Life Form Submission",
+      html: emailHtml,
+    });
+
     return new Response(
       JSON.stringify({
         message: "Form submitted and email sent!",
@@ -31,7 +51,7 @@ export async function POST(req) {
       { status: 201, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error processing contact form:", error); // Log the error for debugging
+    console.error("Error processing term life form:", error);
     return new Response(
       JSON.stringify({ message: "Internal Server Error", error: error.message }),
       { status: 500, headers: { "Content-Type": "application/json" } }
