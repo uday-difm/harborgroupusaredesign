@@ -36,7 +36,8 @@ export async function POST(req) {
 
     // Send email to admin (or whoever handles inquiries)
     await sendMail({
-      to:  "anisha.yadav@revcued.com",
+     // to:  "anisha.yadav@revcued.com",
+      to: "support@harborgroupusa.com",
       subject: "📬 New Contact Us Form Submission",
       html: emailContent,
     });

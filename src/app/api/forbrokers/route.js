@@ -44,7 +44,7 @@ export async function POST(req) {
 
     // Send email notification
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+        to: "support@harborgroupusa.com",
       subject: "📨 New Broker Submission Received",
       html: emailContent,
     });

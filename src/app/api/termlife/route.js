@@ -38,7 +38,7 @@ export async function POST(req) {
 
     // Send email notification to admin or desired recipient
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+        to: "support@harborgroupusa.com",
       subject: "📝 New Term Life Form Submission",
       html: emailHtml,
     });

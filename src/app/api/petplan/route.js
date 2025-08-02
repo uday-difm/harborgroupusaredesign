@@ -38,7 +38,7 @@ export async function POST(req) {
 
     // Send email to admin or recipient
     await sendMail({
-      to: "anisha.yadav@revcued.com",
+        to: "support@harborgroupusa.com",
       subject: "🐾 New Pet Plan Submission",
       html: emailContent,
     });
