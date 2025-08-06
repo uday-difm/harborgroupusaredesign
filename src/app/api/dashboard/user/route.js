@@ -1,7 +1,7 @@
 // /app/api/dashboard/user/route.js
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
-import pool from "@/lib/mysql"; // <-- Adjust this if path is different
+import pool from "../../../../../lib/mysql";
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
 
