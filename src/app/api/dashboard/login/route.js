@@ -1,3 +1,5 @@
+// app/api/auth/admin-login/route.js
+
 import pool from "../../../../../lib/mysql";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
@@ -7,10 +9,13 @@ import { serialize } from "cookie";
 export async function POST(request) {
   try {
     const { email, password, rememberMe } = await request.json();
+
+
     const [rows] = await pool.execute(
       "SELECT * FROM `admin` WHERE `email` = ?",
       [email]
     );
+
     if (rows.length === 0) {
       return NextResponse.json(
         { error: "Invalid credentials or insufficient permissions" },
@@ -19,6 +24,7 @@ export async function POST(request) {
     }
 
     const adminUser = rows[0];
+
     const passwordMatch = await bcrypt.compare(password, adminUser.password);
 
     if (!passwordMatch) {
@@ -42,6 +48,7 @@ export async function POST(request) {
       email: adminUser.email,
       role: 'admin'
     };
+
     const response = NextResponse.json(
       {
         message: "Admin login successful",
@@ -49,11 +56,13 @@ export async function POST(request) {
       },
       { status: 200 }
     );
+
     response.headers.set(
       'Set-Cookie',
       serialize('admin_auth_token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
+        sameSite: 'Lax',
         maxAge: rememberMe ? 60 * 60 * 24 * 7 : 60 * 60,
         path: '/',
       })
