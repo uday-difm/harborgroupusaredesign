@@ -62,8 +62,8 @@ export async function POST(request) {
       serialize('admin_auth_token', token, {
         httpOnly: false,
         secure: true,
-        sameSite: 'Lax',
-        maxAge: rememberMe ? 60 * 60 * 24 * 7 : 60 * 60,
+        sameSite: "lax",
+       maxAge: 60 * 60,
         path: '/',
       })
     );
