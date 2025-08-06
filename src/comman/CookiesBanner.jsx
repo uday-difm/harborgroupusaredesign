@@ -27,7 +27,7 @@ const CookiesBanner = () => {
       cookieName="cookieAccepted"
       style={{ background: '#000' }}
       buttonStyle={{
-        background: 'blue',
+        background: '#00A6F4',
         color: 'white',
         fontWeight: 'bold',
         fontSize: '16px',
