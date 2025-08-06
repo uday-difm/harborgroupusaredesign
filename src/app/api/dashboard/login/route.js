@@ -60,7 +60,7 @@ export async function POST(request) {
     response.headers.set(
       'Set-Cookie',
       serialize('admin_auth_token', token, {
-        httpOnly: true,
+        httpOnly: false,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'Lax',
         maxAge: rememberMe ? 60 * 60 * 24 * 7 : 60 * 60,
