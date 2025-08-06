@@ -1,4 +1,4 @@
-// app/api/dashboard/user/route.js
+
 
 import { NextResponse } from "next/server";
 import { jwtVerify } from 'jose';
@@ -8,7 +8,6 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
 
 export async function GET(request) {
   try {
-    // Get the token from cookies
     const token = request.cookies.get('admin_auth_token')?.value;
 
     if (!token) {
@@ -17,11 +16,7 @@ export async function GET(request) {
         { status: 401 }
       );
     }
-
-    // Verify the JWT token
     const { payload } = await jwtVerify(token, secret);
-
-    // Fetch fresh user data from database
     const [rows] = await pool.execute(
       "SELECT `id`, `email` FROM `admin` WHERE `id` = ?",
       [payload.id]
