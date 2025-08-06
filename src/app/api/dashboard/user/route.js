@@ -1,4 +1,3 @@
-// app/api/dashboard/user/route.js
 
 import { NextResponse } from "next/server";
 import { jwtVerify } from 'jose';
@@ -41,7 +40,7 @@ export async function GET(request) {
         user: {
           id: user.id,
           email: user.email,
-          role: 'dashboard'
+          role: 'admin'
         }
       },
       { status: 200 }

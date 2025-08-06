@@ -1,3 +1,5 @@
+// app/api/auth/admin-login/route.js
+
 import pool from "../../../../../lib/mysql";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
@@ -8,6 +10,7 @@ export async function POST(request) {
   try {
     const { email, password, rememberMe } = await request.json();
 
+
     const [rows] = await pool.execute(
       "SELECT * FROM `admin` WHERE `email` = ?",
       [email]
@@ -15,7 +18,7 @@ export async function POST(request) {
 
     if (rows.length === 0) {
       return NextResponse.json(
-        { error: "Invalid credentials" },
+        { error: "Invalid credentials or insufficient permissions" },
         { status: 401 }
       );
     }
@@ -32,45 +35,45 @@ export async function POST(request) {
     }
 
     const token = jwt.sign(
-      {
-        id: adminUser.id,
+      { 
+        id: adminUser.id, 
         email: adminUser.email,
-        role: "admin",
+        role: 'admin' 
       },
       process.env.JWT_SECRET_KEY,
-      {
-        expiresIn: rememberMe ? "7d" : "1h",
-      }
+      { expiresIn: rememberMe ? "7d" : "1h" } 
     );
+    const userWithoutPassword = {
+      id: adminUser.id,
+      email: adminUser.email,
+      role: 'admin'
+    };
 
     const response = NextResponse.json(
       {
         message: "Admin login successful",
-        user: {
-          id: adminUser.id,
-          email: adminUser.email,
-          role: "admin",
-        },
+        user: userWithoutPassword,
       },
       { status: 200 }
     );
 
     response.headers.set(
-      "Set-Cookie",
-      serialize("admin_auth_token", token, {
+      'Set-Cookie',
+      serialize('admin_auth_token', token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "None",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'Lax',
         maxAge: rememberMe ? 60 * 60 * 24 * 7 : 60 * 60,
-        path: "/",
+        path: '/',
       })
     );
 
     return response;
+
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Admin login error:", error);
     return NextResponse.json(
-      { error: "Login failed" },
+      { error: "An unexpected error occurred during login." },
       { status: 500 }
     );
   }
