@@ -16,11 +16,11 @@ const generateSlug = (str) => {
     .replace(/^-+|-+$/g, '');
 };
 
-export async function PUT(req) {
+export async function PUT(req, { params }) {
   try {
     const formData = await req.formData();
 
-    const blog_id = formData.get('blog_id');
+    const blog_id = params.blog_id; // Get from URL param
     if (!blog_id) {
       return NextResponse.json({ success: false, message: 'blog_id is required' }, { status: 400 });
     }
@@ -36,7 +36,6 @@ export async function PUT(req) {
     const existingImage = formData.get('existingImage');
     const imageFile = formData.get('blog_feature_image');
 
-    // Use manual slug if provided and not empty, otherwise generate from title
     const finalSlug =
       blog_slug && blog_slug.trim().length > 0
         ? generateSlug(blog_slug.trim())
@@ -45,8 +44,12 @@ export async function PUT(req) {
     const blog_date_time = `${blog_date} ${blog_time}`;
     let featureImageUrl = existingImage;
 
-    let query = "UPDATE `blogs` SET `blog_slug` = ?, `blog_title` = ?, `blog_tag` = ?, `blog_description` = ?,  `blog_category_id` = ?, `blog_content` = ?,  `blog_date_time` = ?";
-    const params = [
+    let query = `
+      UPDATE blogs 
+      SET blog_slug = ?, blog_title = ?, blog_tag = ?, blog_description = ?, 
+          blog_category_id = ?, blog_content = ?, blog_date_time = ?
+    `;
+    const paramsArr = [
       finalSlug,
       blog_title,
       blog_tag,
@@ -56,6 +59,7 @@ export async function PUT(req) {
       blog_date_time,
     ];
 
+    // Upload new image if provided
     if (imageFile && imageFile.size > 0) {
       const buffer = Buffer.from(await imageFile.arrayBuffer());
       const fileForS3 = {
@@ -65,13 +69,13 @@ export async function PUT(req) {
       };
       featureImageUrl = await uploadToS3('blogs', fileForS3);
       query += `, blog_feature_image = ?`;
-      params.push(featureImageUrl);
+      paramsArr.push(featureImageUrl);
     }
 
     query += ` WHERE blog_id = ?`;
-    params.push(blog_id);
+    paramsArr.push(blog_id);
 
-    const [result] = await pool.execute(query, params);
+    const [result] = await pool.execute(query, paramsArr);
 
     return NextResponse.json({
       success: true,
