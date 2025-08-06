@@ -3,6 +3,12 @@ import { uploadToS3 } from '../../../../../utils/s3Utility';
 import pool from '../../../../../lib/mysql';
 import { NextResponse } from 'next/server';
 
+export const config = {
+  api: {
+    bodyParser: false, // To handle multipart form data manually
+  },
+};
+
 // Function to generate a slug from title or other strings
 const generateSlug = (str) => {
   return str
@@ -15,7 +21,7 @@ const generateSlug = (str) => {
 // The main handler for POST requests
 export async function POST(req) {
   try {
-    // Parse the multipart form data from the request
+    // 1. Parse the multipart form data from the request
     const formData = await req.formData();
 
     // Extract form fields
@@ -43,24 +49,24 @@ export async function POST(req) {
       !imageFile
     ) {
       return NextResponse.json(
-        { message: 'All required fields must be provided.' },
+        { message: 'All required fields are missing.' },
         { status: 400 }
       );
     }
 
-    // Generate blog_id using uuidv4
+    // 4. Generate blog_id using uuidv4
     const blogId = uuidv4();
 
-    // Generate slug from the blog title, but only if no manual slug is provided
+    // 5. Generate slug from the blog title, but only if no manual slug is provided
     const blogSlug = manualBlogSlug ? manualBlogSlug : generateSlug(blogTitle);
 
-    // Handle the file upload to S3
+    // 6. Handle the file upload to S3
     let featureImage = null;
     if (imageFile && imageFile.size > 0) {
       try {
         const buffer = Buffer.from(await imageFile.arrayBuffer());
         const fileForS3 = {
-          buffer,
+          buffer: buffer,
           originalname: imageFile.name,
           mimetype: imageFile.type,
         };
@@ -82,47 +88,33 @@ export async function POST(req) {
     // Combine date and time for the DATETIME column
     const blogDateTime = `${date} ${time}`;
 
-    // Insert the data into the database
-    const query = `
-      INSERT INTO \`blogs\` (
-        \`blog_id\`,
-        \`blog_slug\`,
-        \`blog_title\`,
-        \`blog_description\`,
-        \`blog_tag\`,
-        \`blog_category_id\`,
-        \`blog_publisher_id\`,
-        \`blog_status\`,
-        \`blog_feature_image\`,
-        \`blog_content\`,
-        \`blog_date_time\`
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+    // 7. Insert the data into the database
+    const query = "INSERT INTO `blogs` (`blog_id`, `blog_slug`, `blog_title`, `blog_description`, `blog_tag`, `blog_category_id`, `blog_publisher_id`, `blog_status`, `blog_feature_image`, `blog_content`, `blog_date_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     const values = [
       blogId,
-      blogSlug,
+      blogSlug,  // Use the manual slug if provided, or generated slug
       blogTitle,
-      description,
-      blogTag,
+      description, // Maps to blog_description
+      blogTag,     // Maps to blog_tag
       blogCategoryId,
-      blogPublisherId,
-      '1', // Assuming blog_status as 'active' by default
+      blogPublisherId, // Added the blogPublisherId
+      '1',  // Assuming blog_status as 'active' by default
       featureImage,
-      content,
+      content,     // Maps to blog_content
       blogDateTime,
     ];
 
     // Execute the query
     const [result] = await pool.execute(query, values);
 
-    // Send a success response
+    // 8. Send a success response
     return NextResponse.json(
       {
         message: 'Blog inserted successfully',
-        blogId,
-        blogSlug,
-        featureImage,
+        blogId: blogId,
+        blogSlug: blogSlug,  // Send the used slug
+        featureImage: featureImage,
         databaseResult: result,
       },
       { status: 201 }
