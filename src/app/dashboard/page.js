@@ -22,7 +22,7 @@ export default function DashboardHome() {
  useEffect(() => {
   const fetchUserData = async () => {
     try {
-      const response = await fetch('/api/dashboard/user', {
+      const response = await fetch('/api/dashboard/checkauth', {
         method: 'GET',
         credentials: 'include' // includes cookies in request
       });
@@ -30,7 +30,7 @@ export default function DashboardHome() {
       if (response.ok) {
         const data = await response.json();
         console.log("Fetched user data:", data);
-        setUser(data);
+        setUser(data.user);
       } else if (response.status === 401 || response.status === 403) {
         router.push('/dashboard/login');
       } else {
