@@ -23,7 +23,7 @@ export async function GET(request) {
 
     // Fetch fresh user data from database
     const [rows] = await pool.execute(
-      "SELECT `id`, `email` FROM `admin` WHERE `id` = ?",
+      "SELECT  `email` FROM `admin` WHERE `id` = ?",
       [payload.id]
     );
 
