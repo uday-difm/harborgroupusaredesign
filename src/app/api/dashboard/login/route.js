@@ -12,7 +12,7 @@ export async function POST(request) {
 
     // 1. Find the user by email in the 'admin' table
     const [rows] = await pool.execute(
-      "SELECT * FROM admin WHERE email = ?",
+      "SELECT * FROM `admin` WHERE `email` = ?",
       [email]
     );
 
