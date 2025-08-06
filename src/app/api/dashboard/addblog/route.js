@@ -89,9 +89,20 @@ export async function POST(req) {
     const blogDateTime = `${date} ${time}`;
 
     // 7. Insert the data into the database
-    const query = "INSERT INTO `blogs` (`blog_id`, `blog_slug`, `blog_title`, `blog_description`, `blog_tag`, `blog_category_id`, `blog_publisher_id`, `blog_feature_image`, `blog_content`, `blog_date_time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const query = "INSERT INTO `blogs` (`blog_id`, `blog_slug`, `blog_title`, `blog_description`, `blog_tag`, `blog_category_id`, `blog_publisher_id`, `blog_status`, `blog_feature_image`, `blog_content`, blog_date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    const values = [blogId, blogSlug, blogTitle, description, blogTag, blogCategoryId, blogPublisherId, featureImage, content, blogDateTime,
+    const values = [
+      blogId,
+      blogSlug,  // Use the manual slug if provided, or generated slug
+      blogTitle,
+      description, // Maps to blog_description
+      blogTag,     // Maps to blog_tag
+      blogCategoryId,
+      blogPublisherId, // Added the blogPublisherId
+      '1',  // Assuming blog_status as 'active' by default
+      featureImage,
+      content,     // Maps to blog_content
+      blogDateTime,
     ];
 
     // Execute the query

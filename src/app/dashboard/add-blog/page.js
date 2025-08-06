@@ -136,7 +136,7 @@ const AddBlog = () => {
         formData.append('blogCategory', values.blogCategory);
         formData.append('description', values.description);
         formData.append('content', values.content);
-        formData.append('blogPublisherId', values.blogPublisherId); // Ensure this field is included
+        formData.append('blogPublisherId', values.blogPublisherId); 
 
         // Log form data for debugging
         for (let pair of formData.entries()) {
@@ -166,7 +166,7 @@ const AddBlog = () => {
                     blogCategory: '',
                     description: '',
                     content: '',
-                    blogPublisherId: 'some-publisher-id',
+                    blogPublisherId: '1',
                 });
                 if (imageInputRef.current) imageInputRef.current.value = null;
             } else {
