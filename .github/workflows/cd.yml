@@ -23,14 +23,14 @@ jobs:
     - name: Run Docker Container
       run: |
         sudo docker run -d -p 3000:3000 --name harborgroupusa-container \
-           -e ACCESSKEY=${{ secrets.ACCESSKEY }} \
-           -e BUCKET=${{ secrets.BUCKET }} \
-           -e DATABASE=${{ secrets.DATABASE }} \
-           -e USER=${{ secrets.USER }} \
-           -e PASSWORD=${{ secrets.PASSWORD }} \
-           -e JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }} \
-           -e REGION=${{ secrets.REGION }} \
-           -e SECRETKEY=${{ secrets.SECRETKEY }} \
-           -e HOST=${{ secrets.HOST }} \
+           -e ACCESSKEY="${{ secrets.ACCESSKEY }}" \
+           -e BUCKET="${{ secrets.BUCKET }}" \
+           -e DATABASE="${{ secrets.DATABASE }}" \
+           -e USER="${{ secrets.USER }}" \
+           -e PASSWORD="${{ secrets.PASSWORD }}" \
+           -e JWT_SECRET_KEY="${{ secrets.JWT_SECRET_KEY }}" \
+           -e REGION="${{ secrets.REGION }}" \
+           -e SECRETKEY="${{ secrets.SECRETKEY }}" \
+           -e HOST="${{ secrets.HOST }}" \
         doitformellc/harborgroupusa:latest
       
