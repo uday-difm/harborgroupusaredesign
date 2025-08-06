@@ -1,7 +1,8 @@
+// app/api/dashboard/user/route.js
 
 import { NextResponse } from "next/server";
 import { jwtVerify } from 'jose';
-import pool from "../../../../../lib/mysql";
+import pool from "../../../../../lib/mysql"
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
 
@@ -40,7 +41,7 @@ export async function GET(request) {
         user: {
           id: user.id,
           email: user.email,
-          role: 'admin'
+          role: 'dashboard'
         }
       },
       { status: 200 }
