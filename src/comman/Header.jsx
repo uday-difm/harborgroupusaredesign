@@ -1,7 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, Phone } from 'lucide-react'; 
-import Link from 'next/link';
-import Image from 'next/image';
+import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+// Assuming Link and Image are available from a Next.js-like environment or similar setup
+// For a standalone React app, you might use <a> tags or a custom Link component.
+// For this example, we'll simulate Link and Image behavior with standard HTML elements
+// and a simple image tag, as 'next/link' and 'next/image' are Next.js specific.
+
+// Mock Link and Image for standalone React environment
+const Link = ({ href, children, onClick, className }) => (
+    <a href={href} onClick={onClick} className={className}>
+        {children}
+    </a>
+);
+
+const Image = ({ src, alt, className, width, height }) => (
+    <img src={src} alt={alt} className={className} width={width} height={height} />
+);
+
 
 const Logo = () => (
     <Image
@@ -12,13 +26,14 @@ const Logo = () => (
         className="h-12 md:h-14 w-auto"
     />
 );
+
 const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about-health' },
     { name: 'Major Medical', href: '/major-medical-plan' },
     {
         name: 'Plans',
-        href: '/health-plans',
+        href: '/health-plans', // This is the parent link's href
         dropdown: [
             { name: 'Medical', href: '/medical-plan' },
             { name: 'Dental', href: '/dental-care-plan' },
@@ -36,7 +51,7 @@ const navLinks = [
     },
     {
         name: 'For',
-        href: '/for',
+        href: '/for', // This is the parent link's href
         dropdown: [
             { name: 'For Brokers', href: '/for-brokers' },
             { name: 'For Individuals', href: '/for-individuals' },
@@ -46,16 +61,28 @@ const navLinks = [
     { name: 'Contact', href: '/contact' },
 ];
 
-export const Header = () =>{ 
+export const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [openDropdown, setOpenDropdown] = useState(null); 
+    const [openDropdown, setOpenDropdown] = useState(null);
     const [openDesktopDropdown, setOpenDesktopDropdown] = useState(null);
     const [currentPath, setCurrentPath] = useState('');
     const headerRef = useRef(null);
-    const dropdownCloseTimeout = useRef(null); 
+    const dropdownCloseTimeout = useRef(null);
 
     useEffect(() => {
+        // This effect runs once on component mount to get the initial path.
+        // In a real Next.js app, you'd use useRouter().pathname
         setCurrentPath(window.location.pathname);
+
+        // Simulate path changes for demonstration in a non-Next.js environment
+        // In a real app, this would be handled by your routing solution.
+        const handlePopState = () => {
+            setCurrentPath(window.location.pathname);
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
     }, []);
 
     const toggleMobileMenu = () => {
@@ -70,6 +97,7 @@ export const Header = () =>{
         const handleClickOutside = (event) => {
             if (headerRef.current && !headerRef.current.contains(event.target)) {
                 setIsMobileMenuOpen(false);
+                setOpenDesktopDropdown(null); // Close desktop dropdown on outside click
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -95,9 +123,11 @@ export const Header = () =>{
     };
 
     const isLinkActive = (link) => {
+        // Check if the current path directly matches the link's href
         if (currentPath === link.href) {
             return true;
         }
+        // If the link has a dropdown, check if any dropdown item's href matches the current path
         if (link.dropdown) {
             return link.dropdown.some(item => item.href === currentPath);
         }
@@ -123,7 +153,7 @@ export const Header = () =>{
     const handleDesktopMouseLeave = () => {
         dropdownCloseTimeout.current = setTimeout(() => {
             setOpenDesktopDropdown(null);
-        }, 200); 
+        }, 200);
     };
 
     return (
@@ -131,7 +161,6 @@ export const Header = () =>{
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20 md:h-24">
                     <div className="flex-shrink-0">
-                       
                         <Link href="/" className="flex items-center" onClick={scrollToTop}>
                             <Logo />
                         </Link>
@@ -148,7 +177,7 @@ export const Header = () =>{
                                     onMouseEnter={() => handleDesktopMouseEnter(link.name)}
                                     onMouseLeave={handleDesktopMouseLeave}
                                 >
-                                    <Link 
+                                    <Link
                                         href={link.href}
                                         onClick={scrollToTop}
                                         className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${isActive ? colors.accent : colors.primary
@@ -176,7 +205,7 @@ export const Header = () =>{
                                             <div className="py-2">
                                                 {link.dropdown.map((item) => (
                                                     <Link
-                                                        onClick={scrollToTop}
+                                                        onClick={() => { scrollToTop(); setCurrentPath(item.href); }} // Update path on click
                                                         key={item.name}
                                                         href={item.href}
                                                         className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary
@@ -219,7 +248,7 @@ export const Header = () =>{
                 <div className="flex flex-col h-full">
                     {/* Mobile Menu Header */}
                     <div className="flex items-center justify-between p-4 border-b">
-                        <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); }}><Logo /></Link>
+                        <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath('/'); }}><Logo /></Link>
                         <button onClick={toggleMobileMenu} className="p-2">
                             <X className="h-7 w-7 text-gray-600" />
                         </button>
@@ -240,17 +269,15 @@ export const Header = () =>{
                                                 {link.name}
                                             </button>
                                         ) : (
-                                            // For regular links, clicking navigates and closes the menu
                                             <Link
                                                 href={link.href}
                                                 className={`w-full text-left block px-3 py-3 text-lg font-semibold ${isActive ? colors.accent : colors.primary}`}
-                                                onClick={() => { toggleMobileMenu(); scrollToTop(); }}
+                                                onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(link.href); }} // Update path on click
                                             >
                                                 {link.name}
                                             </Link>
                                         )}
                                         {link.dropdown && (
-                                            // Chevron button to explicitly toggle dropdown
                                             <button onClick={() => handleMobileDropdown(link.name)} className="p-3 text-slate-500">
                                                 <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
                                             </button>
@@ -262,7 +289,7 @@ export const Header = () =>{
                                                 <Link
                                                     key={item.name}
                                                     href={item.href}
-                                                    onClick={() => { toggleMobileMenu(); scrollToTop(); }}
+                                                    onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(item.href); }} // Update path on click
                                                     className={`block px-3 py-2 rounded-md text-base font-medium ${currentPath === item.href ? 'text-sky-600 font-semibold' : 'text-slate-600'} hover:bg-gray-100 hover:text-sky-600`}
                                                 >
                                                     {item.name}
@@ -292,3 +319,5 @@ export const Header = () =>{
         </header>
     );
 }
+
+export default Header; // Export as default for easier use in other files
