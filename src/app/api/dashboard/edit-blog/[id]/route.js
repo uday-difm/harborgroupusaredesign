@@ -45,17 +45,7 @@ export async function PUT(req) {
     const blog_date_time = `${blog_date} ${blog_time}`;
     let featureImageUrl = existingImage;
 
-    let query = `
-      UPDATE blogs
-      SET 
-        blog_slug = ?,
-        blog_title = ?,
-        blog_tag = ?,
-        blog_description = ?,
-        blog_category_id = ?,
-        blog_content = ?,
-        blog_date_time = ?
-    `;
+    let query = "UPDATE `blogs` SET `blog_slug` = ?, `blog_title` = ?, `blog_tag` = ?, `blog_description` = ?,  `blog_category_id` = ?, `blog_content` = ?,  `blog_date_time` = ?";
     const params = [
       finalSlug,
       blog_title,
