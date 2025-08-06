@@ -61,7 +61,7 @@ export async function POST(request) {
       'Set-Cookie',
       serialize('admin_auth_token', token, {
         httpOnly: false,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
         sameSite: 'Lax',
         maxAge: rememberMe ? 60 * 60 * 24 * 7 : 60 * 60,
         path: '/',
