@@ -19,32 +19,34 @@ export default function DashboardHome() {
 
 
   // Fetch user data on component mount
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('/api/dashboard/user', {
-          credentials: 'include' // Important: include cookies
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data.user);
-        } else if (response.status === 401 || response.status === 403) {
-          router.push('/dashboard/login');
-        } else {
-          const errorData = await response.json();
-          setUserError(errorData.error || 'Failed to fetch user data.');
-        }
-      } catch (err) {
-        setUserError('An unexpected error occurred while fetching user data.');
-        console.error('Fetch user error:', err);
-      } finally {
-        setLoadingUser(false);
-      }
-    };
+ useEffect(() => {
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`/api/dashboard/user`, {
+        method: 'GET',
+        credentials: 'include' // includes cookies in request
+      });
 
-    fetchUserData();
-  }, [router]);
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data.user);
+      } else if (response.status === 401 || response.status === 403) {
+        router.push('/dashboard/login');
+      } else {
+        const errorData = await response.json();
+        setUserError(errorData.error || 'Failed to fetch user data.');
+      }
+    } catch (err) {
+      setUserError('An unexpected error occurred while fetching user data.');
+      console.error('Fetch user error:', err);
+    } finally {
+      setLoadingUser(false);
+    }
+  };
+
+  fetchUserData();
+}, [router]);
+
 
   // Fetch blogs when the component mounts
   useEffect(() => {
