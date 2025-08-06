@@ -148,9 +148,9 @@ const SignIn = () => {
                     <input type="checkbox" className="form-checkbox text-red-500" />
                     <span className="ml-2 text-sm">Remember Me</span>
                   </label>
-                  <Link href="/dashboard/reset-password" className="text-sm text-sky-300 hover:underline">
+                  {/* <Link href="/dashboard/reset-password" className="text-sm text-sky-300 hover:underline">
                     Forgot Password?
-                  </Link>
+                  </Link> */}
                 </div>
 
                 {/* Submit */}

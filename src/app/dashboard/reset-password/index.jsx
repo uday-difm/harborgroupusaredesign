@@ -21,17 +21,17 @@ export default function ForgetPassword() {
   const handleNewPasswordChange = (e) => setNewPassword(e.target.value);
   const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
 
-  const handleForgotPassword = async (e) => {
-    e.preventDefault();
-    setErrors('');
-    try {
-      await axios.post(`${baseUrl}/api/dashboard/admin/reset-password`, { email });
-      setOptmsg('Sent OTP to your email. Please check!');
-      setStep(2);
-    } catch (error) {
-      setErrors(error.response?.data?.error || 'Something went wrong.');
-    }
-  };
+  // const handleForgotPassword = async (e) => {
+  //   e.preventDefault();
+  //   setErrors('');
+  //   try {
+  //     await axios.post(`${baseUrl}/api/dashboard/admin/reset-password`, { email });
+  //     setOptmsg('Sent OTP to your email. Please check!');
+  //     setStep(2);
+  //   } catch (error) {
+  //     setErrors(error.response?.data?.error || 'Something went wrong.');
+  //   }
+  // };
 
   const handleOtpVerification = async (e) => {
     e.preventDefault();
@@ -157,7 +157,7 @@ export default function ForgetPassword() {
               : 'Enter your verified email to receive a reset link.'}
           </p>
 
-          <form
+          {/* <form
             onSubmit={
               step === 1
                 ? handleForgotPassword
@@ -175,7 +175,7 @@ export default function ForgetPassword() {
             >
               {step === 3 ? 'Update Password' : 'Next'}
             </button>
-          </form>
+          </form> */}
         </div>
       </div>
     </>
