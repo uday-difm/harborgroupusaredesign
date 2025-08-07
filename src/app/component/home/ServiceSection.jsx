@@ -16,7 +16,7 @@ export const ServicesSection = () => {
         { name: 'Hospital', icon: <HospitalIcon />, href: '/hospital-plan' },
         { name: 'Critical', icon: <HeartCrack />, href: '/critical-plan' },
         { name: 'Lifestyle', icon: <Bike />, href: '/lifestyle-plan' },
-        { name: 'Pet', icon: <Dog />, href: '/pet' },
+        { name: 'Pet', icon: <Dog />, href: '/pet-plan' },
         { name: 'Rx', icon: <Pill />, href: '/rx-plan' },
     ];
 
