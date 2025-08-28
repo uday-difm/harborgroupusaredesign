@@ -31,7 +31,7 @@ export const Footer = () => {
     ];
     const socialLinks = [
         { icon: <Instagram size={20} />, href: 'https://www.instagram.com/harborgroupusa/', name: 'Instagram' },
-        { icon: <Facebook size={20} />, href: 'https://www.facebook.com/theharborgroupusa/', name: 'Facebook' },
+        { icon: <Facebook size={20} />, href: 'https:https://www.facebook.com/TheHarborGroupUS/', name: 'Facebook' },
         { icon: <Twitter size={20} />, href: 'https://x.com/HarborUsa', name: 'Twitter' },
         { icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/company/harbor-group-usa/', name: 'LinkedIn' },
         { icon: <Youtube size={20} />, href: 'https://www.youtube.com/@harborgroupusa', name: 'YouTube' },
