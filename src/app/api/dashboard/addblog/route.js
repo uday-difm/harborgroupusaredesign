@@ -99,7 +99,7 @@ export async function POST(req) {
       blogTag,     // Maps to blog_tag
       blogCategoryId,
       blogPublisherId, // Added the blogPublisherId
-      '1',  // Assuming blog_status as 'active' by default
+      '0',  // Assuming blog_status as 'active' by default
       featureImage,
       content,     // Maps to blog_content
       blogDateTime,
