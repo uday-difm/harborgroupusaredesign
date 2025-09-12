@@ -20,7 +20,7 @@ export async function PUT(req, { params }) {
   try {
     const formData = await req.formData();
 
-    const blog_id = params.blog_id; // Get from URL param
+    const blog_id = params.id; // Get from URL param
     if (!blog_id) {
       return NextResponse.json({ success: false, message: 'blog_id is required' }, { status: 400 });
     }
