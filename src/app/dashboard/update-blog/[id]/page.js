@@ -142,6 +142,7 @@ export default function UpdateBlog() {
       if (res.ok && result?.success) {
         setErrorMessage('');
         setMessage(result.message || 'Blog updated successfully!');
+        router.push('/dashboard/blog-table')
       } else {
         setMessage('');
         setErrorMessage(result?.message || 'Failed to update blog.');
