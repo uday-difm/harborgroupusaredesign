@@ -4,9 +4,11 @@ import { NextResponse } from 'next/server';
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false,   // ✅ needed for multipart
+    sizeLimit: '50mb',   // ✅ allow larger payloads
   },
 };
+
 
 const generateSlug = (str) => {
   return str
