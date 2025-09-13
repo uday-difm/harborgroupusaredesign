@@ -5,9 +5,11 @@ import { NextResponse } from 'next/server';
 
 export const config = {
   api: {
-    bodyParser: false, // To handle multipart form data manually
+    bodyParser: false,   // ✅ needed for multipart
+    sizeLimit: '50mb',   // ✅ allow larger payloads
   },
 };
+
 
 // Function to generate a slug from title or other strings
 const generateSlug = (str) => {
@@ -120,7 +122,7 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Blog insert error:', error);
+    console.error('Blog insert error:', error.stack || error);  
     return NextResponse.json(
       { message: 'Error inserting blog', error: error.message },
       { status: 500 }
