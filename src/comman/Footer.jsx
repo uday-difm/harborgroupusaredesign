@@ -153,14 +153,7 @@ export const Footer = () => {
                                 <Mail className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
                                 <span className="text-gray-600 group-hover:text-sky-500 transition-colors">support@harborgroupusa.com</span>
                             </a>
-                            <a href="tel:+15162186887" className="flex items-center group">
-                                <Phone className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
-                                <span className="text-gray-600 group-hover:text-sky-500 transition-colors">+1 516-218-6887</span>
-                            </a>
-                            <a href="tel:+17542299273" className="flex items-center group">
-                                <Phone className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
-                                <span className="text-gray-600 group-hover:text-sky-500 transition-colors">+1 754-229-9273</span>
-                            </a>
+                            
                              <a href="tel:1 (800) 473-3241" className="flex items-center group">
                                 <Phone className="mr-3 h-5 w-5 text-gray-400 group-hover:text-sky-500 transition-colors" />
                                 <span className="text-gray-600 group-hover:text-sky-500 transition-colors">1 (800) 473-3241 (Toll Free)</span>
