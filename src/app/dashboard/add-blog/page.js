@@ -5,6 +5,7 @@ import axios from 'axios';
 import dynamic from 'next/dynamic';
 import DashboardLayout from '@/app/component/DashboardLayout';
 import { useRouter } from 'next/navigation';
+import { API_BASE } from '@/comman/apiClient';
 
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
@@ -50,7 +51,7 @@ const AddBlog = () => {
       useEffect(() => {
         const fetchUserData = async () => {
           try {
-            const response = await fetch('/api/dashboard/checkauth', {
+            const response = await fetch(`${API_BASE}/api/dashboard/checkauth`, {
               credentials: 'include' // Important: include cookies
             });
             
@@ -77,7 +78,7 @@ const AddBlog = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('/api/dashboard/fatchcategory'); 
+                const response = await axios.get(`${API_BASE}/api/dashboard/fatchcategory`); 
                 if (response.data && response.data.categories) {
                     setCategories(response.data.categories);
                 }
@@ -144,7 +145,7 @@ const AddBlog = () => {
         }
 
         try {
-            const response = await fetch('/api/dashboard/addblog', {
+            const response = await fetch(`${API_BASE}/api/dashboard/addblog`, {
                 method: 'POST',
                 body: formData,
             });
@@ -166,7 +167,7 @@ const AddBlog = () => {
                     blogCategory: '',
                     description: '',
                     content: '',
-                    blogPublisherId: '1',
+                    blogPublisherId: '0',
                 });
                 if (imageInputRef.current) imageInputRef.current.value = null;
             } else {
