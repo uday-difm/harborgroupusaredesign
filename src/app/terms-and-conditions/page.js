@@ -134,7 +134,7 @@ export default function page() {
               The Harbor Group<br/>
               3101 Bayshore Dr, Fort Lauderdale, FL 33304<br/>
               Email: <a href="mailto:doug@bhgsfl.com" className="text-blue-600 hover:underline">doug@bhgsfl.com</a><br/>
-              Phone: (877) 700-2021
+              
             </p>
           </div>
         </div>

@@ -224,8 +224,8 @@ export const Header = () => {
                     <div className="hidden lg:flex items-center space-x-4">
                         <div className="text-right">
                             <p className="text-xs text-gray-500">Call Us</p>
-                            <p className={`text-sm font-semibold ${colors.primary}`}>+1 516-210-6887</p>
-                            <p className={`text-xs ${colors.primary}`}>+1 754-229-8270</p>
+                            <p className={`text-sm font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll Free)</p>
+                            
                         </div>
                         <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500 hover:bg-sky-50 transition-colors duration-300`}>
                             <Phone className="h-6 w-6" />
@@ -310,7 +310,7 @@ export const Header = () => {
                             </a>
                             <div className="ml-4">
                                 <p className="text-sm text-gray-500">Call Us</p>
-                                <p className={`text-base font-semibold ${colors.primary}`}>+1 516-210-6887</p>
+                                <p className={`text-base font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll Free)</p>
                             </div>
                         </div>
                     </div>
