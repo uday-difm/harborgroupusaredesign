@@ -33,7 +33,7 @@ export const MajorMedicalSection = () => {
           <div className="absolute inset-0 bg-gray-800/70"></div>
       </div>
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 h-dvh flex items-center justify-center">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 mt-60 mb-65 lg:mt-0 lg:mb-0 lg:px-8 h-dvh flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center py-12">
           
           {/* --- Main Text Content --- */}
