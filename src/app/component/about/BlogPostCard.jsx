@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 // A reusable component for the blog post cards
 const BlogPostCard = ({ image, category, title, author, date, delay }) => {
@@ -25,7 +26,7 @@ const BlogPostCard = ({ image, category, title, author, date, delay }) => {
       <div className="p-6">
         <h3 className="text-xl font-bold text-indigo-900 mb-2 group-hover:text-sky-600 transition-colors duration-300">{title}</h3>
         <div className="flex items-center text-sm text-gray-500">
-        
+
           {/* <span className="mx-2">&#8226;</span> */}
           <span>{date}</span>
         </div>
@@ -39,25 +40,25 @@ export const BlogSection = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  fetch("/api/recentblog")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("Fetched blog data:", data);
-      if (Array.isArray(data.data)) {
-        setBlogs(data.data);
-      } else {
-        console.error("Unexpected response format:", data);
-        setBlogs([]);
-      }
+  useEffect(() => {
+    fetch("/api/recentblog")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Fetched blog data:", data);
+        if (Array.isArray(data.data)) {
+          setBlogs(data.data);
+        } else {
+          console.error("Unexpected response format:", data);
+          setBlogs([]);
+        }
 
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Failed to fetch blogs:", err);
-      setLoading(false);
-    });
-}, []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch blogs:", err);
+        setLoading(false);
+      });
+  }, []);
 
   if (loading) return <p>Loading...</p>;
   return (
@@ -86,22 +87,24 @@ useEffect(() => {
           </div>
 
           {/* --- Right Column: Blog Posts --- */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 text-justify">
-           {Array.isArray(blogs) && blogs.slice(0, 2).map((blog, i) => (
-              <BlogPostCard
-                key={blog.blog_id }
-                image={blog.blog_feature_image}
-                category={blog.category}
-                title={blog.blog_title}
-                date={blog.formatted_blog_date}
-                delay={`${0.2 + i * 0.2}s`}
-              />
-          ))}
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 text-justify animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            {Array.isArray(blogs) && blogs.slice(0, 2).map((blog, i) => (
+              <Link key={blog.blog_id} href={`/blog/${blog.blog_slug}`} passHref>
+                <BlogPostCard
+                  image={blog.blog_feature_image}
+                  category={blog.category}
+                  title={blog.blog_title}
+                  date={blog.formatted_blog_date}
+                  delay={`${0.2 + i * 0.2}s`}
+                />
+              </Link>
+            ))}
           </div>
+
         </div>
-      </div>
+      </div >
       {/* This style block is necessary for the custom animations. */}
-      <style jsx global>{`
+      < style jsx global > {`
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
@@ -110,7 +113,7 @@ useEffect(() => {
           animation: fade-in-up 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
           opacity: 0;
         }
-      `}</style>
-    </div>
+      `}</style >
+    </div >
   );
 }

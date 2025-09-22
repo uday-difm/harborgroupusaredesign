@@ -30,10 +30,10 @@ export const HeroAbout = () =>{
           <div className="relative h-96 lg:h-full flex items-center justify-center animate-fade-in" style={{animationDelay: '0.2s'}}>
             <div className="relative w-full h-full max-w-md">
                 {/* Background decorative shape */}
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-100 to-indigo-100 rounded-3xl transform rotate-12"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-100 mx-5  to-indigo-100 rounded-3xl transform rotate-12"></div>
                 
                 {/* Image container */}
-                <div className="absolute inset-0 p-2">
+                <div className="absolute inset-0 p-2 mx-2">
                     <div className="relative w-full h-full bg-gray-300 rounded-2xl shadow-2xl overflow-hidden transform -rotate-6">
                         <Image 
                             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Who-we-are.jpeg" 
