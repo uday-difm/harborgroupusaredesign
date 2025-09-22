@@ -36,7 +36,7 @@ export const BundlesPlanHeroSection = () => {
               GET STARTED
             </Link>
           </div>
-          <div className="flex justify-center  animate-slideInRight">
+          <div className="flex justify-center mt-5 animate-slideInRight">
             <Image
             width={600}
             height={400}
