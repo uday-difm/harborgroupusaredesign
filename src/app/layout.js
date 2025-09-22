@@ -1,28 +1,42 @@
-"use client";
+// src/app/layout.js
 
+"use client";
 
 import "./globals.css";
 import { Header } from "@/comman/Header";
 import { Footer } from "@/comman/Footer";
-import { usePathname } from "next/navigation";  // Correct hook for client-side navigation
+import { usePathname } from "next/navigation";
 import CookiesBanner from "@/comman/CookiesBanner";
-
-
+import Script from 'next/script'; // Import the Script component
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  
-  // Check if the current route is "/dashboard" or starts with "/dashboard/"
+
   const isDashboardPage = pathname ? pathname.startsWith("/dashboard") : false;
+
   return (
     <html lang="en">
-      <body
-        className="" cz-shortcut-listen="true"
-      >
+      <head>
+        {/* Google Analytics Script */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-NCT1WCEG39"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NCT1WCEG39');
+          `}
+        </Script>
+      </head>
+      <body className="" cz-shortcut-listen="true">
         {!isDashboardPage && <Header />}
         {children}
-             {!isDashboardPage && <Footer />}
-             <CookiesBanner/>
+        {!isDashboardPage && <Footer />}
+        <CookiesBanner />
       </body>
     </html>
   );
