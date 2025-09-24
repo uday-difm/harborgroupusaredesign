@@ -1,9 +1,9 @@
 // File: app/api/blogs/[slug]/route.js or route.ts
 import pool from "../../../../../lib/mysql";
-import { NextResponse } from 'next/server'; 
+import { NextResponse } from 'next/server';
 
 export async function GET(req, context) {
-   const { params } = await context;
+  const { params } = await context;
   const { slug } = params;
 
   if (!slug) {
