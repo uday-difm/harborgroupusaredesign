@@ -21,6 +21,9 @@ const editorConfig = {
     askBeforePasteHTML: true,
     askBeforePasteFromWord: true,
     uploader: {
+        // This is the key change to prevent the TypeError
+        // It prevents the editor from trying to make an AJAX request to a missing URL.
+        url: '', 
         insertImageAsBase64URI: true,
     },
     width: '100%',
@@ -29,56 +32,45 @@ const editorConfig = {
 
 const AddBlog = () => {
     const [values, setValues] = useState({
-        blogTitle: '', 
+        blogTitle: '',
         manualBlogSlug: '',
         tags: '',
-        featureImage: null, 
+        featureImage: null,
         date: '',
         time: '09:00',
-        blogCategory: '', 
+        blogCategory: '',
         description: '',
         content: '',
-        blogPublisherId: '1', 
+        blogPublisherId: '1',
     });
-    const [categories, setCategories] = useState([]); 
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false);
     const imageInputRef = useRef(null);
-      const [user, setUser] = useState(null);
-    const [loadingUser, setLoadingUser] = useState(true);
-    const [userError, setUserError] = useState(null);
-     const router = useRouter();
+    const router = useRouter();
 
-      useEffect(() => {
+    useEffect(() => {
         const fetchUserData = async () => {
-          try {
-            const response = await fetch(`${API_BASE}/api/dashboard/checkauth`, {
-              credentials: 'include' // Important: include cookies
-            });
-            
-            if (response.ok) {
-              const data = await response.json();
-              setUser(data.user);
-            } else if (response.status === 401 || response.status === 403) {
-              router.push('/dashboard/login');
-            } else {
-              const errorData = await response.json();
-              setUserError(errorData.error || 'Failed to fetch user data.');
+            try {
+                const response = await fetch(`/api/dashboard/checkauth`, {
+                    credentials: 'include'
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setValues((prev) => ({ ...prev, blogPublisherId: data.user.id }));
+                } else if (response.status === 401 || response.status === 403) {
+                    router.push('/dashboard/login');
+                }
+            } catch (err) {
+                console.error('Fetch user error:', err);
             }
-          } catch (err) {
-            setUserError('An unexpected error occurred while fetching user data.');
-            console.error('Fetch user error:', err);
-          } finally {
-            setLoadingUser(false);
-          }
         };
-    
         fetchUserData();
-      }, [router]);
+    }, [router]);
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get(`${API_BASE}/api/dashboard/fatchcategory`); 
+                const response = await axios.get(`/api/dashboard/fatchcategory`);
                 if (response.data && response.data.categories) {
                     setCategories(response.data.categories);
                 }
@@ -86,13 +78,14 @@ const AddBlog = () => {
                 console.error('Error fetching categories:', error);
             }
         };
-        fetchCategories(); 
+        fetchCategories();
     }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues((prev) => ({ ...prev, [name]: value }));
     };
+
     const handleFileChange = (e) => {
         setValues((prev) => ({ ...prev, featureImage: e.target.files[0] }));
     };
@@ -137,15 +130,10 @@ const AddBlog = () => {
         formData.append('blogCategory', values.blogCategory);
         formData.append('description', values.description);
         formData.append('content', values.content);
-        formData.append('blogPublisherId', values.blogPublisherId); 
-
-        // Log form data for debugging
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
+        formData.append('blogPublisherId', values.blogPublisherId);
 
         try {
-            const response = await fetch(`${API_BASE}/api/dashboard/addblog`, {
+            const response = await fetch(`/api/dashboard/addblog`, {
                 method: 'POST',
                 body: formData,
             });
@@ -167,7 +155,7 @@ const AddBlog = () => {
                     blogCategory: '',
                     description: '',
                     content: '',
-                    blogPublisherId: '0',
+                    blogPublisherId: values.blogPublisherId,
                 });
                 if (imageInputRef.current) imageInputRef.current.value = null;
             } else {
@@ -202,9 +190,9 @@ const AddBlog = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter Title"
-                                        name="blogTitle" // Added name prop
-                                        value={values.blogTitle} // Added value prop
-                                        onChange={handleChange} // Added onChange prop
+                                        name="blogTitle"
+                                        value={values.blogTitle}
+                                        onChange={handleChange}
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     />
                                 </div>
@@ -213,8 +201,8 @@ const AddBlog = () => {
                                     <input
                                         type="text"
                                         placeholder="Enter Tags"
-                                        name="tags" // Changed from 'tag' to 'tags'
-                                        value={values.tags} // Changed from 'tag' to 'tags'
+                                        name="tags"
+                                        value={values.tags}
                                         onChange={handleChange}
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     />
@@ -227,8 +215,8 @@ const AddBlog = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter Slug"
-                                    name="manualBlogSlug" // Changed from 'slug' to 'manualBlogSlug'
-                                    value={values.manualBlogSlug} // Changed from 'slug' to 'manualBlogSlug'
+                                    name="manualBlogSlug"
+                                    value={values.manualBlogSlug}
                                     onChange={handleChange}
                                     className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                 />
@@ -263,9 +251,9 @@ const AddBlog = () => {
                                         <label className="mb-2 block text-black dark:text-white">Time</label>
                                         <input
                                             type="time"
-                                            name="time" // Added name prop
+                                            name="time"
                                             value={values.time || '09:00'}
-                                            onChange={handleChange} // Added onChange prop
+                                            onChange={handleChange}
                                             className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                         />
                                     </div>
@@ -277,8 +265,8 @@ const AddBlog = () => {
                                 <div>
                                     <label className="mb-2 block text-black dark:text-white">Blog Category</label>
                                     <select
-                                        name="blogCategory" // Changed from 'category' to 'blogCategory'
-                                        value={values.blogCategory} // Changed from 'category' to 'blogCategory'
+                                        name="blogCategory"
+                                        value={values.blogCategory}
                                         onChange={handleChange}
                                         className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                                     >
@@ -353,4 +341,3 @@ const AddBlog = () => {
 };
 
 export default AddBlog;
-

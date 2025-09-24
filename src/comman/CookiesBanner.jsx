@@ -8,8 +8,36 @@ import Link from 'next/link';
 const CookiesBanner = () => {
   const [lang] = useState('en');
 
-  const handleAccept = () => {
+  // Updated function to handle both browser cookie and database storage
+  const handleAccept = async () => {
+    // 1. Set the browser cookie
     Cookies.set('cookieAccepted', 'true', { expires: 365 });
+
+    // 2. Collect and validate additional data
+    const userAgent = (typeof navigator !== 'undefined' && navigator.userAgent) || null;
+    const referrer = (typeof document !== 'undefined' && document.referrer) || null;
+
+    // 3. Make an API call to store consent in the database
+    try {
+      const response = await fetch('/api/cookie-consent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Include userAgent and referrer in the request body
+        body: JSON.stringify({
+          consent: 'accepted',
+          userAgent,
+          referrer,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to record consent in database.');
+      }
+    } catch (error) {
+      console.error('Error while sending consent to server:', error);
+    }
   };
 
   const scrollToTop = () => {
@@ -41,7 +69,6 @@ const CookiesBanner = () => {
         fontSize: '16px',
         borderRadius: '6px',
         padding: '10px 24px',
-
       }}
       setDeclineCookie={false}
       onAccept={({ acceptedByScrolling }) => {
