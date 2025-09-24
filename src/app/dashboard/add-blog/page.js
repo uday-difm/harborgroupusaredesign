@@ -21,10 +21,11 @@ const editorConfig = {
     askBeforePasteHTML: true,
     askBeforePasteFromWord: true,
     uploader: {
-        // This is the key change to prevent the TypeError
-        // It prevents the editor from trying to make an AJAX request to a missing URL.
-        url: '', 
-        insertImageAsBase64URI: true,
+        // Point the Jodit uploader to the new API route.
+        url: '/api/dashboard/upload-image',
+        format: 'json',
+        insertImageAsBase64URI: false,
+        filesVariableName: 'file',
     },
     width: '100%',
     minHeight: 500,

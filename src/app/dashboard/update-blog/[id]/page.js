@@ -49,7 +49,6 @@ export default function UpdateBlog() {
   const [existingImage, setExistingImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const imageInputRef = useRef(null);
   const [message, setMessage] = useState('');
 
 
@@ -83,7 +82,6 @@ export default function UpdateBlog() {
     const fetchCategories = async () => {
       try {
         const res = await axios.get(`/api/dashboard/fatchcategory`);
-        console.log(res.data);
         setCategories(res.data.categories || []);
       } catch (err) {
         console.error('Failed to fetch categories:', err);
