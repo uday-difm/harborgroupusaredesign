@@ -1,11 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
-
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-// import axios from 'axios';
 import Head from 'next/head';
-
-import Link from 'next/link';
 
 const SignIn = () => {
   const [errors, setErrors] = useState('');
@@ -14,32 +10,31 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   axios.defaults.withCredentials = true;
-  // }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading state
+    setErrors('');    // Clear previous errors
+
     try {
       const res = await fetch(`/api/dashboard/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // 🔁 required!
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
-      console.log('response:', data);
 
       if (res.ok) {
         alert('Login successful');
         router.push('/dashboard');
       } else {
-        setErrors(data.error || 'Login failed');
+        setErrors(data.error || 'Login failed. Please check your credentials.');
       }
     } catch (err) {
-      console.error('Login error:', err);
-      setErrors('Something went wrong');
+      setErrors('Something went wrong. Please try again later.');
+    } finally {
+      setLoading(false); // End loading state regardless of success or failure
     }
   };
 
@@ -62,38 +57,6 @@ const SignIn = () => {
 
         <div className="relative z-10 max-w-7xl w-full px-4 py-10">
           <div className=" items-center ">
-            {/* Left Content */}
-            {/* <div className="text-white text-center lg:text-left space-y-6 max-w-2xl mx-auto lg:mx-0">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-xl">
-                Visit WMH India
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-200">
-                WMH features magazines, webitorials, a gallery, calendars, and stories, promoting inclusivity, ethical fashion, and glamour.
-              </p>
-
-              <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4">
-                <a
-                  href="https://wmhindia.com/"
-                  className="w-full md:w-64 py-4 bg-transparent border-4 border-white text-white text-xl font-semibold text-center hover:bg-white hover:text-black transition duration-300"
-                >
-                  Visit Website
-                </a>
-                <a
-                  href="https://wmhindia.com/magazine"
-                  className="w-full md:w-64 py-4 bg-transparent border-4 border-white text-white text-xl font-semibold text-center hover:bg-white hover:text-black transition duration-300"
-                >
-                  Visit Magazines
-                </a>
-              </div>
-
-              <a
-                href="https://wmhindia.com/contact-us"
-                className="inline-block mt-4 px-10 md:px-16 py-3 bg-white hover:bg-primary text-black font-semibold hover:text-white transition duration-300 shadow-lg"
-              >
-                Contact us now
-              </a>
-            </div> */}
-
             {/* Right: Login Form */}
             <div className="bg-white/20 backdrop-blur-md p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-md mx-auto border border-white/30">
               <form onSubmit={handleSubmit}>
@@ -142,21 +105,19 @@ const SignIn = () => {
                 {/* Error Message */}
                 {errors && <p className="text-red-400 text-sm mb-4">{errors}</p>}
 
-                {/* Remember + Forgot */}
+                {/* Remember Me Checkbox */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-2 sm:gap-0">
                   <label className="inline-flex items-center text-white">
                     <input type="checkbox" className="form-checkbox text-red-500" />
                     <span className="ml-2 text-sm">Remember Me</span>
                   </label>
-                  {/* <Link href="/dashboard/reset-password" className="text-sm text-sky-300 hover:underline">
-                    Forgot Password?
-                  </Link> */}
                 </div>
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full py-3 bg-sky-500 text-white font-bold rounded-lg hover:bg-blue-600 transition duration-300"
+                  className={`w-full py-3 bg-sky-500 text-white font-bold rounded-lg transition duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+                  disabled={loading}
                 >
                   {loading ? 'Signing in...' : 'Sign In'}
                 </button>
