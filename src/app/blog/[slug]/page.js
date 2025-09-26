@@ -31,7 +31,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                 setMessage(result.message || "Subscription failed.");
             }
         } catch (err) {
-            console.error(err);
+            console.error(err); 
             setMessage("Something went wrong.");
         } finally {
             setLoading(false);
