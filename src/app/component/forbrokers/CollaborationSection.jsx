@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const CollaborationSection = () => {
   return (
-    <section className="h-screen flex items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100 font-inter">
+    <section className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-blue-100 font-inter py-16">
       <div className="max-w-6xl mx-auto md:flex md:flex-row-reverse">
         <div className="md:w-1/2 flex items-center justify-center p-6 md:p-12">
           <div className="relative w-full h-80 md:h-full">
@@ -22,13 +22,16 @@ export const CollaborationSection = () => {
             Collaborate with Us!
           </h1>
           <p className="text-lg sm:text-xl leading-relaxed mb-8 text-gray-700 text-justify">
-           Your gateway to a mutually beneficial partnership with Harbor Group USA awaits. Explore how collaborating with us can open doors to exclusive benefits for both you and your clients. Join forces with us today
+            Your gateway to a mutually beneficial partnership with Harbor Group USA awaits. Explore how collaborating with us can open doors to exclusive benefits for both you and your clients. Join forces with us today
           </p>
-        
-          <Link href="#broker-form" className="self-start px-8 py-4 bg-sky-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-sky-400 transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-75">
+
+          <Link
+            href="#broker-form"
+            className="self-start px-8 py-4 bg-sky-500 text-white font-bold text-lg rounded-full shadow-lg hover:bg-sky-400 transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-indigo-300 focus:ring-opacity-75"
+          >
             APPLY NOW
           </Link>
-          
+
         </div>
       </div>
     </section>

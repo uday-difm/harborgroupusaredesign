@@ -5,6 +5,32 @@
   --foreground: #171717;
 }
 
+.block{
+  color: black;
+}
+
+/* Ensure all text inside inputs is black by default */
+input, textarea {
+  color: var(--input-text, #000000); /* Default to black, but respect your variable if set */
+}
+/* Style for select dropdown */
+select {
+  color: #000; /* Black text */
+  background-color: #fff; /* White background */
+  border: 1px solid #e5e7eb; /* Light gray border */
+  padding: 0.75rem; /* Padding inside the select */
+  border-radius: 8px; /* Rounded corners */
+  width: 100%; /* Full width */
+}
+
+
+
+/* Style for option elements */
+select option {
+  background-color: #fff; /* White background for options */
+}
+
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -33,10 +59,10 @@ body {
   --surface: #ffffff;
   --muted: #6b7280;
   --input-bg: #ffffff;
-  --input-text: #0f1720;
+  --input-text: #000000;
   --input-placeholder: #9ca3af;
   --input-border: #e5e7eb;
-  --primary: #14c6c3;
+  --primary: #28ebe7;
   --primary-contrast: #021014;
   --success: #059669;
 }
@@ -48,7 +74,7 @@ body {
     --surface: #0f1724;
     --muted: #9aa6b2;
     --input-bg: #0b1220;
-    --input-text: #e6eef6;
+    --input-text: #111010;
     --input-placeholder: #9aa6b2;
     --input-border: rgba(255,255,255,0.06);
     --primary: #22c1c3;
@@ -63,7 +89,7 @@ body {
   --surface: #0f1724;
   --muted: #9aa6b2;
   --input-bg: #0b1220;
-  --input-text: #e6eef6;
+  --input-text: #030303;
   --input-placeholder: #9aa6b2;
   --input-border: rgba(255,255,255,0.06);
   --primary: #22c1c3;
@@ -135,15 +161,19 @@ body {
 
 /* CTA */
 .popup-cta {
-  background: var(--primary);
-  color: var(--primary-contrast, #fff);
+  background: rgb(14 165 233 / var(--tw-ring-opacity, 1));
+  color: white;
   padding: 0.85rem;
-  border-radius: 10px;
+  border-radius: 50px;
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
   box-shadow: 0 6px 18px rgba(2,6,23,0.18);
+}
+
+.popup-cta:focus {
+  --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity, 1));
 }
 
 .popup-cta:active { transform: translateY(1px); }
