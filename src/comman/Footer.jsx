@@ -90,7 +90,7 @@ export const Footer = () => {
 
 
     return (
-        <footer className="bg-gray-100 pt-16">
+        <footer className="bg-gray-100 dark:bg-white/95 pt-16">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="relative bg-indigo-900 rounded-2xl p-8 md:p-12 overflow-hidden">
                     <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
@@ -179,7 +179,7 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-200">
+            <div className="bg-gray-200 dark:bg-gray-300"   >
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
                     <p className="text-sm text-gray-500">© {new Date().getFullYear()} Harbor Group USA. All Rights Reserved.</p>
                 </div>
