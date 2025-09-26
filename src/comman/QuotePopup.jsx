@@ -151,7 +151,7 @@ const QuotePopup = ({ onClose }) => {
         <button
           onClick={handleSubmit}
           disabled={submitting}
-          className="w-full popup-cta"
+          className="w-full popup-cta hover:bg-sky-500!"
         >
           {submitting ? 'Submitting…' : 'Get Your Quote'}
         </button>
