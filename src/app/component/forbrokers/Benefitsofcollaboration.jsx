@@ -2,10 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 export const Benefitsofcollaboration = () => {
 
-  const primaryBlue = '#1A2E5B'; 
-  const darkAccentBlue = '#0D1B3A'; 
-  const lightBlueBg = '#4CAFDE'; 
-  const softGray = '#F0F2F5'; 
+  const primaryBlue = '#1A2E5B';
+  const darkAccentBlue = '#0D1B3A';
+  const lightBlueBg = '#4CAFDE';
+  const softGray = '#F0F2F5';
 
   const benefits = [
     {
@@ -69,12 +69,11 @@ export const Benefitsofcollaboration = () => {
       >
         <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] overflow-hidden flex items-end justify-center p-8 md:p-12 lg:p-16">
           <Image
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Benefits-of-collaboration.jpeg" 
+            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Benefits-of-collaboration.jpeg"
             alt="Benefits of Collaboration Header"
-            className="absolute inset-0 w-full h-full object-cover animate-zoomIn "
-            width={600}
-            height={400}
-
+            layout="fill"                 /* ✨ FIX: Use layout="fill" for responsive background-style image */
+            objectFit="cover"             /* Combine w-full h-full object-cover into objectFit for 'fill' layout */
+            className="animate-zoomIn"    /* Keep your animations, but remove redundant size classes */
           />
           <div
             className="absolute inset-0"

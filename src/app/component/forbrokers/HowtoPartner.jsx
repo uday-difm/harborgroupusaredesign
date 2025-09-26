@@ -174,7 +174,7 @@ export const HowtoPartner = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
+                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 text-black"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Full Name"
                 
