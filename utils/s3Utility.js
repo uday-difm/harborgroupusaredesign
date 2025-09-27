@@ -20,7 +20,7 @@ const s3Client = new S3Client({
         connectTimeout: 60000,  // Max time to establish connection (1 minute)
     },
 });
-
+        
 
 async function uploadToS3(keyPrefix, file) {
     try {
