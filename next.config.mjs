@@ -1,18 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   api: {
-//     bodyParser: {
-//       sizeLimit: '50mb',
-//     },
-//   },
-//   reactStrictMode: true,
-//   images: {
-//     domains: ['harborgroupusa.s3-eu-central-2.ionoscloud.com'],
-//   },
-// };
-
-// export default nextConfig;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   api: {
@@ -22,13 +7,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'harborgroupusa.s3-eu-central-2.ionoscloud.com',
-        pathname: '/home/**',
-      },
-    ],
+    domains: ['harborgroupusa.s3-eu-central-2.ionoscloud.com'],
   },
 };
 
