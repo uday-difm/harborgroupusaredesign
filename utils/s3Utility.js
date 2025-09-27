@@ -11,7 +11,7 @@ const s3Client = new S3Client({
     },
     region: process.env.REGION,
 });
-
+        
 
 async function uploadToS3(keyPrefix, file) {
     try {
