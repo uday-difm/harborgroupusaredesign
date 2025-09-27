@@ -1,5 +1,5 @@
-import pool from '../../../../../lib/mysql';
-import { uploadToS3 } from '../../../../../utils/s3Utility';
+import pool from '../../../../../../lib/mysql';
+import { uploadToS3 } from '../../../../../../utils/s3Utility';
 import { NextResponse } from 'next/server';
 
 export const config = {
