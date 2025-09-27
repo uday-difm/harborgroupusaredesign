@@ -96,12 +96,18 @@ export default function UpdateBlog() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    // Reset image-related error message
+    setErrorMessage('');
+    
     if (file) {
-      if (file.size > 500 * 1024) {
-        setErrorMessage('File size exceeds 500KB. Please upload a smaller image.');
+      // Image size limit check (500KB)
+      const maxFileSize = 500 * 1024; // 500 KB
+      if (file.size > maxFileSize) {
+        setErrorMessage(`File size exceeds ${maxFileSize / 1024}KB. Please upload a smaller image.`);
+        setSelectedImage(null); // Clear selected image if it's too big
         return;
       }
-      setErrorMessage('');
+            
       setSelectedImage(file);
     }
   };
@@ -110,7 +116,15 @@ export default function UpdateBlog() {
     e.preventDefault();
     setLoading(true);
     setErrorMessage('');
-    setMessage(''); 
+    setMessage(''); 
+
+    // CRITICAL CHECK: Block submission if a file is selected and is invalid
+    // This ensures the upload button is disabled if the user has selected a file > 500KB
+    if (selectedImage && selectedImage.size > 500 * 1024) {
+      setErrorMessage('Cannot update. Please select a feature image under 500KB or remove the selection.');
+      setLoading(false);
+      return;
+    }
 
     const formData = new FormData();
     formData.append('blog_id', values.id);
@@ -126,6 +140,7 @@ export default function UpdateBlog() {
     if (selectedImage) {
       formData.append('blog_feature_image', selectedImage);
     } else if (existingImage) {
+      // Send the existing image URL/path to the server if no new file is uploaded
       formData.append('blog_feature_image', existingImage);
     }
 
@@ -135,40 +150,37 @@ export default function UpdateBlog() {
         body: formData,
       });
 
-      // 🔥 FIX 1: Check if the response status is OK (200-299)
-      if (!res.ok) {
-        // Attempt to read the body as text (in case it's HTML like the 504 page)
-        const errorText = await res.text();
-        console.error('Non-OK Response Status:', res.status, 'Body (partial):', errorText.substring(0, 150));
+      // FIX: Robust error handling to catch non-JSON responses (like 504 HTML page)
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Non-OK Response Status:', res.status, 'Body (partial):', errorText.substring(0, 150));
 
-        // Provide specific error messages for known issues
-        if (res.status === 504) {
-             throw new Error("Server timed out (504). Please ensure the feature image size is below 500KB.");
-        }
-        
-        // For other server errors that aren't JSON
-        throw new Error(`Server error (${res.status}). Failed to update blog.`);
-      }
+        if (res.status === 504) {
+             throw new Error("Server timed out (504). This is usually caused by large image uploads on a slow connection. Please manually resize the image to under 500KB.");
+        } else if (res.status === 404) {
+             throw new Error(`Endpoint not found (${res.status}). Check API route: /api/dashboard/edit-blog/${id}`);
+        }
+        
+        throw new Error(`Server error (${res.status}). Failed to update blog.`);
+      }
 
-      // If res.ok is true, we can safely parse the response as JSON
+      // Safely parse JSON
       const result = await res.json();
 
       if (result?.success) {
         setErrorMessage('');
         setMessage(result.message || 'Blog updated successfully!');
-        // Optionally redirect on success
-        setTimeout(() => router.push('/dashboard/blog-table'), 1500); 
+        setTimeout(() => router.push('/dashboard/blog-table'), 1500); 
       } else {
         setMessage('');
         setErrorMessage(result?.message || 'Failed to update blog.');
       }
 
     } catch (err) {
-      // FIX 2: Catch network errors, timeout errors, and the custom errors thrown above
       console.error('Error updating blog:', err);
-      setErrorMessage(err.message || 'A network error occurred. Please check your connection and try again.');
+      setErrorMessage(err.message || 'An unexpected error occurred while updating the blog.');
     } finally {
-      // 🔥 FIX 3: This is CRUCIAL to unstick the button on any outcome
+      // FIX: Ensure loading state is always reset
       setLoading(false);
     }
   };
@@ -235,7 +247,8 @@ export default function UpdateBlog() {
                     onChange={handleImageChange}
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input"
                   />
-                  {errorMessage && (
+                  {/* Display error message if file size is over 500KB */}
+                  {errorMessage && errorMessage.includes('File size exceeds') && (
                     <p className="text-sm text-red-500 mt-2">{errorMessage}</p>
                   )}
 
