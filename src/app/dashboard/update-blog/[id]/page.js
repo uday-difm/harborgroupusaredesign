@@ -61,6 +61,11 @@ export default function UpdateBlog() {
         const res = await axios.get(`/api/dashboard/getblog/${id}`);
         const data = res.data.data[0];
 
+        // Format dates correctly for input fields
+        const blogDate = data.formatted_blog_date || (data.blog_date ? new Date(data.blog_date).toISOString().split('T')[0] : '');
+        const blogTime = data.formatted_blog_time || data.blog_time || '';
+
+
         setValues({
           id: data.blog_id || '',
           slug: data.blog_slug || '',
@@ -128,7 +133,8 @@ export default function UpdateBlog() {
     if (selectedImage) {
       formData.append('blog_feature_image', selectedImage);
     } else if (existingImage) {
-      formData.append('blog_feature_image', existingImage);
+      // Append the existing URL/path if no new file is selected
+      formData.append('existingImage', existingImage);
     }
 
     try {
@@ -145,7 +151,8 @@ export default function UpdateBlog() {
         router.push('/dashboard/blog-table')
       } else {
         setMessage('');
-        setErrorMessage(result?.message || 'Failed to update blog.');
+        const errorDetails = result?.error ? ` (${result.error})` : '';
+        setErrorMessage(result?.message || 'Failed to update blog. Please check your inputs.' + errorDetails);
       }
 
     } catch (err) {
