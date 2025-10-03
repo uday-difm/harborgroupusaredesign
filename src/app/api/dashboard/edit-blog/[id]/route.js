@@ -57,12 +57,20 @@ export async function PUT(req, { params }) {
             existingImage,
         });
 
+        // Validate required fields
+        if (!blog_title || !blog_category_id) {
+            return NextResponse.json(
+                { success: false, message: 'Blog title and category are required.' },
+                { status: 400 }
+            );
+        }
+
         const finalSlug =
             blog_slug && String(blog_slug).trim().length > 0 ? generateSlug(String(blog_slug).trim()) : generateSlug(blog_title);
 
         const blog_date_time = `${blog_date} ${blog_time}`;
 
-        let featureImageUrl = existingImage;
+        let featureImageUrl = existingImage || null;
         let query = `
       UPDATE blogs
       SET blog_slug = ?, blog_title = ?, blog_tag = ?, blog_description = ?,
@@ -103,7 +111,12 @@ export async function PUT(req, { params }) {
         query += ` WHERE blog_id = ?`;
         paramsArr.push(blog_id);
 
+        console.log('Executing query:', query);
+        console.log('With params:', paramsArr);
+
         const [result] = await pool.execute(query, paramsArr);
+
+        console.log('Update result:', result);
 
         if (result.affectedRows === 0) {
             return NextResponse.json(
