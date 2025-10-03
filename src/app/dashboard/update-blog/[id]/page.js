@@ -138,12 +138,18 @@ export default function UpdateBlog() {
     }
 
     try {
+      console.log('Sending update request for blog ID:', id);
+      
       const res = await fetch(`/api/dashboard/edit-blog/${id}`, {
         method: 'PUT',
         body: formData,
       });
 
+      console.log('Response status:', res.status);
+      console.log('Response ok:', res.ok);
+      
       const result = await res.json();
+      console.log('Response data:', result);
 
       if (res.ok && result?.success) {
         setErrorMessage('');
