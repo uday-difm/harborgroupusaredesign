@@ -74,7 +74,7 @@ body {
     --surface: #0f1724;
     --muted: #9aa6b2;
     --input-bg: #0b1220;
-    --input-text: #111010;
+    --input-text: #ffffff;
     --input-placeholder: #9aa6b2;
     --input-border: rgba(255,255,255,0.06);
     --primary: #22c1c3;
@@ -89,7 +89,7 @@ body {
   --surface: #0f1724;
   --muted: #9aa6b2;
   --input-bg: #0b1220;
-  --input-text: #030303;
+  --input-text: #ffffff;
   --input-placeholder: #9aa6b2;
   --input-border: rgba(255,255,255,0.06);
   --primary: #22c1c3;
