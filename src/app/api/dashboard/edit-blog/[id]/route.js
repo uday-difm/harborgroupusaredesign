@@ -46,7 +46,18 @@ export async function PUT(req, { params }) {
             return NextResponse.json({ success: false, message: 'blog_id is required' }, { status: 400 });
         }
 
-        const formData = await req.formData();
+        console.log('📦 Parsing formData...');
+        let formData;
+        try {
+            formData = await req.formData();
+            console.log('✅ FormData parsed successfully');
+        } catch (parseError) {
+            console.error('❌ Failed to parse formData:', parseError);
+            return NextResponse.json(
+                { success: false, message: 'Failed to parse form data', error: String(parseError.message) },
+                { status: 400 }
+            );
+        }
 
         const blog_title = formData.get('blog_title');
         const blog_tag = formData.get('blog_tag');
