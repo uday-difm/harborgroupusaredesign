@@ -19,6 +19,8 @@ const generateSlug = (str) =>
 export async function PUT(req, { params }) {
     console.log('=== EDIT BLOG PUT REQUEST RECEIVED ===');
     console.log('Request URL:', req.url);
+    console.log('Host:', req.headers.get('host'));
+    console.log('X-Forwarded-Host:', req.headers.get('x-forwarded-host'));
     
     try {
         // Await params as required by Next.js 15
@@ -128,6 +130,7 @@ export async function PUT(req, { params }) {
         console.log('Update result:', result);
 
         if (result.affectedRows === 0) {
+            console.log('⚠️ No rows affected - blog not found or no changes');
             return NextResponse.json(
                 {
                     success: false,
@@ -138,13 +141,16 @@ export async function PUT(req, { params }) {
             );
         }
 
-        return NextResponse.json({
+        console.log('✅ Blog updated successfully, sending response...');
+        const response = NextResponse.json({
             success: true,
             message: 'Blog updated successfully',
             affectedRows: result.affectedRows,
             blog_feature_image: featureImageUrl,
             slug: finalSlug,
         });
+        console.log('✅ Response sent');
+        return response;
     } catch (error) {
         console.error('Error updating blog:', error);
         return NextResponse.json(
