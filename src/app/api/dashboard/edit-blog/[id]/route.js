@@ -17,10 +17,17 @@ const generateSlug = (str) =>
         .replace(/^-+|-+$/g, '');
 
 export async function PUT(req, { params }) {
+    console.log('=== EDIT BLOG PUT REQUEST RECEIVED ===');
+    console.log('Request URL:', req.url);
+    
     try {
+        // Await params as required by Next.js 15
+        const resolvedParams = await params;
+        console.log('Params:', resolvedParams);
+        
         // Safe blog id accessor: prefer params.id, fallback to last path segment of request URL.
         const blog_id =
-            params?.id ??
+            resolvedParams?.id ??
             (() => {
                 try {
                     const u = new URL(req.url);
@@ -30,6 +37,8 @@ export async function PUT(req, { params }) {
                     return undefined;
                 }
             })();
+        
+        console.log('Extracted blog_id:', blog_id);
 
         if (!blog_id) {
             return NextResponse.json({ success: false, message: 'blog_id is required' }, { status: 400 });
