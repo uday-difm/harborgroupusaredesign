@@ -47,6 +47,15 @@ export async function PUT(req, { params }) {
         const blog_time = formData.get('blog_time');
         const existingImage = formData.get('existingImage');
         const imageFile = formData.get('blog_feature_image');
+        
+        console.log('Update blog request:', {
+            blog_id,
+            blog_title,
+            hasImageFile: !!imageFile,
+            imageFileType: imageFile?.constructor?.name,
+            imageFileSize: imageFile?.size,
+            existingImage,
+        });
 
         const finalSlug =
             blog_slug && String(blog_slug).trim().length > 0 ? generateSlug(String(blog_slug).trim()) : generateSlug(blog_title);
@@ -69,7 +78,8 @@ export async function PUT(req, { params }) {
             blog_date_time,
         ];
 
-        if (imageFile && imageFile.size > 0) {
+        // Check if imageFile is actually a File object (not a string URL)
+        if (imageFile && typeof imageFile !== 'string' && imageFile.size > 0) {
             // Upload new image to S3
             try {
                 const buffer = Buffer.from(await imageFile.arrayBuffer());
@@ -114,8 +124,9 @@ export async function PUT(req, { params }) {
             slug: finalSlug,
         });
     } catch (error) {
+        console.error('Error updating blog:', error);
         return NextResponse.json(
-            { success: false, message: 'Failed to update blog', error: String(error?.message || error) },
+            { success: false, message: 'Failed to update blog', error: String(error?.message || error), stack: error?.stack },
             { status: 500 }
         );
     }

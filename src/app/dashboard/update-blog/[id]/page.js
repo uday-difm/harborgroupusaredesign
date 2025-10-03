@@ -65,8 +65,8 @@ export default function UpdateBlog() {
         const data = res.data.data[0];
 
         // Format dates correctly for input fields
-        const blogDate = data.blog_date ? new Date(data.blog_date).toISOString().split('T')[0] : '';
-        const blogTime = data.blog_time || '';
+        const blogDate = data.formatted_blog_date || (data.blog_date ? new Date(data.blog_date).toISOString().split('T')[0] : '');
+        const blogTime = data.formatted_blog_time || data.blog_time || '';
 
 
         setValues({
@@ -138,7 +138,7 @@ export default function UpdateBlog() {
       formData.append('blog_feature_image', selectedImage);
     } else if (existingImage) {
       // Append the existing URL/path if no new file is selected
-      formData.append('blog_feature_image', existingImage);
+      formData.append('existingImage', existingImage);
     }
 
     // FIX: Removing the redundant '/dashboard' from the API call path to compensate
@@ -172,7 +172,8 @@ export default function UpdateBlog() {
         }, 1500); 
       } else {
         setMessage('');
-        setErrorMessage(result?.message || 'Failed to update blog. Please check your inputs.');
+        const errorDetails = result?.error ? ` (${result.error})` : '';
+        setErrorMessage(result?.message || 'Failed to update blog. Please check your inputs.' + errorDetails);
       }
 
     } catch (err) {
