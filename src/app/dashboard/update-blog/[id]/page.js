@@ -414,7 +414,6 @@
 // }
 
 "use client";
-
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
@@ -464,7 +463,6 @@ export default function UpdateBlog({ params }) {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [message, setMessage] = useState('');
-  const imageInputRef = useRef(null);
 
   useEffect(() => {
     if (!id) return;
@@ -473,32 +471,31 @@ export default function UpdateBlog({ params }) {
       try {
         const res = await axios.get(`/api/dashboard/getblog/${id}`);
         const data = res.data.data[0];
+        const blogDate = data.formatted_blog_date || '';
+        const blogTime = data.formatted_blog_time || '';
 
         setValues({
-          blog_id: data.blog_id || '',
-          blog_slug: data.blog_slug || '',
-          blog_title: data.blog_title || '',
-          blog_tag: data.blog_tag || '',
-          blog_date: data.formatted_blog_date || '',
-          blog_time: data.formatted_blog_time || '',
-          blog_category_id: data.blog_category_id || '',
-          blog_description: data.blog_description || '',
-          blog_content: data.blog_content || '',
+          blog_id: data.blog_id,
+          blog_slug: data.blog_slug,
+          blog_title: data.blog_title,
+          blog_tag: data.blog_tag,
+          blog_date: blogDate,
+          blog_time: blogTime,
+          blog_category_id: data.blog_category_id,
+          blog_description: data.blog_description,
+          blog_content: data.blog_content,
         });
-
         setExistingImage(data.blog_feature_image || '');
       } catch (err) {
         setErrorMessage('Could not load blog data.');
-        console.error(err);
       }
     };
 
     const fetchCategories = async () => {
       try {
-        const res = await axios.get('/api/dashboard/fatchcategory');
+        const res = await axios.get(`/api/dashboard/fatchcategory`);
         setCategories(res.data.categories || []);
       } catch (err) {
-        console.error(err);
         setCategories([]);
       }
     };
@@ -511,27 +508,16 @@ export default function UpdateBlog({ params }) {
     if (!selectedImage) return;
     const url = URL.createObjectURL(selectedImage);
     setPreviewUrl(url);
-
-    return () => {
-      URL.revokeObjectURL(url);
-      setPreviewUrl(null);
-    };
+    return () => URL.revokeObjectURL(url);
   }, [selectedImage]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      if (file.size > 500 * 1024) {
-        setErrorMessage('File size exceeds 500KB.');
-        return;
-      }
-      if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
-        setErrorMessage('Invalid file type. Only PNG, JPG, JPEG allowed.');
-        return;
-      }
-      setErrorMessage('');
-      setSelectedImage(file);
-    }
+    if (!file) return;
+    if (file.size > 500 * 1024) return setErrorMessage('File size exceeds 500KB.');
+    if (!['image/png','image/jpeg','image/jpg'].includes(file.type)) return setErrorMessage('Invalid file type.');
+    setErrorMessage('');
+    setSelectedImage(file);
   };
 
   const handleUpdate = async (e) => {
@@ -541,41 +527,40 @@ export default function UpdateBlog({ params }) {
     setMessage('');
 
     if (!values.blog_title || !values.blog_category_id) {
-      setErrorMessage('Blog title and category are required.');
+      setErrorMessage('Blog title and category required.');
       setLoading(false);
       return;
     }
 
     try {
       const formData = new FormData();
-      Object.entries(values).forEach(([key, val]) => formData.append(key, val));
+      for (const key in values) formData.append(key, values[key]);
+      if (selectedImage) formData.append('blog_feature_image', selectedImage);
+      else if (existingImage) formData.append('existingImage', existingImage);
 
-      if (selectedImage) {
-        formData.append('blog_feature_image', selectedImage);
-      } else if (existingImage) {
-        formData.append('existingImage', existingImage);
-      }
+      const res = await fetch(`/api/dashboard/edit-blog/${id}`, {
+        method: 'POST',
+        body: formData,
+      });
 
-      const res = await fetch(`/api/dashboard/edit-blog/${id}`, { method: 'PUT', body: formData });
       const result = await res.json();
 
-      if (res.ok && result.success) {
+      if (res.ok && result?.success) {
         setMessage(result.message || 'Blog updated successfully!');
         setSelectedImage(null);
         setPreviewUrl(null);
-        setErrorMessage('');
         setTimeout(() => router.push('/dashboard/blog-table'), 1500);
       } else {
-        setErrorMessage(result.message || 'Failed to update blog.');
+        setErrorMessage(result?.message || 'Failed to update blog.');
       }
     } catch (err) {
-      console.error(err);
-      setErrorMessage('An unexpected error occurred while updating the blog.');
+      setErrorMessage('Unexpected error occurred.');
     } finally {
       setLoading(false);
     }
   };
 
+        
   return (
     <DashboardLayout>
       <Head>
