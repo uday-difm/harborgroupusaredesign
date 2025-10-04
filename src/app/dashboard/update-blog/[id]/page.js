@@ -517,7 +517,10 @@ export default function UpdateBlog({ params }) {
     const url = URL.createObjectURL(selectedImage);
     setPreviewUrl(url);
 
-    return () => URL.revokeObjectURL(url);
+     return () => {
+    URL.revokeObjectURL(url); // memory release
+    setPreviewUrl(null);      // reset preview
+  };
   }, [selectedImage]);
 
   const handleImageChange = (e) => {
@@ -575,10 +578,13 @@ export default function UpdateBlog({ params }) {
 
       const result = await res.json();
 
-      if (res.ok && result?.success) {
-        setMessage(result.message || 'Blog updated successfully!');
-        setTimeout(() => router.push('/dashboard/blog-table'), 1500);
-      } else {
+     if (res.ok && result?.success) {
+          setMessage(result.message || 'Blog updated successfully!');
+          setSelectedImage(null);   // clear selected image
+          setPreviewUrl(null);      // clear preview
+          setErrorMessage('');
+          setTimeout(() => router.push('/dashboard/blog-table'), 1500);
+        } else {
         setErrorMessage(result?.message || 'Failed to update blog.');
       }
     } catch (err) {
