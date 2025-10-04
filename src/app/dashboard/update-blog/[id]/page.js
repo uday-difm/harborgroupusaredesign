@@ -413,7 +413,6 @@
 //   );
 // }
 
-
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -461,10 +460,10 @@ export default function UpdateBlog({ params }) {
   const [categories, setCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [existingImage, setExistingImage] = useState('');
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [message, setMessage] = useState('');
-  const [previewUrl, setPreviewUrl] = useState(null);
   const imageInputRef = useRef(null);
 
   useEffect(() => {
@@ -475,16 +474,13 @@ export default function UpdateBlog({ params }) {
         const res = await axios.get(`/api/dashboard/getblog/${id}`);
         const data = res.data.data[0];
 
-        const blogDate = data.formatted_blog_date || '';
-        const blogTime = data.formatted_blog_time || '';
-
         setValues({
           blog_id: data.blog_id || '',
           blog_slug: data.blog_slug || '',
           blog_title: data.blog_title || '',
           blog_tag: data.blog_tag || '',
-          blog_date: blogDate,
-          blog_time: blogTime,
+          blog_date: data.formatted_blog_date || '',
+          blog_time: data.formatted_blog_time || '',
           blog_category_id: data.blog_category_id || '',
           blog_description: data.blog_description || '',
           blog_content: data.blog_content || '',
@@ -492,17 +488,17 @@ export default function UpdateBlog({ params }) {
 
         setExistingImage(data.blog_feature_image || '');
       } catch (err) {
-        console.error('Failed to fetch blog:', err);
         setErrorMessage('Could not load blog data.');
+        console.error(err);
       }
     };
 
     const fetchCategories = async () => {
       try {
-        const res = await axios.get(`/api/dashboard/fatchcategory`);
+        const res = await axios.get('/api/dashboard/fatchcategory');
         setCategories(res.data.categories || []);
       } catch (err) {
-        console.error('Failed to fetch categories:', err);
+        console.error(err);
         setCategories([]);
       }
     };
@@ -513,21 +509,20 @@ export default function UpdateBlog({ params }) {
 
   useEffect(() => {
     if (!selectedImage) return;
-
     const url = URL.createObjectURL(selectedImage);
     setPreviewUrl(url);
 
-     return () => {
-    URL.revokeObjectURL(url); // memory release
-    setPreviewUrl(null);      // reset preview
-  };
+    return () => {
+      URL.revokeObjectURL(url);
+      setPreviewUrl(null);
+    };
   }, [selectedImage]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       if (file.size > 500 * 1024) {
-        setErrorMessage('File size exceeds 500KB. Please upload a smaller image.');
+        setErrorMessage('File size exceeds 500KB.');
         return;
       }
       if (!['image/png', 'image/jpeg', 'image/jpg'].includes(file.type)) {
@@ -552,18 +547,8 @@ export default function UpdateBlog({ params }) {
     }
 
     try {
-      let res;
       const formData = new FormData();
-
-      formData.append('blog_id', values.blog_id);
-      formData.append('blog_title', values.blog_title);
-      formData.append('blog_slug', values.blog_slug);
-      formData.append('blog_tag', values.blog_tag);
-      formData.append('blog_date', values.blog_date);
-      formData.append('blog_time', values.blog_time);
-      formData.append('blog_category_id', values.blog_category_id);
-      formData.append('blog_description', values.blog_description);
-      formData.append('blog_content', values.blog_content);
+      Object.entries(values).forEach(([key, val]) => formData.append(key, val));
 
       if (selectedImage) {
         formData.append('blog_feature_image', selectedImage);
@@ -571,24 +556,20 @@ export default function UpdateBlog({ params }) {
         formData.append('existingImage', existingImage);
       }
 
-      res = await fetch(`/api/dashboard/edit-blog/${id}`, {
-        method: 'PUT',
-        body: formData,
-      });
-
+      const res = await fetch(`/api/dashboard/edit-blog/${id}`, { method: 'PUT', body: formData });
       const result = await res.json();
 
-     if (res.ok && result?.success) {
-          setMessage(result.message || 'Blog updated successfully!');
-          setSelectedImage(null);   // clear selected image
-          setPreviewUrl(null);      // clear preview
-          setErrorMessage('');
-          setTimeout(() => router.push('/dashboard/blog-table'), 1500);
-        } else {
-        setErrorMessage(result?.message || 'Failed to update blog.');
+      if (res.ok && result.success) {
+        setMessage(result.message || 'Blog updated successfully!');
+        setSelectedImage(null);
+        setPreviewUrl(null);
+        setErrorMessage('');
+        setTimeout(() => router.push('/dashboard/blog-table'), 1500);
+      } else {
+        setErrorMessage(result.message || 'Failed to update blog.');
       }
     } catch (err) {
-      console.error('Error updating blog:', err);
+      console.error(err);
       setErrorMessage('An unexpected error occurred while updating the blog.');
     } finally {
       setLoading(false);
@@ -599,9 +580,7 @@ export default function UpdateBlog({ params }) {
     <DashboardLayout>
       <Head>
         <title>Update Blog</title>
-        <meta name="description" content="Update a blog post" />
       </Head>
-
       <div className="flex flex-col gap-9 p-4">
         <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
           <div className="border-b border-stroke py-4 px-6.5 dark:border-strokedark">
@@ -609,7 +588,7 @@ export default function UpdateBlog({ params }) {
           </div>
 
           <form onSubmit={handleUpdate}>
-            <input type='hidden' value={values.blog_id} />
+            <input type="hidden" value={values.blog_id} />
             <div className="p-6.5">
               {/* Title & Tag */}
               <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
@@ -620,7 +599,7 @@ export default function UpdateBlog({ params }) {
                     placeholder="Enter Title"
                     value={values.blog_title}
                     onChange={(e) => setValues({ ...values, blog_title: e.target.value })}
-                    className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                    className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none focus:border-primary"
                   />
                 </div>
                 <div className="w-full xl:w-1/2">
@@ -630,7 +609,7 @@ export default function UpdateBlog({ params }) {
                     placeholder="Enter Tags"
                     value={values.blog_tag}
                     onChange={(e) => setValues({ ...values, blog_tag: e.target.value })}
-                    className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                    className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -643,7 +622,7 @@ export default function UpdateBlog({ params }) {
                   placeholder="Enter Slug"
                   value={values.blog_slug}
                   onChange={(e) => setValues({ ...values, blog_slug: e.target.value })}
-                  className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
+                  className="w-full rounded border border-stroke py-3 px-4"
                 />
               </div>
 
@@ -651,13 +630,8 @@ export default function UpdateBlog({ params }) {
               <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                 <div className="w-full xl:w-1/2">
                   <label className="mb-2.5 block text-black dark:text-white">Feature Image</label>
-                  <input
-                    type="file"
-                    onChange={handleImageChange}
-                    className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
-                  />
+                  <input type="file" onChange={handleImageChange} className="w-full rounded border py-3 px-5" />
                   {errorMessage && <p className="text-sm text-red-500 mt-2">{errorMessage}</p>}
-
                   {previewUrl ? (
                     <Image width={100} height={60} src={previewUrl} alt="Selected Preview" className="h-20 mt-2 rounded border" />
                   ) : existingImage ? (
@@ -672,7 +646,7 @@ export default function UpdateBlog({ params }) {
                       type="date"
                       value={values.blog_date}
                       onChange={(e) => setValues({ ...values, blog_date: e.target.value })}
-                      className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                      className="w-full rounded border py-3 px-5"
                     />
                   </div>
                   <div className="w-1/2">
@@ -681,7 +655,7 @@ export default function UpdateBlog({ params }) {
                       type="time"
                       value={values.blog_time}
                       onChange={(e) => setValues({ ...values, blog_time: e.target.value })}
-                      className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                      className="w-full rounded border py-3 px-5"
                     />
                   </div>
                 </div>
@@ -694,19 +668,18 @@ export default function UpdateBlog({ params }) {
                   <select
                     value={values.blog_category_id}
                     onChange={(e) => setValues({ ...values, blog_category_id: e.target.value })}
-                    className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                    className="w-full rounded border py-3 px-5"
                   >
                     <option value="">Choose Category</option>
                     {categories.length ? categories.map((cat) => <option key={cat.id} value={cat.id}>{cat.category}</option>) : <option disabled>No Categories Available</option>}
                   </select>
                 </div>
-
                 <div>
                   <label className="mb-2.5 block text-black dark:text-white">Description</label>
                   <textarea
                     value={values.blog_description}
                     onChange={(e) => setValues({ ...values, blog_description: e.target.value })}
-                    className="w-full h-32 rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
+                    className="w-full h-32 rounded border py-3 px-5"
                   />
                 </div>
               </div>
@@ -721,12 +694,12 @@ export default function UpdateBlog({ params }) {
                 />
               </div>
 
+              {/* Buttons */}
               <div className="flex justify-end gap-4.5">
-                <button type="button" onClick={() => router.back()} className="rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white">
+                <button type="button" onClick={() => router.back()} className="rounded border py-2 px-6 font-medium">
                   Cancel
                 </button>
-
-                <button type="submit" disabled={loading} className={`rounded bg-sky-400 py-2 px-6 font-medium text-white hover:shadow-1 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                <button type="submit" disabled={loading} className={`rounded bg-sky-400 py-2 px-6 font-medium text-white ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
                   {loading ? 'Updating...' : 'Update'}
                 </button>
               </div>
