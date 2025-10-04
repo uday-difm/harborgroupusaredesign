@@ -30,18 +30,18 @@ const editorConfig = {
 export default function UpdateBlog() {
   const router = useRouter();
   const params = useParams();
-  const id = params.id; // Match the [slug] from the URL
+  const id = params.id;
 
   const [values, setValues] = useState({
-    id: id || '', // Ensure id is set from params
-    slug: '',
-    title: '',
-    tag: '',
-    date: '',
-    time: '',
-    category: '',
-    description: '',
-    content: '',
+    blog_id: id || '',
+    blog_slug: '',
+    blog_title: '',
+    blog_tag: '',
+    blog_date: '',
+    blog_time: '',
+    blog_category_id: '',
+    blog_description: '',
+    blog_content: '',
   });
 
   const [categories, setCategories] = useState([]);
@@ -52,7 +52,6 @@ export default function UpdateBlog() {
   const imageInputRef = useRef(null);
   const [message, setMessage] = useState('');
 
-
   useEffect(() => {
     if (!id) return;
 
@@ -60,22 +59,25 @@ export default function UpdateBlog() {
       try {
         const res = await axios.get(`/api/dashboard/getblog/${id}`);
         const data = res.data.data[0];
+        
+        console.log('Fetched blog data:', data);
 
-        // Format dates correctly for input fields
-        const blogDate = data.formatted_blog_date || (data.blog_date ? new Date(data.blog_date).toISOString().split('T')[0] : '');
-        const blogTime = data.formatted_blog_time || data.blog_time || '';
-
+        // Use formatted date and time from API
+        const blogDate = data.formatted_blog_date || '';
+        const blogTime = data.formatted_blog_time || '';
+        
+        console.log('Parsed date:', blogDate, 'time:', blogTime);
 
         setValues({
-          id: data.blog_id || '',
-          slug: data.blog_slug || '',
-          title: data.blog_title || '',
-          tag: data.blog_tag || '',
-          date: data.formatted_blog_date || '',
-          time: data.formatted_blog_time || '',
-          category: data.blog_category_id || '',
-          description: data.blog_description || '',
-          content: data.blog_content || '',
+          blog_id: data.blog_id || '',
+          blog_slug: data.blog_slug || '',
+          blog_title: data.blog_title || '',
+          blog_tag: data.blog_tag || '',
+          blog_date: blogDate,
+          blog_time: blogTime,
+          blog_category_id: data.blog_category_id || '',
+          blog_description: data.blog_description || '',
+          blog_content: data.blog_content || '',
         });
 
         setExistingImage(data.blog_feature_image || '');
@@ -88,7 +90,6 @@ export default function UpdateBlog() {
     const fetchCategories = async () => {
       try {
         const res = await axios.get(`/api/dashboard/fatchcategory`);
-        console.log(res.data);
         setCategories(res.data.categories || []);
       } catch (err) {
         console.error('Failed to fetch categories:', err);
@@ -97,9 +98,8 @@ export default function UpdateBlog() {
     };
 
     fetchBlog();
-    fetchCategories(); // ✅ <--- You were missing this line!
+    fetchCategories();
   }, [id]);
-  // Now outside useEffect:
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -117,50 +117,51 @@ export default function UpdateBlog() {
     e.preventDefault();
     setLoading(true);
     setErrorMessage('');
-    setMessage(''); // Clear old messages
+    setMessage('');
+
+    // Validate required fields
+    if (!values.blog_title || !values.blog_category_id) {
+      setErrorMessage('Blog title and category are required.');
+      setLoading(false);
+      return;
+    }
 
     const formData = new FormData();
-    formData.append('blog_id', values.id);
-    formData.append('blog_title', values.title);
-    formData.append('blog_slug', values.slug);
-    formData.append('blog_tag', values.tag);
-    formData.append('blog_date', values.date);
-    formData.append('blog_time', values.time);
-    formData.append('blog_category_id', values.category);
-    formData.append('blog_description', values.description);
-    formData.append('blog_content', values.content);
+    formData.append('blog_id', values.blog_id);
+    formData.append('blog_title', values.blog_title);
+    formData.append('blog_slug', values.blog_slug);
+    formData.append('blog_tag', values.blog_tag);
+    formData.append('blog_date', values.blog_date);
+    formData.append('blog_time', values.blog_time);
+    formData.append('blog_category_id', values.blog_category_id);
+    formData.append('blog_description', values.blog_description);
+    formData.append('blog_content', values.blog_content);
 
     if (selectedImage) {
       formData.append('blog_feature_image', selectedImage);
     } else if (existingImage) {
-      // Append the existing URL/path if no new file is selected
       formData.append('existingImage', existingImage);
     }
 
     try {
-      console.log('Sending update request for blog ID:', id);
-      
       const res = await fetch(`/api/dashboard/edit-blog/${id}`, {
         method: 'PUT',
         body: formData,
       });
 
-      console.log('Response status:', res.status);
-      console.log('Response ok:', res.ok);
-      
       const result = await res.json();
-      console.log('Response data:', result);
 
       if (res.ok && result?.success) {
         setErrorMessage('');
         setMessage(result.message || 'Blog updated successfully!');
-        router.push('/dashboard/blog-table')
+        setTimeout(() => {
+          router.push('/dashboard/blog-table');
+        }, 1500);
       } else {
         setMessage('');
         const errorDetails = result?.error ? ` (${result.error})` : '';
         setErrorMessage(result?.message || 'Failed to update blog. Please check your inputs.' + errorDetails);
       }
-
     } catch (err) {
       console.error('Error updating blog:', err);
       setErrorMessage('An unexpected error occurred while updating the blog.');
@@ -169,10 +170,8 @@ export default function UpdateBlog() {
     }
   };
 
-
   return (
     <DashboardLayout>
-
       <Head>
         <title>Update Blog</title>
         <meta name="description" content="Update a blog post" />
@@ -185,7 +184,7 @@ export default function UpdateBlog() {
           </div>
 
           <form onSubmit={handleUpdate}>
-            <input type='hidden' value={values.id} />
+            <input type='hidden' value={values.blog_id} />
             <div className="p-6.5">
               {/* Title and Tag */}
               <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
@@ -194,8 +193,8 @@ export default function UpdateBlog() {
                   <input
                     type="text"
                     placeholder="Enter Title"
-                    value={values.title}
-                    onChange={(e) => setValues({ ...values, title: e.target.value })}
+                    value={values.blog_title}
+                    onChange={(e) => setValues({ ...values, blog_title: e.target.value })}
                     className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                   />
                 </div>
@@ -205,23 +204,25 @@ export default function UpdateBlog() {
                   <input
                     type="text"
                     placeholder="Enter Tags"
-                    value={values.tag}
-                    onChange={(e) => setValues({ ...values, tag: e.target.value })}
+                    value={values.blog_tag}
+                    onChange={(e) => setValues({ ...values, blog_tag: e.target.value })}
                     className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                   />
                 </div>
               </div>
+
               {/* Slug Field */}
-              <div>
+              <div className="mb-4.5">
                 <label className="mb-2 block text-black dark:text-white">Slug</label>
                 <input
                   type="text"
                   placeholder="Enter Slug"
-                  value={values.slug}
-                  onChange={(e) => setValues({ ...values, slug: e.target.value })}
+                  value={values.blog_slug}
+                  onChange={(e) => setValues({ ...values, blog_slug: e.target.value })}
                   className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                 />
               </div>
+
               {/* Image, Date & Time */}
               <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                 <div className="w-full xl:w-1/2">
@@ -238,7 +239,7 @@ export default function UpdateBlog() {
                   {/* Show preview of the newly selected image */}
                   {selectedImage && (
                     <Image
-                      width={100} 
+                      width={100}
                       height={60}
                       src={URL.createObjectURL(selectedImage)}
                       alt="Selected Preview"
@@ -249,7 +250,7 @@ export default function UpdateBlog() {
                   {/* Show existing image if no new image is selected */}
                   {!selectedImage && existingImage && (
                     <Image
-                      width={100} 
+                      width={100}
                       height={60}
                       src={`${existingImage}`}
                       alt="Current Blog Feature"
@@ -263,8 +264,8 @@ export default function UpdateBlog() {
                     <label className="mb-2.5 block text-black dark:text-white">Date</label>
                     <input
                       type="date"
-                      value={values.date}
-                      onChange={(e) => setValues({ ...values, date: e.target.value })}
+                      value={values.blog_date}
+                      onChange={(e) => setValues({ ...values, blog_date: e.target.value })}
                       className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                     />
                   </div>
@@ -272,8 +273,8 @@ export default function UpdateBlog() {
                     <label className="mb-2.5 block text-black dark:text-white">Time</label>
                     <input
                       type="time"
-                      value={values.time}
-                      onChange={(e) => setValues({ ...values, time: e.target.value })}
+                      value={values.blog_time}
+                      onChange={(e) => setValues({ ...values, blog_time: e.target.value })}
                       className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                     />
                   </div>
@@ -285,8 +286,8 @@ export default function UpdateBlog() {
                 <div>
                   <label className="mb-2.5 block text-black dark:text-white">Category</label>
                   <select
-                    value={values.category}
-                    onChange={(e) => setValues({ ...values, category: e.target.value })}
+                    value={values.blog_category_id}
+                    onChange={(e) => setValues({ ...values, blog_category_id: e.target.value })}
                     className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                   >
                     <option value="">Choose Category</option>
@@ -305,8 +306,8 @@ export default function UpdateBlog() {
                 <div>
                   <label className="mb-2.5 block text-black dark:text-white">Description</label>
                   <textarea
-                    value={values.description}
-                    onChange={(e) => setValues({ ...values, description: e.target.value })}
+                    value={values.blog_description}
+                    onChange={(e) => setValues({ ...values, blog_description: e.target.value })}
                     className="w-full h-32 rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary dark:border-form-strokedark dark:bg-form-input"
                   />
                 </div>
@@ -317,8 +318,8 @@ export default function UpdateBlog() {
                 <label className="mb-2.5 block text-black dark:text-white">Content</label>
                 <JoditEditor
                   config={editorConfig}
-                  value={values.content}
-                  onChange={(content) => setValues({ ...values, content })}
+                  value={values.blog_content}
+                  onChange={(content) => setValues({ ...values, blog_content: content })}
                 />
               </div>
 
@@ -339,6 +340,7 @@ export default function UpdateBlog() {
                   {loading ? 'Updating...' : 'Update'}
                 </button>
               </div>
+
               {/* Success and error messages */}
               {errorMessage && !message && (
                 <p className="text-red-600 mt-4 font-semibold">{errorMessage}</p>
