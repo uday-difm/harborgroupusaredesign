@@ -189,14 +189,15 @@
 //     }
 // }
 
-
+// File: app/api/dashboard/edit-blog/[id]/route.js
 import pool from '../../../../../../lib/mysql';
 import { uploadToS3 } from '../../../../../../utils/s3Utility';
 import { NextResponse } from 'next/server';
+import formidable from 'formidable';
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // important for formidable
     sizeLimit: '50mb',
   },
 };
@@ -208,69 +209,52 @@ const generateSlug = (str) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-export async function PUT(req, { params }) {
+export async function POST(req, { params }) {
+  const blog_id = params.id;
+
+  if (!blog_id) {
+    return NextResponse.json({ success: false, message: 'Blog ID required' }, { status: 400 });
+  }
+
   try {
-    const blog_id = params?.id;
+    const form = new formidable.IncomingForm({ multiples: false });
+    form.keepExtensions = true;
 
-    if (!blog_id) {
-      return NextResponse.json(
-        { success: false, message: 'blog_id is required' },
-        { status: 400 }
-      );
-    }
+    const parsed = await new Promise((resolve, reject) => {
+      form.parse(req, (err, fields, files) => {
+        if (err) reject(err);
+        else resolve({ fields, files });
+      });
+    });
 
-    let formData;
-    try {
-      formData = await req.formData();
-    } catch (err) {
-      return NextResponse.json(
-        { success: false, message: 'Failed to parse form data', error: String(err.message) },
-        { status: 400 }
-      );
-    }
+    const fields = parsed.fields;
+    const files = parsed.files;
 
-    const blog_title = formData.get('blog_title');
-    const blog_tag = formData.get('blog_tag');
-    const blog_description = formData.get('blog_description');
-    const blog_content = formData.get('blog_content');
-    const blog_slug = formData.get('blog_slug');
-    const blog_category_id = formData.get('blog_category_id');
-    const blog_date = formData.get('blog_date');
-    const blog_time = formData.get('blog_time');
-    const existingImage = formData.get('existingImage');
-    const imageFile = formData.get('blog_feature_image');
+    const blog_title = fields.blog_title;
+    const blog_tag = fields.blog_tag;
+    const blog_description = fields.blog_description;
+    const blog_content = fields.blog_content;
+    const blog_slug = fields.blog_slug;
+    const blog_category_id = fields.blog_category_id;
+    const blog_date = fields.blog_date;
+    const blog_time = fields.blog_time;
+    const existingImage = fields.existingImage;
 
     if (!blog_title || !blog_category_id) {
-      return NextResponse.json(
-        { success: false, message: 'Blog title and category are required.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, message: 'Blog title and category required' }, { status: 400 });
     }
 
-    const finalSlug = blog_slug && blog_slug.trim().length > 0
-      ? generateSlug(blog_slug.trim())
-      : generateSlug(blog_title);
-
+    const finalSlug = blog_slug && blog_slug.trim().length > 0 ? generateSlug(blog_slug) : generateSlug(blog_title);
     const blog_date_time = `${blog_date} ${blog_time}`;
 
     let featureImageUrl = existingImage || null;
 
-    // Upload new image if it's a File (ignore string)
-    if (imageFile && imageFile instanceof File && imageFile.size > 0) {
-      try {
-        const buffer = Buffer.from(await imageFile.arrayBuffer());
-        const fileForS3 = {
-          buffer,
-          originalname: imageFile.name,
-          mimetype: imageFile.type,
-        };
-        featureImageUrl = await uploadToS3('blogs', fileForS3);
-      } catch (s3Error) {
-        return NextResponse.json(
-          { success: false, message: 'Failed to upload feature image', error: String(s3Error.message) },
-          { status: 500 }
-        );
-      }
+    // Handle uploaded image
+    if (files.blog_feature_image) {
+      const file = files.blog_feature_image;
+      const buffer = await fs.promises.readFile(file.filepath);
+      const fileForS3 = { buffer, originalname: file.originalFilename, mimetype: file.mimetype };
+      featureImageUrl = await uploadToS3('blogs', fileForS3);
     }
 
     // Build query
@@ -280,7 +264,7 @@ export async function PUT(req, { params }) {
         blog_slug = ?, 
         blog_title = ?, 
         blog_tag = ?, 
-        blog_description = ?,
+        blog_description = ?, 
         blog_category_id = ?, 
         blog_content = ?, 
         blog_date_time = ?
@@ -298,24 +282,17 @@ export async function PUT(req, { params }) {
     const [result] = await pool.execute(query, paramsArr);
 
     if (result.affectedRows === 0) {
-      return NextResponse.json({
-        success: false,
-        message: 'Blog not found or no changes were made.',
-        affectedRows: 0,
-      }, { status: 404 });
+      return NextResponse.json({ success: false, message: 'Blog not found or no changes', affectedRows: 0 }, { status: 404 });
     }
 
     return NextResponse.json({
       success: true,
       message: 'Blog updated successfully',
-      affectedRows: result.affectedRows,
       blog_feature_image: featureImageUrl,
       slug: finalSlug,
     });
   } catch (error) {
-    return NextResponse.json(
-      { success: false, message: 'Failed to update blog', error: String(error?.message || error) },
-      { status: 500 }
-    );
+    console.error('Error updating blog:', error);
+    return NextResponse.json({ success: false, message: 'Failed to update blog', error: String(error) }, { status: 500 });
   }
 }
