@@ -46,6 +46,7 @@ export async function POST(req) {
       JSON.stringify({
         message: "Form submitted and email sent!",
         id: result.insertId,
+        setTimeout: 3000,
       }),
       { status: 201, headers: { "Content-Type": "application/json" } }
     );
