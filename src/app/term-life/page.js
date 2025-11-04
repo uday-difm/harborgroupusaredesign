@@ -7,7 +7,7 @@ import { Eligibilitycriteria } from '../component/termlife/Eligibilitycriteria'
 import { CostOptions } from '../component/termlife/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 import { FaqTermlife } from '../component/termlife/FaqTermlife'
-import { TestimonialTermLife } from '../component/termlife/TestimonialTermLife'
+// import { TestimonialTermLife } from '../component/termlife/TestimonialTermLife'
 
 export default function page() {
   return (
@@ -28,7 +28,7 @@ export default function page() {
       <HowToApply/>
       <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Term Life Plan" link ="GET STARTED" url="#term-form"/>
       <FaqTermlife/>
-      <TestimonialTermLife/>
+      {/* <TestimonialTermLife/> */}
     </>
   )
 }

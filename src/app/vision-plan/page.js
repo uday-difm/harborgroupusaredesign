@@ -7,7 +7,7 @@ import { LayeredCosts } from '../component/visionplan/LayeredCosts'
 import { Network } from '../component/visionplan/Network'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 import { FaqVisionPlan } from '../component/visionplan/FaqVisionPlan'
-import { TestimonialVisionPlan } from '../component/visionplan/TestimonialVisionPlan'
+// import { TestimonialVisionPlan } from '../component/visionplan/TestimonialVisionPlan'
 
 export default function page() {
   return (
@@ -29,7 +29,7 @@ export default function page() {
      <Network/>
    <FaqVisionPlan/>
      <GetYourPersonalizedMedicalPlan title = "Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage" link ="ENROLL IN VISION CARE" url="#vision-form"/>
-     <TestimonialVisionPlan/>
+     {/* <TestimonialVisionPlan/> */}
  </>
   )
 }

@@ -10,6 +10,7 @@ import { TestimonialHome } from "./component/home/TestimonialHome";
 import { WholesaleGeneralAgency } from "./component/home/WholesaleGeneralAgency";
 import { WhyChooseUsSection } from "./component/home/WhyChooseUs";
 import QuotePopup from "@/comman/QuotePopup";
+import CoverageSection from "./component/home/CoverageSection";
 
 const HarborGroupUSALogo = () => {
   return (
@@ -55,7 +56,8 @@ export default function Home() {
       <WhyChooseUsSection />
       <HealthPlanQuoteToday />
       <FaqSection />
-      <TestimonialHome />
+      <CoverageSection/>
+      {/* <TestimonialHome /> */}
       {showPopup && <QuotePopup onClose={() => setShowPopup(false)} />}
     </>
   );

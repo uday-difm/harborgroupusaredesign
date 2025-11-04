@@ -8,7 +8,7 @@ import { BenefitsofDentalCarePlan } from '../component/dentalplan/BenefitsofDent
 import { DentalNetworkSection } from '../component/dentalplan/DentalNetworkSection'
 import { DentalCostsCoverageSection } from '../component/dentalplan/DentalCostsCoverageSection'
 import { FaqDentalplan } from '../component/dentalplan/FaqDentalplan'
-import { TestimonialDentalPlan } from '../component/dentalplan/TestimonialDentalPlan'
+// import { TestimonialDentalPlan } from '../component/dentalplan/TestimonialDentalPlan'
 import { DentalEligbility } from '../component/dentalplan/DentalEligbility'
 
 export default function page() {
@@ -31,7 +31,7 @@ export default function page() {
         <DentalCostsCoverageSection/>
         <FaqDentalplan/>
           <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Dental Care Plan" link ="GET STARTED" url="#dental-form"/>
-    <TestimonialDentalPlan/>
+    {/* <TestimonialDentalPlan/> */}
   
     </>
   )

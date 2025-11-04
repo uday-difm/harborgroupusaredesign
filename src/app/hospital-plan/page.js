@@ -11,7 +11,7 @@ import { Network } from '../component/hospitalplan/Network'
 import { CostOptionshospital } from '../component/hospitalplan/CostOptionshospital'
 import { EligibilitycriteriaofHospital } from '../component/hospitalplan/EligibilitycriteriaofHospital'
 import { FaqHospitalPlan } from '../component/hospitalplan/FaqHospitalPlan'
-import { TestimonialHospitalPlan } from '../component/hospitalplan/TestimonialHospitalPlan'
+// import { TestimonialHospitalPlan } from '../component/hospitalplan/TestimonialHospitalPlan'
 
 export default function page() {
   return (
@@ -36,7 +36,7 @@ export default function page() {
       <HowToApply/>
       <FaqHospitalPlan/>
       {/* <TestimonialSection/> */}
-      <TestimonialHospitalPlan/>
+      {/* <TestimonialHospitalPlan/> */}
     </>
   )
 }
