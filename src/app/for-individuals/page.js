@@ -4,7 +4,7 @@ import { GetAHealthPlanConsultant } from '../component/forindividuals/GetAHealth
 import { ServicesSection } from '../component/home/ServiceSection'
 // import { TestimonialSection } from '../component/home/TestimonialSection'
 import { PurchaseStepsSection } from '../component/forindividuals/PurchaseStepsSection'
-import { TestimonialForIndividuals } from '../component/forindividuals/TestimonialForIndividuals'
+// import { TestimonialForIndividuals } from '../component/forindividuals/TestimonialForIndividuals'
 
 export default function page() {
   return (
@@ -22,7 +22,7 @@ export default function page() {
       <ServicesSection/>
       <GetAHealthPlanConsultant/>
       {/* <TestimonialSection/> */}
-      <TestimonialForIndividuals/>
+      {/* <TestimonialForIndividuals/> */}
     </>
   )
 }

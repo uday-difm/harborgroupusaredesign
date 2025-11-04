@@ -7,7 +7,7 @@ import { HowToApply } from '../component/medicalplan/HowToApply'
 import { CostOptions } from '../component/medicalplan/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '../../comman/GetYourPersonalizedMedicalPlan'
 import { MedicalPlanFaq } from '../component/medicalplan/MedicalPlanFaq'
-import { TestimonialMedicalPlan } from '../component/medicalplan/TestimonialMedicalPlan'
+// import { TestimonialMedicalPlan } from '../component/medicalplan/TestimonialMedicalPlan'
 import { MedicalEligibilityCriteriaSection } from '../component/medicalplan/MedicalEligibilityCriteriaSection'
 
 
@@ -31,7 +31,7 @@ export default function page() {
       <CostOptions/>
         <MedicalPlanFaq/>
       <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Medical Plan" link ="GET STARTED" url="#medical-form"/>
-      <TestimonialMedicalPlan/>
+      {/* <TestimonialMedicalPlan/> */}
     </>
   )
 }

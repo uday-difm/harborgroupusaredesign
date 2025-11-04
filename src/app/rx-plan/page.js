@@ -9,7 +9,7 @@ import { RxEligibilitySection } from '../component/rxplan/RxEligibilitySection'
 import { StartPlanSection } from '../component/rxplan/StartPlanSection'
 import { HowToApply } from '../component/medicalplan/HowToApply'
 import { FaqRxplan } from '../component/rxplan/FaqRxplan'
-import { TestimonialRxPlan } from '../component/rxplan/TestimonialRxPlan'
+// import { TestimonialRxPlan } from '../component/rxplan/TestimonialRxPlan'
 
 export default function page() {
   return (
@@ -32,7 +32,7 @@ export default function page() {
       <FaqRxplan/>
       <GetYourPersonalizedMedicalPlan title = "Start your Rx plan today!" link ="GET STARTED" url="#rx-plan-form"/>
       {/* <TestimonialSection/> */}
-      <TestimonialRxPlan/>
+      {/* <TestimonialRxPlan/> */}
     </>
   )
 }

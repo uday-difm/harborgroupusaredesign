@@ -7,7 +7,7 @@ import { EligibilityCriteria } from '../component/limitedmedplans/EligibilityCri
 import { CostOptions } from '../component/limitedmedplans/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 import { FaqLimitedMedPlans } from '../component/limitedmedplans/FaqLimitedMedPlans'
-import { TestimonialLimitedmed } from '../component/limitedmedplans/TestimonialLimitedmed'
+// import { TestimonialLimitedmed } from '../component/limitedmedplans/TestimonialLimitedmed'
 
 export default function page() {
   return (
@@ -28,7 +28,7 @@ export default function page() {
     <CostOptions/>
     <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Limited Med Plans" link = "GET STARTED" url="#limited-med-form"/>
     <FaqLimitedMedPlans/>
-    <TestimonialLimitedmed/>
+    {/* <TestimonialLimitedmed/> */}
     </>
   )
 }

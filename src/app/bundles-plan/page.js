@@ -8,7 +8,7 @@ import { Network } from '../component/bundlesplan/Network'
 import { CostOptions } from '../component/bundlesplan/CostOptions'
 import { GetYourPersonalizedMedicalPlan } from '@/comman/GetYourPersonalizedMedicalPlan'
 import { FaqBundlesplan } from '../component/bundlesplan/FaqBundlesplan'
-import { TestimonialBundlesplan } from '../component/bundlesplan/TestimonialBundlesplan'
+// import { TestimonialBundlesplan } from '../component/bundlesplan/TestimonialBundlesplan'
 
 
 export default function page() {
@@ -31,7 +31,7 @@ export default function page() {
      <CostOptions/>
         <FaqBundlesplan/>
      <GetYourPersonalizedMedicalPlan title ="Get Your Personalized Bundles Plans" link = "GET STARTED" url="#bundles-form"/>
-     <TestimonialBundlesplan/>
+     {/* <TestimonialBundlesplan/> */}
     </>
   )
 }

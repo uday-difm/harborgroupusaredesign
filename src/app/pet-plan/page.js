@@ -8,7 +8,7 @@ import { NetworkPetPlan } from '../component/petplan/NetworkPetPlan'
 import { Eligibility } from '../component/petplan/Eligiblity'
 import { ApplyNowSection } from '../component/petplan/ApplyNowSection'
 import { FaqPetplan } from '../component/petplan/FaqPetplan'
-import { TestimonialPetPlan } from '../component/petplan/TestimonialPetPlan'
+// import { TestimonialPetPlan } from '../component/petplan/TestimonialPetPlan'
 
 export default function page() {
   return (
@@ -32,7 +32,7 @@ export default function page() {
   
      <FaqPetplan/>
      <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Pet Care Plan" link ="GET STARTED"/>
-     <TestimonialPetPlan/>
+     {/* <TestimonialPetPlan/> */}
 
     </>
   )

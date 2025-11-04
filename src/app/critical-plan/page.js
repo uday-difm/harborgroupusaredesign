@@ -7,7 +7,7 @@ import { CostOptions } from '../component/criticalplan/CostOptions'
 import { Network } from '../component/criticalplan/Network'
 import { Eligibilitycriteria } from '../component/criticalplan/Eligibilitycriteria'
 import { FaqCriticalPlan } from '../component/criticalplan/FaqCriticalPlan'
-import { TestimonialCriticalPlan } from '../component/criticalplan/TestimonialCriticalPlan'
+// import { TestimonialCriticalPlan } from '../component/criticalplan/TestimonialCriticalPlan'
 
 export default function page() {
   return (
@@ -28,7 +28,7 @@ export default function page() {
     <HowToApply/>
    <FaqCriticalPlan/>
     <GetYourPersonalizedMedicalPlan title = "Get Your Personalized Critical Plan" link = "GET STARTED" url="#critical-plan-form"/>
-      <TestimonialCriticalPlan/>
+      {/* <TestimonialCriticalPlan/> */}
     </>
   )
 }
