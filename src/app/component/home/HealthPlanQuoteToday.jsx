@@ -15,7 +15,7 @@ export default function HealthPlanQuoteToday() {
 
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -38,18 +38,18 @@ export default function HealthPlanQuoteToday() {
 
   setError('');
   setMessage('');
-  setIsSubmitting(true);
+  setIssubmiting(true);
 
   // Client-side validation
   if (!formData.name || !formData.email || !formData.terms) {
     setError('All fields are required, and you must agree to the terms.');
-    setIsSubmitting(false);
+    setIssubmiting(false);
     return;
   }
 
   if (!validateEmail(formData.email)) {
     setError('Please enter a valid email address.');
-    setIsSubmitting(false);
+    setIssubmiting(false);
     return;
   }
 
@@ -80,7 +80,7 @@ export default function HealthPlanQuoteToday() {
   } catch (err) {
     setError('An error occurred. Please try again later.');
   } finally {
-    setIsSubmitting(false);
+    setIssubmiting(false);
   }
 }
 
@@ -164,7 +164,7 @@ export default function HealthPlanQuoteToday() {
                   className="h-4 w-4 text-sky-600 border-gray-300 rounded mt-1"
                 />
                 <label htmlFor="terms" className="ml-3 block text-sm text-gray-600">
-                  By Submitting, you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
+                  By submiting, you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
                   <Link href="/sms-and-marketing-terms" className="font-medium text-sky-600 hover:underline">
                     SMS and Marketing terms and conditions.
                   </Link>
@@ -175,9 +175,9 @@ export default function HealthPlanQuoteToday() {
                 <button
                   type="submit"
                   className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
-                  disabled={isSubmitting}
+                  disabled={issubmiting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+                  {issubmiting ? 'submiting...' : 'SUBMIT'}
                 </button>
               </div>
             </form>

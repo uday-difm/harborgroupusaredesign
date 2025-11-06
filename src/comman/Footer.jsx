@@ -170,7 +170,7 @@ export const Footer = () => {
                                     </span>
                                 </div>
                                 <p className="text-gray-600 text-justify">
-                                    After submitting your information to us, a licensed agent will contact you within 24 hours.
+                                    After submiting your information to us, a licensed agent will contact you within 24 hours.
                                 </p>
                             </div>
                         </div>

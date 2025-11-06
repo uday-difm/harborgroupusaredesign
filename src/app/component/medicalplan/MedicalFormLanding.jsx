@@ -21,7 +21,7 @@ export const MedicalFormLanding = () => {
   });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -44,18 +44,18 @@ export const MedicalFormLanding = () => {
 
     setError('');
     setMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.consent) {
       setError('All fields are required, and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -82,7 +82,7 @@ export const MedicalFormLanding = () => {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -172,16 +172,16 @@ export const MedicalFormLanding = () => {
                 style={{ color: accentLightBlue }}
               />
               <label htmlFor="consent" className="text-gray-600 text-sm text-left">
-                By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="underline" style={{ color: primaryDarkBlue }}>terms and conditions</Link>.
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="underline" style={{ color: primaryDarkBlue }}>terms and conditions</Link>.
               </label>
             </div>
              <button
               type="submit"
               className="w-full px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75"
               style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}
-              disabled={isSubmitting}
+              disabled={issubmiting}
             >
-              {isSubmitting ? 'Submitting...' : 'Submit'}
+              {issubmiting ? 'submiting...' : 'Submit'}
             </button>
           
           </form>

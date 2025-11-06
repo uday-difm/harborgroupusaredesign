@@ -30,7 +30,7 @@ export default function Careers() {
       return;
     }
     if (!form.terms) {
-      setError("You must accept the terms before submitting.");
+      setError("You must accept the terms before submiting.");
       return;
     }
 
@@ -153,7 +153,7 @@ export default function Careers() {
                   required
                 />
                 <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
-                  By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</Link>.
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</Link>.
                 </label>
               </div>
               {error && <div className="text-red-600 mb-2">{error}</div>}
@@ -163,7 +163,7 @@ export default function Careers() {
                 disabled={loading}
                 className="w-full bg-sky-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg"
               >
-                {loading ? "Submitting..." : "SUBMIT"}
+                {loading ? "submiting..." : "SUBMIT"}
               </button>
             </form>
           </div>

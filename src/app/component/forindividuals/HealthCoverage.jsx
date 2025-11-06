@@ -15,7 +15,7 @@ export const HealthCoverage = () => {
            Simplifying Your Path to<span className="text-blue-700">Health Coverage!</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-700 mb-10 leading-relaxed animate-fade-in-delay-text text-justify">
-           Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customised to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalised coverage, we've got you covered. With an Individual Health Plan from The Harbor Group, you can rest assured knowing that your health and vitality are in good hands. Take the first step towards a healthier future today.
+           Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customized to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalised coverage, we've got you covered. With an Individual Health Plan from The Harbor Group, you can rest assured knowing that your health and vitality are in good hands. Take the first step towards a healthier future today.
           </p>
 
           <Link href= "#individual-form"
