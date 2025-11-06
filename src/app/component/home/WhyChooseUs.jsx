@@ -37,7 +37,7 @@ export const WhyChooseUsSection = () => {
                     {/* Left Column: Accordion */}
                     <div className="space-y-8">
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
-                            Why choose Harbor Group USA health plan ?
+                            Why Choose Harbor Group USA Health Plan ?
                         </h2>
                         <div className="space-y-4">
                             {reasons.map((reason, index) => (
