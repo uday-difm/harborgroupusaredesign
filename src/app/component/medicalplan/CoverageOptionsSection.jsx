@@ -32,7 +32,7 @@ export const CoverageOptionsSection = () => {
         {/* Coverage Options Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
-            Coverage options
+            Coverage Options
           </h2>
           <p className="text-lg sm:text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto animate-fade-in-up delay-100">
             Enjoy peace of mind with coverage for hospitalization, doctor visits, prescription medications, and more.
