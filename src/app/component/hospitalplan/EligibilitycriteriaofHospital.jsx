@@ -31,7 +31,7 @@ export const EligibilitycriteriaofHospital = ()=> {
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility criteria of Hospital Plan
+            Eligibility Criteria of Hospital Plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
            Open to individuals and families, our Hospital Plans ensure that specialized hospitalization coverage is within reach, tailored to meet your specific criteria.

@@ -10,7 +10,7 @@ export const ResourcesHelpCenterPage = () => {
   const white = '#FFFFFF';
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}10)` }}>
+    <section className=" flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}10)` }}>
       <div
         className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
         style={{ backgroundColor: accentLightBlue, transform: 'translate(-70%, -70%)' }}

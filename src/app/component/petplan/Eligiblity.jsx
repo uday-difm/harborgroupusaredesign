@@ -10,7 +10,7 @@ export const Eligibility = () => {
 
       <div className="relative max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
-         Eligibility criteria of Pet Plan
+         Eligibility Criteria of Pet Plan
         </h2>
         <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
 Open to pet owners, our Pet Plans ensure that comprehensive health protection for your furry friends is within reach
