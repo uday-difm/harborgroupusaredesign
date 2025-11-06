@@ -20,7 +20,7 @@ const QuotePopup = ({ onClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  const [submiting, setsubmiting] = useState(false);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -39,14 +39,14 @@ const QuotePopup = ({ onClose }) => {
   }, [onClose]);
 
   const handleSubmit = async () => {
-    setSubmitting(true);
+    setsubmiting(true);
     setMessage('');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
-    if (!name.trim()) { setMessage('Please enter your name.'); setSubmitting(false); return; }
-    if (!emailRegex.test(email)) { setMessage('Please enter a valid email address.'); setSubmitting(false); return; }
-    if (!phoneRegex.test(phone)) { setMessage('Phone number must be 10 digits.'); setSubmitting(false); return; }
+    if (!name.trim()) { setMessage('Please enter your name.'); setsubmiting(false); return; }
+    if (!emailRegex.test(email)) { setMessage('Please enter a valid email address.'); setsubmiting(false); return; }
+    if (!phoneRegex.test(phone)) { setMessage('Phone number must be 10 digits.'); setsubmiting(false); return; }
 
     try {
       const res = await fetch('/api/freequote', {
@@ -66,7 +66,7 @@ const QuotePopup = ({ onClose }) => {
       console.error(err);
       setMessage('An error occurred.');
     } finally {
-      setSubmitting(false);
+      setsubmiting(false);
     }
   };
 
@@ -147,10 +147,10 @@ const QuotePopup = ({ onClose }) => {
 
         <button
           onClick={handleSubmit}
-          disabled={submitting}
+          disabled={submiting}
           className="w-full popup-cta hover:bg-sky-500!"
         >
-          {submitting ? 'Submitting…' : 'Get Your Quote'}
+          {submiting ? 'submiting…' : 'Get Your Quote'}
         </button>
 
         {message && (

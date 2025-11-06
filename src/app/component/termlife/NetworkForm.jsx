@@ -20,7 +20,7 @@ export default function NetworkForm() {
   });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -43,18 +43,18 @@ export default function NetworkForm() {
 
     setError('');
     setSuccessMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError('All fields are required, and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -79,7 +79,7 @@ export default function NetworkForm() {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -168,11 +168,11 @@ export default function NetworkForm() {
               <div className="flex items-start">
                 <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1" checked={formData.terms} onChange={handleInputChange} />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
-                  By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
-              <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+              <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={issubmiting}>
+                {issubmiting ? 'submiting...' : 'SUBMIT'}
                 </button>
             </form>
              {/* Display error or success message */}

@@ -12,7 +12,7 @@ export const RequestCallback = () => {
 
   const [showMessage, setShowMessage] = useState(false);
   const [messageContent, setMessageContent] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
   const [error, setError] = useState('');
 
   const showMessageBox = (message) => {
@@ -35,13 +35,13 @@ export const RequestCallback = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIssubmiting(true);
     setError('');
 
     // Validate form data
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError("All fields are required, and you must agree to the terms.");
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -49,7 +49,7 @@ export const RequestCallback = () => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!emailRegex.test(formData.email)) {
       setError("Please enter a valid email address.");
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -79,7 +79,7 @@ export const RequestCallback = () => {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -155,7 +155,7 @@ export const RequestCallback = () => {
                   className="mt-1 mr-2 rounded text-teal-500 focus:ring-teal-400"
                 />
                 <label htmlFor="terms" className={`text-sm text-gray-600`}>
-                  By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our {" "}
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our {" "}
                   <a href="/sms-and-marketing-terms" className={`font-semibold text-sky-600 hover:underline`}>SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
@@ -163,9 +163,9 @@ export const RequestCallback = () => {
               <button
                 type="submit"
                 className={`w-full py-3 px-6 rounded-md font-semibold text-lg bg-sky-400 text-white hover:bg-sky-600 transition duration-300 ease-in-out shadow-md hover:shadow-lg`}
-             disabled={isSubmitting}
+             disabled={issubmiting}
               >
-                {isSubmitting ? "Submitting..." : "SUBMIT"}
+                {issubmiting ? "submiting..." : "SUBMIT"}
               </button>
             </form>
           </div>

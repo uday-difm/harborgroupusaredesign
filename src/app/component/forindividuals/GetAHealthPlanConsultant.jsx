@@ -17,7 +17,7 @@ export const GetAHealthPlanConsultant = () => {
     terms: false,
   });
   
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -33,14 +33,14 @@ export const GetAHealthPlanConsultant = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIssubmiting(true);
     setSuccessMessage('');
     setErrorMessage('');
 
     // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setErrorMessage('All fields are required and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -70,7 +70,7 @@ export const GetAHealthPlanConsultant = () => {
     } catch (error) {
       setErrorMessage('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -178,16 +178,16 @@ export const GetAHealthPlanConsultant = () => {
                   onChange={handleChange}
               />
               <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
-                By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
                 <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
                   SMS and Marketing terms and conditions.
                 </Link>
               </label>
             </div>
 
-            <button type="submit" className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"  disabled={isSubmitting}
+            <button type="submit" className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"  disabled={issubmiting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {issubmiting ? 'submiting...' : 'Submit'}
                 </button>
           </form>
            {/* Show success or error messages */}

@@ -13,7 +13,7 @@ export const Network = () => {
   });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -36,18 +36,18 @@ export const Network = () => {
 
     setError('');
     setMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError('All fields are required, and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -75,7 +75,7 @@ export const Network = () => {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
   return (
@@ -206,16 +206,16 @@ export const Network = () => {
                 onChange={handleInputChange}
               />
               <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
-                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="underline text-blue-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="underline text-blue-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
               </label>
             </div>
             <button
               type="submit"
               className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-sky-600 text-white font-bold text-lg rounded-lg shadow-md hover:from-blue-600 hover:to-sky-700 transform hover:scale-105 transition-all duration-300 ease-in-out
                            focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-75"
-             disabled={isSubmitting}
+             disabled={issubmiting}
             >
-              {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+              {issubmiting ? 'submiting...' : 'SUBMIT'}
             </button>
           </form>
             {/* Display error or success message */}
