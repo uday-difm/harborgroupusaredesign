@@ -65,7 +65,7 @@ export default function ContactPage() {
     }
 
     // Console log the form data
-    console.log('Form Data Submitted:', formData);
+   // console.log('Form Data Submitted:', formData);
     // Adjusting keys to match API expected keys
   const requestData = {
     fullname: formData.fullName,

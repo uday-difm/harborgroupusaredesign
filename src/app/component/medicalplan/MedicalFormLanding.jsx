@@ -60,7 +60,7 @@ export const MedicalFormLanding = () => {
     }
 
     // Log the form data (for debugging)
-    console.log('Form Data Submitted:', formData);
+   // console.log('Form Data Submitted:', formData);
 
     try {
       const response = await fetch('/api/medicalplan', {

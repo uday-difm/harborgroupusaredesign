@@ -21,7 +21,7 @@ const FeatureHighlight = ({ icon: Icon, title, children, delay }) => {
 
 export const MajorMedicalSection = () => {
   return (
-    <div className="relative bg-gray-900 overflow-hidden">
+    <div className="relative bg-gray-900 overflow-hidden py-45">
       {/* Background Image & Gradient Overlay */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
@@ -41,7 +41,7 @@ export const MajorMedicalSection = () => {
             <p className="text-base font-semibold text-sky-400 uppercase tracking-wide">
               Major Medical Plans
             </p>
-            <h1 className="mt-2 text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            <h1 className="mt-2 text-4xl md:text-5xl font-extrabold text-white tracking-tight "   style={{ lineHeight: "1.2" }}>
             Comprehensive Healthcare Coverage with Our Major Medical Plans
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-200">

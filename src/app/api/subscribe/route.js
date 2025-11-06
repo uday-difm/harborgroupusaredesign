@@ -61,12 +61,11 @@ export async function POST(request) {
       <hr style="border: 1px solid #ecf0f1;" />
       <p>
         If you have any questions or would like to reach out, visit our 
-        <a href="https://1stalliancegrp.com/contact-us" style="color: #1eaae2; text-decoration: none;">contact page</a>.
+        <a href="https://www.harborgroupusa.com/contact" style="color: #1eaae2; text-decoration: none;">contact page</a>.
       </p>
       <p>
         Best regards,<br />
         <strong>The HarborGroupUSA Team</strong><br />
-        <i>Empowering financial excellence</i>
       </p>
     </div>
   </div>
@@ -90,7 +89,7 @@ export async function POST(request) {
       { status: 201, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Error during subscription:", error);
+   // console.error("Error during subscription:", error);
     return new Response(
       JSON.stringify({ message: "Internal Server Error", error: error.message }),
       { status: 500, headers: { "Content-Type": "application/json" } }

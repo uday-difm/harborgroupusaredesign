@@ -18,7 +18,7 @@ const generateSlug = (str) =>
 
 export async function PUT(req, { params }) {
     try {
-        // Safe blog id accessor: prefer params.id, fallback to last path segment of request URL.
+        
         const blog_id =
             params?.id ??
             (() => {
@@ -78,9 +78,8 @@ export async function PUT(req, { params }) {
             blog_date_time,
         ];
 
-        // Check if imageFile is actually a File object (not a string URL)
         if (imageFile && typeof imageFile !== 'string' && imageFile.size > 0) {
-            // Upload new image to S3
+           
             try {
                 const buffer = Buffer.from(await imageFile.arrayBuffer());
                 const fileForS3 = {
