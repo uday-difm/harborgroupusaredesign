@@ -17,7 +17,7 @@ export const Eligibilityofaccidental = () => {
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-        Eligibility of accidental plan
+       Eligibility of Accident Plans 
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
            Open to individuals and families, our Accident Plans ensure that coverage for unexpected accidents is within reach, designed to meet your specific criteria.

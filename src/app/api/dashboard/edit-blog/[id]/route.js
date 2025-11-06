@@ -18,7 +18,7 @@ export async function PUT(req, { params }) {
         // At top of PUT handler
         const { id: blog_id } = await params;
 
-        console.log('blog_id param:', blog_id);
+      //  console.log('blog_id param:', blog_id);
 
         if (!blog_id) {
             return NextResponse.json({ success: false, message: 'blog_id is required' }, { status: 400 });
@@ -26,7 +26,7 @@ export async function PUT(req, { params }) {
 
         // Detect content-type
         const contentType = String(req.headers.get?.('content-type') || '').toLowerCase();
-        console.log('Incoming content-type:', contentType);
+       // console.log('Incoming content-type:', contentType);
 
         // Prepare: payload object, plus optional imageFile and existingImage
         let payload = {};
@@ -39,7 +39,7 @@ export async function PUT(req, { params }) {
                 payload = await req.json();
                 existingImage = payload.existingImage || payload.existing_image || null;
             } catch (err) {
-                console.error('JSON parse error:', err);
+               // console.error('JSON parse error:', err);
                 return NextResponse.json({ success: false, message: 'Invalid JSON' }, { status: 400 });
             }
         } else {
@@ -58,7 +58,7 @@ export async function PUT(req, { params }) {
                 }
                 existingImage = formData.get('existingImage') || formData.get('existing_image') || existingImage;
             } catch (err) {
-                console.error('FormData parse error:', err);
+                //console.error('FormData parse error:', err);
                 return NextResponse.json({ success: false, message: 'Failed to parse form data', error: String(err?.message) }, { status: 400 });
             }
         }
@@ -76,12 +76,12 @@ export async function PUT(req, { params }) {
             existingImage = payload.existingImage || payload.existing_image;
         }
 
-        console.log('Parsed payload preview:', {
-            blog_title,
-            blog_category_id,
-            hasImageFile: !!imageFile,
-            existingImage,
-        });
+        // console.log('Parsed payload preview:', {
+        //     blog_title,
+        //     blog_category_id,
+        //     hasImageFile: !!imageFile,
+        //     existingImage,
+        // });
 
         // Validate required
         if (!blog_title || !blog_category_id) {
@@ -114,11 +114,11 @@ export async function PUT(req, { params }) {
                     mimetype: imageFile.type || 'application/octet-stream',
                 };
                 const s3Url = await uploadToS3('blogs', fileForS3);
-                console.log('S3 URL:', s3Url);
+               // console.log('S3 URL:', s3Url);
                 query += ', blog_feature_image = ?';
                 paramsArr.push(s3Url);
             } catch (s3Err) {
-                console.error('S3 upload failed:', s3Err);
+               // console.error('S3 upload failed:', s3Err);
                 return NextResponse.json({ success: false, message: 'Failed to upload new feature image.', error: String(s3Err?.message || s3Err) }, { status: 500 });
             }
         } else if (existingImage) {
@@ -130,12 +130,12 @@ export async function PUT(req, { params }) {
         query += ' WHERE blog_id = ?';
         paramsArr.push(blog_id);
 
-        console.log('Final query:', query);
-        console.log('Params:', paramsArr);
+        // console.log('Final query:', query);
+        // console.log('Params:', paramsArr);
 
         const [result] = await pool.execute(query, paramsArr);
 
-        console.log('DB result:', result);
+        // console.log('DB result:', result);
 
         if (!result || result.affectedRows === 0) {
             return NextResponse.json({ success: false, message: 'Blog not found or no changes made.', affectedRows: result?.affectedRows || 0 }, { status: 404 });
@@ -148,7 +148,7 @@ export async function PUT(req, { params }) {
             slug: finalSlug,
         });
     } catch (err) {
-        console.error('Unexpected error:', err);
+       // console.error('Unexpected error:', err);
         return NextResponse.json({ success: false, message: 'Failed to update blog', error: String(err?.message || err) }, { status: 500 });
     }
 }

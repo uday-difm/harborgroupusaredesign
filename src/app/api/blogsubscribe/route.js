@@ -53,7 +53,7 @@ export async function POST(req) {
       id: result.insertId,
     });
   } catch (error) {
-    console.error('Error subscribing:', error);
+   // console.error('Error subscribing:', error);
     return NextResponse.json({ message: 'Server error.', error: error.message }, { status: 500 });
   }
 }

@@ -30,14 +30,14 @@ export async function POST(req) {
         { status: 201, headers: { "Content-Type": "application/json" } }
       );
     } catch (error) {
-      console.error('Database error:', error); // Log the database error
+     // console.error('Database error:', error); // Log the database error
       return new Response(
         JSON.stringify({ message: 'Database error occurred', error: error.message }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
   } catch (error) {
-    console.error('Error parsing request body:', error); // Handle parsing error
+   // console.error('Error parsing request body:', error); // Handle parsing error
     return new Response(
       JSON.stringify({ message: 'Invalid request body' }),
       { status: 400, headers: { "Content-Type": "application/json" } }

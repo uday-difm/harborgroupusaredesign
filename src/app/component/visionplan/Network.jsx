@@ -52,7 +52,7 @@ export const Network = () => {
     }
 
     // Log form data (for debugging)
-    console.log('Form Data Submitted:', formData);
+   // console.log('Form Data Submitted:', formData);
 
     try {
       // Making the API call

@@ -43,7 +43,7 @@ export async function POST(req) {
       data: { id: result.insertId, name, email },
     });
   } catch (error) {
-    console.error('Insert error:', error);
+    //console.error('Insert error:', error);
     return NextResponse.json(
       { message: 'Error inserting free quote.', error: error.message },
       { status: 500 }

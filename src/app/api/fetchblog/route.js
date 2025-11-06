@@ -20,7 +20,6 @@ export async function GET(req) {
 
     const [rows] = await pool.execute(query);
 
-    // Trim blog_description to 150 characters, add "..." if longer
     const trimmedRows = rows.map(row => {
       if (row.blog_description.length > 150) {
         return {

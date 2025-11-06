@@ -43,7 +43,7 @@ export async function GET(request) {
     );
 
   } catch (error) {
-    console.error("Get user error:", error);
+  //  console.error("Get user error:", error);
     return NextResponse.json(
       { error: "Authentication failed" },
       { status: 401 }

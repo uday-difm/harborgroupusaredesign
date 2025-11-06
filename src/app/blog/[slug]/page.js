@@ -31,7 +31,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                 setMessage(result.message || "Subscription failed.");
             }
         } catch (err) {
-            console.error(err); 
+            //console.error(err); 
             setMessage("Something went wrong.");
         } finally {
             setLoading(false);
@@ -150,7 +150,7 @@ export default function BlogDetail() {
                 if (res.ok) setBlog(json.data);
                 else throw new Error(json.message || "Failed to fetch blog");
             } catch (err) {
-                console.error("Error fetching blog:", err);
+                //console.error("Error fetching blog:", err);
                 setError(err.message || "Something went wrong");
             } finally {
                 setLoading(false);
