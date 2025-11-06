@@ -10,7 +10,7 @@ export const StartPlanSection = () => {
     message: '',
     terms: false,
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -27,14 +27,14 @@ export const StartPlanSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsSubmitting(true);
+    setIssubmiting(true);
     setSuccessMessage('');
     setErrorMessage('');
 
     // Validate form fields
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setErrorMessage('All fields are required and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -64,7 +64,7 @@ export const StartPlanSection = () => {
     } catch (error) {
       setErrorMessage('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -161,7 +161,7 @@ export const StartPlanSection = () => {
                   className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
                 />
                 <label htmlFor="start-terms" className="ml-3 text-sm text-gray-600">
-                  By Submitting you allow our team to reach out to you via email or phone as submitted
+                  By submiting you allow our team to reach out to you via email or phone as submitted
                   information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and
                   conditions</a>.
                 </label>
@@ -172,9 +172,9 @@ export const StartPlanSection = () => {
                 <button
                   type="submit"
                   className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
-                disabled={isSubmitting}
+                disabled={issubmiting}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                    {issubmiting ? 'submiting...' : 'Submit'}
                 </button>
               </div>
             </form>

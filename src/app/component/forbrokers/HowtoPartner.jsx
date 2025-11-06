@@ -24,7 +24,7 @@ export const HowtoPartner = () => {
     terms: false,
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -40,7 +40,7 @@ export const HowtoPartner = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIssubmiting(true);
     setSuccessMessage("");
     setErrorMessage("");
   // Log form data to the console
@@ -48,7 +48,7 @@ export const HowtoPartner = () => {
     // Basic validation
     if (!formData.name || !formData.state || !formData.dob || !formData.plans || !formData.email || !formData.phone || !formData.terms) {
       setErrorMessage("All fields are required, and you must agree to the terms.");
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -82,7 +82,7 @@ export const HowtoPartner = () => {
     } catch (error) {
       setErrorMessage("An error occurred. Please try again later.");
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
   return (
@@ -275,7 +275,7 @@ export const HowtoPartner = () => {
               
               />
               <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
-                By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
                 <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
                   SMS and Marketing terms and conditions.
                 </Link>
@@ -289,9 +289,9 @@ export const HowtoPartner = () => {
                 backgroundColor: darkAccentBlue,
                 borderColor: darkAccentBlue,
               }}
-            disabled={isSubmitting}
+            disabled={issubmiting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {issubmiting ? 'submiting...' : 'Submit'}
                 </button>
           </form>
            {/* Show success or error messages */}

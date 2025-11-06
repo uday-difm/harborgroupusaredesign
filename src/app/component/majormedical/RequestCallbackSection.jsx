@@ -54,7 +54,7 @@ export const RequestCallbackSection = () => {
 
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -79,18 +79,18 @@ export const RequestCallbackSection = () => {
 
     setError('');
     setMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Client-side validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError('All fields are required, and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -114,7 +114,7 @@ export const RequestCallbackSection = () => {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -164,7 +164,7 @@ export const RequestCallbackSection = () => {
                 />
                 <div className="text-sm">
                   <label htmlFor="terms" className="text-gray-600">
-                    By Submitting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
+                    By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
                     <Link href="/sms-and-marketing-terms" className="font-semibold text-sky-600 hover:underline">
                       SMS and Marketing terms and conditions.
                     </Link>
@@ -177,9 +177,9 @@ export const RequestCallbackSection = () => {
                 <button
                   type="submit"
                   className="w-full inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-sky-500 hover:bg-sky-600 shadow-lg shadow-sky-500/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                  disabled={isSubmitting}
+                  disabled={issubmiting}
                 >
-                  {isSubmitting ? 'Submitting...' : 'SUBMIT'}
+                  {issubmiting ? 'submiting...' : 'SUBMIT'}
                   <Send className="ml-3 h-5 w-5" />
                 </button>
               </div>
