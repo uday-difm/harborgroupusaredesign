@@ -25,7 +25,7 @@ export const  DentalEligbility = ()=> {
         {/* Header Section */}
         <div className="text-left mb-12 lg:mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight text-center">
-            Eligibility criteria of Dental Care Plan
+            Eligibility Criteria of Dental Care Plan
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl text-center mx-auto">
            Open to individuals and families, our dental care plan ensures that quality dental care is within reach for everyone. Your smile is important, and so is your budget. Eligibility Criteria for the Dental Care Plans includes.
