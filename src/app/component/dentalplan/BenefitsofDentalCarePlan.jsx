@@ -14,7 +14,7 @@ export const BenefitsofDentalCarePlan = () => {
   });
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -37,18 +37,18 @@ export const BenefitsofDentalCarePlan = () => {
 
     setError('');
     setMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError('All fields are required, and you must agree to the terms.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -76,7 +76,7 @@ export const BenefitsofDentalCarePlan = () => {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -187,15 +187,15 @@ export const BenefitsofDentalCarePlan = () => {
                   checked={formData.terms}
                   onChange={handleInputChange}/>
               <label htmlFor="terms" className="ml-2 text-sm text-gray-600">
-                By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and conditions</Link>.
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and conditions</Link>.
               </label>
             </div>
             <button
               type="submit"
               className="w-full bg-sky-400 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 uppercase tracking-wide text-lg"
-                disabled={isSubmitting}
+                disabled={issubmiting}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
+                {issubmiting ? 'submiting...' : 'Submit'}
             </button>
           </form>
              {/* Display error or success message */}

@@ -330,7 +330,7 @@ const AddBlog = () => {
                                     type="submit"
                                     className={`rounded bg-sky-400 py-2 px-6 text-white hover:bg-opacity-90 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     disabled={loading}>
-                                    {loading ? 'Submitting...' : 'Post'}
+                                    {loading ? 'submiting...' : 'Post'}
                                 </button>
                             </div>
                         </div>

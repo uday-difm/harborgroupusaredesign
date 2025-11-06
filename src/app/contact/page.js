@@ -13,7 +13,7 @@ export default function ContactPage() {
   // State for error and success messages
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [issubmiting, setIssubmiting] = useState(false);
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -41,26 +41,26 @@ export default function ContactPage() {
 
     setError('');
     setMessage('');
-    setIsSubmitting(true);
+    setIssubmiting(true);
 
     // Basic client-side validation
     if (!formData.fullName || !formData.emailaddress || !formData.phonenumber) {
       setError('All fields are required.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     // Validate email format
     if (!validateEmail(formData.emailaddress)) {
       setError('Please enter a valid email address.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
     // Validate phone number format
     if (!validatePhoneNumber(formData.phonenumber)) {
       setError('Please enter a valid phone number.');
-      setIsSubmitting(false);
+      setIssubmiting(false);
       return;
     }
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
     } catch (err) {
       setError('An error occurred. Please try again later.');
     } finally {
-      setIsSubmitting(false);
+      setIssubmiting(false);
     }
   };
 
@@ -171,9 +171,9 @@ export default function ContactPage() {
                 type="submit"
                 className="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white
                            bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800
-                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:-translate-y-0.5"  disabled={isSubmitting}
+                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:-translate-y-0.5"  disabled={issubmiting}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
+                {issubmiting ? 'submiting...' : 'Submit'}
               </button>
             </div>
           </form>
