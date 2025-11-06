@@ -18,17 +18,17 @@ export default function Blogs() {
         const response = await fetch('/api/fetchblog');
         const data = await response.json();
 
-        console.log("Raw API Response:", data);
+        //console.log("Raw API Response:", data);
 
         if (Array.isArray(data.data)) {
           setBlogs(data.data); // ✅ Fix: use the correct array
         } else {
-          console.error("Unexpected API response:", data);
+         // console.error("Unexpected API response:", data);
           setBlogs([]);
         }
 
       } catch (error) {
-        console.error("Fetch error:", error);
+        //console.error("Fetch error:", error);
         setError(error.message);
       } finally {
         setLoading(false);

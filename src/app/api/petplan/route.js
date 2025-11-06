@@ -5,13 +5,13 @@ import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log("Received Data:", body);  // Log the incoming data to inspect
+   // console.log("Received Data:", body);  
 
     const { name, email, message } = body;
 
     // Validation
     if (!name || !email || !message) {
-      console.error("Missing required fields:", { name, email, message }); // Log if fields are missing
+      //console.error("Missing required fields:", { name, email, message }); 
       return new Response(
         JSON.stringify({ error: 'All fields are required' }),
         { status: 400, headers: { "Content-Type": "application/json" } }

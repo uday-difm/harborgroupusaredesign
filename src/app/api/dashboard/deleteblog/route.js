@@ -32,7 +32,7 @@ export async function PUT(req) {
       }, { status: 404 });
     }
   } catch (error) {
-    console.error('Error updating blog status:', error);
+   // console.error('Error updating blog status:', error);
     return NextResponse.json(
       {
         message: 'Error updating blog status.',

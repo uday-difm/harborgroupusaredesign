@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 // Assuming Link and Image are available from a Next.js-like environment or similar setup
@@ -224,7 +226,7 @@ export const Header = () => {
                     <div className="hidden lg:flex items-center space-x-4">
                         <div className="text-right">
                             <p className="text-xs text-gray-500">Call Us</p>
-                            <p className={`text-sm font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll Free)</p>
+                            <p className={`text-sm font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll-Free)</p>
                             
                         </div>
                         <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500 hover:bg-sky-50 transition-colors duration-300`}>
@@ -310,7 +312,7 @@ export const Header = () => {
                             </a>
                             <div className="ml-4">
                                 <p className="text-sm text-gray-500">Call Us</p>
-                                <p className={`text-base font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll Free)</p>
+                                <p className={`text-base font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll-Free)</p>
                             </div>
                         </div>
                     </div>

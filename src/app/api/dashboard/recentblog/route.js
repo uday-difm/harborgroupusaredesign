@@ -1,10 +1,10 @@
 import pool from "../../../../../lib/mysql";
 import { NextResponse } from 'next/server'; 
 
-// The API handler for fetching data from the database
+
 export async function GET(req) {
   try {
-    // Correct SQL query to fetch blogs where blog_status is "0" and order by blog_date_time DESC
+ 
         const query = `
       SELECT blog_id, blog_title, blog_slug, blog_feature_image, 
         DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
@@ -15,17 +15,17 @@ export async function GET(req) {
     `;
 
 
-    // Execute the query using the pool connection
+ 
     const [rows] = await pool.execute(query);
 
-    // Return the fetched rows as a JSON response
+   
     return NextResponse.json({
       message: 'Blogs fetched successfully.',
-      data: rows, // This will be the result of your query
+      data: rows, 
     });
   } catch (error) {
-    console.error('Error fetching blogs:', error);
-    // Use NextResponse to return a response with error status
+    //console.error('Error fetching blogs:', error);
+
     return NextResponse.json(
       { 
         message: 'Error fetching blogs.',

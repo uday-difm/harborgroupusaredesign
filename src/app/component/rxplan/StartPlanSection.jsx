@@ -95,7 +95,7 @@ export const StartPlanSection = () => {
           {/* Right Column: Form Section */}
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
             <h2 className="text-4xl font-extrabold text-indigo-900 mb-8 leading-tight">
-              Start your plan today!
+              Start your Plan Today!
             </h2>
 
             <form className="space-y-6" onSubmit={handleSubmit} >

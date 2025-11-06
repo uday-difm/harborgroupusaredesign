@@ -31,7 +31,7 @@ export default function page() {
      <RequestCallback/>
      <HowToApply/>
      <FaqLifestyleplan/>
-     <GetYourPersonalizedMedicalPlan title="Let's get started with lifestyle plans" link ="GET STARTED" url="#lifestyle-plan-form"/>
+     <GetYourPersonalizedMedicalPlan title="Let's get started with Lifestyle Plans" link ="GET STARTED" url="#lifestyle-plan-form"/>
      {/* <TestimonialSection/> */}
      {/* <TestimonialLifeStylePlan/> */}
      

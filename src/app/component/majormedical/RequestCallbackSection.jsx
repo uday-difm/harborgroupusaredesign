@@ -7,13 +7,19 @@ import Link from 'next/link';
 
 // A reusable component for the form input fields
 const FormInput = ({ icon: Icon, type, name, placeholder, isTextArea = false, value, onChange }) => {
-  const commonClasses = "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all duration-300";
-  
+  const commonClasses =
+    "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all duration-300";
+
   return (
     <div className="relative" id="lifestyle-plan-form">
-      <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+      <div
+        className={`absolute left-0 flex pl-4 pointer-events-none ${
+          isTextArea ? "top-3" : "inset-y-0 items-center"
+        }`}
+      >
         <Icon className="w-5 h-5 text-gray-400" />
       </div>
+
       {isTextArea ? (
         <textarea
           name={name}
@@ -69,7 +75,7 @@ export const RequestCallbackSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form Data Submitted:", formData); // Log the form data before submission
+    //console.log("Form Data Submitted:", formData); // Log the form data before submission
 
     setError('');
     setMessage('');
