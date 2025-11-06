@@ -83,7 +83,7 @@ export const Protectionagainst = () => {
   };
 
   return (
-    <div className=" bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
+    <div className="bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
       {/* SVG gradient defs */}
       <svg width="0" height="0" className="absolute">
         <defs>
