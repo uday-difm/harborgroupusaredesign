@@ -44,18 +44,18 @@ export const BlogSection = () => {
     fetch("/api/recentblog")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched blog data:", data);
+       // console.log("Fetched blog data:", data);
         if (Array.isArray(data.data)) {
           setBlogs(data.data);
         } else {
-          console.error("Unexpected response format:", data);
+        //  console.error("Unexpected response format:", data);
           setBlogs([]);
         }
 
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Failed to fetch blogs:", err);
+       // console.error("Failed to fetch blogs:", err);
         setLoading(false);
       });
   }, []);

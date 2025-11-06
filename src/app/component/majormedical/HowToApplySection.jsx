@@ -35,7 +35,7 @@ export const HowToApplySection = ()=> {
           <StepCard
             iconPath="M12 4.5l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 19.5l7-7-7-7z"
             title="Compare and Choose"
-            description="Find the ideal fit for your budget with flexible pricing and enrolment options, supported by our agents"
+            description="Find the ideal fit for your budget with flexible pricing and Enrollment options, supported by our agents"
           />
           <StepCard
             iconPath="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 15L6 11l1.41-1.41L11 13.17l4.59-4.58L17 10l-6 6z"

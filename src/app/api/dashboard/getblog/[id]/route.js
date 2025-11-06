@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(req) {
   try {
-    const blogId = req.url.split('/').pop(); // Adjust parsing as needed
+    const blogId = req.url.split('/').pop(); 
 const query = `
       SELECT 
       b.blog_id,

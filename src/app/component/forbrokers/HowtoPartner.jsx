@@ -44,7 +44,7 @@ export const HowtoPartner = () => {
     setSuccessMessage("");
     setErrorMessage("");
   // Log form data to the console
-    console.log("Form data submitted:", formData);
+   // console.log("Form data submitted:", formData);
     // Basic validation
     if (!formData.name || !formData.state || !formData.dob || !formData.plans || !formData.email || !formData.phone || !formData.terms) {
       setErrorMessage("All fields are required, and you must agree to the terms.");
