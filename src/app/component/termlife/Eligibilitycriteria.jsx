@@ -17,7 +17,7 @@ export const Eligibilitycriteria = () => {
       <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-gray-800 mb-8 animate-fadeInUp">
-            Eligibility criteria for Term Life Plans
+            Eligibility Criteria for Term Life Plans
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
              Open to individuals and families, our Term Life Plan ensures that comprehensive financial protection is within reach.

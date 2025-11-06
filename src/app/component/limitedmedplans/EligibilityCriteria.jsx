@@ -16,7 +16,7 @@ export const EligibilityCriteria = () =>{
       <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
-            Eligibility criteria of Limited med plan
+            Eligibility Criteria of Limited med plan
           </h2>
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
            This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage.
