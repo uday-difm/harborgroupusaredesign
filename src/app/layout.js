@@ -9,6 +9,76 @@ import { usePathname } from "next/navigation";
 import CookiesBanner from "@/comman/CookiesBanner";
 import Script from 'next/script'; // Import the Script component
 
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://harborgroupusa.com/#organization",
+  "name": "Harbor Group USA",
+  "url": "https://harborgroupusa.com",
+  "logo": "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png",
+  "email": "support@harborgroupusa.com",
+  "telephone": "+1-800-473-3241",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-473-3241",
+      "contactType": "Customer Support",
+      "areaServed": "US",
+      "availableLanguage": ["English"],
+      "email": "support@harborgroupusa.com"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/HarborGroupUSA",
+    "https://www.linkedin.com/company/harborgroupusa",
+    "https://www.instagram.com/harborgroupusa"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "foundingDate": "2010",
+  "description": "Harbor Group USA provides trusted insurance and financial solutions designed to protect individuals and businesses. We focus on transparency, support, and tailored coverage options that meet every client’s needs.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Insurance Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Individual Insurance Plans",
+          "url": "https://www.harborgroupusa.com/for-individuals"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Broker and Partner Programs",
+          "url": "https://harborgroupusa.com/for-brokers"
+        }
+      }
+    ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://harborgroupusa.com"
+  }
+};
+
+
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
@@ -32,6 +102,12 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-NCT1WCEG39');
           `}
         </Script>
+     
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+
       </head>
       <body className="" cz-shortcut-listen="true">
         {!isDashboardPage && <Header />}
