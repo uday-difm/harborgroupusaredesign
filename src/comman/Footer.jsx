@@ -128,7 +128,7 @@ export const Footer = () => {
                         </p>
                         <div className="flex space-x-4">
                             {socialLinks.map((link) => (
-                                <Link key={link.name} href={link.href} aria-label={link.name} onClick={scrollToTop} className="text-gray-400 hover:text-sky-500 transition-colors">
+                                <Link key={link.name} href={link.href} aria-label={link.name}  className="text-gray-400 hover:text-sky-500 transition-colors" target="_blank">
                                     {link.icon}
                                 </Link>
                             ))}

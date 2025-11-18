@@ -2,12 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
-// Assuming Link and Image are available from a Next.js-like environment or similar setup
-// For a standalone React app, you might use <a> tags or a custom Link component.
-// For this example, we'll simulate Link and Image behavior with standard HTML elements
-// and a simple image tag, as 'next/link' and 'next/image' are Next.js specific.
-
-// Mock Link and Image for standalone React environment
 const Link = ({ href, children, onClick, className }) => (
     <a href={href} onClick={onClick} className={className}>
         {children}
@@ -35,7 +29,7 @@ const navLinks = [
     { name: 'Major Medical', href: '/major-medical-plan' },
     {
         name: 'Plans',
-        href: '/health-plans', // This is the parent link's href
+        href: '/health-plans', 
         dropdown: [
             { name: 'Medical', href: '/medical-plan' },
             { name: 'Dental', href: '/dental-care-plan' },
@@ -53,7 +47,7 @@ const navLinks = [
     },
     {
         name: 'For',
-        href: '/for', // This is the parent link's href
+        href: '/for', 
         dropdown: [
             { name: 'For Brokers', href: '/for-brokers' },
             { name: 'For Individuals', href: '/for-individuals' },
@@ -72,12 +66,7 @@ export const Header = () => {
     const dropdownCloseTimeout = useRef(null);
 
     useEffect(() => {
-        // This effect runs once on component mount to get the initial path.
-        // In a real Next.js app, you'd use useRouter().pathname
         setCurrentPath(window.location.pathname);
-
-        // Simulate path changes for demonstration in a non-Next.js environment
-        // In a real app, this would be handled by your routing solution.
         const handlePopState = () => {
             setCurrentPath(window.location.pathname);
         };
@@ -99,7 +88,7 @@ export const Header = () => {
         const handleClickOutside = (event) => {
             if (headerRef.current && !headerRef.current.contains(event.target)) {
                 setIsMobileMenuOpen(false);
-                setOpenDesktopDropdown(null); // Close desktop dropdown on outside click
+                setOpenDesktopDropdown(null); 
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
@@ -125,11 +114,9 @@ export const Header = () => {
     };
 
     const isLinkActive = (link) => {
-        // Check if the current path directly matches the link's href
         if (currentPath === link.href) {
             return true;
         }
-        // If the link has a dropdown, check if any dropdown item's href matches the current path
         if (link.dropdown) {
             return link.dropdown.some(item => item.href === currentPath);
         }
@@ -207,7 +194,7 @@ export const Header = () => {
                                             <div className="py-2">
                                                 {link.dropdown.map((item) => (
                                                     <Link
-                                                        onClick={() => { scrollToTop(); setCurrentPath(item.href); }} // Update path on click
+                                                        onClick={() => { scrollToTop(); setCurrentPath(item.href); }}
                                                         key={item.name}
                                                         href={item.href}
                                                         className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary
