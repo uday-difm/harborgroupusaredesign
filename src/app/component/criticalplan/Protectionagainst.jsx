@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,15 +25,74 @@ export const Protectionagainst = () => {
     terms: false,
   });
   const [error, setError] = useState("");
+    const [nameError, setNameError] = useState(""); 
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e) => {
+    const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
+ const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    if (name === "name") {
+      // sanitize name by removing digits (final safety net)
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+
+      // if sanitized differs, numbers were present — show name-specific error
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+  };
+
+  // block numeric key presses
+  const handleNameKeyDown = (e) => {
+    // covers main keys and numpad
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  // sanitize pasted text and insert at caret
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setFormData((prev) => ({ ...prev, name: newVal }));
+
+    // restore caret after paste
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
   };
 
   const validateEmail = (email) => {
@@ -50,6 +109,13 @@ export const Protectionagainst = () => {
 
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError("All fields are required, and you must agree to the terms.");
+      setIsSubmitting(false);
+      return;
+    }
+
+       // ensure no digits exist in name (server safety)
+    if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
       setIsSubmitting(false);
       return;
     }
@@ -160,13 +226,23 @@ export const Protectionagainst = () => {
                         id="name"
                         name="name"
                         type="text"
-                        value={formData.name}
+                         value={formData.name}
                         onChange={handleInputChange}
-                        required
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition"
+                        onKeyDown={handleNameKeyDown}
+                        onPaste={handleNamePaste}
                         placeholder="Your name"
                         aria-required="true"
+                          aria-describedby={nameError ? "name-error" : undefined}
+                        className={`w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition ${
+                          nameError ? "border-red-500" : "border-gray-300"
+                        }`}
                       />
+                        {/* name-specific error shown directly under the input */}
+                      {nameError && (
+                        <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                          {nameError}
+                        </p>
+                      )}
                     </div>
 
                     <div>

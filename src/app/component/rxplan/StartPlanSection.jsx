@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import Image from 'next/image'
 
 export const StartPlanSection = () => {
@@ -13,13 +13,60 @@ export const StartPlanSection = () => {
   const [issubmiting, setIssubmiting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [nameError, setNameError] = useState("");
 
-  // Handle form input changes
+  const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // SPECIAL: Name sanitization logic
+    if (name === "name") {
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  // Block numeric keypress
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  // Strip digits on paste
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+
+    const paste = (e.clipboardData || window.clipboardData).getData("text");
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (sanitized !== paste) {
+      setNameError(NAME_NUMBER_ERROR);
+    }
+    const input = nameInputRef.current;
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const newValue =
+      input.value.slice(0, start) + sanitized + input.value.slice(end);
+    setFormData((prev) => ({ ...prev, name: newValue }));
+    requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
     });
   };
 
@@ -30,6 +77,13 @@ export const StartPlanSection = () => {
     setIssubmiting(true);
     setSuccessMessage('');
     setErrorMessage('');
+
+      // Final validation: No digits allowed
+    if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
+      setIsSubmitting(false);
+      return;
+    }
 
     // Validate form fields
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
@@ -106,15 +160,23 @@ export const StartPlanSection = () => {
                   <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
                     Your name*
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                     value={formData.name}
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      ref={nameInputRef}
+                      value={formData.name}
                       onChange={handleChange}
-                    className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
-                    placeholder="John Doe"
-                  />
+                      onKeyDown={handleNameKeyDown}
+                      onPaste={handleNamePaste}
+                      className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg ${
+                        nameError ? "border-red-500 border" : "border-gray-300 border"
+                      }`}
+                      placeholder="John Doe"
+                    />
+                    {nameError && (
+                      <p className="text-sm text-red-600 mt-1">{nameError}</p>
+                    )}
                 </div>
 
                 {/* Email Input */}
