@@ -1,14 +1,29 @@
 "use client";
 
-import React, { useState } from 'react';
-import { User, Mail, MessageSquare, Send } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState, useRef } from "react";
+import { User, Mail, MessageSquare, Send } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // A reusable component for the form input fields
-const FormInput = ({ icon: Icon, type, name, placeholder, isTextArea = false, value, onChange }) => {
+const FormInput = ({
+  icon: Icon,
+  type,
+  name,
+  placeholder,
+  isTextArea = false,
+  value,
+  onChange,
+  onKeyDown,
+  onPaste,
+  inputRef,
+  errorText,
+}) => {
   const commonClasses =
-    "w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all duration-300";
+    "w-full pl-12 pr-4 py-3 bg-gray-50 border rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all duration-300";
+
+  // If there's an error, add red border
+  const errorClasses = errorText ? "border-red-500" : "border-gray-200";
 
   return (
     <div className="relative" id="lifestyle-plan-form">
@@ -21,23 +36,46 @@ const FormInput = ({ icon: Icon, type, name, placeholder, isTextArea = false, va
       </div>
 
       {isTextArea ? (
-        <textarea
-          name={name}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          rows="4"
-          className={`${commonClasses} resize-none`}
-        ></textarea>
+        <>
+          <textarea
+            name={name}
+            ref={inputRef}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            rows="4"
+            onPaste={onPaste}
+            className={`${commonClasses} ${errorClasses} resize-none`}
+            aria-invalid={!!errorText}
+            aria-describedby={errorText ? `${name}-error` : undefined}
+          ></textarea>
+          {errorText && (
+            <p id={`${name}-error`} className="text-sm text-red-600 mt-1">
+              {errorText}
+            </p>
+          )}
+        </>
       ) : (
-        <input
-          type={type}
-          name={name}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          className={commonClasses}
-        />
+        <>
+          <input
+            type={type}
+            name={name}
+            ref={inputRef}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            onKeyDown={onKeyDown}
+            onPaste={onPaste}
+            className={`${commonClasses} ${errorClasses}`}
+            aria-invalid={!!errorText}
+            aria-describedby={errorText ? `${name}-error` : undefined}
+          />
+          {errorText && (
+            <p id={`${name}-error`} className="text-sm text-red-600 mt-1">
+              {errorText}
+            </p>
+          )}
+        </>
       )}
     </div>
   );
@@ -46,23 +84,84 @@ const FormInput = ({ icon: Icon, type, name, placeholder, isTextArea = false, va
 export const RequestCallbackSection = () => {
   // State for form data and handling error/success messages
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
     terms: false,
   });
 
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [issubmiting, setIssubmiting] = useState(false);
+
+  // name-specific error
+  const [nameError, setNameError] = useState("");
+  const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
 
   // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // sanitize name field: remove digits as a safety net
+    if (name === "name") {
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+
+      // if sanitized differs, user tried to input numbers — show name error
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
+  };
+
+  // Blocks number keys from being typed
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  // Sanitize pasted text (remove digits) and insert sanitized text at caret
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    // show name error only if paste contained digits
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      // fallback: append sanitized
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setFormData((prev) => ({ ...prev, name: newVal }));
+
+    // restore caret after paste
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
   };
 
   // Email validation function
@@ -77,28 +176,36 @@ export const RequestCallbackSection = () => {
 
     //console.log("Form Data Submitted:", formData); // Log the form data before submission
 
-    setError('');
-    setMessage('');
+    setError("");
+    setMessage("");
     setIssubmiting(true);
+    setNameError("");
 
     // Client-side validation
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
-      setError('All fields are required, and you must agree to the terms.');
+      setError("All fields are required, and you must agree to the terms.");
+      setIssubmiting(false);
+      return;
+    }
+
+    // ensure no digits slipped through
+    if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
       setIssubmiting(false);
       return;
     }
 
     if (!validateEmail(formData.email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
       setIssubmiting(false);
       return;
     }
 
     try {
-      const response = await fetch('/api/majormedical', {
-        method: 'POST',
+      const response = await fetch("/api/majormedical", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -107,12 +214,13 @@ export const RequestCallbackSection = () => {
 
       if (response.ok) {
         setMessage(data.message); // Success message
-        setFormData({ name: '', email: '', message: '', terms: false }); // Clear form
+        setFormData({ name: "", email: "", message: "", terms: false }); // Clear form
+        setNameError("");
       } else {
-        setError(data.error || 'An error occurred. Please try again.');
+        setError(data.error || "An error occurred. Please try again.");
       }
     } catch (err) {
-      setError('An error occurred. Please try again later.');
+      setError("An error occurred. Please try again later.");
     } finally {
       setIssubmiting(false);
     }
@@ -128,7 +236,7 @@ export const RequestCallbackSection = () => {
               {/* Background Shapes */}
               <div className="absolute -top-8 -left-8 w-full h-full bg-gray-100 rounded-3xl"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-indigo-200 rounded-3xl shadow-2xl transform rotate-6"></div>
-              
+
               {/* Image */}
               <div className="absolute inset-4">
                 <Image
@@ -143,14 +251,42 @@ export const RequestCallbackSection = () => {
           </div>
 
           {/* --- Right Column: Form --- */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
             <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
               Request a Call Back?
             </h2>
             <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
-              <FormInput icon={User} type="text" name="name" placeholder="Your name*" value={formData.name} onChange={handleInputChange} />
-              <FormInput icon={Mail} type="email" name="email" placeholder="Your email*" value={formData.email} onChange={handleInputChange} />
-              <FormInput icon={MessageSquare} name="message" placeholder="Your message" value={formData.message} onChange={handleInputChange} isTextArea={true} />
+              {/* Name uses special handlers and shows nameError */}
+              <FormInput
+                icon={User}
+                type="text"
+                name="name"
+                placeholder="Your name*"
+                value={formData.name}
+                onChange={handleInputChange}
+                onKeyDown={handleNameKeyDown}
+                onPaste={handleNamePaste}
+                inputRef={nameInputRef}
+                errorText={nameError}
+              />
+
+              <FormInput
+                icon={Mail}
+                type="email"
+                name="email"
+                placeholder="Your email*"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+
+              <FormInput
+                icon={MessageSquare}
+                name="message"
+                placeholder="Your message"
+                value={formData.message}
+                onChange={handleInputChange}
+                isTextArea={true}
+              />
 
               {/* Terms and Conditions Checkbox */}
               <div className="flex items-start space-x-3">
@@ -164,7 +300,7 @@ export const RequestCallbackSection = () => {
                 />
                 <div className="text-sm">
                   <label htmlFor="terms" className="text-gray-600">
-                    By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
+                    By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{" "}
                     <Link href="/sms-and-marketing-terms" className="font-semibold text-sky-600 hover:underline">
                       SMS and Marketing terms and conditions.
                     </Link>
@@ -179,7 +315,7 @@ export const RequestCallbackSection = () => {
                   className="w-full inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-sky-500 hover:bg-sky-600 shadow-lg shadow-sky-500/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                   disabled={issubmiting}
                 >
-                  {issubmiting ? 'submiting...' : 'SUBMIT'}
+                  {issubmiting ? "submiting..." : "SUBMIT"}
                   <Send className="ml-3 h-5 w-5" />
                 </button>
               </div>

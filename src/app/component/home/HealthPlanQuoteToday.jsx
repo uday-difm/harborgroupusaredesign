@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,14 +17,62 @@ export default function HealthPlanQuoteToday() {
   const [message, setMessage] = useState('');
   const [issubmiting, setIssubmiting] = useState(false);
 
-  // Handle form input changes
+ const [nameError, setNameError] = useState("");
+  const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    if (name === "name") {
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
+
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+    setFormData((prev) => ({ ...prev, name: newVal }));
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
+  };
+
 
   // Validate Email Format
   const validateEmail = (email) => {
@@ -46,6 +94,12 @@ export default function HealthPlanQuoteToday() {
     setIssubmiting(false);
     return;
   }
+
+   if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
+      setIssubmiting(false);
+      return;
+    }
 
   if (!validateEmail(formData.email)) {
     setError('Please enter a valid email address.');
@@ -118,12 +172,24 @@ export default function HealthPlanQuoteToday() {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
-                  required
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
-                />
-              </div>
+                  ref={nameInputRef}
+                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
+                      nameError ? "border-red-500 border" : "border border-gray-300"
+                    }`}
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    onKeyDown={handleNameKeyDown}
+                    onPaste={handleNamePaste}
+                    aria-describedby={nameError ? "name-error" : undefined}
+                  />
+                  {/* Name-specific error directly under the name field */}
+                  {nameError && (
+                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                      {nameError}
+                    </p>
+                  )}
+                  </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
