@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
 
@@ -14,14 +14,73 @@ export const ApplyNowSection = ()=> {
   const [issubmiting, setIssubmiting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+    const [nameError, setNameError] = useState("");
 
-  const handleChange = (e) => {
+    const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
+   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    if (name === "name") {
+      // Remove digits as a safety net
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+
+      // If sanitized differs, user tried to enter numbers
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
+
+  // block numeric key presses
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  // sanitize pasted text and insert at caret
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setFormData((prev) => ({ ...prev, name: newVal }));
+
+    // restore caret after paste
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +94,12 @@ export const ApplyNowSection = ()=> {
       setIssubmiting(false);
       return;
     }
-
+ // ensure no digits in name
+    if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
+      setIsSubmitting(false);
+      return;
+    }
     // API Call to submit the form data
     try {
       const response = await fetch('/api/petplan', {
@@ -103,15 +167,28 @@ export const ApplyNowSection = ()=> {
                   <label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2">
                     Your name*
                   </label>
-                  <input
+                   <input
                     type="text"
                     id="name"
                     name="name"
-                     value={formData.name}
+                    ref={nameInputRef}
+                    value={formData.name}
                     onChange={handleChange}
-                    className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                    onKeyDown={handleNameKeyDown}
+                    onPaste={handleNamePaste}
+                    aria-required="true"
+                    aria-describedby={nameError ? "name-error" : undefined}
+                    className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg transition ${
+                      nameError ? "border-red-500 border" : "border-gray-300 border"
+                    }`}
                     placeholder="John Doe"
                   />
+                  {/* name-specific error directly under name input */}
+                  {nameError && (
+                    <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                      {nameError}
+                    </p>
+                  )}
                 </div>
 
                 {/* Email Input */}

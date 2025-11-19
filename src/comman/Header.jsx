@@ -12,7 +12,6 @@ const Image = ({ src, alt, className, width, height }) => (
     <img src={src} alt={alt} className={className} width={width} height={height} />
 );
 
-
 const Logo = () => (
     <Image
         width={600}
@@ -123,7 +122,6 @@ export const Header = () => {
         return false;
     };
 
-
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
@@ -155,7 +153,8 @@ export const Header = () => {
                         </Link>
                     </div>
 
-                    <nav className="hidden lg:flex lg:items-center lg:flex-grow lg:justify-center lg:space-x-8">
+                    {/* NOTE: changed breakpoint from lg -> xl so hamburger shows on iPad Pro */}
+                    <nav className="hidden xl:flex xl:items-center xl:flex-grow xl:justify-center xl:space-x-8">
                         {navLinks.map((link) => {
                             const isActive = isLinkActive(link);
                             const isOpen = openDesktopDropdown === link.name;
@@ -210,7 +209,7 @@ export const Header = () => {
                             );
                         })}
                     </nav>
-                    <div className="hidden lg:flex items-center space-x-4">
+                    <div className="hidden xl:flex items-center space-x-4">
                         <div className="text-right">
                             <p className="text-xs text-gray-500">Call Us</p>
                             <p className={`text-sm font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll-Free)</p>
@@ -220,7 +219,9 @@ export const Header = () => {
                             <Phone className="h-6 w-6" />
                         </a>
                     </div>
-                    <div className="lg:hidden flex items-center">
+
+                    {/* make burger visible until XL (so iPad Pro will show it) */}
+                    <div className="xl:hidden flex items-center">
                         <button onClick={toggleMobileMenu} type="button" className={`p-2 rounded-md ${colors.primary} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500`}>
                             <span className="sr-only">Open main menu</span>
                             {isMobileMenuOpen ? <X className="block h-7 w-7" /> : <Menu className="block h-7 w-7" />}
@@ -230,10 +231,10 @@ export const Header = () => {
             </div>
 
             {/* --- Mobile Menu --- */}
-            <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity lg:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleMobileMenu}></div>
+            <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity xl:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleMobileMenu}></div>
 
             {/* Mobile Menu Content */}
-            <div className={`lg:hidden fixed top-0 left-0 h-full w-full max-w-xs bg-white z-40 shadow-xl transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`} id="mobile-menu">
+            <div className={`xl:hidden fixed top-0 left-0 h-full w-full max-w-xs bg-white z-40 shadow-xl transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`} id="mobile-menu">
                 <div className="flex flex-col h-full">
                     {/* Mobile Menu Header */}
                     <div className="flex items-center justify-between p-4 border-b">
@@ -309,4 +310,4 @@ export const Header = () => {
     );
 }
 
-export default Header; // Export as default for easier use in other files
+export default Header;

@@ -20,8 +20,10 @@ const QuotePopup = ({ onClose }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [submiting, setsubmiting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [phoneError, setPhoneError] = useState(''); // <-- new state
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -38,15 +40,90 @@ const QuotePopup = ({ onClose }) => {
     };
   }, [onClose]);
 
+  // Helpers that sanitize input as user types / pastes
+  const handleNameChange = (e) => {
+    // allow letters, spaces, apostrophe and hyphen only
+    const raw = e.target.value;
+    const filtered = raw.replace(/[^A-Za-z\s'-]/g, '');
+
+    // if filtering removed characters (digits or other invalid chars), show an error
+    if (filtered.length !== raw.length) {
+      setNameError('Numbers and special characters are not allowed in the name.');
+    } else {
+      setNameError('');
+    }
+
+    setName(filtered);
+  };
+
+  const handleNamePaste = (e) => {
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+    const filtered = paste.replace(/[^A-Za-z\s'-]/g, '');
+    e.preventDefault();
+
+    // if paste contained disallowed characters, show error
+    if (filtered.length !== paste.length) {
+      setNameError('Pasted content contains numbers or special characters and was removed.');
+    } else {
+      setNameError('');
+    }
+    const input = e.target;
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const newValue = input.value.slice(0, start) + filtered + input.value.slice(end);
+    setName(newValue);
+
+    requestAnimationFrame(() => {
+      input.selectionStart = input.selectionEnd = start + filtered.length;
+    });
+  };
+
+const handlePhoneChange = (e) => {
+  const raw = e.target.value;
+  const filtered = raw.replace(/[^0-9+-]/g, '');
+  if (filtered.length !== raw.length) {
+    setPhoneError('Only digits, + and - are allowed.');
+  } else {
+    setPhoneError('');
+  }
+
+  setPhone(filtered);
+};
+
+const handlePhonePaste = (e) => {
+  const paste = (e.clipboardData || window.clipboardData).getData('text');
+  const filtered = paste.replace(/[^0-9+-]/g, '');
+  e.preventDefault();
+
+  if (paste.length !== filtered.length) {
+    setPhoneError('Pasted content contained invalid characters and was cleaned.');
+  } else {
+    setPhoneError('');
+  }
+
+  const input = e.target;
+  const start = input.selectionStart;
+  const end = input.selectionEnd;
+  const newValue = input.value.slice(0, start) + filtered + input.value.slice(end);
+
+  setPhone(newValue);
+
+  requestAnimationFrame(() => {
+    input.selectionStart = input.selectionEnd = start + filtered.length;
+  });
+};
+
   const handleSubmit = async () => {
-    setsubmiting(true);
+    setSubmitting(true);
     setMessage('');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
 
-    if (!name.trim()) { setMessage('Please enter your name.'); setsubmiting(false); return; }
-    if (!emailRegex.test(email)) { setMessage('Please enter a valid email address.'); setsubmiting(false); return; }
-    if (!phoneRegex.test(phone)) { setMessage('Phone number must be 10 digits.'); setsubmiting(false); return; }
+    if (!name.trim()) { setMessage('Please enter your name.'); setSubmitting(false); return; }
+    // extra safety: reject if any digits still present
+    if (/\d/.test(name)) { setMessage('Name must not contain numbers.'); setSubmitting(false); return; }
+    if (!emailRegex.test(email)) { setMessage('Please enter a valid email address.'); setSubmitting(false); return; }
+    if (!phoneRegex.test(phone)) { setMessage('Phone number must be 10 digits.'); setSubmitting(false); return; }
 
     try {
       const res = await fetch('/api/freequote', {
@@ -58,6 +135,7 @@ const QuotePopup = ({ onClose }) => {
       if (res.ok) {
         setMessage('Thank you! We received your request.');
         setName(''); setEmail(''); setPhone('');
+        setNameError(''); setPhoneError('');
         setTimeout(onClose, 2500);
       } else {
         setMessage(result?.message || 'Submission failed.');
@@ -66,7 +144,7 @@ const QuotePopup = ({ onClose }) => {
       console.error(err);
       setMessage('An error occurred.');
     } finally {
-      setsubmiting(false);
+      setSubmitting(false);
     }
   };
 
@@ -109,10 +187,16 @@ const QuotePopup = ({ onClose }) => {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange}
+              onPaste={handleNamePaste}
               placeholder="Name"
               className="popup-input"
+              aria-label="Full name (letters only)"
+              inputMode="text"
             />
+            {nameError && (
+              <p className="text-sm mt-1" style={{ color: 'var(--error, #dc2626)' }} aria-live="polite">{nameError}</p>
+            )}
           </div>
 
           {/* phone */}
@@ -123,10 +207,18 @@ const QuotePopup = ({ onClose }) => {
             <input
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
+              onPaste={handlePhonePaste}
               placeholder="Phone Number"
               className="popup-input"
+              aria-label="Phone number (10 digits)"
+              inputMode="numeric"
             />
+            {phoneError && (
+              <p className="text-sm mt-1" style={{ color: 'var(--error, #dc2626)' }} aria-live="polite">
+                {phoneError}
+              </p>
+            )}
           </div>
 
           {/* email */}
@@ -147,10 +239,10 @@ const QuotePopup = ({ onClose }) => {
 
         <button
           onClick={handleSubmit}
-          disabled={submiting}
+          disabled={submitting}
           className="w-full popup-cta hover:bg-sky-500!"
         >
-          {submiting ? 'submiting…' : 'Get Your Quote'}
+          {submitting ? 'submitting…' : 'Get Your Quote'}
         </button>
 
         {message && (

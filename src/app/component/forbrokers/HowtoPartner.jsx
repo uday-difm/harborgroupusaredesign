@@ -28,13 +28,89 @@ export const HowtoPartner = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Handle form data change
-  const handleChange = (e) => {
+  // Field-specific errors
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [plansError, setPlansError] = useState("");
+
+  // Validation helpers
+  const validateName = (name) => {
+    return /^[A-Za-z\s]+$/.test(name);
+  };
+
+  const validateEmail = (email) => {
+    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    // allow +, digits, spaces, parentheses and dashes
+    return /^\+?[0-9()\s-]{7,25}$/.test(phone);
+  };
+
+  // Generic handler for non-special fields
+  const handleGenericChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  };
+
+  // Name handler: strip numbers/symbols and provide live error
+  const handleNameChange = (e) => {
+    const raw = e.target.value;
+    const sanitized = raw.replace(/[^A-Za-z\s]/g, '');
+    if (sanitized !== raw) {
+      setNameError('Only letters and spaces are allowed.');
+    } else if (sanitized.trim() === '') {
+      setNameError('');
+    } else if (!validateName(sanitized)) {
+      setNameError('Only letters and spaces are allowed.');
+    } else {
+      setNameError('');
+    }
+    setFormData((prev) => ({ ...prev, name: sanitized }));
+  };
+
+  // Email handler: live validation
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    if (value === '') {
+      setEmailError('');
+    } else if (!validateEmail(value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+    setFormData((prev) => ({ ...prev, email: value }));
+  };
+
+  // Phone handler: strip letters and invalid chars
+  const handlePhoneChange = (e) => {
+    const raw = e.target.value;
+    const sanitized = raw.replace(/[^0-9+()\s-]/g, '');
+    if (sanitized !== raw) {
+      setPhoneError('Alphabets are not allowed in phone number.');
+    } else if (sanitized.trim() === '') {
+      setPhoneError('');
+    } else if (!validatePhone(sanitized)) {
+      setPhoneError('Please enter a valid phone number (7-25 digits).');
+    } else {
+      setPhoneError('');
+    }
+    setFormData((prev) => ({ ...prev, phone: sanitized }));
+  };
+
+  // Handle plans select change with simple validation
+  const handlePlansChange = (e) => {
+    const value = e.target.value;
+    setFormData((prev) => ({ ...prev, plans: value }));
+    if (!value) setPlansError('Please select a plan.');
+    else setPlansError('');
+  };
+
+  // Handle checkbox separately to keep handlers simple
+  const handleTermsChange = (e) => {
+    const checked = e.target.checked;
+    setFormData((prev) => ({ ...prev, terms: checked }));
   };
 
   // Handle form submission
@@ -43,48 +119,70 @@ export const HowtoPartner = () => {
     setIssubmiting(true);
     setSuccessMessage("");
     setErrorMessage("");
-  // Log form data to the console
-   // console.log("Form data submitted:", formData);
-    // Basic validation
-    if (!formData.name || !formData.state || !formData.dob || !formData.plans || !formData.email || !formData.phone || !formData.terms) {
-      setErrorMessage("All fields are required, and you must agree to the terms.");
+
+    // Basic required checks
+    if (!formData.name) setNameError('Name is required.');
+    if (!formData.state) setErrorMessage('State is required.');
+    if (!formData.dob) setErrorMessage('Date of birth is required.');
+    if (!formData.plans) setPlansError('Please select a plan.');
+    if (!formData.email) setEmailError('Email is required.');
+    if (!formData.phone) setPhoneError('Phone is required.');
+    if (!formData.terms) setErrorMessage('You must agree to the terms.');
+
+    // If any field-specific errors exist, block submit
+    if (nameError || emailError || phoneError || plansError) {
+      setErrorMessage('Please fix the highlighted errors before submitting.');
+      setIssubmiting(false);
+      return;
+    }
+
+    // Final validation
+    if (!validateName(formData.name)) {
+      setNameError('Only letters and spaces are allowed.');
+      setIssubmiting(false);
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email address.');
+      setIssubmiting(false);
+      return;
+    }
+    if (!validatePhone(formData.phone)) {
+      setPhoneError('Please enter a valid phone number (7-25 digits).');
+      setIssubmiting(false);
+      return;
+    }
+    if (!formData.plans) {
+      setPlansError('Please select a plan.');
+      setIssubmiting(false);
+      return;
+    }
+    if (!formData.terms) {
+      setErrorMessage('You must agree to the terms.');
       setIssubmiting(false);
       return;
     }
 
     try {
-      // Make API call
       const response = await fetch("/api/forbrokers", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await response.json();
-      
-
       if (response.ok) {
-        setSuccessMessage("Your application has been submitted successfully!");
-        setFormData({
-          name: "",
-          state: "",
-          dob: "",
-          plans: "",
-          email: "",
-          phone: "",
-          terms: false,
-        });
+        setSuccessMessage('Your application has been submitted successfully!');
+        setFormData({ name: "", state: "", dob: "", plans: "", email: "", phone: "", terms: false });
       } else {
-        setErrorMessage(data.error || "Something went wrong. Please try again.");
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
       }
-    } catch (error) {
-      setErrorMessage("An error occurred. Please try again later.");
+    } catch (err) {
+      setErrorMessage('An error occurred. Please try again later.');
     } finally {
       setIssubmiting(false);
     }
   };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden" id="broker-form"
@@ -163,7 +261,7 @@ export const HowtoPartner = () => {
           >
             Join <span style={{ color: darkAccentBlue }}>Us</span>
           </h2>
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div>
               <label htmlFor="name" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
                 Name*
@@ -173,12 +271,12 @@ export const HowtoPartner = () => {
                 id="name"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
+                onChange={handleNameChange}
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 text-black"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Full Name"
-                
               />
+              {nameError && <p className="text-red-500 text-sm mt-1">{nameError}</p>}
             </div>
             <div>
               <label htmlFor="state" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -188,12 +286,11 @@ export const HowtoPartner = () => {
                 type="text"
                 id="state"
                 value={formData.state}
-                onChange={handleChange}
+                onChange={handleGenericChange}
                 name="state"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your State"
-                
               />
             </div>
             <div>
@@ -204,11 +301,10 @@ export const HowtoPartner = () => {
                 type="date"
                 id="dob"
                 value={formData.dob}
-                onChange={handleChange}
+                onChange={handleGenericChange}
                 name="dob"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-               
               />
             </div>
             <div>
@@ -218,17 +314,17 @@ export const HowtoPartner = () => {
               <select
                 id="plans"
                  value={formData.plans}
-                onChange={handleChange}
+                onChange={handlePlansChange}
                 name="plans"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 bg-white appearance-none"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                
               >
                 <option value="">Select plan</option>
                 {plans.map((plan) => (
                   <option key={plan} value={plan}>{plan}</option>
                 ))}
               </select>
+              {plansError && <p className="text-red-500 text-sm mt-1">{plansError}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -238,13 +334,13 @@ export const HowtoPartner = () => {
                 type="email"
                 id="email"
                  value={formData.email}
-                onChange={handleChange}
+                onChange={handleEmailChange}
                 name="email"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="you@example.com"
-           
               />
+              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -254,13 +350,13 @@ export const HowtoPartner = () => {
                 type="tel"
                 id="phone"
                  value={formData.phone}
-                onChange={handleChange}
+                onChange={handlePhoneChange}
                 name="phone"
                 className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Phone Number"
-               
               />
+              {phoneError && <p className="text-red-500 text-sm mt-1">{phoneError}</p>}
             </div>
 
             <div className="flex items-start mt-6">
@@ -268,11 +364,10 @@ export const HowtoPartner = () => {
                 type="checkbox"
                 id="terms"
                  checked={formData.terms}
-                onChange={handleChange}
+                onChange={handleTermsChange}
                 name="terms"
                 className="h-5 w-5 rounded focus:ring-2 mt-1"
                 style={{ borderColor: lightBlueBg, accentColor: darkAccentBlue }}
-              
               />
               <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
                 By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
@@ -418,5 +513,3 @@ export const HowtoPartner = () => {
     </div>
   );
 };
-
-

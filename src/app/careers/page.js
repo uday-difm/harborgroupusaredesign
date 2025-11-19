@@ -1,7 +1,7 @@
 "use client";
 
-import Link from 'next/link';
-import React, { useState } from 'react'
+import Link from "next/link";
+import React, { useState, useRef } from "react";
 
 export default function Careers() {
   const [form, setForm] = useState({
@@ -15,9 +15,66 @@ export default function Careers() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
+  // name-specific error + ref
+  const [nameError, setNameError] = useState("");
+  const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
+
+    // Special handling for name: sanitize digits and show name-specific error only
+    if (name === "name") {
+      const sanitized = value.replace(/[0-9]/g, "");
+      setForm((prev) => ({ ...prev, name: sanitized }));
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+  }
+
+  // Prevent numeric key presses in name input
+  function handleNameKeyDown(e) {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  }
+
+  // Handle paste into name: strip digits, insert sanitized text at caret
+  function handleNamePaste(e) {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setForm((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setForm((prev) => ({ ...prev, name: newVal }));
+
+    // restore caret after paste
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
   }
 
   async function handleSubmit(e) {
@@ -25,12 +82,19 @@ export default function Careers() {
     setError(null);
     setResult(null);
 
+    // client-side checks
     if (!form.name || !form.email || !form.subject || !form.message) {
       setError("Please fill in all required fields.");
       return;
     }
     if (!form.terms) {
       setError("You must accept the terms before submiting.");
+      return;
+    }
+
+    // ensure name contains no digits
+    if (/[0-9]/.test(form.name)) {
+      setNameError(NAME_NUMBER_ERROR);
       return;
     }
 
@@ -46,6 +110,7 @@ export default function Careers() {
 
       setResult("Form submitted successfully!");
       setForm({ name: "", email: "", subject: "", message: "", terms: false });
+      setNameError("");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -67,8 +132,8 @@ export default function Careers() {
         className="min-h-screen relative flex items-center justify-center p-4 sm:p-6 lg:p-8 font-inter overflow-hidden"
         style={{
           backgroundImage: `url('https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/careers-page-scaled.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/70 to-white/70"></div>
@@ -97,12 +162,17 @@ export default function Careers() {
                   type="text"
                   id="name"
                   name="name"
+                  ref={nameInputRef}
                   value={form.name}
                   onChange={handleChange}
-                  className="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400"
+                  onKeyDown={handleNameKeyDown}
+                  onPaste={handleNamePaste}
+                  className={`shadow-sm appearance-none rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400 ${nameError ? "border-red-500 border" : "border"}`}
                   placeholder="Your name*"
                   required
+                  aria-describedby={nameError ? "name-error" : undefined}
                 />
+                {nameError && <p id="name-error" className="text-red-600 mt-1 text-sm" role="alert">{nameError}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Your email</label>
@@ -122,7 +192,7 @@ export default function Careers() {
                 <input
                   type="text"
                   id="subject"
-                  name='subject'
+                  name="subject"
                   value={form.subject}
                   onChange={handleChange}
                   className="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400"
