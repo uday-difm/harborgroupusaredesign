@@ -10,20 +10,22 @@ export const PharmacyNetworkSection = () => {
 
       <div className="relative max-w-7xl mx-auto  overflow-hidden ">
         <div className="grid grid-cols-1 lg:grid-cols-2">
-          <div className="relative h-96 lg:h-auto rounded-3xl overflow-hidden  group transform transition-all duration-500 hover:rotate-1 hover:shadow-3xl">
+          {/* IMAGE: show second on small/tablet, first on lg+ */}
+          <div className="relative h-96 lg:h-auto rounded-3xl overflow-hidden group transform transition-all duration-500 hover:rotate-1 hover:shadow-3xl order-2 lg:order-1">
             <Image 
-            width = {600}
-            height = {400}
+              width={600}
+              height={400}
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/RX-plan.jpg" 
               alt="Pharmacist handing prescription"
               className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-    
           </div>
-          <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-gray-900">
+
+          {/* TEXT: show first on small/tablet, second on lg+ */}
+          <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-gray-900 order-1 lg:order-2">
             <h2 className="text-4xl font-extrabold mb-6 leading-tight text-indigo-900">
-           Network
+              Network
             </h2>
             <p className="text-lg leading-relaxed mb-10 text-gray-600 text-justify">
               Accessing support for your medication needs is seamless with our extensive network of experienced professionals.
@@ -39,10 +41,11 @@ export const PharmacyNetworkSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Qualified Pharmacy Professionals</h3>
                   <p className="text-base text-gray-600 text-justify">
-                 Ensure tailored guidance for your unique medication requirements
+                    Ensure tailored guidance for your unique medication requirements
                   </p>
                 </div>
               </div>
+
               <div className="flex items-start bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0 inline-flex items-center justify-center">
                   <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -52,10 +55,11 @@ export const PharmacyNetworkSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Nationwide Coverage</h3>
                   <p className="text-base text-gray-600 text-justify">
-                   Find a qualified pharmacy conveniently, ensuring accessibility for your medication needs
+                    Find a qualified pharmacy conveniently, ensuring accessibility for your medication needs
                   </p>
                 </div>
               </div>
+
               <div className="flex items-start bg-white p-6 rounded-2xl shadow-lg border border-gray-100 transform transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0 inline-flex items-center justify-center">
                   <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

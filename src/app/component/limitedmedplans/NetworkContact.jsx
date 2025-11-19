@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState , useRef} from 'react'
 
 export const NetworkContact = () => {
       const gradientStops = (id) => (
@@ -22,15 +22,75 @@ export const NetworkContact = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [issubmiting, setIssubmiting] = useState(false);
+  const [nameError, setNameError] = useState("");
 
-  // Handle form input changes
+
+ const nameInputRef = useRef(null);
+  const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
+  // Handle form input changes (name sanitized)
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    if (name === "name") {
+      // Remove digits as a safety net
+      const sanitized = value.replace(/[0-9]/g, "");
+      setFormData((prev) => ({ ...prev, name: sanitized }));
+
+      // Show name-specific error only when digits were present
+      if (sanitized !== value) {
+        setNameError(NAME_NUMBER_ERROR);
+      } else {
+        setNameError("");
+      }
+      return;
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+
+  // Block numeric key presses for name input
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError(NAME_NUMBER_ERROR);
+    }
+  };
+
+  // Sanitize pasted text (remove digits) and insert at caret position
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (paste !== sanitized) {
+      setNameError(NAME_NUMBER_ERROR);
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setFormData((prev) => ({ ...prev, name: newVal }));
+
+    // restore caret after paste
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
+  };
+
 
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -48,6 +108,12 @@ export const NetworkContact = () => {
     if (!formData.name || !formData.email || !formData.message || !formData.terms) {
       setError("All fields are required, and you must agree to the terms.");
       setIssubmiting(false);
+      return;
+    }
+
+    if (/[0-9]/.test(formData.name)) {
+      setNameError(NAME_NUMBER_ERROR);
+      setIsSubmitting(false);
       return;
     }
 
@@ -95,9 +161,29 @@ export const NetworkContact = () => {
               <div className="flex flex-col sm:flex-row gap-6">
                 <div className="flex-1">
                   <label htmlFor="name" className="block text-gray-700 text-sm font-medium mb-2">Your name*</label>
-                  <input type="text" id="name" name="name" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="John Doe" value={formData.name}
-                    onChange={handleInputChange} />
-                </div>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    ref={nameInputRef}
+                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 border ${
+                      nameError ? "border-red-500" : "border-gray-300"
+                    }`}
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    onKeyDown={handleNameKeyDown}
+                    onPaste={handleNamePaste}
+                    aria-describedby={nameError ? "name-error" : undefined}
+                    aria-required="true"
+                  />
+                  {/* Name-specific error directly under the input */}
+                  {nameError && (
+                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                      {nameError}
+                    </p>
+                  )}
+                  </div>
                 <div className="flex-1">
                   <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Your email*</label>
                   <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com"  value={formData.email}
