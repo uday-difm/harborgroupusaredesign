@@ -19,6 +19,7 @@ export default function BlogTable() {
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
   const [userError, setUserError] = useState(null);
+  const [publishingId, setPublishingId] = useState(null);
 
   // Fetch logged-in user (same as before)
   useEffect(() => {
@@ -105,6 +106,43 @@ export default function BlogTable() {
     }
   };
 
+  const publishBlog = async (blogId) => {
+  if (!confirm('Publish this draft?')) return;
+  try {
+    setPublishingId(blogId);
+
+    // call the API to update the status to 1
+    const res = await fetch('/api/dashboard/blog-publish', {
+      method: 'PUT', // using PUT as an update
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ blog_id: blogId, status: 1 }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || 'Failed to publish');
+    }
+
+    const json = await res.json();
+
+    // if server returns success, update local state
+    if (json.affectedRows === undefined || json.affectedRows > 0 || json.success) {
+      setBlogs((prev) =>
+        prev.map((b) => (b.blog_id === blogId ? { ...b, status: 1 } : b))
+      );
+      alert('Published successfully.');
+    } else {
+      throw new Error(json.message || 'Publish failed');
+    }
+  } catch (err) {
+    console.error('Publish error:', err);
+    alert('Error publishing: ' + (err.message || 'Unknown error'));
+  } finally {
+    setPublishingId(null);
+  }
+};
+
+
   return (
     <DashboardLayout>
       <Head>
@@ -134,6 +172,7 @@ export default function BlogTable() {
                       <th className="px-4 py-3 text-left">Image</th>
                       <th className="px-4 py-3 text-left">Date</th>
                       <th className="px-4 py-3 text-center">Actions</th>
+                      <th className="px-4 py-3 text-center">Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -177,6 +216,23 @@ export default function BlogTable() {
                               </button>
                             </div>
                           </td>
+                           <td className="px-4 py-3 text-center">
+                              {String(data.status) === '1' ? (
+                                <span className="px-3 py-1 text-xs font-medium rounded text-green-700 bg-green-100">
+                                  Published
+                                </span>
+                              ) : (
+                                // Draft — clickable to publish
+                                <button
+                                  onClick={() => publishBlog(data.blog_id)}
+                                  disabled={publishingId === data.blog_id}
+                                  className={`px-3 py-1 text-xs font-medium rounded ${publishingId === data.blog_id ? 'opacity-50 cursor-not-allowed' : 'text-yellow-700 bg-yellow-100'}`}
+                                  title="Click to publish"
+                                >
+                                  {publishingId === data.blog_id ? 'Publishing...' : 'Draft'}
+                                </button>
+                              )}
+                            </td>
                         </tr>
                       ))
                     )}

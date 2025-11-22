@@ -8,7 +8,26 @@ import { useRouter } from 'next/navigation';
 export default function TopBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [user, setUser] = useState(null); 
   const router = useRouter();
+
+   // Fetch logged-in user info
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/dashboard/checkauth', { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user); // Assume API returns { user: { name, role, image } }
+        } else {
+          router.push('/dashboard/login');
+        }
+      } catch (err) {
+        console.error('Error fetching user:', err);
+      }
+    };
+    fetchUser();
+  }, [router]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -67,11 +86,12 @@ export default function TopBar() {
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           <div className="text-right">
-            <h4 className="text-sm font-semibold text-gray-800">Harbor Group USA</h4>
-            <p className="text-xs text-gray-500">Admin</p>
+            <h4 className="text-sm font-semibold text-gray-800">{user?.name || ''}</h4>
+            <p className="text-xs text-gray-500">{user?.role || ''}</p>
           </div>
           <Image
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Favicon.png"
+           src={user?.image || 'https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Favicon.png'}
+          
             alt="Profile"
             width={40}
             height={40}

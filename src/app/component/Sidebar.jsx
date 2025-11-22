@@ -7,7 +7,7 @@ import {
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,11 +16,29 @@ export default function Sidebar() {
     dashboard: false,
     posts: false,
     subscribers: false,
+    users: false,
   });
+   const [userRole, setUserRole] = useState(null); // store logged-in user role
 
   const toggleMenu = (menu) => {
     setOpenMenus((prev) => ({ ...prev, [menu]: !prev[menu] }));
   };
+
+    // Fetch logged-in user info
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/dashboard/checkauth", { credentials: "include" });
+        if (res.ok) {
+          const data = await res.json();
+          setUserRole(data.user.role); // assuming your API returns { user: { role: 'Super Admin' } }
+        }
+      } catch (err) {
+        console.error("Error fetching user:", err);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <aside className="w-64 bg-gradient-to-b from-slate-900 to-slate-800 text-white p-6 flex flex-col shadow-2xl backdrop-blur-md h-screen fixed overflow-y-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-900">
@@ -79,6 +97,42 @@ export default function Sidebar() {
               </li>
             </ul>
         </div>
+      {/* Manage Users Dropdown - only for Super Admin or Administrator */}
+        {(userRole === "Super Admin" || userRole === "Administrator") && (
+          <div className="rounded-xl bg-slate-800/60 p-4 group">
+            <div
+              className="flex items-center justify-between cursor-pointer p-2 hover:text-sky-400"
+              onClick={() => toggleMenu("users")}
+            >
+              <div className="flex items-center gap-2">
+                <Users size={16} />
+                <span>Manage Users</span>
+              </div>
+              {openMenus.users ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+            </div>
+
+            {openMenus.users && (
+              <ul className="pl-6 mt-2 space-y-2 text-sm">
+                <li>
+                  <Link
+                    href="/dashboard/admin-create"
+                    className="hover:text-sky-400 font-normal p-2 block"
+                  >
+                    Add User
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/dashboard/view-user"
+                    className="hover:text-sky-400 font-normal p-2 block"
+                  >
+                    View Users
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </div>
+        )}
       </nav>
     </aside>
   );
