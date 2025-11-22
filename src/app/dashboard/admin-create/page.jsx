@@ -89,7 +89,7 @@ export default function CreateAdminPage() {
                                 onChange={handleChange}
                                 placeholder="Full Name"
                                 required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
@@ -102,7 +102,7 @@ export default function CreateAdminPage() {
                                 onChange={handleChange}
                                 placeholder="Email"
                                 required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
@@ -115,7 +115,7 @@ export default function CreateAdminPage() {
                                 onChange={handleChange}
                                 placeholder="Password"
                                 required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
@@ -128,7 +128,7 @@ export default function CreateAdminPage() {
                                 onChange={handleChange}
                                 placeholder="Confirm Password"
                                 required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
@@ -138,7 +138,7 @@ export default function CreateAdminPage() {
                                 name="role"
                                 value={form.role}
                                 onChange={handleChange}
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-green-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             >
                                 <option value="Administrator">Administrator</option>
                                 <option value="Subscriber">Subscriber</option>
