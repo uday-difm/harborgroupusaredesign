@@ -1,12 +1,12 @@
 import pool from '../../../../../lib/mysql';
 import { NextResponse } from 'next/server';
+
 export async function GET() {
   try {
-    // Query all users (you can adjust the table name and fields)
     const [rows] = await pool.execute(
-      'SELECT `id`, `name`, `email`, `role`, `image`, `created_at` FROM `admin` ORDER BY `created_at` DESC');
-
-    // Format created date for display
+      'SELECT `id`, `name`, `email`, `role`, `image`, `created_at` FROM `admin` WHERE `status` = ? ORDER BY `created_at` DESC',
+      ['0'] 
+    );
     const formattedData = rows.map((user) => ({
       ...user,
       formatted_created_date: new Date(user.created_at).toLocaleDateString('en-US', {
