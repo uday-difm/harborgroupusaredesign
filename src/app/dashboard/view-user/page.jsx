@@ -116,7 +116,7 @@ export default function AdminTable() {
                           <Link href={`/admin/${data.slug || data.id}`}>
                             <Eye className="w-4 h-4 text-slate-500 hover:text-blue-600 cursor-pointer" />
                           </Link>
-                          <button onClick={() => router.push(`/dashboard/update-admin/${data.id}`)}>
+                          <button onClick={() => router.push(`/dashboard/update-user/${data.id}`)}>
                             <Pencil className="w-4 h-4 text-slate-500 hover:text-yellow-500 cursor-pointer" />
                           </button>
                           <button onClick={() => deleteAdmin(data.id)}>
