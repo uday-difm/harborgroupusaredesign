@@ -84,8 +84,8 @@ export async function POST(req) {
             </p>
             <!-- Call to Action -->
             <div style="text-align: center; margin-top: 20px;">
-              <a href="https://www.earthbyhumans.com/dashboard/login" 
-                style="display: inline-block; background-color: #008000; color: white; padding: 12px 25px; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 6px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s;">
+              <a href="https://www.harborgroupusa.com/dashboard/login" 
+                style="display: inline-block; background-color:#00A6F4; color: white; padding: 12px 25px; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 6px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s;">
                 Login to Dashboard
               </a>
             </div>
@@ -97,7 +97,7 @@ export async function POST(req) {
             <div style="text-align: center; color: #777; font-size: 12px; margin-top: 30px;">
               <p>Best regards,<br/><strong>The admim Team</strong></p>
               <p style="margin-top: 10px;">
-                <a href="https://www.earthbyhumans.com/" style="color: #008000; text-decoration: none;">Visit our website</a>
+                <a href="https://www.harborgroupusa.com/" style="color: #00A6F4; text-decoration: none;">Visit our website</a>
               </p>
             </div>
           </div>
