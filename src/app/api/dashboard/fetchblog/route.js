@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function GET(req) {
   try {
     
-    const query = `SELECT blog_id, blog_title, blog_feature_image, 
+    const query = `SELECT blog_id, blog_title, blog_feature_image, status,
         DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
       FROM blogs 
       WHERE blog_status = "0" 
