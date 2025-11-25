@@ -33,7 +33,7 @@ export async function POST(request) {
       { 
         id: adminUser.id, 
         email: adminUser.email,
-        role: 'dashboard'
+        role: adminUser.role
       },
       process.env.JWT_SECRET_KEY,
       { expiresIn: rememberMe ? "7d" : "1h" } 
@@ -41,7 +41,7 @@ export async function POST(request) {
     const userWithoutPassword = {
       id: adminUser.id,
       email: adminUser.email,
-      role: 'dashboard'
+       role: adminUser.role
     };
 
     const response = NextResponse.json(
