@@ -1,232 +1,3 @@
-// "use client";
-// import { useState, useEffect, useRef } from 'react';
-// import dynamic from 'next/dynamic';
-// import Head from 'next/head';
-// import axios from 'axios';
-// import DashboardLayout from '@/app/component/DashboardLayout';
-// import { useRouter, useParams } from 'next/navigation';
-// import Image from 'next/image';
-
-// const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
-
-// const editorConfig = {
-//   readonly: false,
-//   toolbar: true,
-//   spellcheck: true,
-//   language: 'en',
-//   toolbarButtonSize: 'medium',
-//   showCharsCounter: true,
-//   showWordsCounter: true,
-//   showXPathInStatusbar: false,
-//   askBeforePasteHTML: true,
-//   askBeforePasteFromWord: true,
-//   uploader: {
-//     insertImageAsBase64URI: true,
-//   },
-//   width: '100%',
-//   minHeight: 500,
-// };
-
-// export default function UpdateBlog() {
-//   const router = useRouter();
-//   const params = useParams();
-//   const id = params.id;
-
-//   const [values, setValues] = useState({
-//     blog_id: id || '',
-//     blog_slug: '',
-//     blog_title: '',
-//     blog_tag: '',
-//     blog_date: '',
-//     blog_time: '',
-//     blog_category_id: '',
-//     blog_description: '',
-//     blog_content: '',
-//   });
-
-//   const [categories, setCategories] = useState([]);
-//   const [selectedImage, setSelectedImage] = useState(null);
-//   const [existingImage, setExistingImage] = useState('');
-//   const [loading, setLoading] = useState(false);
-//   const [errorMessage, setErrorMessage] = useState('');
-//   const imageInputRef = useRef(null);
-//   const [message, setMessage] = useState('');
-
-//   useEffect(() => {
-//     if (!id) return;
-
-//     const fetchBlog = async () => {
-//       try {
-//         const res = await axios.get(`/api/dashboard/getblog/${id}`);
-//         const data = res.data.data[0];
-        
-//         console.log('Fetched blog data:', data);
-
-//         // Use formatted date and time from API
-//         const blogDate = data.formatted_blog_date || '';
-//         const blogTime = data.formatted_blog_time || '';
-        
-//         console.log('Parsed date:', blogDate, 'time:', blogTime);
-
-//         setValues({
-//           blog_id: data.blog_id || '',
-//           blog_slug: data.blog_slug || '',
-//           blog_title: data.blog_title || '',
-//           blog_tag: data.blog_tag || '',
-//           blog_date: blogDate,
-//           blog_time: blogTime,
-//           blog_category_id: data.blog_category_id || '',
-//           blog_description: data.blog_description || '',
-//           blog_content: data.blog_content || '',
-//         });
-
-//         setExistingImage(data.blog_feature_image || '');
-//       } catch (err) {
-//         console.error('Failed to fetch blog:', err);
-//         setErrorMessage('Could not load blog data.');
-//       }
-//     };
-
-//     const fetchCategories = async () => {
-//       try {
-//         const res = await axios.get(`/api/dashboard/fatchcategory`);
-//         setCategories(res.data.categories || []);
-//       } catch (err) {
-//         console.error('Failed to fetch categories:', err);
-//         setCategories([]);
-//       }
-//     };
-
-//     fetchBlog();
-//     fetchCategories();
-//   }, [id]);
-
-//   const handleImageChange = (e) => {
-//     const file = e.target.files[0];
-//     if (file) {
-//       if (file.size > 500 * 1024) {
-//         setErrorMessage('File size exceeds 500KB. Please upload a smaller image.');
-//         return;
-//       }
-//       setErrorMessage('');
-//       setSelectedImage(file);
-//     }
-//   };
-
-//   // const handleUpdate = async (e) => {
-//   //   e.preventDefault();
-//   //   setLoading(true);
-//   //   setErrorMessage('');
-//   //   setMessage('');
-
-//   //   // Validate required fields
-//   //   if (!values.blog_title || !values.blog_category_id) {
-//   //     setErrorMessage('Blog title and category are required.');
-//   //     setLoading(false);
-//   //     return;
-//   //   }
-
-//   //   const formData = new FormData();
-//   //   formData.append('blog_id', values.blog_id);
-//   //   formData.append('blog_title', values.blog_title);
-//   //   formData.append('blog_slug', values.blog_slug);
-//   //   formData.append('blog_tag', values.blog_tag);
-//   //   formData.append('blog_date', values.blog_date);
-//   //   formData.append('blog_time', values.blog_time);
-//   //   formData.append('blog_category_id', values.blog_category_id);
-//   //   formData.append('blog_description', values.blog_description);
-//   //   formData.append('blog_content', values.blog_content);
-
-//   //   if (selectedImage) {
-//   //     formData.append('blog_feature_image', selectedImage);
-//   //   } else if (existingImage) {
-//   //     formData.append('existingImage', existingImage);
-//   //   }
-
-//   //   try {
-//   //     const res = await fetch(`/api/dashboard/edit-blog/${id}`, {
-//   //       method: 'PUT',
-//   //       body: formData,
-//   //     });
-
-//   //     const result = await res.json();
-
-//   //     if (res.ok && result?.success) {
-//   //       setErrorMessage('');
-//   //       setMessage(result.message || 'Blog updated successfully!');
-//   //       setTimeout(() => {
-//   //         router.push('/dashboard/blog-table');
-//   //       }, 1500);
-//   //     } else {
-//   //       setMessage('');
-//   //       const errorDetails = result?.error ? ` (${result.error})` : '';
-//   //       setErrorMessage(result?.message || 'Failed to update blog. Please check your inputs.' + errorDetails);
-//   //     }
-//   //   } catch (err) {
-//   //     console.error('Error updating blog:', err);
-//   //     setErrorMessage('An unexpected error occurred while updating the blog.');
-//   //   } finally {
-//   //     setLoading(false);
-//   //   }
-//   // };
-
-//   const handleUpdate = async (e) => {
-//   e.preventDefault();
-//   setLoading(true);
-//   setErrorMessage('');
-//   setMessage('');
-
-//   try {
-//     let res;
-
-//     if (selectedImage) {
-//       // ---- Case 1: Updating with new image ----
-//       const formData = new FormData();
-//       formData.append('blog_id', values.blog_id);
-//       formData.append('blog_title', values.blog_title);
-//       formData.append('blog_slug', values.blog_slug);
-//       formData.append('blog_tag', values.blog_tag);
-//       formData.append('blog_date', values.blog_date);
-//       formData.append('blog_time', values.blog_time);
-//       formData.append('blog_category_id', values.blog_category_id);
-//       formData.append('blog_description', values.blog_description);
-//       formData.append('blog_content', values.blog_content);
-//       formData.append('blog_feature_image', selectedImage);
-
-//       res = await fetch(`/api/dashboard/edit-blog/${id}`, {
-//         method: 'PUT',
-//         body: formData,
-//       });
-//     } else {
-//       // ---- Case 2: Updating text only ----
-//       res = await fetch(`/api/dashboard/edit-blog/${id}`, {
-//         method: 'PUT',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(values),
-//       });
-//     }
-
-//     // Parse response
-//     const result = await res.json();
-
-//     if (res.ok && result?.success) {
-//       setMessage(result.message || 'Blog updated successfully!');
-//       setTimeout(() => router.push('/dashboard/blog-table'), 1500);
-//     } else {
-//       setErrorMessage(result?.message || 'Failed to update blog.');
-//     }
-//   } catch (err) {
-//     console.error('Error updating blog:', err);
-//     setErrorMessage('An unexpected error occurred while updating the blog.');
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-
-
-// app/(dashboard)/dashboard/edit-blog/[id]/page.jsx (or similar path)
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
@@ -257,7 +28,7 @@ const editorConfig = {
 export default function UpdateBlog() {
   const router = useRouter();
   const params = useParams();
-  const id = params.id;
+  const id = params?.id;
 
   const [values, setValues] = useState({
     blog_id: id || '',
@@ -269,11 +40,13 @@ export default function UpdateBlog() {
     blog_category_id: '',
     blog_description: '',
     blog_content: '',
+    status: '1',
   });
 
   const [categories, setCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
   const [existingImage, setExistingImage] = useState('');
+  const [actionLoading, setActionLoading] = useState(null); // null | 'draft' | 'update'
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const imageInputRef = useRef(null);
@@ -283,13 +56,15 @@ export default function UpdateBlog() {
     if (!id) return;
 
     const fetchBlog = async () => {
+      setLoading(true);
       try {
         const res = await axios.get(`/api/dashboard/getblog/${id}`);
-        const data = res.data.data[0] || {};
+        const data = res.data.data?.[0] || {};
         const blogDate = data.formatted_blog_date || '';
         const blogTime = data.formatted_blog_time || '';
 
-        setValues({
+        setValues(prev => ({
+          ...prev,
           blog_id: data.blog_id || '',
           blog_slug: data.blog_slug || '',
           blog_title: data.blog_title || '',
@@ -299,12 +74,15 @@ export default function UpdateBlog() {
           blog_category_id: data.blog_category_id || '',
           blog_description: data.blog_description || '',
           blog_content: data.blog_content || '',
-        });
+          status: data.status != null ? String(data.status) : (prev.status || '1'),
+        }));
 
         setExistingImage(data.blog_feature_image || '');
       } catch (err) {
         console.error('Failed to fetch blog:', err);
         setErrorMessage('Could not load blog data.');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -334,24 +112,36 @@ export default function UpdateBlog() {
     }
   };
 
-  // === UPDATED: always send FormData ===
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  /**
+   * handleUpdate(status, e)
+   * status:
+   *   null/undefined => preserve existing values.status (no change to status)
+   *   "0"            => save as draft (force status = "0")
+   *   "1"            => force publish (force status = "1")
+   */
+  const handleUpdate = async (status = null, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+
+    const action = status === '0' ? 'draft' : 'update';
+    setActionLoading(action);
     setErrorMessage('');
     setMessage('');
 
-    // validate
-    if (!values.blog_title || !values.blog_category_id) {
-      setErrorMessage('Blog title and category are required.');
-      setLoading(false);
+    // Decide statusToSend
+    const statusToSend = status === null || typeof status === 'undefined' ? String(values.status ?? '1') : String(status);
+
+    // Basic validation
+    if (!values.blog_title || (statusToSend === '1' && !values.blog_category_id)) {
+      setErrorMessage('Please provide required fields. Title is required; category is required for publish.');
+      setActionLoading(null);
       return;
     }
 
     try {
       const formData = new FormData();
-      // append all fields explicitly to avoid implicit serialization issues
-      formData.append('blog_id', values.blog_id ?? '');
+      // include blog_id fallback: prefer id route param, then state
+      const endpointBlogId = id || values.blog_id || '';
+      formData.append('blog_id', endpointBlogId);
       formData.append('blog_title', values.blog_title ?? '');
       formData.append('blog_slug', values.blog_slug ?? '');
       formData.append('blog_tag', values.blog_tag ?? '');
@@ -360,6 +150,7 @@ export default function UpdateBlog() {
       formData.append('blog_category_id', values.blog_category_id ?? '');
       formData.append('blog_description', values.blog_description ?? '');
       formData.append('blog_content', values.blog_content ?? '');
+      formData.append('status', String(statusToSend));
 
       if (selectedImage) {
         formData.append('blog_feature_image', selectedImage);
@@ -367,17 +158,40 @@ export default function UpdateBlog() {
         formData.append('existingImage', existingImage);
       }
 
-      const res = await fetch(`/api/dashboard/edit-blog/${id}`, {
+      // Debugging logs (remove in production)
+      console.log('Updating blog endpoint id:', endpointBlogId);
+      for (const pair of formData.entries()) {
+        console.log('formData key:', pair[0]);
+      }
+
+      if (!endpointBlogId) {
+        setErrorMessage('Missing blog id — cannot update.');
+        setActionLoading(null);
+        return;
+      }
+
+      const res = await fetch(`/api/dashboard/edit-blog/${endpointBlogId}`, {
         method: 'PUT',
-        // IMPORTANT: don't set Content-Type for FormData; browser will set the boundary
         body: formData,
       });
 
       const result = await res.json();
 
       if (res.ok && result?.success) {
-        setMessage(result.message || 'Blog updated successfully!');
-        setTimeout(() => router.push('/dashboard/blog-table'), 1400);
+        // Prefer server message when available
+        if (statusToSend === '0') {
+          setMessage(result.message || 'Draft saved successfully!');
+        } else {
+          setMessage(result.message || 'Blog updated and published.');
+        }
+
+        // update local status so future "Update" preserves it
+        setValues(prev => ({ ...prev, status: statusToSend }));
+
+        // redirect on publish (optional)
+        if (statusToSend === '1') {
+          setTimeout(() => router.push('/dashboard/blog-table'), 1200);
+        }
       } else {
         setErrorMessage(result?.message || 'Failed to update blog.');
       }
@@ -385,7 +199,7 @@ export default function UpdateBlog() {
       console.error('Error updating blog:', err);
       setErrorMessage('An unexpected error occurred while updating the blog.');
     } finally {
-      setLoading(false);
+      setActionLoading(null);
     }
   };
 
@@ -402,8 +216,8 @@ export default function UpdateBlog() {
             <h3 className="font-medium text-black dark:text-white">Update Blog</h3>
           </div>
 
-          <form onSubmit={handleUpdate}>
-            <input type='hidden' value={values.blog_id} />
+          <form onSubmit={(e) => handleUpdate(null, e)}>
+            <input type="hidden" value={values.blog_id} />
             <div className="p-6.5">
               {/* Title and Tag */}
               <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
@@ -440,6 +254,7 @@ export default function UpdateBlog() {
                   onChange={(e) => setValues({ ...values, blog_slug: e.target.value })}
                   className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                 />
+                <p className="text-sm text-gray-500 dark:text-gray-300">If left blank, slug can be auto-generated.</p>
               </div>
 
               {/* Image, Date & Time */}
@@ -448,14 +263,12 @@ export default function UpdateBlog() {
                   <label className="mb-2.5 block text-black dark:text-white">Feature Image</label>
                   <input
                     type="file"
+                    ref={imageInputRef}
                     onChange={handleImageChange}
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input"
                   />
-                  {errorMessage && (
-                    <p className="text-sm text-red-500 mt-2">{errorMessage}</p>
-                  )}
+                  {errorMessage && <p className="text-sm text-red-500 mt-2">{errorMessage}</p>}
 
-                  {/* Show preview of the newly selected image */}
                   {selectedImage && (
                     <Image
                       width={100}
@@ -466,7 +279,6 @@ export default function UpdateBlog() {
                     />
                   )}
 
-                  {/* Show existing image if no new image is selected */}
                   {!selectedImage && existingImage && (
                     <Image
                       width={100}
@@ -552,15 +364,25 @@ export default function UpdateBlog() {
                 </button>
 
                 <button
-                  type="submit"
-                  className={`rounded bg-sky-400 py-2 px-6 font-medium text-white hover:shadow-1 ${loading || errorMessage ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  disabled={loading || errorMessage}
+                  type="button"
+                  onClick={() => handleUpdate('0')}
+                  disabled={actionLoading === 'draft'}
+                  className={`rounded bg-yellow-400 py-2 px-6 font-medium text-white hover:shadow-1 ${actionLoading === 'draft' ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
-                  {loading ? 'Updating...' : 'Update'}
+                  {actionLoading === 'draft' ? 'Saving Draft...' : 'Save Draft'}
+                </button>
+
+                <button
+                  type="submit"
+                  onClick={() => handleUpdate('1')}
+                  className={`rounded bg-[#244A78] py-2 px-6 font-medium text-white hover:shadow-1 ${actionLoading === 'update' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={actionLoading === 'update'}
+                >
+                  {actionLoading === 'update' ? 'Updating...' : 'Update'}
                 </button>
               </div>
 
-              {/* Success and error messages */}
+              {/* messages */}
               {errorMessage && !message && (
                 <p className="text-red-600 mt-4 font-semibold">{errorMessage}</p>
               )}

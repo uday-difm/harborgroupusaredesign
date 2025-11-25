@@ -8,7 +8,26 @@ import { useRouter } from 'next/navigation';
 export default function TopBar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [user, setUser] = useState(null); 
   const router = useRouter();
+
+   // Fetch logged-in user info
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/dashboard/checkauth', { credentials: 'include' });
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user); // Assume API returns { user: { name, role, image } }
+        } else {
+          router.push('/dashboard/login');
+        }
+      } catch (err) {
+        console.error('Error fetching user:', err);
+      }
+    };
+    fetchUser();
+  }, [router]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -31,6 +50,11 @@ export default function TopBar() {
       console.error('Logout failed', err);
     }
   };
+
+    const handleEditProfile = () => {
+    router.push(`/dashboard/update-user//${user?.id}`);
+  };
+
 
   return (
     <div className="w-full px-6 py-4 bg-white flex items-center justify-between shadow-sm z-10 relative">
@@ -67,11 +91,12 @@ export default function TopBar() {
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
           <div className="text-right">
-            <h4 className="text-sm font-semibold text-gray-800">Harbor Group USA</h4>
-            <p className="text-xs text-gray-500">Admin</p>
+            <h4 className="text-sm font-semibold text-gray-800">{user?.name || ''}</h4>
+            <p className="text-xs text-gray-500">{user?.role || ''}</p>
           </div>
           <Image
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Favicon.png"
+           src={user?.image || 'https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Favicon.png'}
+          
             alt="Profile"
             width={40}
             height={40}
@@ -93,12 +118,12 @@ export default function TopBar() {
 
         {dropdownOpen && (
           <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-30 py-2">
-            {/* <a href="/dashboard/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-              My Profile
-            </a>
-            <a href="/dashboard/settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+           <button
+              onClick={handleEditProfile}
+              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
               Edit Profile
-            </a> */}
+            </button>
             <button
               onClick={handleLogout}
               className="block w-full text-left px-4 py-2 text-sm text-sky-600 hover:bg-gray-100"
