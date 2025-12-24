@@ -8,6 +8,8 @@ import { Footer } from "@/comman/Footer";
 import { usePathname } from "next/navigation";
 import CookiesBanner from "@/comman/CookiesBanner";
 import Script from 'next/script'; // Import the Script component
+import Holidayspopup from "@/comman/Holidayspopup";
+import Snowfall from "react-snowfall";
 
 
 const schema = {
@@ -111,6 +113,23 @@ export default function RootLayout({ children }) {
       </head>
       <body className="" cz-shortcut-listen="true">
         {!isDashboardPage && <Header />}
+        <Holidayspopup />
+                <Snowfall
+     snowflakeCount={160}
+      color="#00A6F4"   
+      speed={[0.5, 1.5]}
+      wind={[-0.3, 0.3]}
+      radius={[1, 3]}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: 9999999,     // 🔥 higher than header
+        pointerEvents: "none",
+           }}
+    />
         {children}
         {!isDashboardPage && <Footer />}
         <CookiesBanner />
