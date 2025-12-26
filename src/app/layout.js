@@ -112,7 +112,9 @@ export default function RootLayout({ children }) {
 
       </head>
       <body className="" cz-shortcut-listen="true">
-        {!isDashboardPage && <Header />}
+        {!isDashboardPage && (
+          <>
+        <Header />
         <Holidayspopup />
                 <Snowfall
      snowflakeCount={160}
@@ -130,6 +132,8 @@ export default function RootLayout({ children }) {
         pointerEvents: "none",
            }}
     />
+      </>
+)}
         {children}
         {!isDashboardPage && <Footer />}
         <CookiesBanner />
