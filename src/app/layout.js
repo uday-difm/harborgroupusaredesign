@@ -115,7 +115,7 @@ export default function RootLayout({ children }) {
         {!isDashboardPage && (
           <>
         <Header />
-        <Holidayspopup />
+        {/* <Holidayspopup />
                 <Snowfall
      snowflakeCount={160}
       color="#00A6F4"   
@@ -128,10 +128,10 @@ export default function RootLayout({ children }) {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 9999999,     // 🔥 higher than header
+        zIndex: 9999999,  
         pointerEvents: "none",
            }}
-    />
+    /> */}
       </>
 )}
         {children}
