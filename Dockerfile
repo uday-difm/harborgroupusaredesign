@@ -1,12 +1,12 @@
 # Use the official Node.js image as the base
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set the working directory
 WORKDIR /app
 
 # Install dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 # Copy the Next.js app files
 COPY . .
