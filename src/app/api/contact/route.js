@@ -20,7 +20,7 @@ export async function POST(req) {
       [fullname, phonenumber, emailaddress]
     );
 
-   // Email content
+    // Email content for the internal support team
     const emailContent = generateEmailTemplate({
       subject: "📩 New Contact Us Submission",
       body: `
@@ -31,19 +31,39 @@ export async function POST(req) {
           <p><strong>Email Address:</strong> ${emailaddress}</p>
         </div>
       `,
-      footer: "© 2025 YourCompany. All rights reserved.",
+      footer: "© 2026 Harbor Group USA. All rights reserved.",
     });
 
-    // Send email to admin (or whoever handles inquiries)
+    // replyTo allows support to reply directly to the person who submitted it.
     await sendMail({
       to: "support@harborgroupusa.com",
       subject: "📬 New Contact Us Form Submission",
       html: emailContent,
+      replyTo: emailaddress,
+    });
+
+    // Send a confirmation to the email address entered in the form.
+    const confirmationContent = generateEmailTemplate({
+      subject: "We received your message",
+      body: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>Thank you for contacting Harbor Group USA</h2>
+          <p>Hello ${fullname},</p>
+          <p>We received your contact request. Our team will contact you shortly.</p>
+        </div>
+      `,
+      footer: "© 2026 Harbor Group USA. All rights reserved.",
+    });
+
+    await sendMail({
+      to: emailaddress,
+      subject: "We received your Harbor Group USA contact request",
+      html: confirmationContent,
     });
 
     return new Response(
       JSON.stringify({
-        message: "Form submitted and email sent!",
+        message: "Form submitted and confirmation email sent!",
         id: result.insertId,
         setTimeout: 3000,
       }),
