@@ -30,7 +30,8 @@
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^19.1.2",
     "react-paginate": "^8.3.0",
-    "react-snowfall": "^2.4.0"
+    "react-snowfall": "^2.4.0",
+    "resend": "^6.17.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -38,5 +38,6 @@ jobs:
            -e EMAIL_PASS="${{ secrets.EMAIL_PASS }}" \
            -e EMAIL_FROM="${{ secrets.EMAIL_FROM }}" \
            -e EMAIL_ADMIN="${{ secrets.EMAIL_ADMIN }}" \
+           -e RESEND_API_KEY="${{ secrets.RESEND_API_KEY }}" \
         doitformellc/harborgroupusa:latest
       
