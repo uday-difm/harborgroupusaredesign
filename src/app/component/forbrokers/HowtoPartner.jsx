@@ -1,19 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export const HowtoPartner = () => {
-  const primaryBlue = '#1A2E5B'; 
-  const darkAccentBlue = '#0D1B3A'; 
-  const lightBlueBg = '#4CAFDE'; 
-  const softGray = '#F0F2F5'; 
-
   const plans = [
     "Medical Plans", "Dental Plans", "Vision Plans", "Term Life Plans",
     "Group Benefit", "Limited Med Plans", "Accident Plans", "Hospital Plans",
     "Critical Plans", "Lifestyle Plans", "Pet Plans", "Rx Plans"
   ];
- // Form data state
+  
+  // Form data state
   const [formData, setFormData] = useState({
     name: "",
     state: "",
@@ -33,6 +30,8 @@ export const HowtoPartner = () => {
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [plansError, setPlansError] = useState("");
+
+  const nameInputRef = useRef(null);
 
   // Validation helpers
   const validateName = (name) => {
@@ -68,6 +67,42 @@ export const HowtoPartner = () => {
       setNameError('');
     }
     setFormData((prev) => ({ ...prev, name: sanitized }));
+  };
+
+  const handleNamePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData("text") || "";
+    const sanitized = paste.replace(/[0-9]/g, "");
+
+    if (paste !== sanitized) {
+      setNameError('Only letters and spaces are allowed.');
+    } else {
+      setNameError("");
+    }
+
+    const input = nameInputRef.current;
+    if (!input) {
+      setFormData((prev) => ({ ...prev, name: (prev.name || "") + sanitized }));
+      return;
+    }
+
+    const start = input.selectionStart ?? 0;
+    const end = input.selectionEnd ?? 0;
+    const newVal = input.value.slice(0, start) + sanitized + input.value.slice(end);
+
+    setFormData((prev) => ({ ...prev, name: newVal }));
+
+    window.requestAnimationFrame(() => {
+      const pos = start + sanitized.length;
+      input.selectionStart = input.selectionEnd = pos;
+    });
+  };
+
+  const handleNameKeyDown = (e) => {
+    if (/^[0-9]$/.test(e.key)) {
+      e.preventDefault();
+      setNameError('Only letters and spaces are allowed.');
+    }
   };
 
   // Email handler: live validation
@@ -183,324 +218,216 @@ export const HowtoPartner = () => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
-    <div
-      className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden" id="broker-form"
-      style={{ backgroundColor: softGray }}
-    >
-      
-      
-      
-      <div
-        className="relative z-10 w-full max-w-7xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fadeInUp"
-      >
-        <div
-          className="lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center text-center lg:text-left relative overflow-hidden"
-          style={{ background: `linear-gradient(135deg, ${primaryBlue} 0%, ${darkAccentBlue} 100%)` }}
-        >
-          <svg
-            className="absolute bottom-0 left-0 w-full h-auto z-0 opacity-20"
-            viewBox="0 0 1440 320"
-            xmlns="http://www.w3.org/2000/svg"
+    <section id="broker-form" className="section-tint py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          
+          {/* Left Panel: Process Overview */}
+          <motion.div 
+            className="flex flex-col justify-center"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
           >
-            <path fill="#ffffff" fillOpacity="1" d="M0,160L48,176C96,192,192,224,288,208C384,192,480,128,576,128C672,128,768,192,864,202.7C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
+            <motion.div variants={itemVariants}>
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-navy-900 mb-6 tracking-tight">
+                How Partnership Works
+              </h2>
+              <p className="text-lg text-navy-600 mb-12 max-w-lg leading-relaxed">
+                At Harbor Group USA, we believe in the power of collaboration. We've streamlined our onboarding process to get you contracted, trained, and selling fast.
+              </p>
+            </motion.div>
 
-          <div className="relative z-10"> 
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-white animate-textFadeIn"
-            >
-              How to <span style={{ color: lightBlueBg }}>Partner</span> 
-            </h2>
-            <p
-              className="text-lg sm:text-xl leading-relaxed mb-8 text-white text-opacity-80 animate-textFadeIn animation-delay-300 text-justify"
-            >
-              At Harbor Group USA, we believe in the power of collaboration, and we look forward to the possibility of working together.
-            </p>
-
-            <h3
-              className="text-2xl sm:text-3xl font-bold mt-10 mb-4 text-white animate-textFadeIn animation-delay-600"
-            >
-              What do you consider your main expertise in?*
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-2 text-left max-w-md mx-auto lg:mx-0 animate-fade-in-up-stagger">
-              {plans.map((plan, index) => (
-                <div key={plan} className="flex items-center text-lg text-white text-opacity-90">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-2 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    style={{ color: lightBlueBg }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {plan}
+            <div className="space-y-10 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-navy-200 before:to-transparent">
+              {/* Step 1 */}
+              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                  <span className="font-bold">1</span>
                 </div>
-              ))}
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-bold text-navy-900 text-lg">Reach Out & Apply</h3>
+                  </div>
+                  <p className="text-navy-600">Submit your application using the form. Tell us about your expertise and the plans you intend to focus on.</p>
+                </div>
+              </motion.div>
+
+              {/* Step 2 */}
+              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                  <span className="font-bold">2</span>
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-bold text-navy-900 text-lg">Get Onboarded</h3>
+                  </div>
+                  <p className="text-navy-600">Our team will review your application and provide the necessary contracting, compliance, and training materials.</p>
+                </div>
+              </motion.div>
+
+              {/* Step 3 */}
+              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                  <span className="font-bold">3</span>
+                </div>
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-bold text-navy-900 text-lg">Grow Together</h3>
+                  </div>
+                  <p className="text-navy-600">Access our competitive rates, group buying power, and comprehensive broker support to scale your business.</p>
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-        <div
-          className="lg:w-1/2 p-8 md:p-12 lg:p-16 bg-white flex flex-col justify-center animate-slideInRight"
-        >
-          <h2
-            className="text-4xl sm:text-5xl font-extrabold mb-8 text-center animate-textFadeIn"
-            style={{ color: primaryBlue }}
+          </motion.div>
+
+          {/* Right Panel: The Form */}
+          <motion.div 
+            className="card-elevated bg-white p-8 md:p-12"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            Join <span style={{ color: darkAccentBlue }}>Us</span>
-          </h2>
-          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-            <div>
-              <label htmlFor="name" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                Name*
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleNameChange}
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 text-navy-800"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                placeholder="Your Full Name"
-              />
-              {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
-            </div>
-            <div>
-              <label htmlFor="state" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                State*
-              </label>
-              <input
-                type="text"
-                id="state"
-                value={formData.state}
-                onChange={handleGenericChange}
-                name="state"
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                placeholder="Your State"
-              />
-            </div>
-            <div>
-              <label htmlFor="dob" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                Date Of Birth*
-              </label>
-              <input
-                type="date"
-                id="dob"
-                value={formData.dob}
-                onChange={handleGenericChange}
-                name="dob"
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-              />
-            </div>
-            <div>
-              <label htmlFor="plans" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                Plans*
-              </label>
-              <select
-                id="plans"
-                 value={formData.plans}
-                onChange={handlePlansChange}
-                name="plans"
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 bg-white appearance-none"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-              >
-                <option value="">Select plan</option>
-                {plans.map((plan) => (
-                  <option key={plan} value={plan}>{plan}</option>
-                ))}
-              </select>
-              {plansError && <p className="text-error text-sm mt-1">{plansError}</p>}
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                Email*
-              </label>
-              <input
-                type="email"
-                id="email"
-                 value={formData.email}
-                onChange={handleEmailChange}
-                name="email"
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                placeholder="you@example.com"
-              />
-              {emailError && <p className="text-error text-sm mt-1">{emailError}</p>}
-            </div>
-            <div>
-              <label htmlFor="phone" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
-                Phone*
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                 value={formData.phone}
-                onChange={handlePhoneChange}
-                name="phone"
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200"
-                style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
-                placeholder="Your Phone Number"
-              />
-              {phoneError && <p className="text-error text-sm mt-1">{phoneError}</p>}
-            </div>
+            <h2 className="text-3xl font-display font-bold text-navy-900 mb-8 text-center">
+              Partner Application
+            </h2>
+            <form className="space-y-5" onSubmit={handleSubmit} noValidate>
+              
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-navy-700 mb-1">Full Name*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  ref={nameInputRef}
+                  value={formData.name}
+                  onChange={handleNameChange}
+                  onKeyDown={handleNameKeyDown}
+                  onPaste={handleNamePaste}
+                  className={`w-full px-4 py-3 bg-white border ${nameError ? "border-error" : "border-navy-200"} rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300`}
+                  placeholder="Your Full Name"
+                />
+                {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
+              </div>
 
-            <div className="flex items-start mt-6">
-              <input
-                type="checkbox"
-                id="terms"
-                 checked={formData.terms}
-                onChange={handleTermsChange}
-                name="terms"
-                className="h-5 w-5 rounded focus:ring-2 mt-1"
-                style={{ borderColor: lightBlueBg, accentColor: darkAccentBlue }}
-              />
-              <label htmlFor="terms" className="ml-3 text-sm text-navy-500">
-                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
-                <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
-                  SMS and Marketing terms and conditions.
-                </Link>
-              </label>
-            </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="state" className="block text-sm font-medium text-navy-700 mb-1">State*</label>
+                  <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleGenericChange}
+                    className="w-full px-4 py-3 bg-white border border-navy-200 rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
+                    placeholder="Your State"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="dob" className="block text-sm font-medium text-navy-700 mb-1">Date of Birth*</label>
+                  <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    value={formData.dob}
+                    onChange={handleGenericChange}
+                    className="w-full px-4 py-3 bg-white border border-navy-200 rounded-lg text-navy-900 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
+                  />
+                </div>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full px-8 py-4 text-lg font-bold rounded-full text-white card-elevated transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl animate-buttonBounce"
-              style={{
-                backgroundColor: darkAccentBlue,
-                borderColor: darkAccentBlue,
-              }}
-            disabled={issubmiting}
+              <div>
+                <label htmlFor="plans" className="block text-sm font-medium text-navy-700 mb-1">Primary Expertise*</label>
+                <select
+                  id="plans"
+                  name="plans"
+                  value={formData.plans}
+                  onChange={handlePlansChange}
+                  className={`w-full px-4 py-3 bg-white border ${plansError ? "border-error" : "border-navy-200"} rounded-lg text-navy-900 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 appearance-none`}
                 >
-                  {issubmiting ? 'submiting...' : 'Submit'}
+                  <option value="">Select a plan focus...</option>
+                  {plans.map((plan) => (
+                    <option key={plan} value={plan}>{plan}</option>
+                  ))}
+                </select>
+                {plansError && <p className="text-error text-sm mt-1">{plansError}</p>}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-navy-700 mb-1">Email*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleEmailChange}
+                    className={`w-full px-4 py-3 bg-white border ${emailError ? "border-error" : "border-navy-200"} rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300`}
+                    placeholder="you@example.com"
+                  />
+                  {emailError && <p className="text-error text-sm mt-1">{emailError}</p>}
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-navy-700 mb-1">Phone*</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    className={`w-full px-4 py-3 bg-white border ${phoneError ? "border-error" : "border-navy-200"} rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300`}
+                    placeholder="Your Phone Number"
+                  />
+                  {phoneError && <p className="text-error text-sm mt-1">{phoneError}</p>}
+                </div>
+              </div>
+
+              <div className="flex items-start pt-3">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  checked={formData.terms}
+                  onChange={handleTermsChange}
+                  className="mt-1 h-5 w-5 rounded border-navy-300 text-accent focus:ring-accent transition duration-150 ease-in-out"
+                />
+                <label htmlFor="terms" className="ml-3 text-sm text-navy-600 leading-relaxed">
+                  By submitting you allow our team to reach out to you via email or phone with the submitted information and you agree to our <Link href="/sms-and-marketing-terms" className="text-accent hover:underline font-medium">SMS and Marketing terms and conditions</Link>.
+                </label>
+              </div>
+
+              {errorMessage && <div className="text-error font-medium">{errorMessage}</div>}
+              {successMessage && <div className="text-success font-medium">{successMessage}</div>}
+
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={issubmiting}
+                  className="btn-primary w-full py-4 text-lg"
+                >
+                  {issubmiting ? 'Submitting...' : 'Submit Application'}
                 </button>
-          </form>
-           {/* Show success or error messages */}
-            {successMessage && (
-              <div className="mt-4 text-accent">{successMessage}</div>
-            )}
-            {errorMessage && (
-              <div className="mt-4 text-error">{errorMessage}</div>
-            )}
+              </div>
+            </form>
+          </motion.div>
+
         </div>
       </div>
-
-      {/* Tailwind CSS Custom Animations */}
-      <style jsx>{`
-        @keyframes blob {
-          0% {
-            transform: translate(-70%, -70%) scale(1);
-          }
-          33% {
-            transform: translate(-50%, -80%) scale(1.1);
-          }
-          66% {
-            transform: translate(-80%, -60%) scale(0.9);
-          }
-          100% {
-            transform: translate(-70%, -70%) scale(1);
-          }
-        }
-
-        @keyframes blob2 {
-          0% {
-            transform: translate(70%, 70%) scale(1);
-          }
-          33% {
-            transform: translate(80%, 50%) scale(0.9);
-          }
-          66% {
-            transform: translate(60%, 80%) scale(1.1);
-          }
-          100% {
-            transform: translate(70%, 70%) scale(1);
-          }
-        }
-
-        @keyframes blob3 {
-          0% {
-            transform: translate(30%, -30%) scale(1);
-          }
-          33% {
-            transform: translate(40%, -20%) scale(1.05);
-          }
-          66% {
-            transform: translate(20%, -40%) scale(0.95);
-          }
-          100% {
-            transform: translate(30%, -30%) scale(1);
-          }
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes textFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        @keyframes buttonBounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-10px);
-          }
-          60% {
-            transform: translateY(-5px);
-          }
-        }
-
-        /* Staggered fade in for expertise list */
-        .animate-fade-in-up-stagger > div {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-        .animate-fade-in-up-stagger > div:nth-child(1) { animation-delay: 0.7s; }
-        .animate-fade-in-up-stagger > div:nth-child(2) { animation-delay: 0.8s; }
-        .animate-fade-in-up-stagger > div:nth-child(3) { animation-delay: 0.9s; }
-        .animate-fade-in-up-stagger > div:nth-child(4) { animation-delay: 1.0s; }
-        .animate-fade-in-up-stagger > div:nth-child(5) { animation-delay: 1.1s; }
-        .animate-fade-in-up-stagger > div:nth-child(6) { animation-delay: 1.2s; }
-        .animate-fade-in-up-stagger > div:nth-child(7) { animation-delay: 1.3s; }
-        .animate-fade-in-up-stagger > div:nth-child(8) { animation-delay: 1.4s; }
-        .animate-fade-in-up-stagger > div:nth-child(9) { animation-delay: 1.5s; }
-        .animate-fade-in-up-stagger > div:nth-child(10) { animation-delay: 1.6s; }
-        .animate-fade-in-up-stagger > div:nth-child(11) { animation-delay: 1.7s; }
-        .animate-fade-in-up-stagger > div:nth-child(12) { animation-delay: 1.8s; }
-      `}</style>
-    </div>
+    </section>
   );
 };

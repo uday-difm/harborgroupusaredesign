@@ -2,112 +2,93 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useTilt } from '@/comman/motion/useTilt';
 
 export const HealthCoverage = () => {
+  const tiltRef = useTilt({ max: 8, perspective: 1000, scale: 1.02 });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-inter overflow-hidden">
-      <div className="relative  p-8 md:p-12 max-w-7xl w-full text-center transform transition-all duration-700 ease-out md:flex md:items-center md:text-left">
-        <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-1 hidden md:block"></div>
-        <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-2 hidden md:block"></div>
-        <div className="md:w-1/2 md:pr-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy-800 mb-6 leading-tight ">
-           Simplifying Your Path to<span className="text-blue-700">Health Coverage!</span>
-          </h1>
-          <p className="text-base sm:text-lg text-gray-700 mb-10 leading-relaxed animate-fade-in-delay-text text-justify">
-           Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customized to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalised coverage, we've got you covered. With an Individual Health Plan from The Harbor Group, you can rest assured knowing that your health and vitality are in good hands. Take the first step towards a healthier future today.
-          </p>
+    <section className="section-light min-h-[90vh] flex items-center relative overflow-hidden py-24">
+      {/* Warm background elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse-slow"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-navy-500/5 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
 
-          <Link href= "#individual-form"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-            className="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full card-elevated transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300 text-lg "
+          {/* Text Content */}
+          <motion.div 
+            className="flex flex-col text-left relative z-10"
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
           >
-            GET A CONSULTANT
-          </Link>
-        </div>
-        <div className="md:w-1/2 mt-8 md:mt-0 flex items-center justify-center animate-fade-in-delay-image">
-          <img
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/simplifying-path-health-coverage.jpeg"
-            alt="Health Coverage Illustration"
-            className="rounded-card card-elevated max-w-full h-auto"
-          
-          />
+            <motion.div variants={itemVariants} className="mb-4">
+              <span className="text-xs font-bold text-accent uppercase tracking-widest">
+                For Individuals & Families
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              variants={itemVariants}
+              className="text-display font-display font-bold text-navy-900 mb-6 leading-tight tracking-tight"
+            >
+              Simplifying Your Path to <span className="text-accent">Health Coverage</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-navy-600 leading-relaxed mb-10 max-w-xl"
+            >
+              At Harbor Group USA, we understand that everyone's health needs are unique. That's why we offer a wide range of individual health plans customized to suit your specific requirements. Whether you're a freelancer, a busy professional, or a family looking for personalized coverage, we've got you covered.
+            </motion.p>
+
+            <motion.div variants={itemVariants}>
+              <Link
+                href="#individual-form"
+                className="btn-primary px-8 py-4 text-lg inline-flex shadow-lg shadow-accent/20"
+              >
+                GET A CONSULTANT
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Image Content */}
+          <motion.div 
+            className="relative w-full h-[500px] lg:h-[600px] z-10"
+            initial={{ opacity: 0, clipPath: 'inset(10% 10% 10% 10% round 24px)', scale: 1.1 }}
+            animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)', scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div ref={tiltRef} className="w-full h-full rounded-card overflow-hidden shadow-2xl bg-navy-50">
+              <Image
+                className="object-cover w-full h-full"
+                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/simplifying-path-health-coverage.jpeg"
+                alt="Health Coverage Illustration"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
+          </motion.div>
+
         </div>
       </div>
-
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-20px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInDelayText {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes bounceIn {
-          0% { transform: scale(0.8); opacity: 0; }
-          60% { transform: scale(1.1); opacity: 1; }
-          100% { transform: scale(1); }
-        }
-        @keyframes fadeInModal {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes scaleIn {
-          from { transform: scale(0.9); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-        @keyframes blob1 {
-          0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-          30% { transform: translateY(-10px) translateX(15px) scale(1.1); }
-          60% { transform: translateY(5px) translateX(-10px) scale(0.9); }
-        }
-        @keyframes blob2 {
-          0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-          40% { transform: translateY(10px) translateX(-15px) scale(1.1); }
-          70% { transform: translateY(-5px) translateX(10px) scale(0.9); }
-        }
-
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .animate-slide-in-left {
-          animation: slideInLeft 0.7s ease-out forwards;
-        }
-        .animate-fade-in-delay-text {
-          animation: fadeInDelayText 1s ease-out forwards;
-          animation-delay: 0.3s;
-          opacity: 0;
-        }
-        .animate-fade-in-delay-image {
-          animation: fadeInDelayText 1s ease-out forwards; /* Reusing for image */
-          animation-delay: 0.5s;
-          opacity: 0;
-        }
-        .animate-bounce-in {
-          animation: bounceIn 0.6s ease-out forwards;
-          animation-delay: 0.6s;
-          opacity: 0;
-        }
-        .animate-fade-in-modal {
-          animation: fadeInModal 0.3s ease-out forwards;
-        }
-        .animate-scale-in {
-          animation: scaleIn 0.3s ease-out forwards;
-        }
-        .animate-blob-1 {
-          animation: blob1 10s infinite alternate ease-in-out;
-        }
-        .animate-blob-2 {
-          animation: blob2 12s infinite alternate-reverse ease-in-out;
-        }
-      `}</style>
-    </div>
+    </section>
   );
 };
-

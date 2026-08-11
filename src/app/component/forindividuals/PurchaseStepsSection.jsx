@@ -1,112 +1,127 @@
-import React from 'react'
+"use client";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Globe, ArrowRightLeft, MousePointerClick, PhoneCall, ShieldCheck, CheckCircle } from 'lucide-react';
 
-export const PurchaseStepsSection = () =>{
+export const PurchaseStepsSection = () => {
+  const steps = [
+    {
+      title: "Visit Our Website",
+      description: "Navigate to our user-friendly website to explore the variety of plans we offer",
+      icon: <Globe className="w-8 h-8" strokeWidth={1.5} />
+    },
+    {
+      title: "Compare Plans",
+      description: "Review and compare different plans to find the one that aligns with your preferences and budget",
+      icon: <ArrowRightLeft className="w-8 h-8" strokeWidth={1.5} />
+    },
+    {
+      title: "Select Your Plan",
+      description: "Once you've found the perfect fit, select your plan and proceed to the application",
+      icon: <MousePointerClick className="w-8 h-8" strokeWidth={1.5} />
+    },
+    {
+      title: "Contact our Agent",
+      description: "Contact our agent through their referred numbers mentioned on our website",
+      icon: <PhoneCall className="w-8 h-8" strokeWidth={1.5} />
+    },
+    {
+      title: "Verification Process",
+      description: "Expect a swift verification process to ensure accuracy and eligibility",
+      icon: <ShieldCheck className="w-8 h-8" strokeWidth={1.5} />
+    },
+    {
+      title: "Confirmation",
+      description: "Receive prompt confirmation of your enrollment along with detailed plan information",
+      icon: <CheckCircle className="w-8 h-8" strokeWidth={1.5} />
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
-   <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
-      }}></div>
-
-      <div className="relative max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-navy-800 sm:text-5xl lg:text-6xl leading-tight mb-8">
-         How to Purchase Our Individual Plans
-        </h2>
-        <p className="mt-4 text-lg text-navy-500 leading-relaxed max-w-3xl mx-auto mb-12">
-         At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Step 1: Visit Our Website */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-1.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Visit Our Website</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-              Navigate to our user-friendly website to explore the variety of plans we offer
-              </p>
-            </div>
-          </div>
-
-          {/* Step 2: Compare Plans */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Compare Plans</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-               Review and compare different plans to find the one that aligns with your preferences and budget
-              </p>
-            </div>
-          </div>
-
-          {/* Step 3: Select Your Plan */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Select Your Plan</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-              Once you've found the perfect fit, select your plan and proceed to the application
-              </p>
-            </div>
-          </div>
-
-          {/* Step 4: Contact our Agent */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.95-.69l1.434-2.288a1 1 0 011.664 0l1.434 2.288a1 1 0 00.95.69H19a2 2 0 012 2v10a2 2 0 01-2 2h-3.28a1 1 0 00-.95.69l-1.434 2.288a1 1 0 01-1.664 0l-1.434-2.288a1 1 0 00-.95-.69H5a2 2 0 01-2-2V5z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Contact our Agent</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-                Contact our agent through their referred numbers mentioned on our website
-              </p>
-            </div>
-          </div>
-
-          {/* Step 5: Verification Process */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Verification Process</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-               Expect a swift verification process to ensure accuracy and eligibility
-              </p>
-            </div>
-          </div>
-
-          {/* Step 6: Confirmation */}
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left flex items-start">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mr-4 flex-shrink-0">
-              <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-navy-800 mb-2">Confirmation</h3>
-              <p className="text-lg text-navy-500 leading-relaxed text-justify">
-                Receive prompt confirmation of your enrollment along with detailed plan information
-              </p>
-            </div>
-          </div>
+    <section className="section-tint py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <motion.span 
+            className="text-xs font-bold text-accent uppercase tracking-widest block mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            How to Get Covered
+          </motion.span>
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-navy-900 tracking-tight mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.1 }}
+          >
+            Simple Steps to Health Coverage
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-navy-600 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ delay: 0.2 }}
+          >
+            At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
+          </motion.p>
         </div>
+
+        <motion.div 
+          className="relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-accent/0 before:via-accent/30 before:to-accent/0"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <div className="space-y-12">
+            {steps.map((step, index) => (
+              <motion.div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" variants={itemVariants}>
+                
+                {/* Connector/Number Dot */}
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                  <span className="font-bold font-display text-xl">{index + 1}</span>
+                </div>
+                
+                {/* Content Card */}
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-2xl bg-white shadow-lg border border-navy-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+                  
+                  {/* Decorative background number */}
+                  <div className="absolute -right-4 -bottom-6 font-display font-black text-9xl text-navy-50 opacity-50 pointer-events-none select-none">
+                    {index + 1}
+                  </div>
+                  
+                  <div className="relative z-10 flex flex-col items-start text-left">
+                    <div className="w-14 h-14 rounded-2xl bg-blue-50 text-accent flex items-center justify-center mb-6">
+                      {step.icon}
+                    </div>
+                    <h3 className="font-bold text-navy-900 text-2xl mb-3">{step.title}</h3>
+                    <p className="text-navy-600 leading-relaxed text-lg">{step.description}</p>
+                  </div>
+                </div>
+
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
-  )
-}
+  );
+};
