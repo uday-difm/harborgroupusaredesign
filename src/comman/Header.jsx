@@ -164,8 +164,16 @@ export const Header = () => {
             >
                 <div className={`flex items-center justify-between transition-all duration-150 ease-out ${scrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'}`}>
                     <div className="flex-shrink-0">
-                        <Link href="/" className="flex items-center" onClick={scrollToTop}>
+                        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group" onClick={scrollToTop}>
                             <Logo />
+                            <div className="flex flex-col justify-center leading-none">
+                                <span className="font-display text-sm sm:text-base font-bold tracking-tight text-navy-900 group-hover:text-accent transition-colors">
+                                    Harbor Group
+                                </span>
+                                <span className="font-display text-[11px] sm:text-xs font-extrabold tracking-[0.2em] text-accent group-hover:text-navy-900 transition-colors uppercase mt-0.5">
+                                    USA
+                                </span>
+                            </div>
                         </Link>
                     </div>
 
@@ -295,7 +303,17 @@ export const Header = () => {
                     >
                         {/* Mobile Menu Header */}
                         <div className="flex items-center justify-between p-6">
-                            <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath('/'); }} className="brightness-0 invert"><Logo /></Link>
+                            <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath('/'); }} className="flex items-center gap-3 group">
+                                <div><Logo /></div>
+                                <div className="flex flex-col justify-center leading-none">
+                                    <span className="font-display text-base font-bold tracking-tight text-white group-hover:text-accent transition-colors">
+                                        Harbor Group
+                                    </span>
+                                    <span className="font-display text-xs font-extrabold tracking-[0.2em] text-accent group-hover:text-white transition-colors uppercase mt-0.5">
+                                        USA
+                                    </span>
+                                </div>
+                            </Link>
                             <button onClick={toggleMobileMenu} className="p-2 text-white hover:text-accent rounded-lg transition-colors">
                                 <X className="h-8 w-8" />
                             </button>
