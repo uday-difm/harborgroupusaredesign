@@ -5,13 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const MedicalFormLanding = () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryDarkBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
-  const softGrayBg = '#F0F2F5'; // A very light gray for background
-  const white = '#FFFFFF';
-
-
   // State for form data and error/success messages
   const [formData, setFormData] = useState({
     name: '',
@@ -32,11 +25,9 @@ export const MedicalFormLanding = () => {
     const { name, value, type, checked } = e.target;
 
     if (name === "name") {
-      // Remove any digits (safety net for typed/pasted/programmatic changes)
       const sanitized = value.replace(/[0-9]/g, "");
       setFormData((prev) => ({ ...prev, name: sanitized }));
 
-      // If sanitized != value, user attempted to input numbers -> show name-specific error
       if (sanitized !== value) {
         setNameError(NAME_NUMBER_ERROR);
       } else {
@@ -83,13 +74,12 @@ export const MedicalFormLanding = () => {
       input.selectionStart = input.selectionEnd = pos;
     });
   };
-  // Email validation function
+  
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,7 +87,6 @@ export const MedicalFormLanding = () => {
     setMessage('');
     setIssubmiting(true);
 
-    // Validation
     if (!formData.name || !formData.email || !formData.message || !formData.consent) {
       setError('All fields are required, and you must agree to the terms.');
       setIssubmiting(false);
@@ -115,9 +104,6 @@ export const MedicalFormLanding = () => {
       return;
     }
 
-    // Log the form data (for debugging)
-   // console.log('Form Data Submitted:', formData);
-
     try {
       const response = await fetch('/api/medicalplan', {
         method: 'POST',
@@ -130,8 +116,8 @@ export const MedicalFormLanding = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(data.message); // Success message
-        setFormData({ name: '', email: '', message: '', consent: false }); // Clear form
+        setMessage(data.message);
+        setFormData({ name: '', email: '', message: '', consent: false }); 
       } else {
         setError(data.error || 'An error occurred. Please try again.');
       }
@@ -143,145 +129,124 @@ export const MedicalFormLanding = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}  id="medical-form">
-      <div className="absolute inset-0 z-0">
+    <section className="relative min-h-[90vh] flex flex-col lg:flex-row bg-surface" id="medical-form">
+      {/* Split Screen Var A: Left Side Image */}
+      <div className="lg:w-1/2 w-full relative h-[40vh] lg:h-auto img-duotone">
         <Image
           src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg"
           alt="Medical Background"
           layout="fill"
           objectFit="cover"
-          quality={100}
-          className="animate-fade-in"
+          priority
         />
-        <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${primaryDarkBlue}D0, ${primaryDarkBlue}A0, transparent)` }}></div>
+        <div className="absolute inset-0 bg-navy-800/20 mix-blend-multiply pointer-events-none"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="text-white lg:text-left text-center p-6 lg:p-0 animate-slide-in-left">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up">
-           Medical Plans for Complete Health Coverage
-          </h2>
-          <p className="text-lg sm:text-xl leading-relaxed mb-8 animate-fade-in-up delay-100 text-justify">
-        Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions – all in one comprehensive medical cost sharing plans without much hassle.
-          </p>
-          <Link href="/contact" className="px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75 animate-fade-in-up delay-200" style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}>
-            GET STARTED
-          </Link>
-        </div>
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 lg:p-12 " style={{ backgroundColor: white }}>
-          <h3 className="text-3xl font-extrabold mb-2" style={{ color: primaryDarkBlue }}>
-            Fill Out The Form
-          </h3>
-          <p className="text-gray-600 mb-6">And Receive Your Consultation</p>
-
-          <form className="space-y-5" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="name" className="block text-gray-700 text-sm font-semibold mb-2 text-left">Name*</label>
-                 <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    ref={nameInputRef}
-                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                      nameError ? "border-red-500 border" : "border border-gray-300"
-                    }`}
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    onKeyDown={handleNameKeyDown}
-                    onPaste={handleNamePaste}
-                    aria-describedby={nameError ? "name-error" : undefined}
-                  />
-                  {/* Name-specific error directly under the name field */}
-                  {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
-                      {nameError}
-                    </p>
-                  )}
-                </div>
-              <div>
-                <label htmlFor="email" className="block text-gray-700 text-sm font-semibold mb-2 text-left">Email*</label>
-                <input
-                  type="email"
-                  id="email"
-                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"
-                  style={{ '--tw-ring-color': `${accentLightBlue}80` }}
-                  placeholder="Your Email"
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-gray-700 text-sm font-semibold mb-2 text-left">Your message</label>
-              <textarea
-                id="message"
-                rows="5"
-                 name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 resize-none"
-                style={{ '--tw-ring-color': `${accentLightBlue}80` }}
-                placeholder="Type your message here..."
-              ></textarea>
-            </div>
-            <div className="flex items-start">
-              <input
-                type="checkbox"
-                id="consent"
-                 name="consent"
-                checked={formData.consent}
-                onChange={handleInputChange}
-                className="mt-1 mr-2 accent-current"
-                style={{ color: accentLightBlue }}
-              />
-              <label htmlFor="consent" className="text-gray-600 text-sm text-left">
-                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="underline" style={{ color: primaryDarkBlue }}>terms and conditions</Link>.
-              </label>
-            </div>
-             <button
-              type="submit"
-              className="w-full px-8 py-4 text-white font-bold text-lg rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-opacity-75"
-              style={{ backgroundColor: accentLightBlue, '--tw-ring-color': `${accentLightBlue}80` }}
-              disabled={issubmiting}
-            >
-              {issubmiting ? 'submiting...' : 'Submit'}
-            </button>
+      {/* Right Side Content & Form */}
+      <div className="lg:w-1/2 w-full flex items-center justify-center p-6 lg:p-16 relative">
+        <div className="w-full max-w-lg z-10 space-y-10">
           
-          </form>
-          {error && <div className="mt-4 text-red-500">{error}</div>}
-          {message && <div className="mt-4 text-green-500">{message}</div>}
+          {/* Text Section */}
+          <div className="animate-fade-in-up">
+            <h2 className="text-h2 font-display font-bold text-navy-800 leading-tight mb-4">
+              Medical Plans for Complete Health Coverage
+            </h2>
+            <p className="text-lg text-navy-500 leading-relaxed text-justify">
+              Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions.
+            </p>
+          </div>
+
+          {/* Form Section */}
+          <div className="card-elevated p-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <h3 className="text-2xl font-bold text-navy-800 mb-2">Fill Out The Form</h3>
+            <p className="text-navy-500 mb-6">And Receive Your Consultation</p>
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-semibold text-navy-800 mb-1">Name*</label>
+                   <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      ref={nameInputRef}
+                      className={`w-full p-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-accent ${
+                        nameError ? "border-error border" : "border border-navy-200"
+                      }`}
+                      placeholder="John Doe"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      onKeyDown={handleNameKeyDown}
+                      onPaste={handleNamePaste}
+                      aria-describedby={nameError ? "name-error" : undefined}
+                    />
+                    {nameError && (
+                      <p id="name-error" className="text-error text-sm mt-1" role="alert">
+                        {nameError}
+                      </p>
+                    )}
+                  </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-navy-800 mb-1">Email*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                    placeholder="Your Email"
+                  />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold text-navy-800 mb-1">Your message</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+                  placeholder="Type your message here..."
+                ></textarea>
+              </div>
+              <div className="flex items-start">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  checked={formData.consent}
+                  onChange={handleInputChange}
+                  className="mt-1 mr-3 h-4 w-4 text-accent border-navy-200 rounded focus:ring-accent"
+                />
+                <label htmlFor="consent" className="text-navy-500 text-sm leading-relaxed">
+                  By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our <Link href="/sms-and-marketing-terms" className="font-semibold text-accent hover:underline">terms and conditions</Link>.
+                </label>
+              </div>
+               <button
+                type="submit"
+                className="w-full btn-accent py-4"
+                disabled={issubmiting}
+              >
+                {issubmiting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+            
+            {error && <div className="mt-4 text-error font-semibold">{error}</div>}
+            {message && <div className="mt-4 text-success font-semibold">{message}</div>}
+          </div>
         </div>
       </div>
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
+      <style jsx global>{`
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-50px); }
-          to { opacity: 1; transform: translateX(0); }
+        .animate-fade-in-up { 
+          animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+          opacity: 0;
         }
-
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(50px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-
-        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
-        .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-        .animate-slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
-        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
       `}</style>
     </section>
   );

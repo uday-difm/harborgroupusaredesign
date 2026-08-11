@@ -25,13 +25,13 @@ export const LifeStyleHeroSection = () => {
             <span className="w-8 h-0.5 bg-sky-400 mr-3"></span>
             Lifestyle Plans
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl lg:text-5xl font-display font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
             Plans to support and enhance your lifestyle needs
           </h1>
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
             Enhance your well-being with Lifestyle Plans at Harbor Group USA. These plans are meticulously designed to support and enhance your unique lifestyle needs. Going beyond conventional coverage, our Lifestyle Plans offer a customer-tailored approach to ensure that your health and lifestyle choices align seamlessly.
           </p>
-          <Link href="#lifestyle-plan-form" className="py-4 px-10 rounded-full shadow-lg text-white transition bg-sky-400 font-bold duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+          <Link href="#lifestyle-plan-form" className="py-4 px-10 rounded-full card-elevated text-white transition bg-sky-400 font-bold duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
             GET NOW
           </Link>
         </div>

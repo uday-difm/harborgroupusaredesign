@@ -32,14 +32,8 @@ export default function page() {
      <ServicesSection/> 
       <section className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${accentLightBlue}10)` }}>
       {/* Animated Background Gradients/Shapes - subtle movement */}
-      <div
-        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
-        style={{ backgroundColor: primaryDarkBlue + '20', transform: 'translate(50%, -50%)' }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow animation-delay-2000"
-        style={{ backgroundColor: accentLightBlue + '20', transform: 'translate(-50%, 50%)' }}
-      ></div>
+      
+      
 
       <div className="relative z-10 max-w-4xl mx-auto text-center rounded-3xl shadow-2xl p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white }}>
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-10 animate-fade-in-up" style={{ color: primaryDarkBlue }}>

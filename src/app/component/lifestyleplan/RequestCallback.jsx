@@ -152,10 +152,10 @@ export const RequestCallback = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gray-50 font-inter flex flex-col items-center justify-center p-4 sm:p-8`} id="lifestyle-plan-form">
+    <div className={`min-h-screen bg-navy-50 font-inter flex flex-col items-center justify-center p-4 sm:p-8`} id="lifestyle-plan-form">
       <div className="max-w-7xl w-full overflow-hidden p-6 sm:p-10 text-center">
         {/* Header Section */}
-        <h1 className={`text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-4 leading-tight`}>Request a Call Back?</h1>
+        <h1 className={`text-4xl sm:text-5xl font-extrabold text-navy-800 mb-4 leading-tight`}>Request a Call Back?</h1>
         <div className="md:flex md:space-x-8 items-stretch">
           <div className="md:w-1/2 mb-8 md:mb-0 relative min-h-[300px] rounded-lg overflow-hidden shadow-md">
             <Image
@@ -186,12 +186,12 @@ export const RequestCallback = () => {
                   aria-required="true"
                   aria-describedby={nameError ? "name-error" : undefined}
                   className={`w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ${
-                    nameError ? "border-red-500 border" : "border-gray-300 border"
+                    nameError ? "border-error border" : "border-gray-300 border"
                   }`}
                 />
                 {/* name-specific error directly below the input */}
                 {nameError && (
-                  <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                  <p id="name-error" className="text-sm text-error mt-1" role="alert">
                     {nameError}
                   </p>
                 )}
@@ -232,9 +232,9 @@ export const RequestCallback = () => {
                   name="terms"
                   checked={formData.terms}
                   onChange={handleChange}
-                  className="mt-1 mr-2 rounded text-teal-500 focus:ring-teal-400"
+                  className="mt-1 mr-2 rounded text-accent focus:ring-teal-400"
                 />
-                <label htmlFor="terms" className={`text-sm text-gray-600`}>
+                <label htmlFor="terms" className={`text-sm text-navy-500`}>
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{" "}
                   <a href="/sms-and-marketing-terms" className={`font-semibold text-sky-600 hover:underline`}>
                     SMS and Marketing terms and conditions
@@ -245,7 +245,7 @@ export const RequestCallback = () => {
 
               <button
                 type="submit"
-                className={`w-full py-3 px-6 rounded-md font-semibold text-lg bg-sky-400 text-white hover:bg-sky-600 transition duration-300 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed`}
+                className={`w-full py-3 px-6 rounded-md font-semibold text-lg bg-sky-400 text-white hover:bg-accent-dark transition duration-300 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "SUBMIT"}
@@ -258,11 +258,11 @@ export const RequestCallback = () => {
       {/* Custom Message Box */}
       {showMessage && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm mx-auto">
+          <div className="bg-white p-6 rounded-lg card-elevated text-center max-w-sm mx-auto">
             <p className="text-lg font-semibold mb-4 text-gray-800">{messageContent}</p>
             <button
               onClick={closeMessageBox}
-              className="bg-sky-400 text-white py-2 px-4 rounded-md hover:bg-sky-600 transition duration-300 ease-in-out"
+              className="bg-sky-400 text-white py-2 px-4 rounded-md hover:bg-accent-dark transition duration-300 ease-in-out"
             >
               Close
             </button>
@@ -271,7 +271,7 @@ export const RequestCallback = () => {
       )}
 
       {/* Display form-wide error message at bottom (kept for general validation) */}
-      {error && <div className="mt-4 text-red-500">{error}</div>}
+      {error && <div className="mt-4 text-error">{error}</div>}
     </div>
   );
 };

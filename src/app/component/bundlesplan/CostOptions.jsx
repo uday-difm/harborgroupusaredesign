@@ -16,18 +16,18 @@ export const CostOptions = () => {
        {/* New Section: Cost Options and Coverage Scenarios */}
       <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
             Cost Options and Coverage Scenarios
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
           Budget-friendly, priority-focused. Find your perfect Bundles Plan for complete health protection along with flexible cost options.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
             {/* Tailored Premium Options Card */}
-            <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Tailored Premium Options</h3>
-              <ul className="space-y-3 text-gray-600 text-left text-justify">
+            <div className="bg-white p-8 rounded-card card-elevated transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn">
+              <h3 className="text-2xl font-bold text-navy-800 mb-4">Tailored Premium Options</h3>
+              <ul className="space-y-3 text-navy-500 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#costIconGradient1)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("costIconGradient1")}
@@ -46,9 +46,9 @@ export const CostOptions = () => {
             </div>
 
             {/* Transparent Co-Payment Structure Card */}
-            <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-2">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Transparent Co-Payment Structure</h3>
-              <ul className="space-y-3 text-gray-600 text-left text-justify">
+            <div className="bg-white p-8 rounded-card card-elevated transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-2">
+              <h3 className="text-2xl font-bold text-navy-800 mb-4">Transparent Co-Payment Structure</h3>
+              <ul className="space-y-3 text-navy-500 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#costIconGradient3)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("costIconGradient3")}
@@ -67,9 +67,9 @@ export const CostOptions = () => {
             </div>
 
             {/* Comprehensive Coverage Scenarios Card */}
-            <div className="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-3">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive Coverage Scenarios</h3>
-              <ul className="space-y-3 text-gray-600 text-left text-justify">
+            <div className="bg-white p-8 rounded-card card-elevated transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-3">
+              <h3 className="text-2xl font-bold text-navy-800 mb-4">Comprehensive Coverage Scenarios</h3>
+              <ul className="space-y-3 text-navy-500 text-left text-justify">
                 <li className="flex items-center">
                   <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#costIconGradient5)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     {gradientStops("costIconGradient5")}

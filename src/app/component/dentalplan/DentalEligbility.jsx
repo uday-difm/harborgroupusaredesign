@@ -7,27 +7,27 @@ import Image from 'next/image';
 // A reusable component for each eligibility card
 const EligibilityCard = ({ icon: Icon, title, children }) => {
   return (
-    <div className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-      <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-sky-100 text-sky-500">
+    <div className="bg-white p-6 rounded-3xl card-elevated hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+      <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-accent/10 text-accent">
         <Icon size={32} />
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mt-2">{title}</h3>
-      <p className="mt-2 text-base text-gray-600">{children}</p>
+      <h3 className="text-xl font-bold text-navy-800 mt-2">{title}</h3>
+      <p className="mt-2 text-base text-navy-500">{children}</p>
     </div>
   );
 };
 
 export const  DentalEligbility = ()=> {
   return (
-    <div className="bg-gray-50 py-16 md:py-24 font-sans">
+    <div className="bg-navy-50 py-16 md:py-24 font-sans">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="text-left mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-navy-800 tracking-tight text-center">
             Eligibility Criteria of Dental Care Plan
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl text-center mx-auto">
+          <p className="mt-4 text-lg text-navy-500 max-w-3xl text-center mx-auto">
            Open to individuals and families, our dental care plan ensures that quality dental care is within reach for everyone. Your smile is important, and so is your budget. Eligibility Criteria for the Dental Care Plans includes.
           </p>
         </div>

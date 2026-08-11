@@ -61,7 +61,7 @@ export default function Blogs() {
   }
 
   if (error) {
-    return <div className="text-center text-red-600 text-lg mt-10">Error: {error}</div>;
+    return <div className="text-center text-error text-lg mt-10">Error: {error}</div>;
   }
   return (
     <>

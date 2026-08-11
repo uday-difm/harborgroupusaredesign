@@ -17,7 +17,7 @@ const Rightsidebar = () => {
       <div className="space-y-12">
         {/* Profile Section */}
         <div
-          className="rounded-lg shadow-xl p-6 text-center border border-custom-gray-light bg-white transform hover:scale-105 transition-all duration-300"
+          className="rounded-lg card-elevated p-6 text-center border border-custom-gray-light bg-white transform hover:scale-105 transition-all duration-300"
           onClick={scrollToTop}  // Call scrollToTop when clicked
         >
           <Link href="/user/profile">
@@ -26,7 +26,7 @@ const Rightsidebar = () => {
               alt={"Admin"}
               width={800}  // Set the width of the image (adjust based on your design needs)
               height={800} // Set the height of the image (adjust based on your design needs)
-              className="w-28 h-28 mx-auto rounded-full mb-6 border-4 border-red-500 shadow-xl transform transition-all hover:scale-110"
+              className="w-28 h-28 mx-auto rounded-full mb-6 border-4 border-red-500 card-elevated transform transition-all hover:scale-110"
               loading="lazy" // Lazy load the image
             />
             <h3 className="text-2xl font-semibold text-custom-black mb-2">"WMH INDIA"</h3>
@@ -35,7 +35,7 @@ const Rightsidebar = () => {
         </div>
 
         {/* Advertisement Section */}
-        <div className="rounded-lg shadow-lg p-5 text-center bg-gradient-to-r from-red-500 via-red-400 to-red-500 text-custom-white">
+        <div className="rounded-lg card-elevated p-5 text-center bg-gradient-to-r from-red-500 via-red-400 to-red-500 text-custom-white">
           <FontAwesomeIcon icon={faBullhorn} className="text-4xl animate-bounce mb-3" />
           <h4 className="text-xl font-semibold mb-3">Reach a Wider Audience!</h4>
           <p className="text-sm mb-4">
@@ -43,14 +43,14 @@ const Rightsidebar = () => {
             Maximize your impact by placing an ad in our magazine.
           </p>
           <a href="/contact-us">
-            <button className="bg-custom-white text-red-600 text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:bg-gray-200 transition-all">
+            <button className="bg-custom-white text-error text-sm font-semibold px-4 py-2 rounded-full shadow-md hover:bg-gray-200 transition-all">
               Contact Us for Advertising
             </button>
           </a>
         </div>
 
         {/* Social Share */}
-        <div className="rounded-lg shadow-xl p-6 text-center border border-custom-gray-light">
+        <div className="rounded-lg card-elevated p-6 text-center border border-custom-gray-light">
           <h3 className="text-xl font-bold text-custom-black mb-6">Share this Blog</h3>
           <div className="flex gap-4 justify-center">
             {/* Facebook Share */}
@@ -62,7 +62,7 @@ const Rightsidebar = () => {
                   'noopener,noreferrer'
                 )
               }
-              className="w-12 h-12 bg-blue-600 rounded-full hover:bg-blue-700 shadow-lg flex items-center justify-center"
+              className="w-12 h-12 bg-blue-600 rounded-full hover:bg-blue-700 card-elevated flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faFacebook} className="text-custom-white text-lg" />
             </button>
@@ -78,7 +78,7 @@ const Rightsidebar = () => {
                   'noopener,noreferrer'
                 )
               }
-              className="w-12 h-12 bg-blue-400 rounded-full hover:bg-blue-500 shadow-lg flex items-center justify-center"
+              className="w-12 h-12 bg-blue-400 rounded-full hover:bg-blue-500 card-elevated flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faTwitter} className="text-custom-white text-lg" />
             </button>
@@ -94,7 +94,7 @@ const Rightsidebar = () => {
                   'noopener,noreferrer'
                 )
               }
-              className="w-12 h-12 bg-primary rounded-full hover:bg-secondary shadow-lg flex items-center justify-center"
+              className="w-12 h-12 bg-navy-800 rounded-full hover:bg-secondary card-elevated flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faPinterest} className="text-custom-white text-lg" />
             </button>
@@ -108,7 +108,7 @@ const Rightsidebar = () => {
                   'noopener,noreferrer'
                 )
               }
-              className="w-12 h-12 bg-green-500 rounded-full hover:bg-green-600 shadow-lg flex items-center justify-center"
+              className="w-12 h-12 bg-green-500 rounded-full hover:bg-green-600 card-elevated flex items-center justify-center"
             >
               <FontAwesomeIcon icon={faWhatsapp} className="text-custom-white text-lg" />
             </button>
@@ -116,13 +116,13 @@ const Rightsidebar = () => {
         </div>
         
         {/* View All Blogs Link */}
-        <div className="rounded-lg shadow-xl p-6 text-center border border-custom-gray-light">
+        <div className="rounded-lg card-elevated p-6 text-center border border-custom-gray-light">
           <h3 className="text-xl font-bold text-custom-black mb-6">
             View All Blogs
           </h3>
           <Link
             href="/blog"
-            className="block mt-6 text-primary hover:underline font-semibold"
+            className="block mt-6 text-navy-800 hover:underline font-semibold"
           >
             Explore More →
           </Link>

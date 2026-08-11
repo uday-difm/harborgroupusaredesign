@@ -3,117 +3,121 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 
-// A reusable component for the blog post cards
-const BlogPostCard = ({ image, category, title, author, date, delay }) => {
+const sectionReveal = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+  }
+};
+
+const BlogPostCard = ({ image, category, title, author, date }) => {
+  const prefersReduced = useReducedMotion();
+  
+  const itemVariant = {
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
-    <div
-      className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden animate-fade-in-up"
-      style={{ animationDelay: delay }}
+    <motion.div
+      variants={itemVariant}
+      className="group relative bg-white rounded-card shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden card-elevated h-full border border-navy-100 hover:border-accent"
     >
-      <div className="relative h-56">
+      <div className="relative h-56 overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/e2e8f0/a3a3a3?text=Blog+Post'; }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        <span className="absolute top-4 left-4 inline-block bg-sky-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
+        <span className="absolute top-4 left-4 inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
           {category}
         </span>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-indigo-900 mb-2 group-hover:text-sky-600 transition-colors duration-300">{title}</h3>
-        <div className="flex items-center text-sm text-gray-500">
-
-          {/* <span className="mx-2">&#8226;</span> */}
+        <h3 className="text-xl font-bold text-navy-800 mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">{title}</h3>
+        <div className="flex items-center text-sm text-navy-500 font-medium mt-4">
           <span>{date}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export const BlogSection = () => {
-
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const prefersReduced = useReducedMotion();
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+  };
 
   useEffect(() => {
     fetch("/api/recentblog")
       .then((res) => res.json())
       .then((data) => {
-       // console.log("Fetched blog data:", data);
         if (Array.isArray(data.data)) {
           setBlogs(data.data);
         } else {
-        //  console.error("Unexpected response format:", data);
           setBlogs([]);
         }
-
         setLoading(false);
       })
       .catch((err) => {
-       // console.error("Failed to fetch blogs:", err);
         setLoading(false);
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return null; // Can be replaced with a skeleton loader
+
   return (
-    <div className="bg-gray-50 py-20 md:py-28">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-          <div className="lg:col-span-1 animate-fade-in-up">
-            <p className="text-base font-semibold text-sky-500 uppercase tracking-wide">
+    <section className="bg-navy-50 py-24">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
+        <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-24"
+            variants={sectionReveal}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+        >
+          <div className="lg:col-span-1 flex flex-col justify-center">
+            <motion.p variants={itemVariants} className="text-base font-semibold text-accent uppercase tracking-wide">
               Our Blog
-            </p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight">
+            </motion.p>
+            <motion.h2 variants={itemVariants} className="mt-4 text-3xl md:text-4xl font-display font-bold text-navy-800 tracking-tight">
               Insights & Ideas Corner
-            </h2>
-            {/* <p className="mt-4 text-lg text-gray-600">
-              Stay updated with the latest news, tips, and insights from the healthcare industry.
-            </p> */}
-            <div className="mt-8">
-              <a
+            </motion.h2>
+            <motion.div variants={itemVariants} className="mt-10">
+              <Link
                 href="/blogs"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sky-500 hover:bg-sky-600"
+                className="btn-accent px-8 py-4 text-lg inline-flex items-center"
               >
                 VIEW ALL
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </div>
+              </Link>
+            </motion.div>
           </div>
 
           {/* --- Right Column: Blog Posts --- */}
-          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 text-justify animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            {Array.isArray(blogs) && blogs.slice(0, 2).map((blog, i) => (
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {Array.isArray(blogs) && blogs.slice(0, 2).map((blog) => (
               <Link key={blog.blog_id} href={`/blog/${blog.blog_slug}`} passHref>
                 <BlogPostCard
                   image={blog.blog_feature_image}
                   category={blog.category}
                   title={blog.blog_title}
                   date={blog.formatted_blog_date}
-                  delay={`${0.2 + i * 0.2}s`}
                 />
               </Link>
             ))}
           </div>
-
-        </div>
-      </div >
-      {/* This style block is necessary for the custom animations. */}
-      < style jsx global > {`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-          opacity: 0;
-        }
-      `}</style >
-    </div >
+        </motion.div>
+      </div>
+    </section>
   );
-}
+};

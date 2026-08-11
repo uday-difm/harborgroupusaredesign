@@ -9,16 +9,16 @@ export const Eligibility = () => {
       }}></div>
 
       <div className="relative max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-indigo-900 sm:text-5xl lg:text-6xl leading-tight mb-8">
+        <h2 className="text-4xl font-extrabold text-navy-800 sm:text-5xl lg:text-6xl leading-tight mb-8">
          Eligibility Criteria of Pet Plan
         </h2>
-        <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+        <p className="mt-4 text-lg text-navy-500 leading-relaxed max-w-3xl mx-auto mb-12">
 Open to pet owners, our Pet Plans ensure that comprehensive health protection for your furry friends is within reach
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Eligibility Card 1: Resident of the United States - White Card, Gradient Icon */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-gray-900 flex flex-col items-center text-center border border-gray-100">
+          <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:scale-105 hover:shadow-2xl text-navy-800 flex flex-col items-center text-center border border-navy-100">
             <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-4 mb-6"> {/* Gradient for icons */}
               <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> {/* White icon */}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0L6.343 16.657a8 8 0 1111.314 0z" />
@@ -34,7 +34,7 @@ Open to pet owners, our Pet Plans ensure that comprehensive health protection fo
           </div>
 
           {/* Eligibility Card 2: Age Eligibility - White Card, Gradient Icon */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-gray-900 flex flex-col items-center text-center border border-gray-100">
+          <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:scale-105 hover:shadow-2xl text-navy-800 flex flex-col items-center text-center border border-navy-100">
             <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-4 mb-6"> {/* Gradient for icons */}
               <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> {/* White icon */}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -49,7 +49,7 @@ Open to pet owners, our Pet Plans ensure that comprehensive health protection fo
           </div>
 
           {/* Eligibility Card 3: Pet Ownership - White Card, Gradient Icon */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-gray-900 flex flex-col items-center text-center border border-gray-100">
+          <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:scale-105 hover:shadow-2xl text-navy-800 flex flex-col items-center text-center border border-navy-100">
             <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-4 mb-6"> {/* Gradient for icons */}
               <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> {/* White icon */}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM12 14c-1.474 0-2.887.267-4 0m4 0c1.474 0 2.887.267 4 0M12 14v4m-4 0h8m-4 0v-4" />
@@ -64,7 +64,7 @@ Open to pet owners, our Pet Plans ensure that comprehensive health protection fo
           </div>
 
           {/* Eligibility Card 4: Pet Health Maintenance - White Card, Gradient Icon */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl text-gray-900 flex flex-col items-center text-center border border-gray-100">
+          <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:scale-105 hover:shadow-2xl text-navy-800 flex flex-col items-center text-center border border-navy-100">
             <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-4 mb-6"> {/* Gradient for icons */}
               <svg className="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> {/* White icon */}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />

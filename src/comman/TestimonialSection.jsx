@@ -28,21 +28,21 @@ export const TestimonialSection = ({ testimonials = [] }) => {
   const currentTestimonial = testimonials[current];
 
   return (
-    <section className="bg-white py-20 sm:py-24">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-tint">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
         <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
+          <h2 className="text-h2 font-display font-bold text-navy-800 tracking-tight">
             What Our Clients Say
           </h2>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-navy-500 leading-relaxed">
             We are proud to have helped so many businesses and individuals find their perfect health plan.
           </p>
         </div>
 
-        <div className="mt-1 relative">
-          <div className="relative overflow-hidden w-full" style={{ height: "28rem" }}>
+        <div className="mt-10 relative">
+          <div className="relative overflow-hidden w-full" style={{ height: "24rem" }}>
             {testimonials.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-500">
+              <div className="flex items-center justify-center h-full text-navy-400">
                 No testimonials yet. Please check back later.
               </div>
             ) : (
@@ -55,32 +55,32 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                     zIndex: index === current ? 10 : 1,
                   }}
                 >
-                  <div className="relative max-w-2xl w-full bg-gray-50 p-8 pt-16 rounded-2xl shadow-lg border border-gray-200 text-center">
+                  <div className="relative max-w-2xl w-full bg-white p-8 pt-16 rounded-card shadow-lg border border-navy-100 text-center mx-4">
                     {/* ✅ Avatar overlapping border */}
                     {testimonial.image && (
-                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
+                      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          className="w-20 h-20 rounded-full object-cover border-2 border-white shadow"
+                          className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md"
                         />
                       </div>
                     )}
 
                     {/* Stars */}
-                    <div className="flex justify-center mb-3 mt-2">
+                    <div className="flex justify-center mb-4 mt-2">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                        <Star key={i} className="h-5 w-5 text-accent fill-current" />
                       ))}
                     </div>
 
                     {/* Name */}
-                    <div className="font-bold text-indigo-900 text-lg mb-2">
+                    <div className="font-bold text-navy-800 text-lg mb-4">
                       {testimonial.name}
                     </div>
 
                     {/* Text */}
-                    <div className="text-sm text-gray-500 text-justify">{testimonial.testimonial}</div>
+                    <div className="text-base text-navy-500 leading-relaxed text-justify px-4">{testimonial.testimonial}</div>
                   </div>
                 </div>
               ))
@@ -95,7 +95,7 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    current === index ? "bg-sky-500 scale-125" : "bg-gray-300 hover:bg-gray-400"
+                    current === index ? "bg-accent scale-125" : "bg-navy-200 hover:bg-navy-300"
                   }`}
                 ></button>
               ))}

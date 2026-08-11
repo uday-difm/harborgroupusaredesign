@@ -149,7 +149,7 @@ export const Protectionagainst = () => {
   };
 
   return (
-    <div className="bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
+    <div className="bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
       {/* SVG gradient defs */}
       <svg width="0" height="0" className="absolute">
         <defs>
@@ -163,7 +163,7 @@ export const Protectionagainst = () => {
 
       <section
         id="critical-plan-form"
-        className="relative w-full bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900"
+        className="relative w-full bg-gradient-to-br from-blue-100 to-blue-300 text-navy-800"
         aria-labelledby="critical-plan-heading"
       >
         {/* Background image (fills section) */}
@@ -179,7 +179,7 @@ export const Protectionagainst = () => {
               className="object-cover object-center opacity-70"
             />
             <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 opacity-60"></div>
-            <div className="absolute inset-0 bg-blue-50 opacity-40"></div>
+            <div className="absolute inset-0 bg-navy-50 opacity-40"></div>
           </div>
 
           {/* decorative shapes - hide on very small screens for perf */}
@@ -204,17 +204,17 @@ export const Protectionagainst = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Left: Text */}
               <div className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
-                <h1 id="critical-plan-heading" className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 leading-tight text-indigo-900 drop-shadow-sm">
+                <h1 id="critical-plan-heading" className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold mb-4 leading-tight text-navy-800 drop-shadow-sm">
                  Protection against critical illnesses for added security
                 </h1>
-                <p className="text-base sm:text-lg text-gray-900 max-w-xl mx-auto lg:mx-0 text-justify">
+                <p className="text-base sm:text-lg text-navy-800 max-w-xl mx-auto lg:mx-0 text-justify">
                  Safeguard your loved-ones with our Critical Plans at Harbor Group USA. Offering added security against the uncertainties of life, our Critical Plans provide protection specifically crafted to shield you from the financial impact of critical illnesses.
                 </p>
               </div>
 
               {/* Right: Form */}
-              <div className="mx-auto w-full max-w-lg bg-white p-6 sm:p-8 rounded-xl shadow-lg">
-                <h3 className="text-xl sm:text-2xl font-bold text-indigo-900 mb-4 text-center">Your Information</h3>
+              <div className="mx-auto w-full max-w-lg bg-white p-6 sm:p-8 rounded-card card-elevated">
+                <h3 className="text-xl sm:text-2xl font-bold text-navy-800 mb-4 text-center">Your Information</h3>
 
                 <form className="space-y-4" onSubmit={handleSubmit} noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -234,12 +234,12 @@ export const Protectionagainst = () => {
                         aria-required="true"
                           aria-describedby={nameError ? "name-error" : undefined}
                         className={`w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition ${
-                          nameError ? "border-red-500" : "border-gray-300"
+                          nameError ? "border-error" : "border-gray-300"
                         }`}
                       />
                         {/* name-specific error shown directly under the input */}
                       {nameError && (
-                        <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                        <p id="name-error" className="text-sm text-error mt-1" role="alert">
                           {nameError}
                         </p>
                       )}
@@ -287,12 +287,12 @@ export const Protectionagainst = () => {
                       type="checkbox"
                       checked={formData.terms}
                       onChange={handleInputChange}
-                      className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                      className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
                       aria-required="true"
                     />
                     <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                       By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our {" "}
-                      <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">
+                      <Link href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">
                         SMS and Marketing terms and conditions
                       </Link>
                       .
@@ -301,15 +301,15 @@ export const Protectionagainst = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 rounded-md shadow-md bg-sky-400 text-white hover:bg-sky-500 transition transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3 px-6 rounded-md shadow-md bg-sky-400 text-white hover:bg-accent transition transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed"
                     disabled={isSubmitting}
                     aria-busy={isSubmitting}
                   >
                     {isSubmitting ? "Submitting..." : "SUBMIT"}
                   </button>
 
-                  {error && <div className="text-sm text-red-600">{error}</div>}
-                  {successMessage && <div className="text-sm text-green-600">{successMessage}</div>}
+                  {error && <div className="text-sm text-error">{error}</div>}
+                  {successMessage && <div className="text-sm text-accent">{successMessage}</div>}
                 </form>
               </div>
             </div>

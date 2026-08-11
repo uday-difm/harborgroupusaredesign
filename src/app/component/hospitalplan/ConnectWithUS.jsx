@@ -167,15 +167,15 @@ export const ConnectWithUS = () => {
             <Image
               width={600}
               height={400}
-              className="w-full h-full object-cover rounded-xl shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover rounded-card shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/request-a-call-back.jpeg"
               alt="People connecting"
             />
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInRight flex flex-col h-full">
-            <h3 className="text-2xl font-bold text-indigo-900 mb-4 text-center">Connect With US</h3>
+          <div className="bg-white p-8 rounded-card card-elevated animate-slideInRight flex flex-col h-full">
+            <h3 className="text-2xl font-bold text-navy-800 mb-4 text-center">Connect With US</h3>
 
             <form className="space-y-6 flex-grow flex flex-col" onSubmit={handleSubmit}>
               <div className="flex-grow">
@@ -189,7 +189,7 @@ export const ConnectWithUS = () => {
                   name="name"
                   ref={nameInputRef}
                   className={`w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                    nameError ? "border-red-500" : "border-gray-300"
+                    nameError ? "border-error" : "border-gray-300"
                   }`}
                   placeholder="John Doe"
                   value={formData.name}
@@ -199,7 +199,7 @@ export const ConnectWithUS = () => {
                 />
 
                 {/* Name-specific error directly under the name field */}
-                {nameError && <p className="text-red-500 text-sm mt-1">{nameError}</p>}
+                {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
               </div>
 
               <div className="flex-grow">
@@ -237,13 +237,13 @@ export const ConnectWithUS = () => {
                   type="checkbox"
                   id="terms"
                   name="terms"
-                  className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                  className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
                   checked={formData.terms}
                   onChange={handleInputChange}
                 />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{" "}
-                  <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">
+                  <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">
                     SMS and Marketing terms and conditions
                   </a>
                   .
@@ -261,12 +261,12 @@ export const ConnectWithUS = () => {
 
             {/* Form-wide errors (render at bottom of form) */}
             {error && (
-              <div className="mt-4 text-red-500" role="alert" aria-live="assertive">
+              <div className="mt-4 text-error" role="alert" aria-live="assertive">
                 {error}
               </div>
             )}
             {successMessage && (
-              <div className="mt-4 text-green-500" role="status" aria-live="polite">
+              <div className="mt-4 text-accent" role="status" aria-live="polite">
                 {successMessage}
               </div>
             )}

@@ -188,18 +188,9 @@ export const HowtoPartner = () => {
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden" id="broker-form"
       style={{ backgroundColor: softGray }}
     >
-      <div
-        className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
-        style={{ backgroundColor: lightBlueBg, transform: 'translate(-70%, -70%)' }}
-      ></div>
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 sm:w-1/2 sm:h-1/2 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"
-        style={{ backgroundColor: darkAccentBlue, transform: 'translate(70%, 70%)' }}
-      ></div>
-      <div
-        className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
-        style={{ backgroundColor: primaryBlue, transform: 'translate(30%, -30%)' }}
-      ></div>
+      
+      
+      
       <div
         className="relative z-10 w-full max-w-7xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row animate-fadeInUp"
       >
@@ -272,11 +263,11 @@ export const HowtoPartner = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleNameChange}
-                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 text-black"
+                className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 text-navy-800"
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Full Name"
               />
-              {nameError && <p className="text-red-500 text-sm mt-1">{nameError}</p>}
+              {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
             </div>
             <div>
               <label htmlFor="state" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -324,7 +315,7 @@ export const HowtoPartner = () => {
                   <option key={plan} value={plan}>{plan}</option>
                 ))}
               </select>
-              {plansError && <p className="text-red-500 text-sm mt-1">{plansError}</p>}
+              {plansError && <p className="text-error text-sm mt-1">{plansError}</p>}
             </div>
             <div>
               <label htmlFor="email" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -340,7 +331,7 @@ export const HowtoPartner = () => {
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="you@example.com"
               />
-              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+              {emailError && <p className="text-error text-sm mt-1">{emailError}</p>}
             </div>
             <div>
               <label htmlFor="phone" className="block text-lg font-medium mb-2" style={{ color: primaryBlue }}>
@@ -356,7 +347,7 @@ export const HowtoPartner = () => {
                 style={{ borderColor: lightBlueBg, focusRingColor: darkAccentBlue }}
                 placeholder="Your Phone Number"
               />
-              {phoneError && <p className="text-red-500 text-sm mt-1">{phoneError}</p>}
+              {phoneError && <p className="text-error text-sm mt-1">{phoneError}</p>}
             </div>
 
             <div className="flex items-start mt-6">
@@ -369,7 +360,7 @@ export const HowtoPartner = () => {
                 className="h-5 w-5 rounded focus:ring-2 mt-1"
                 style={{ borderColor: lightBlueBg, accentColor: darkAccentBlue }}
               />
-              <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
+              <label htmlFor="terms" className="ml-3 text-sm text-navy-500">
                 By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{' '}
                 <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
                   SMS and Marketing terms and conditions.
@@ -379,7 +370,7 @@ export const HowtoPartner = () => {
 
             <button
               type="submit"
-              className="w-full px-8 py-4 text-lg font-bold rounded-full text-white shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl animate-buttonBounce"
+              className="w-full px-8 py-4 text-lg font-bold rounded-full text-white card-elevated transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl animate-buttonBounce"
               style={{
                 backgroundColor: darkAccentBlue,
                 borderColor: darkAccentBlue,
@@ -391,10 +382,10 @@ export const HowtoPartner = () => {
           </form>
            {/* Show success or error messages */}
             {successMessage && (
-              <div className="mt-4 text-green-500">{successMessage}</div>
+              <div className="mt-4 text-accent">{successMessage}</div>
             )}
             {errorMessage && (
-              <div className="mt-4 text-red-500">{errorMessage}</div>
+              <div className="mt-4 text-error">{errorMessage}</div>
             )}
         </div>
       </div>

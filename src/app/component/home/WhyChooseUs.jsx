@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState } from 'react';
-import {  ChevronDown,  Target,  Users, Zap, Timer } from 'lucide-react';
+import { Target, Users, Zap, Timer } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const sectionReveal = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+  }
+};
 
 export const WhyChooseUsSection = () => {
     const reasons = [
@@ -23,54 +33,68 @@ export const WhyChooseUsSection = () => {
         {
             icon: <Timer />,
             title: "Fast Turnaround Time",
-            description: "Get a quote in hours & set up your plan in days, not weeks. We prioritize time, so you can access critical health coverage swiftly"
+            description: "Get a quote in hours & set up your plan in days, not weeks. We prioritize time, so you can access critical health coverage swiftly",
+            image: "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Home-2.jpeg" // placeholder alternate image
         }
     ];
-    
+
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section className="bg-gray-50 py-20 sm:py-24">
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="section-tint relative">
+            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start relative">
                     
-                    {/* Left Column: Accordion */}
-                    <div className="space-y-8">
-                        <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
-                            Why Choose Harbor Group USA Health Plan ?
-                        </h2>
-                        <div className="space-y-4">
-                            {reasons.map((reason, index) => (
-                                <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
-                                    <button 
-                                        onClick={() => setActiveIndex(index)}
-                                        className="w-full flex justify-between items-center text-left"
-                                    >
-                                        <div className="flex items-center space-x-4">
-                                            <div className={`p-3 rounded-full transition-colors duration-300 ${activeIndex === index ? 'bg-sky-500' : 'bg-gray-200'}`}>
-                                                {React.cloneElement(reason.icon, { className: `h-6 w-6 transition-colors duration-300 ${activeIndex === index ? 'text-white' : 'text-indigo-900'}` })}
-                                            </div>
-                                            <h4 className="text-lg font-bold text-indigo-900">{reason.title}</h4>
-                                        </div>
-                                        <ChevronDown className={`h-6 w-6 text-gray-400 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''}`} />
-                                    </button>
-                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-40 mt-4' : 'max-h-0'}`}>
-                                        <p className="pl-14 text-gray-600 text-justify">{reason.description}</p>
+                    {/* Left Column: Scrollable Text Blocks */}
+                    <div className="space-y-32 py-24">
+                        <div className="mb-24">
+                            <h2 className="text-h2 font-display font-bold text-navy-800 tracking-tight sticky top-24 z-10 bg-surface-alt/90 backdrop-blur-sm py-4">
+                                Why Choose Harbor Group USA Health Plan?
+                            </h2>
+                        </div>
+                        
+                        {reasons.map((reason, index) => (
+                            <motion.div 
+                                key={index} 
+                                className={`transition-opacity duration-500 ${activeIndex === index ? 'opacity-100' : 'opacity-30'}`}
+                                onViewportEnter={() => setActiveIndex(index)}
+                                viewport={{ margin: "-40% 0px -40% 0px" }}
+                            >
+                                <div className="flex items-start space-x-6">
+                                    <div className={`p-4 rounded-xl transition-colors duration-500 ${activeIndex === index ? 'bg-accent shadow-lg' : 'bg-navy-50 border border-navy-100'}`}>
+                                        {React.cloneElement(reason.icon, { className: `h-8 w-8 transition-colors duration-500 ${activeIndex === index ? 'text-white' : 'text-navy-600'}`, strokeWidth: 1.5 })}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-2xl font-bold text-navy-800">{reason.title}</h4>
+                                        <p className="mt-4 text-lg text-navy-500 leading-relaxed">{reason.description}</p>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                            </motion.div>
+                        ))}
+                        <div className="h-32"></div> {/* Bottom padding for scroll area */}
                     </div>
-                    {/* Right Column: Image */}
-                    <div className="relative">
-                         <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-indigo-200 rounded-full filter blur-3xl opacity-40"></div>
-                         <img 
-                            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Why-choose-Harbor-Group-USA-health-plan.jpeg"
-                            alt="Client meeting"
-                            className="relative rounded-3xl shadow-2xl w-full h-auto object-cover"
-                            onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x700/e0f2fe/1e3a8a?text=Trust+Us'; }}
-                         />
+
+                    {/* Right Column: Sticky Image */}
+                    <div className="hidden lg:block sticky top-32 h-[600px] w-full">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.05 }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                className="absolute inset-0 rounded-card overflow-hidden shadow-lg img-duotone"
+                            >
+                                <img 
+                                    src={reasons[activeIndex].image || "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Why-choose-Harbor-Group-USA-health-plan.jpeg"}
+                                    alt={reasons[activeIndex].title}
+                                    className="w-full h-full object-cover"
+                                />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
+                    
                 </div>
             </div>
         </section>

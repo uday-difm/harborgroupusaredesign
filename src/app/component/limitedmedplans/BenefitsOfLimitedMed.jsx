@@ -27,7 +27,7 @@ export const BenefitsOfLimitedMed = () => {
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="text-center lg:text-left animate-slideInLeft">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-6 leading-tight animate-fadeInUp">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight animate-fadeInUp">
              Benefits Of Limited Med Plans
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 animate-fadeInUp delay-100 text-justify">
@@ -61,7 +61,7 @@ export const BenefitsOfLimitedMed = () => {
           {/* Right Column: Image with unique styling */}
           <div className="flex justify-center lg:justify-end animate-slideInRight">
             <Image
-            className="w-full max-w-md h-auto rounded-xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
+            className="w-full max-w-md h-auto rounded-card shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Limited-med-plan-benefit.jpeg"
             alt="Medical icons and data visualization"
             width={600}

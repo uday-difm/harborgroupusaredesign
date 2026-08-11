@@ -51,7 +51,7 @@ export const FluidWaveCTA = () => {
 Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage
         </h3>
         <button
-          className="px-12 py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xl rounded-full shadow-lg hover:from-sky-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 ease-in-out
+          className="px-12 py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xl rounded-full card-elevated hover:from-sky-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 ease-in-out
                      focus:outline-none focus:ring-4 focus:ring-sky-300 focus:ring-opacity-75 tracking-wide uppercase animate-buttonFloat"
         >
           ENROLL IN VISION CARE

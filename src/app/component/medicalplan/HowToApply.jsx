@@ -8,7 +8,7 @@ export const HowToApply = ()=> {
       <div className="max-w-6xl mx-auto w-full">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-extrabold text-indigo-900 mb-4 leading-tight">How to Apply</h1>
+          <h1 className="text-5xl font-extrabold text-primary mb-4 leading-tight">How to Apply</h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
           At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your Medical Plan.
           </p>

@@ -21,7 +21,7 @@ export const CostOptionshospital = ()=>{
             <Image
             width={600}
             height={400}
-              className="w-full h-full object-cover rounded-xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover rounded-card shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/hospital-plan-coverage.jpeg" // image_9e7e52.png (Cost Options Image)
               alt="Financial planning illustration"
               
@@ -30,10 +30,10 @@ export const CostOptionshospital = ()=>{
 
           {/* Right Column: Text Content */}
           <div className=" p-8  animate-slideInRight flex flex-col justify-center"> {/* Added flex flex-col justify-center */}
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
               Cost Options and Coverage Scenarios
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
+            <p className="text-lg text-navy-500 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
             Our Hospital Plans provide flexible options to suit your hospitalization needs, with straightforward coverage scenarios
             </p>
 

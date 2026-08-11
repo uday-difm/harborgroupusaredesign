@@ -15,10 +15,10 @@ export const Network = () => {
     <>
         <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
            Network
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
     Accessing support for accident-related needs is easy with our extensive network of experienced professionals.
           </p>
 

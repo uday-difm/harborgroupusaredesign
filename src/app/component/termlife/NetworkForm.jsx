@@ -148,7 +148,7 @@ export default function NetworkForm() {
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-fadeIn" id="term-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Network Info with Enhanced Design */}
-          <div className="bg-white p-8 rounded-xl shadow-lg text-center lg:text-left relative overflow-hidden">
+          <div className="bg-white p-8 rounded-card card-elevated text-center lg:text-left relative overflow-hidden">
             {/* Abstract background pattern for uniqueness */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
               <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
@@ -167,7 +167,7 @@ export default function NetworkForm() {
                 {gradientStops("iconGradient3")}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
               </svg>
-              <h2 className="text-4xl font-extrabold text-blue-800 mb-4">Network</h2>
+              <h2 className="text-4xl font-extrabold text-navy-700 mb-4">Network</h2>
               <p className="text-lg text-gray-700 mb-8">
                Access a Network of Top-Notch  professionals to support Your Loved Ones
               </p>
@@ -205,8 +205,8 @@ export default function NetworkForm() {
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-blue-50 p-8 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold text-blue-800 mb-6">Get in Touch</h3>
+          <div className="bg-navy-50 p-8 rounded-card card-elevated">
+            <h3 className="text-2xl font-bold text-navy-700 mb-6">Get in Touch</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name and Email in one row */}
               <div className="flex flex-col sm:flex-row gap-6">
@@ -218,7 +218,7 @@ export default function NetworkForm() {
                     name="name"
                     ref={nameInputRef}
                     className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                      nameError ? "border-red-500 border" : "border border-gray-300"
+                      nameError ? "border-error border" : "border border-gray-300"
                     }`}
                     placeholder="John Doe"
                     value={formData.name}
@@ -229,7 +229,7 @@ export default function NetworkForm() {
                   />
                   {/* Name-specific error directly under the name field */}
                   {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                    <p id="name-error" className="text-error text-sm mt-1" role="alert">
                       {nameError}
                     </p>
                   )}
@@ -244,9 +244,9 @@ export default function NetworkForm() {
                 <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y" placeholder="How can we help you?" value={formData.message} onChange={handleInputChange} ></textarea>
               </div>
               <div className="flex items-start">
-                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1" checked={formData.terms} onChange={handleInputChange} />
+                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1" checked={formData.terms} onChange={handleInputChange} />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
-                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
               <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={issubmiting}>
@@ -254,8 +254,8 @@ export default function NetworkForm() {
                 </button>
             </form>
              {/* Display error or success message */}
-            {error && <div className="mt-4 text-red-500">{error}</div>}
-            {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
+            {error && <div className="mt-4 text-error">{error}</div>}
+            {successMessage && <div className="mt-4 text-accent">{successMessage}</div>}
           </div>
         </div>
       </section>

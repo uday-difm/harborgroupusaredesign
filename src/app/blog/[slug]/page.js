@@ -105,7 +105,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                     <button
                         onClick={handleSubscribe}
                         disabled={loading}
-                        className="px-6 font-semibold text-base  bg-sky-500! hover:bg-sky-600! transition-all! duration-200!"
+                        className="px-6 font-semibold text-base  bg-accent! hover:bg-accent-dark! transition-all! duration-200!"
                         style={{
                             background: "#14c6c3",
                             color: "#fff",

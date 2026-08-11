@@ -101,10 +101,10 @@ const BenefitsSection = () => {
     <div className="max-w-6xl mx-auto  p-8 md:p-12 lg:p-16">
      
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-indigo-900 leading-tight mb-4">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-navy-800 leading-tight mb-4">
          Benefits of Lifestyle Plan
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-navy-500 max-w-2xl mx-auto">
          At Harbor Group USA, we understand the significance of maintaining a balanced and fulfilling lifestyle. Our Lifestyle Plans offer a range of benefits to cater to your specific needs.
         </p>
       </div>
@@ -127,13 +127,13 @@ const BenefitsSection = () => {
 // Component for individual Benefit Card
 const BenefitCard = ({ icon, title, description }) => {
   return (
-    <div className="flex flex-col sm:flex-row items-start p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+    <div className="flex flex-col sm:flex-row items-start p-6 bg-white rounded-card shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-navy-100">
       <div className="flex-shrink-0 p-3 rounded-full mb-4 sm:mb-0 sm:mr-6 bg-gradient-to-br from-sky-400 to-cyan-400"> {/* Icon background gradient */}
         {icon}
       </div>
       <div>
         <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-navy-500 leading-relaxed">{description}</p>
       </div>
     </div>
   );

@@ -19,30 +19,30 @@ export const Eligibilitycriteria = () => {
           <h2 className="text-4xl font-extrabold text-gray-800 mb-8 animate-fadeInUp">
             Eligibility Criteria for Term Life Plans
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
              Open to individuals and families, our Term Life Plan ensures that comprehensive financial protection is within reach.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
             {/* Resident Eligibility Card */}
-            <div className="bg-blue-50 p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn">
+            <div className="bg-navy-50 p-8 rounded-card card-elevated transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn">
               <svg className="w-16 h-16 mx-auto mb-6" fill="none" stroke="url(#iconGradient8)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {gradientStops("iconGradient8")}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0L6.343 16.657m10.314-10.314L13.414 3.1a1.998 1.998 0 00-2.828 0L6.343 6.343m10.314 10.314A9.001 9.001 0 0012 21a9.001 9.001 0 00-5.657-4.343m10.314-10.314A9.001 9.001 0 0112 3a9.001 9.001 0 015.657 4.343M12 12V6"></path>
               </svg>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">Resident of the United States</h3>
+              <h3 className="text-2xl font-bold text-navy-700 mb-4">Resident of the United States</h3>
               <p className="text-gray-700 leading-relaxed">
                Our Term Life Plan is accessible to individuals and families currently residing in the United States.
               </p>
             </div>
 
             {/* Age Eligibility Card */}
-            <div className="bg-blue-50 p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-2">
+            <div className="bg-navy-50 p-8 rounded-card card-elevated transform transition duration-300 hover:scale-105 hover:shadow-xl animate-delayFadeIn-2">
               <svg className="w-16 h-16 mx-auto mb-6" fill="none" stroke="url(#iconGradient9)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {gradientStops("iconGradient9")}
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">Age Eligibility</h3>
+              <h3 className="text-2xl font-bold text-navy-700 mb-4">Age Eligibility</h3>
               <p className="text-gray-700 leading-relaxed">
                 Tailored to cover individuals aged 18 to 100 years, ensuring robust coverage throughout various life stages.
               </p>

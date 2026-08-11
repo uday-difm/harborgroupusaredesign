@@ -183,7 +183,7 @@ export default function ContactPage() {
             <form className="space-y-6" onSubmit={handleSubmit} noValidate>
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name<span className="text-red-500">*</span>
+                  Full Name<span className="text-error">*</span>
                 </label>
                 <input
                   type="text"
@@ -194,12 +194,12 @@ export default function ContactPage() {
                   placeholder="Your full name"
                   className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
                 />
-                {nameError && <p className="text-red-500 text-sm mt-1">{nameError}</p>}
+                {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  E-Mail Address<span className="text-red-500">*</span>
+                  E-Mail Address<span className="text-error">*</span>
                 </label>
                 <input
                   type="email"
@@ -210,12 +210,12 @@ export default function ContactPage() {
                   className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
                   placeholder="your.email@example.com"
                 />
-                {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+                {emailError && <p className="text-error text-sm mt-1">{emailError}</p>}
               </div>
 
               <div>
                 <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700 mb-2">
-                  Mobile Number<span className="text-red-500">*</span>
+                  Mobile Number<span className="text-error">*</span>
                 </label>
                 <input
                   type="tel"
@@ -226,7 +226,7 @@ export default function ContactPage() {
                   className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
                   placeholder="+1 (123) 456-7890"
                 />
-                {phoneError && <p className="text-red-500 text-sm mt-1">{phoneError}</p>}
+                {phoneError && <p className="text-error text-sm mt-1">{phoneError}</p>}
               </div>
 
               <div>
@@ -243,8 +243,8 @@ export default function ContactPage() {
             </form>
 
             {/* Display error or success message */}
-            {error && <div className="mt-4 text-red-500">{error}</div>}
-            {message && <div className="mt-4 text-green-500">{message}</div>}
+            {error && <div className="mt-4 text-error">{error}</div>}
+            {message && <div className="mt-4 text-accent">{message}</div>}
           </div>
         </div>
       </div>

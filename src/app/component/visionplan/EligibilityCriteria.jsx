@@ -37,10 +37,10 @@ export const EligibilityCriteria = () => {
 
       {/* Section Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 drop-shadow-sm">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-4 drop-shadow-sm">
          Eligibility Criteria of Vision Plan
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+        <p className="text-lg md:text-xl text-navy-500 leading-relaxed">
           We ensure everyone can access affordable and essential eye care. 
         </p>
       </div>
@@ -49,7 +49,7 @@ export const EligibilityCriteria = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
 
         {/* Card 1: Citizenship or Legal Residency */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-200 hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-200 hover:shadow-xl transition-shadow duration-300">
           <div className="mb-4 text-blue-400 animate-iconPulseLight">
             {/* Home/Citizenship Icon SVG */}
             <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -57,13 +57,13 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Citizenship or Legal Residency</h3>
-          <p className="text-gray-600 leading-relaxed text-justify">
+          <p className="text-navy-500 leading-relaxed text-justify">
         Citizenship or Legal Residency -US citizenship or legal residency status is a prerequisite.
           </p>
         </div>
 
         {/* Card 2: Age Eligibility */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-300 hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-300 hover:shadow-xl transition-shadow duration-300">
           <div className="mb-4 text-sky-400 animate-iconPulseLight" style={{ animationDelay: '0.5s' }}>
             {/* Age/Person Icon SVG */}
             <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -71,13 +71,13 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Age Eligibility</h3>
-          <p className="text-gray-600 leading-relaxed text-justify">
+          <p className="text-navy-500 leading-relaxed text-justify">
             Age-Tailored for individuals aged 18 to 100 years
           </p>
         </div>
 
         {/* Card 3: Income Verification */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-400 hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-cardPopIn delay-400 hover:shadow-xl transition-shadow duration-300">
           <div className="mb-4 text-gray-400 animate-iconPulseLight" style={{ animationDelay: '1s' }}>
             {/* Money/Wallet Icon SVG */}
             <svg className="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@ export const EligibilityCriteria = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Income Verification</h3>
-          <p className="text-gray-600 leading-relaxed text-justify">
+          <p className="text-navy-500 leading-relaxed text-justify">
            Income Verification-Certain plans may require proof of income to determine eligibility
           </p>
         </div>

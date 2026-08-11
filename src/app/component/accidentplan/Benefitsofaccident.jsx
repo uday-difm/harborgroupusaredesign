@@ -15,10 +15,10 @@ export const Benefitsofaccident = () => {
        {/* New Section: Benefits of Accident Plan */}
       <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
             Benefits of Accident Plan
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
            At Harbor Group USA, we prioritize simplicity and effectiveness in our Accident Plans, offering a range of benefits to provide financial relief during challenging times.
           </p>
 

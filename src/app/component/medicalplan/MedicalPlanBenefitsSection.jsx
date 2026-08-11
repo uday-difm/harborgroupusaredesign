@@ -20,14 +20,8 @@ export const MedicalPlanBenefitsSection = () => {
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
       {/* Animated Background Gradients/Shapes - subtle movement */}
-      <div
-        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
-        style={{ backgroundColor: accentLightBlue + '20', transform: 'translate(-50%, -50%)' }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow animation-delay-2000"
-        style={{ backgroundColor: primaryDarkBlue + '20', transform: 'translate(50%, 50%)' }}
-      ></div>
+      
+      
 
       <div className="relative z-10 max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden md:flex" style={{ backgroundColor: white }}>
         {/* Left Image Section */}

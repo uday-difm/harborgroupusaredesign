@@ -182,33 +182,33 @@ export const Network = () => {
       </style>
 
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[120vw] h-[120vw] bg-sky-100 opacity-20 transform rotate-45 animate-rotateSubtle"></div>
-        <div className="absolute w-[80vw] h-[80vw] bg-blue-100 opacity-20 transform -rotate-30 animate-rotateSubtle" style={{ animationDelay: '5s', animationDirection: 'reverse' }}></div>
+        <div className="w-[120vw] h-[120vw] bg-accent/10 opacity-20 transform rotate-45 animate-rotateSubtle"></div>
+        <div className="absolute w-[80vw] h-[80vw] bg-accent/10 opacity-20 transform -rotate-30 animate-rotateSubtle" style={{ animationDelay: '5s', animationDirection: 'reverse' }}></div>
       </div>
       <div className="max-w-7xl w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl animate-fadeInScaleUp">
         <div className="bg-white p-8 md:p-12 flex flex-col justify-center rounded-l-3xl lg:rounded-r-none animate-slideInFromLeft delay-200">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-6 drop-shadow-sm">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-6 drop-shadow-sm">
             Network
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-navy-500 leading-relaxed mb-8">
             Accessing top-notch eye care is effortless with our extensive network of experienced professionals.
           </p>
 
           <ul className="space-y-4">
             <li className="flex items-start text-gray-700 text-lg animate-slideInFromLeft delay-400">
-              <span className="text-blue-500 mr-3 mt-1">
+              <span className="text-accent mr-3 mt-1">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
               </span>
               Experienced Eye Care Providers
             </li>
             <li className="flex items-start text-gray-700 text-lg animate-slideInFromLeft delay-500">
-              <span className="text-blue-500 mr-3 mt-1">
+              <span className="text-accent mr-3 mt-1">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
               </span>
               Nationwide Coverage
             </li>
             <li className="flex items-start text-gray-700 text-lg animate-slideInFromLeft delay-600">
-              <span className="text-blue-500 mr-3 mt-1">
+              <span className="text-accent mr-3 mt-1">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd"></path></svg>
               </span>
               Dedicated Support
@@ -217,7 +217,7 @@ export const Network = () => {
         </div>
 
         {/* Right Section: Contact Form - Overlapping and distinct color */}
-        <div className="p-8 md:p-12 bg-sky-100 bg-opacity-90 flex flex-col justify-center rounded-r-3xl lg:rounded-l-none animate-slideInFromRight delay-300">
+        <div className="p-8 md:p-12 bg-accent/10 bg-opacity-90 flex flex-col justify-center rounded-r-3xl lg:rounded-l-none animate-slideInFromRight delay-300">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-lg font-medium mb-2 text-gray-800">Your name*</label>
@@ -227,7 +227,7 @@ export const Network = () => {
                     name="name"
                     ref={nameInputRef}
                     className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                      nameError ? "border-red-500 border" : "border border-gray-300"
+                      nameError ? "border-error border" : "border border-gray-300"
                     }`}
                     placeholder="John Doe"
                     value={formData.name}
@@ -238,7 +238,7 @@ export const Network = () => {
                   />
                   {/* Name-specific error directly under the name field */}
                   {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                    <p id="name-error" className="text-error text-sm mt-1" role="alert">
                       {nameError}
                     </p>
                   )}
@@ -277,7 +277,7 @@ export const Network = () => {
                 onChange={handleInputChange}
               />
               <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
-                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="underline text-blue-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
+                By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="underline text-navy-600 hover:text-blue-800 transition duration-300">SMS and Marketing terms and conditions.</a>
               </label>
             </div>
             <button
@@ -290,8 +290,8 @@ export const Network = () => {
             </button>
           </form>
             {/* Display error or success message */}
-          {error && <div className="mt-4 text-red-500">{error}</div>}
-          {message && <div className="mt-4 text-green-500">{message}</div>}
+          {error && <div className="mt-4 text-error">{error}</div>}
+          {message && <div className="mt-4 text-accent">{message}</div>}
         </div>
       </div>
     </div>
