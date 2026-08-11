@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useMagnetic } from '@/comman/motion/useMagnetic';
+import { Send, ShieldCheck } from 'lucide-react';
+import { HarborArc } from '@/comman/HarborArc';
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -16,7 +18,6 @@ const sectionReveal = {
 };
 
 export default function HealthPlanQuoteToday() {
-  // State to handle form data and validation
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,10 +30,10 @@ export default function HealthPlanQuoteToday() {
   const [issubmiting, setIssubmiting] = useState(false);
 
   const submitMagnetic = useMagnetic(0.3, 35);
-
   const [nameError, setNameError] = useState("");
   const nameInputRef = useRef(null);
   const NAME_NUMBER_ERROR = "Name must not contain numbers.";
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -86,105 +87,119 @@ export default function HealthPlanQuoteToday() {
     });
   };
 
-
-  // Validate Email Format
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
   };
 
-  // Form submission handler
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setMessage('');
+    setIssubmiting(true);
 
-  setError('');
-  setMessage('');
-  setIssubmiting(true);
+    if (!formData.name || !formData.email || !formData.terms) {
+      setError('All fields are required, and you must agree to the terms.');
+      setIssubmiting(false);
+      return;
+    }
 
-  // Client-side validation
-  if (!formData.name || !formData.email || !formData.terms) {
-    setError('All fields are required, and you must agree to the terms.');
-    setIssubmiting(false);
-    return;
-  }
-
-   if (/[0-9]/.test(formData.name)) {
+    if (/[0-9]/.test(formData.name)) {
       setNameError(NAME_NUMBER_ERROR);
       setIssubmiting(false);
       return;
     }
 
-  if (!validateEmail(formData.email)) {
-    setError('Please enter a valid email address.');
-    setIssubmiting(false);
-    return;
-  }
+    if (!validateEmail(formData.email)) {
+      setError('Please enter a valid email address.');
+      setIssubmiting(false);
+      return;
+    }
 
-  // Prepare data in the correct format for the backend
-  const requestData = {
-    name: formData.name, // Match the key for backend
-    email: formData.email,
-    message: formData.message || '', // Ensure the message is provided
+    const requestData = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message || '',
+    };
+
+    try {
+      const response = await fetch('/api/home', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message);
+        setFormData({ name: '', email: '', message: '', terms: false });
+      } else {
+        setError(data.message || 'An error occurred. Please try again.');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again later.');
+    } finally {
+      setIssubmiting(false);
+    }
   };
 
-  try {
-    const response = await fetch('/api/home', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestData), // Send the form data
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      setMessage(data.message);
-      setFormData({ name: '', email: '', message: '', terms: false }); // Clear form after submission
-    } else {
-      setError(data.message || 'An error occurred. Please try again.');
-    }
-  } catch (err) {
-    setError('An error occurred. Please try again later.');
-  } finally {
-    setIssubmiting(false);
-  }
-}
-
   return (
-    <section className="section-light" id="h-form">
-      <motion.div 
-        className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto"
-        variants={sectionReveal}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-      >
-        <div className="text-center mb-16">
-          <h2 className="text-h2 font-display font-bold text-navy-800 tracking-tight">
+    <section className="bg-navy-800 py-24 font-body border-b border-navy-900/60 relative overflow-hidden" id="h-form">
+      {/* Ambient gradient behind the form */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <HarborArc position="bottomRight" className="text-white opacity-5" />
+
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Free Consultation</span>
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">
             Get In Touch
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-navy-500 leading-relaxed">
-           Get Your Free Health Plan Quote Today!
+          <p className="mt-3 text-lg text-navy-200">
+            Get Your Free Health Plan Quote Today!
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column: Image */}
-          <div className="relative rounded-card overflow-hidden shadow-lg img-duotone">
-            <Image
-              width={600}
-              height={400}
-              src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Get-Your-Free-Health-Plan-Quote-Today.jpeg"
-              alt="Contact Us"
-              className="w-full h-full object-cover"
-            />
+
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {/* Left Column: Photo Frame */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80">
+              <Image
+                width={600}
+                height={600}
+                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Get-Your-Free-Health-Plan-Quote-Today.jpeg"
+                alt="Contact Us"
+                className="w-full h-[480px] lg:h-[580px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent pointer-events-none"></div>
+            </div>
+
+            {/* Simple Trust Overlay */}
+            <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-navy-100 shadow-xl flex items-center gap-3">
+              <ShieldCheck className="w-6 h-6 text-accent flex-shrink-0" />
+              <div>
+                <p className="text-xs font-bold text-navy-900">Harbor Group USA Advisor Support</p>
+                <p className="text-[11px] text-navy-500">Individual & Group Health Coverage</p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Column: Form */}
-          <div className="card-elevated p-8">
+          {/* Right Column: Lead Form Card */}
+          <div className="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl border border-navy-100/80 shadow-xl">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-navy-800 mb-1">
+                <label htmlFor="name" className="block text-xs font-bold text-navy-800 uppercase tracking-wider mb-2">
                   Name*
                 </label>
                 <input
@@ -192,8 +207,8 @@ export default function HealthPlanQuoteToday() {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                  className={`w-full p-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-accent ${
-                    nameError ? "border-error border" : "border border-navy-200"
+                  className={`w-full p-4 bg-navy-50/50 rounded-xl border text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all ${
+                    nameError ? "border-red-500" : "border-navy-100"
                   }`}
                   placeholder="John Doe"
                   value={formData.name}
@@ -202,16 +217,15 @@ export default function HealthPlanQuoteToday() {
                   onPaste={handleNamePaste}
                   aria-describedby={nameError ? "name-error" : undefined}
                 />
-                {/* Name-specific error directly under the name field */}
                 {nameError && (
-                  <p id="name-error" className="text-error text-sm mt-1" role="alert">
+                  <p id="name-error" className="text-red-500 text-xs mt-1.5 font-medium" role="alert">
                     {nameError}
                   </p>
                 )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-navy-800 mb-1">
+                <label htmlFor="email" className="block text-xs font-bold text-navy-800 uppercase tracking-wider mb-2">
                   Email*
                 </label>
                 <input
@@ -221,12 +235,13 @@ export default function HealthPlanQuoteToday() {
                   value={formData.email}
                   required
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                  placeholder="john@example.com"
+                  className="w-full p-4 bg-navy-50/50 rounded-xl border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-navy-800 mb-1">
+                <label htmlFor="message" className="block text-xs font-bold text-navy-800 uppercase tracking-wider mb-2">
                   Your message
                 </label>
                 <textarea
@@ -234,8 +249,9 @@ export default function HealthPlanQuoteToday() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows="5"
-                  className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                  rows="4"
+                  placeholder="How can we help you find the right health plan?"
+                  className="w-full p-4 bg-navy-50/50 rounded-xl border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
                 ></textarea>
               </div>
 
@@ -248,7 +264,7 @@ export default function HealthPlanQuoteToday() {
                   onChange={handleInputChange}
                   className="h-4 w-4 text-accent border-navy-200 rounded mt-1 focus:ring-accent"
                 />
-                <label htmlFor="terms" className="ml-3 block text-sm text-navy-500">
+                <label htmlFor="terms" className="ml-3 block text-xs text-navy-500 leading-relaxed">
                   By submitting, you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
                   <Link href="/sms-and-marketing-terms" className="font-semibold text-accent hover:underline">
                     SMS and Marketing terms and conditions.
@@ -259,7 +275,7 @@ export default function HealthPlanQuoteToday() {
               <div>
                 <motion.button
                   type="submit"
-                  className="w-full btn-accent inline-block"
+                  className="w-full btn-accent py-4 text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
                   disabled={issubmiting}
                   ref={submitMagnetic.ref}
                   style={{ x: submitMagnetic.springX, y: submitMagnetic.springY }}
@@ -267,16 +283,16 @@ export default function HealthPlanQuoteToday() {
                   onMouseLeave={submitMagnetic.handleMouseLeave}
                 >
                   {issubmiting ? 'Submitting...' : 'Submit'}
+                  <Send className="w-4 h-4" />
                 </motion.button>
               </div>
             </form>
 
-            {/* Display error or success message */}
-            {error && <div className="mt-4 text-error font-semibold">{error}</div>}
-            {message && <div className="mt-4 text-success font-semibold">{message}</div>}
+            {error && <div className="mt-4 p-3 rounded-lg bg-red-50 text-red-600 text-sm font-semibold">{error}</div>}
+            {message && <div className="mt-4 p-3 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold">{message}</div>}
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

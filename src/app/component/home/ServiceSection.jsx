@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { useTilt } from '@/comman/motion/useTilt';
 import { useMagnetic } from '@/comman/motion/useMagnetic';
 import { useParallax } from '@/comman/motion/useParallax';
+import { HarborArc } from '@/comman/HarborArc';
+import { SectionGlow } from '@/comman/SectionGlow';
 
 const sectionReveal = {
   hidden: {},
@@ -16,19 +18,19 @@ const sectionReveal = {
 
 const cardVariant = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
 };
-
 
 export const ServicesSection = () => {
     const contactMagnetic = useMagnetic(0.3, 35);
     const numParallax = useParallax(30);
+    
     const services = [
-        { name: 'Medical', icon: <PlusSquare />, href: '/medical-plan'},
-        { name: 'Dental', icon: <Smile />, href: "/dental-care-plan/" },
+        { name: 'Medical', icon: <PlusSquare />, href: '/medical-plan', badge: 'Most Popular' },
+        { name: 'Dental', icon: <Smile />, href: "/dental-care-plan/", badge: 'Essential' },
         { name: 'Vision', icon: <Eye />, href: '/vision-plan' },
         { name: 'Term Life', icon: <HeartPulse />, href: '/term-life' },
-        { name: 'Bundles', icon: <Layers />, href: '/bundles-plan' },
+        { name: 'Bundles', icon: <Layers />, href: '/bundles-plan', badge: 'Best Value' },
         { name: 'Limited med', icon: <FlaskConical />, href: '/limited-med' },
         { name: 'Accident', icon: <Bone />, href: '/accident-plan' },
         { name: 'Hospital', icon: <HospitalIcon />, href: '/hospital-plan' },
@@ -39,7 +41,7 @@ export const ServicesSection = () => {
     ];
 
     const ServiceCard = ({ service }) => {
-        const tilt = useTilt(4);
+        const tilt = useTilt(3);
         const [glow, setGlow] = useState({ x: '50%', y: '50%' });
 
         const handleMouseMove = (e) => {
@@ -56,70 +58,96 @@ export const ServicesSection = () => {
             <motion.a 
                 variants={cardVariant}
                 href={service.href} 
-                className="group flex items-center p-6 card-elevated card-glow relative overflow-hidden bg-white"
+                className="group relative p-7 rounded-2xl bg-white border border-navy-100/80 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
                 ref={tilt.ref}
                 style={{ ...tilt.style, '--glow-x': glow.x, '--glow-y': glow.y }}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
             >
-                <div className="flex-shrink-0 p-4 bg-navy-50 rounded-xl group-hover:bg-accent/10 transition-colors relative z-10">
-                    {React.cloneElement(service.icon, { className: "h-6 w-6 text-navy-700 group-hover:text-accent transition-colors", strokeWidth: 1.5 })}
-                </div>
-                <div className="ml-5 flex-grow text-left relative z-10">
-                    <h3 className="text-lg font-bold text-navy-800">{service.name}</h3>
-                    <span className="inline-flex items-center text-sm font-semibold text-accent mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Learn More <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                {/* Optional Badge */}
+                {service.badge && (
+                    <span className="absolute top-4 right-4 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-accent/15 text-navy-900 border border-accent/30">
+                        {service.badge}
                     </span>
+                )}
+
+                <div>
+                    {/* Icon */}
+                    <div className="w-13 h-13 rounded-xl bg-navy-50 border border-navy-100/60 flex items-center justify-center text-navy-800 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 w-fit p-3.5 mb-5">
+                        {React.cloneElement(service.icon, { className: "h-6 w-6 stroke-[1.75]", strokeWidth: 1.75 })}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-navy-900 group-hover:text-accent transition-colors font-display">
+                        {service.name}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-navy-500 leading-relaxed">
+                        Comprehensive coverage and benefits options tailored to your lifestyle.
+                    </p>
+                </div>
+
+                {/* Learn More link footer */}
+                <div className="mt-6 pt-4 border-t border-navy-50 flex items-center justify-between text-xs font-bold text-navy-700 group-hover:text-accent transition-colors">
+                    <span>Explore Coverage</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                 </div>
             </motion.a>
         );
     };
 
     return (
-        <section className="section-tint relative overflow-hidden py-24">
+        <section className="bg-surface-alt relative overflow-hidden py-24 border-y border-navy-100/60 font-body">
+            <div className="bg-noise"></div>
+            <SectionGlow position="topRight" className="opacity-30" />
+            
             <motion.div 
                 ref={numParallax.ref}
                 style={{ y: numParallax.y }}
-                className="absolute -top-10 -left-10 lg:top-0 lg:left-10 opacity-30 select-none pointer-events-none z-0"
+                className="absolute z-0"
             >
-                <HeartPulse className="w-64 h-64 lg:w-[400px] lg:h-[400px] text-navy-100" strokeWidth={0.5} />
+                <HarborArc position="bottomRight" className="text-navy-100 opacity-10" />
             </motion.div>
             
-            <motion.div 
-                className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10"
-                variants={sectionReveal}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.15 }}
-            >
-                <div className="mb-16 mt-16 lg:mt-24">
-                    <div className="max-w-2xl">
-                        <h2 className="text-h2 font-display font-bold text-navy-800 tracking-tight">Our Services</h2>
-                        <p className="mt-4 text-lg text-navy-500">Individual or group, we've got the perfect health plan for you.</p>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {services.map((service) => (
-                         <ServiceCard key={service.name} service={service} />
-                    ))}
-                </div>
+            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
                 
-                <div className="mt-12 flex justify-end">
-                    <motion.div className="inline-block">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+                    <div className="max-w-2xl">
+                        <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Comprehensive Catalog</span>
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight">Our Health Plans</h2>
+                        <p className="mt-3 text-lg text-navy-600">Individual, family, or small business — find the exact coverage for your needs.</p>
+                    </div>
+
+                    <motion.div className="flex-shrink-0">
                         <a 
                             href="/contact" 
-                            className="btn-accent px-8 py-4 text-lg inline-flex"
+                            className="btn-accent px-7 py-3.5 text-base font-bold rounded-full inline-flex items-center shadow-md hover:shadow-lg transition-all"
                             ref={contactMagnetic.ref}
                             style={{ x: contactMagnetic.springX, y: contactMagnetic.springY }}
                             onMouseMove={contactMagnetic.handleMouseMove}
                             onMouseLeave={contactMagnetic.handleMouseLeave}
                         >
-                            Contact Us
+                            Get Free Advice
+                            <ArrowRight className="ml-2 h-4 w-4" />
                         </a>
                     </motion.div>
                 </div>
-            </motion.div>
+
+                {/* 12 Plan Grid */}
+                <motion.div 
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                    variants={sectionReveal}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
+                    {services.map((service) => (
+                         <ServiceCard key={service.name} service={service} />
+                    ))}
+                </motion.div>
+            </div>
         </section>
     );
 };
+
+export default ServicesSection;

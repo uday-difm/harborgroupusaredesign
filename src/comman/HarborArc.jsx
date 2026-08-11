@@ -8,7 +8,7 @@ export const HarborArc = ({ position = 'bottomRight', className = '', parallaxY 
 
     return (
         <motion.svg 
-            className={`absolute z-0 opacity-40 text-navy-200 pointer-events-none ${posClass} ${className}`}
+            className={`absolute z-0 pointer-events-none ${posClass} ${className}`}
             style={parallaxY ? { y: parallaxY } : {}}
             width="600" 
             height="600" 

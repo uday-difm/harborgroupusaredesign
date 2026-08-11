@@ -1,4 +1,4 @@
-import { useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { useTransform, useSpring, useMotionValue, useReducedMotion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { useLenis } from 'lenis/react';
 
@@ -6,6 +6,7 @@ export function useParallax(range = 20) {
   const ref = useRef(null);
   const scrollYProgress = useMotionValue(0);
   const [rect, setRect] = useState(null);
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
     if (!ref.current) return;
@@ -22,7 +23,7 @@ export function useParallax(range = 20) {
   }, []);
 
   useLenis(({ scroll }) => {
-    if (!rect) return;
+    if (!rect || prefersReduced) return;
     const windowHeight = window.innerHeight;
     // 0 = element enters viewport bottom, 1 = element leaves viewport top
     const start = rect.top - windowHeight;
@@ -36,5 +37,5 @@ export function useParallax(range = 20) {
 
   const raw = useTransform(scrollYProgress, [0, 1], [-range, range]);
   const y = useSpring(raw, { stiffness: 80, damping: 20 });
-  return { ref, y };
+  return { ref, y: prefersReduced ? 0 : y };
 }

@@ -2,13 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export const LatestArticles = () => {
-  const primaryDarkBlue = '#1A2E5B';
-  const accentLightBlue = '#4CAFDE';
-  const softGrayBg = '#F0F2F5';
-  const white = '#FFFFFF';
-
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -20,7 +17,7 @@ export const LatestArticles = () => {
         const data = await res.json();
 
         if (res.ok) {
-          setArticles(data.data || []); // adjust if your API returns differently
+          setArticles(data.data || []);
         } else {
           throw new Error(data.message || 'Failed to load articles');
         }
@@ -35,93 +32,92 @@ export const LatestArticles = () => {
     fetchArticles();
   }, []);
 
-  return (
-    <section
-      className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden"
-      style={{ background: `linear-gradient(to br, ${softGrayBg}, ${accentLightBlue}10)` }}
-    >
-      {/* Background animation elements */}
-      
-      
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+  };
 
-      <div className="relative z-10 max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
-          Latest Articles
-        </h2>
-        <p className="text-lg sm:text-xl leading-relaxed mb-12 text-gray-700 max-w-3xl mx-auto animate-fade-in-up delay-100">
-          Stay informed on the most current and relevant topics
-        </p>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } }
+  };
+
+  return (
+    <section className="section-tint py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4">
+            Insights
+          </p>
+          <h2 className="text-h2 font-display font-bold text-navy-900 mb-6 tracking-tight">
+            Latest Articles
+          </h2>
+          <p className="text-lg text-navy-600 max-w-2xl mx-auto leading-relaxed">
+            Stay informed on the most current and relevant topics across health, wellness, and coverage options.
+          </p>
+        </motion.div>
 
         {loading ? (
-          <p className="text-navy-500">Loading...</p>
+          <div className="flex justify-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
+          </div>
         ) : error ? (
-          <p className="text-error">Error: {error}</p>
+          <p className="text-error text-center py-12">Error: {error}</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up delay-200">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {articles.map((article, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="group bg-white rounded-card card-elevated overflow-hidden flex flex-col transform hover:scale-103 hover:shadow-2xl transition-all duration-300 ease-in-out animate-card-pop"
-                style={{ animationDelay: `${0.3 + index * 0.15}s` }}
+                variants={itemVariants}
+                className="group flex flex-col bg-white rounded-card card-elevated overflow-hidden"
               >
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-56 w-full overflow-hidden bg-navy-50">
                   <Image
                     src={article.blog_feature_image || "https://placehold.co/600x400/E0F2F7/000000?text=No+Image"}
                     alt={article.blog_title}
                     layout="fill"
                     objectFit="cover"
-                    className="transform group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                    className="transform transition-transform duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-navy-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
-                <div className="p-6 flex flex-col flex-grow text-jistify">
-                  <h3 className="text-xl font-bold mb-3 text-justify" style={{ color: primaryDarkBlue }}>
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-xl font-bold text-navy-900 mb-4 line-clamp-2 leading-snug group-hover:text-accent transition-colors">
                     {article.blog_title}
                   </h3>
-                  <p className="text-navy-500 text-base leading-relaxed mb-4 flex-grow text-justify">
+                  <p className="text-navy-600 text-base leading-relaxed mb-8 flex-grow line-clamp-3">
                     {article.blog_description}
                   </p>
-                  <a
+                  <Link
                     href={`/blog/${article.blog_slug}`}
-                    className="self-start mt-auto px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:bg-opacity-90"
-                    style={{ backgroundColor: accentLightBlue, color: white }}
+                    className="inline-flex items-center text-sm font-bold text-accent tracking-wide uppercase hover:text-navy-900 transition-colors mt-auto"
                   >
-                    Learn more
-                  </a>
+                    Read Article
+                    <svg className="ml-2 w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                  </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
-
-      {/* Animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes cardPop {
-          0% { transform: scale(0.9); opacity: 0; }
-          80% { transform: scale(1.02); opacity: 1; }
-          100% { transform: scale(1); }
-        }
-
-        @keyframes blob-slow-anim {
-          0% { transform: translate(-50%, -50%) scale(1); }
-          25% { transform: translate(-40%, -60%) scale(1.02); }
-          50% { transform: translate(-60%, -40%) scale(0.98); }
-          75% { transform: translate(-55%, -55%) scale(1.01); }
-          100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
-        .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-        .animate-card-pop { animation: cardPop 0.7s ease-out forwards; }
-        .animate-blob-slow { animation: blob-slow-anim 25s infinite alternate ease-in-out; }
-        .animate-blob-slow.animation-delay-2000 { animation-delay: 2s; }
-      `}</style>
     </section>
   );
 };
