@@ -41,14 +41,8 @@ export const LatestArticles = () => {
       style={{ background: `linear-gradient(to br, ${softGrayBg}, ${accentLightBlue}10)` }}
     >
       {/* Background animation elements */}
-      <div
-        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow"
-        style={{ backgroundColor: primaryDarkBlue + '20', transform: 'translate(-70%, -70%)' }}
-      ></div>
-      <div
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob-slow animation-delay-2000"
-        style={{ backgroundColor: accentLightBlue + '20', transform: 'translate(70%, 70%)' }}
-      ></div>
+      
+      
 
       <div className="relative z-10 max-w-7xl mx-auto text-center">
         <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 animate-fade-in-up" style={{ color: primaryDarkBlue }}>
@@ -59,15 +53,15 @@ export const LatestArticles = () => {
         </p>
 
         {loading ? (
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-navy-500">Loading...</p>
         ) : error ? (
-          <p className="text-red-600">Error: {error}</p>
+          <p className="text-error">Error: {error}</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up delay-200">
             {articles.map((article, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col transform hover:scale-103 hover:shadow-2xl transition-all duration-300 ease-in-out animate-card-pop"
+                className="group bg-white rounded-card card-elevated overflow-hidden flex flex-col transform hover:scale-103 hover:shadow-2xl transition-all duration-300 ease-in-out animate-card-pop"
                 style={{ animationDelay: `${0.3 + index * 0.15}s` }}
               >
                 <div className="relative h-48 w-full overflow-hidden">
@@ -83,7 +77,7 @@ export const LatestArticles = () => {
                   <h3 className="text-xl font-bold mb-3 text-justify" style={{ color: primaryDarkBlue }}>
                     {article.blog_title}
                   </h3>
-                  <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow text-justify">
+                  <p className="text-navy-500 text-base leading-relaxed mb-4 flex-grow text-justify">
                     {article.blog_description}
                   </p>
                   <a

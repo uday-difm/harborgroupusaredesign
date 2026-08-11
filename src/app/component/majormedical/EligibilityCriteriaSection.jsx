@@ -11,10 +11,10 @@ const CriteriaItem = ({ icon: Icon, title, children, delay }) => {
       style={{ animationDelay: delay }}
     >
       <div className="flex items-center space-x-4">
-        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-xl bg-sky-100 text-sky-500">
+        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-xl bg-sky-100 text-accent">
           <Icon className="w-7 h-7" />
         </div>
-        <h3 className="text-lg font-bold text-indigo-900">{title}</h3>
+        <h3 className="text-lg font-bold text-primary">{title}</h3>
       </div>
       <p className="mt-4 text-base text-gray-600">{children}</p>
     </div>
@@ -32,7 +32,7 @@ export const EligibilityCriteriaSection = () => {
         
         {/* --- Header Content --- */}
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight animate-fade-in-up">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight animate-fade-in-up">
             Eligibility Criteria of Major Medical Plan
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in-up" style={{animationDelay: '0.1s'}}>

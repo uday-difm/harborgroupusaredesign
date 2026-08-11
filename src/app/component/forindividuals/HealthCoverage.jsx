@@ -8,10 +8,10 @@ export const HealthCoverage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-inter overflow-hidden">
       <div className="relative  p-8 md:p-12 max-w-7xl w-full text-center transform transition-all duration-700 ease-out md:flex md:items-center md:text-left">
-        <div className="absolute -top-10 -left-10 w-32 h-32 bg-sky-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-1 hidden md:block"></div>
-        <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-2 hidden md:block"></div>
+        <div className="absolute -top-10 -left-10 w-32 h-32 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-1 hidden md:block"></div>
+        <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob-2 hidden md:block"></div>
         <div className="md:w-1/2 md:pr-8">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight ">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy-800 mb-6 leading-tight ">
            Simplifying Your Path to<span className="text-blue-700">Health Coverage!</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-700 mb-10 leading-relaxed animate-fade-in-delay-text text-justify">
@@ -20,7 +20,7 @@ export const HealthCoverage = () => {
 
           <Link href= "#individual-form"
           
-            className="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300 text-lg "
+            className="bg-accent hover:bg-accent-dark text-white font-bold py-3 px-8 rounded-full card-elevated transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-sky-300 text-lg "
           >
             GET A CONSULTANT
           </Link>
@@ -29,7 +29,7 @@ export const HealthCoverage = () => {
           <img
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/simplifying-path-health-coverage.jpeg"
             alt="Health Coverage Illustration"
-            className="rounded-2xl shadow-lg max-w-full h-auto"
+            className="rounded-card card-elevated max-w-full h-auto"
           
           />
         </div>

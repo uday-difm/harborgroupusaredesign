@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { FaqSection } from "./component/home/FaqSection";
 import HealthPlanQuoteToday from "./component/home/HealthPlanQuoteToday";
@@ -32,20 +33,29 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
+    // Check if visitor already dismissed or submitted
+    const dismissed = localStorage.getItem('harbor_quote_popup_dismissed');
+    if (dismissed) return; // Don't show again
+
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 3000);
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
 
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    localStorage.setItem('harbor_quote_popup_dismissed', '1');
+  };
+
   return (
     <>
       <title>Harbor Group USA | Affordable Health Plans</title>
-      <meta name="keywords" content="Harbor Group USA, real estate services, property management, trusted real estate, commercial property management, residential property management, real estate solutions" />
-      <meta name="description" content=" Harbor Group USA offers expert real estate services, property management, and investment solutions to help you find and manage your ideal property." />
+      <meta name="keywords" content="Harbor Group USA, health insurance, health plans, medical plans, dental, vision, term life, accident, hospital, critical illness, pet insurance, affordable health coverage, USA" />
+      <meta name="description" content="Harbor Group USA helps individuals, families, and small businesses find affordable health plans — medical, dental, vision, life, and more. Get a free quote today." />
       <meta property="og:title" content="Harbor Group USA | Affordable Health Plans" />
-      <meta property="og:description" content="Harbor Group USA offers expert real estate services, property management, and investment solutions to help you find and manage your ideal property." />
+      <meta property="og:description" content="Harbor Group USA helps individuals, families, and small businesses find affordable health plans — medical, dental, vision, life, and more. Get a free quote today." />
       <link rel="canonical" href="https://harborgroupusa.com/" />
       <meta property="og:url" content="https://harborgroupusa.com/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
@@ -53,12 +63,14 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <WholesaleGeneralAgency />
+      <CoverageSection/>
       <WhyChooseUsSection />
       <HealthPlanQuoteToday />
       <FaqSection />
-      <CoverageSection/>
-      {/* <TestimonialHome /> */}
-      {showPopup && <QuotePopup onClose={() => setShowPopup(false)} />}
+      <TestimonialHome />
+      <AnimatePresence>
+        {showPopup && <QuotePopup key="quote-popup" onClose={handlePopupClose} />}
+      </AnimatePresence>
     </>
   );
 }

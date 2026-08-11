@@ -135,7 +135,7 @@ export const ConnectWIthUs = () => {
           {/* Left Column: Image with unique styling */}
           <div className="flex justify-center  animate-slideInLeft">
             <Image
-              className="w-full max-w-lg h-full  rounded-xl shadow-2xl transition-transform duration-700 ease-in-out" /* Removed -rotate-3 and hover:rotate-0 */
+              className="w-full max-w-lg h-full  rounded-card shadow-2xl transition-transform duration-700 ease-in-out" /* Removed -rotate-3 and hover:rotate-0 */
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/get-in-touch-section.jpeg" // image_b789a3.png (Connect With Us Image)
               alt="Hand arranging wooden blocks with icons representing family, health, home, car, money, and travel"
               width={600}
@@ -144,8 +144,8 @@ export const ConnectWIthUs = () => {
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInRight">
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
+          <div className="bg-white p-8 rounded-card card-elevated animate-slideInRight">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
               Connect With Us
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
@@ -158,7 +158,7 @@ export const ConnectWIthUs = () => {
                     name="name"
                     ref={nameInputRef}
                     className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                      nameError ? "border-red-500 border" : "border border-gray-300"
+                      nameError ? "border-error border" : "border border-gray-300"
                     }`}
                     placeholder="John Doe"
                     value={formData.name}
@@ -169,7 +169,7 @@ export const ConnectWIthUs = () => {
                   />
                   {/* Name-specific error directly under the name field */}
                   {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                    <p id="name-error" className="text-error text-sm mt-1" role="alert">
                       {nameError}
                     </p>
                   )}
@@ -187,10 +187,10 @@ export const ConnectWIthUs = () => {
                   onChange={handleInputChange}></textarea>
               </div>
               <div className="flex items-start">
-                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"   checked={formData.terms}
+                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"   checked={formData.terms}
                   onChange={handleInputChange} />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
-                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
               <button type="submit" className="w-full bg-sky-400 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={issubmiting}
@@ -199,8 +199,8 @@ export const ConnectWIthUs = () => {
               </button>
             </form>
              {/* Display error or success message */}
-            {error && <div className="mt-4 text-red-500">{error}</div>}
-            {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
+            {error && <div className="mt-4 text-error">{error}</div>}
+            {successMessage && <div className="mt-4 text-accent">{successMessage}</div>}
           </div>
         </div>
       </section>

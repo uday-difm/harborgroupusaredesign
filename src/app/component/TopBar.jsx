@@ -64,7 +64,7 @@ export default function TopBar() {
         <input
           type="text"
           placeholder="Search blogs, posts..."
-          className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent text-sm text-gray-700 placeholder-gray-400 transition"
+          className="w-full pl-10 pr-4 py-2 rounded-lg border border-navy-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent text-sm text-gray-700 placeholder-gray-400 transition"
         />
         <div className="absolute left-3 top-2.5 text-gray-400 pointer-events-none">
           <svg
@@ -92,7 +92,7 @@ export default function TopBar() {
         >
           <div className="text-right">
             <h4 className="text-sm font-semibold text-gray-800">{user?.name || ''}</h4>
-            <p className="text-xs text-gray-500">{user?.role || ''}</p>
+            <p className="text-xs text-navy-500">{user?.role || ''}</p>
           </div>
           <Image
            src={user?.image || 'https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Favicon.png'}
@@ -100,12 +100,12 @@ export default function TopBar() {
             alt="Profile"
             width={40}
             height={40}
-            className="rounded-full border border-gray-200 shadow object-cover"
+            className="rounded-full border border-navy-100 shadow object-cover"
             loading="lazy" // Lazy load the profile image
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className={`h-4 w-4 text-gray-500 transform transition-transform ${
+            className={`h-4 w-4 text-navy-500 transform transition-transform ${
               dropdownOpen ? 'rotate-180' : ''
             }`}
             fill="none"
@@ -117,7 +117,7 @@ export default function TopBar() {
         </div>
 
         {dropdownOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-30 py-2">
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md card-elevated z-30 py-2">
            <button
               onClick={handleEditProfile}
               className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

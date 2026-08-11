@@ -118,8 +118,8 @@ export const ConnectWithUs = () => {
     <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
         {/* Left Column: Connect With Us Form */}
-        <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInLeft flex flex-col h-full">
-          <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
+        <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft flex flex-col h-full">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
             Connect With Us
           </h2>
 
@@ -142,7 +142,7 @@ export const ConnectWithUs = () => {
                   onPaste={handleNamePaste} // sanitize pasted content
                   aria-describedby="nameHelp"
                 />
-                <p id="nameHelp" className="mt-1 text-xs text-gray-500">
+                <p id="nameHelp" className="mt-1 text-xs text-navy-500">
                   Numbers will be removed automatically.
                 </p>
               </div>
@@ -183,13 +183,13 @@ export const ConnectWithUs = () => {
                 type="checkbox"
                 id="terms"
                 name="terms"
-                className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
                 checked={formData.terms}
                 onChange={handleInputChange}
               />
               <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                 By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{" "}
-                <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">
+                <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">
                   SMS and Marketing terms and conditions
                 </a>
                 .
@@ -207,12 +207,12 @@ export const ConnectWithUs = () => {
 
           {/* Display error or success message */}
           {error && (
-            <div className="mt-4 text-red-500" role="alert" aria-live="assertive">
+            <div className="mt-4 text-error" role="alert" aria-live="assertive">
               {error}
             </div>
           )}
           {successMessage && (
-            <div className="mt-4 text-green-500" role="status" aria-live="polite">
+            <div className="mt-4 text-accent" role="status" aria-live="polite">
               {successMessage}
             </div>
           )}
@@ -221,7 +221,7 @@ export const ConnectWithUs = () => {
         {/* Right Column: Image of Contact Form */}
         <div className="flex justify-center lg:justify-end animate-slideInRight h-full">
           <Image
-            className="w-full h-full object-cover rounded-xl shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
+            className="w-full h-full object-cover rounded-card shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident-plan-form-section.jpeg"
             alt="Screenshot of contact form"
             width={600}

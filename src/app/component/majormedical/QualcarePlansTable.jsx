@@ -106,7 +106,7 @@ export const QualcarePlansTable = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-4 sm:p-8 lg:p-12 font-inter flex flex-col items-center">
       {/* Main Title */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-indigo-900 mb-10 text-center leading-tight tracking-tight drop-shadow-sm">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-10 text-center leading-tight tracking-tight drop-shadow-sm">
         {plansData.header}
       </h1>
 

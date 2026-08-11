@@ -3,6 +3,17 @@
 import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useMagnetic } from '@/comman/motion/useMagnetic';
+
+const sectionReveal = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
+  }
+};
 
 export default function HealthPlanQuoteToday() {
   // State to handle form data and validation
@@ -17,7 +28,9 @@ export default function HealthPlanQuoteToday() {
   const [message, setMessage] = useState('');
   const [issubmiting, setIssubmiting] = useState(false);
 
- const [nameError, setNameError] = useState("");
+  const submitMagnetic = useMagnetic(0.3, 35);
+
+  const [nameError, setNameError] = useState("");
   const nameInputRef = useRef(null);
   const NAME_NUMBER_ERROR = "Name must not contain numbers.";
   const handleInputChange = (e) => {
@@ -139,33 +152,39 @@ export default function HealthPlanQuoteToday() {
 }
 
   return (
-    <section className="bg-white py-20 sm:py-24" id="h-form">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-light" id="h-form">
+      <motion.div 
+        className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto"
+        variants={sectionReveal}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+      >
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight">
+          <h2 className="text-h2 font-display font-bold text-navy-800 tracking-tight">
             Get In Touch
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-navy-500 leading-relaxed">
            Get Your Free Health Plan Quote Today!
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column: Image */}
-          <div className="relative">
+          <div className="relative rounded-card overflow-hidden shadow-lg img-duotone">
             <Image
               width={600}
               height={400}
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Get-Your-Free-Health-Plan-Quote-Today.jpeg"
               alt="Contact Us"
-              className="rounded-2xl shadow-xl w-full h-full object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
           {/* Right Column: Form */}
-          <div className="bg-gray-50 p-8 rounded-2xl shadow-lg">
+          <div className="card-elevated p-8">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="name" className="block text-sm font-semibold text-navy-800 mb-1">
                   Name*
                 </label>
                 <input
@@ -173,26 +192,26 @@ export default function HealthPlanQuoteToday() {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
-                      nameError ? "border-red-500 border" : "border border-gray-300"
-                    }`}
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    onKeyDown={handleNameKeyDown}
-                    onPaste={handleNamePaste}
-                    aria-describedby={nameError ? "name-error" : undefined}
-                  />
-                  {/* Name-specific error directly under the name field */}
-                  {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
-                      {nameError}
-                    </p>
-                  )}
-                  </div>
+                  className={`w-full p-3 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-accent ${
+                    nameError ? "border-error border" : "border border-navy-200"
+                  }`}
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  onKeyDown={handleNameKeyDown}
+                  onPaste={handleNamePaste}
+                  aria-describedby={nameError ? "name-error" : undefined}
+                />
+                {/* Name-specific error directly under the name field */}
+                {nameError && (
+                  <p id="name-error" className="text-error text-sm mt-1" role="alert">
+                    {nameError}
+                  </p>
+                )}
+              </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-semibold text-navy-800 mb-1">
                   Email*
                 </label>
                 <input
@@ -202,12 +221,12 @@ export default function HealthPlanQuoteToday() {
                   value={formData.email}
                   required
                   onChange={handleInputChange}
-                  className="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="message" className="block text-sm font-semibold text-navy-800 mb-1">
                   Your message
                 </label>
                 <textarea
@@ -216,7 +235,7 @@ export default function HealthPlanQuoteToday() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="5"
-                  className="mt-1 block w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full p-3 bg-white border border-navy-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                 ></textarea>
               </div>
 
@@ -227,33 +246,37 @@ export default function HealthPlanQuoteToday() {
                   type="checkbox"
                   checked={formData.terms}
                   onChange={handleInputChange}
-                  className="h-4 w-4 text-sky-600 border-gray-300 rounded mt-1"
+                  className="h-4 w-4 text-accent border-navy-200 rounded mt-1 focus:ring-accent"
                 />
-                <label htmlFor="terms" className="ml-3 block text-sm text-gray-600">
-                  By submiting, you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
-                  <Link href="/sms-and-marketing-terms" className="font-medium text-sky-600 hover:underline">
+                <label htmlFor="terms" className="ml-3 block text-sm text-navy-500">
+                  By submitting, you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{' '}
+                  <Link href="/sms-and-marketing-terms" className="font-semibold text-accent hover:underline">
                     SMS and Marketing terms and conditions.
                   </Link>
                 </label>
               </div>
 
               <div>
-                <button
+                <motion.button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                  className="w-full btn-accent inline-block"
                   disabled={issubmiting}
+                  ref={submitMagnetic.ref}
+                  style={{ x: submitMagnetic.springX, y: submitMagnetic.springY }}
+                  onMouseMove={submitMagnetic.handleMouseMove}
+                  onMouseLeave={submitMagnetic.handleMouseLeave}
                 >
-                  {issubmiting ? 'submiting...' : 'SUBMIT'}
-                </button>
+                  {issubmiting ? 'Submitting...' : 'Submit'}
+                </motion.button>
               </div>
             </form>
 
             {/* Display error or success message */}
-            {error && <div className="mt-4 text-red-500">{error}</div>}
-            {message && <div className="mt-4 text-green-500">{message}</div>}
+            {error && <div className="mt-4 text-error font-semibold">{error}</div>}
+            {message && <div className="mt-4 text-success font-semibold">{message}</div>}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

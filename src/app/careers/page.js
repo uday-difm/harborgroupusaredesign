@@ -144,8 +144,8 @@ export default function Careers() {
             <h1 className="text-sm sm:text-base font-semibold text-blue-600 uppercase tracking-wider mb-2 animate-slide-in-top">
               Career&apos;s
             </h1>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-indigo-900 mb-6 leading-tight animate-slide-in-left">
-              Welcome to Harbor Group USA <span className="text-sky-500">Careers Page!</span>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-6 leading-tight animate-slide-in-left">
+              Welcome to Harbor Group USA <span className="text-accent">Careers Page!</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed animate-fade-in-delay-text text-justify">
               At Harbor Group USA, we believe in fostering a workplace where talent thrives, innovation flourishes, and employees are empowered to make a real impact in the world of health plans. As a leading provider of Health Plans in the United States, we are dedicated to ensuring the well-being of individuals and families by offering comprehensive and affordable healthcare coverage. Explore careers with us and join a team committed to transforming healthcare.
@@ -167,12 +167,12 @@ export default function Careers() {
                   onChange={handleChange}
                   onKeyDown={handleNameKeyDown}
                   onPaste={handleNamePaste}
-                  className={`shadow-sm appearance-none rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400 ${nameError ? "border-red-500 border" : "border"}`}
+                  className={`shadow-sm appearance-none rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition duration-200 placeholder-gray-400 ${nameError ? "border-error border" : "border"}`}
                   placeholder="Your name*"
                   required
                   aria-describedby={nameError ? "name-error" : undefined}
                 />
-                {nameError && <p id="name-error" className="text-red-600 mt-1 text-sm" role="alert">{nameError}</p>}
+                {nameError && <p id="name-error" className="text-error mt-1 text-sm" role="alert">{nameError}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Your email</label>
@@ -226,12 +226,12 @@ export default function Careers() {
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</Link>.
                 </label>
               </div>
-              {error && <div className="text-red-600 mb-2">{error}</div>}
-              {result && <div className="text-green-600 mb-2">{result}</div>}
+              {error && <div className="text-error mb-2">{error}</div>}
+              {result && <div className="text-accent mb-2">{result}</div>}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-sky-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg"
+                className="w-full bg-accent hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-300 text-lg"
               >
                 {loading ? "submiting..." : "SUBMIT"}
               </button>

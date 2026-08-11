@@ -148,18 +148,9 @@ export const GetAHealthPlanConsultant = () => {
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden"
       style={{ backgroundColor: softGray }}
     >
-      <div
-        className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
-        style={{ backgroundColor: lightBlueBg, transform: "translate(-70%, -70%)" }}
-      ></div>
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 sm:w-1/2 sm:h-1/2 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"
-        style={{ backgroundColor: darkAccentBlue, transform: "translate(70%, 70%)" }}
-      ></div>
-      <div
-        className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
-        style={{ backgroundColor: primaryBlue, transform: "translate(30%, -30%)" }}
-      ></div>
+      
+      
+      
       <div className="relative z-10 w-full max-w-3xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col animate-fadeInUp">
         <div
           className="relative p-8 md:p-10 text-center text-white overflow-hidden rounded-t-3xl"
@@ -202,14 +193,14 @@ export const GetAHealthPlanConsultant = () => {
                   onKeyDown={handleNameKeyDown}
                   onPaste={handleNamePaste}
                   className={`w-full px-4 py-3 rounded-lg border-2 focus:outline-none focus:ring-2 transition-all duration-200 ${
-                    nameError ? "border-red-500" : ""
+                    nameError ? "border-error" : ""
                   }`}
                   style={{ borderColor: nameError ? undefined : lightBlueBg }}
                   placeholder="Your Full Name"
                   aria-describedby={nameError ? "name-error" : undefined}
                 />
                 {nameError && (
-                  <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                  <p id="name-error" className="text-sm text-error mt-1" role="alert">
                     {nameError}
                   </p>
                 )}
@@ -257,7 +248,7 @@ export const GetAHealthPlanConsultant = () => {
                 checked={formData.terms}
                 onChange={handleChange}
               />
-              <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
+              <label htmlFor="terms" className="ml-3 text-sm text-navy-500">
                 By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our{" "}
                 <Link href="/sms-and-marketing-terms" className="font-medium underline" style={{ color: darkAccentBlue }}>
                   SMS and Marketing terms and conditions.
@@ -267,7 +258,7 @@ export const GetAHealthPlanConsultant = () => {
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+              className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-accent hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
               disabled={issubmiting}
             >
               {issubmiting ? "submiting..." : "Submit"}
@@ -275,8 +266,8 @@ export const GetAHealthPlanConsultant = () => {
           </form>
 
           {/* Show success or error messages */}
-          {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
-          {errorMessage && <div className="mt-4 text-red-500">{errorMessage}</div>}
+          {successMessage && <div className="mt-4 text-accent">{successMessage}</div>}
+          {errorMessage && <div className="mt-4 text-error">{errorMessage}</div>}
         </div>
       </div>
 

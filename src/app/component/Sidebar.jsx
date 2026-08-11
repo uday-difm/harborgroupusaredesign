@@ -62,7 +62,7 @@ export default function Sidebar() {
       </span>
 
       <nav className="flex flex-col gap-6 text-base text-gray-200 font-medium">
-        <div className="rounded-xl bg-slate-800/60 p-4 group">
+        <div className="rounded-card bg-slate-800/60 p-4 group">
             <ul className="pl-6  space-y-4 text-sm">
               <li>
                 <Link href="/dashboard/add-blog" className="hover:text-sky-400 font-normal p-2">
@@ -73,7 +73,7 @@ export default function Sidebar() {
             </ul>
          
         </div>
-        <div className="rounded-xl bg-slate-800/60 p-4 group">
+        <div className="rounded-card bg-slate-800/60 p-4 group">
             <ul className="pl-6  space-y-4 text-sm">
               <li>
                 <Link
@@ -85,7 +85,7 @@ export default function Sidebar() {
               </li>
             </ul>
         </div>
-          <div className="rounded-xl bg-slate-800/60 p-4 group">
+          <div className="rounded-card bg-slate-800/60 p-4 group">
             <ul className="pl-6  space-y-4 text-sm">
               <li>
                 <Link
@@ -99,7 +99,7 @@ export default function Sidebar() {
         </div>
       {/* Manage Users Dropdown - only for Super Admin or Administrator */}
         {(userRole === "Super Admin" || userRole === "Administrator") && (
-          <div className="rounded-xl bg-slate-800/60 p-4 group">
+          <div className="rounded-card bg-slate-800/60 p-4 group">
             <div
               className="flex items-center justify-between cursor-pointer p-2 hover:text-sky-400"
               onClick={() => toggleMenu("users")}

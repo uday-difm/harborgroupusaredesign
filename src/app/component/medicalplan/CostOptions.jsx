@@ -19,24 +19,24 @@ export const CostOptions = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-12">
             {/* 2500 Classic Plan Card */}
             <div className="bg-white border border-indigo-200 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-justify">
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-500 mb-6 text-left">
+              <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6 text-left">
                 2500 Classic Plan Highlights
               </h2>
               <ul className="space-y-4 text-left text-gray-700 text-base sm:text-lg">
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Deductible:</strong> single: $2,500 and Family: $5,000</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Max Out-Of-Pocket Limit:</strong> Single: $7,350 and Family: $14,700</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Coverage includes:</strong> Primary care, Urgent care, Preventive care, and more</span>
@@ -46,24 +46,24 @@ export const CostOptions = () => {
 
             {/* 2500 Premium Plan Card */}
             <div className="bg-white border border-purple-200 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <h2 className="text-2xl sm:text-3xl font-bold text-sky-500 mb-6 text-left">
+              <h2 className="text-2xl sm:text-3xl font-bold text-accent mb-6 text-left">
                 2500 Premium Plan Highlights
               </h2>
               <ul className="space-y-4 text-left text-gray-700 text-base sm:text-lg">
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Deductible:</strong> Single: $2,500 and Family: $5,000</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Maximum Out-of-Pocket Limit:</strong> Single: $8,150 and Family: $16,300</span>
                 </li>
                 <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span><strong className="font-semibold">Comprehensive coverage includes:</strong> Mental Health, Chiropractic Services, Rehabilitation, Childbirth/Delivery Facility, and more</span>

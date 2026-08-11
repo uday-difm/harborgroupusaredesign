@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useMagnetic } from "@/comman/motion/useMagnetic";
 
 const HarborGroupUSALogo = () => (
   <div className="popup-logo">
@@ -24,6 +26,8 @@ const QuotePopup = ({ onClose }) => {
   const [message, setMessage] = useState('');
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState(''); // <-- new state
+
+  const submitMagnetic = useMagnetic(0.3, 35);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -151,11 +155,22 @@ const handlePhonePaste = (e) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* overlay */}
-      <div className="absolute inset-0 popup-overlay" aria-hidden="true" />
+      <motion.div
+        className="absolute inset-0 popup-overlay"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        aria-hidden="true"
+      />
 
-      <div
+      <motion.div
         ref={popupRef}
         className="relative w-full max-w-md mx-auto popup-surface p-6 sm:p-8"
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
         role="dialog"
         aria-modal="true"
         aria-label="Get your free quote"
@@ -237,20 +252,24 @@ const handlePhonePaste = (e) => {
           </div>
         </div>
 
-        <button
+        <motion.button
           onClick={handleSubmit}
           disabled={submitting}
-          className="w-full popup-cta hover:bg-sky-500!"
+          className="w-full popup-cta inline-block"
+          ref={submitMagnetic.ref}
+          style={{ x: submitMagnetic.springX, y: submitMagnetic.springY }}
+          onMouseMove={submitMagnetic.handleMouseMove}
+          onMouseLeave={submitMagnetic.handleMouseLeave}
         >
           {submitting ? 'submitting…' : 'Get Your Quote'}
-        </button>
+        </motion.button>
 
         {message && (
           <p className="mt-4 text-center text-sm" style={{ color: message.startsWith('Thank') ? 'var(--success)' : 'var(--foreground)' }}>
             {message}
           </p>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

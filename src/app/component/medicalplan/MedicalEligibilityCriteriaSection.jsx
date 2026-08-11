@@ -8,7 +8,7 @@ import Image from 'next/image';
 const EligibilityCard = ({ icon: Icon, title, children }) => {
   return (
     <div className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
-      <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-sky-100 text-sky-500">
+      <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-sky-100 text-accent">
         <Icon size={32} />
       </div>
       <h3 className="text-xl font-bold text-gray-900 mt-2">{title}</h3>
@@ -24,7 +24,7 @@ export const  MedicalEligibilityCriteriaSection = ()=> {
         
         {/* Header Section */}
         <div className="text-left mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary tracking-tight text-center">
             Eligibility Criteria for the Medical Plans
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl text-center mx-auto">

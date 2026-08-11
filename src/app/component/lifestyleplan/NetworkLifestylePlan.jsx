@@ -5,12 +5,12 @@ import Image from 'next/image';
 export const NetworkLifestylePlan = () => {
   // Define a light color palette inspired by the logo
   const colors = {
-    primaryLightBlue: 'bg-blue-50', // Very light blue for background
-    secondaryLightGray: 'bg-gray-50', // Light gray for sections
+    primaryLightBlue: 'bg-navy-50', // Very light blue for background
+    secondaryLightGray: 'bg-navy-50', // Light gray for sections
     accentBlue: 'text-blue-700', // A slightly darker blue for emphasis
-    checkmarkGreen: 'text-green-500', // Standard green for checkmarks
+    checkmarkGreen: 'text-accent', // Standard green for checkmarks
     darkText: 'text-gray-800', // Dark text for readability
-    mediumText: 'text-gray-600', // Medium text for descriptions
+    mediumText: 'text-navy-500', // Medium text for descriptions
   };
 
   const benefits = [
@@ -22,8 +22,8 @@ export const NetworkLifestylePlan = () => {
   ];
 
   return (
-    <div className={`min-h-screen bg-blue-50 font-inter flex items-center justify-center p-4 sm:p-8`}>
-      <div className="max-w-6xl w-full bg-white shadow-lg rounded-xl overflow-hidden md:flex">
+    <div className={`min-h-screen bg-navy-50 font-inter flex items-center justify-center p-4 sm:p-8`}>
+      <div className="max-w-6xl w-full bg-white card-elevated rounded-card overflow-hidden md:flex">
         {/* Left Section: Content */}
         <div className="md:w-1/2 p-6 sm:p-10 flex flex-col justify-center">
     
@@ -32,12 +32,12 @@ export const NetworkLifestylePlan = () => {
             <span className="inline-block w-6 h-0.5 bg-sky-400 mr-2 rounded-full"></span>
            Know about our network
           </p>
-          <h1 className={`text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-6 leading-tight`}>
+          <h1 className={`text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight`}>
             Network
           </h1>
 
           {/* Introduction */}
-          <p className={`text-lg text-gray-600 mb-8 leading-relaxed text-justify`}>
+          <p className={`text-lg text-navy-500 mb-8 leading-relaxed text-justify`}>
            Accessing support for your lifestyle needs is effortless with our extensive network of experienced professionals.
           </p>
 
@@ -45,7 +45,7 @@ export const NetworkLifestylePlan = () => {
           <ul className="space-y-4">
             {benefits.map((benefit, index) => (
               <li key={index} className="flex items-start">
-                <div className={`flex-shrink-0 w-6 h-6 rounded-full text-sky-500 flex items-center justify-center mr-3`}>
+                <div className={`flex-shrink-0 w-6 h-6 rounded-full text-accent flex items-center justify-center mr-3`}>
                   {/* Checkmark Icon (Inline SVG) */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -21,14 +21,14 @@ export const PetPlanHereSection = () => {
 
         {/* Content */}
         <div className="relative z-10 text-center p-6 max-w-7xl mx-auto animate-fadeInUp">
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-display font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
             Because your furry friends deserve protection too
           </h1>
           <p className="text-lg sm:text-xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
            Extend your care to your four-legged family members with Pet Plans at Harbor Group USA. Our Pet Plans are designed to offer tailored protection for your beloved pets, ensuring their health and well-being are prioritized.
           </p>
           <Link href="#pet-plan-form">
-          <button className="py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 bg-sky-400 text-white font-bold" >
+          <button className="py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 bg-sky-400 text-white font-bold" >
             JOIN US NOW
           </button>
           </Link>

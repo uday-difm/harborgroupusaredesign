@@ -7,10 +7,10 @@ export const BenefitsofCriticalplan = () => {
     <>
        <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-indigo-900 mb-4 animate-fadeInUp">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
          Benefits of Critical plan
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
           At Harbor Group USA, we understand the importance of financial security during critical health moments. Our Critical Plans offer a range of easy, simple, and professional benefits to cater to your specific needs.
           </p>
 
@@ -39,7 +39,7 @@ export const BenefitsofCriticalplan = () => {
             {/* Right Column: Image */}
             <div className="flex justify-center animate-slideInRight">
               <Image
-                className="w-full max-w-md h-auto rounded-xl shadow-2xl  border-blue-300 transform transition-transform duration-700 ease-in-out hover:scale-105"
+                className="w-full max-w-md h-auto rounded-card shadow-2xl  border-blue-300 transform transition-transform duration-700 ease-in-out hover:scale-105"
                 src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Critical-benifit-section.jpeg" // image_9cac5c.png
                 alt="Doctor holding patient's hand"
                 width={600}

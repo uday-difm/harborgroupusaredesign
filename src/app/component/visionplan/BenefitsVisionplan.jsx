@@ -34,10 +34,10 @@ export const BenefitsVisionplan = () => {
 
       {/* Section Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-indigo-900 mb-4 drop-shadow-sm">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-4 drop-shadow-sm">
           Benefits of Vision Plan
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+        <p className="text-lg md:text-xl text-navy-500 leading-relaxed">
           Our comprehensive and stand alone vision plans are designed to keep your eyes healthy and your wallet happy.
         </p>
       </div>
@@ -46,8 +46,8 @@ export const BenefitsVisionplan = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
 
         {/* Benefit Card 1: Comprehensive Eye Exams */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-200 hover:shadow-xl transition-shadow duration-300">
-          <div className="mb-4 text-sky-500 animate-iconBounce">
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-200 hover:shadow-xl transition-shadow duration-300">
+          <div className="mb-4 text-accent animate-iconBounce">
             {/* Eye Icon SVG */}
             <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -55,15 +55,15 @@ export const BenefitsVisionplan = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Comprehensive Eye Exams</h3>
-          <ul className="text-left text-gray-600 space-y-2">
+          <ul className="text-left text-navy-500 space-y-2">
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
         Regular check-ups to monitor and maintain your eye health
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
            Early detection of potential issues to ensure proactive care
@@ -72,23 +72,23 @@ export const BenefitsVisionplan = () => {
         </div>
 
         {/* Benefit Card 2: Discounts on Corrective Eye Surgeries */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-300 hover:shadow-xl transition-shadow duration-300">
-          <div className="mb-4 text-blue-500 animate-iconBounce" style={{ animationDelay: '0.5s' }}>
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-300 hover:shadow-xl transition-shadow duration-300">
+          <div className="mb-4 text-accent animate-iconBounce" style={{ animationDelay: '0.5s' }}>
             {/* Medical Cross/Stethoscope Icon SVG (or similar) */}
             <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Discounts on Corrective Eye Surgeries</h3>
-          <ul className="text-left text-gray-600 space-y-2">
+          <ul className="text-left text-navy-500 space-y-2">
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
              Exclusively discounted eye surgeries for improved long-term vision
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
               Advanced options for vision enhancement
@@ -97,8 +97,8 @@ export const BenefitsVisionplan = () => {
         </div>
 
         {/* Benefit Card 3: Prescription Eyewear Coverage */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-400 hover:shadow-xl transition-shadow duration-300">
-          <div className="mb-4 text-gray-500 animate-iconBounce" style={{ animationDelay: '1s' }}>
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-400 hover:shadow-xl transition-shadow duration-300">
+          <div className="mb-4 text-navy-500 animate-iconBounce" style={{ animationDelay: '1s' }}>
             {/* Glasses Icon SVG */}
             <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 21h4c.552 0 1-.448 1-1v-1a2 2 0 00-2-2h-2a2 2 0 00-2 2v1c0 .552.448 1 1 1z"></path>
@@ -107,15 +107,15 @@ export const BenefitsVisionplan = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Prescription Eyewear Coverage</h3>
-          <ul className="text-left text-gray-600 space-y-2">
+          <ul className="text-left text-navy-500 space-y-2">
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
               Enjoy coverage for prescription eyeglasses
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
               Contact lens prescriptions are also included
@@ -124,7 +124,7 @@ export const BenefitsVisionplan = () => {
         </div>
 
         {/* Benefit Card 4: Savings on Eyewear */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-500 hover:shadow-xl transition-shadow duration-300">
+        <div className="bg-white p-6 md:p-8 rounded-card card-elevated border border-navy-100 flex flex-col items-center text-center opacity-0 animate-fadeInSlideUp delay-500 hover:shadow-xl transition-shadow duration-300">
           <div className="mb-4 text-blue-400 animate-iconBounce" style={{ animationDelay: '1.5s' }}>
             {/* Money/Savings Icon SVG */}
             <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -132,15 +132,15 @@ export const BenefitsVisionplan = () => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold text-gray-800 mb-3">Savings on Eyewear</h3>
-          <ul className="text-left text-gray-600 space-y-2">
+          <ul className="text-left text-navy-500 space-y-2">
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
              Affordable access to high-quality eyewear
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-green-500 */}
+              <span className="text-sky-400 mr-2 mt-1"> {/* Changed from text-accent */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path></svg>
               </span>
              Stay in style with trendy eyewear without breaking the bank

@@ -7,10 +7,10 @@ import Link from 'next/link';
 export const BundlesPlanHeroSection = () => {
 
   return (
- <div className="min-h-screen bg-gray-50 font-sans antialiased flex flex-col items-center justify-center">
+ <div className="min-h-screen bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
 
     
-       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-blue-900">
+       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-navy-800">
         <div className="absolute inset-0 opacity-20 pointer-events-none animate-bgPulse">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -24,15 +24,15 @@ export const BundlesPlanHeroSection = () => {
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 items-center relative z-10 p-4 sm:p-6 lg:p-8">
           <div className="text-center lg:text-left animate-slideInLeft">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
               Combine and save!
             </h1>
           
-            <p className="text-lg sm:text-xl text-gray-900 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 text-justify">
+            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 text-justify">
             Forget managing multiple plans – our meticulously crafted Bundles Plans are designed to fit your family’s unique needs and safeguard your health. It’s more than just a plan; it’s your unified health solution!
             </p>
 
-            <Link href="#bundles-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#bundles-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
               GET STARTED
             </Link>
           </div>
@@ -40,7 +40,7 @@ export const BundlesPlanHeroSection = () => {
             <Image
             width={600}
             height={400}
-              className="w-full max-w-md h-auto rounded-xl shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" 
+              className="w-full max-w-md h-auto rounded-card shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" 
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/combine-and-save.jpeg"
               alt="Doctor's hand stacking health-related blocks"
               

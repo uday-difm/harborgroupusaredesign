@@ -12,7 +12,7 @@ const BenefitListItem = ({ children, delay }) => {
       style={{ animationDelay: delay }}
     >
       <div className="flex-shrink-0 pt-1">
-        <Check className="w-5 h-5 text-sky-500" />
+        <Check className="w-5 h-5 text-accent" />
       </div>
       <span className="text-base text-gray-600">{children}</span>
     </li>
@@ -26,10 +26,10 @@ export const CostOptionsSection = () => {
         
         {/* --- Header Content --- */}
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-base font-semibold text-sky-500 uppercase tracking-wide animate-fade-in-up">
+          <p className="text-base font-semibold text-accent uppercase tracking-wide animate-fade-in-up">
             Know about Cost Options
           </p>
-          <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-indigo-900 tracking-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+          <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-primary tracking-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
            Cost Options and Coverage Scenarios
           </h2>
           <p className="mt-4 text-lg text-gray-600 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
@@ -57,24 +57,24 @@ export const CostOptionsSection = () => {
                     <div className="p-8 md:p-12">
                         <ul className="space-y-6 text-justify">
                             <BenefitListItem delay="0.5s">
-                                <strong className="text-indigo-900">Higher Deductibles, Lower Premiums:</strong> Lower monthly payments, higher out-of-pocket costs.
+                                <strong className="text-primary">Higher Deductibles, Lower Premiums:</strong> Lower monthly payments, higher out-of-pocket costs.
                             </BenefitListItem>
                             <BenefitListItem delay="0.6s">
-                                <strong className="text-indigo-900">Lower Deductibles, Higher Premiums:</strong> Minimize out-of-pocket expenses.
+                                <strong className="text-primary">Lower Deductibles, Higher Premiums:</strong> Minimize out-of-pocket expenses.
                             </BenefitListItem>
                             <BenefitListItem delay="0.7s">
-                                <strong className="text-indigo-900">Balanced Options:</strong> Moderate deductibles and premiums.
+                                <strong className="text-primary">Balanced Options:</strong> Moderate deductibles and premiums.
                             </BenefitListItem>
                         </ul>
 
                         {/* Customizable Plans Highlight */}
                         <div className="mt-10 pt-8 border-t border-gray-200 animate-fade-in-up" style={{animationDelay: '0.8s'}}>
                             <div className="flex items-start space-x-4">
-                                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-sky-100 text-sky-500">
+                                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-sky-100 text-accent">
                                     <SlidersHorizontal className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold text-indigo-900">Customizable Plans</h3>
+                                    <h3 className="text-lg font-bold text-primary">Customizable Plans</h3>
                                     <p className="mt-1 text-base text-gray-600 text-justify">
                                     Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care.
                                     </p>

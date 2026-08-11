@@ -155,7 +155,7 @@ export const ApplyNowSection = ()=> {
 
           {/* Right Column: Apply Now Form */}
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-8 leading-tight">
               Apply Now
             </h2>
 
@@ -179,13 +179,13 @@ export const ApplyNowSection = ()=> {
                     aria-required="true"
                     aria-describedby={nameError ? "name-error" : undefined}
                     className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg transition ${
-                      nameError ? "border-red-500 border" : "border-gray-300 border"
+                      nameError ? "border-error border" : "border-gray-300 border"
                     }`}
                     placeholder="John Doe"
                   />
                   {/* name-specific error directly under name input */}
                   {nameError && (
-                    <p id="name-error" className="text-sm text-red-600 mt-1" role="alert">
+                    <p id="name-error" className="text-sm text-error mt-1" role="alert">
                       {nameError}
                     </p>
                   )}
@@ -232,11 +232,11 @@ export const ApplyNowSection = ()=> {
                   type="checkbox"
                   checked={formData.terms}
                   onChange={handleChange}
-                  className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
+                  className="h-5 w-5 text-navy-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
                 />
-                <label htmlFor="terms" className="ml-3 text-sm text-gray-600">
+                <label htmlFor="terms" className="ml-3 text-sm text-navy-500">
                   By submiting you allow our team to reach out to you via email or phone as submitted
-                  information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms/" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and
+                  information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms/" className="text-navy-600 hover:underline font-medium">SMS and Marketing terms and
                   conditions</Link>.
                 </label>
               </div>
@@ -245,7 +245,7 @@ export const ApplyNowSection = ()=> {
               <div>
                 <button
                   type="submit"
-                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-xl font-semibold text-white bg-gradient-to-r from-sky-400 to-sky-400 hover:from-sky-400 hover:to-sky-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg card-elevated text-xl font-semibold text-white bg-gradient-to-r from-sky-400 to-sky-400 hover:from-sky-400 hover:to-sky-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
               disabled={issubmiting}
                 >
                   {issubmiting ? 'submiting...' : 'Submit'}
@@ -254,10 +254,10 @@ export const ApplyNowSection = ()=> {
             </form>
              {/* Show success or error messages */}
             {successMessage && (
-              <div className="mt-4 text-green-500">{successMessage}</div>
+              <div className="mt-4 text-accent">{successMessage}</div>
             )}
             {errorMessage && (
-              <div className="mt-4 text-red-500">{errorMessage}</div>
+              <div className="mt-4 text-error">{errorMessage}</div>
             )}
           </div>
         </div>

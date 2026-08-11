@@ -52,18 +52,9 @@ export const Benefitsofcollaboration = () => {
       className="min-h-screen flex items-center justify-center font-inter p-4 sm:p-6 lg:p-8 relative overflow-hidden"
       style={{ backgroundColor: softGray }}
     >
-      <div
-        className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"
-        style={{ backgroundColor: lightBlueBg, transform: 'translate(-70%, -70%)' }}
-      ></div>
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 sm:w-1/2 sm:h-1/2 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"
-        style={{ backgroundColor: darkAccentBlue, transform: 'translate(70%, 70%)' }}
-      ></div>
-      <div
-        className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-80 sm:h-80 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"
-        style={{ backgroundColor: primaryBlue, transform: 'translate(30%, -30%)' }}
-      ></div>
+      
+      
+      
       <div
         className="relative z-10 w-full max-w-7xl  rounded-3xl overflow-hidden flex flex-col animate-fadeInUp"
       >
@@ -97,7 +88,7 @@ export const Benefitsofcollaboration = () => {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-md border-b-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="bg-white p-6 rounded-card shadow-md border-b-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               style={{ borderColor: darkAccentBlue, animationDelay: `${0.4 + index * 0.15}s` }}
             >
               <div className="flex items-center mb-4" style={{ color: darkAccentBlue }}>
@@ -106,7 +97,7 @@ export const Benefitsofcollaboration = () => {
                   {benefit.title}
                 </h3>
               </div>
-              <p className="text-gray-600 leading-relaxed text-justify">{benefit.description}</p>
+              <p className="text-navy-500 leading-relaxed text-justify">{benefit.description}</p>
             </div>
           ))}
         </div>

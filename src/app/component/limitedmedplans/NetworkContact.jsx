@@ -153,8 +153,8 @@ export const NetworkContact = () => {
     <>
       <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> 
-          <div className="bg-white p-8 rounded-xl shadow-lg animate-slideInLeft">
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
+          <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
               Connect With Us
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
@@ -167,7 +167,7 @@ export const NetworkContact = () => {
                     name="name"
                     ref={nameInputRef}
                     className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 border ${
-                      nameError ? "border-red-500" : "border-gray-300"
+                      nameError ? "border-error" : "border-gray-300"
                     }`}
                     placeholder="John Doe"
                     value={formData.name}
@@ -179,7 +179,7 @@ export const NetworkContact = () => {
                   />
                   {/* Name-specific error directly under the input */}
                   {nameError && (
-                    <p id="name-error" className="text-red-500 text-sm mt-1" role="alert">
+                    <p id="name-error" className="text-error text-sm mt-1" role="alert">
                       {nameError}
                     </p>
                   )}
@@ -196,10 +196,10 @@ export const NetworkContact = () => {
                   onChange={handleInputChange} ></textarea>
               </div>
               <div className="flex items-start">
-                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"  checked={formData.terms}
+                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"  checked={formData.terms}
                   onChange={handleInputChange} />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
-                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline">SMS and Marketing terms and conditions</a>.
+                  By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
               <button type="submit" className="w-full bg-sky-400 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"   disabled={issubmiting}
@@ -207,17 +207,17 @@ export const NetworkContact = () => {
                 {issubmiting ? 'submiting...' : 'SUBMIT'}
               </button>
             </form>
-            {error && <div className="mt-4 text-red-500">{error}</div>}
-            {successMessage && <div className="mt-4 text-green-500">{successMessage}</div>}
+            {error && <div className="mt-4 text-error">{error}</div>}
+            {successMessage && <div className="mt-4 text-accent">{successMessage}</div>}
           </div>
-          <div className="bg-blue-50 p-8 rounded-xl shadow-lg animate-slideInRight">
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-6 text-center lg:text-left">
+          <div className="bg-navy-50 p-8 rounded-card card-elevated animate-slideInRight">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
              Network
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 text-justify">
              Accessing top-notch support for your targeted medical needs is effortless with our extensive network of experienced professionals.
             </p>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Specialized Healthcare Professionals</h3>
+            <h3 className="text-2xl font-bold text-navy-800 mb-4">Specialized Healthcare Professionals</h3>
             <ul className="space-y-3 text-gray-700 text-left mb-6 text-justify">
               <li className="flex items-center">
                 <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#networkIconGradient1)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -234,8 +234,8 @@ export const NetworkContact = () => {
                 Ensure tailored guidance for your unique health requirements
               </li>
             </ul>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Dedicated Support</h3>
-            <ul className="space-y-3 text-gray-600 text-left text-justify">
+            <h3 className="text-2xl font-bold text-navy-800 mb-4">Dedicated Support</h3>
+            <ul className="space-y-3 text-navy-500 text-left text-justify">
               <li className="flex items-center">
                 <svg className="w-6 h-6 mr-2 flex-shrink-0" fill="none" stroke="url(#networkIconGradient3)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   {gradientStops("networkIconGradient3")}

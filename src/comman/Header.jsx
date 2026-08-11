@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 const Link = ({ href, children, onClick, className }) => (
     <a href={href} onClick={onClick} className={className}>
         {children}
@@ -63,6 +64,8 @@ export const Header = () => {
     const [currentPath, setCurrentPath] = useState('');
     const headerRef = useRef(null);
     const dropdownCloseTimeout = useRef(null);
+    const { scrollY } = useScroll();
+    const headerShadow = useTransform(scrollY, [0, 20], ["0px 0px 0px rgba(0,0,0,0)", "0px 4px 20px -4px rgba(0,0,0,0.05)"]);
 
     useEffect(() => {
         setCurrentPath(window.location.pathname);
@@ -144,8 +147,12 @@ export const Header = () => {
     };
 
     return (
-        <header ref={headerRef} className="bg-white dark:bg-white/95 sticky top-0 z-50 shadow-sm border-b border-gray-200 font-inter">
-            <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.header 
+            ref={headerRef} 
+            style={{ boxShadow: headerShadow }}
+            className="bg-white/60 backdrop-blur-xl sticky top-0 z-50 border-b border-navy-100/50 font-body transition-colors duration-300"
+        >
+            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
                 <div className="flex items-center justify-between h-20 md:h-24">
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center" onClick={scrollToTop}>
@@ -178,18 +185,25 @@ export const Header = () => {
                                                     }`}
                                             />
                                         )}
-                                        <span
-                                            className={`absolute -bottom-1 left-0 w-full h-0.5 ${colors.underline
-                                                } transform scale-x-0 transition-transform duration-300 ease-out ${isActive || isOpen ? 'scale-x-100' : ''
-                                                }`}
-                                        />
+                                        {(isActive || isOpen) && (
+                                            <motion.span
+                                                layoutId="nav-underline"
+                                                className="absolute -bottom-1 left-0 right-0 h-[2px] bg-navy-700 rounded-pill"
+                                                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                                            />
+                                        )}
                                     </Link>
-                                    {link.dropdown && isOpen && (
-                                        <div
-                                            className="absolute z-20 left-1/2 -translate-x-1/2 mt-4 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-                                            onMouseEnter={() => handleDesktopMouseEnter(link.name)}
-                                            onMouseLeave={handleDesktopMouseLeave}
-                                        >
+                                    <AnimatePresence>
+                                        {link.dropdown && isOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, scale: 0.95, y: -8 }}
+                                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                                exit={{ opacity: 0, scale: 0.95, y: -8 }}
+                                                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                                                className={`absolute z-20 left-1/2 -translate-x-1/2 mt-4 bg-white rounded-card shadow-lg border border-navy-100 ${link.name === 'Plans' ? 'w-[480px] p-6' : 'w-56 p-2'}`}
+                                                onMouseEnter={() => handleDesktopMouseEnter(link.name)}
+                                                onMouseLeave={handleDesktopMouseLeave}
+                                            >
                                             <div className="py-2">
                                                 {link.dropdown.map((item) => (
                                                     <Link
@@ -203,8 +217,9 @@ export const Header = () => {
                                                     </Link>
                                                 ))}
                                             </div>
-                                        </div>
-                                    )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             );
                         })}
@@ -306,7 +321,7 @@ export const Header = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </motion.header>
     );
 }
 

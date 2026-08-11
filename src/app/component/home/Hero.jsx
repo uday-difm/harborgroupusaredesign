@@ -1,126 +1,137 @@
 "use client";
 
-import React  from 'react';
-import { ArrowRight, Shield, HeartPulse } from 'lucide-react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import { HarborArc } from '@/comman/HarborArc';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useMagnetic } from '@/comman/motion/useMagnetic';
+import { useTilt } from '@/comman/motion/useTilt';
+import { useParallax } from '@/comman/motion/useParallax';
+import { useVelocityEffect } from '@/comman/motion/useVelocityEffect';
+import { useTransform } from 'framer-motion';
 
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } }
+};
 
 export const HeroSection = () => {
+    const prefersReduced = useReducedMotion();
+    
+    // Hooks
+    const ctaMagnetic = useMagnetic(0.4, 40);
+    const imageTilt = useTilt(6);
+    const arc1Parallax = useParallax(20);
+    const arc2Parallax = useParallax(-15);
+
+    const { skew, blur } = useVelocityEffect(2, 4);
+    const velocityBlur = useTransform(blur, (v) => `blur(${v}px)`);
+    
+    const itemVariants = {
+      hidden: { opacity: 0, y: prefersReduced ? 0 : 20 },
+      show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    };
+    const imageVariants = {
+      hidden: { opacity: 0, scale: prefersReduced ? 1 : 0.97 },
+      show: { opacity: 1, scale: 1, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } }
+    };
+
     return (
-    // <div className="relative bg-gradient-to-b from-white to-gray-100 overflow-hidden h-screen">
-     <div className="relative animated-gradient-bg py-20 lg:py-50">
-      {/* Animated background glows */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 bg-sky-900/50 rounded-full filter blur-3xl animate-pulse-slow"></div>
-          <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-indigo-900/50 rounded-full filter blur-3xl animate-pulse-slow" style={{animationDelay: '2s'}}></div>
-      </div>
-
-      <div className="relative max-w-screen-xl flex items-center justify-center  mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
-          {/* --- Left Column: Text Content --- */}
-          <div className="text-center lg:text-left">
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-indigo-900 tracking-tight animate-fade-in-up"
-            >
-              A Brighter & <br />
-              <span className="text-sky-500">Healthier Future!</span>
-            </h1>
-
-            <p 
-              className="mt-6 max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl text-gray-600 animate-fade-in-up" 
-              style={{ animationDelay: '0.2s' }}
-            >
-             Finding Your Ideal Health Plan with Harbor Group USA
-            </p>
+        <section className="relative bg-surface overflow-hidden pt-12 pb-24 lg:pt-24 lg:pb-32">
+            <div ref={arc1Parallax.ref}>
+                <HarborArc position="bottomRight" className="text-navy-100" parallaxY={arc1Parallax.y} />
+            </div>
+            <div ref={arc2Parallax.ref}>
+                <HarborArc position="topLeft" className="text-navy-50 opacity-40 scale-150" parallaxY={arc2Parallax.y} />
+            </div>
             
-            <p 
-              className="mt-4 max-w-2xl mx-auto lg:mx-0 text-base text-gray-500 animate-fade-in-up"
-              style={{ animationDelay: '0.4s' }}
-            >
-             Securing your Future with Unmatched Expertise in Health Plans and Benefits.
-            </p>
+            <div className="relative w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto z-10">
+                <div className="grid lg:grid-cols-[55fr_45fr] gap-12 lg:gap-16 items-center">
+                    
+                    {/* --- Left Column: Text Content --- */}
+                    <motion.div 
+                        className="text-center lg:text-left"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="show"
+                    >
+                        <motion.div variants={itemVariants} className="inline-flex items-center px-3 py-1 rounded-full bg-navy-50 text-navy-600 text-sm font-semibold mb-6">
+                            <span className="flex h-2 w-2 rounded-full bg-accent mr-2"></span>
+                            Trusted Healthcare Advisors
+                        </motion.div>
 
-            <div 
-              className="mt-10 animate-fade-in-up" 
-              style={{ animationDelay: '0.6s' }}
-            >
-              <a
-                href="#h-form"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full text-white bg-sky-500 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-sky-300/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 focus:ring-offset-white"
-              >
-                Get a Free Quote Today!
-                <ArrowRight className="ml-3 -mr-1 h-6 w-6" />
-              </a>
-            </div>
-          </div>
+                        <h1 className="text-display font-display font-bold text-navy-800 tracking-tight leading-[1.1]">
+                            <div className="overflow-hidden">
+                                <motion.div variants={itemVariants}>
+                                    A Brighter & 
+                                </motion.div>
+                            </div>
+                            <div className="overflow-hidden">
+                                <motion.div variants={itemVariants} className="text-accent">
+                                    Healthier Future
+                                </motion.div>
+                            </div>
+                        </h1>
 
-          {/* --- Right Column: Image Composition --- */}
-          <div className="relative h-80 lg:h-[450px] flex items-center justify-center animate-fade-in" style={{animationDelay: '0.5s'}}>
-            <div className="absolute w-full h-full max-w-md">
-                {/* Background Shape */}
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-300 to-indigo-300 rounded-3xl transform -rotate-6"></div>
-                
-                {/* Image Container */}
-                <div className="absolute inset-0 p-2">
-                    <div className="relative w-full h-full bg-gray-300 rounded-2xl shadow-2xl overflow-hidden transform rotate-3">
-                        <Image 
-                            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Brighter-&-Healthier-Future.webp" 
-                            alt="Doctor consulting with a patient"
-                            className="w-full h-full object-cover"
-                            width={600}
-                            height={400}
-                            //onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x600/e2e8f0/a3a3a3?text=Health+Plan'; }}
-                        />
-                    </div>
+                        <motion.p variants={itemVariants} className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-navy-500">
+                            Finding your ideal health plan with Harbor Group USA. Securing your future with unmatched expertise in health plans and benefits tailored for you.
+                        </motion.p>
+
+                        <motion.div variants={itemVariants} className="mt-10 inline-block">
+                            <motion.a 
+                                href="#h-form" 
+                                className="btn-accent px-8 py-4 text-lg inline-flex items-center"
+                                ref={ctaMagnetic.ref}
+                                style={{ x: ctaMagnetic.springX, y: ctaMagnetic.springY }}
+                                onMouseMove={ctaMagnetic.handleMouseMove}
+                                onMouseLeave={ctaMagnetic.handleMouseLeave}
+                            >
+                                Get a Free Quote Today
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </motion.a>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* --- Right Column: Image Composition --- */}
+                    <motion.div 
+                        className="relative h-[400px] lg:h-[600px] w-full xl:-mr-20 origin-bottom"
+                        initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
+                        animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    >
+                        <div className="absolute inset-0 w-full lg:ml-auto lg:mr-0">
+                            {/* Image Container with Duotone & Tilt */}
+                            <motion.div 
+                                className="relative w-full h-full rounded-card overflow-hidden shadow-lg img-duotone"
+                                ref={imageTilt.ref}
+                                style={{ ...imageTilt.style, skewY: skew, filter: velocityBlur }}
+                                onMouseMove={imageTilt.handleMouseMove}
+                                onMouseLeave={imageTilt.handleMouseLeave}
+                            >
+                                <motion.div
+                                    initial={{ scale: 1.2 }}
+                                    animate={{ scale: 1 }}
+                                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                                    className="w-full h-full"
+                                >
+                                    <Image 
+                                        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Brighter-&-Healthier-Future.webp" 
+                                        alt="Doctor consulting with a patient"
+                                        className="w-full h-full object-cover"
+                                        width={800}
+                                        height={1000}
+                                        priority
+                                    />
+                                </motion.div>
+                            </motion.div>
+
+                        </div>
+                    </motion.div>
+
                 </div>
-
-                {/* Floating Icon */}
-                <div className="absolute -top-5 -left-5 flex items-center justify-center w-16 h-16 bg-white rounded-full shadow-lg float-1">
-                    <HeartPulse className="w-8 h-8 text-sky-500" />
-                </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-      
-      {/* This style block is necessary for the custom animations. */}
-      <style jsx global>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease-out forwards;
-          opacity: 0;
-        }
-
-        @keyframes fade-in {
-          from { opacity: 0; transform: scale(0.95); }
-          to { opacity: 1; transform: scale(1); }
-        }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-            opacity: 0;
-        }
-        
-        @keyframes float-1 {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-        }
-        .float-1 {
-          animation: float-1 5s infinite ease-in-out;
-        }
-
-        @keyframes pulse-slow {
-          0%, 100% { transform: scale(1); opacity: 0.2; }
-          50% { transform: scale(1.2); opacity: 0.4; }
-        }
-        .animate-pulse-slow {
-          animation: pulse-slow 8s infinite ease-in-out;
-        }
-      `}</style>
-    </div>
-  );
-}
+            
+        </section>
+    );
+};

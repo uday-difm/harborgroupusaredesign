@@ -13,7 +13,7 @@ export const Yourhealthmatters = () =>{
 
           {/* Right Column: Text Content */}
           <div className="text-center lg:text-left animate-slideInRight flex flex-col justify-center"> {/* Added flex flex-col justify-center */}
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-indigo-900 mb-6 leading-tight animate-fadeInUp">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight animate-fadeInUp">
               Your health matters
             </h2>
             <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 animate-fadeInUp delay-100">
@@ -23,7 +23,7 @@ export const Yourhealthmatters = () =>{
            {/* Left Column: Image/Visual */}
           <div className="flex justify-center lg:justify-start animate-slideInLeft h-full"> {/* Added h-full */}
             <Image
-              className="w-full h-full object-cover rounded-xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105" /* Added h-full and object-cover */
+              className="w-full h-full object-cover rounded-card shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105" /* Added h-full and object-cover */
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/your-health-matters.jpg" // image_a9d0cc.png (Your Health Matters Image)
               alt="Hand holding a heart shape"
               width={600}

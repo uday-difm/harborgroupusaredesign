@@ -15,12 +15,12 @@ export const Network = () => {
 
   return (
     <>
-       <section className="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+       <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-gray-800 mb-4 animate-fadeInUp">
             Network {/* Updated heading */}
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">
             Effortlessly access top-notch support for your health needs with our extensive network of experienced professionals who cater to your individual needs.
           </p>
 

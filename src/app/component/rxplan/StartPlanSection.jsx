@@ -148,7 +148,7 @@ export const StartPlanSection = () => {
 
           {/* Right Column: Form Section */}
           <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-            <h2 className="text-4xl font-extrabold text-indigo-900 mb-8 leading-tight">
+            <h2 className="text-4xl font-extrabold text-navy-800 mb-8 leading-tight">
               Start your Plan Today!
             </h2>
 
@@ -170,12 +170,12 @@ export const StartPlanSection = () => {
                       onKeyDown={handleNameKeyDown}
                       onPaste={handleNamePaste}
                       className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg ${
-                        nameError ? "border-red-500 border" : "border-gray-300 border"
+                        nameError ? "border-error border" : "border-gray-300 border"
                       }`}
                       placeholder="John Doe"
                     />
                     {nameError && (
-                      <p className="text-sm text-red-600 mt-1">{nameError}</p>
+                      <p className="text-sm text-error mt-1">{nameError}</p>
                     )}
                 </div>
 
@@ -220,11 +220,11 @@ export const StartPlanSection = () => {
                   type="checkbox"
                    checked={formData.terms}
                     onChange={handleChange}
-                  className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
+                  className="h-5 w-5 text-navy-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
                 />
-                <label htmlFor="start-terms" className="ml-3 text-sm text-gray-600">
+                <label htmlFor="start-terms" className="ml-3 text-sm text-navy-500">
                   By submiting you allow our team to reach out to you via email or phone as submitted
-                  information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-blue-600 hover:underline font-medium">SMS and Marketing terms and
+                  information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline font-medium">SMS and Marketing terms and
                   conditions</a>.
                 </label>
               </div>
@@ -233,7 +233,7 @@ export const StartPlanSection = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg card-elevated text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
                 disabled={issubmiting}
                   >
                     {issubmiting ? 'submiting...' : 'Submit'}
@@ -242,10 +242,10 @@ export const StartPlanSection = () => {
             </form>
               {/* Show success or error messages */}
               {successMessage && (
-                <div className="mt-4 text-green-500">{successMessage}</div>
+                <div className="mt-4 text-accent">{successMessage}</div>
               )}
               {errorMessage && (
-                <div className="mt-4 text-red-500">{errorMessage}</div>
+                <div className="mt-4 text-error">{errorMessage}</div>
               )}
           </div>
         </div>

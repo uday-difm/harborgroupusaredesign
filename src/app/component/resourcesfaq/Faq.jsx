@@ -70,14 +70,8 @@ export const Faq= () => {
   return (
     <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}10)` }}>
       {/* Animated Background Gradients/Shapes */}
-      <div
-        className="absolute top-0 left-0 w-80 h-80 sm:w-96 sm:h-96 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow"
-        style={{ backgroundColor: accentLightBlue, transform: 'translate(-70%, -70%)' }}
-      ></div>
-      <div
-        className="absolute bottom-0 right-0 w-96 h-96 sm:w-1/2 sm:h-1/2 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob-slow animation-delay-2000"
-        style={{ backgroundColor: primaryDarkBlue, transform: 'translate(70%, 70%)' }}
-      ></div>
+      
+      
 
       <div className="relative z-10 max-w-4xl mx-auto rounded-3xl shadow-2xl p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white }}>
         <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-12" style={{ color: primaryDarkBlue }}>
@@ -85,7 +79,7 @@ export const Faq= () => {
         </h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-xl overflow-hidden animate-fade-in-up-staggered" style={{ animationDelay: `${0.3 + index * 0.15}s` }}>
+            <div key={index} className="border border-navy-100 rounded-card overflow-hidden animate-fade-in-up-staggered" style={{ animationDelay: `${0.3 + index * 0.15}s` }}>
               <button
                 className="flex justify-between items-center w-full p-5 text-left text-lg font-semibold cursor-pointer transition-colors duration-200 hover:bg-gray-100"
                 style={{ backgroundColor: softGrayBg, color: primaryDarkBlue }}

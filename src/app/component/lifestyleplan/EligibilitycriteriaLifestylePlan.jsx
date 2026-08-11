@@ -42,25 +42,25 @@ export const EligibilitycriteriaLifestylePlan = () =>{
   ];
 
   return (
-    <div className={`min-h-screen bg-blue-50 font-inter flex flex-col items-center justify-center p-4 sm:p-8`}>
+    <div className={`min-h-screen bg-navy-50 font-inter flex flex-col items-center justify-center p-4 sm:p-8`}>
       <div className="max-w-4xl w-full  overflow-hidden p-6 sm:p-10 text-center">
-        <h1 className={`text-3xl sm:text-4xl font-extrabold text-indigo-900 mb-4 leading-tight`}>
+        <h1 className={`text-3xl sm:text-4xl font-extrabold text-navy-800 mb-4 leading-tight`}>
        Eligibility Criteria of Lifestyle Plan
         </h1>
-        <p className={`text-lg text-gray-600 mb-12 max-w-2xl mx-auto`}>
+        <p className={`text-lg text-navy-500 mb-12 max-w-2xl mx-auto`}>
         Open to individuals and families, our Lifestyle Plans ensure that comprehensive support for your lifestyle needs is within reach.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {eligibilityCriteria.map((item, index) => (
-            <div key={index} className="flex flex-col items-center text-center p-6 bg-gray-50 rounded-lg shadow-sm">
-              <div className={`w-16 h-16 rounded-full bg-sky-100 text-sky-400 flex items-center justify-center mb-4 shadow-md`}>
+            <div key={index} className="flex flex-col items-center text-center p-6 bg-navy-50 rounded-lg shadow-sm">
+              <div className={`w-16 h-16 rounded-full bg-accent/10 text-sky-400 flex items-center justify-center mb-4 shadow-md`}>
                 {item.icon}
               </div>
               <h2 className={`text-xl font-semibold text-gray-800 mb-2`}>
                 {item.title}
               </h2>
-              <p className={`text-base text-gray-600 text-justify`}>
+              <p className={`text-base text-navy-500 text-justify`}>
                 {item.description}
               </p>
             </div>
