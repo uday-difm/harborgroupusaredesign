@@ -1,15 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
-export const Faq= () => {
-  // Define custom colors based on the logo for easy use with Tailwind
-  const primaryDarkBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
-  const softGrayBg = '#F0F2F5'; // A very light gray for background
-  const white = '#FFFFFF';
-
-  // FAQ data
+export const Faq = () => {
   const faqs = [
     {
       question: "What types of coverage plans do you offer?",
@@ -67,94 +62,75 @@ export const Faq= () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  return (
-    <section className="min-h-screen flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}10)` }}>
-      {/* Animated Background Gradients/Shapes */}
-      
-      
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    }
+  };
 
-      <div className="relative z-10 max-w-4xl mx-auto rounded-3xl shadow-2xl p-8 md:p-12 lg:p-16 animate-scale-in" style={{ backgroundColor: white }}>
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-12" style={{ color: primaryDarkBlue }}>
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+  };
+
+  return (
+    <section className="section-light py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-t border-navy-100">
+      <div className="relative z-10 max-w-4xl mx-auto card-flat p-8 md:p-12 lg:p-16 border border-navy-100">
+        <h2 className="text-h2 font-display font-bold text-center text-navy-900 mb-12 tracking-tight">
           Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="border border-navy-100 rounded-card overflow-hidden animate-fade-in-up-staggered" style={{ animationDelay: `${0.3 + index * 0.15}s` }}>
-              <button
-                className="flex justify-between items-center w-full p-5 text-left text-lg font-semibold cursor-pointer transition-colors duration-200 hover:bg-gray-100"
-                style={{ backgroundColor: softGrayBg, color: primaryDarkBlue }}
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={openIndex === index}
+        
+        <motion.div 
+          className="space-y-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div 
+                key={index} 
+                className="bg-navy-50 rounded-card overflow-hidden border border-navy-100"
+                variants={itemVariants}
               >
-                {faq.question}
-                <svg
-                  className={`w-6 h-6 transform transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{ color: accentLightBlue }}
+                <button
+                  className="flex justify-between items-center w-full p-5 md:px-6 text-left text-lg font-semibold cursor-pointer transition-colors duration-200 hover:bg-navy-100 text-navy-900 focus:outline-none"
+                  onClick={() => toggleFAQ(index)}
+                  aria-expanded={isOpen}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? 'max-h-screen opacity-100 py-4 px-5' : 'max-h-0 opacity-0'
-                }`}
-                style={{ backgroundColor: white }}
-              >
-                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <span className="pr-4">{faq.question}</span>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex-shrink-0 text-accent"
+                  >
+                    <ChevronDown className="w-6 h-6" strokeWidth={2.5} />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="bg-white"
+                    >
+                      <div className="p-5 md:px-6 text-navy-600 leading-relaxed border-t border-navy-100">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
-
-      {/* Tailwind CSS Custom Animations */}
-      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.95); }
-          to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes blob-slow-anim {
-          0% { transform: translate(-70%, -70%) scale(1); }
-          25% { transform: translate(-60%, -80%) scale(1.05); }
-          50% { transform: translate(-80%, -60%) scale(0.95); }
-          75% { transform: translate(-75%, -75%) scale(1.02); }
-          100% { transform: translate(-70%, -70%) scale(1); }
-        }
-
-        @keyframes blob-slow-anim-alt {
-          0% { transform: translate(70%, 70%) scale(1); }
-          25% { transform: translate(80%, 60%) scale(0.95); }
-          50% { transform: translate(60%, 80%) scale(1.05); }
-          75% { transform: translate(65%, 75%) scale(0.98); }
-          100% { transform: translate(70%, 70%) scale(1); }
-        }
-
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-scale-in { animation: scaleIn 0.7s ease-out forwards; }
-        .animate-blob-slow { animation: blob-slow-anim 20s infinite alternate ease-in-out; }
-        .animate-blob-slow.animation-delay-2000 { animation-delay: 2s; }
-
-        /* Staggered fade in for FAQ items */
-        .animate-fade-in-up-staggered {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-      `}</style>
     </section>
   );
 };
-

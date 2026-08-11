@@ -1,33 +1,17 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { FaqSection } from "./component/home/FaqSection";
 import HealthPlanQuoteToday from "./component/home/HealthPlanQuoteToday";
 import { HeroSection } from "./component/home/Hero";
 import { ServicesSection } from "./component/home/ServiceSection";
+import HowItWorksSection from "./component/home/HowItWorksSection";
 import { TestimonialHome } from "./component/home/TestimonialHome";
 import { WholesaleGeneralAgency } from "./component/home/WholesaleGeneralAgency";
 import { WhyChooseUsSection } from "./component/home/WhyChooseUs";
 import QuotePopup from "@/comman/QuotePopup";
 import CoverageSection from "./component/home/CoverageSection";
-
-const HarborGroupUSALogo = () => {
-  return (
-    <div className="w-20 h-20 flex items-center justify-center mx-auto mb-4 overflow-hidden">
-      <Image
-        width={600}
-        height={400}
-        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png"
-        alt="Harbor Group USA Logo"
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
-};
-
-
 
 export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
@@ -60,14 +44,17 @@ export default function Home() {
       <meta property="og:url" content="https://harborgroupusa.com/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
+      {/* Overhauled Section Flow */}
       <HeroSection />
       <ServicesSection />
+      <HowItWorksSection />
       <WholesaleGeneralAgency />
-      <CoverageSection/>
+      <CoverageSection />
       <WhyChooseUsSection />
       <HealthPlanQuoteToday />
-      <FaqSection />
       <TestimonialHome />
+      <FaqSection />
+      
       <AnimatePresence>
         {showPopup && <QuotePopup key="quote-popup" onClose={handlePopupClose} />}
       </AnimatePresence>

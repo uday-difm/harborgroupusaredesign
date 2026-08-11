@@ -1,44 +1,143 @@
-import React from 'react'
-import { MajorMedicalSection } from '../component/majormedical/MajorMedicalSection'
-import { BenefitsSection } from '../component/majormedical/Benefits'
-import { NetworkSection } from '../component/majormedical/Network'
-import { CostOptionsSection } from '../component/majormedical/CostOptionsSection'
-import { EligibilityCriteriaSection } from '../component/majormedical/EligibilityCriteriaSection'
-import { RequestCallbackSection } from '../component/majormedical/RequestCallbackSection'
-import { HowToApplySection } from '../component/majormedical/HowToApplySection'
-import { DetailedPlanDescriptions } from '../component/majormedical/DetailedPlanDescriptions'
-import { CignaPlans } from '../component/majormedical/CignaPlans'
-// import { TestimonialMajorMedical } from '../component/majormedical/TestimonialMajorMedical'
-import { PhcsPlansTable } from '../component/majormedical/PhcsPlansTable'
-import { PlanDescriptions } from '../component/majormedical/PlanDescriptions'
-import { QualcarePlansTable } from '../component/majormedical/QualcarePlansTable'
+"use client";
 
-export default function page() {
+import React from 'react';
+import { Home, User, Stethoscope, Banknote, ShieldCheck, DollarSign, SlidersHorizontal, MapPin, Hospital, UserCheck, UserSquare, Award, Clock, Heart, Flag } from 'lucide-react';
+import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
+import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { MajorMedicalForm } from '../component/majormedical/MajorMedicalForm';
+
+// Specialized components
+import { DetailedPlanDescriptions } from '../component/majormedical/DetailedPlanDescriptions';
+import { CignaPlans } from '../component/majormedical/CignaPlans';
+import { PhcsPlansTable } from '../component/majormedical/PhcsPlansTable';
+import { PlanDescriptions } from '../component/majormedical/PlanDescriptions';
+import { QualcarePlansTable } from '../component/majormedical/QualcarePlansTable';
+
+export default function MajorMedicalPlanPage() {
   return (
     <>
+      <title>Major Medical Plans | Harbor Group USA</title>
+      <meta name="keywords" content="Harbor Group USA, major medical plans, health Plans, affordable medical coverage, individual health plans, business health plans, comprehensive health Plans"/>        
+      <meta name="description" content="Explore Harbor Group USA's major medical plans offering comprehensive health coverage and affordable options for individuals and businesses."/>
+      <meta property="og:title" content="Major Medical Plans | Harbor Group USA" />
+      <meta property="og:description" content="Explore Harbor Group USA's major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
+      <link rel="canonical" href="https://harborgroupusa.com/major-medical-plan/" />
+      <meta property="og:url" content="https://harborgroupusa.com/major-medical-plan/" />
+      <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-       <title>Major Medical Plans | Harbor Group USA</title>
-        <meta name="keywords" content="Harbor Group USA, major medical plans, health Plans, affordable medical coverage, individual health plans, business health plans, comprehensive health Plans"/>        
-        <meta name="description" content="Explore Harbor Group USA&apos;s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses."/>
-        <meta property="og:title" content="Major Medical Plans | Harbor Group USA" />
-        <meta property="og:description" content="Explore Harbor Group USA&apos;s major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
-        <link rel="canonical" href="https://harborgroupusa.com/major-medical-plan/" />
-        <meta property="og:url" content="https://harborgroupusa.com/major-medical-plan/" />
-        <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
-      <MajorMedicalSection/>
-      <BenefitsSection/>
-      <NetworkSection/>
-      <CostOptionsSection/>
-      <EligibilityCriteriaSection/>
-      <RequestCallbackSection/>
-      <HowToApplySection/>
-      <DetailedPlanDescriptions/>
-      <CignaPlans/>
-      <DetailedPlanDescriptions/>
-      <PhcsPlansTable/>
-      <PlanDescriptions/>
-      <QualcarePlansTable/>
-      {/* <TestimonialMajorMedical/> */}
+      <PlanHero 
+        title="Comprehensive Healthcare Coverage with Major Medical Plans"
+        description="Prioritizing overall well-being is essential. Our Major Medical Plans are crafted to deliver extensive healthcare coverage, ensuring top-notch care without financial stress. These plans offer a wide range of benefits tailored to diverse needs, including comprehensive medical coverage, preventive care services, and flexible options to suit various budgets and requirements."
+        imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Major-Medical-Plans.jpg"
+        formComponent={<MajorMedicalForm />}
+      />
+
+      <PlanGrid 
+        title="Benefits of Major Medical Plans"
+        description="Our plans provide extensive coverage for medical services, ensuring that all your healthcare needs are met."
+        features={[
+          { title: "Comprehensive Coverage", description: "Our plans provide extensive coverage for medical services, including preventive care, chronic condition management, and emergency services.", icon: ShieldCheck },
+          { title: "Financial Protection", description: "With significant coverage for medical expenses, our plans protect you from the high costs associated with serious illnesses and injuries.", icon: DollarSign },
+          { title: "Access to Specialists", description: "Our network includes a wide range of specialists, ensuring that you receive expert care for specific health concerns.", icon: Stethoscope },
+          { title: "Flexibility", description: "Our plans are customizable to fit your unique healthcare needs and financial situation, allowing you to choose from various deductibles, co-pays.", icon: SlidersHorizontal }
+        ]}
+      />
+
+      <PlanCostOptions 
+        title="Network"
+        description="Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care."
+        plans={[
+          {
+            title: "Nationwide Coverage",
+            features: [
+              "Available in all 50 states."
+            ]
+          },
+          {
+            title: "Extensive Provider Network",
+            features: [
+              "Access to top-tier hospitals and specialists."
+            ]
+          },
+          {
+            title: "Primary Care Physicians",
+            features: [
+              "Ensure you receive comprehensive and continuous care."
+            ]
+          },
+          {
+            title: "Specialist Access",
+            features: [
+              "Easy referrals to specialists for specific health needs."
+            ]
+          },
+          {
+            title: "Quality Care",
+            features: [
+              "High standards of care across the network to ensure optimal health outcomes."
+            ]
+          }
+        ]}
+      />
+
+      <PlanEligibility 
+        title="Eligibility Criteria of Major Medical Plan"
+        description="Open to individuals and families, our Major Medical Plans ensure that comprehensive support for your Major Medical needs is within reach."
+        criteria={[
+          { title: "Resident of the United States", description: "Our Major Medical Plans are accessible to individuals and families residing in the United States.", icon: MapPin },
+          { title: "Age Eligibility", description: "Tailored to cover individuals of all ages, ensuring coverage throughout various life stages.", icon: Clock },
+          { title: "Ideal for a Balanced Lifestyle", description: "Perfect for those who prioritize maintaining a balanced and fulfilling Major Medical.", icon: Heart },
+          { title: "Citizenship", description: "US citizenship or legal residency status is a prerequisite for enrollment in our Major Medical Plans.", icon: Flag }
+        ]}
+      />
+
+      <PlanCostOptions 
+        title="Cost Options and Coverage Scenarios"
+        description="Our Major Medical Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs."
+        plans={[
+          {
+            title: "Tailored Premium Options",
+            features: [
+              "Higher Deductibles, Lower Premiums: Lower monthly payments, higher out-of-pocket costs.",
+              "Lower Deductibles, Higher Premiums: Minimize out-of-pocket expenses.",
+              "Balanced Options: Moderate deductibles and premiums."
+            ]
+          },
+          {
+            title: "Customizable Plans",
+            features: [
+              "Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care."
+            ]
+          }
+        ]}
+      />
+
+      <PlanHowToApply 
+        title="How To Apply"
+        description="Enrolling in a plan is straightforward and user-friendly."
+        steps={[
+          { title: "Step 1", description: "Determine what you need in terms of coverage based on your healthcare needs." },
+          { title: "Step 2", description: "Review and compare various plans." },
+          { title: "Step 3", description: "Provide required personal and financial information." }
+        ]}
+      />
+
+      <DetailedPlanDescriptions />
+      <CignaPlans />
+      <DetailedPlanDescriptions />
+      <PhcsPlansTable />
+      <PlanDescriptions />
+      <QualcarePlansTable />
+
+      <PlanCTA 
+        title="Request a Call Back?"
+        buttonText="GET STARTED"
+        href="#major-medical-plan-form"
+      />
     </>
-  )
+  );
 }

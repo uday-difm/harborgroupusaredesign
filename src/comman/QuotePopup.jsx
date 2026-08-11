@@ -152,6 +152,38 @@ const handlePhonePaste = (e) => {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 10 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { 
+        type: 'spring', 
+        stiffness: 400, 
+        damping: 35, 
+        mass: 0.8,
+        staggerChildren: 0.1,
+        delayChildren: 0.1
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.95, 
+      y: 10,
+      transition: { duration: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 24 }
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* overlay */}
@@ -167,10 +199,10 @@ const handlePhonePaste = (e) => {
       <motion.div
         ref={popupRef}
         className="relative w-full max-w-md mx-auto popup-surface p-6 sm:p-8"
-        initial={{ opacity: 0, scale: 0.95, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 10 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 35, mass: 0.8 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
         role="dialog"
         aria-modal="true"
         aria-label="Get your free quote"
@@ -184,16 +216,20 @@ const handlePhonePaste = (e) => {
           <span style={{ fontSize: 18, lineHeight: 1 }}>&times;</span>
         </button>
 
-        <HarborGroupUSALogo />
+        <motion.div variants={itemVariants}>
+          <HarborGroupUSALogo />
+        </motion.div>
 
-        <h2 className="text-center font-bold popup-title mb-2" style={{ color: 'var(--foreground)' }}>
-          Get Your Free Quote Today
-        </h2>
-        <p className="text-center mb-6 text-sm" style={{ color: 'var(--muted)' }}>
-          Find Your Perfect Fit: Discover Health Plans Tailored to Your Needs!
-        </p>
+        <motion.div variants={itemVariants}>
+          <h2 className="text-center font-bold popup-title mb-2" style={{ color: 'var(--foreground)' }}>
+            Get Your Free Quote Today
+          </h2>
+          <p className="text-center mb-6 text-sm" style={{ color: 'var(--muted)' }}>
+            Find Your Perfect Fit: Discover Health Plans Tailored to Your Needs!
+          </p>
+        </motion.div>
 
-        <div className="space-y-4 mb-6">
+        <motion.div className="space-y-4 mb-6" variants={itemVariants}>
           {/* name */}
           <div className="relative">
             <svg className="popup-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
@@ -250,7 +286,7 @@ const handlePhonePaste = (e) => {
               className="popup-input"
             />
           </div>
-        </div>
+        </motion.div>
 
         <motion.button
           onClick={handleSubmit}
@@ -260,14 +296,15 @@ const handlePhonePaste = (e) => {
           style={{ x: submitMagnetic.springX, y: submitMagnetic.springY }}
           onMouseMove={submitMagnetic.handleMouseMove}
           onMouseLeave={submitMagnetic.handleMouseLeave}
+          variants={itemVariants}
         >
           {submitting ? 'submitting…' : 'Get Your Quote'}
         </motion.button>
 
         {message && (
-          <p className="mt-4 text-center text-sm" style={{ color: message.startsWith('Thank') ? 'var(--success)' : 'var(--foreground)' }}>
+          <motion.p variants={itemVariants} className="mt-4 text-center text-sm" style={{ color: message.startsWith('Thank') ? 'var(--success)' : 'var(--foreground)' }}>
             {message}
-          </p>
+          </motion.p>
         )}
       </motion.div>
     </div>

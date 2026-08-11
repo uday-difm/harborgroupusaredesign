@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 // Main Contact Page component
 export default function ContactPage() {
@@ -156,6 +157,19 @@ export default function ContactPage() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
     <>
       <title>Contact Harbor Group USA | Get in Touch Today</title>
@@ -167,22 +181,35 @@ export default function ContactPage() {
       <meta property="og:url" content="https://harborgroupusa.com/contact/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 font-sans text-gray-800 flex items-center justify-center py-16 px-4  lg:px-8">
-        <div className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center gap-10">
+      <div className="section-light min-h-[90vh] flex items-center justify-center py-24 px-4 lg:px-8 relative overflow-hidden">
+        {/* Decorative elements matching our new design system */}
+        <div className="absolute top-20 right-20 w-72 h-72 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-navy-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
 
+        <motion.div 
+          className="max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 relative z-10"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
           {/* Left Section: Get In Touch Text */}
-          <div className="lg:w-1/2 text-center lg:text-left animate-fade-in-up">
-            <h1 className="text-5xl font-extrabold text-gray-900 mb-4 leading-tight">Get In Touch</h1>
-            <p className="text-xl text-gray-700 max-w-lg mx-auto lg:mx-0">
-              Connect with us! Your questions matter. Fill the form; we&apos;re here, ready to assist you.
+          <motion.div className="lg:w-1/2 text-center lg:text-left" variants={itemVariants}>
+            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4">
+              Contact Us
             </p>
-          </div>
+            <h1 className="text-display font-display font-bold text-navy-900 mb-6 tracking-tight leading-tight">
+              Get In Touch
+            </h1>
+            <p className="text-xl text-navy-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              Connect with us! Your questions matter. Fill out the form below; our dedicated support team is here and ready to assist you.
+            </p>
+          </motion.div>
 
           {/* Right Section: Contact Form */}
-          <div className="lg:w-1/2 bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 transform transition-transform duration-500 hover:scale-105 animate-fade-in-right">
+          <motion.div className="lg:w-1/2 w-full card-elevated p-8 md:p-10" variants={itemVariants}>
             <form className="space-y-6" onSubmit={handleSubmit} noValidate>
               <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="fullName" className="block text-sm font-medium text-navy-700 mb-2">
                   Full Name<span className="text-error">*</span>
                 </label>
                 <input
@@ -192,13 +219,13 @@ export default function ContactPage() {
                   value={formData.fullName}
                   onChange={handleNameChange}
                   placeholder="Your full name"
-                  className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
+                  className="w-full px-4 py-3 bg-white border border-navy-200 rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                 />
                 {nameError && <p className="text-error text-sm mt-1">{nameError}</p>}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-navy-700 mb-2">
                   E-Mail Address<span className="text-error">*</span>
                 </label>
                 <input
@@ -207,14 +234,14 @@ export default function ContactPage() {
                   name="emailaddress"
                   value={formData.emailaddress}
                   onChange={handleEmailChange}
-                  className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
+                  className="w-full px-4 py-3 bg-white border border-navy-200 rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                   placeholder="your.email@example.com"
                 />
                 {emailError && <p className="text-error text-sm mt-1">{emailError}</p>}
               </div>
 
               <div>
-                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phonenumber" className="block text-sm font-medium text-navy-700 mb-2">
                   Mobile Number<span className="text-error">*</span>
                 </label>
                 <input
@@ -223,18 +250,16 @@ export default function ContactPage() {
                   name="phonenumber"
                   value={formData.phonenumber}
                   onChange={handlePhoneChange}
-                  className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition-all duration-300 hover:border-blue-400"
+                  className="w-full px-4 py-3 bg-white border border-navy-200 rounded-lg text-navy-900 placeholder-navy-300 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
                   placeholder="+1 (123) 456-7890"
                 />
                 {phoneError && <p className="text-error text-sm mt-1">{phoneError}</p>}
               </div>
 
-              <div>
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white
-                           bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800
-                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="w-full btn-primary py-4 text-lg"
                   disabled={issubmiting}
                 >
                   {issubmiting ? 'Submitting...' : 'Submit'}
@@ -243,10 +268,10 @@ export default function ContactPage() {
             </form>
 
             {/* Display error or success message */}
-            {error && <div className="mt-4 text-error">{error}</div>}
-            {message && <div className="mt-4 text-accent">{message}</div>}
-          </div>
-        </div>
+            {error && <div className="mt-4 text-error text-center">{error}</div>}
+            {message && <div className="mt-4 text-success text-center">{message}</div>}
+          </motion.div>
+        </motion.div>
       </div>
     </>
   );

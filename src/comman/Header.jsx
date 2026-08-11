@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useLenis } from 'lenis/react';
+
 const Link = ({ href, children, onClick, className }) => (
     <a href={href} onClick={onClick} className={className}>
         {children}
@@ -19,7 +21,7 @@ const Logo = () => (
         height={400}
         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
         alt="Harbor Group USA Logo"
-        className="h-12 md:h-14 w-auto"
+        className="h-11 md:h-13 w-auto"
     />
 );
 
@@ -62,21 +64,23 @@ export const Header = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [openDesktopDropdown, setOpenDesktopDropdown] = useState(null);
     const [currentPath, setCurrentPath] = useState('');
+    const [scrolled, setScrolled] = useState(false);
     const headerRef = useRef(null);
     const dropdownCloseTimeout = useRef(null);
-    const { scrollY } = useScroll();
-    const headerShadow = useTransform(scrollY, [0, 20], ["0px 0px 0px rgba(0,0,0,0)", "0px 4px 20px -4px rgba(0,0,0,0.05)"]);
 
     useEffect(() => {
         setCurrentPath(window.location.pathname);
-        const handlePopState = () => {
-            setCurrentPath(window.location.pathname);
-        };
+        const handlePopState = () => setCurrentPath(window.location.pathname);
         window.addEventListener('popstate', handlePopState);
+        
         return () => {
             window.removeEventListener('popstate', handlePopState);
         };
     }, []);
+
+    useLenis(({ scroll }) => {
+        setScrolled(scroll > 20);
+    });
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -106,14 +110,6 @@ export const Header = () => {
             document.body.style.overflow = 'unset';
         }
     }, [isMobileMenuOpen]);
-
-    const colors = {
-        primary: 'text-indigo-900',
-        accent: 'text-sky-500',
-        accentBg: 'bg-sky-500',
-        accentBgHover: 'hover:bg-sky-600',
-        underline: 'bg-sky-500',
-    };
 
     const isLinkActive = (link) => {
         if (currentPath === link.href) {
@@ -149,18 +145,31 @@ export const Header = () => {
     return (
         <motion.header 
             ref={headerRef} 
-            style={{ boxShadow: headerShadow }}
-            className="bg-white/60 backdrop-blur-xl sticky top-0 z-50 border-b border-navy-100/50 font-body transition-colors duration-300"
+            className={`sticky top-0 z-50 font-body transition-all duration-150 ease-out ${scrolled ? 'py-4 px-4 sm:px-8 lg:px-12' : 'py-0 px-0'}`}
         >
-            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
-                <div className="flex items-center justify-between h-20 md:h-24">
+            <motion.div 
+                initial={false}
+                animate={{
+                    borderRadius: scrolled ? 9999 : 0,
+                    backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.9)',
+                    boxShadow: scrolled ? '0 8px 30px rgba(0,0,0,0.08)' : '0 0px 0px rgba(0,0,0,0)',
+                    borderColor: scrolled ? 'rgba(255, 255, 255, 0.6)' : 'rgba(19, 30, 73, 0.1)'
+                }}
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                className={`mx-auto w-full backdrop-blur-xl border transition-all duration-150 ease-out ${
+                    scrolled 
+                        ? 'max-w-7xl px-6' 
+                        : 'border-b px-6 lg:px-12 xl:px-20 2xl:px-32'
+                }`}
+            >
+                <div className={`flex items-center justify-between transition-all duration-150 ease-out ${scrolled ? 'h-16 md:h-20' : 'h-20 md:h-24'}`}>
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center" onClick={scrollToTop}>
                             <Logo />
                         </Link>
                     </div>
 
-                    {/* NOTE: changed breakpoint from lg -> xl so hamburger shows on iPad Pro */}
+                    {/* Desktop Navigation */}
                     <nav className="hidden xl:flex xl:items-center xl:flex-grow xl:justify-center xl:space-x-8">
                         {navLinks.map((link) => {
                             const isActive = isLinkActive(link);
@@ -175,20 +184,18 @@ export const Header = () => {
                                     <Link
                                         href={link.href}
                                         onClick={scrollToTop}
-                                        className={`relative px-2 py-2 text-base font-semibold transition-colors duration-300 ${isActive ? colors.accent : colors.primary
-                                            } hover:${colors.accent} flex items-center focus:outline-none`}
+                                        className={`relative px-3 py-2 text-base font-semibold transition-colors duration-300 ${isActive ? 'text-accent' : 'text-navy-800'} hover:text-accent flex items-center focus:outline-none`}
                                     >
                                         {link.name}
                                         {link.dropdown && (
                                             <ChevronDown
-                                                className={`ml-1.5 h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
-                                                    }`}
+                                                className={`ml-1.5 h-4 w-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent' : 'text-navy-400'}`}
                                             />
                                         )}
                                         {(isActive || isOpen) && (
                                             <motion.span
                                                 layoutId="nav-underline"
-                                                className="absolute -bottom-1 left-0 right-0 h-[2px] bg-navy-700 rounded-pill"
+                                                className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-accent rounded-full"
                                                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                                             />
                                         )}
@@ -196,27 +203,57 @@ export const Header = () => {
                                     <AnimatePresence>
                                         {link.dropdown && isOpen && (
                                             <motion.div
-                                                initial={{ opacity: 0, scale: 0.95, y: -8 }}
+                                                initial={{ opacity: 0, scale: 0.98, y: 4 }}
                                                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                                                exit={{ opacity: 0, scale: 0.95, y: -8 }}
-                                                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                                                className={`absolute z-20 left-1/2 -translate-x-1/2 mt-4 bg-white rounded-card shadow-lg border border-navy-100 ${link.name === 'Plans' ? 'w-[480px] p-6' : 'w-56 p-2'}`}
+                                                exit={{ opacity: 0, scale: 0.98, y: 4 }}
+                                                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                                className={`absolute z-20 left-1/2 -translate-x-1/2 mt-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-navy-100/80 ${link.name === 'Plans' ? 'w-[640px] p-6' : 'w-56 p-2'}`}
                                                 onMouseEnter={() => handleDesktopMouseEnter(link.name)}
                                                 onMouseLeave={handleDesktopMouseLeave}
                                             >
-                                            <div className="py-2">
-                                                {link.dropdown.map((item) => (
-                                                    <Link
-                                                        onClick={() => { scrollToTop(); setCurrentPath(item.href); }}
-                                                        key={item.name}
-                                                        href={item.href}
-                                                        className={`block w-full text-left px-4 py-2 text-sm ${currentPath === item.href ? colors.accent : colors.primary
-                                                            } hover:bg-gray-100 hover:${colors.accent}`}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                ))}
-                                            </div>
+                                                {link.name === 'Plans' ? (
+                                                    <div className="grid grid-cols-3 gap-8">
+                                                        <div>
+                                                            <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-3 pl-4">Health & Medical</h4>
+                                                            <div className="space-y-1">
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/medical-plan'); }} href="/medical-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Medical</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/dental-care-plan'); }} href="/dental-care-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Dental</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/vision-plan'); }} href="/vision-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Vision</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/rx-plan'); }} href="/rx-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Rx</Link>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-3 pl-4">Life & Future</h4>
+                                                            <div className="space-y-1">
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/term-life'); }} href="/term-life" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Term Life</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/critical-plan'); }} href="/critical-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Critical Illness</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/hospital-plan'); }} href="/hospital-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Hospital</Link>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h4 className="text-[10px] font-bold text-accent uppercase tracking-widest mb-3 pl-4">Specialty</h4>
+                                                            <div className="space-y-1">
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/accident-plan'); }} href="/accident-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Accident</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/lifestyle-plan'); }} href="/lifestyle-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Lifestyle</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/pet-plan'); }} href="/pet-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Pet Coverage</Link>
+                                                                <Link onClick={() => { scrollToTop(); setCurrentPath('/bundles-plan'); }} href="/bundles-plan" className="block w-full text-left px-4 py-2 rounded-xl text-sm font-medium transition-colors text-navy-700 hover:bg-navy-50 hover:text-navy-900">Value Bundles</Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <div className="grid grid-cols-1 gap-1">
+                                                        {link.dropdown.map((item) => (
+                                                            <Link
+                                                                onClick={() => { scrollToTop(); setCurrentPath(item.href); }}
+                                                                key={item.name}
+                                                                href={item.href}
+                                                                className={`block w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${currentPath === item.href ? 'bg-navy-50 text-accent font-semibold' : 'text-navy-700 hover:bg-navy-50 hover:text-navy-900'}`}
+                                                            >
+                                                                {item.name}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
@@ -224,105 +261,132 @@ export const Header = () => {
                             );
                         })}
                     </nav>
-                    <div className="hidden xl:flex items-center space-x-4">
-                        <div className="text-right">
-                            <p className="text-xs text-gray-500">Call Us</p>
-                            <p className={`text-sm font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll-Free)</p>
-                            
-                        </div>
-                        <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500 hover:bg-sky-50 transition-colors duration-300`}>
-                            <Phone className="h-6 w-6" />
+
+                    {/* Right Phone Call CTA */}
+                    <div className="hidden xl:flex items-center space-x-3">
+                        <a href="#h-form" className="btn-accent px-5 py-2.5 text-sm font-bold rounded-full transition-all shadow-md hover:shadow-lg">
+                            Get a Free Quote
+                        </a>
+                        <a href="tel:18004733241" className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full border border-navy-200/80 bg-navy-50/50 text-navy-800 hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 shadow-sm" title="Call Us: 1 (800) 473-3241">
+                            <Phone className="h-4 w-4" />
                         </a>
                     </div>
 
-                    {/* make burger visible until XL (so iPad Pro will show it) */}
+                    {/* Mobile Hamburger Button */}
                     <div className="xl:hidden flex items-center">
-                        <button onClick={toggleMobileMenu} type="button" className={`p-2 rounded-md ${colors.primary} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500`}>
+                        <button onClick={toggleMobileMenu} type="button" className="p-2.5 rounded-xl text-navy-800 hover:bg-navy-50 focus:outline-none">
                             <span className="sr-only">Open main menu</span>
                             {isMobileMenuOpen ? <X className="block h-7 w-7" /> : <Menu className="block h-7 w-7" />}
                         </button>
                     </div>
                 </div>
-            </div>
+            </motion.div>
 
-            {/* --- Mobile Menu --- */}
-            <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity xl:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={toggleMobileMenu}></div>
-
-            {/* Mobile Menu Content */}
-            <div className={`xl:hidden fixed top-0 left-0 h-full w-full max-w-xs bg-white z-40 shadow-xl transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'transform translate-x-0' : 'transform -translate-x-full'}`} id="mobile-menu">
-                <div className="flex flex-col h-full">
-                    {/* Mobile Menu Header */}
-                    <div className="flex items-center justify-between p-4 border-b">
-                        <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath('/'); }}><Logo /></Link>
-                        <button onClick={toggleMobileMenu} className="p-2">
-                            <X className="h-7 w-7 text-gray-600" />
-                        </button>
-                    </div>
-
-                    {/* Mobile Menu Links */}
-                    <div className="flex-grow overflow-y-auto p-4 space-y-2">
-                        {navLinks.map((link) => {
-                            const isActive = isLinkActive(link);
-                            return (
-                                <div key={link.name}>
-                                    <div className="flex justify-between items-center rounded-md hover:bg-gray-50">
-                                        {link.dropdown ? (
-                                            <button
-                                                onClick={() => handleMobileDropdown(link.name)}
-                                                className={`w-full text-left block px-3 py-3 text-lg font-semibold ${isActive ? colors.accent : colors.primary}`}
-                                            >
-                                                {link.name}
-                                            </button>
-                                        ) : (
-                                            <Link
-                                                href={link.href}
-                                                className={`w-full text-left block px-3 py-3 text-lg font-semibold ${isActive ? colors.accent : colors.primary}`}
-                                                onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(link.href); }} // Update path on click
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        )}
-                                        {link.dropdown && (
-                                            <button onClick={() => handleMobileDropdown(link.name)} className="p-3 text-slate-500">
-                                                <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180' : ''}`} />
-                                            </button>
-                                        )}
-                                    </div>
-                                    {link.dropdown && openDropdown === link.name && (
-                                        <div className="pl-6 mt-1 space-y-1 border-l-2 border-sky-100">
-                                            {link.dropdown.map(item => (
-                                                <Link
-                                                    key={item.name}
-                                                    href={item.href}
-                                                    onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(item.href); }} // Update path on click
-                                                    className={`block px-3 py-2 rounded-md text-base font-medium ${currentPath === item.href ? 'text-sky-600 font-semibold' : 'text-slate-600'} hover:bg-gray-100 hover:text-sky-600`}
-                                                >
-                                                    {item.name}
-                                                </Link>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-
-                    {/* Mobile Menu Footer (Contact) */}
-                    <div className="p-4 border-t border-gray-200">
-                        <div className="flex items-center">
-                            <a href="tel:+15162106887" className={`flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full border-2 border-sky-500 text-sky-500`}>
-                                <Phone className="h-6 w-6" />
-                            </a>
-                            <div className="ml-4">
-                                <p className="text-sm text-gray-500">Call Us</p>
-                                <p className={`text-base font-semibold ${colors.primary}`}>1 (800) 473-3241 (Toll-Free)</p>
-                            </div>
+            {/* Mobile Menu Full-Screen Overlay */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="xl:hidden fixed inset-0 bg-navy-950 z-50 overflow-y-auto flex flex-col" 
+                        id="mobile-menu"
+                    >
+                        {/* Mobile Menu Header */}
+                        <div className="flex items-center justify-between p-6">
+                            <Link href="/" onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath('/'); }} className="brightness-0 invert"><Logo /></Link>
+                            <button onClick={toggleMobileMenu} className="p-2 text-white hover:text-accent rounded-lg transition-colors">
+                                <X className="h-8 w-8" />
+                            </button>
                         </div>
-                    </div>
-                </div>
-            </div>
+
+                        {/* Mobile Menu Links */}
+                        <motion.div 
+                            initial="hidden"
+                            animate="show"
+                            variants={{
+                                hidden: {},
+                                show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+                            }}
+                            className="flex-grow flex flex-col justify-center px-8 py-4 space-y-6"
+                        >
+                            {navLinks.map((link) => {
+                                const isActive = isLinkActive(link);
+                                return (
+                                    <motion.div 
+                                        variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
+                                        key={link.name}
+                                    >
+                                        <div className="flex flex-col">
+                                            {link.dropdown ? (
+                                                <button
+                                                    onClick={() => handleMobileDropdown(link.name)}
+                                                    className={`w-full flex items-center justify-between text-left text-3xl font-display font-bold transition-colors ${isActive || openDropdown === link.name ? 'text-accent' : 'text-white hover:text-navy-200'}`}
+                                                >
+                                                    {link.name}
+                                                    <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${openDropdown === link.name ? 'rotate-180 text-accent' : 'text-navy-400'}`} />
+                                                </button>
+                                            ) : (
+                                                <Link
+                                                    href={link.href}
+                                                    className={`w-full text-left text-3xl font-display font-bold transition-colors ${isActive ? 'text-accent' : 'text-white hover:text-navy-200'}`}
+                                                    onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(link.href); }}
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            )}
+                                            
+                                            <AnimatePresence>
+                                                {link.dropdown && openDropdown === link.name && (
+                                                    <motion.div 
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                                        className="overflow-hidden"
+                                                    >
+                                                        <div className="pt-4 pb-2 pl-4 space-y-4 border-l-2 border-accent/40 mt-4">
+                                                            {link.dropdown.map(item => (
+                                                                <Link
+                                                                    key={item.name}
+                                                                    href={item.href}
+                                                                    onClick={() => { toggleMobileMenu(); scrollToTop(); setCurrentPath(item.href); }}
+                                                                    className={`block text-lg font-medium transition-colors ${currentPath === item.href ? 'text-accent' : 'text-navy-300 hover:text-white'}`}
+                                                                >
+                                                                    {item.name}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </motion.div>
+
+                        {/* Mobile Menu Footer */}
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5, duration: 0.5 }}
+                            className="p-8 mt-auto flex flex-col gap-6"
+                        >
+                            <a href="#h-form" onClick={toggleMobileMenu} className="btn-accent w-full py-4 text-center text-lg font-bold rounded-full shadow-lg">
+                                Get a Free Quote
+                            </a>
+                            <div className="flex items-center justify-center gap-3">
+                                <Phone className="h-5 w-5 text-accent" />
+                                <a href="tel:18004733241" className="text-white font-bold text-lg">1 (800) 473-3241</a>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.header>
     );
-}
+};
 
 export default Header;
