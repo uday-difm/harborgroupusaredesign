@@ -153,7 +153,9 @@ export default function RootLayout({ children }) {
       /> */}
         </>
   )}
-          {children}
+          <div className={!isDashboardPage ? "pt-24 md:pt-28" : ""}>
+            {children}
+          </div>
           {!isDashboardPage && <Footer />}
           <CookiesBanner />
         </SmoothScrollProvider>
