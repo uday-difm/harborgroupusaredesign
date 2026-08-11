@@ -51,8 +51,12 @@ export const HeroSection = () => {
     return (
         <motion.section 
             ref={heroRef}
-            style={{ scale, opacity }}
-            className="relative bg-surface overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 font-body origin-top"
+            style={{ 
+                scale, 
+                opacity, 
+                background: 'radial-gradient(circle at 78% 42%, rgba(210, 170, 70, 0.08) 0%, rgba(210, 170, 70, 0) 28%), linear-gradient(115deg, #FFFFFF 0%, #F7F9FC 42%, #EEF3FA 100%)' 
+            }}
+            className="relative overflow-hidden min-h-[calc(100vh-80px)] flex items-center py-12 lg:py-16 font-body origin-top"
         >
             {/* Background Parallax Arcs */}
             <div ref={arc1Parallax.ref}>
@@ -157,7 +161,7 @@ export const HeroSection = () => {
                             onMouseLeave={imageTilt.handleMouseLeave}
                         >
                             <Image 
-                                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Brighter-&-Healthier-Future.webp" 
+                                src="https://cloudinary.hbs.edu/hbsit/image/fetch/q_auto,c_fill,ar_1200:800,g_auto/f_webp/https%3A%2F%2Fwww.hbs.edu%2Fctfassets%2Fpublic%2Fimages%2F65RBoqGVbOYCPNeOxAbaGI%2FFinance%252520Versus%252520Accounting.png" 
                                 alt="Doctor consulting with a patient"
                                 className="w-full h-full object-cover object-top"
                                 width={800}
