@@ -170,7 +170,7 @@ export default function HealthPlanQuoteToday() {
           variants={sectionReveal}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Left Column: Photo Frame */}
           <div className="lg:col-span-5 relative">

@@ -55,43 +55,44 @@ export const ServicesSection = () => {
         };
 
         return (
-            <motion.a 
-                variants={cardVariant}
-                href={service.href} 
-                className="group relative p-7 rounded-2xl bg-white border border-navy-100/80 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between"
-                ref={tilt.ref}
-                style={{ ...tilt.style, '--glow-x': glow.x, '--glow-y': glow.y }}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-            >
-                {/* Optional Badge */}
-                {service.badge && (
-                    <span className="absolute top-4 right-4 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-accent/15 text-navy-900 border border-accent/30">
-                        {service.badge}
-                    </span>
-                )}
+            <motion.div variants={cardVariant} className="h-full">
+                <a 
+                    href={service.href} 
+                    className="group relative p-7 rounded-2xl bg-white border border-navy-100/80 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full block"
+                    ref={tilt.ref}
+                    style={{ ...tilt.style, '--glow-x': glow.x, '--glow-y': glow.y }}
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    {/* Optional Badge */}
+                    {service.badge && (
+                        <span className="absolute top-4 right-4 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-accent/15 text-navy-900 border border-accent/30">
+                            {service.badge}
+                        </span>
+                    )}
 
-                <div>
-                    {/* Icon */}
-                    <div className="w-13 h-13 rounded-xl bg-navy-50 border border-navy-100/60 flex items-center justify-center text-navy-800 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 w-fit p-3.5 mb-5">
-                        {React.cloneElement(service.icon, { className: "h-6 w-6 stroke-[1.75]", strokeWidth: 1.75 })}
+                    <div>
+                        {/* Icon */}
+                        <div className="w-13 h-13 rounded-xl bg-navy-50 border border-navy-100/60 flex items-center justify-center text-navy-800 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 w-fit p-3.5 mb-5">
+                            {React.cloneElement(service.icon, { className: "h-6 w-6 stroke-[1.75]", strokeWidth: 1.75 })}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-navy-900 group-hover:text-accent transition-colors font-display">
+                            {service.name}
+                        </h3>
+                        <p className="mt-1.5 text-sm text-navy-500 leading-relaxed">
+                            Comprehensive coverage and benefits options tailored to your lifestyle.
+                        </p>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-navy-900 group-hover:text-accent transition-colors font-display">
-                        {service.name}
-                    </h3>
-                    <p className="mt-1.5 text-sm text-navy-500 leading-relaxed">
-                        Comprehensive coverage and benefits options tailored to your lifestyle.
-                    </p>
-                </div>
-
-                {/* Learn More link footer */}
-                <div className="mt-6 pt-4 border-t border-navy-50 flex items-center justify-between text-xs font-bold text-navy-700 group-hover:text-accent transition-colors">
-                    <span>Explore Coverage</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                </div>
-            </motion.a>
+                    {/* Learn More link footer */}
+                    <div className="mt-6 pt-4 border-t border-navy-50 flex items-center justify-between text-xs font-bold text-navy-700 group-hover:text-accent transition-colors">
+                        <span>Explore Coverage</span>
+                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
+                </a>
+            </motion.div>
         );
     };
 
@@ -139,7 +140,7 @@ export const ServicesSection = () => {
                     variants={sectionReveal}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                 >
                     {services.map((service) => (
                          <ServiceCard key={service.name} service={service} />

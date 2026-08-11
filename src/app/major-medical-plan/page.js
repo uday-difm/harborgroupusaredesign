@@ -10,12 +10,8 @@ import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
 import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
 import { MajorMedicalForm } from '../component/majormedical/MajorMedicalForm';
 
-// Specialized components
-import { DetailedPlanDescriptions } from '../component/majormedical/DetailedPlanDescriptions';
-import { CignaPlans } from '../component/majormedical/CignaPlans';
-import { PhcsPlansTable } from '../component/majormedical/PhcsPlansTable';
-import { PlanDescriptions } from '../component/majormedical/PlanDescriptions';
-import { QualcarePlansTable } from '../component/majormedical/QualcarePlansTable';
+import { MajorMedicalPlanSummaries } from '../component/majormedical/MajorMedicalPlanSummaries';
+import { MajorMedicalNetworkTables } from '../component/majormedical/MajorMedicalNetworkTables';
 
 export default function MajorMedicalPlanPage() {
   return (
@@ -126,12 +122,8 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <DetailedPlanDescriptions />
-      <CignaPlans />
-      <DetailedPlanDescriptions />
-      <PhcsPlansTable />
-      <PlanDescriptions />
-      <QualcarePlansTable />
+      <MajorMedicalPlanSummaries />
+      <MajorMedicalNetworkTables />
 
       <PlanCTA 
         title="Request a Call Back?"

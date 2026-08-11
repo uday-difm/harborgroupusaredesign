@@ -44,7 +44,7 @@ export const PlanBenefits = ({
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Image Side */}
           <motion.div variants={itemVariants} className="w-full lg:w-1/2 relative">

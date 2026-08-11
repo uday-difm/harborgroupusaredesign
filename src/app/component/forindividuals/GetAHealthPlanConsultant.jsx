@@ -154,7 +154,7 @@ export const GetAHealthPlanConsultant = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h2 
               variants={itemVariants}
@@ -207,7 +207,7 @@ export const GetAHealthPlanConsultant = () => {
             className="card-elevated bg-white p-8 md:p-12 relative z-10"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <form className="space-y-5" onSubmit={handleSubmit}>

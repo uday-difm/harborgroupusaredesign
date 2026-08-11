@@ -59,7 +59,7 @@ export const PurchaseStepsSection = () => {
             className="text-xs font-bold text-accent uppercase tracking-widest block mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             How to Get Covered
           </motion.span>
@@ -67,7 +67,7 @@ export const PurchaseStepsSection = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-navy-900 tracking-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ delay: 0.1 }}
           >
             Simple Steps to Health Coverage
@@ -76,7 +76,7 @@ export const PurchaseStepsSection = () => {
             className="text-xl text-navy-600 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ delay: 0.2 }}
           >
             At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
@@ -88,7 +88,7 @@ export const PurchaseStepsSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <div className="space-y-12">
             {steps.map((step, index) => (

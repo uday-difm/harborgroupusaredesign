@@ -30,7 +30,7 @@ export const PlanHowToApply = ({
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <motion.h2 
             variants={itemVariants}
@@ -53,7 +53,7 @@ export const PlanHowToApply = ({
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Connector Line (Desktop) */}
           <div className="hidden md:block absolute top-12 left-16 right-16 h-[2px] bg-navy-800 -z-10"></div>

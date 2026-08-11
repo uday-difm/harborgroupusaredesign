@@ -30,7 +30,7 @@ export const PlanGrid = ({
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <motion.h2 
             variants={itemVariants}
@@ -54,7 +54,7 @@ export const PlanGrid = ({
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;

@@ -73,7 +73,7 @@ export const PlanFaq = ({
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h2 
               variants={itemVariants}
@@ -109,7 +109,7 @@ export const PlanFaq = ({
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
           >
             {faqs.map((faq, index) => (
               <motion.div key={index} variants={itemVariants}>

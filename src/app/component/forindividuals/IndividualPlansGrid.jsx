@@ -50,33 +50,33 @@ export const IndividualPlansGrid = () => {
                     variants={sectionReveal}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                 >
                     {services.map((service, index) => (
-                        <motion.a 
-                            key={index}
-                            variants={cardVariant}
-                            href={service.href} 
-                            className="card-flat group relative p-6 bg-white flex flex-col justify-between border-t-2 border-transparent hover:border-accent transition-all duration-300"
-                        >
-                            <div className="flex items-center gap-4 mb-4">
-                                <div className="w-12 h-12 rounded-xl bg-navy-50 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                                    {React.cloneElement(service.icon, { className: "h-5 w-5 stroke-[1.5]" })}
+                        <motion.div key={index} variants={cardVariant}>
+                            <a 
+                                href={service.href} 
+                                className="card-flat group relative p-6 bg-white flex flex-col justify-between border-t-2 border-transparent hover:border-accent transition-all duration-300 hover:-translate-y-1 h-full block"
+                            >
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-12 h-12 rounded-xl bg-navy-50 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                                        {React.cloneElement(service.icon, { className: "h-5 w-5 stroke-[1.5]" })}
+                                    </div>
+                                    <h3 className="text-lg font-bold text-navy-900 font-display">
+                                        {service.name}
+                                    </h3>
                                 </div>
-                                <h3 className="text-lg font-bold text-navy-900 font-display">
-                                    {service.name}
-                                </h3>
-                            </div>
-                            
-                            <div className="text-sm text-navy-600 mb-6 leading-relaxed">
-                                Flexible {service.name.toLowerCase()} coverage options.
-                            </div>
+                                
+                                <div className="text-sm text-navy-600 mb-6 leading-relaxed">
+                                    Flexible {service.name.toLowerCase()} coverage options.
+                                </div>
 
-                            <div className="flex items-center text-sm font-bold text-accent">
-                                <span>Explore Plan</span>
-                                <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
-                            </div>
-                        </motion.a>
+                                <div className="flex items-center text-sm font-bold text-accent mt-auto">
+                                    <span>Explore Plan</span>
+                                    <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </a>
+                        </motion.div>
                     ))}
                 </motion.div>
             </div>

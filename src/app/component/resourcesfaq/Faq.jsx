@@ -87,7 +87,7 @@ export const Faq = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;

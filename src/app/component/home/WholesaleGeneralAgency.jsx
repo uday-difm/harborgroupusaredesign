@@ -84,7 +84,7 @@ export const WholesaleGeneralAgency = () => {
                 <motion.div 
                     initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="max-w-3xl mb-16"
                 >
@@ -133,7 +133,7 @@ export const WholesaleGeneralAgency = () => {
                     <motion.div 
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ once: true, amount: 0.1 }}
                         transition={{ staggerChildren: 0.12 }}
                         className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6"
                     >

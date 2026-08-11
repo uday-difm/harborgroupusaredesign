@@ -53,7 +53,7 @@ export const Benefitsofcollaboration = () => {
           className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="absolute inset-0 bg-navy-900/60 mix-blend-multiply z-10"></div>
@@ -80,23 +80,21 @@ export const Benefitsofcollaboration = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="card-elevated bg-white p-8 md:p-10 flex flex-col items-start border-l-4 border-accent transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-navy-50 text-accent flex items-center justify-center mb-6">
-                {benefit.icon}
+            <motion.div key={index} variants={itemVariants}>
+              <div className="card-elevated bg-white p-8 md:p-10 flex flex-col items-start border-l-4 border-accent transition-all duration-300 hover:-translate-y-2 hover:shadow-xl h-full">
+                <div className="w-14 h-14 rounded-2xl bg-navy-50 text-accent flex items-center justify-center mb-6">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-navy-900 mb-4">
+                  {benefit.title}
+                </h3>
+                <p className="text-navy-600 leading-relaxed text-lg">
+                  {benefit.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-navy-900 mb-4">
-                {benefit.title}
-              </h3>
-              <p className="text-navy-600 leading-relaxed text-lg">
-                {benefit.description}
-              </p>
             </motion.div>
           ))}
         </motion.div>
