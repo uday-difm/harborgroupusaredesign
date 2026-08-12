@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Stethoscope, Banknote, HeartHandshake, Smile, ShieldCheck, Cpu, Smartphone } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { LifestyleForm } from '../component/lifestyleplan/LifestyleForm';
 
 export default function LifestylePlanPage() {
@@ -30,22 +30,22 @@ export default function LifestylePlanPage() {
   return (
     <>
       <title>Lifestyle Plan | The Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group, lifestyle plan, wellness benefits, employee perks, mental health, fitness access, healthy living, work-life balance, lifestyle coverage, group wellness."/>        
-      <meta name="description" content="Adapt your coverage with The Harbor Group USA Lifestyle Plan. Flexible options that evolve with your lifestyle needs and preferences."/>
+      <meta name="keywords" content="Harbor Group, lifestyle plan, wellness benefits, employee perks, mental health, fitness access, healthy living, work-life balance, lifestyle coverage, group wellness." />
+      <meta name="description" content="Adapt your coverage with The Harbor Group USA Lifestyle Plan. Flexible options that evolve with your lifestyle needs and preferences." />
       <meta property="og:title" content="Lifestyle Plan | The Harbor Group USA" />
       <meta property="og:description" content="Adapt your coverage with The Harbor Group USA Lifestyle Plan. Flexible options that evolve with your lifestyle needs and preferences." />
       <link rel="canonical" href="https://harborgroupusa.com/lifestyle-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/lifestyle-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Plans to support and enhance your lifestyle needs"
         description="Enhance your well-being with Lifestyle Plans at Harbor Group USA. These plans are meticulously designed to support and enhance your unique lifestyle needs. Going beyond conventional coverage, our Lifestyle Plans offer a customer-tailored approach to ensure that your health and lifestyle choices align seamlessly."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/lifestyleplan-section.jpeg"
         formComponent={<LifestyleForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Lifestyle Plan"
         description="At Harbor Group USA, we understand the significance of maintaining a balanced and fulfilling lifestyle. Our Lifestyle Plans offer a range of benefits to cater to your specific needs."
         features={[
@@ -56,7 +56,7 @@ export default function LifestylePlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing support for your lifestyle needs is effortless with our extensive network of experienced professionals."
         plans={[
@@ -78,7 +78,7 @@ export default function LifestylePlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Lifestyle Plan"
         description="Open to individuals and families, our Lifestyle Plans ensure that comprehensive support for your lifestyle needs is within reach."
         criteria={[
@@ -89,7 +89,7 @@ export default function LifestylePlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Our Lifestyle Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs for maintaining a balanced lifestyle."
         plans={[
@@ -114,7 +114,7 @@ export default function LifestylePlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -124,12 +124,12 @@ export default function LifestylePlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Let's get started with Lifestyle Plans"
         buttonText="GET STARTED"
         href="#lifestyle-plan-form"

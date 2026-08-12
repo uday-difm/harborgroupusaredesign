@@ -142,11 +142,11 @@ export default function Careers() {
       <link rel="canonical" href="https://harborgroupusa.com/careers/" />
       <meta property="og:url" content="https://harborgroupusa.com/careers/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
-      
+
       <div className="relative min-h-[90vh] flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 img-duotone pointer-events-none">
-          <img 
+          <img
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/careers-page-scaled.jpg"
             alt="Careers at Harbor Group USA"
             className="w-full h-full object-cover object-center"
@@ -155,7 +155,7 @@ export default function Careers() {
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 to-transparent"></div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="relative max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 z-10 pt-20"
           variants={containerVariants}
           initial="hidden"

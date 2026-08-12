@@ -3,10 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { Target, BrainCircuit, BarChart3, Award, CheckCircle2 } from 'lucide-react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { useTilt } from '@/comman/motion/useTilt';
-import { useParallax } from '@/comman/motion/useParallax';
-import { SectionGlow } from '@/comman/SectionGlow';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useTilt } from '@/common/motion/useTilt';
+import { useParallax } from '@/common/motion/useParallax';
+import { SectionGlow } from '@/common/SectionGlow';
 
 const featureCardVariant = {
     hidden: { opacity: 0, y: 24 },
@@ -15,21 +15,31 @@ const featureCardVariant = {
 
 const FeatureCard = ({ feature }) => {
     const tilt = useTilt(3);
+    const prefersReduced = useReducedMotion();
+    const [isActive, setIsActive] = React.useState(false);
+
     return (
-        <motion.div 
+        <motion.div
             variants={featureCardVariant}
             ref={tilt.ref}
             style={{ ...tilt.style }}
             onMouseMove={tilt.handleMouseMove}
             onMouseLeave={tilt.handleMouseLeave}
-            className="p-7 rounded-2xl bg-white border border-navy-100/80 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+            onViewportEnter={() => {
+                if (!prefersReduced) setIsActive(true);
+            }}
+            onViewportLeave={() => {
+                if (!prefersReduced) setIsActive(false);
+            }}
+            viewport={{ amount: 0.5 }}
+            className={`p-7 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${isActive ? 'border border-accent shadow-lg scale-[1.02]' : 'border border-navy-100/80'}`}
         >
             <div>
-                <div className="w-12 h-12 rounded-xl bg-navy-50 border border-navy-100 flex items-center justify-center mb-5 group-hover:bg-accent group-hover:border-accent transition-colors">
-                    {React.cloneElement(feature.icon, { className: "h-6 w-6 text-accent group-hover:text-white transition-colors" })}
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors ${isActive ? 'bg-accent border-accent text-white' : 'bg-navy-50 border-navy-100 group-hover:bg-accent group-hover:border-accent text-accent group-hover:text-white'}`}>
+                    {React.cloneElement(feature.icon, { className: "h-6 w-6 transition-colors" })}
                 </div>
-                <h3 className="text-lg font-bold text-navy-900 font-display mb-2.5 group-hover:text-accent transition-colors">{feature.title}</h3>
-                <p className="text-sm text-navy-600 leading-relaxed">{feature.description}</p>
+                <h3 className={`text-lg font-bold font-display mb-2.5 transition-colors ${isActive ? 'text-accent' : 'text-navy-900 group-hover:text-accent'}`}>{feature.title}</h3>
+                <p className={`text-sm leading-relaxed transition-colors ${isActive ? 'text-navy-800' : 'text-navy-600'}`}>{feature.description}</p>
             </div>
         </motion.div>
     );
@@ -62,26 +72,20 @@ export const WholesaleGeneralAgency = () => {
     const imageParallax = useParallax(15);
     const prefersReduced = useReducedMotion();
 
-    const sectionRef = React.useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start start", "end start"]
-    });
-    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
-    const opacity = useTransform(scrollYProgress, [0.5, 1], [1, 0.4]);
-
     return (
-        <motion.section 
-            ref={sectionRef}
-            style={{ scale: prefersReduced ? 1 : scale, opacity: prefersReduced ? 1 : opacity }}
+        <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7 }}
             className="bg-surface py-24 font-body border-b border-navy-100/60 relative overflow-hidden origin-top"
         >
             <SectionGlow position="bottomRight" className="opacity-40" />
 
             <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
-                
+
                 {/* Header Statement */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.1 }}
@@ -89,8 +93,12 @@ export const WholesaleGeneralAgency = () => {
                     className="max-w-3xl mb-16"
                 >
                     <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Agency Overview</span>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight leading-tight">
-                        Harbor Group USA is a Retail and Wholesale General Agency
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight leading-tight flex flex-wrap gap-[0.25em]">
+                        {"Harbor Group USA is a Retail and Wholesale General Agency".split(" ").map((word, i) => (
+                            <motion.span key={i} initial={{ opacity: 0, y: prefersReduced ? 0 : 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}>
+                                {word}
+                            </motion.span>
+                        ))}
                     </h2>
                     <h3 className="mt-4 text-xl font-medium text-accent font-display">
                         Finding Your Ideal Health Plan with Harbor Group USA
@@ -101,36 +109,37 @@ export const WholesaleGeneralAgency = () => {
                 </motion.div>
 
                 {/* Grid Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                    
-                    {/* Image Column */}
-                    <div className="lg:col-span-5 relative" ref={imageParallax.ref}>
-                        <motion.div 
-                            style={{ y: imageParallax.y }}
-                            className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80"
-                        >
-                            <Image
-                                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Home-2.jpeg"
-                                alt="Professional team collaborating"
-                                className="w-full object-cover h-[480px] lg:h-[560px]"
-                                width={600}
-                                height={600}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent pointer-events-none"></div>
-                        </motion.div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative">
 
-                        {/* Floating Badge overlay */}
-                        <div className="absolute -bottom-6 -right-4 md:-right-6 bg-navy-900 text-white p-5 rounded-2xl shadow-xl border border-navy-800 hidden sm:flex items-center gap-3">
-                            <CheckCircle2 className="w-8 h-8 text-accent" />
-                            <div>
-                                <p className="text-xs font-bold text-navy-200 uppercase tracking-wider">Licensed Agency</p>
-                                <p className="text-sm font-bold text-white">Wholesale & Retail Support</p>
+                    {/* Image Column */}
+                    <div className="lg:col-span-5 relative h-full">
+                        <div className="sticky top-24 h-fit">
+                            <motion.div
+                                className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80"
+                            >
+                                <Image
+                                    src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Home-2.jpeg"
+                                    alt="Professional team collaborating"
+                                    className="w-full object-cover h-[480px] lg:h-[560px]"
+                                    width={600}
+                                    height={600}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent pointer-events-none"></div>
+                            </motion.div>
+
+                            {/* Floating Badge overlay */}
+                            <div className="absolute -bottom-6 -right-4 md:-right-6 bg-navy-900 text-white p-5 rounded-2xl shadow-xl border border-navy-800 hidden sm:flex items-center gap-3">
+                                <CheckCircle2 className="w-8 h-8 text-accent" />
+                                <div>
+                                    <p className="text-xs font-bold text-navy-200 uppercase tracking-wider">Licensed Agency</p>
+                                    <p className="text-sm font-bold text-white">Wholesale & Retail Support</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Features 2x2 Grid Column */}
-                    <motion.div 
+                    <motion.div
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.1 }}

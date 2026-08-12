@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Wallet, Check, Stethoscope, BriefcaseMedical } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanBenefits } from '@/comman/PlanTemplate/PlanBenefits';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanBenefits } from '@/common/PlanTemplate/PlanBenefits';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { DentalForm } from '../component/dentalplan/DentalForm';
 
 export default function DentalPlanPage() {
@@ -31,22 +31,22 @@ export default function DentalPlanPage() {
   return (
     <>
       <title>Harbor Group Dental Plans | Full Coverage Care</title>
-      <meta name="keywords" content="Harbor Group, dental care, dental Plans, employee benefits, oral health, affordable dental plan, group dental coverage, preventive dental, dental benefits, dental PPO"/>        
-      <meta name="description" content="Comprehensive dental care plans from Harbor Group with preventive services, low costs, and employee-focused coverage."/>
+      <meta name="keywords" content="Harbor Group, dental care, dental Plans, employee benefits, oral health, affordable dental plan, group dental coverage, preventive dental, dental benefits, dental PPO" />
+      <meta name="description" content="Comprehensive dental care plans from Harbor Group with preventive services, low costs, and employee-focused coverage." />
       <meta property="og:title" content="Harbor Group Dental Plans | Full Coverage Care" />
       <meta property="og:description" content="Comprehensive dental care plans from Harbor Group with preventive services, low costs, and employee-focused coverage." />
       <link rel="canonical" href="https://harborgroupusa.com/dental-care-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/dental-care-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title={<>360 degree dental care plans <span className="text-accent">to ensure your oral health.</span></>}
         description="Say goodbye to dental worries! Our dental care plans keep your smile healthy and your wallet happy. It’s affordable and easy to use!"
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Dental_Hero_section.jpg"
         formComponent={<DentalForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Dental Care Plan"
         description="Get regular checkups and cleanings to prevent problems, along with expert care for any bigger issues like crowns and root canals. Our practical solutions for your dental needs will help you get a healthy, confident smile!"
         features={[
@@ -56,7 +56,7 @@ export default function DentalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Access our established network of experienced dentists focused on preventive and restorative care. Regular check-ups, specialist access, and convenient locations simplify your journey to optimal oral health, for you and your family."
         plans={[
@@ -87,7 +87,7 @@ export default function DentalPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Dental Care Plan"
         description="Open to individuals and families, our dental care plan ensures that quality dental care is within reach for everyone. Your smile is important, and so is your budget. Eligibility Criteria for the Dental Care Plans includes."
         criteria={[
@@ -97,7 +97,7 @@ export default function DentalPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -107,7 +107,7 @@ export default function DentalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Your Clear Path to Dental Wellness"
         description="We believe in transparent pricing and straightforward coverage. Discover how our plans make dental care accessible and affordable."
         plans={[
@@ -130,12 +130,12 @@ export default function DentalPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Dental Care Plan"
         buttonText="GET STARTED"
         href="#dental-form"

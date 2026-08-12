@@ -96,7 +96,7 @@ export default function Blogs() {
                   width={600}
                   height={400}
                 />
-                <span className="absolute top-4 right-4 bg-sky-400  text-xs text-white font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-md">
+                <span className="btn-accent px-10 py-4 font-bold">
                   {blog.blog_category}
                 </span>
               </div>
@@ -104,7 +104,7 @@ export default function Blogs() {
 
               <div className="p-6 flex flex-col flex-grow">
                 <Link href={`/blog/${blog.blog_slug}`} className="hover:no-underline">
-                <p className="text-sm text-gray-500 mb-3 flex items-center">
+                <p className="text-sm text-navy-400 mb-3 flex items-center">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 mr-1.5 text-gray-400"

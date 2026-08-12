@@ -24,8 +24,8 @@ export const HeroSection = () => {
                 <feGaussianBlur in="SourceGraphic" stdDeviation="4" /> 
               </filter>
               <radialGradient id="radialGradientPulse" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.15" /> 
-                <stop offset="100%" stopColor="#60A5FA" stopOpacity="0" />
+                <stop offset="0%" stopColor="var(--color-navy-300)" stopOpacity="0.15" /> 
+                <stop offset="100%" stopColor="var(--color-navy-300)" stopOpacity="0" />
               </radialGradient>
             </defs>
             <rect x="0" y="0" width="100%" height="100%" fill="url(#radialGradientPulse)" filter="url(#blurFilterMedV2)" />
@@ -41,7 +41,7 @@ export const HeroSection = () => {
             <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-5xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
             Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It’s not just a plan; it’s a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
             </p>
-            <Link href="#limited-med-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#limited-med-form" className="btn-accent px-10 py-4 font-bold">
               GET STARTED
             </Link>
           </div>

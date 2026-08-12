@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Wallet, Check, Activity, ShieldPlus } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanBenefits } from '@/comman/PlanTemplate/PlanBenefits';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanBenefits } from '@/common/PlanTemplate/PlanBenefits';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { MedicalForm } from '../component/medicalplan/MedicalForm';
 
 export default function MedicalPlanPage() {
@@ -31,22 +31,22 @@ export default function MedicalPlanPage() {
   return (
     <>
       <title>Harbor Group Medical Plans | Quality Coverage</title>
-      <meta name="keywords" content="Harbor Group, medical plans, employee benefits, health Plans, PPO coverage, affordable healthcare, group Plans, wellness support, USA benefits, custom coverage"/>        
-      <meta name="description" content="Affordable, customizable medical plans from Harbor Group USA with wellness benefits, PPO options, and employee support"/>
+      <meta name="keywords" content="Harbor Group, medical plans, employee benefits, health Plans, PPO coverage, affordable healthcare, group Plans, wellness support, USA benefits, custom coverage" />
+      <meta name="description" content="Affordable, customizable medical plans from Harbor Group USA with wellness benefits, PPO options, and employee support" />
       <meta property="og:title" content="Harbor Group Medical Plans | Quality Coverage" />
       <meta property="og:description" content="Affordable, customizable medical plans from Harbor Group USA with wellness benefits, PPO options, and employee support" />
       <link rel="canonical" href="https://harborgroupusa.com/medical-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/medical-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Medical Plans for Complete Health Coverage"
         description="Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg"
         formComponent={<MedicalForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Coverage Options"
         description="Enjoy peace of mind with coverage for hospitalization, doctor visits, prescription medications, and more."
         features={[
@@ -59,7 +59,7 @@ export default function MedicalPlanPage() {
         ]}
       />
 
-      <PlanBenefits 
+      <PlanBenefits
         title="Benefits of our best cost sharing medical plans"
         description="Get everything you need to stay healthy, from doctor visits and mental health support to preventive care and more. Whether you need regular checkups, vaccines, screenings, or expert help with a long-term condition, we’ve got your health covered!"
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/benefits-of-best-cost-sharing-medical-plans.jpeg"
@@ -71,7 +71,7 @@ export default function MedicalPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria for the Medical Plans"
         description="This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage."
         criteria={[
@@ -81,7 +81,7 @@ export default function MedicalPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply For Medical Plan"
         description="Enrolling in a medical plan is straightforward and user-friendly."
         steps={[
@@ -91,7 +91,7 @@ export default function MedicalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options"
         description="Get medical plans with flexible choices to fit your budget and health requirements."
         plans={[
@@ -115,12 +115,12 @@ export default function MedicalPlanPage() {
         conclusion="Choose from various plans crafted to meet different financial requirements. We ensure you get the coverage you need at a price you can afford. Contact our Agents for specific cost breakdowns and payment options."
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Medical Plan"
         buttonText="GET STARTED"
         href="#medical-form"

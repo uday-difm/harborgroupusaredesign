@@ -28,7 +28,7 @@ export const PetPlanHereSection = () => {
            Extend your care to your four-legged family members with Pet Plans at Harbor Group USA. Our Pet Plans are designed to offer tailored protection for your beloved pets, ensuring their health and well-being are prioritized.
           </p>
           <Link href="#pet-plan-form">
-          <button className="py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 bg-sky-400 text-white font-bold" >
+          <button className="btn-accent px-10 py-4 font-bold" >
             JOIN US NOW
           </button>
           </Link>

@@ -8,8 +8,8 @@ export const AccidentHero = () => {
   const mainIconGradient = (
     <defs>
       <linearGradient id="mainIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
       </linearGradient>
     </defs>
   );
@@ -39,10 +39,10 @@ export const AccidentHero = () => {
               </filter>
             </defs>
             <g filter="url(#shapeBlur)">
-              <polygon points="0,0 20,0 0,20" fill="#1E3A8A" opacity="0.1" className="animate-shapeMove1" /> {/* Dark Blue */}
-              <polygon points="100,0 80,0 100,20" fill="#BFDBFE" opacity="0.1" className="animate-shapeMove2" /> {/* Light Blue */}
-              <polygon points="0,100 20,100 0,80" fill="#EF4444" opacity="0.08" className="animate-shapeMove3" /> {/* Red */}
-              <polygon points="100,100 80,100 100,80" fill="#7DD3FC" opacity="0.1" className="animate-shapeMove4" /> {/* Sky Blue */}
+              <polygon points="0,0 20,0 0,20" fill="var(--color-primary)" opacity="0.1" className="animate-shapeMove1" /> {/* Dark Blue */}
+              <polygon points="100,0 80,0 100,20" fill="var(--color-navy-100)" opacity="0.1" className="animate-shapeMove2" /> {/* Light Blue */}
+              <polygon points="0,100 20,100 0,80" fill="var(--color-accent)" opacity="0.08" className="animate-shapeMove3" /> {/* Red */}
+              <polygon points="100,100 80,100 100,80" fill="var(--color-navy-200)" opacity="0.1" className="animate-shapeMove4" /> {/* Sky Blue */}
             </g>
           </svg>
         </div>

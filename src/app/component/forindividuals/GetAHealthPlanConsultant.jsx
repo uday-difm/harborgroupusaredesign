@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, UserCheck, HeartHandshake } from "lucide-react";
-import { HarborArc } from "@/comman/HarborArc";
+import { HarborArc } from "@/common/HarborArc";
 
 export const GetAHealthPlanConsultant = () => {
   const [formData, setFormData] = useState({
@@ -144,25 +144,25 @@ export const GetAHealthPlanConsultant = () => {
   return (
     <section id="individual-form" className="section-dark relative overflow-hidden py-24">
       <HarborArc position="bottomRight" className="text-navy-700 opacity-20 scale-150" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Left Panel */}
-          <motion.div 
+          <motion.div
             className="flex flex-col text-left"
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
           >
-            <motion.h2 
+            <motion.h2
               variants={itemVariants}
               className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight tracking-tight"
             >
               Get a Health Plan <span className="text-accent">Consultant</span>
             </motion.h2>
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-lg text-navy-200 mb-12 max-w-lg leading-relaxed"
             >
@@ -179,7 +179,7 @@ export const GetAHealthPlanConsultant = () => {
                   <p className="text-navy-300">Talk to a real person who understands the complex healthcare landscape.</p>
                 </div>
               </motion.div>
-              
+
               <motion.div variants={itemVariants} className="flex items-start">
                 <div className="w-12 h-12 rounded-full bg-navy-800 flex items-center justify-center text-accent shrink-0 border border-navy-700">
                   <HeartHandshake className="w-6 h-6" />
@@ -203,7 +203,7 @@ export const GetAHealthPlanConsultant = () => {
           </motion.div>
 
           {/* Right Panel: The Form */}
-          <motion.div 
+          <motion.div
             className="card-elevated bg-white p-8 md:p-12 relative z-10"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

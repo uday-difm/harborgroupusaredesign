@@ -3,9 +3,9 @@
 import React from "react";
 import { Users, Briefcase, LifeBuoy, Clock } from "lucide-react";
 import { motion, useTransform, useReducedMotion } from "framer-motion";
-import { useParallax } from "@/comman/motion/useParallax";
-import { useVelocityEffect } from "@/comman/motion/useVelocityEffect";
-import { HarborArc } from "@/comman/HarborArc";
+import { useParallax } from "@/common/motion/useParallax";
+import { useVelocityEffect } from "@/common/motion/useVelocityEffect";
+import { HarborArc } from "@/common/HarborArc";
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -48,7 +48,7 @@ export default function CoverageSection({
 }) {
   const imageParallax = useParallax(10);
   const blobParallax = useParallax(25);
-  
+
   const prefersReduced = useReducedMotion();
   const { skew } = useVelocityEffect(1.5, 4);
 
@@ -59,7 +59,7 @@ export default function CoverageSection({
       <HarborArc position="topLeft" className="text-white opacity-5" />
 
       <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
           variants={sectionReveal}
           initial="hidden"
@@ -70,8 +70,12 @@ export default function CoverageSection({
           <div className="lg:col-span-7">
             <div className="max-w-2xl">
               <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Tailored Healthcare Solutions</span>
-              <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-tight">
-                {title}
+              <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-tight flex flex-wrap gap-[0.25em]">
+                {title.split(" ").map((word, i) => (
+                    <motion.span key={i} initial={{ opacity: 0, y: prefersReduced ? 0 : 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}>
+                        {word}
+                    </motion.span>
+                ))}
               </h2>
               <p className="mt-4 text-lg text-navy-200 leading-relaxed">{subtitle}</p>
 
@@ -98,22 +102,22 @@ export default function CoverageSection({
 
           {/* Image Column */}
           <div className="lg:col-span-5 relative">
-            <motion.div 
+            <div
               className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-800"
               ref={imageParallax.ref}
-              style={{ y: imageParallax.y }}
             >
-              <img
+              <motion.img
                 src={image}
                 alt="Coverage"
-                className="w-full h-[420px] lg:h-[560px] object-cover transform hover:scale-105 transition-transform duration-700"
+                style={{ y: prefersReduced ? 0 : imageParallax.y, scale: 1.1 }}
+                className="w-full h-[420px] lg:h-[560px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none"></div>
-            </motion.div>
-            
+            </div>
+
             {/* Ambient Blob */}
-            <motion.div 
-              className="absolute -bottom-8 -right-8 w-64 h-64 bg-accent/15 rounded-full blur-3xl pointer-events-none" 
+            <motion.div
+              className="absolute -bottom-8 -right-8 w-64 h-64 bg-accent/15 rounded-full blur-3xl pointer-events-none"
               ref={blobParallax.ref}
               style={{ y: blobParallax.y }}
             />

@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import { HarborArc } from '@/comman/HarborArc';
+import { HarborArc } from '@/common/HarborArc';
 
 const containerVariants = {
   hidden: {},
@@ -29,21 +29,21 @@ export const PlanCostOptions = ({
       <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">
-        <motion.div 
+        <motion.div
           className="text-center mb-16 lg:mb-20"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-h2 font-display font-bold text-navy-900 tracking-tight mb-6"
           >
             {title}
           </motion.h2>
           {description && (
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-lg text-navy-600 max-w-2xl mx-auto leading-relaxed"
             >
@@ -52,7 +52,7 @@ export const PlanCostOptions = ({
           )}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16"
           variants={containerVariants}
           initial="hidden"
@@ -60,18 +60,18 @@ export const PlanCostOptions = ({
           viewport={{ once: true, amount: 0.1 }}
         >
           {plans.map((plan, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               variants={itemVariants}
               className="card-elevated p-8 lg:p-10 relative overflow-hidden group"
             >
               {/* Subtle hover glow */}
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[inherit] pointer-events-none"></div>
-              
+
               <h3 className="text-2xl lg:text-3xl font-display font-bold text-navy-900 mb-8 border-b border-navy-100 pb-6">
                 {plan.title}
               </h3>
-              
+
               <ul className="space-y-5">
                 {plan.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-start gap-4">
@@ -89,13 +89,13 @@ export const PlanCostOptions = ({
         </motion.div>
 
         {conclusion && (
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
           >
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-base lg:text-lg text-navy-600 max-w-3xl mx-auto text-center leading-relaxed"
             >

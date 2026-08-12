@@ -328,3 +328,24 @@
 /* small helpers */
 .popup-title { font-size: var(--text-h3); font-family: var(--font-display); font-weight: 700; }
 @media(min-width:640px){ .popup-title { font-size: var(--text-h2); } }
+
+/* ── Header Marquee ── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}

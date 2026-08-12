@@ -5,7 +5,7 @@ import {
     Menu, X, ChevronDown, Phone, Shield, Eye, Pill, Heart, Briefcase,
     Zap, Star, Package, Dog, Stethoscope, UserCircle2, Users2, Building2
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 
 const Link = ({ href, children, onClick, className }) => (
@@ -67,6 +67,16 @@ const navLinks = [
     { name: 'Contact', href: '/contact' },
 ];
 
+/* Items are doubled inside the marquee for a seamless infinite loop */
+const MARQUEE_ITEMS = [
+    'Cigna Network',
+    'PHCS / Multiplan',
+    'QualCare',
+    'Licensed in All 50 States',
+    'Retail & Wholesale Agency',
+    'Individual & Group Coverage',
+];
+
 export const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -75,6 +85,7 @@ export const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const headerRef = useRef(null);
     const closeTimer = useRef(null);
+    const prefersReducedMotion = useReducedMotion();
 
     useEffect(() => {
         setCurrentPath(window.location.pathname);
@@ -129,7 +140,7 @@ export const Header = () => {
         <motion.header
             ref={headerRef}
             initial={false}
-            className="fixed top-0 left-0 right-0 z-50 font-body"
+            className="fixed top-0 left-0 right-0 z-[100] font-body"
             animate={{
                 paddingTop: scrolled ? 12 : 0,
                 paddingLeft: scrolled ? 16 : 0,
@@ -137,6 +148,49 @@ export const Header = () => {
             }}
             transition={T}
         >
+            {/* ── Marquee strip — visible only at top, desktop only ── */}
+            <AnimatePresence>
+                {!scrolled && (
+                    <motion.div
+                        key="marquee-strip"
+                        initial={{ height: 32, opacity: 0 }}
+                        animate={{ height: 32, opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        className="hidden md:block overflow-hidden bg-primary border-b border-white/[0.05]"
+                        aria-label="Credentials and network access"
+                    >
+                        <div className="marquee-wrapper h-8 flex items-center overflow-hidden">
+                            {prefersReducedMotion ? (
+                                /* Static fallback for reduced-motion users */
+                                <div className="flex items-center gap-0 px-6">
+                                    {MARQUEE_ITEMS.slice(0, 6).map((item, i) => (
+                                        <React.Fragment key={i}>
+                                            <span className="text-[12px] font-bold text-navy-100 tracking-wider uppercase whitespace-nowrap">{item}</span>
+                                            {i < 5 && <span className="mx-4 text-accent text-[10px]" aria-hidden="true">|</span>}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
+                            ) : (
+                                /* Animated marquee — doubled list for seamless loop */
+                                <div className="marquee-track flex w-max items-center whitespace-nowrap">
+                                    {[0, 1].map((copy) => (
+                                        <span key={copy} className="flex items-center flex-shrink-0">
+                                            {MARQUEE_ITEMS.map((item, i) => (
+                                                <React.Fragment key={`${copy}-${i}`}>
+                                                    <span className="text-[12px] font-bold text-navy-100 tracking-wider uppercase px-3">{item}</span>
+                                                    <span className="text-accent text-[10px] mx-1" aria-hidden="true">|</span>
+                                                </React.Fragment>
+                                            ))}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <motion.div
                 initial={false}
                 animate={{
@@ -144,7 +198,7 @@ export const Header = () => {
                     maxWidth: scrolled ? '64rem' : '100%',
                     backgroundColor: scrolled ? 'rgba(13, 19, 47, 0.96)' : 'rgba(255,255,255,0.97)',
                     boxShadow: scrolled
-                        ? '0 8px 40px -8px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08)'
+                        ? '0 8px 40px -8px rgba(19,30,73,0.35), 0 0 0 1px rgba(255,255,255,0.08)'
                         : '0 1px 0px rgba(19,30,73,0.08)',
                 }}
                 transition={T}
@@ -182,7 +236,7 @@ export const Header = () => {
                                     <a
                                         href={link.href}
                                         onClick={() => navigate(link.href)}
-                                        className={`relative flex items-center gap-1 px-3.5 py-2 rounded-full text-[13.5px] font-semibold transition-colors duration-200 ${
+                                        className={`relative flex items-center gap-1 px-4 py-2.5 rounded-full text-base xl:text-[17px] font-semibold transition-colors duration-200 ${
                                             scrolled
                                                 ? active ? 'text-amber-400' : 'text-white/80 hover:text-white hover:bg-white/10'
                                                 : active ? 'text-accent' : 'text-navy-700 hover:text-navy-900 hover:bg-navy-50/80'
@@ -311,9 +365,9 @@ export const Header = () => {
                     <div className="hidden xl:flex items-center gap-3">
                         <a
                             href="#h-form"
-                            className={`px-5 py-2.5 rounded-full text-sm font-bold transition-colors shadow-sm hover:shadow-md ${
+                            className={`px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all duration-300 ${
                                 scrolled
-                                    ? 'bg-amber-400 text-navy-950 hover:bg-amber-300 shadow-amber-400/20'
+                                    ? 'bg-accent text-primary hover:bg-accent-light hover:-translate-y-0.5 shadow-accent/20'
                                     : 'btn-accent shadow-accent/20'
                             }`}
                         >
@@ -391,10 +445,10 @@ export const Header = () => {
                                             <div>
                                                 <button
                                                     onClick={() => setOpenDropdown(mobileOpen ? null : link.name)}
-                                                    className={`w-full flex items-center justify-between py-3 px-4 rounded-xl transition-colors text-2xl font-display font-bold ${active || mobileOpen ? 'text-amber-400' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                                                    className={`w-full flex items-center justify-between py-3 px-4 rounded-xl transition-colors text-2xl font-display font-bold ${active || mobileOpen ? 'text-accent' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
                                                 >
                                                     {link.name}
-                                                    <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${mobileOpen ? 'rotate-180 text-amber-400' : 'text-white/30'}`} />
+                                                    <ChevronDown className={`h-6 w-6 transition-transform duration-300 ${mobileOpen ? 'rotate-180 text-accent' : 'text-white/30'}`} />
                                                 </button>
                                                 <AnimatePresence>
                                                     {mobileOpen && (
@@ -405,7 +459,7 @@ export const Header = () => {
                                                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                                             className="overflow-hidden"
                                                         >
-                                                            <div className="ml-4 mt-2 mb-2 pl-4 border-l-2 border-amber-400/30 space-y-1">
+                                                            <div className="ml-4 mt-2 mb-2 pl-4 border-l-2 border-accent/30 space-y-1">
                                                                 {(link.dropdown === 'plans'
                                                                     ? planColumns.flatMap(c => c.plans)
                                                                     : forOptions
@@ -414,7 +468,7 @@ export const Header = () => {
                                                                         key={item.name}
                                                                         href={item.href}
                                                                         onClick={() => navigate(item.href)}
-                                                                        className={`block py-2 px-3 rounded-lg text-base font-medium transition-colors ${currentPath === item.href ? 'text-amber-400' : 'text-white/60 hover:text-white'}`}
+                                                                        className={`block py-2 px-3 rounded-lg text-base font-medium transition-colors ${currentPath === item.href ? 'text-accent' : 'text-white/60 hover:text-white'}`}
                                                                     >
                                                                         {item.name}
                                                                     </a>
@@ -428,7 +482,7 @@ export const Header = () => {
                                             <a
                                                 href={link.href}
                                                 onClick={() => navigate(link.href)}
-                                                className={`block w-full py-3 px-4 rounded-xl text-2xl font-display font-bold transition-colors ${active ? 'text-amber-400' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                                                className={`block w-full py-3 px-4 rounded-xl text-2xl font-display font-bold transition-colors ${active ? 'text-accent' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
                                             >
                                                 {link.name}
                                             </a>
@@ -448,12 +502,12 @@ export const Header = () => {
                             <a
                                 href="#h-form"
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="block w-full py-4 text-center text-base font-bold rounded-2xl bg-amber-400 text-navy-950 hover:bg-amber-300 transition-colors shadow-lg shadow-amber-400/20"
+                                className="btn-accent block w-full py-4 text-center text-base font-bold rounded-2xl transition-colors shadow-lg shadow-accent/20"
                             >
                                 Get a Free Quote
                             </a>
                             <a href="tel:18004733241" className="flex items-center justify-center gap-2 text-white/60 hover:text-white transition-colors">
-                                <Phone className="h-4 w-4 text-amber-400" />
+                                <Phone className="h-4 w-4 text-accent" />
                                 <span className="text-sm font-medium">1 (800) 473-3241</span>
                             </a>
                         </motion.div>

@@ -21,7 +21,7 @@ const BenefitListItem = ({ children, delay }) => {
 
 export const CostOptionsSection = () => {
   return (
-    <div className="bg-gray-50 py-20 md:py-28 overflow-hidden">
+    <div className="bg-navy-50 py-20 md:py-28 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* --- Header Content --- */}

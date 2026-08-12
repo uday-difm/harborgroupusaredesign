@@ -195,7 +195,7 @@ export default function UpdateAdminPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full rounded bg-sky-400 hover:bg-sky-600 py-2 px-6 text-white hover:bg-opacity-90"
+                            className="btn-accent px-10 py-4 font-bold"
                         >
                             {loading ? 'Updating...' : 'Update Admin'}
                         </button>

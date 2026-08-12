@@ -29,7 +29,7 @@ export const NetworkLifestylePlan = () => {
     
           {/* Header */}
           <p className={`text-sm font-semibold text-sky-400 mb-2 flex items-center`}>
-            <span className="inline-block w-6 h-0.5 bg-sky-400 mr-2 rounded-full"></span>
+            <span className="btn-accent px-10 py-4 font-bold"></span>
            Know about our network
           </p>
           <h1 className={`text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight`}>

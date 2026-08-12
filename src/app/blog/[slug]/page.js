@@ -46,7 +46,7 @@ const BlogSubscribePopup = ({ onClose }) => {
             }}
         >
             {/* overlay: keep dark overlay but page content remains white */}
-            <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.45)" }} aria-hidden="true" />
+            <div className="absolute inset-0" style={{ background: "rgba(19,30,73,0.45)" }} aria-hidden="true" />
 
             <div
                 className="relative w-full max-w-lg mx-auto p-6 sm:p-8"
@@ -57,7 +57,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                     background: "#ffffff",          // force white
                     color: "#111111",               // dark text
                     borderRadius: 12,
-                    border: "1px solid rgba(0,0,0,0.06)",
+                    border: "1px solid rgba(19,30,73,0.06)",
                     boxShadow: "0 10px 30px rgba(2,6,23,0.12)",
                 }}
             >
@@ -66,7 +66,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                     className="absolute top-3 right-3"
                     aria-label="Close popup"
                     style={{
-                        background: "rgba(0,0,0,0.06)",
+                        background: "rgba(19,30,73,0.06)",
                         color: "#111",
                         width: 36,
                         height: 36,
@@ -99,19 +99,13 @@ const BlogSubscribePopup = ({ onClose }) => {
                         style={{
                             background: "#fff",
                             color: "#111",
-                            border: "1px solid rgba(0,0,0,0.08)",
+                            border: "1px solid rgba(19,30,73,0.08)",
                         }}
                     />
                     <button
                         onClick={handleSubscribe}
                         disabled={loading}
-                        className="px-6 font-semibold text-base  bg-accent! hover:bg-accent-dark! transition-all! duration-200!"
-                        style={{
-                            background: "#14c6c3",
-                            color: "#fff",
-                            padding: "0.75rem 1rem",
-                            borderRadius: 10,
-                        }}
+                        className="bg-accent! hover:bg-accent-dark! text-white font-bold py-3 px-6 rounded-lg w-full sm:w-auto transition duration-300"
                     >
                         {loading ? "Subscribing..." : "Subscribe"}
                     </button>
@@ -249,7 +243,7 @@ export default function BlogDetail() {
                                         style={{
                                             background: "#fff",
                                             color: "#111",
-                                            border: "1px solid rgba(0,0,0,0.06)",
+                                            border: "1px solid rgba(19,30,73,0.06)",
                                         }}
                                     >
                                         {tag}

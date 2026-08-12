@@ -6,8 +6,8 @@ export const NetworkContact = () => {
       const gradientStops = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> 
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} />
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> 
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} />
       </linearGradient>
     </defs>
   );
@@ -151,7 +151,7 @@ export const NetworkContact = () => {
 
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> 
           <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft">
             <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
@@ -202,7 +202,7 @@ export const NetworkContact = () => {
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
-              <button type="submit" className="w-full bg-sky-400 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"   disabled={issubmiting}
+              <button type="submit" className="btn-accent px-10 py-4 font-bold"   disabled={issubmiting}
               >
                 {issubmiting ? 'submiting...' : 'SUBMIT'}
               </button>

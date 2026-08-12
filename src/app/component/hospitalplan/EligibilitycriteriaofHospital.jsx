@@ -4,8 +4,8 @@ export const EligibilitycriteriaofHospital = ()=> {
       const blueGradient = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#38BDF8', stopOpacity: 1}} /> {/* Changed from teal/cyan to Tailwind sky-400 */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* Changed from teal/cyan to Tailwind sky-400 */}
       </linearGradient>
     </defs>
   );
@@ -20,7 +20,7 @@ export const EligibilitycriteriaofHospital = ()=> {
                 <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
               </filter>
             </defs>
-            <g fill="#93C5FD" filter="url(#eligibilityShapeBlur)"> {/* Blue-300 for shapes */}
+            <g fill="var(--color-navy-200)" filter="url(#eligibilityShapeBlur)"> {/* Blue-300 for shapes */}
               <circle cx="15" cy="15" r="8" opacity="0.15" className="animate-circleFloat1" />
               <rect x="80" y="20" width="10" height="10" rx="2" ry="2" opacity="0.1" className="animate-circleFloat2" />
               <polygon points="20,85 30,95 10,95" opacity="0.12" className="animate-circleFloat3" />

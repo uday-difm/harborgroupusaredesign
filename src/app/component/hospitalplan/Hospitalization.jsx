@@ -31,10 +31,10 @@ export const   Hospitalization = ()=>{
               </filter>
             </defs>
             <g filter="url(#circleBlur)">
-              <circle cx="10" cy="10" r="8" fill="#60A5FA" opacity="0.15" className="animate-circlePulse1" /> {/* Blue-400 */}
-              <circle cx="90" cy="30" r="12" fill="#22D3EE" opacity="0.1" className="animate-circlePulse2" /> {/* Cyan-400 */}
-              <circle cx="30" cy="80" r="10" fill="#7DD3FC" opacity="0.12" className="animate-circlePulse3" /> {/* Sky-300 */}
-              <circle cx="70" cy="95" r="7" fill="#BFDBFE" opacity="0.1" className="animate-circlePulse4" /> {/* Blue-200 */}
+              <circle cx="10" cy="10" r="8" fill="var(--color-navy-300)" opacity="0.15" className="animate-circlePulse1" /> {/* Blue-400 */}
+              <circle cx="90" cy="30" r="12" fill="var(--color-navy-400)" opacity="0.1" className="animate-circlePulse2" /> {/* Cyan-400 */}
+              <circle cx="30" cy="80" r="10" fill="var(--color-navy-200)" opacity="0.12" className="animate-circlePulse3" /> {/* Sky-300 */}
+              <circle cx="70" cy="95" r="7" fill="var(--color-navy-100)" opacity="0.1" className="animate-circlePulse4" /> {/* Blue-200 */}
             </g>
           </svg>
         </div>
@@ -48,7 +48,7 @@ export const   Hospitalization = ()=>{
             <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-xl mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100">
              Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies.
             </p>
-            <Link href="#hospital-plan-form" className="bg-sky-400 hover:bg-blue-800 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#hospital-plan-form" className="btn-accent px-10 py-4 font-bold">
               GET STARTED
             </Link>
           </div>

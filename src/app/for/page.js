@@ -16,12 +16,12 @@ export default function page() {
        <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
       {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(0,0,0,0.05) 0%, transparent 50%)'
+        backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
       }}></div>
 
       <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Card for Broker */}
-        <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] flex flex-col justify-between">
+        <div className="bg-white p-8 rounded-3xl shadow-xl border border-navy-100 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] flex flex-col justify-between">
           <div>
             <h2 className="text-4xl font-extrabold text-blue-600 mb-6 leading-tight">
               For Broker
@@ -31,14 +31,14 @@ export default function page() {
             </p>
           </div>
           <div className="mt-auto"> {/* Pushes button to the bottom */}
-            <Link href="/for-brokers" className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
+            <Link href="/for-brokers" className="btn-primary px-8 py-3 text-lg">
               Explore More
             </Link>
           </div>
         </div>
 
         {/* Card for Individual */}
-        <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] flex flex-col justify-between">
+        <div className="bg-white p-8 rounded-3xl shadow-xl border border-navy-100 transform transition-all duration-300 hover:shadow-2xl hover:scale-[1.01] flex flex-col justify-between">
           <div>
             <h2 className="text-4xl font-extrabold text-blue-600 mb-6 leading-tight">
               For Individual
@@ -48,7 +48,7 @@ export default function page() {
             </p>
           </div>
           <div className="mt-auto"> {/* Pushes button to the bottom */}
-            <Link href = "/for-individuals" className="inline-flex items-center justify-center px-8 py-3 border-2 border-transparent rounded-full text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg uppercase tracking-wider transition-all duration-300 hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
+            <Link href = "/for-individuals" className="btn-primary px-8 py-3 text-lg">
               Explore More
             </Link>
           </div>

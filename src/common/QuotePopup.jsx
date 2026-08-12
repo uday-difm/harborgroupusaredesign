@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useMagnetic } from "@/comman/motion/useMagnetic";
+import { useMagnetic } from "@/common/motion/useMagnetic";
 
 const HarborGroupUSALogo = () => (
   <div className="popup-logo">
@@ -82,40 +82,40 @@ const QuotePopup = ({ onClose }) => {
     });
   };
 
-const handlePhoneChange = (e) => {
-  const raw = e.target.value;
-  const filtered = raw.replace(/[^0-9+-]/g, '');
-  if (filtered.length !== raw.length) {
-    setPhoneError('Only digits, + and - are allowed.');
-  } else {
-    setPhoneError('');
-  }
+  const handlePhoneChange = (e) => {
+    const raw = e.target.value;
+    const filtered = raw.replace(/[^0-9+-]/g, '');
+    if (filtered.length !== raw.length) {
+      setPhoneError('Only digits, + and - are allowed.');
+    } else {
+      setPhoneError('');
+    }
 
-  setPhone(filtered);
-};
+    setPhone(filtered);
+  };
 
-const handlePhonePaste = (e) => {
-  const paste = (e.clipboardData || window.clipboardData).getData('text');
-  const filtered = paste.replace(/[^0-9+-]/g, '');
-  e.preventDefault();
+  const handlePhonePaste = (e) => {
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+    const filtered = paste.replace(/[^0-9+-]/g, '');
+    e.preventDefault();
 
-  if (paste.length !== filtered.length) {
-    setPhoneError('Pasted content contained invalid characters and was cleaned.');
-  } else {
-    setPhoneError('');
-  }
+    if (paste.length !== filtered.length) {
+      setPhoneError('Pasted content contained invalid characters and was cleaned.');
+    } else {
+      setPhoneError('');
+    }
 
-  const input = e.target;
-  const start = input.selectionStart;
-  const end = input.selectionEnd;
-  const newValue = input.value.slice(0, start) + filtered + input.value.slice(end);
+    const input = e.target;
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+    const newValue = input.value.slice(0, start) + filtered + input.value.slice(end);
 
-  setPhone(newValue);
+    setPhone(newValue);
 
-  requestAnimationFrame(() => {
-    input.selectionStart = input.selectionEnd = start + filtered.length;
-  });
-};
+    requestAnimationFrame(() => {
+      input.selectionStart = input.selectionEnd = start + filtered.length;
+    });
+  };
 
   const handleSubmit = async () => {
     setSubmitting(true);
@@ -154,22 +154,22 @@ const handlePhonePaste = (e) => {
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 10 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
-      transition: { 
-        type: 'spring', 
-        stiffness: 400, 
-        damping: 35, 
+      transition: {
+        type: 'spring',
+        stiffness: 400,
+        damping: 35,
         mass: 0.8,
         staggerChildren: 0.1,
         delayChildren: 0.1
       }
     },
-    exit: { 
-      opacity: 0, 
-      scale: 0.95, 
+    exit: {
+      opacity: 0,
+      scale: 0.95,
       y: 10,
       transition: { duration: 0.2 }
     }
@@ -177,8 +177,8 @@ const handlePhonePaste = (e) => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { type: 'spring', stiffness: 300, damping: 24 }
     }
@@ -246,7 +246,7 @@ const handlePhonePaste = (e) => {
               inputMode="text"
             />
             {nameError && (
-              <p className="text-sm mt-1" style={{ color: 'var(--error, #dc2626)' }} aria-live="polite">{nameError}</p>
+              <p className="text-sm mt-1" style={{ color: 'var(--color-error, #92400E)' }} aria-live="polite">{nameError}</p>
             )}
           </div>
 
@@ -266,7 +266,7 @@ const handlePhonePaste = (e) => {
               inputMode="numeric"
             />
             {phoneError && (
-              <p className="text-sm mt-1" style={{ color: 'var(--error, #dc2626)' }} aria-live="polite">
+              <p className="text-sm mt-1" style={{ color: 'var(--color-error, #92400E)' }} aria-live="polite">
                 {phoneError}
               </p>
             )}

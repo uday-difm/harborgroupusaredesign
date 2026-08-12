@@ -3,7 +3,7 @@ import React from 'react';
 // Main App component (can be integrated into your existing App or a new page)
 export const BenefitsVisionplan = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white font-inter py-16 px-4 md:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-navy-50 to-white font-inter py-16 px-4 md:px-8">
       {/* Custom CSS for animations */}
       <style>
         {`

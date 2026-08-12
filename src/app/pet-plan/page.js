@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Stethoscope, Banknote, ShieldAlert, ActivitySquare, Pill, ClipboardPlus } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { PetForm } from '../component/petplan/PetForm';
 
 export default function PetPlanPage() {
@@ -30,22 +30,22 @@ export default function PetPlanPage() {
   return (
     <>
       <title>Harbor Group USA Pet Plan | Care for Your Companions</title>
-      <meta name="keywords" content="Harbor Group, pet plan, pet care benefits, vet coverage, pet wellness, pet protection, employee pet perks, pet health, group pet plan, animal care"/>        
-      <meta name="description" content="Harbor Group USA pet plan helps cover vet visits, emergencies, and wellness care—giving your pets the protection they deserve."/>
+      <meta name="keywords" content="Harbor Group, pet plan, pet care benefits, vet coverage, pet wellness, pet protection, employee pet perks, pet health, group pet plan, animal care" />
+      <meta name="description" content="Harbor Group USA pet plan helps cover vet visits, emergencies, and wellness care—giving your pets the protection they deserve." />
       <meta property="og:title" content="Harbor Group USA Pet Plan | Care for Your Companions" />
       <meta property="og:description" content="Harbor Group USA pet plan helps cover vet visits, emergencies, and wellness care—giving your pets the protection they deserve." />
       <link rel="canonical" href="https://harborgroupusa.com/pet-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/pet-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Because your furry friends deserve protection too"
         description="Extend your care to your four-legged family members with Pet Plans at Harbor Group USA. Our Pet Plans are designed to offer tailored protection for your beloved pets, ensuring their health and well-being are prioritized."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/pet-care-plans.jpg"
         formComponent={<PetForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Pet Plan"
         description="At Harbor Group USA, we recognize the significance of your pets' health. Our Pet Plans offer a range of easy, simple, and professional benefits to cater to the unique needs of your furry friends."
         features={[
@@ -56,7 +56,7 @@ export default function PetPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing top-notch veterinary support for your pets is effortless with our extensive network of experienced professionals."
         plans={[
@@ -84,7 +84,7 @@ export default function PetPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Pet Plan"
         description="Open to pet owners, our Pet Plans ensure that comprehensive health protection for your furry friends is within reach"
         criteria={[
@@ -95,7 +95,7 @@ export default function PetPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -105,12 +105,12 @@ export default function PetPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Pet Care Plan"
         buttonText="GET STARTED"
         href="#pet-plan-form"

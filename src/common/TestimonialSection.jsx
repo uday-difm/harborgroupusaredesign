@@ -2,10 +2,18 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
-import { HarborArc } from "@/comman/HarborArc";
+import { motion, useReducedMotion } from "framer-motion";
+import { HarborArc } from "@/common/HarborArc";
+import { useVelocityEffect } from "@/common/motion/useVelocityEffect";
 
-const sectionReveal = {
+const containerReveal = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.12 }
+  }
+};
+
+const itemReveal = {
   hidden: { opacity: 0, y: 32 },
   show: {
     opacity: 1,
@@ -17,6 +25,8 @@ const sectionReveal = {
 export const TestimonialSection = ({ testimonials = [] }) => {
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef(null);
+  const prefersReduced = useReducedMotion();
+  const { skew, scale } = useVelocityEffect(1, 2);
 
   useEffect(() => {
     setCurrent(0);
@@ -39,16 +49,16 @@ export const TestimonialSection = ({ testimonials = [] }) => {
   return (
     <section className="bg-surface-alt py-24 font-body border-b border-navy-100/60 relative overflow-hidden">
       <HarborArc position="bottomRight" className="text-navy-200 opacity-10" />
-      <motion.div 
+      <motion.div
         className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10"
-        variants={sectionReveal}
+        variants={containerReveal}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
       >
-        
+
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div variants={itemReveal} className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Client Testimonials</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight">
             What Our Clients Say
@@ -56,9 +66,10 @@ export const TestimonialSection = ({ testimonials = [] }) => {
           <p className="mt-3 text-lg text-navy-600">
             We are proud to have helped so many businesses and individuals find their perfect health plan.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-12 relative max-w-3xl mx-auto">
+        {/* Testimonial Content */}
+        <motion.div variants={itemReveal} className="relative max-w-3xl mx-auto mt-12">
           <div className="relative overflow-hidden w-full min-h-[300px] sm:min-h-[260px]">
             {testimonials.length === 0 ? (
               <div className="flex items-center justify-center h-full text-navy-400 font-medium">
@@ -76,7 +87,13 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                     zIndex: index === current ? 10 : 1,
                   }}
                 >
-                  <div className="relative w-full bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-navy-100/80 text-center">
+                  <motion.div 
+                    className="relative w-full bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-navy-100/80 text-center"
+                    style={{ 
+                        skewY: prefersReduced ? 0 : skew, 
+                        scale: prefersReduced ? 1 : scale 
+                    }}
+                  >
                     <Quote className="absolute top-6 left-6 w-10 h-10 text-navy-100 stroke-[1.5] -z-0 pointer-events-none" />
 
                     {/* Avatar */}
@@ -106,7 +123,7 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                     <p className="text-base text-navy-600 leading-relaxed italic max-w-xl mx-auto">
                       "{testimonial.testimonial}"
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
               ))
             )}
@@ -119,15 +136,14 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
-                    current === index ? "w-8 bg-accent" : "w-2.5 bg-navy-200 hover:bg-navy-300"
-                  }`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${current === index ? "w-8 bg-accent" : "w-2.5 bg-navy-200 hover:bg-navy-300"
+                    }`}
                   aria-label={`Go to testimonial slide ${index + 1}`}
                 ></button>
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

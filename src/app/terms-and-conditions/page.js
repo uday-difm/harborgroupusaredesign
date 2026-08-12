@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { LegalTemplate } from '@/comman/LegalTemplate';
+import { LegalTemplate } from '@/common/LegalTemplate';
 
 export default function TermsAndConditionsPage() {
   return (
     <>
       <title>Terms & Conditions | Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group USA, terms and conditions, website terms, user agreement, legal terms, service agreement, usage policy, site rules"/>        
-      <meta name="description" content="Read the terms and conditions for using Harbor Group USA's website and services, including user responsibilities, limitations, and legal guidelines."/>
+      <meta name="keywords" content="Harbor Group USA, terms and conditions, website terms, user agreement, legal terms, service agreement, usage policy, site rules" />
+      <meta name="description" content="Read the terms and conditions for using Harbor Group USA's website and services, including user responsibilities, limitations, and legal guidelines." />
       <meta property="og:title" content="Terms & Conditions | Harbor Group USA" />
       <meta property="og:description" content="Read the terms and conditions for using Harbor Group USA's website and services, including user responsibilities, limitations, and legal guidelines." />
       <link rel="canonical" href="https://harborgroupusa.com/privacy-policy/" />
       <meta property="og:url" content="https://harborgroupusa.com/privacy-policy/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
-      
+
       <LegalTemplate title="Terms and Conditions">
         <div className="space-y-8">
           {/* Introduction */}
@@ -123,9 +123,9 @@ export default function TermsAndConditionsPage() {
               If you have any questions or concerns regarding our Privacy Policy, Terms and Conditions, or regulatory compliance, please contact us at <a href="mailto:doug@bhgsfl.com" className="text-accent hover:underline font-medium">doug@bhgsfl.com</a>.
             </p>
             <p className="text-base leading-relaxed mt-2 text-navy-600">
-              The Harbor Group<br/>
-              3101 Bayshore Dr, Fort Lauderdale, FL 33304<br/>
-              Email: <a href="mailto:doug@bhgsfl.com" className="text-accent hover:underline font-medium">doug@bhgsfl.com</a><br/>
+              The Harbor Group<br />
+              3101 Bayshore Dr, Fort Lauderdale, FL 33304<br />
+              Email: <a href="mailto:doug@bhgsfl.com" className="text-accent hover:underline font-medium">doug@bhgsfl.com</a><br />
             </p>
           </div>
         </div>

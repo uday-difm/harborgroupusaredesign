@@ -3,8 +3,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useTilt } from '@/comman/motion/useTilt';
-import { HarborArc } from '@/comman/HarborArc';
+import { useTilt } from '@/common/motion/useTilt';
+import { HarborArc } from '@/common/HarborArc';
 
 export const CollaborationSection = () => {
   const tiltRef = useTilt({ max: 5, perspective: 1000, scale: 1.02 });
@@ -29,9 +29,9 @@ export const CollaborationSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Text Content */}
-          <motion.div 
+          <motion.div
             className="flex flex-col text-left relative z-10"
             variants={containerVariants}
             initial="hidden"
@@ -42,15 +42,15 @@ export const CollaborationSection = () => {
                 Partner Program
               </span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               variants={itemVariants}
               className="text-display font-display font-bold text-white mb-6 leading-tight tracking-tight"
             >
               Collaborate with Us!
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={itemVariants}
               className="text-xl text-navy-200 leading-relaxed mb-10 max-w-xl"
             >
@@ -68,7 +68,7 @@ export const CollaborationSection = () => {
           </motion.div>
 
           {/* Image Content */}
-          <motion.div 
+          <motion.div
             className="relative w-full h-[500px] lg:h-[600px] z-10"
             initial={{ opacity: 0, clipPath: 'inset(10% 10% 10% 10% round 24px)' }}
             animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)' }}

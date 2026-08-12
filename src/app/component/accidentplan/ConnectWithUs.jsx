@@ -115,7 +115,7 @@ export const ConnectWithUs = () => {
   };
 
   return (
-    <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
+    <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
         {/* Left Column: Connect With Us Form */}
         <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft flex flex-col h-full">
@@ -198,7 +198,7 @@ export const ConnectWithUs = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75"
+              className="btn-primary w-full py-3 px-6 rounded-md"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "SUBMIT"}

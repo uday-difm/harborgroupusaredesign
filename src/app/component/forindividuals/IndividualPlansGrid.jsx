@@ -59,7 +59,7 @@ export const IndividualPlansGrid = () => {
                                 className="card-flat group relative p-6 bg-white flex flex-col justify-between border-t-2 border-transparent hover:border-accent transition-all duration-300 hover:-translate-y-1 h-full block"
                             >
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-12 h-12 rounded-xl bg-navy-50 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                                    <div className="w-12 h-12 rounded-card bg-navy-50 text-accent flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                                         {React.cloneElement(service.icon, { className: "h-5 w-5 stroke-[1.5]" })}
                                     </div>
                                     <h3 className="text-lg font-bold text-navy-900 font-display">

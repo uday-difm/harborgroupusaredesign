@@ -1,13 +1,13 @@
 "use client";
 
-import { TestimonialSection } from '@/comman/TestimonialSection';
+import { TestimonialSection } from '@/common/TestimonialSection';
 import React, { useEffect, useState } from 'react'
 
 export const TestimonialRxPlan = () => {
-     const [testimonials, setTestimonials] = useState([]);
+  const [testimonials, setTestimonials] = useState([]);
 
   // Fetch FAQs data from public folder
-   useEffect(() => {
+  useEffect(() => {
     const fetchTestimonials = async () => {
       try {
         const response = await fetch('/data/testimonial/rxplan.json'); // Replace with your API endpoint
@@ -23,7 +23,7 @@ export const TestimonialRxPlan = () => {
 
   return (
     <>
-      <TestimonialSection testimonials={testimonials}/>
+      <TestimonialSection testimonials={testimonials} />
     </>
   )
 }

@@ -6,15 +6,15 @@ export const Eligibilityofaccidental = () => {
      const mainIconGradient = (
     <defs>
       <linearGradient id="mainIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#20C997', stopOpacity: 1}} /> {/* A vibrant teal/cyan from the provided image */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* A vibrant teal/cyan from the provided image */}
       </linearGradient>
     </defs>
   );
 
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
        Eligibility of Accident Plans 

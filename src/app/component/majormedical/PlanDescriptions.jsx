@@ -35,7 +35,7 @@ export const PlanDescriptions = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-blue-100 font-inter">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy-50 to-blue-100 font-inter">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-12 text-center leading-tight tracking-tight drop-shadow-sm">

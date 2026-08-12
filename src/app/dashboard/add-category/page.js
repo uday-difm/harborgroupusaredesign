@@ -83,7 +83,7 @@ export default function AddCategory() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex justify-center rounded bg-sky-400 py-2 px-6 font-medium text-gray hover:shadow-1"
+                  className="btn-accent px-10 py-4 font-bold"
                 >
                   {loading ? "Adding..." : "Add"}
                 </button>

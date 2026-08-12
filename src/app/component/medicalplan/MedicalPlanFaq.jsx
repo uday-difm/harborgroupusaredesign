@@ -1,9 +1,9 @@
 "use client";
-import { FAQSection } from '@/comman/FAQSection';
+import { FAQSection } from '@/common/FAQSection';
 import React, { useEffect, useState } from 'react'
 
 export const MedicalPlanFaq = () => {
-    const [faqs, setFaqs] = useState([]);
+  const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Fetch FAQs data from public folder
@@ -23,7 +23,7 @@ export const MedicalPlanFaq = () => {
   }
   return (
     <>
-      <FAQSection faqs={faqs}/>
+      <FAQSection faqs={faqs} />
     </>
   )
 }

@@ -5,9 +5,9 @@ import Image from 'next/image'; // Assuming Next.js Image component for optimiza
 
 export const MedicalPlanBenefitsSection = () => {
   // Define custom colors based on the logo for easy use with Tailwind
-  const primaryDarkBlue = '#1A2E5B'; // Dark blue from the logo text/background
-  const accentLightBlue = '#4CAFDE'; // Lighter blue from the logo outline
-  const softGrayBg = '#F0F2F5'; // A very light gray for background
+  const primaryDarkBlue = 'var(--color-primary)'; // Dark blue from the logo text/background
+  const accentLightBlue = 'var(--color-accent)'; // Lighter blue from the logo outline
+  const softGrayBg = 'var(--color-surface)'; // A very light gray for background
   const white = '#FFFFFF';
 
   const benefitsList = [

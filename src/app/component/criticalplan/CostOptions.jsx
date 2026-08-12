@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const CostOptions = ()=> {
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
          Cost Options and Coverage Scenarios
@@ -62,7 +62,7 @@ export const CostOptions = ()=> {
             </div>
           </div>
           <Link href="#critical-plan-form">
-           <button   className="mt-12 py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn bg-sky-400 text-white font-bold" >
+           <button   className="btn-accent px-10 py-4 font-bold" >
             GET NOW
           </button>
           </Link>

@@ -4,9 +4,9 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useMagnetic } from '@/comman/motion/useMagnetic';
+import { useMagnetic } from '@/common/motion/useMagnetic';
 import { Send, ShieldCheck } from 'lucide-react';
-import { HarborArc } from '@/comman/HarborArc';
+import { HarborArc } from '@/common/HarborArc';
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -153,9 +153,15 @@ export default function HealthPlanQuoteToday() {
       <HarborArc position="bottomRight" className="text-white opacity-5" />
 
       <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
-        
+
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Free Consultation</span>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">
             Get In Touch
@@ -163,9 +169,9 @@ export default function HealthPlanQuoteToday() {
           <p className="mt-3 text-lg text-navy-200">
             Get Your Free Health Plan Quote Today!
           </p>
-        </div>
+        </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
           variants={sectionReveal}
           initial="hidden"
@@ -207,9 +213,8 @@ export default function HealthPlanQuoteToday() {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                  className={`w-full p-4 bg-navy-50/50 rounded-xl border text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all ${
-                    nameError ? "border-red-500" : "border-navy-100"
-                  }`}
+                  className={`w-full p-4 bg-navy-50/50 rounded-xl border text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all ${nameError ? "border-error" : "border-navy-100"
+                    }`}
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -218,7 +223,7 @@ export default function HealthPlanQuoteToday() {
                   aria-describedby={nameError ? "name-error" : undefined}
                 />
                 {nameError && (
-                  <p id="name-error" className="text-red-500 text-xs mt-1.5 font-medium" role="alert">
+                  <p id="name-error" className="text-error text-xs mt-1.5 font-medium" role="alert">
                     {nameError}
                   </p>
                 )}
@@ -288,7 +293,7 @@ export default function HealthPlanQuoteToday() {
               </div>
             </form>
 
-            {error && <div className="mt-4 p-3 rounded-lg bg-red-50 text-red-600 text-sm font-semibold">{error}</div>}
+            {error && <div className="mt-4 p-3 rounded-lg bg-error/10 text-error text-sm font-semibold">{error}</div>}
             {message && <div className="mt-4 p-3 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold">{message}</div>}
           </div>
         </motion.div>

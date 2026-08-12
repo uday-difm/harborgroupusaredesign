@@ -5,8 +5,8 @@ export default function NetworkForm() {
      const gradientStops = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* Tailwind cyan-400 */}
       </linearGradient>
     </defs>
   );
@@ -145,7 +145,7 @@ export default function NetworkForm() {
   return (
     <>
      {/* Existing Section: Network and Contact Form - Enhanced Left Side without Image */}
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8 animate-fadeIn" id="term-form">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8 animate-fadeIn" id="term-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Network Info with Enhanced Design */}
           <div className="bg-white p-8 rounded-card card-elevated text-center lg:text-left relative overflow-hidden">
@@ -154,7 +154,7 @@ export default function NetworkForm() {
               <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
                 <defs>
                   <pattern id="pattern-circles" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-                    <circle cx="5" cy="5" r="2" fill="#3B82F6" /> {/* Blue-500 for subtle dots */}
+                    <circle cx="5" cy="5" r="2" fill="var(--color-navy-500)" /> {/* Blue-500 for subtle dots */}
                   </pattern>
                 </defs>
                 <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)" />
@@ -249,7 +249,7 @@ export default function NetworkForm() {
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
-              <button type="submit" className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={issubmiting}>
+              <button type="submit" className="btn-primary w-full py-3 px-6 rounded-md" disabled={issubmiting}>
                 {issubmiting ? 'submiting...' : 'SUBMIT'}
                 </button>
             </form>

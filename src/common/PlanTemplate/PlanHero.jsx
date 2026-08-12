@@ -3,19 +3,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
-import { useTilt } from '@/comman/motion/useTilt';
+import { useTilt } from '@/common/motion/useTilt';
 
 const containerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } }
 };
 
-export const PlanHero = ({ 
-  title, 
-  description, 
-  imageSrc, 
+export const PlanHero = ({
+  title,
+  description,
+  imageSrc,
   imageAlt = "Plan Background",
-  formComponent = null 
+  formComponent = null
 }) => {
   const prefersReduced = useReducedMotion();
   const imageTilt = useTilt(3);
@@ -28,7 +28,7 @@ export const PlanHero = ({
   return (
     <section className="relative min-h-[85vh] flex flex-col lg:flex-row bg-surface overflow-hidden">
       {/* Split Screen Var A: Left Side Image */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -47,7 +47,7 @@ export const PlanHero = ({
 
       {/* Right Side Content & Form */}
       <div className="lg:w-1/2 w-full flex items-center justify-center p-6 lg:p-16 relative">
-        <motion.div 
+        <motion.div
           className="w-full max-w-xl z-10 space-y-10"
           variants={containerVariants}
           initial="hidden"
@@ -55,13 +55,13 @@ export const PlanHero = ({
         >
           {/* Text Section */}
           <div className="relative z-10">
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-h1 font-display font-bold text-navy-800 leading-tight mb-4"
             >
               {title}
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-lg text-navy-500 leading-relaxed text-justify"
             >
@@ -71,7 +71,7 @@ export const PlanHero = ({
 
           {/* Form Section */}
           {formComponent && (
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="card-elevated p-8 relative overflow-hidden"
               ref={imageTilt.ref}

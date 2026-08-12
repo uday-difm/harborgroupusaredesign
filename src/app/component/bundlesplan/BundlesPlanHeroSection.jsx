@@ -15,7 +15,7 @@ export const BundlesPlanHeroSection = () => {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
               <pattern id="pattern-circles-v2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="10" cy="10" r="4" fill="#60A5FA" opacity="0.1"/>
+                <circle cx="10" cy="10" r="4" fill="var(--color-navy-300)" opacity="0.1"/>
               </pattern>
             </defs>
             <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles-v2)" />
@@ -32,7 +32,7 @@ export const BundlesPlanHeroSection = () => {
             Forget managing multiple plans – our meticulously crafted Bundles Plans are designed to fit your family’s unique needs and safeguard your health. It’s more than just a plan; it’s your unified health solution!
             </p>
 
-            <Link href="#bundles-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn delay-200">
+            <Link href="#bundles-form" className="btn-accent px-10 py-4 font-bold">
               GET STARTED
             </Link>
           </div>

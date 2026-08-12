@@ -5,28 +5,28 @@ export  const PetPlanBenefits = () => {
 
   const primaryBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 1}} /> 
-      <stop offset="100%" style={{stopColor: '#3B82F6', stopOpacity: 1}} /> 
+      <stop offset="0%" style={{stopColor: 'var(--color-navy-300)', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: 'var(--color-navy-500)', stopOpacity: 1}} /> 
     </linearGradient>
   );
 
   const lightBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#BFDBFE', stopOpacity: 1}} /> 
-      <stop offset="100%" style={{stopColor: '#93C5FD', stopOpacity: 1}} />
+      <stop offset="0%" style={{stopColor: 'var(--color-navy-100)', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} />
     </linearGradient>
   );
   const buttonGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> 
-      <stop offset="100%" style={{stopColor: '#2563EB', stopOpacity: 1}} /> 
+      <stop offset="0%" style={{stopColor: 'var(--color-navy-500)', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: 'var(--color-primary)', stopOpacity: 1}} /> 
     </linearGradient>
   );
 
   const gradientStops = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{stopColor: '#0EA5E9', stopOpacity: 1}} /> 
-      <stop offset="100%" style={{stopColor: '#0891B2', stopOpacity: 1}} /> 
+      <stop offset="0%" style={{stopColor: 'var(--color-navy-500)', stopOpacity: 1}} /> 
+      <stop offset="100%" style={{stopColor: 'var(--color-primary)', stopOpacity: 1}} /> 
     </linearGradient>
   );
 

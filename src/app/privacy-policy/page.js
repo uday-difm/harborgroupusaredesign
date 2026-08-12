@@ -1,20 +1,20 @@
 "use client";
 
 import React from 'react';
-import { LegalTemplate } from '@/comman/LegalTemplate';
+import { LegalTemplate } from '@/common/LegalTemplate';
 
 export default function PrivacyPolicyPage() {
   return (
     <>
       <title>Privacy Policy | Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group USA, privacy policy, data protection, personal information, user privacy, website privacy, data usage policy, online security"/>        
-      <meta name="description" content="Review Harbor Group USA's privacy policy to understand how we collect, use, and protect your personal information across our website and services."/>
+      <meta name="keywords" content="Harbor Group USA, privacy policy, data protection, personal information, user privacy, website privacy, data usage policy, online security" />
+      <meta name="description" content="Review Harbor Group USA's privacy policy to understand how we collect, use, and protect your personal information across our website and services." />
       <meta property="og:title" content="Privacy Policy | Harbor Group USA" />
       <meta property="og:description" content="Review Harbor Group USA's privacy policy to understand how we collect, use, and protect your personal information across our website and services." />
       <link rel="canonical" href="https://harborgroupusa.com/privacy-policy/" />
       <meta property="og:url" content="https://harborgroupusa.com/privacy-policy/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
- 
+
       <LegalTemplate title="Privacy Policy">
         <div className="space-y-8">
           {/* Governing Law */}

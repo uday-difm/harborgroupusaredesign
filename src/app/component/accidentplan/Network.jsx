@@ -6,8 +6,8 @@ export const Network = () => {
       const mainIconGradient = (
     <defs>
       <linearGradient id="mainIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#20C997', stopOpacity: 1}} /> {/* A vibrant teal/cyan from the provided image */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* A vibrant teal/cyan from the provided image */}
       </linearGradient>
     </defs>
   );

@@ -21,7 +21,7 @@ export const RXPlanHeroSection = () => {
         Experience affordable health care with our Rx Plans at The Harbor Group. Tailored to cater to your medication needs, our Rx Plans provide a robust solution designed to alleviate the financial burden of prescription expenses.
         </p>
         <Link href="#rx-plan-form">
-        <button className="inline-flex items-center justify-center px-10 py-4 border-2 border-transparent rounded-full text-xl font-semibold text-white bg-sky-400 card-elevated uppercase tracking-wider transition-all duration-300 hover:from-blue-700 hover:to-indigo-800 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:-translate-y-0.5">
+        <button className="btn-accent px-10 py-4 font-bold">
           Our Services
         </button>
         </Link>

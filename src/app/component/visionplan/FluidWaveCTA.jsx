@@ -3,7 +3,7 @@ import React from 'react';
 // Main App component (can be integrated into your existing App or a new page)
 export const FluidWaveCTA = () => {
   return (
-    <div className="min-h-[50vh] bg-gradient-to-br from-blue-50 to-gray-100 font-inter flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+    <div className="min-h-[50vh] bg-gradient-to-br from-blue-50 to-navy-50 font-inter flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
       {/* Custom CSS for animations */}
       <style>
         {`
@@ -37,7 +37,7 @@ export const FluidWaveCTA = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center animate-fluidWave"
         style={{
-          backgroundImage: 'linear-gradient(135deg, #E0F2F7 0%, #BBDEFB 50%, #E3F2FD 100%)', // Light blue/sky gradient
+          backgroundImage: 'linear-gradient(135deg, var(--color-navy-50) 0%, var(--color-navy-100) 50%, var(--color-navy-50) 100%)', // Light blue/sky gradient
           backgroundSize: '200% 200%', // Allows the gradient to pan
         }}
       >

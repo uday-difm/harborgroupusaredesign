@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Stethoscope, Banknote, ShieldAlert, ActivitySquare, Pill, ClipboardPlus } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { AccidentForm } from '../component/accidentplan/AccidentForm';
 
 export default function AccidentPlanPage() {
@@ -30,22 +30,22 @@ export default function AccidentPlanPage() {
   return (
     <>
       <title>Harbor Group Accident Plan | Unexpected Protection</title>
-      <meta name="keywords" content="Harbor Group, accident plan, injury coverage, employee benefits, emergency support, sudden injury care, affordable protection, recovery benefits, workplace accident, group benefits"/>        
-      <meta name="description" content="Harbor Group’s accident plan offers financial support for sudden injuries, helping you recover with less stress and more security."/>
+      <meta name="keywords" content="Harbor Group, accident plan, injury coverage, employee benefits, emergency support, sudden injury care, affordable protection, recovery benefits, workplace accident, group benefits" />
+      <meta name="description" content="Harbor Group’s accident plan offers financial support for sudden injuries, helping you recover with less stress and more security." />
       <meta property="og:title" content="Harbor Group Accident Plan | Unexpected Protection" />
       <meta property="og:description" content="Harbor Group’s accident plan offers financial support for sudden injuries, helping you recover with less stress and more security." />
       <link rel="canonical" href="https://harborgroupusa.com/accident-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/accident-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Coverage for unexpected accidents to ease financial burdens"
         description="Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident.jpg"
         formComponent={<AccidentForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Accident Plan"
         description="At Harbor Group USA, we prioritize simplicity and effectiveness in our Accident Plans, offering a range of benefits to provide financial relief during challenging times."
         features={[
@@ -56,7 +56,7 @@ export default function AccidentPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing support for accident-related needs is easy with our extensive network of experienced professionals."
         plans={[
@@ -73,7 +73,7 @@ export default function AccidentPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility of Accident Plans"
         description="Open to individuals and families, our Accident Plans ensure that coverage for unexpected accidents is within reach, designed to meet your specific criteria."
         criteria={[
@@ -83,7 +83,7 @@ export default function AccidentPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -93,12 +93,12 @@ export default function AccidentPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Accident Plan"
         buttonText="GET STARTED"
         href="#accident-plan-form"

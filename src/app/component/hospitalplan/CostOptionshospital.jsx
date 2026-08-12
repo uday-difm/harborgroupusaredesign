@@ -7,14 +7,14 @@ export const CostOptionshospital = ()=>{
       const blueGradient = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
-        <stop offset="100%" style={{stopColor: '#38BDF8', stopOpacity: 1}} /> {/* Changed from teal/cyan to Tailwind sky-400 */}
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> {/* Tailwind sky-300 */}
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> {/* Changed from teal/cyan to Tailwind sky-400 */}
       </linearGradient>
     </defs>
   );
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch"> {/* Use items-stretch for equal height */}
           {/* Left Column: Image */}
           <div className="flex justify-center lg:justify-start animate-slideInLeft h-full"> {/* Added h-full */}

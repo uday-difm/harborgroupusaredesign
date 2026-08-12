@@ -29,7 +29,7 @@ export const VisionPlanSection = () => {
            Our vision service plans go beyond just seeing – they’re designed to keep your eyesight sharp and your outlook on life crystal clear.
             From routine eye exams to prescription eyewear, we’re dedicated to ensuring your vision is at its best.
           </p>
-          <Link href= "#vision-form" className="bg-sky-400 hover:bg-sky-400 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+          <Link href= "#vision-form" className="btn-accent px-10 py-4 font-bold">
            GET NOW
           </Link>
         </div>

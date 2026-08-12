@@ -7,8 +7,8 @@ export const BenefitsOfLimitedMed = () => {
   const gradientStops = (id) => (
     <defs>
       <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style={{stopColor: '#7DD3FC', stopOpacity: 1}} /> 
-        <stop offset="100%" style={{stopColor: '#22D3EE', stopOpacity: 1}} /> 
+        <stop offset="0%" style={{stopColor: 'var(--color-navy-200)', stopOpacity: 1}} /> 
+        <stop offset="100%" style={{stopColor: 'var(--color-navy-400)', stopOpacity: 1}} /> 
       </linearGradient>
     </defs>
   );
@@ -19,7 +19,7 @@ export const BenefitsOfLimitedMed = () => {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
               <pattern id="benefitsCircles" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
-                <circle cx="7.5" cy="7.5" r="2.5" fill="#60A5FA" opacity="0.1" />
+                <circle cx="7.5" cy="7.5" r="2.5" fill="var(--color-navy-300)" opacity="0.1" />
               </pattern>
             </defs>
             <rect x="0" y="0" width="100%" height="100%" fill="url(#benefitsCircles)" />

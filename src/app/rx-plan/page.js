@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Stethoscope, Banknote, ShieldAlert, ActivitySquare, Pill, ClipboardPlus } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { RxForm } from '../component/rxplan/RxForm';
 
 export default function RxPlanPage() {
@@ -30,22 +30,22 @@ export default function RxPlanPage() {
   return (
     <>
       <title>Harbor Group USA RX Plan | Save on Prescriptions</title>
-      <meta name="keywords" content="Harbor Group, RX plan, prescription savings, pharmacy discounts, medication coverage, employee benefits, drug plan, affordable meds, group RX plan, member pharmacy support"/>        
-      <meta name="description" content="Get affordable access to medications with Harbor Group USA's RX Plan—plus pharmacy discounts and dedicated member support."/>
+      <meta name="keywords" content="Harbor Group, RX plan, prescription savings, pharmacy discounts, medication coverage, employee benefits, drug plan, affordable meds, group RX plan, member pharmacy support" />
+      <meta name="description" content="Get affordable access to medications with Harbor Group USA's RX Plan—plus pharmacy discounts and dedicated member support." />
       <meta property="og:title" content="Harbor Group USA RX Plan | Save on Prescriptions" />
       <meta property="og:description" content="Get affordable access to medications with Harbor Group USA's RX Plan—plus pharmacy discounts and dedicated member support." />
       <link rel="canonical" href="https://harborgroupusa.com/rx-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/rx-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Affordable prescription plans for your medication needs"
         description="Experience affordable health care with our Rx Plans at The Harbor Group. Tailored to cater to your medication needs, our Rx Plans provide a robust solution designed to alleviate the financial burden of prescription expenses."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/RX-plan-hero-section.jpeg"
         formComponent={<RxForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Rx Plan"
         description="At The Harbor Group, we recognize the importance of easy access to medication. Our Rx Plans offer a range of simple, affordable, and professional benefits to address your specific medication requirements."
         features={[
@@ -56,7 +56,7 @@ export default function RxPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing support for your medication needs is seamless with our extensive network of experienced professionals."
         plans={[
@@ -81,7 +81,7 @@ export default function RxPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Rx"
         description="Accessing support for your medication needs is seamless with our extensive network of experienced professionals."
         criteria={[
@@ -92,7 +92,7 @@ export default function RxPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Our Rx Plans provide easy, affordable, and professional options to suit your financial needs for medication."
         plans={[
@@ -120,7 +120,7 @@ export default function RxPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -130,12 +130,12 @@ export default function RxPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Start your Rx plan today!"
         buttonText="GET STARTED"
         href="#rx-plan-form"

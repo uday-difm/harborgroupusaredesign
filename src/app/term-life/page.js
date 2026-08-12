@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, ShieldCheck, HeartHandshake, CheckCircle2, DollarSign, Activity, Settings2 } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { TermLifeForm } from '../component/termlife/TermLifeForm';
 
 export default function TermLifePage() {
@@ -30,22 +30,22 @@ export default function TermLifePage() {
   return (
     <>
       <title>Term Life Plan | The Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group, term life, employee benefits, financial protection, family support, life coverage, affordable plans, group benefits, peace of mind, long-term care"/>        
-      <meta name="description" content="Harbor Group USA offers top-rated, affordable term life insurance plans to protect your family's future with trusted coverage."/>
+      <meta name="keywords" content="Harbor Group, term life, employee benefits, financial protection, family support, life coverage, affordable plans, group benefits, peace of mind, long-term care" />
+      <meta name="description" content="Harbor Group USA offers top-rated, affordable term life insurance plans to protect your family's future with trusted coverage." />
       <meta property="og:title" content="Term Life Plan | The Harbor Group USA" />
       <meta property="og:description" content="Harbor Group USA offers top-rated, affordable term life insurance plans to protect your family's future with trusted coverage." />
       <link rel="canonical" href="https://harborgroupusa.com/term-life/" />
       <meta property="og:url" content="https://harborgroupusa.com/term-life/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Protection for your loved ones with a comprehensive term life plan"
         description="Secure your family’s future — our life plans are meticulously crafted to offer more than just financial assurance. Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Term-life-hero-section.jpeg"
         formComponent={<TermLifeForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Protection Overview"
         description="Our Term Life Plan acts like a safety net, providing financial security to your family if something unexpected happens. It gives them a solid financial foundation, even when you’re not there."
         features={[
@@ -54,7 +54,7 @@ export default function TermLifePage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Access a Network of Top-Notch professionals to support Your Loved Ones."
         plans={[
@@ -70,7 +70,7 @@ export default function TermLifePage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria for Term Life Plans"
         description="Open to individuals and families, our Term Life Plan ensures that comprehensive financial protection is within reach."
         criteria={[
@@ -79,7 +79,7 @@ export default function TermLifePage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Your Financial Shield!"
         plans={[
@@ -107,7 +107,7 @@ export default function TermLifePage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -117,12 +117,12 @@ export default function TermLifePage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Term Life Plan"
         buttonText="GET STARTED"
         href="#term-form"

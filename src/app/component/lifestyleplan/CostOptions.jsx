@@ -14,7 +14,7 @@ export const CostOptions = () => {
       <div className="max-w-6xl w-full bg-white card-elevated rounded-card overflow-hidden md:flex flex-row-reverse">
         <div className="md:w-1/2 p-6 sm:p-10 flex flex-col justify-center">
           <p className={`text-sm font-semibold text-sky-400 mb-2 flex items-center`}>
-            <span className="inline-block w-6 h-0.5 bg-sky-400 mr-2 rounded-full"></span>
+            <span className="btn-accent px-10 py-4 font-bold"></span>
             Know about Cost Options
           </p>
           <h1 className={`text-3xl sm:text-4xl font-extrabold text-navy-800 mb-6 leading-tight`}>

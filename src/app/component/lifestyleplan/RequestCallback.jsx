@@ -262,7 +262,7 @@ export const RequestCallback = () => {
             <p className="text-lg font-semibold mb-4 text-gray-800">{messageContent}</p>
             <button
               onClick={closeMessageBox}
-              className="bg-sky-400 text-white py-2 px-4 rounded-md hover:bg-accent-dark transition duration-300 ease-in-out"
+              className="btn-accent px-10 py-4 font-bold"
             >
               Close
             </button>

@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, Clock, Instagram, Facebook, Twitter, Youtube, Linkedin, ChevronUp, ShieldCheck, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useMagnetic } from '@/comman/motion/useMagnetic';
+import { motion, useReducedMotion } from 'framer-motion';
+import { useMagnetic } from '@/common/motion/useMagnetic';
 
 export const Footer = () => {
-    const [isBackToTopVisible, setIsBackToTopVisible] = useState(false); 
+    const prefersReduced = useReducedMotion();
+    const [isBackToTopVisible, setIsBackToTopVisible] = useState(false);
     const ctaMagnetic = useMagnetic(0.3, 30);
 
     const quickLinks = [
@@ -41,7 +42,7 @@ export const Footer = () => {
     ];
 
     const toggleBackToTopVisibility = () => {
-        if (window.scrollY > 300) { 
+        if (window.scrollY > 300) {
             setIsBackToTopVisible(true);
         } else {
             setIsBackToTopVisible(false);
@@ -51,7 +52,7 @@ export const Footer = () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth' 
+            behavior: 'smooth'
         });
     };
 
@@ -70,9 +71,15 @@ export const Footer = () => {
             <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-navy-700/10 blur-[120px] rounded-full pointer-events-none"></div>
 
             <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
-                
+
                 {/* Pre-Footer Conversion Banner */}
-                <div className="pt-16 pb-12 border-b border-navy-800/80">
+                <motion.div 
+                    initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="pt-16 pb-12 border-b border-navy-800/80"
+                >
                     <div className="relative rounded-3xl bg-gradient-to-r from-navy-900 via-navy-850 to-navy-900 border border-navy-800 p-8 md:p-12 shadow-2xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
                         <div className="max-w-2xl text-center lg:text-left">
                             <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Take The Next Step</span>
@@ -84,8 +91,8 @@ export const Footer = () => {
                             </p>
                         </div>
                         <div className="flex flex-col sm:flex-row items-center gap-4 flex-shrink-0">
-                            <motion.a 
-                                href="#h-form" 
+                            <motion.a
+                                href="#h-form"
                                 className="btn-accent px-8 py-3.5 text-base font-bold rounded-full inline-flex items-center shadow-lg hover:shadow-xl transition-all"
                                 ref={ctaMagnetic.ref}
                                 style={{ x: ctaMagnetic.springX, y: ctaMagnetic.springY }}
@@ -95,7 +102,7 @@ export const Footer = () => {
                                 Get a Free Quote
                                 <ArrowRight className="ml-2 h-4 w-4" />
                             </motion.a>
-                            <a 
+                            <a
                                 href="tel:18004733241"
                                 className="px-6 py-3.5 text-sm font-semibold text-navy-200 hover:text-accent transition-colors flex items-center gap-2 border border-navy-700 hover:border-accent/50 rounded-full bg-navy-900/60"
                             >
@@ -104,11 +111,17 @@ export const Footer = () => {
                             </a>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Main 4-Column Footer Navigation */}
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[2fr_1fr_1.2fr_1.4fr] gap-12 lg:gap-16 py-16 border-b border-navy-800/80">
-                    
+                <motion.div 
+                    initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: prefersReduced ? 0 : 0.1 }}
+                    className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-[2fr_1fr_1.2fr_1.4fr] gap-12 lg:gap-16 py-16 border-b border-navy-800/80"
+                >
+
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <Link href="/" className="inline-block" onClick={scrollToTop}>
@@ -116,24 +129,24 @@ export const Footer = () => {
                                 <img
                                     src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
                                     alt="Harbor Group USA Logo"
-                                    className="h-11 w-auto brightness-0 invert"
+                                    className="h-14 w-auto"
                                 />
                             </div>
                         </Link>
                         <p className="text-sm text-navy-300 leading-relaxed max-w-sm">
                             At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Dedicated to serving small business owners, employees, and self-employed workers with integrity and transparency.
                         </p>
-                        
+
                         {/* Social Icons Bar */}
                         <div>
                             <p className="text-xs font-bold text-navy-400 uppercase tracking-wider mb-3">Connect With Us</p>
                             <div className="flex space-x-2.5">
                                 {socialLinks.map((link) => (
-                                    <a 
-                                        key={link.name} 
-                                        href={link.href} 
-                                        aria-label={link.name} 
-                                        className="w-9 h-9 rounded-xl border border-navy-800 bg-navy-900/80 flex items-center justify-center text-navy-300 hover:text-accent hover:border-accent/60 hover:bg-navy-850 transition-all duration-300" 
+                                    <a
+                                        key={link.name}
+                                        href={link.href}
+                                        aria-label={link.name}
+                                        className="w-9 h-9 rounded-xl border border-navy-800 bg-navy-900/80 flex items-center justify-center text-navy-300 hover:text-accent hover:border-accent/60 hover:bg-navy-850 transition-all duration-300"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
@@ -201,12 +214,12 @@ export const Footer = () => {
                             </p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Bottom Copyright & Legal Links Bar */}
                 <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-navy-400">
                     <p>© {new Date().getFullYear()} Harbor Group USA. All Rights Reserved.</p>
-                    
+
                     <div className="flex flex-wrap items-center gap-6">
                         {legalPages.map(link => (
                             <Link key={link.name} href={link.href} onClick={scrollToTop} className="hover:text-navy-200 transition-colors">

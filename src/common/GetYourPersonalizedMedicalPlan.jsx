@@ -8,10 +8,10 @@ export const GetYourPersonalizedMedicalPlan = ({ title, link , url}) => {
       <div className="w-full mx-auto bg-blue-50 p-8 sm:p-12 flex flex-col items-center justify-center animate-slideInUp relative overflow-hidden">
         {/* Subtle background SVG pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
-          <circle cx="20" cy="20" r="15" fill="#BFDBFE" /> {/* Light blue-200 */}
-          <circle cx="80" cy="50" r="25" fill="#D1FAE5" /> {/* Light green-100 */}
-          <circle cx="50" cy="90" r="10" fill="#BFDBFE" />
-          <path d="M0,50 Q25,20 50,50 T100,50 V100 H0 Z" fill="#E0F2FE" /> {/* Very light blue-100 */}
+          <circle cx="20" cy="20" r="15" fill="var(--color-navy-200)" />
+          <circle cx="80" cy="50" r="25" fill="var(--color-navy-100)" />
+          <circle cx="50" cy="90" r="10" fill="var(--color-navy-200)" />
+          <path d="M0,50 Q25,20 50,50 T100,50 V100 H0 Z" fill="var(--color-navy-50)" />
         </svg>
 
         <h2 className="text-4xl lg:text-5xl font-extrabold mb-8 text-center text-blue-900 relative z-10">

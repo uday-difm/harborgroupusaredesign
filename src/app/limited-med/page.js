@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, HeartPulse, Stethoscope, BriefcaseMedical, Wallet, Activity, ClipboardCheck } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { LimitedMedForm } from '../component/limitedmedplans/LimitedMedForm';
 
 export default function LimitedMedPage() {
@@ -30,22 +30,22 @@ export default function LimitedMedPage() {
   return (
     <>
       <title>Limited Med Plan | The Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group, limited med, essential care, basic health plan, affordable coverage, employee benefits, routine care, medical access, group health, simplified benefits"/>        
-      <meta name="description" content="Get an essential health plan with The Harbor Group Limited Med Plan, which covers basic medical needs without overextending your budget."/>
+      <meta name="keywords" content="Harbor Group, limited med, essential care, basic health plan, affordable coverage, employee benefits, routine care, medical access, group health, simplified benefits" />
+      <meta name="description" content="Get an essential health plan with The Harbor Group Limited Med Plan, which covers basic medical needs without overextending your budget." />
       <meta property="og:title" content="Limited Med Plan | The Harbor Group USA" />
       <meta property="og:description" content="Get an essential health plan with The Harbor Group Limited Med Plan, which covers basic medical needs without overextending your budget." />
       <link rel="canonical" href="https://harborgroupusa.com/limited-med/" />
       <meta property="og:url" content="https://harborgroupusa.com/limited-med/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Limited Med Plans offering coverage for specific needs"
         description="Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/limited-med-plan-hero-section.jpeg"
         formComponent={<LimitedMedForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits Of Limited Med Plans"
         description="At Harbor Group USA, we understand the importance of targeted medical coverage. Our Limited Med Plans offer a range of benefits to cater to your specific health needs."
         features={[
@@ -55,7 +55,7 @@ export default function LimitedMedPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing top-notch support for your targeted medical needs is effortless with our extensive network of experienced professionals."
         plans={[
@@ -76,7 +76,7 @@ export default function LimitedMedPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Limited med plan"
         description="This plan is open to individuals and families, making it accessible for everyone seeking reliable health coverage."
         criteria={[
@@ -86,7 +86,7 @@ export default function LimitedMedPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Our Limited Med Plans provide flexible options to suit your targeted health needs, with straightforward coverage scenarios."
         plans={[
@@ -114,7 +114,7 @@ export default function LimitedMedPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -124,12 +124,12 @@ export default function LimitedMedPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Limited Med Plans"
         buttonText="GET STARTED"
         href="#limited-med-form"

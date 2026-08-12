@@ -28,7 +28,7 @@ export const Hero = () => {
            Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need.
           </p>
           
-          <Link href="#term-form" className="bg-sky-400 hover:bg-blue-400 text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-75">
+          <Link href="#term-form" className="btn-accent px-10 py-4 font-bold">
             GET STARTED
           </Link>
         </div>

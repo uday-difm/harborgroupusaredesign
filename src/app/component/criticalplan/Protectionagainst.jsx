@@ -6,15 +6,15 @@ import Link from "next/link";
 export const Protectionagainst = () => {
   const primaryBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{ stopColor: "#60A5FA", stopOpacity: 1 }} /> {/* blue-400 */}
-      <stop offset="100%" style={{ stopColor: "#3B82F6", stopOpacity: 1 }} /> {/* blue-500 */}
+      <stop offset="0%" style={{ stopColor: "var(--color-navy-300)", stopOpacity: 1 }} /> {/* blue-400 */}
+      <stop offset="100%" style={{ stopColor: "var(--color-navy-500)", stopOpacity: 1 }} /> {/* blue-500 */}
     </linearGradient>
   );
 
   const lightBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style={{ stopColor: "#BFDBFE", stopOpacity: 1 }} /> {/* blue-200 */}
-      <stop offset="100%" style={{ stopColor: "#93C5FD", stopOpacity: 1 }} /> {/* blue-300 */}
+      <stop offset="0%" style={{ stopColor: "var(--color-navy-100)", stopOpacity: 1 }} /> {/* blue-200 */}
+      <stop offset="100%" style={{ stopColor: "var(--color-navy-200)", stopOpacity: 1 }} /> {/* blue-300 */}
     </linearGradient>
   );
 
@@ -190,7 +190,7 @@ export const Protectionagainst = () => {
                   <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
                 </filter>
               </defs>
-              <g fill="#60A5FA" filter="url(#shapeBlur)">
+              <g fill="var(--color-navy-300)" filter="url(#shapeBlur)">
                 <circle cx="10" cy="10" r="8" opacity="0.15" className="animate-shapeFloat1" />
                 <rect x="80" y="20" width="12" height="12" rx="3" ry="3" opacity="0.1" className="animate-shapeFloat2" />
                 <polygon points="30,85 40,95 20,95" opacity="0.12" className="animate-shapeFloat3" />
@@ -301,7 +301,7 @@ export const Protectionagainst = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 rounded-md shadow-md bg-sky-400 text-white hover:bg-accent transition transform hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="btn-accent px-10 py-4 font-bold"
                     disabled={isSubmitting}
                     aria-busy={isSubmitting}
                   >

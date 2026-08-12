@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { Target, Users, Zap, Timer, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { SectionGlow } from '@/comman/SectionGlow';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { SectionGlow } from '@/common/SectionGlow';
 
 const sectionReveal = {
     hidden: {},
@@ -18,6 +18,7 @@ const itemReveal = {
 };
 
 export const WhyChooseUsSection = () => {
+    const prefersReduced = useReducedMotion();
     const reasons = [
         {
             icon: <Users />,
@@ -45,61 +46,68 @@ export const WhyChooseUsSection = () => {
 
     return (
         <section className="bg-surface py-24 font-body border-b border-navy-100/60 relative overflow-hidden">
-            <SectionGlow position="topLeft" className="opacity-25" />
-            
-            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
-                
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 1.2 }}
+                className="absolute inset-0 pointer-events-none"
+            >
+                <div className="absolute inset-0 bg-gradient-to-b from-navy-50/40 to-transparent" />
+                <SectionGlow position="topLeft" className="opacity-25" />
+            </motion.div>
+
+            <motion.div 
+                variants={sectionReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.1 }}
+                className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10"
+            >
+
                 {/* Header */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                <motion.div
+                    variants={itemReveal}
                     className="max-w-2xl mb-16"
                 >
                     <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">The Harbor Advantage</span>
-                    <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight">
-                        Why Choose Harbor Group USA?
+                    <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight flex flex-wrap gap-[0.25em]">
+                        {"Why Choose Harbor Group USA?".split(" ").map((word, i) => (
+                            <motion.span key={i} initial={{ opacity: 0, y: prefersReduced ? 0 : 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}>
+                                {word}
+                            </motion.span>
+                        ))}
                     </h2>
                     <p className="mt-3 text-lg text-navy-600">Discover why thousands trust us to guide their health coverage choices.</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                    
+
                     {/* Left Accordion Column */}
-                    <motion.div 
-                        variants={sectionReveal}
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.1 }}
-                        className="lg:col-span-7 space-y-4"
-                    >
+                    <div className="lg:col-span-7 space-y-4">
                         {reasons.map((reason, index) => {
                             const isOpen = activeIndex === index;
                             return (
-                                <motion.div 
+                                <motion.div
                                     variants={itemReveal}
-                                    key={index} 
+                                    key={index}
                                     initial={false}
                                     onClick={() => setActiveIndex(index)}
-                                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${
-                                        isOpen 
-                                            ? 'bg-white border-accent shadow-xl scale-[1.01]' 
+                                    className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 border ${isOpen
+                                            ? 'bg-white border-accent shadow-xl scale-[1.01]'
                                             : 'bg-white/60 border-navy-100 hover:bg-white hover:border-navy-200'
-                                    }`}
+                                        }`}
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center space-x-4">
-                                            <div className={`p-3.5 rounded-xl transition-colors ${
-                                                isOpen ? 'bg-accent text-white shadow-md' : 'bg-navy-50 text-navy-700'
-                                            }`}>
+                                            <div className={`p-3.5 rounded-xl transition-colors ${isOpen ? 'bg-accent text-white shadow-md' : 'bg-navy-50 text-navy-700'
+                                                }`}>
                                                 {React.cloneElement(reason.icon, { className: "h-6 w-6 stroke-[1.75]" })}
                                             </div>
                                             <h3 className="text-xl font-bold text-navy-900 font-display">{reason.title}</h3>
                                         </div>
-                                        <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${
-                                            isOpen ? 'rotate-90 text-accent' : 'text-navy-400'
-                                        }`} />
+                                        <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-90 text-accent' : 'text-navy-400'
+                                            }`} />
                                     </div>
 
                                     <AnimatePresence initial={false}>
@@ -120,19 +128,16 @@ export const WhyChooseUsSection = () => {
                                 </motion.div>
                             );
                         })}
-                    </motion.div>
+                    </div>
 
                     {/* Right Sticky Image Column */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.1 }}
-                        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    <motion.div
+                        variants={itemReveal}
                         className="lg:col-span-5 relative"
                     >
                         <div className="relative h-[480px] w-full rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80">
                             <AnimatePresence mode="wait">
-                                <motion.img 
+                                <motion.img
                                     key={activeIndex}
                                     src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Why-choose-Harbor-Group-USA-health-plan.jpeg"
                                     alt={reasons[activeIndex].title}
@@ -152,9 +157,8 @@ export const WhyChooseUsSection = () => {
                             </div>
                         </div>
                     </motion.div>
-
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 };

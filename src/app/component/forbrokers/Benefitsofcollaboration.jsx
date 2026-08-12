@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { DollarSign, Headphones, Users, Unlock } from 'lucide-react';
-import { SectionGlow } from '@/comman/SectionGlow';
+import { SectionGlow } from '@/common/SectionGlow';
 
 export const Benefitsofcollaboration = () => {
   const benefits = [
@@ -47,9 +47,9 @@ export const Benefitsofcollaboration = () => {
       <SectionGlow position="top" color="rgba(26, 46, 91, 0.4)" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Visual Header Banner */}
-        <motion.div 
+        <motion.div
           className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export const Benefitsofcollaboration = () => {
         </motion.div>
 
         {/* Benefits Grid */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
           variants={containerVariants}
           initial="hidden"
@@ -85,7 +85,7 @@ export const Benefitsofcollaboration = () => {
           {benefits.map((benefit, index) => (
             <motion.div key={index} variants={itemVariants}>
               <div className="card-elevated bg-white p-8 md:p-10 flex flex-col items-start border-l-4 border-accent transition-all duration-300 hover:-translate-y-2 hover:shadow-xl h-full">
-                <div className="w-14 h-14 rounded-2xl bg-navy-50 text-accent flex items-center justify-center mb-6">
+                <div className="w-14 h-14 rounded-card bg-navy-50 text-accent flex items-center justify-center mb-6">
                   {benefit.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-navy-900 mb-4">

@@ -227,14 +227,14 @@ export const RequestCallbackSection = () => {
   };
 
   return (
-    <div className="bg-gray-50 py-20 md:py-28 overflow-hidden">
+    <div className="bg-navy-50 py-20 md:py-28 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* --- Left Column: Image Composition --- */}
           <div className="relative h-96 lg:h-[600px] animate-fade-in">
             <div className="relative w-full h-full">
               {/* Background Shapes */}
-              <div className="absolute -top-8 -left-8 w-full h-full bg-gray-100 rounded-3xl"></div>
+              <div className="absolute -top-8 -left-8 w-full h-full bg-navy-100 rounded-3xl"></div>
               <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-indigo-200 rounded-3xl shadow-2xl transform rotate-6"></div>
 
               {/* Image */}

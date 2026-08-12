@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Wallet, Activity, ShieldPlus, Layers } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { BundlesForm } from '../component/bundlesplan/BundlesForm';
 
 export default function BundlesPlanPage() {
@@ -30,22 +30,22 @@ export default function BundlesPlanPage() {
   return (
     <>
       <title>Harbor Group USA Bundles Plan | Smarter Benefits</title>
-      <meta name="keywords" content="Harbor Group, bundles plan, employee benefits, combined coverage, group plans, medical dental vision, affordable benefits, flexible plans, full coverage, smart benefits"/>        
-      <meta name="description" content="Simplify your coverage with Harbor Group's bundles plan—combining medical, dental, vision, and more for complete protection."/>
+      <meta name="keywords" content="Harbor Group, bundles plan, employee benefits, combined coverage, group plans, medical dental vision, affordable benefits, flexible plans, full coverage, smart benefits" />
+      <meta name="description" content="Simplify your coverage with Harbor Group's bundles plan—combining medical, dental, vision, and more for complete protection." />
       <meta property="og:title" content="Harbor Group USA Bundles Plan | Smarter Benefits" />
       <meta property="og:description" content="Simplify your coverage with Harbor Group's bundles plan—combining medical, dental, vision, and more for complete protection." />
       <link rel="canonical" href="https://harborgroupusa.com/bundles-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/bundles-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Combine and save!"
         description="Forget managing multiple plans – our meticulously crafted Bundles Plans are designed to fit your family’s unique needs and safeguard your health. It’s more than just a plan; it’s your unified health solution!"
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/combine-and-save.jpeg"
         formComponent={<BundlesForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits Of Bundles Plan"
         description="Prioritize your family’s health with a range of benefits to keep them protected and thriving."
         features={[
@@ -55,7 +55,7 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Effortlessly access top-notch support for your health needs with our extensive network of experienced professionals who cater to your individual needs."
         plans={[
@@ -71,7 +71,7 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria for the Bundles Plans"
         description="These plans are open to individuals and families, making it accessible for everyone seeking a combination of plans."
         criteria={[
@@ -81,7 +81,7 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Budget-friendly, priority-focused. Find your perfect Bundles Plan for complete health protection along with flexible cost options."
         plans={[
@@ -109,7 +109,7 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -119,12 +119,12 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Get Your Personalized Bundles Plans"
         buttonText="GET STARTED"
         href="#bundles-form"

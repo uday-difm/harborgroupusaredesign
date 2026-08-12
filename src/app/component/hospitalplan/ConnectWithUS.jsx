@@ -155,8 +155,8 @@ export const ConnectWithUS = () => {
               </filter>
             </defs>
             <g fill="none" strokeWidth="0.2" strokeOpacity="0.5" filter="url(#waveBlurSmall)">
-              <path stroke="#60A5FA" d="M0,50 Q25,20 50,50 T100,50" className="animate-waveSmall1" />
-              <path stroke="#7DD3FC" d="M0,60 Q20,30 40,60 T60,30 T80,60 T100,60" className="animate-waveSmall2" />
+              <path stroke="var(--color-navy-300)" d="M0,50 Q25,20 50,50 T100,50" className="animate-waveSmall1" />
+              <path stroke="var(--color-navy-200)" d="M0,60 Q20,30 40,60 T60,30 T80,60 T100,60" className="animate-waveSmall2" />
             </g>
           </svg>
         </div>
@@ -252,7 +252,7 @@ export const ConnectWithUS = () => {
 
               <button
                 type="submit"
-                className="w-full bg-sky-400 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 animate-bounceIn"
+                className="btn-accent px-10 py-4 font-bold"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "SUBMIT"}

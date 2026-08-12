@@ -3,18 +3,18 @@
 import React from 'react';
 import { motion, useReducedMotion, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useTilt } from '@/comman/motion/useTilt';
-import { useVelocityEffect } from '@/comman/motion/useVelocityEffect';
+import { useTilt } from '@/common/motion/useTilt';
+import { useVelocityEffect } from '@/common/motion/useVelocityEffect';
 
 const containerVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } }
+    hidden: {},
+    show: { transition: { staggerChildren: 0.1 } }
 };
 
 export const HeroAbout = () => {
     const prefersReduced = useReducedMotion();
     const imageTilt = useTilt(6);
-    
+
     const { skew, blur } = useVelocityEffect(2, 4);
     const velocityBlur = useTransform(blur, (v) => `blur(${v}px)`);
 
@@ -27,9 +27,9 @@ export const HeroAbout = () => {
         <section className="relative bg-surface overflow-hidden py-20 lg:py-32">
             <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
                 <div className="grid lg:grid-cols-[55fr_45fr] gap-12 lg:gap-16 items-center">
-                    
+
                     {/* --- Left Column: Text Content --- */}
-                    <motion.div 
+                    <motion.div
                         className="text-center lg:text-left"
                         variants={containerVariants}
                         initial="hidden"
@@ -57,15 +57,15 @@ export const HeroAbout = () => {
                     </motion.div>
 
                     {/* --- Right Column: Image Composition --- */}
-                    <motion.div 
+                    <motion.div
                         className="relative h-[400px] lg:h-[600px] w-full xl:-mr-20 origin-bottom"
                         initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
                         animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     >
                         <div className="absolute inset-0 w-full lg:ml-auto lg:mr-0">
-                            <motion.div 
-                                className="relative w-full h-full rounded-card overflow-hidden shadow-lg img-duotone"
+                            <motion.div
+                                className="relative w-full h-full rounded-card overflow-hidden card-elevated img-duotone"
                                 ref={imageTilt.ref}
                                 style={{ ...imageTilt.style, skewY: skew, filter: velocityBlur }}
                                 onMouseMove={imageTilt.handleMouseMove}
@@ -77,8 +77,8 @@ export const HeroAbout = () => {
                                     transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                                     className="w-full h-full"
                                 >
-                                    <Image 
-                                        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Who-we-are.jpeg" 
+                                    <Image
+                                        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Who-we-are.jpeg"
                                         alt="Who we are!"
                                         className="w-full h-full object-cover"
                                         width={800}

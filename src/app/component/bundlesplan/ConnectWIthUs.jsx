@@ -130,7 +130,7 @@ export const ConnectWIthUs = () => {
   };
   return (
     <>
-      <section className="w-full bg-gray-100 py-16 px-4 sm:px-6 lg:px-8" id="bundles-form">
+      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8" id="bundles-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Image with unique styling */}
           <div className="flex justify-center  animate-slideInLeft">
@@ -193,7 +193,7 @@ export const ConnectWIthUs = () => {
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
-              <button type="submit" className="w-full bg-sky-400 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75" disabled={issubmiting}
+              <button type="submit" className="btn-accent px-10 py-4 font-bold" disabled={issubmiting}
               >
                 {issubmiting ? 'submiting...' : 'SUBMIT'}
               </button>

@@ -19,7 +19,7 @@ const EligibilityCard = ({ icon: Icon, title, children }) => {
 
 export const  MedicalEligibilityCriteriaSection = ()=> {
   return (
-    <div className="bg-gray-50 py-16 md:py-24 font-sans">
+    <div className="bg-navy-50 py-16 md:py-24 font-sans">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}

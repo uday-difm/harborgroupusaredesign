@@ -10,7 +10,7 @@ import HowItWorksSection from "./component/home/HowItWorksSection";
 import { TestimonialHome } from "./component/home/TestimonialHome";
 import { WholesaleGeneralAgency } from "./component/home/WholesaleGeneralAgency";
 import { WhyChooseUsSection } from "./component/home/WhyChooseUs";
-import QuotePopup from "@/comman/QuotePopup";
+import QuotePopup from "@/common/QuotePopup";
 import CoverageSection from "./component/home/CoverageSection";
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
 
       {/* Overhauled Section Flow */}
       <HeroSection />
-      <ServicesSection />
+      <ServicesSection isCompact={true} />
       <HowItWorksSection />
       <WholesaleGeneralAgency />
       <CoverageSection />
@@ -54,7 +54,7 @@ export default function Home() {
       <HealthPlanQuoteToday />
       <TestimonialHome />
       <FaqSection />
-      
+
       <AnimatePresence>
         {showPopup && <QuotePopup key="quote-popup" onClose={handlePopupClose} />}
       </AnimatePresence>

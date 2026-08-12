@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useTilt } from '@/comman/motion/useTilt';
+import { useTilt } from '@/common/motion/useTilt';
 
 export const HealthCoverage = () => {
   const tiltRef = useTilt({ max: 8, perspective: 1000, scale: 1.02 });
@@ -30,9 +30,9 @@ export const HealthCoverage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Text Content */}
-          <motion.div 
+          <motion.div
             className="flex flex-col text-left relative z-10"
             variants={containerVariants}
             initial="hidden"
@@ -43,15 +43,15 @@ export const HealthCoverage = () => {
                 For Individuals & Families
               </span>
             </motion.div>
-            
-            <motion.h1 
+
+            <motion.h1
               variants={itemVariants}
               className="text-display font-display font-bold text-navy-900 mb-6 leading-tight tracking-tight"
             >
               Simplifying Your Path to <span className="text-accent">Health Coverage</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               variants={itemVariants}
               className="text-xl text-navy-600 leading-relaxed mb-10 max-w-xl"
             >
@@ -61,7 +61,7 @@ export const HealthCoverage = () => {
             <motion.div variants={itemVariants}>
               <Link
                 href="#individual-form"
-                className="btn-primary px-8 py-4 text-lg inline-flex shadow-lg shadow-accent/20"
+                className="btn-primary px-8 py-4 text-lg inline-flex card-elevated shadow-accent/20"
               >
                 GET A CONSULTANT
               </Link>
@@ -69,7 +69,7 @@ export const HealthCoverage = () => {
           </motion.div>
 
           {/* Image Content */}
-          <motion.div 
+          <motion.div
             className="relative w-full h-[500px] lg:h-[600px] z-10"
             initial={{ opacity: 0, clipPath: 'inset(10% 10% 10% 10% round 24px)', scale: 1.1 }}
             animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)', scale: 1 }}

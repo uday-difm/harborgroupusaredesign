@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, BriefcaseMedical, Stethoscope, Banknote, ShieldAlert, ActivitySquare, Pill, ClipboardPlus, Building2, Map, Users } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { HospitalForm } from '../component/hospitalplan/HospitalForm';
 
 export default function HospitalPlanPage() {
@@ -30,22 +30,22 @@ export default function HospitalPlanPage() {
   return (
     <>
       <title>Hospital Coverage Plans | The Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group, hospital plan, inpatient coverage, employee benefits, hospital stay support, medical costs, group plan, financial protection, extra coverage, peace of mind"/>        
-      <meta name="description" content="Get comprehensive hospital coverage with The Harbor Group USA. Our plans provide peace of mind and cover various medical expenses."/>
+      <meta name="keywords" content="Harbor Group, hospital plan, inpatient coverage, employee benefits, hospital stay support, medical costs, group plan, financial protection, extra coverage, peace of mind" />
+      <meta name="description" content="Get comprehensive hospital coverage with The Harbor Group USA. Our plans provide peace of mind and cover various medical expenses." />
       <meta property="og:title" content="Hospital Coverage Plans | The Harbor Group USA" />
       <meta property="og:description" content="Get comprehensive hospital coverage with The Harbor Group USA. Our plans provide peace of mind and cover various medical expenses." />
       <link rel="canonical" href="https://harborgroupusa.com/hospital-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/hospital-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Specialized plans for hospitalization expenses"
         description="Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies. Discover a simple and effective solution that focuses on your peace of mind during challenging times."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Hospital-Plans-Page.jpg"
         formComponent={<HospitalForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Hospital Plan"
         description="At Harbor Group USA, we understand the significance of dedicated hospitalization coverage. Our Hospital Plans offer straightforward benefits to ease the burden of hospital expenses."
         features={[
@@ -55,7 +55,7 @@ export default function HospitalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing top-notch support for your hospitalization needs is effortless with our extensive network of experienced professionals."
         plans={[
@@ -80,7 +80,7 @@ export default function HospitalPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Hospital Plan"
         description="Open to individuals and families, our Hospital Plans ensure that specialized hospitalization coverage is within reach, tailored to meet your specific criteria."
         criteria={[
@@ -91,7 +91,7 @@ export default function HospitalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Our Hospital Plans provide flexible options to suit your hospitalization needs, with straightforward coverage scenarios"
         plans={[
@@ -116,7 +116,7 @@ export default function HospitalPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -126,12 +126,12 @@ export default function HospitalPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Start your Hospital Plans today!"
         buttonText="GET STARTED"
         href="#hospital-plan-form"

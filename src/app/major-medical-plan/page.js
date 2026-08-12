@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { Home, User, Stethoscope, Banknote, ShieldCheck, DollarSign, SlidersHorizontal, MapPin, Hospital, UserCheck, UserSquare, Award, Clock, Heart, Flag } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { MajorMedicalForm } from '../component/majormedical/MajorMedicalForm';
 
 import { MajorMedicalPlanSummaries } from '../component/majormedical/MajorMedicalPlanSummaries';
@@ -17,22 +17,22 @@ export default function MajorMedicalPlanPage() {
   return (
     <>
       <title>Major Medical Plans | Harbor Group USA</title>
-      <meta name="keywords" content="Harbor Group USA, major medical plans, health Plans, affordable medical coverage, individual health plans, business health plans, comprehensive health Plans"/>        
-      <meta name="description" content="Explore Harbor Group USA's major medical plans offering comprehensive health coverage and affordable options for individuals and businesses."/>
+      <meta name="keywords" content="Harbor Group USA, major medical plans, health Plans, affordable medical coverage, individual health plans, business health plans, comprehensive health Plans" />
+      <meta name="description" content="Explore Harbor Group USA's major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
       <meta property="og:title" content="Major Medical Plans | Harbor Group USA" />
       <meta property="og:description" content="Explore Harbor Group USA's major medical plans offering comprehensive health coverage and affordable options for individuals and businesses." />
       <link rel="canonical" href="https://harborgroupusa.com/major-medical-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/major-medical-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Comprehensive Healthcare Coverage with Major Medical Plans"
         description="Prioritizing overall well-being is essential. Our Major Medical Plans are crafted to deliver extensive healthcare coverage, ensuring top-notch care without financial stress. These plans offer a wide range of benefits tailored to diverse needs, including comprehensive medical coverage, preventive care services, and flexible options to suit various budgets and requirements."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Major-Medical-Plans.jpg"
         formComponent={<MajorMedicalForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Major Medical Plans"
         description="Our plans provide extensive coverage for medical services, ensuring that all your healthcare needs are met."
         features={[
@@ -43,7 +43,7 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care."
         plans={[
@@ -80,7 +80,7 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Major Medical Plan"
         description="Open to individuals and families, our Major Medical Plans ensure that comprehensive support for your Major Medical needs is within reach."
         criteria={[
@@ -91,7 +91,7 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Cost Options and Coverage Scenarios"
         description="Our Major Medical Plans offer programs that are good for your Wallet and better for your Well-being. We provide easy, simple, and professional options to suit your financial needs."
         plans={[
@@ -112,7 +112,7 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -125,7 +125,7 @@ export default function MajorMedicalPlanPage() {
       <MajorMedicalPlanSummaries />
       <MajorMedicalNetworkTables />
 
-      <PlanCTA 
+      <PlanCTA
         title="Request a Call Back?"
         buttonText="GET STARTED"
         href="#major-medical-plan-form"

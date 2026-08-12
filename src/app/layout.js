@@ -3,16 +3,16 @@
 "use client";
 
 import "./globals.css";
-import { Header } from "@/comman/Header";
-import { Footer } from "@/comman/Footer";
+import { Header } from "@/common/Header";
+import { Footer } from "@/common/Footer";
 import { usePathname } from "next/navigation";
-import CookiesBanner from "@/comman/CookiesBanner";
+import CookiesBanner from "@/common/CookiesBanner";
 import Script from 'next/script'; // Import the Script component
-import Holidayspopup from "@/comman/Holidayspopup";
+import Holidayspopup from "@/common/Holidayspopup";
 import Snowfall from "react-snowfall";
-import Preloader from "@/comman/Preloader";
-import ScrollProgress from "@/comman/ScrollProgress";
-import SmoothScrollProvider from "@/comman/SmoothScrollProvider";
+import Preloader from "@/common/Preloader";
+import ScrollProgress from "@/common/ScrollProgress";
+import SmoothScrollProvider from "@/common/SmoothScrollProvider";
 import { Inter, Sora } from 'next/font/google';
 
 const inter = Inter({
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-NCT1WCEG39');
           `}
         </Script>
-     
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -133,11 +133,11 @@ export default function RootLayout({ children }) {
           <ScrollProgress />
           {!isDashboardPage && (
             <>
-          <Header />
-          {/* <Holidayspopup />
-                  <Snowfall
+              <Header />
+              {/* <Holidayspopup />
+      <Snowfall
        snowflakeCount={160}
-        color="#00A6F4"   
+        color="#C9A24B"   
         speed={[0.5, 1.5]}
         wind={[-0.3, 0.3]}
         radius={[1, 3]}
@@ -151,9 +151,9 @@ export default function RootLayout({ children }) {
           pointerEvents: "none",
              }}
       /> */}
-        </>
-  )}
-          <div className={!isDashboardPage ? "pt-24 md:pt-28" : ""}>
+            </>
+          )}
+          <div className={!isDashboardPage ? "pt-24 md:pt-32" : ""}>
             {children}
           </div>
           {!isDashboardPage && <Footer />}

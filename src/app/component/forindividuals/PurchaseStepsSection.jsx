@@ -95,12 +95,12 @@ export const PurchaseStepsSection = () => {
               <motion.div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group" variants={itemVariants}>
                 
                 {/* Connector/Number Dot */}
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow-lg shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white card-elevated shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
                   <span className="font-bold font-display text-xl">{index + 1}</span>
                 </div>
                 
                 {/* Content Card */}
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-2xl bg-white shadow-lg border border-navy-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-card bg-white card-elevated border border-navy-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                   
                   {/* Decorative background number */}
                   <div className="absolute -right-4 -bottom-6 font-display font-black text-9xl text-navy-50 opacity-50 pointer-events-none select-none">
@@ -108,7 +108,7 @@ export const PurchaseStepsSection = () => {
                   </div>
                   
                   <div className="relative z-10 flex flex-col items-start text-left">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-50 text-accent flex items-center justify-center mb-6">
+                    <div className="w-14 h-14 rounded-card bg-navy-50 text-accent flex items-center justify-center mb-6">
                       {step.icon}
                     </div>
                     <h3 className="font-bold text-navy-900 text-2xl mb-3">{step.title}</h3>

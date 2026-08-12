@@ -3,7 +3,7 @@ import React from 'react';
 export const BenefitsofLifestylePlan = () => {
   return (
 
-    <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100 font-inter py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen  bg-gradient-to-br from-navy-50 to-navy-100 font-inter py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <BenefitsSection />
     </div>
   );

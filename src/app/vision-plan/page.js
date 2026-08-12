@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Home, User, Wallet, Eye, Stethoscope, Glasses, BadgeDollarSign } from 'lucide-react';
-import { PlanHero } from '@/comman/PlanTemplate/PlanHero';
-import { PlanGrid } from '@/comman/PlanTemplate/PlanGrid';
-import { PlanBenefits } from '@/comman/PlanTemplate/PlanBenefits';
-import { PlanEligibility } from '@/comman/PlanTemplate/PlanEligibility';
-import { PlanHowToApply } from '@/comman/PlanTemplate/PlanHowToApply';
-import { PlanCostOptions } from '@/comman/PlanTemplate/PlanCostOptions';
-import { PlanFaq } from '@/comman/PlanTemplate/PlanFaq';
-import { PlanCTA } from '@/comman/PlanTemplate/PlanCTA';
+import { PlanHero } from '@/common/PlanTemplate/PlanHero';
+import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
+import { PlanBenefits } from '@/common/PlanTemplate/PlanBenefits';
+import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
+import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
+import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
+import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { VisionForm } from '../component/visionplan/VisionForm';
 
 export default function VisionPlanPage() {
@@ -31,22 +31,22 @@ export default function VisionPlanPage() {
   return (
     <>
       <title>Harbor Group Vision Plans | Clear, Affordable Care</title>
-      <meta name="keywords" content="Harbor Group, vision plan, eye care, vision plans, affordable eyewear, employee vision benefits, eye exams, group vision coverage, vision support, optical care"/>        
-      <meta name="description" content="Harbor Group USA offers affordable vision plans with exams, eyewear, and support to keep your eyes healthy and costs low."/>
+      <meta name="keywords" content="Harbor Group, vision plan, eye care, vision plans, affordable eyewear, employee vision benefits, eye exams, group vision coverage, vision support, optical care" />
+      <meta name="description" content="Harbor Group USA offers affordable vision plans with exams, eyewear, and support to keep your eyes healthy and costs low." />
       <meta property="og:title" content="Harbor Group Vision Plans | Clear, Affordable Care" />
       <meta property="og:description" content="Harbor Group USA offers affordable vision plans with exams, eyewear, and support to keep your eyes healthy and costs low." />
       <link rel="canonical" href="https://harborgroupusa.com/vision-plan/" />
       <meta property="og:url" content="https://harborgroupusa.com/vision-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero 
+      <PlanHero
         title="Clear vision, clear path - our vision plans keep your focus right!"
         description="Our vision service plans go beyond just seeing — they're designed to keep your eyesight sharp and your outlook on life crystal clear. From routine eye exams to prescription eyewear, we're dedicated to ensuring your vision is at its best."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/vision-eye-plan.jpg"
         formComponent={<VisionForm />}
       />
 
-      <PlanGrid 
+      <PlanGrid
         title="Benefits of Vision Plan"
         description="A great vision plan is an investment in your daily life. Explore the core benefits of our vision coverage."
         features={[
@@ -57,7 +57,7 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Network"
         description="Accessing top-notch eye care is effortless with our extensive network of experienced professionals."
         plans={[
@@ -72,7 +72,7 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanEligibility 
+      <PlanEligibility
         title="Eligibility Criteria of Vision Plan"
         description="We ensure everyone can access affordable and essential eye care."
         criteria={[
@@ -82,7 +82,7 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanHowToApply 
+      <PlanHowToApply
         title="How To Apply"
         description="Enrolling in a plan is straightforward and user-friendly."
         steps={[
@@ -92,7 +92,7 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanCostOptions 
+      <PlanCostOptions
         title="Costs Options and Coverage"
         description="Our vision plans offer flexible options to suit your needs, with straightforward coverage options."
         plans={[
@@ -113,12 +113,12 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanFaq 
-        faqs={faqs} 
+      <PlanFaq
+        faqs={faqs}
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Frequently-Asked-Questions.jpeg"
       />
 
-      <PlanCTA 
+      <PlanCTA
         title="Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage"
         buttonText="ENROLL IN VISION CARE"
         href="#vision-form"

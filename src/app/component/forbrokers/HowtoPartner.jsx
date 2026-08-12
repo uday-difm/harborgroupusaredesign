@@ -255,41 +255,41 @@ export const HowtoPartner = () => {
 
             <div className="space-y-10 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-navy-200 before:to-transparent">
               {/* Step 1 */}
-              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                  <span className="font-bold">1</span>
+              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active mb-8 md:mb-12" variants={itemVariants}>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+                  <span className="font-bold text-lg">1</span>
                 </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-bold text-navy-900 text-lg">Reach Out & Apply</h3>
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Reach Out & Apply</h3>
                   </div>
-                  <p className="text-navy-600">Submit your application using the form. Tell us about your expertise and the plans you intend to focus on.</p>
+                  <p className="text-navy-600 text-base leading-relaxed">Submit your application using the form. Tell us about your expertise and the plans you intend to focus on.</p>
                 </div>
               </motion.div>
 
               {/* Step 2 */}
-              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                  <span className="font-bold">2</span>
+              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active mb-8 md:mb-12" variants={itemVariants}>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+                  <span className="font-bold text-lg">2</span>
                 </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-bold text-navy-900 text-lg">Get Onboarded</h3>
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Get Onboarded</h3>
                   </div>
-                  <p className="text-navy-600">Our team will review your application and provide the necessary contracting, compliance, and training materials.</p>
+                  <p className="text-navy-600 text-base leading-relaxed">Our team will review your application and provide the necessary contracting, compliance, and training materials.</p>
                 </div>
               </motion.div>
 
               {/* Step 3 */}
               <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
-                <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-accent text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-                  <span className="font-bold">3</span>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+                  <span className="font-bold text-lg">3</span>
                 </div>
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-navy-100 bg-white shadow-sm">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-bold text-navy-900 text-lg">Grow Together</h3>
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Grow Together</h3>
                   </div>
-                  <p className="text-navy-600">Access our competitive rates, group buying power, and comprehensive broker support to scale your business.</p>
+                  <p className="text-navy-600 text-base leading-relaxed">Access our competitive rates, group buying power, and comprehensive broker support to scale your business.</p>
                 </div>
               </motion.div>
             </div>
