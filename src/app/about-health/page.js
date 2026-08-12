@@ -89,8 +89,8 @@ export default function About() {
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
       <HeroAbout/>
-      <OurHistory/>
       <FounderSection/>
+      <OurHistory/>
       {/* <TestimonialAbout/> */}
       <BlogSection/>
     </>

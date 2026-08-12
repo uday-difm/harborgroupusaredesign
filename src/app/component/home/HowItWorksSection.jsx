@@ -11,11 +11,7 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
     const cardOpacity = isActive ? 1 : 0.4;
 
     return (
-        <motion.div
-            animate={{ 
-                opacity: prefersReduced ? 1 : cardOpacity
-            }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+        <div
             onMouseEnter={() => onHoverStart?.(index)}
             onMouseLeave={() => onHoverEnd?.()}
             onFocus={() => onFocus?.(index)}
@@ -40,7 +36,11 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
                 <div className={`absolute top-1/2 -translate-y-1/2 -left-[4.5rem] -ml-[5px] w-3 h-3 rounded-full z-20 transition-all duration-500 ${isActive ? 'bg-accent shadow-[0_0_10px_rgba(201,162,75,0.8)] scale-125' : 'bg-navy-200'}`} />
             )}
             
-            <div className="relative z-10">
+            <motion.div 
+                className="relative z-10"
+                animate={{ opacity: prefersReduced ? 1 : cardOpacity }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
                 <div className="flex items-center justify-between mb-6 lg:mb-8">
                     <span className={`text-4xl lg:text-5xl font-display font-bold transition-colors duration-500 ${isActive ? 'text-accent' : 'text-navy-200 group-hover:text-accent'}`}>
                         {step.number}
@@ -53,15 +53,7 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
                     {step.title}
                 </h3>
                 
-                <motion.div
-                    initial={false}
-                    animate={{ 
-                        height: (!isDesktop || isActive || prefersReduced) ? "auto" : 0, 
-                        opacity: (!isDesktop || isActive || prefersReduced) ? 1 : 0 
-                    }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                >
+                <div className="mt-2">
                     <p className="text-sm text-navy-600 leading-relaxed mb-6">{step.description}</p>
                     
                     {/* Expanded Content Block */}
@@ -81,10 +73,10 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
                             <span className="text-xs font-semibold text-navy-500 bg-navy-50 px-2.5 py-1 rounded-lg">{step.detail.meta}</span>
                         </div>
                     )}
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
 
-        </motion.div>
+        </div>
     );
 };
 
