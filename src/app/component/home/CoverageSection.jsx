@@ -54,6 +54,23 @@ export default function CoverageSection({
 
   return (
     <section className="bg-navy-900 text-white py-24 font-body relative overflow-hidden">
+      {/* Grid and Dot Pattern Overlay using App Theme Colors */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0 opacity-40"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(162, 171, 207, 0.12) 31px, rgba(162, 171, 207, 0.12) 32px, transparent 32px, transparent 63px, rgba(162, 171, 207, 0.12) 63px, rgba(162, 171, 207, 0.12) 64px),
+            repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(162, 171, 207, 0.12) 31px, rgba(162, 171, 207, 0.12) 32px, transparent 32px, transparent 63px, rgba(162, 171, 207, 0.12) 63px, rgba(162, 171, 207, 0.12) 64px),
+            radial-gradient(circle at 32px 32px, rgba(195, 152, 72, 0.3) 2.56px, transparent 3.06px),
+            radial-gradient(circle at 0px 0px, rgba(162, 171, 207, 0.25) 1.92px, transparent 2.42px),
+            radial-gradient(circle at 64px 0px, rgba(162, 171, 207, 0.25) 1.92px, transparent 2.42px),
+            radial-gradient(circle at 0px 64px, rgba(162, 171, 207, 0.25) 1.92px, transparent 2.42px),
+            radial-gradient(circle at 64px 64px, rgba(162, 171, 207, 0.25) 1.92px, transparent 2.42px)
+          `,
+          backgroundSize: '64px 64px',
+        }}
+      />
+
       {/* Decorative Glow Background */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-accent/10 blur-[140px] rounded-full pointer-events-none"></div>
       <HarborArc position="topLeft" className="text-white opacity-5" />

@@ -125,12 +125,20 @@ export const Footer = () => {
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <Link href="/" className="inline-block" onClick={scrollToTop}>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-3 group">
                                 <img
                                     src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor%20Logo.png"
                                     alt="Harbor Group USA Logo"
-                                    className="h-14 w-auto"
+                                    className="h-14 w-auto object-contain"
                                 />
+                                <div className="flex flex-col justify-center leading-none">
+                                    <span className="font-display text-lg font-bold tracking-tight text-white group-hover:text-accent transition-colors">
+                                        Harbor Group
+                                    </span>
+                                    <span className="font-display text-xs font-extrabold tracking-[0.2em] text-accent group-hover:text-white transition-colors uppercase mt-0.5">
+                                        USA
+                                    </span>
+                                </div>
                             </div>
                         </Link>
                         <p className="text-sm text-navy-300 leading-relaxed max-w-sm">

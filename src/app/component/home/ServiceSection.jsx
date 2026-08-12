@@ -107,6 +107,15 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
     return (
         <section ref={gridRef} className="bg-surface-alt relative overflow-hidden py-24 border-y border-navy-100/60 font-body">
             <div className="bg-noise"></div>
+            {/* Theme-Colored Dot Grid Graphic Background Pattern */}
+            <div 
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                    backgroundImage: 'radial-gradient(var(--color-navy-500, #1F3580) 1.4px, transparent 1.4px)',
+                    backgroundSize: '14px 14px',
+                    opacity: 0.22,
+                }}
+            />
             <SectionGlow position="topRight" className="opacity-30" />
 
             <motion.div
