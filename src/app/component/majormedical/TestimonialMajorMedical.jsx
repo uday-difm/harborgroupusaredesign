@@ -15,7 +15,11 @@ export const TestimonialMajorMedical = () => {
         const data = await response.json();
         setTestimonials(data);
       } catch (error) {
-        console.error('Error fetching testimonials:', error);
+        if (process.env.NODE_ENV === 'development') {
+
+          console.error('Error fetching testimonials:', error);
+
+        }
       }
     };
 

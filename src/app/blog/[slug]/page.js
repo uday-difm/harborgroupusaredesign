@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { fadeUp, staggerContainer } from "@/common/motion/variants";
 
 const BlogSubscribePopup = ({ onClose }) => {
     const [email, setEmail] = useState("");
@@ -46,45 +48,27 @@ const BlogSubscribePopup = ({ onClose }) => {
             }}
         >
             {/* overlay: keep dark overlay but page content remains white */}
-            <div className="absolute inset-0" style={{ background: "rgba(19,30,73,0.45)" }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-navy-900/45 backdrop-blur-sm" aria-hidden="true" />
 
             <div
-                className="relative w-full max-w-lg mx-auto p-6 sm:p-8"
+                className="relative w-full max-w-lg mx-auto p-6 sm:p-8 bg-white text-navy-900 rounded-2xl border border-navy-100 shadow-lg font-body"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Subscribe to blog"
-                style={{
-                    background: "#ffffff",          // force white
-                    color: "#111111",               // dark text
-                    borderRadius: 12,
-                    border: "1px solid rgba(19,30,73,0.06)",
-                    boxShadow: "0 10px 30px rgba(2,6,23,0.12)",
-                }}
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3"
+                    className="absolute top-3 right-3 w-9 h-9 rounded-full bg-navy-50 text-navy-900 inline-flex items-center justify-center hover:bg-navy-100 transition-colors"
                     aria-label="Close popup"
-                    style={{
-                        background: "rgba(19,30,73,0.06)",
-                        color: "#111",
-                        width: 36,
-                        height: 36,
-                        borderRadius: 999,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "none",
-                    }}
                 >
-                    <span style={{ fontSize: 18, lineHeight: 1 }}>&times;</span>
+                    <span className="text-lg leading-none">&times;</span>
                 </button>
 
-                <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: "#111" }}>
+                <h2 className="text-3xl sm:text-4xl font-display font-bold text-navy-900 mb-4">
                     Be the First to Know
                 </h2>
 
-                <p className="mb-6 text-sm sm:text-base" style={{ color: "#444" }}>
+                <p className="mb-6 text-sm sm:text-base text-navy-600">
                     Get immediate updates on our newest blog posts. Whether it&apos;s the latest trends, helpful tips, or
                     personal stories, you&apos;ll be the first to read them.
                 </p>
@@ -95,12 +79,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email address"
-                        className="flex-grow p-3 rounded-md text-sm"
-                        style={{
-                            background: "#fff",
-                            color: "#111",
-                            border: "1px solid rgba(19,30,73,0.08)",
-                        }}
+                        className="flex-grow p-3 rounded-lg text-sm bg-white text-navy-900 border border-navy-100 focus:ring-2 focus:ring-accent/50"
                     />
                     <button
                         onClick={handleSubscribe}
@@ -112,7 +91,7 @@ const BlogSubscribePopup = ({ onClose }) => {
                 </div>
 
                 {message && (
-                    <p className="mt-4 text-sm text-center" style={{ color: message.toLowerCase().includes("success") ? "#059669" : "#111" }}>
+                    <p className={`mt-4 text-sm text-center ${message.toLowerCase().includes("success") ? "text-success" : "text-navy-900"}`}>
                         {message}
                     </p>
                 )}
@@ -159,13 +138,13 @@ export default function BlogDetail() {
 
     if (loading) {
         return (
-            <div style={{ background: "#fff", minHeight: "100vh" }} className="flex items-center justify-center">
+            <div className="min-h-screen bg-surface flex items-center justify-center font-body">
                 <div className="flex flex-col items-center p-20">
-                    <svg className="animate-spin h-10 w-10 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" style={{ color: "#0ea5a4" }}>
+                    <svg className="animate-spin h-10 w-10 mb-4 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <p style={{ color: "#444" }}>Loading blogs...</p>
+                    <p className="text-navy-600">Loading article...</p>
                 </div>
             </div>
         );
@@ -173,15 +152,15 @@ export default function BlogDetail() {
 
     if (error) {
         return (
-            <div style={{ background: "#fff", minHeight: "100vh", padding: 40 }}>
-                <div style={{ color: "#d9534f", textAlign: "center" }}>Error: {error}</div>
+            <div className="min-h-screen bg-surface p-10 font-body">
+                <div className="text-error text-center">Error: {error}</div>
             </div>
         );
     }
     if (!blog) {
         return (
-            <div style={{ background: "#fff", minHeight: "100vh", padding: 40 }}>
-                <div style={{ color: "#111", textAlign: "center" }}>No blog found.</div>
+            <div className="min-h-screen bg-surface p-10 font-body">
+                <div className="text-navy-900 text-center">No blog found.</div>
             </div>
         );
     }
@@ -199,60 +178,50 @@ export default function BlogDetail() {
             <link rel="canonical" href={`https://harborgroupusa.com/blogs/${slug}`} />
             <meta property="og:url" content={`https://harborgroupusa.com/blogs/${slug}`} />
 
-            <div style={{ background: "#ffffff", color: "#111" }}>
-                <div className="max-w-4xl mx-auto px-4 py-12" style={{ background: "#fff" }}>
-                    <h1 className="text-4xl font-bold mb-4" style={{ color: "#111" }}>
+            <div className="bg-surface text-navy-900 font-body">
+                <motion.article variants={staggerContainer(0.1)} initial="hidden" animate="show" className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+                    <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-display font-bold tracking-tight leading-tight mb-4 text-navy-900">
                         {blog.blog_title}
-                    </h1>
-                    <p style={{ color: "#666", marginBottom: 24 }}>Published on {blog.formatted_blog_date}</p>
+                    </motion.h1>
+                    <motion.p variants={fadeUp} className="text-navy-500 mb-8">Published on {blog.formatted_blog_date}</motion.p>
 
                     {blog.blog_feature_image && (
-                        <div style={{ background: "#fff", borderRadius: 12, overflow: "hidden", marginBottom: 24 }}>
+                        <motion.div variants={fadeUp} className="relative overflow-hidden rounded-2xl mb-10 border border-navy-100 shadow-md">
                             <Image
                                 src={blog.blog_feature_image}
                                 alt={blog.blog_title}
                                 width={800}
                                 height={400}
                                 className="w-full object-cover"
-                                style={{ display: "block" }}
+                                sizes="(max-width: 896px) 100vw, 896px"
                             />
-                        </div>
+                        </motion.div>
                     )}
 
-                    <div
-                        className="prose max-w-none mb-10 text-justify"
-                        style={{
-                            color: "#111",
-                            background: "#fff",
-                            padding: 0,
-                            lineHeight: 1.65,
-                        }}
+                    <motion.div
+                        variants={fadeUp}
+                        className="prose max-w-none mb-10 text-justify font-body text-navy-800 leading-relaxed prose-headings:font-display prose-headings:text-navy-900 prose-a:text-accent prose-a:font-semibold"
                         dangerouslySetInnerHTML={{ __html: blog.blog_content }}
                     />
 
                     {tags.length > 0 && (
-                        <div className="mt-12">
-                            <h3 className="text-xl font-bold mb-4" style={{ color: "#111" }}>
+                        <motion.div variants={fadeUp} className="mt-12">
+                            <h3 className="text-xl font-display font-bold text-navy-900 mb-4">
                                 Tags:
                             </h3>
                             <div className="flex flex-wrap gap-3">
                                 {tags.map((tag, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-4 py-2 rounded-full text-sm font-medium"
-                                        style={{
-                                            background: "#fff",
-                                            color: "#111",
-                                            border: "1px solid rgba(19,30,73,0.06)",
-                                        }}
+                                        className="px-4 py-2 rounded-full text-sm font-medium bg-white text-navy-700 border border-navy-100"
                                     >
                                         {tag}
                                     </span>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
                     )}
-                </div>
+                </motion.article>
 
                 {showPopup && <BlogSubscribePopup onClose={() => setShowPopup(false)} />}
             </div>

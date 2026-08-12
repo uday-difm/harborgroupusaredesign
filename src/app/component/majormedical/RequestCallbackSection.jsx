@@ -20,7 +20,7 @@ const FormInput = ({
   errorText,
 }) => {
   const commonClasses =
-    "w-full pl-12 pr-4 py-3 bg-gray-50 border rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-transparent transition-all duration-300";
+    "w-full pl-12 pr-4 py-3 bg-gray-50 border rounded-lg text-base text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300";
 
   // If there's an error, add red border
   const errorClasses = errorText ? "border-error" : "border-gray-200";
@@ -174,7 +174,7 @@ export const RequestCallbackSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //console.log("Form Data Submitted:", formData); // Log the form data before submission
+
 
     setError("");
     setMessage("");
@@ -234,8 +234,8 @@ export const RequestCallbackSection = () => {
           <div className="relative h-96 lg:h-[600px] animate-fade-in">
             <div className="relative w-full h-full">
               {/* Background Shapes */}
-              <div className="absolute -top-8 -left-8 w-full h-full bg-navy-100 rounded-3xl"></div>
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-indigo-200 rounded-3xl shadow-2xl transform rotate-6"></div>
+              <div className="absolute -top-8 -left-8 w-full h-full bg-navy-100 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-navy-100 to-navy-200 rounded-2xl shadow-2xl transform rotate-6"></div>
 
               {/* Image */}
               <div className="absolute inset-4">
@@ -296,12 +296,12 @@ export const RequestCallbackSection = () => {
                   type="checkbox"
                   checked={formData.terms}
                   onChange={handleInputChange}
-                  className="h-5 w-5 mt-1 rounded border-gray-300 text-sky-600 focus:ring-accent"
+                  className="h-5 w-5 mt-1 rounded border-gray-300 text-primary focus:ring-accent"
                 />
                 <div className="text-sm">
                   <label htmlFor="terms" className="text-gray-600">
                     By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{" "}
-                    <Link href="/sms-and-marketing-terms" className="font-semibold text-sky-600 hover:underline">
+                    <Link href="/sms-and-marketing-terms" className="font-semibold text-primary hover:underline">
                       SMS and Marketing terms and conditions.
                     </Link>
                   </label>
@@ -312,7 +312,7 @@ export const RequestCallbackSection = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-xl text-white bg-accent hover:bg-accent-dark shadow-lg shadow-sky-500/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  className="w-full inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-accent hover:bg-accent-dark shadow-lg shadow-accent/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                   disabled={issubmiting}
                 >
                   {issubmiting ? "submiting..." : "SUBMIT"}

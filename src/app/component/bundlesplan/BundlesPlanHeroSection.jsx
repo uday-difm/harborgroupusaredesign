@@ -7,10 +7,10 @@ import Link from 'next/link';
 export const BundlesPlanHeroSection = () => {
 
   return (
- <div className="min-h-screen bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
+ <div className="min-h-screen bg-navy-50 font-body antialiased flex flex-col items-center justify-center">
 
     
-       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-100 to-blue-300 text-navy-800">
+       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy-100 to-navy-200 text-navy-800">
         <div className="absolute inset-0 opacity-20 pointer-events-none animate-bgPulse">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -23,12 +23,12 @@ export const BundlesPlanHeroSection = () => {
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 items-center relative z-10 p-4 sm:p-6 lg:p-8">
-          <div className="text-center lg:text-left animate-slideInLeft">
+          <div className="text-center lg:text-left ">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold mb-6 leading-tight drop-shadow-xl animate-textGlowLight">
               Combine and save!
             </h1>
           
-            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 text-justify">
+            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-xl lg:max-w-none mx-auto lg:mx-0 drop-shadow-md  text-justify">
             Forget managing multiple plans – our meticulously crafted Bundles Plans are designed to fit your family’s unique needs and safeguard your health. It’s more than just a plan; it’s your unified health solution!
             </p>
 
@@ -40,161 +40,14 @@ export const BundlesPlanHeroSection = () => {
             <Image
             width={600}
             height={400}
-              className="w-full max-w-md h-auto rounded-card shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" 
+              className="object-cover w-full max-w-md h-auto rounded-2xl shadow-2xl transition-transform duration-700 ease-in-out animate-imageFloat" 
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/combine-and-save.jpeg"
               alt="Doctor's hand stacking health-related blocks"
               
             />
           </div>
         </div>
-      </section>
-
-       <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-80px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 1s ease-out forwards;
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(80px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInRight {
-          animation: slideInRight 1s ease-out forwards;
-        }
-
-        @keyframes textGlowLight {
-          0% {
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          }
-          50% {
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.05);
-          }
-          100% {
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          }
-        }
-        .animate-textGlow {
-          animation: textGlowLight 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-          70% {
-            transform: scale(0.95);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        @keyframes imageFloat {
-          0% {
-            transform: translateY(0px); /* Removed rotate(6deg) */
-          }
-          50% {
-            transform: translateY(-10px); /* Removed rotate(6deg) */
-          }
-          100% {
-            transform: translateY(0px); /* Removed rotate(6deg) */
-          }
-        }
-        .animate-imageFloat {
-          animation: imageFloat 4s infinite ease-in-out;
-        }
-
-        @keyframes bgPulse {
-          0% {
-            transform: scale(1);
-            opacity: 0.2;
-          }
-          50% {
-            transform: scale(1.02);
-            opacity: 0.25;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0.2;
-          }
-        }
-        .animate-bgPulse {
-          animation: bgPulse 6s infinite ease-in-out;
-        }
-
-        /* Utility for delayed animations */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-
-        /* Delayed Fade In for cards */
-        @keyframes delayFadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-delayFadeIn {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.2s;
-        }
-        .animate-delayFadeIn-2 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.4s;
-        }
-        .animate-delayFadeIn-3 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.6s;
-        }
-      `}</style>
-    </div>
+      </section></div>
   );
 };
 

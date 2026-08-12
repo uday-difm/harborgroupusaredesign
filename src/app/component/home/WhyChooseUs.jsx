@@ -44,6 +44,13 @@ export const WhyChooseUsSection = () => {
 
     const [activeIndex, setActiveIndex] = useState(0);
 
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+            setActiveIndex((prev) => (prev + 1) % reasons.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [activeIndex, reasons.length]);
+
     return (
         <section className="bg-surface py-24 font-body border-b border-navy-100/60 relative overflow-hidden">
             <motion.div
@@ -100,7 +107,7 @@ export const WhyChooseUsSection = () => {
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center space-x-4">
-                                            <div className={`p-3.5 rounded-xl transition-colors ${isOpen ? 'bg-accent text-white shadow-md' : 'bg-navy-50 text-navy-700'
+                                            <div className={`p-3.5 rounded-lg transition-colors ${isOpen ? 'bg-accent text-white shadow-md' : 'bg-navy-50 text-navy-700'
                                                 }`}>
                                                 {React.cloneElement(reason.icon, { className: "h-6 w-6 stroke-[1.75]" })}
                                             </div>
@@ -135,7 +142,7 @@ export const WhyChooseUsSection = () => {
                         variants={itemReveal}
                         className="lg:col-span-5 relative"
                     >
-                        <div className="relative h-[480px] w-full rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80">
+                        <div className="relative h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-navy-100/80">
                             <AnimatePresence mode="wait">
                                 <motion.img
                                     key={activeIndex}

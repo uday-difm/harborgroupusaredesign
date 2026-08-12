@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 
 export const AccidentHero = () => {
   const mainIconGradient = (
@@ -13,10 +14,23 @@ export const AccidentHero = () => {
       </linearGradient>
     </defs>
   );
+
+  const prefersReduced = useReducedMotion();
+
+  const containerVariants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+  };
+
   return (
     <>
 
-    <div className="min-h-screen bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-navy-50 font-body antialiased flex flex-col items-center justify-center">
 
       {/* Hero Section for Accident Coverage - NEW UNIQUE DESIGN (Geometric Overlay) */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-white text-navy-800"> 
@@ -29,7 +43,7 @@ export const AccidentHero = () => {
 
         />
         {/* Multi-stop gradient overlay pulling from logo colors */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-200 to-transparent opacity-60"></div> 
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-500 via-navy-200 to-transparent opacity-60"></div> 
         <div className="absolute inset-0 bg-navy-50 opacity-30"></div> 
         <div className="absolute inset-0 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
@@ -47,100 +61,31 @@ export const AccidentHero = () => {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col items-start justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-left">
-        
-          <div className="max-w-6xl animate-slideInLeft w-full flex flex-col items-center">
-            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-display font-extrabold mb-6 leading-tight text-center drop-shadow-xl animate-textGlowLight">
+        <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="max-w-7xl mx-auto flex flex-col items-start justify-center relative z-10 p-4 sm:p-6 lg:p-8 text-left"
+        >
+          <div className="max-w-6xl w-full flex flex-col items-center">
+            <motion.h1 variants={itemVariants} className="text-2xl sm:text-3xl lg:text-5xl font-display font-extrabold mb-6 leading-tight text-center drop-shadow-xl">
              Coverage for unexpected accidents to ease financial burdens
-            </h1>
-            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md animate-fadeInUp delay-100 ">
+            </motion.h1>
+            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-navy-800 mb-10 max-w-5xl text-center mx-auto lg:mx-0 drop-shadow-md">
            Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it.
-            </p>
+            </motion.p>
          
-            <Link href="#accident-plan-form" className="bg-accent hover:bg-accent-dark text-white font-bold py-4 px-10 rounded-full card-elevated transition duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-75 animate-bounceIn delay-200"> {/* Button color changed to red from logo */}
-              GET STARTED
-            </Link>
+            <motion.div variants={itemVariants}>
+              <Link href="#accident-plan-form" className="btn-accent px-10 py-4 font-bold rounded-full transition-transform hover:scale-105 inline-block"> 
+                GET STARTED
+              </Link>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Tailwind CSS Custom Animations */}
       <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-80px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 1s ease-out forwards;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-          70% {
-            transform: scale(0.95);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        @keyframes textGlowLight {
-          0% {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-          }
-          50% {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(255, 255, 255, 0.05);
-          }
-          100% {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-          }
-        }
-        .animate-textGlowLight {
-          animation: textGlowLight 3s infinite alternate ease-in-out;
-        }
-
         /* New Shape Movement Animations */
         @keyframes shapeMove1 {
           0%, 100% { transform: translate(0, 0); }
@@ -171,11 +116,6 @@ export const AccidentHero = () => {
         .animate-shapeMove2 { animation: shapeMove2 22s infinite alternate ease-in-out; }
         .animate-shapeMove3 { animation: shapeMove3 18s infinite alternate ease-in-out; }
         .animate-shapeMove4 { animation: shapeMove4 25s infinite alternate ease-in-out; }
-
-
-        /* Utility for delayed animations */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
       `}</style>
     </div>
     </>

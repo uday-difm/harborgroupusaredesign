@@ -6,7 +6,7 @@ import Link from 'next/link';
 // Main App component
 export const VisionPlanSection = () => {
   return (
-    <div className="min-h-screen bg-navy-50 font-sans antialiased flex items-center justify-center">
+    <div className="min-h-screen bg-navy-50 font-body antialiased flex items-center justify-center">
       {/* Hero Section - Enhanced Design */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Gradient Overlay */}
@@ -17,11 +17,11 @@ export const VisionPlanSection = () => {
           //onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1920x1080/D3DCE6/333333?text=Hero+Image+Placeholder'; }}
         />
         {/* Gradient Overlay for better text readability and unique look */}
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-70"></div>
-        <div className="absolute inset-0 bg-black opacity-30"></div> {/* Additional dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent opacity-70"></div>
+        <div className="absolute inset-0 bg-navy-900 opacity-30"></div> {/* Additional dark overlay */}
 
         {/* Content */}
-        <div className="relative z-10 text-center p-6 max-w-4xl mx-auto animate-fadeInUp">
+        <div className="relative z-10 text-center p-6 max-w-4xl mx-auto ">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
           Clear vision, clear path - our vision plans keep your focus right!
           </h1>
@@ -35,22 +35,6 @@ export const VisionPlanSection = () => {
         </div>
       </section>
 
-      {/* Tailwind CSS Custom Animation */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-      `}</style>
-    </div>
+      {/* Tailwind CSS Custom Animation */}</div>
   );
 };

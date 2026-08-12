@@ -8,7 +8,7 @@ const PhcsLogo = () => (
     alt="PHCS Logo"
     width={80}
     height={30}
-    className="inline-block"
+    className="object-cover inline-block"
   />
 );
 
@@ -113,10 +113,10 @@ export const PhcsPlansTable = () => {
       {/* Table Container */}
       <div className="w-full max-w-7xl bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
         {/* Table Header */}
-        <div className="grid grid-cols-4 bg-blue-100 text-blue-800 font-semibold text-sm sm:text-base lg:text-lg rounded-t-lg border-b border-blue-200">
-          <div className="p-3 sm:p-4 text-center border-r border-blue-200">Major Medical Plans</div>
+        <div className="grid grid-cols-4 bg-navy-100 text-primary font-semibold text-sm sm:text-base lg:text-lg rounded-t-lg border-b border-navy-100">
+          <div className="p-3 sm:p-4 text-center border-r border-navy-100">Major Medical Plans</div>
           {plansData.planNames.map((planName, index) => (
-            <div key={index} className={`p-3 sm:p-4 text-center ${index < plansData.planNames.length - 1 ? 'border-r border-blue-200' : ''}`}>
+            <div key={index} className={`p-3 sm:p-4 text-center ${index < plansData.planNames.length - 1 ? 'border-r border-navy-100' : ''}`}>
               {planName}
             </div>
           ))}
@@ -127,7 +127,7 @@ export const PhcsPlansTable = () => {
           <React.Fragment key={sectionIndex}>
             {/* Section Title Row - conditionally rendered */}
             {section.title && (
-              <div className="grid grid-cols-4 bg-blue-50 text-blue-700 font-bold text-base sm:text-lg py-3 border-t border-b border-blue-200">
+              <div className="grid grid-cols-4 bg-navy-50 text-primary font-bold text-base sm:text-lg py-3 border-t border-b border-navy-100">
                 <div className="col-span-4 text-center">
                   {section.title}
                 </div>
@@ -140,7 +140,7 @@ export const PhcsPlansTable = () => {
                 key={rowIndex}
                 className={`grid grid-cols-4 text-gray-800 text-xs sm:text-sm lg:text-base ${
                   rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                } border-t border-gray-100 hover:bg-blue-50 transition duration-150 ease-in-out`}
+                } border-t border-gray-100 hover:bg-navy-50 transition duration-150 ease-in-out`}
               >
                 {/* Label Column */}
                 <div className="p-3 sm:p-4 border-r border-gray-200 flex items-center font-medium text-gray-700">

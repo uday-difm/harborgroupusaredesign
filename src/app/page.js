@@ -1,38 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import { FaqSection } from "./component/home/FaqSection";
 import HealthPlanQuoteToday from "./component/home/HealthPlanQuoteToday";
 import { HeroSection } from "./component/home/Hero";
 import { ServicesSection } from "./component/home/ServiceSection";
 import HowItWorksSection from "./component/home/HowItWorksSection";
-import { TestimonialHome } from "./component/home/TestimonialHome";
+
 import { WholesaleGeneralAgency } from "./component/home/WholesaleGeneralAgency";
-import { WhyChooseUsSection } from "./component/home/WhyChooseUs";
-import QuotePopup from "@/common/QuotePopup";
 import CoverageSection from "./component/home/CoverageSection";
 
 export default function Home() {
-  const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    // Check if visitor already dismissed or submitted
-    const dismissed = localStorage.getItem('harbor_quote_popup_dismissed');
-    if (dismissed) return; // Don't show again
-
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 8000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handlePopupClose = () => {
-    setShowPopup(false);
-    localStorage.setItem('harbor_quote_popup_dismissed', '1');
-  };
-
   return (
     <>
       <title>Harbor Group USA | Affordable Health Plans</title>
@@ -46,18 +23,13 @@ export default function Home() {
 
       {/* Overhauled Section Flow */}
       <HeroSection />
-      <ServicesSection isCompact={true} />
+      <ServicesSection />
       <HowItWorksSection />
       <WholesaleGeneralAgency />
       <CoverageSection />
-      <WhyChooseUsSection />
       <HealthPlanQuoteToday />
-      <TestimonialHome />
-      <FaqSection />
 
-      <AnimatePresence>
-        {showPopup && <QuotePopup key="quote-popup" onClose={handlePopupClose} />}
-      </AnimatePresence>
+      <FaqSection />
     </>
   );
 }

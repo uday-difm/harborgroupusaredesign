@@ -58,7 +58,7 @@ const SignIn = () => {
         <div className="relative z-10 max-w-7xl w-full px-4 py-10">
           <div className=" items-center ">
             {/* Right: Login Form */}
-            <div className="bg-white/20 backdrop-blur-md p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-md mx-auto border border-white/30">
+            <div className="bg-white/20 backdrop-blur-md p-6 md:p-10 rounded-lg shadow-2xl w-full max-w-md mx-auto border border-white/30">
               <form onSubmit={handleSubmit}>
                 <h2 className="text-3xl font-semibold text-white mb-6 text-center">Sign In</h2>
 

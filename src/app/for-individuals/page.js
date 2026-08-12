@@ -2,7 +2,7 @@ import React from 'react'
 import { HealthCoverage } from '../component/forindividuals/HealthCoverage'
 import { GetAHealthPlanConsultant } from '../component/forindividuals/GetAHealthPlanConsultant'
 import { IndividualPlansGrid } from '../component/forindividuals/IndividualPlansGrid'
-import { TestimonialForIndividuals } from '../component/forindividuals/TestimonialForIndividuals'
+
 import { PurchaseStepsSection } from '../component/forindividuals/PurchaseStepsSection'
 
 export default function page() {
@@ -20,7 +20,7 @@ export default function page() {
         <HealthCoverage/>
         <PurchaseStepsSection/>
         <IndividualPlansGrid/>
-        <TestimonialForIndividuals/>
+
         <GetAHealthPlanConsultant/>
       </main>
     </>

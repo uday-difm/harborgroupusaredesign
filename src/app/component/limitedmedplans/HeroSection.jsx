@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 export const HeroSection = () => {
   return (
-    <div className="min-h-screen bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-blue-200 text-navy-800">
+    <div className="min-h-screen bg-navy-50 font-body antialiased flex flex-col items-center justify-center">
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-surface-alt text-navy-800">
         <Image 
         width= {600}
         height = {400}
@@ -38,7 +38,7 @@ export const HeroSection = () => {
              Limited Med Plans <br className="hidden sm:block"/> offering coverage for specific needs
 
             </h1>
-            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-5xl mx-auto drop-shadow-md animate-fadeInUp delay-100">
+            <p className="text-lg sm:text-xl text-navy-800 mb-10 max-w-5xl mx-auto drop-shadow-md ">
             Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements. It’s not just a plan; it’s a precise and efficient tool designed to alleviate the financial burden of specific health concerns.
             </p>
             <Link href="#limited-med-form" className="btn-accent px-10 py-4 font-bold">
@@ -46,106 +46,7 @@ export const HeroSection = () => {
             </Link>
           </div>
         </div>
-      </section>
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes slideInUp { /* New animation */
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slideInUp {
-          animation: slideInUp 1s ease-out forwards;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-          70% {
-            transform: scale(0.95);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        @keyframes textGlowLight {
-          0% {
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          }
-          50% {
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.05);
-          }
-          100% {
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          }
-        }
-        .animate-textGlowLight {
-          animation: textGlowLight 3s infinite alternate ease-in-out;
-        }
-
-        @keyframes radialPulse { /* New animation for radial background */
-          0% {
-            transform: scale(1);
-            opacity: 0.3;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 0.4;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0.3;
-          }
-        }
-        .animate-radialPulse {
-          animation: radialPulse 8s infinite alternate ease-in-out;
-        }
-
-        /* Utility for delayed animations */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-      `}</style>
-    </div>
+      </section></div>
   );
 };
 

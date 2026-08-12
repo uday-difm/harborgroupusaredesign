@@ -94,7 +94,7 @@ export const Faq = () => {
             return (
               <motion.div 
                 key={index} 
-                className="bg-navy-50 rounded-card overflow-hidden border border-navy-100"
+                className="bg-navy-50 rounded-2xl overflow-hidden border border-navy-100"
                 variants={itemVariants}
               >
                 <button

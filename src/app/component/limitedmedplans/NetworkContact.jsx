@@ -151,9 +151,9 @@ export const NetworkContact = () => {
 
   return (
     <>
-      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8" id="limited-med-form">
+      <section className="w-full bg-navy-50 py-20 md:py-28 px-4 sm:px-6 lg:px-8" id="limited-med-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"> 
-          <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft">
+          <div className="bg-white p-8 rounded-2xl card-elevated ">
             <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
               Connect With Us
             </h2>
@@ -166,7 +166,7 @@ export const NetworkContact = () => {
                     id="name"
                     name="name"
                     ref={nameInputRef}
-                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 border ${
+                    className={`w-full p-3 rounded-lg focus:ring-accent focus:border-accent border ${
                       nameError ? "border-error" : "border-gray-300"
                     }`}
                     placeholder="John Doe"
@@ -186,17 +186,17 @@ export const NetworkContact = () => {
                   </div>
                 <div className="flex-1">
                   <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Your email*</label>
-                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com"  value={formData.email}
+                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" placeholder="you@example.com"  value={formData.email}
                     onChange={handleInputChange} />
                 </div>
               </div>
               <div>
                 <label htmlFor="message" className="block text-gray-700 text-sm font-medium mb-2">Your message</label>
-                <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y" placeholder="How can we help you?"   value={formData.message}
+                <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent resize-y" placeholder="How can we help you?"   value={formData.message}
                   onChange={handleInputChange} ></textarea>
               </div>
               <div className="flex items-start">
-                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"  checked={formData.terms}
+                <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-accent mt-1"  checked={formData.terms}
                   onChange={handleInputChange} />
                 <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
@@ -210,7 +210,7 @@ export const NetworkContact = () => {
             {error && <div className="mt-4 text-error">{error}</div>}
             {successMessage && <div className="mt-4 text-accent">{successMessage}</div>}
           </div>
-          <div className="bg-navy-50 p-8 rounded-card card-elevated animate-slideInRight">
+          <div className="bg-navy-50 p-8 rounded-2xl card-elevated animate-slideInRight">
             <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
              Network
             </h2>

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { useTilt } from '@/common/motion/useTilt';
 
 export const HealthCoverage = () => {
-  const tiltRef = useTilt({ max: 8, perspective: 1000, scale: 1.02 });
+  const { ref: tiltRef, style: tiltStyle, handleMouseMove, handleMouseLeave } = useTilt(8);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,7 +75,13 @@ export const HealthCoverage = () => {
             animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)', scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div ref={tiltRef} className="w-full h-full rounded-card overflow-hidden shadow-2xl bg-navy-50">
+            <motion.div 
+              ref={tiltRef} 
+              style={tiltStyle}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-50"
+            >
               <Image
                 className="object-cover w-full h-full"
                 src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/simplifying-path-health-coverage.jpeg"
@@ -84,7 +90,7 @@ export const HealthCoverage = () => {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>

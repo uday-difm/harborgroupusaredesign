@@ -13,9 +13,9 @@ export const Benefitsofaccident = () => {
   return (
     <>
        {/* New Section: Benefits of Accident Plan */}
-      <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 animate-fadeInUp">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-4 ">
             Benefits of Accident Plan
           </h2>
           <p className="text-lg text-navy-500 mb-12 max-w-3xl mx-auto">

@@ -21,7 +21,7 @@ export const PlanEligibility = ({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-surface font-body overflow-hidden relative">
+    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden relative">
       <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">

@@ -7,6 +7,7 @@ import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
 import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
 import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
 import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanNetwork } from '@/common/PlanTemplate/PlanNetwork';
 import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
 import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { AccidentForm } from '../component/accidentplan/AccidentForm';
@@ -56,19 +57,29 @@ export default function AccidentPlanPage() {
         ]}
       />
 
-      <PlanCostOptions
+      <PlanNetwork
         title="Network"
         description="Accessing support for accident-related needs is easy with our extensive network of experienced professionals."
-        plans={[
+        features={[
           {
-            title: "Network Benefits",
-            features: [
-              "Join us and tap into a network of professionals experienced in accident care",
-              "We make sure you receive guidance from specialists familiar with the challenges of accident-related injuries",
-              "Benefit from our expansive network covering every corner of the United States",
-              "Access accident-related care conveniently, ensuring support no matter where you are",
-              "Our dedicated support team is ready to assist you in all your accident-related queries"
-            ]
+            title: "Network of Professionals",
+            description: "Join us and tap into a network of professionals experienced in accident care"
+          },
+          {
+            title: "Specialist Guidance",
+            description: "We make sure you receive guidance from specialists familiar with the challenges of accident-related injuries"
+          },
+          {
+            title: "Nationwide Coverage",
+            description: "Benefit from our expansive network covering every corner of the United States"
+          },
+          {
+            title: "Convenient Access",
+            description: "Access accident-related care conveniently, ensuring support no matter where you are"
+          },
+          {
+            title: "Dedicated Support",
+            description: "Our dedicated support team is ready to assist you in all your accident-related queries"
           }
         ]}
       />

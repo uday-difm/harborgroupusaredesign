@@ -21,7 +21,7 @@ export const PlanHowToApply = ({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-navy-900 font-body relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-navy-900 font-body relative overflow-hidden">
       <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-12 relative z-10">

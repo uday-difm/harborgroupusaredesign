@@ -53,7 +53,7 @@ export default function CoverageSection({
   const { skew } = useVelocityEffect(1.5, 4);
 
   return (
-    <section className="bg-navy-900 text-white py-24 font-body relative overflow-hidden">
+    <section className="bg-navy-900 text-white py-20 md:py-28 font-body relative overflow-hidden">
       {/* Grid and Dot Pattern Overlay using App Theme Colors */}
       <div 
         className="absolute inset-0 pointer-events-none z-0 opacity-40"
@@ -102,9 +102,9 @@ export default function CoverageSection({
                   <motion.article
                     key={idx}
                     style={{ skewY: prefersReduced ? 0 : skew }}
-                    className="flex flex-col p-6 rounded-2xl border border-navy-800 bg-navy-850/60 backdrop-blur-md shadow-lg hover:border-accent/50 hover:bg-navy-800/80 transition-all duration-300 group"
+                    className="flex flex-col p-6 rounded-2xl border-navy-700 bg-navy-800/60 backdrop-blur-md hover:border-accent/50 hover:bg-navy-800/90 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-navy-800 border border-navy-700 flex items-center justify-center shadow-inner mb-4 group-hover:bg-accent group-hover:border-accent transition-colors">
+                    <div className="w-12 h-12 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center shadow-inner mb-4 group-hover:bg-accent group-hover:border-accent transition-colors">
                       {React.cloneElement(s.icon, { className: "h-5 w-5 text-accent group-hover:text-navy-950 transition-colors" })}
                     </div>
                     <div>
@@ -120,7 +120,7 @@ export default function CoverageSection({
           {/* Image Column */}
           <div className="lg:col-span-5 relative">
             <div
-              className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-800"
+              className="card relative rounded-2xl overflow-hidden border-navy-800"
               ref={imageParallax.ref}
             >
               <motion.img

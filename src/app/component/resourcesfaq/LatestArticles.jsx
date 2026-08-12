@@ -22,7 +22,11 @@ export const LatestArticles = () => {
           throw new Error(data.message || 'Failed to load articles');
         }
       } catch (err) {
-        console.error('Error fetching articles:', err);
+        if (process.env.NODE_ENV === 'development') {
+
+          console.error('Error fetching articles:', err);
+
+        }
         setError(err.message || 'Something went wrong');
       } finally {
         setLoading(false);
@@ -46,7 +50,7 @@ export const LatestArticles = () => {
   };
 
   return (
-    <section className="section-tint py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="text-center mb-16"
@@ -84,7 +88,7 @@ export const LatestArticles = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group flex flex-col bg-white rounded-card card-elevated overflow-hidden"
+                className="group flex flex-col bg-white rounded-2xl card-elevated overflow-hidden"
               >
                 <div className="relative h-56 w-full overflow-hidden bg-navy-50">
                   <Image

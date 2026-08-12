@@ -147,7 +147,7 @@ export default function HealthPlanQuoteToday() {
   };
 
   return (
-    <section className="bg-navy-800 py-24 font-body border-b border-navy-900/60 relative overflow-hidden" id="h-form">
+    <section className="bg-navy-800 py-20 md:py-28 font-body border-b border-navy-900/60 relative overflow-hidden" id="h-form">
       {/* Ambient gradient behind the form */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
       <HarborArc position="bottomRight" className="text-white opacity-5" />
@@ -180,7 +180,7 @@ export default function HealthPlanQuoteToday() {
         >
           {/* Left Column: Photo Frame */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80">
+            <div className="card relative rounded-2xl overflow-hidden border-navy-100/80">
               <Image
                 width={600}
                 height={600}
@@ -202,7 +202,7 @@ export default function HealthPlanQuoteToday() {
           </div>
 
           {/* Right Column: Lead Form Card */}
-          <div className="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl border border-navy-100/80 shadow-xl">
+          <div className="card lg:col-span-7 p-8 md:p-10 rounded-2xl border-navy-100/80">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-xs font-bold text-navy-800 uppercase tracking-wider mb-2">
@@ -213,7 +213,7 @@ export default function HealthPlanQuoteToday() {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                  className={`w-full p-4 bg-navy-50/50 rounded-xl border text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all ${nameError ? "border-error" : "border-navy-100"
+                  className={`w-full p-4 bg-navy-50/50 rounded-lg border text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all ${nameError ? "border-error" : "border-navy-100"
                     }`}
                   placeholder="John Doe"
                   value={formData.name}
@@ -241,7 +241,7 @@ export default function HealthPlanQuoteToday() {
                   required
                   onChange={handleInputChange}
                   placeholder="john@example.com"
-                  className="w-full p-4 bg-navy-50/50 rounded-xl border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
+                  className="w-full p-4 bg-navy-50/50 rounded-lg border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
                 />
               </div>
 
@@ -256,7 +256,7 @@ export default function HealthPlanQuoteToday() {
                   onChange={handleInputChange}
                   rows="4"
                   placeholder="How can we help you find the right health plan?"
-                  className="w-full p-4 bg-navy-50/50 rounded-xl border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
+                  className="w-full p-4 bg-navy-50/50 rounded-lg border border-navy-100 text-navy-900 font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
                 ></textarea>
               </div>
 
@@ -280,7 +280,7 @@ export default function HealthPlanQuoteToday() {
               <div>
                 <motion.button
                   type="submit"
-                  className="w-full btn-accent py-4 text-base font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2"
+                  className="w-full btn-accent py-4 text-base font-bold rounded-lg shadow-lg hover:shadow-xl transition-[border-color,box-shadow,color,background-color] shadow-sm flex items-center justify-center gap-2"
                   disabled={issubmiting}
                   ref={submitMagnetic.ref}
                   style={{ x: submitMagnetic.springX, y: submitMagnetic.springY }}
@@ -294,7 +294,7 @@ export default function HealthPlanQuoteToday() {
             </form>
 
             {error && <div className="mt-4 p-3 rounded-lg bg-error/10 text-error text-sm font-semibold">{error}</div>}
-            {message && <div className="mt-4 p-3 rounded-lg bg-emerald-50 text-emerald-700 text-sm font-semibold">{message}</div>}
+            {message && <div className="mt-4 p-3 rounded-lg bg-success/10 text-success text-sm font-semibold">{message}</div>}
           </div>
         </motion.div>
       </div>

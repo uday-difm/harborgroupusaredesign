@@ -23,7 +23,11 @@ export default function TopBar() {
           router.push('/dashboard/login');
         }
       } catch (err) {
-        console.error('Error fetching user:', err);
+        if (process.env.NODE_ENV === 'development') {
+
+          console.error('Error fetching user:', err);
+
+        }
       }
     };
     fetchUser();
@@ -47,7 +51,11 @@ export default function TopBar() {
       });
       router.push('/dashboard/login');
     } catch (err) {
-      console.error('Logout failed', err);
+      if (process.env.NODE_ENV === 'development') {
+
+        console.error('Logout failed', err);
+
+      }
     }
   };
 
@@ -117,7 +125,7 @@ export default function TopBar() {
         </div>
 
         {dropdownOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md card-elevated z-30 py-2">
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg card-elevated z-30 py-2">
            <button
               onClick={handleEditProfile}
               className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

@@ -14,7 +14,7 @@ export const BenefitsOfLimitedMed = () => {
   );
   return (
     <>
-      <section className="relative w-full bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"> 
+      <section className="relative w-full bg-surface-alt py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"> 
         <div className="absolute inset-0 opacity-20 pointer-events-none animate-bgPulse">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
             <defs>
@@ -26,14 +26,14 @@ export const BenefitsOfLimitedMed = () => {
           </svg>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="text-center lg:text-left animate-slideInLeft">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight animate-fadeInUp">
+          <div className="text-center lg:text-left ">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight ">
              Benefits Of Limited Med Plans
             </h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 animate-fadeInUp delay-100 text-justify">
+            <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0  text-justify">
              At Harbor Group USA, we understand the importance of targeted medical coverage. Our Limited Med Plans offer a range of benefits to cater to your specific health needs.
             </p>
-            <ul className="space-y-4 text-gray-700 text-left lg:text-left animate-fadeInUp delay-200">
+            <ul className="space-y-4 text-gray-700 text-left lg:text-left ">
               <li className="flex items-start">
                 <svg className="w-7 h-7 mr-3 flex-shrink-0" fill="none" stroke="url(#benefitIconGradient1)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   {gradientStops("benefitIconGradient1")}
@@ -61,7 +61,7 @@ export const BenefitsOfLimitedMed = () => {
           {/* Right Column: Image with unique styling */}
           <div className="flex justify-center lg:justify-end animate-slideInRight">
             <Image
-            className="w-full max-w-md h-auto rounded-card shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
+            className="object-cover w-full max-w-md h-auto rounded-2xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Limited-med-plan-benefit.jpeg"
             alt="Medical icons and data visualization"
             width={600}

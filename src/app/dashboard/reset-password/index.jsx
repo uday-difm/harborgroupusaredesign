@@ -87,7 +87,7 @@ export default function ForgetPassword() {
               value={email}
               onChange={handleEmailChange}
               placeholder="Enter your email"
-              className="w-full rounded-md px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
         );
@@ -100,7 +100,7 @@ export default function ForgetPassword() {
               value={otp}
               onChange={handleOtpChange}
               placeholder="Enter verification code"
-              className="w-full rounded-md px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
         );
@@ -114,7 +114,7 @@ export default function ForgetPassword() {
                 value={newPassword}
                 onChange={handleNewPasswordChange}
                 placeholder="New password"
-                className="w-full rounded-md px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
             <div className="mb-4">
@@ -124,7 +124,7 @@ export default function ForgetPassword() {
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Confirm password"
-                className="w-full rounded-md px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
           </>
@@ -149,7 +149,7 @@ export default function ForgetPassword() {
       >
         <div className="absolute inset-0 bg-gradient-to-tr from-black/80 to-black/50 z-0" />
 
-        <div className="relative z-10 w-full max-w-xl bg-white/10 backdrop-blur-md rounded-xl p-8 sm:p-10 shadow-2xl border border-white/30">
+        <div className="relative z-10 w-full max-w-xl bg-white/10 backdrop-blur-md rounded-lg p-8 sm:p-10 shadow-2xl border border-white/30">
           <h2 className="text-center text-3xl font-extrabold text-white mb-2">Forgot Password</h2>
           <p className="text-center text-gray-200 mb-6 text-sm sm:text-base">
             {otpmsg
@@ -171,7 +171,7 @@ export default function ForgetPassword() {
 
             <button
               type="submit"
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-md transition duration-300"
+              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-300"
             >
               {step === 3 ? 'Update Password' : 'Next'}
             </button>

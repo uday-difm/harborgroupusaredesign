@@ -16,11 +16,11 @@ export const PetPlanHereSection = () => {
           
         />
         {/* Gradient Overlay for better text readability and unique look (now blue tones) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-70"></div> {/* Dark blue overlay */}
-        <div className="absolute inset-0 bg-black opacity-30"></div> {/* Additional dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent opacity-70"></div> {/* Dark blue overlay */}
+        <div className="absolute inset-0 bg-navy-900 opacity-30"></div> {/* Additional dark overlay */}
 
         {/* Content */}
-        <div className="relative z-10 text-center p-6 max-w-7xl mx-auto animate-fadeInUp">
+        <div className="relative z-10 text-center p-6 max-w-7xl mx-auto ">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-display font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
             Because your furry friends deserve protection too
           </h1>

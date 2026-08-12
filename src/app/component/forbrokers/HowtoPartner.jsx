@@ -232,7 +232,7 @@ export const HowtoPartner = () => {
   };
 
   return (
-    <section id="broker-form" className="section-tint py-24 px-4 sm:px-6 lg:px-8">
+    <section id="broker-form" className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
@@ -253,13 +253,13 @@ export const HowtoPartner = () => {
               </p>
             </motion.div>
 
-            <div className="space-y-10 relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-navy-200 before:to-transparent">
+            <div className="space-y-10 relative before:absolute before:inset-0 before:ml-7 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent before:to-transparent">
               {/* Step 1 */}
-              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active mb-8 md:mb-12" variants={itemVariants}>
-                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+              <motion.div className="relative flex items-center justify-between mb-8 md:mb-12 group" variants={itemVariants}>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 z-10 md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 group-hover:scale-110">
                   <span className="font-bold text-lg">1</span>
                 </div>
-                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] md:ml-auto p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Reach Out & Apply</h3>
                   </div>
@@ -268,11 +268,11 @@ export const HowtoPartner = () => {
               </motion.div>
 
               {/* Step 2 */}
-              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active mb-8 md:mb-12" variants={itemVariants}>
-                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+              <motion.div className="relative flex items-center justify-between mb-8 md:mb-12 group" variants={itemVariants}>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 z-10 md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 group-hover:scale-110">
                   <span className="font-bold text-lg">2</span>
                 </div>
-                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] md:mr-auto p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Get Onboarded</h3>
                   </div>
@@ -281,11 +281,11 @@ export const HowtoPartner = () => {
               </motion.div>
 
               {/* Step 3 */}
-              <motion.div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active" variants={itemVariants}>
-                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-transform duration-300 group-hover:scale-110">
+              <motion.div className="relative flex items-center justify-between group" variants={itemVariants}>
+                <div className="flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#F8F9FA] bg-accent text-white shadow-md shrink-0 z-10 md:absolute md:left-1/2 md:-translate-x-1/2 transition-transform duration-300 group-hover:scale-110">
                   <span className="font-bold text-lg">3</span>
                 </div>
-                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div className="w-[calc(100%-4.5rem)] md:w-[calc(50%-3rem)] md:ml-auto p-6 md:p-8 rounded-2xl border border-navy-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="font-bold text-navy-900 text-xl md:text-2xl group-hover:text-accent transition-colors">Grow Together</h3>
                   </div>

@@ -62,7 +62,7 @@ export default function Holidayspopup() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
-        className="relative w-full max-w-lg min-h-[400px] rounded-xl p-8 bg-cover bg-center flex flex-col justify-center"
+        className="relative w-full max-w-lg min-h-[400px] rounded-lg p-8 bg-cover bg-center flex flex-col justify-center"
         style={{
           backgroundImage:
             "url('https://harborgroupusa.s3-eu-central-2.ionoscloud.com/Popup_Harbor Group.jpg')",

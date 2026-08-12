@@ -8,6 +8,7 @@ import { PlanBenefits } from '@/common/PlanTemplate/PlanBenefits';
 import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
 import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
 import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanNetwork } from '@/common/PlanTemplate/PlanNetwork';
 import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
 import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { VisionForm } from '../component/visionplan/VisionForm';
@@ -57,17 +58,21 @@ export default function VisionPlanPage() {
         ]}
       />
 
-      <PlanCostOptions
+      <PlanNetwork
         title="Network"
         description="Accessing top-notch eye care is effortless with our extensive network of experienced professionals."
-        plans={[
+        features={[
           {
-            title: "Network Benefits",
-            features: [
-              "Experienced Eye Care Providers",
-              "Nationwide Coverage",
-              "Dedicated Support"
-            ]
+            title: "Experienced Providers",
+            description: "Experienced Eye Care Providers"
+          },
+          {
+            title: "Nationwide Coverage",
+            description: "Nationwide Coverage"
+          },
+          {
+            title: "Dedicated Support",
+            description: "Dedicated Support"
           }
         ]}
       />

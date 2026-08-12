@@ -7,6 +7,7 @@ import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
 import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
 import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
 import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanNetwork } from '@/common/PlanTemplate/PlanNetwork';
 import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
 import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { BundlesForm } from '../component/bundlesplan/BundlesForm';
@@ -55,18 +56,25 @@ export default function BundlesPlanPage() {
         ]}
       />
 
-      <PlanCostOptions
+      <PlanNetwork
         title="Network"
         description="Effortlessly access top-notch support for your health needs with our extensive network of experienced professionals who cater to your individual needs."
-        plans={[
+        features={[
           {
-            title: "Network Benefits",
-            features: [
-              "Experienced Health Professionals",
-              "Reliable Partnerships",
-              "Nationwide Coverage",
-              "Dedicated Support"
-            ]
+            title: "Experienced Professionals",
+            description: "Work with experienced health professionals"
+          },
+          {
+            title: "Reliable Partnerships",
+            description: "Access reliable healthcare partnerships"
+          },
+          {
+            title: "Nationwide Coverage",
+            description: "Benefit from nationwide coverage"
+          },
+          {
+            title: "Dedicated Support",
+            description: "Get dedicated support whenever needed"
           }
         ]}
       />

@@ -88,7 +88,7 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                   }}
                 >
                   <motion.div 
-                    className="relative w-full bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-navy-100/80 text-center"
+                    className="relative w-full bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-navy-100/80 text-center"
                     style={{ 
                         skewY: prefersReduced ? 0 : skew, 
                         scale: prefersReduced ? 1 : scale 

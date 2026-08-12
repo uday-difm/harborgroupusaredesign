@@ -145,10 +145,10 @@ export default function NetworkForm() {
   return (
     <>
      {/* Existing Section: Network and Contact Form - Enhanced Left Side without Image */}
-      <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8 animate-fadeIn" id="term-form">
+      <section className="w-full bg-navy-50 py-20 md:py-28 px-4 sm:px-6 lg:px-8 " id="term-form">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Network Info with Enhanced Design */}
-          <div className="bg-white p-8 rounded-card card-elevated text-center lg:text-left relative overflow-hidden">
+          <div className="bg-white p-8 rounded-2xl card-elevated text-center lg:text-left relative overflow-hidden">
             {/* Abstract background pattern for uniqueness */}
             <div className="absolute inset-0 opacity-5 pointer-events-none">
               <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
@@ -205,7 +205,7 @@ export default function NetworkForm() {
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-navy-50 p-8 rounded-card card-elevated">
+          <div className="bg-navy-50 p-8 rounded-2xl card-elevated">
             <h3 className="text-2xl font-bold text-navy-700 mb-6">Get in Touch</h3>
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name and Email in one row */}
@@ -217,7 +217,7 @@ export default function NetworkForm() {
                     id="name"
                     name="name"
                     ref={nameInputRef}
-                    className={`w-full p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 ${
+                    className={`w-full p-3 rounded-lg focus:ring-accent focus:border-accent ${
                       nameError ? "border-error border" : "border border-gray-300"
                     }`}
                     placeholder="John Doe"
@@ -236,12 +236,12 @@ export default function NetworkForm() {
                 </div>
                 <div className="flex-1">
                   <label htmlFor="email" className="block text-gray-700 text-sm font-medium mb-2">Your email*</label>
-                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com" value={formData.email} onChange={handleInputChange} />
+                  <input type="email" id="email" name="email" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent" placeholder="you@example.com" value={formData.email} onChange={handleInputChange} />
                 </div>
               </div>
               <div>
                 <label htmlFor="message" className="block text-gray-700 text-sm font-medium mb-2">Your message</label>
-                <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y" placeholder="How can we help you?" value={formData.message} onChange={handleInputChange} ></textarea>
+                <textarea id="message" name="message" rows="5" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent resize-y" placeholder="How can we help you?" value={formData.message} onChange={handleInputChange} ></textarea>
               </div>
               <div className="flex items-start">
                 <input type="checkbox" id="terms" name="terms" className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1" checked={formData.terms} onChange={handleInputChange} />
@@ -249,7 +249,7 @@ export default function NetworkForm() {
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <a href="/sms-and-marketing-terms" className="text-navy-600 hover:underline">SMS and Marketing terms and conditions</a>.
                 </label>
               </div>
-              <button type="submit" className="btn-primary w-full py-3 px-6 rounded-md" disabled={issubmiting}>
+              <button type="submit" className="btn-primary w-full py-3 px-6 rounded-lg" disabled={issubmiting}>
                 {issubmiting ? 'submiting...' : 'SUBMIT'}
                 </button>
             </form>
@@ -260,74 +260,6 @@ export default function NetworkForm() {
         </div>
       </section>
 
-      {/* Tailwind CSS Custom Animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.05);
-          }
-          70% {
-            transform: scale(0.9);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        /* Removed slideInLeft as image is removed */
-
-        /* Delayed Fade In for cards (if needed for future sections) */
-        @keyframes delayFadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-delayFadeIn {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.2s;
-        }
-        .animate-delayFadeIn-2 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.4s;
-        }
-        .animate-delayFadeIn-3 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.6s;
-        }
-      `}</style>
-    </>
+      {/* Tailwind CSS Custom Animations */}</>
   )
 }

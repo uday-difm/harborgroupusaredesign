@@ -10,7 +10,7 @@ const BenefitItem = ({ icon: Icon, title, children, delay }) => {
       className="relative pl-20 animate-fade-in-up"
       style={{ animationDelay: delay }}
     >
-      <div className="absolute top-0 left-0 flex items-center justify-center w-14 h-14 rounded-xl bg-navy-700/50 border border-navy-600 text-accent">
+      <div className="absolute top-0 left-0 flex items-center justify-center w-14 h-14 rounded-lg bg-navy-700/50 border border-navy-600 text-accent">
         <Icon className="w-7 h-7" strokeWidth={1.5} />
       </div>
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
@@ -29,10 +29,10 @@ export const BenefitsSection = ()=> {
           <div className="relative h-[400px] lg:h-[600px] animate-fade-in">
             <div className="relative w-full h-full">
                 {/* Background Shapes */}
-                <div className="absolute -bottom-6 -right-6 w-full h-full bg-navy-800 rounded-3xl border border-navy-700"></div>
+                <div className="absolute -bottom-6 -right-6 w-full h-full bg-navy-800 rounded-2xl border border-navy-700"></div>
                 
                 {/* Image */}
-                <div className="absolute inset-0 z-10 img-duotone rounded-3xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 z-10 img-duotone rounded-2xl overflow-hidden shadow-2xl">
                     <img 
                         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Benefits-of-Major-Medical-Plans.jpeg"
                         alt="A doctor holding a wooden shield, symbolizing protection"

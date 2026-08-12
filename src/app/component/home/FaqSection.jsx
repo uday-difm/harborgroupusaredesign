@@ -42,7 +42,7 @@ export const FaqSection = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <section className="bg-white py-24 font-body border-b border-navy-100/60 relative overflow-hidden">
+        <section className="bg-white py-20 md:py-28 font-body border-b border-navy-100/60 relative overflow-hidden">
             <div className="bg-noise opacity-[0.03]"></div>
             <SectionGlow position="topRight" className="opacity-20" />
 
@@ -66,7 +66,7 @@ export const FaqSection = () => {
                             </p>
                         </div>
 
-                        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80 mt-8">
+                        <div className="card relative rounded-2xl overflow-hidden border-navy-100/80 mt-8">
                             <Image
                                 width={800}
                                 height={600}
@@ -98,7 +98,7 @@ export const FaqSection = () => {
                                             <HelpCircle className={`w-5 h-5 flex-shrink-0 ${isOpen ? 'text-accent' : 'text-navy-400'}`} />
                                             {faq.question}
                                         </h3>
-                                        <div className={`p-2 rounded-xl transition-all ${isOpen ? 'bg-accent text-white rotate-180' : 'bg-navy-50 text-navy-500'}`}>
+                                        <div className={`p-2 rounded-lg transition-all ${isOpen ? 'bg-accent text-white rotate-180' : 'bg-navy-50 text-navy-500'}`}>
                                             <ChevronDown className="h-4 w-4" />
                                         </div>
                                     </button>

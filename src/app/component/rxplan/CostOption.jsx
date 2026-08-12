@@ -3,7 +3,7 @@ import React from 'react'
 export const CostOption = () =>{
   return (
     <>
-       <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
+       <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface overflow-hidden">
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
       }}></div>
@@ -17,8 +17,8 @@ export const CostOption = () =>{
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
+          <div className="bg-white p-8 rounded-2xl card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
+            <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
               <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6-8v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m12 0a2 2 0 100 4m0-4a2 2 0 110 4m0 0V4m0 0a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100 4m0-4a2 2 0 110 4m0 0v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m0 0v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6-8a2 2 0 100 4m0-4a2 2 0 110 4m0 0v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4" />
               </svg>
@@ -41,8 +41,8 @@ export const CostOption = () =>{
               </li>
             </ul>
           </div>
-          <div className="bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
+          <div className="bg-white p-8 rounded-2xl card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
+            <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
               <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
@@ -65,8 +65,8 @@ export const CostOption = () =>{
               </li>
             </ul>
           </div>
-          <div className="md:col-span-2 lg:col-span-1 bg-white p-8 rounded-card card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
-            <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
+          <div className="md:col-span-2 lg:col-span-1 bg-white p-8 rounded-2xl card-elevated border border-navy-100 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-center">
+            <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 mx-auto flex items-center justify-center w-20 h-20">
                 <svg className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>

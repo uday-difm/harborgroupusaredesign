@@ -2,52 +2,88 @@
 
 import React from 'react';
 import { Search, UserCheck, ShieldCheck, ArrowRight } from 'lucide-react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { useTilt } from '@/common/motion/useTilt';
+import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { SectionGlow } from '@/common/SectionGlow';
 
 
-const StepCard = ({ step, progress, index }) => {
-    const tilt = useTilt(4);
+const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, onFocus, onBlur }) => {
     const prefersReduced = useReducedMotion();
-    
-    // Each step gets a third of the scroll progress
-    const start = index * 0.33;
-    const end = start + 0.33;
-    
-    // If reduced motion, just be fully visible. Otherwise, map to the segment.
-    const opacity = useTransform(progress, [start, end], [0.35, 1]);
-    const scale = useTransform(progress, [start, end], [0.96, 1]);
+    const cardOpacity = isActive ? 1 : 0.4;
 
     return (
         <motion.div
-            ref={tilt.ref}
-            style={{ 
-                ...tilt.style,
-                opacity: prefersReduced ? 1 : opacity,
-                scale: prefersReduced ? 1 : scale
+            animate={{ 
+                opacity: prefersReduced ? 1 : cardOpacity
             }}
-            onMouseMove={tilt.handleMouseMove}
-            onMouseLeave={tilt.handleMouseLeave}
-            className="relative p-8 rounded-3xl bg-surface border border-navy-100/80 shadow-md hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            onMouseEnter={() => onHoverStart?.(index)}
+            onMouseLeave={() => onHoverEnd?.()}
+            onFocus={() => onFocus?.(index)}
+            onBlur={() => onBlur?.()}
+            tabIndex={0}
+            className="card-elevated relative p-6 lg:p-8 rounded-2xl group flex flex-col justify-between overflow-hidden shrink-0 w-full bg-white"
         >
-            <div>
-                <div className="flex items-center justify-between mb-8">
-                    <span className="text-5xl font-display font-bold text-navy-200 group-hover:text-accent transition-colors duration-300">
+            {/* Dynamic Background Image & Gradient */}
+            <div className={`absolute inset-0 z-0 transition-opacity duration-700 overflow-hidden rounded-2xl ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}>
+                {step.bgImage && (
+                    <img 
+                        src={step.bgImage} 
+                        alt="" 
+                        className="absolute inset-0 w-full h-full object-cover object-right opacity-70 transition-transform duration-700 group-hover:scale-105"
+                    />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/10 z-10" />
+            </div>
+
+            {/* Static Node Dot for Vertical Timeline */}
+            {isDesktop && (
+                <div className={`absolute top-1/2 -translate-y-1/2 -left-[4.5rem] -ml-[5px] w-3 h-3 rounded-full z-20 transition-all duration-500 ${isActive ? 'bg-accent shadow-[0_0_10px_rgba(201,162,75,0.8)] scale-125' : 'bg-navy-200'}`} />
+            )}
+            
+            <div className="relative z-10">
+                <div className="flex items-center justify-between mb-6 lg:mb-8">
+                    <span className={`text-4xl lg:text-5xl font-display font-bold transition-colors duration-500 ${isActive ? 'text-accent' : 'text-navy-200 group-hover:text-accent'}`}>
                         {step.number}
                     </span>
-                    <div className="w-13 h-13 rounded-2xl bg-white border border-navy-100 flex items-center justify-center shadow-sm p-3 group-hover:border-accent/50 transition-colors">
+                    <div className={`w-12 h-12 lg:w-13 lg:h-13 rounded-2xl bg-white border flex items-center justify-center shadow-sm p-2.5 lg:p-3 transition-colors duration-500 ${isActive ? 'border-accent/50' : 'border-navy-100 group-hover:border-accent/50'}`}>
                         {step.icon}
                     </div>
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 font-display mb-3 group-hover:text-accent transition-colors">{step.title}</h3>
-                <p className="text-sm text-navy-600 leading-relaxed">{step.description}</p>
+                <h3 className={`text-lg lg:text-xl font-bold font-display mb-3 transition-colors duration-500 ${isActive ? 'text-navy-900' : 'text-navy-800 group-hover:text-accent'}`}>
+                    {step.title}
+                </h3>
+                
+                <motion.div
+                    initial={false}
+                    animate={{ 
+                        height: (!isDesktop || isActive || prefersReduced) ? "auto" : 0, 
+                        opacity: (!isDesktop || isActive || prefersReduced) ? 1 : 0 
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                >
+                    <p className="text-sm text-navy-600 leading-relaxed mb-6">{step.description}</p>
+                    
+                    {/* Expanded Content Block */}
+                    {(isDesktop && !prefersReduced) && (
+                        <div className="mt-4 pt-4 border-t border-navy-100/60">
+                            <span className="text-[10px] uppercase font-bold tracking-widest text-accent mb-3 block">{step.detail.eyebrow}</span>
+                            <ul className="space-y-2.5 mb-4">
+                                {step.detail.points.map((point, i) => (
+                                    <li key={i} className="flex items-start text-xs font-medium text-navy-700">
+                                        <div className="min-w-3 mt-1 mr-2 text-accent">
+                                            <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                        </div>
+                                        {point}
+                                    </li>
+                                ))}
+                            </ul>
+                            <span className="text-xs font-semibold text-navy-500 bg-navy-50 px-2.5 py-1 rounded-lg">{step.detail.meta}</span>
+                        </div>
+                    )}
+                </motion.div>
             </div>
 
-            <div className="mt-8 pt-4 border-t border-navy-100/60 flex items-center text-xs font-bold text-navy-800 group-hover:text-accent transition-colors">
-                <span>Explore Step</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-1.5 transform group-hover:translate-x-1.5 transition-transform" />
-            </div>
         </motion.div>
     );
 };
@@ -58,34 +94,110 @@ export const HowItWorksSection = () => {
             number: '01',
             title: 'Explore & Compare Plans',
             description: 'Browse our comprehensive range of individual, family, and small business healthcare options.',
-            icon: <Search className="w-6 h-6 text-accent" />
+            icon: <Search className="w-6 h-6 text-accent" />,
+            bgImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80',
+            detail: {
+                eyebrow: "What to expect",
+                points: [
+                    "Compare plans side-by-side in one view",
+                    "Filter by network, deductible, or premium",
+                    "No account needed to browse"
+                ],
+                meta: "Takes about 2 minutes"
+            }
         },
         {
             number: '02',
             title: 'Consult a Licensed Advisor',
             description: 'Connect 1-on-1 with an experienced healthcare advisor to review options tailored to your budget.',
-            icon: <UserCheck className="w-6 h-6 text-accent" />
+            icon: <UserCheck className="w-6 h-6 text-accent" />,
+            bgImage: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80',
+            detail: {
+                eyebrow: "Your dedicated expert",
+                points: [
+                    "Personalized plan recommendations",
+                    "Answers to complex network questions",
+                    "Assistance checking doctor availability"
+                ],
+                meta: "Usually a 15-minute call"
+            }
         },
         {
             number: '03',
             title: 'Get Covered with Confidence',
             description: 'Complete quick enrollment and gain immediate peace of mind with ongoing member support.',
-            icon: <ShieldCheck className="w-6 h-6 text-accent" />
+            icon: <ShieldCheck className="w-6 h-6 text-accent" />,
+            bgImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80',
+            detail: {
+                eyebrow: "Fast & secure enrollment",
+                points: [
+                    "Digital application process",
+                    "Secure handling of your health data",
+                    "Instant confirmation of submission"
+                ],
+                meta: "Coverage starts as directed"
+            }
         }
     ];
 
-    const outerRef = React.useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: outerRef,
-        offset: ["start start", "end end"]
-    });
-
     const prefersReduced = useReducedMotion();
-    const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+    
+    // Active Step Logic
+    const [hoveredIndex, setHoveredIndex] = React.useState(null);
+    const hoverTimerRef = React.useRef(null);
+    const activeIndex = hoveredIndex !== null ? hoveredIndex : 0;
+
+    // Desktop check
+    const [isDesktop, setIsDesktop] = React.useState(true);
+    React.useEffect(() => {
+        const checkDesktop = () => {
+            const nextIsDesktop = window.innerWidth >= 768;
+            setIsDesktop((currentIsDesktop) => {
+                if (currentIsDesktop !== nextIsDesktop) setHoveredIndex(null);
+                return nextIsDesktop;
+            });
+        };
+        checkDesktop();
+        window.addEventListener('resize', checkDesktop);
+        return () => {
+            window.removeEventListener('resize', checkDesktop);
+            if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+        };
+    }, []);
+
+    React.useEffect(() => {
+        if (prefersReduced) setHoveredIndex(null);
+    }, [prefersReduced]);
+
+    const clearHoverIntent = () => {
+        if (hoverTimerRef.current) {
+            clearTimeout(hoverTimerRef.current);
+            hoverTimerRef.current = null;
+        }
+    };
+
+    const handleHoverStart = (index) => {
+        if (!isDesktop || prefersReduced) return;
+        clearHoverIntent();
+        hoverTimerRef.current = setTimeout(() => {
+            setHoveredIndex(index);
+            hoverTimerRef.current = null;
+        }, 100);
+    };
+
+    const handleHoverEnd = () => {
+        clearHoverIntent();
+        setHoveredIndex(null);
+    };
+
+    const handleFocus = (index) => {
+        clearHoverIntent();
+        if (isDesktop && !prefersReduced) setHoveredIndex(index);
+    };
 
     return (
-        <div ref={outerRef} className="relative h-auto md:h-[180vh]">
-            <section className="bg-white py-16 md:py-24 border-b border-navy-100/60 font-body relative md:sticky top-0 md:min-h-screen overflow-hidden flex flex-col justify-center">
+        <div className="relative h-auto">
+            <section className="bg-white py-20 md:py-28 border-b border-navy-100/60 font-body relative overflow-hidden flex flex-col justify-center">
             <SectionGlow position="topLeft" className="opacity-40" />
             <SectionGlow position="bottomRight" className="opacity-30" />
 
@@ -110,20 +222,32 @@ export const HowItWorksSection = () => {
                     <p className="mt-3 text-lg text-navy-600">From exploring options to final enrollment, we make securing health coverage effortless.</p>
                 </motion.div>
 
-                {/* Steps Cards Grid */}
-                <div className="relative mt-8">
-                    {/* Background track line */}
-                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-navy-50 -translate-y-1/2 hidden md:block" />
+                {/* Steps Cards Layout */}
+                <div className="relative mt-8 w-full">
+                    {/* Background track line (vertical) */}
+                    <div className="absolute top-0 left-[2.5rem] md:left-[3.5rem] w-[2px] h-full bg-navy-50 hidden md:block" />
                     
-                    {/* Animated connecting line */}
+                    {/* Animated connecting line (vertical) */}
                     <motion.div 
-                        className="absolute top-1/2 left-0 h-[2px] bg-accent -translate-y-1/2 hidden md:block origin-left"
-                        style={{ scaleX: prefersReduced ? 1 : lineScale, width: "100%" }}
+                        className="absolute top-0 left-[2.5rem] md:left-[3.5rem] w-[2px] bg-accent hidden md:block origin-top"
+                        animate={{ scaleY: prefersReduced ? 1 : (activeIndex + 1) / steps.length }}
+                        transition={{ type: "spring", stiffness: 180, damping: 28, mass: 0.7 }}
+                        style={{ height: "100%" }}
                     />
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                    <div className="flex flex-col gap-6 md:gap-8 items-stretch relative z-10 w-full pl-0 md:pl-[8rem] md:min-h-[640px] lg:min-h-[700px]">
                         {steps.map((step, index) => (
-                            <StepCard key={step.number} step={step} index={index} progress={scrollYProgress} />
+                            <StepCard 
+                                key={step.number} 
+                                step={step} 
+                                index={index} 
+                                isActive={activeIndex === index}
+                                isDesktop={isDesktop}
+                                onHoverStart={handleHoverStart}
+                                onHoverEnd={handleHoverEnd}
+                                onFocus={handleFocus}
+                                onBlur={handleHoverEnd}
+                            />
                         ))}
                     </div>
                 </div>

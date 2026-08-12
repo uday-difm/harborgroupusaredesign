@@ -31,7 +31,7 @@ export  const PetPlanBenefits = () => {
   );
 
   return (
-    <div className=" bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
+    <div className=" bg-navy-50 font-body antialiased flex flex-col items-center justify-center">
       <svg width="0" height="0" className="absolute">
         <defs>
           {primaryBlueGradient("primaryBlueGradient")}
@@ -46,7 +46,7 @@ export  const PetPlanBenefits = () => {
       </svg>
       <section className="w-full px-4 sm:px-4 lg:px-6 py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left animate-slideInLeft">
+          <div className="text-center lg:text-left ">
             <h2 className="text-4xl font-extrabold text-navy-800 mb-4 leading-tight">
               Benefits of Pet Plan
             </h2>
@@ -88,7 +88,7 @@ export  const PetPlanBenefits = () => {
           </div>
           <div className="flex justify-center  animate-slideInRight">
             <img
-              className="w-full max-w-md h-auto rounded-card shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
+              className="w-full max-w-md h-auto rounded-2xl shadow-2xl  transform transition-transform duration-700 ease-in-out hover:scale-105"
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/pet-plan-benefit.jpeg" 
               alt="Veterinarian examining a dog"
             />
@@ -96,82 +96,6 @@ export  const PetPlanBenefits = () => {
         </div>
       </section>
 
-      {/* Tailwind CSS Custom Animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.05);
-          }
-          70% {
-            transform: scale(0.9);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 1s ease-out forwards;
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInRight {
-          animation: slideInRight 1s ease-out forwards;
-        }
-      `}</style>
-    </div>
+      {/* Tailwind CSS Custom Animations */}</div>
   );
 };

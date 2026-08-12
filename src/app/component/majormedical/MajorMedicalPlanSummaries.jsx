@@ -52,7 +52,7 @@ export const MajorMedicalPlanSummaries = () => {
   };
 
   return (
-    <section className="section-light py-24 px-4 sm:px-6 lg:px-8">
+    <section className="section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-4">Plan Options</span>

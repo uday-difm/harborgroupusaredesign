@@ -157,7 +157,7 @@ export default function DashboardHome() {
                     height={100}
                         src={blog.blog_feature_image}
                         alt="Blog"
-                        className="h-12 w-20 object-cover rounded-md shadow-sm"
+                        className="h-12 w-20 object-cover rounded-lg shadow-sm"
                       />
                     </td>
                     <td className="py-2 px-2">{blog.blog_title}</td>

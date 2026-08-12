@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -146,10 +147,11 @@ export default function Careers() {
       <div className="relative min-h-[90vh] flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden">
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 img-duotone pointer-events-none">
-          <img
+          <Image
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/careers-page-scaled.jpg"
             alt="Careers at Harbor Group USA"
-            className="w-full h-full object-cover object-center"
+            className="object-cover object-center"
+            fill
           />
           <div className="absolute inset-0 bg-navy-900/80 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 to-transparent"></div>

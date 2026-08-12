@@ -145,7 +145,11 @@ const QuotePopup = ({ onClose }) => {
         setMessage(result?.message || 'Submission failed.');
       }
     } catch (err) {
-      console.error(err);
+      if (process.env.NODE_ENV === 'development') {
+
+        console.error(err);
+
+      }
       setMessage('An error occurred.');
     } finally {
       setSubmitting(false);

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const sectionReveal = {
@@ -12,7 +13,7 @@ const sectionReveal = {
   }
 };
 
-const BlogPostCard = ({ image, category, title, author, date }) => {
+export const BlogPostCard = ({ image, category, title, author, date }) => {
   const prefersReduced = useReducedMotion();
   
   const itemVariant = {
@@ -23,14 +24,15 @@ const BlogPostCard = ({ image, category, title, author, date }) => {
   return (
     <motion.div
       variants={itemVariant}
-      className="group relative bg-white rounded-card shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden card-elevated h-full border border-navy-100 hover:border-accent"
+      className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 overflow-hidden card-elevated h-full border border-navy-100 hover:border-accent"
     >
       <div className="relative h-56 overflow-hidden">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/e2e8f0/a3a3a3?text=Blog+Post'; }}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 to-transparent"></div>
         <span className="absolute top-4 left-4 inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">

@@ -24,7 +24,7 @@ export const PlanCostOptions = ({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-surface-alt font-body relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-surface-alt font-body relative overflow-hidden">
       <HarborArc position="bottomLeft" className="text-navy-100 opacity-30" />
       <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
 

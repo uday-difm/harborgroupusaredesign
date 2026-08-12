@@ -7,7 +7,7 @@ export const NetworkLifestylePlan = () => {
   const colors = {
     primaryLightBlue: 'bg-navy-50', // Very light blue for background
     secondaryLightGray: 'bg-navy-50', // Light gray for sections
-    accentBlue: 'text-blue-700', // A slightly darker blue for emphasis
+    accentBlue: 'text-primary', // A slightly darker blue for emphasis
     checkmarkGreen: 'text-accent', // Standard green for checkmarks
     darkText: 'text-gray-800', // Dark text for readability
     mediumText: 'text-navy-500', // Medium text for descriptions
@@ -23,12 +23,12 @@ export const NetworkLifestylePlan = () => {
 
   return (
     <div className={`min-h-screen bg-navy-50 font-inter flex items-center justify-center p-4 sm:p-8`}>
-      <div className="max-w-6xl w-full bg-white card-elevated rounded-card overflow-hidden md:flex">
+      <div className="max-w-6xl w-full bg-white card-elevated rounded-2xl overflow-hidden md:flex">
         {/* Left Section: Content */}
         <div className="md:w-1/2 p-6 sm:p-10 flex flex-col justify-center">
     
           {/* Header */}
-          <p className={`text-sm font-semibold text-sky-400 mb-2 flex items-center`}>
+          <p className={`text-sm font-semibold text-accent mb-2 flex items-center`}>
             <span className="btn-accent px-10 py-4 font-bold"></span>
            Know about our network
           </p>

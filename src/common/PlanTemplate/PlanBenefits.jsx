@@ -31,7 +31,7 @@ export const PlanBenefits = ({
   };
 
   return (
-    <section className="relative py-20 lg:py-32 bg-surface-alt overflow-hidden font-body">
+    <section className="relative py-20 md:py-28 bg-surface-alt overflow-hidden font-body">
       {/* Decorative Atmosphere */}
       <div ref={arcParallax.ref}>
         <HarborArc position={reverse ? "topRight" : "topLeft"} className="text-navy-200 opacity-20 scale-125" parallaxY={arcParallax.y} />
@@ -49,7 +49,7 @@ export const PlanBenefits = ({
           {/* Image Side */}
           <motion.div variants={itemVariants} className="w-full lg:w-1/2 relative">
             <div
-              className="relative w-full aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-navy-100/60"
+              className="relative w-full aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-navy-100/60"
               ref={imageTilt.ref}
               style={{ ...imageTilt.style }}
               onMouseMove={imageTilt.handleMouseMove}

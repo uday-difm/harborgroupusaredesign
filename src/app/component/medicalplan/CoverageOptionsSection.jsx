@@ -40,7 +40,7 @@ export const CoverageOptionsSection = () => {
                 className={`card-elevated p-8 flex flex-col justify-center animate-fade-in-up transition-all duration-300 hover:-translate-y-2 ${offsetClass}`}
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
-                <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-navy-50 rounded-lg flex items-center justify-center mb-6">
                   <Check className="h-6 w-6 text-accent" strokeWidth={2} />
                 </div>
                 <h3 className="text-xl font-bold text-navy-800 leading-snug">

@@ -16,12 +16,12 @@ export const LifeStyleHeroSection = () => {
           alt="Person enjoying a healthy lifestyle"
         />
         {/* Gradient Overlay for better text readability and unique look */}
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-800 to-transparent opacity-80"></div>
-        <div className="absolute inset-0 bg-black opacity-30"></div> {/* Additional dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-800 to-transparent opacity-80"></div>
+        <div className="absolute inset-0 bg-navy-900 opacity-30"></div> {/* Additional dark overlay */}
 
         {/* Content */}
-        <div className="relative z-10 text-center p-6 max-w-4xl mx-auto animate-fadeInUp">
-          <p className="text-lg text-sky-400 mb-2 font-semibold flex items-center justify-center">
+        <div className="relative z-10 text-center p-6 max-w-4xl mx-auto ">
+          <p className="text-lg text-accent mb-2 font-semibold flex items-center justify-center">
             <span className="btn-accent px-10 py-4 font-bold"></span>
             Lifestyle Plans
           </p>
@@ -38,126 +38,6 @@ export const LifeStyleHeroSection = () => {
       </section>
 
 
-      {/* Tailwind CSS Custom Animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-
-        @keyframes bounceIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.3);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.05);
-          }
-          70% {
-            transform: scale(0.9);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-        .animate-bounceIn {
-          animation: bounceIn 0.8s ease-out forwards;
-        }
-
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInLeft {
-          animation: slideInLeft 1s ease-out forwards;
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-slideInRight {
-          animation: slideInRight 1s ease-out forwards;
-        }
-
-        /* Hero section specific animations */
-        @keyframes gridShift {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(5px, 5px); }
-        }
-        .animate-gridShift {
-          animation: gridShift 15s infinite alternate ease-in-out;
-        }
-
-        @keyframes textGlow {
-          0%, 100% { text-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.05); }
-          50% { text-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1); }
-        }
-        .animate-textGlow {
-          animation: textGlow 3s infinite alternate ease-in-out;
-        }
-
-        /* Delayed Fade In for cards */
-        @keyframes delayFadeIn {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-delayFadeIn {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.2s;
-        }
-        .animate-delayFadeIn-2 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.4s;
-        }
-        .animate-delayFadeIn-3 {
-          animation: delayFadeIn 0.8s ease-out forwards;
-          animation-delay: 0.6s;
-        }
-
-        /* Network Section specific animations */
-        @keyframes waveSmallMove {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(5px); }
-        }
-        .animate-waveSmall1 { animation: waveSmallMove 12s infinite alternate ease-in-out; }
-        .animate-waveSmall2 { animation: waveSmallMove 14s infinite alternate ease-in-out; animation-delay: 0.3s; }
-        .animate-waveSmall3 { animation: waveSmallMove 10s infinite alternate ease-in-out; animation-delay: 0.6s; }
-      `}</style>
-    </>
+      {/* Tailwind CSS Custom Animations */}</>
   )
 }

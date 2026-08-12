@@ -144,7 +144,7 @@ export const ConnectWithUS = () => {
   return (
     <>
       <section
-        className="relative w-full bg-gradient-to-br from-blue-50 to-blue-100 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative w-full bg-surface-alt py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden"
         id="hospital-plan-form"
       >
         <div className="absolute inset-0 opacity-30 pointer-events-none">
@@ -163,18 +163,18 @@ export const ConnectWithUS = () => {
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch relative z-10">
           {/* Left Column: Image */}
-          <div className="flex justify-center lg:justify-start animate-slideInLeft h-full">
+          <div className="flex justify-center lg:justify-start  h-full">
             <Image
               width={600}
               height={400}
-              className="w-full h-full object-cover rounded-card shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
+              className="w-full h-full object-cover rounded-2xl shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/request-a-call-back.jpeg"
               alt="People connecting"
             />
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-white p-8 rounded-card card-elevated animate-slideInRight flex flex-col h-full">
+          <div className="bg-white p-8 rounded-2xl card-elevated animate-slideInRight flex flex-col h-full">
             <h3 className="text-2xl font-bold text-navy-800 mb-4 text-center">Connect With US</h3>
 
             <form className="space-y-6 flex-grow flex flex-col" onSubmit={handleSubmit}>
@@ -188,7 +188,7 @@ export const ConnectWithUS = () => {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                  className={`w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 ${
+                  className={`w-full p-3 border rounded-lg focus:ring-accent focus:border-accent ${
                     nameError ? "border-error" : "border-gray-300"
                   }`}
                   placeholder="John Doe"
@@ -210,7 +210,7 @@ export const ConnectWithUS = () => {
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -225,7 +225,7 @@ export const ConnectWithUS = () => {
                   id="message"
                   name="message"
                   rows={6}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y h-full"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent resize-y h-full"
                   placeholder="How can we help you?"
                   value={formData.message}
                   onChange={handleInputChange}
@@ -237,7 +237,7 @@ export const ConnectWithUS = () => {
                   type="checkbox"
                   id="terms"
                   name="terms"
-                  className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                  className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-accent mt-1"
                   checked={formData.terms}
                   onChange={handleInputChange}
                 />

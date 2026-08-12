@@ -43,14 +43,14 @@ export const Benefitsofcollaboration = () => {
   };
 
   return (
-    <section className="section-light relative py-24 px-4 sm:px-6 lg:px-8">
+    <section className="section-light relative py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <SectionGlow position="top" color="rgba(26, 46, 91, 0.4)" />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Visual Header Banner */}
         <motion.div
-          className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden shadow-2xl mb-16"
+          className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-2xl mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
@@ -85,7 +85,7 @@ export const Benefitsofcollaboration = () => {
           {benefits.map((benefit, index) => (
             <motion.div key={index} variants={itemVariants}>
               <div className="card-elevated bg-white p-8 md:p-10 flex flex-col items-start border-l-4 border-accent transition-all duration-300 hover:-translate-y-2 hover:shadow-xl h-full">
-                <div className="w-14 h-14 rounded-card bg-navy-50 text-accent flex items-center justify-center mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-navy-50 text-accent flex items-center justify-center mb-6">
                   {benefit.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-navy-900 mb-4">

@@ -63,7 +63,7 @@ export const PlanFaq = ({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-surface font-body overflow-hidden">
+    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[40fr_60fr] gap-12 lg:gap-20 items-start">
           
@@ -91,7 +91,7 @@ export const PlanFaq = ({
             {imageSrc && (
               <motion.div 
                 variants={itemVariants}
-                className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl border border-navy-100 hidden lg:block"
+                className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-navy-100 hidden lg:block"
               >
                 <Image
                   src={imageSrc}

@@ -18,12 +18,12 @@ export const MedicalPlanBenefitsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
+    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 font-inter relative overflow-hidden" style={{ background: `linear-gradient(to br, ${softGrayBg}, ${primaryDarkBlue}05)` }}>
       {/* Animated Background Gradients/Shapes - subtle movement */}
       
       
 
-      <div className="relative z-10 max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden md:flex" style={{ backgroundColor: white }}>
+      <div className="relative z-10 max-w-7xl mx-auto rounded-2xl shadow-2xl overflow-hidden md:flex" style={{ backgroundColor: white }}>
         {/* Left Image Section */}
         <div className="md:w-1/2 relative h-80 md:h-auto flex items-center justify-center p-6 md:p-12 animate-fade-in">
           <Image
@@ -67,61 +67,7 @@ export const MedicalPlanBenefitsSection = () => {
       </div>
 
       {/* Tailwind CSS Custom Animations */}
-      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(50px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes pulse-light {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.05); }
-        }
-
-        @keyframes blob-slow-anim {
-          0% { transform: translate(-50%, -50%) scale(1); }
-          25% { transform: translate(-40%, -60%) scale(1.02); }
-          50% { transform: translate(-60%, -40%) scale(0.98); }
-          75% { transform: translate(-55%, -55%) scale(1.01); }
-          100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        @keyframes blob-slow-anim-alt {
-          0% { transform: translate(50%, 50%) scale(1); }
-          25% { transform: translate(60%, 40%) scale(0.98); }
-          50% { transform: translate(40%, 60%) scale(1.02); }
-          75% { transform: translate(45%, 45%) scale(0.99); }
-          100% { transform: translate(50%, 50%) scale(1); }
-        }
-
-        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
-        .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-        .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
-        .animate-pulse-light { animation: pulse-light 2s infinite ease-in-out; }
-        .animate-blob-slow { animation: blob-slow-anim 25s infinite alternate ease-in-out; }
-        .animate-blob-slow.animation-delay-2000 { animation-delay: 2s; }
-
-        /* Staggered fade in for benefit list items */
-        .animate-fade-in-up-staggered {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-      `}</style>
-    </section>
+      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}</section>
   );
 };
 

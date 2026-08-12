@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export const RxBenefits = () => {
   return (
-    <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden">
+    <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface overflow-hidden">
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
       }}></div>
@@ -17,8 +17,8 @@ export const RxBenefits = () => {
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-            <div className="bg-white p-6 rounded-card shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 inline-flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 inline-flex items-center justify-center">
                 <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -28,9 +28,9 @@ export const RxBenefits = () => {
              Affordable coverage for various prescription medications, easing financial strain
               </p>
             </div>
-            <div className="bg-white p-6 rounded-card shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 
-              <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 inline-flex items-center justify-center">
+              <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 inline-flex items-center justify-center">
                 <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -40,8 +40,8 @@ export const RxBenefits = () => {
               Simple and efficient claims process for peace of mind and ready support
               </p>
             </div>
-            <div className="bg-white p-6 rounded-card shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 inline-flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 inline-flex items-center justify-center">
                 <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -51,8 +51,8 @@ export const RxBenefits = () => {
               Flexible medication options for personalized health needs
               </p>
             </div>
-            <div className="bg-white p-6 rounded-card shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full p-3 mb-4 inline-flex items-center justify-center">
+            <div className="bg-white p-6 rounded-2xl shadow-md border border-navy-100 transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <div className="bg-gradient-to-br from-accent to-accent-light rounded-full p-3 mb-4 inline-flex items-center justify-center">
                 <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -63,7 +63,7 @@ export const RxBenefits = () => {
               </p>
             </div>
           </div>
-          <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl group transform transition-transform duration-500 hover:rotate-1">
+          <div className="relative h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl group transform transition-transform duration-500 hover:rotate-1">
             <Image
             width={600}
             height = {400}
@@ -71,7 +71,7 @@ export const RxBenefits = () => {
               alt="Doctor handing medication to patient"
               className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900 to-transparent opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
            
           </div>
         </div>

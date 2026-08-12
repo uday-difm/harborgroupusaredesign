@@ -111,7 +111,7 @@ export const BenefitsofDentalCarePlan = () => {
     }
 
     // Log form data (for debugging)
-   // console.log('Form Data Submitted:', formData);
+
 
     try {
       // Making the API call

@@ -10,7 +10,7 @@ const FAQItem = ({ question, answer }) => {
   return (
     <div className="border-b border-navy-100 py-4">
       <button
-        className="flex justify-between items-center w-full text-left text-lg font-semibold text-indigo-900 hover:text-indigo-800 transition-colors duration-200"
+        className="flex justify-between items-center w-full text-left text-lg font-semibold text-primary hover:text-primary-hover transition-colors duration-200"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -52,7 +52,7 @@ export const FAQSection = ({ faqs, imageContent }) => {
 
         {/* FAQs Section */}
         <div>
-          <h2 className="text-3xl font-bold text-indigo-900 mb-6">FAQs</h2>
+          <h2 className="text-3xl font-bold text-primary mb-6">FAQs</h2>
           <p className="text-gray-600 mb-8 leading-relaxed">
             Have questions about what's covered, how to make a claim, or the enrollment process?
           </p>

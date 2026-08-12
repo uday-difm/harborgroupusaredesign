@@ -7,7 +7,7 @@ import Image from 'next/image';
 // A reusable component for each eligibility card
 const EligibilityCard = ({ icon: Icon, title, children }) => {
   return (
-    <div className="bg-white p-6 rounded-3xl card-elevated hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+    <div className="bg-white p-6 rounded-2xl card-elevated hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
       <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-accent/10 text-accent">
         <Icon size={32} />
       </div>
@@ -19,7 +19,7 @@ const EligibilityCard = ({ icon: Icon, title, children }) => {
 
 export const  DentalEligbility = ()=> {
   return (
-    <div className="bg-navy-50 py-16 md:py-24 font-sans">
+    <div className="bg-navy-50 py-16 md:py-24 font-body">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}

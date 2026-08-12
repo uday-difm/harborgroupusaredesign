@@ -3,7 +3,7 @@ import React from 'react';
 // Main App component (can be integrated into your existing App or a new page)
 export const FluidWaveCTA = () => {
   return (
-    <div className="min-h-[50vh] bg-gradient-to-br from-blue-50 to-navy-50 font-inter flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+    <div className="min-h-[50vh] bg-gradient-to-br from-navy-50 to-navy-50 font-inter flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
       {/* Custom CSS for animations */}
       <style>
         {`
@@ -51,8 +51,8 @@ export const FluidWaveCTA = () => {
 Unlock Clear Vision and Confidence Today! Enroll Now for Comprehensive Vision Coverage
         </h3>
         <button
-          className="px-12 py-5 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xl rounded-full card-elevated hover:from-sky-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 ease-in-out
-                     focus:outline-none focus:ring-4 focus:ring-sky-300 focus:ring-opacity-75 tracking-wide uppercase animate-buttonFloat"
+          className="px-12 py-5 bg-accent text-white font-bold text-xl rounded-full card-elevated hover:bg-accent-dark transform hover:scale-105 transition-all duration-300 ease-in-out
+                     focus:outline-none focus:ring-4 focus:ring-accent focus:ring-opacity-75 tracking-wide uppercase animate-buttonFloat"
         >
           ENROLL IN VISION CARE
         </button>

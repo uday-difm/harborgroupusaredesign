@@ -4,7 +4,7 @@ import React from 'react';
 
 export const NetworkPetPlan = () => {
   return (
- <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+ <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface overflow-hidden">
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
       }}></div>
@@ -20,7 +20,7 @@ export const NetworkPetPlan = () => {
         </div>
         <div className=" p-8 ">
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
+            <div className="bg-white p-8 rounded-2xl card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-navy-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -42,7 +42,7 @@ export const NetworkPetPlan = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
+            <div className="bg-white p-8 rounded-2xl card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-navy-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5M3 17h9m9 0V5a2 2 0 00-2-2h-2.5M21 17h-9m0 0v4m0-4h.5M9 17H7m7 0h2" />
@@ -64,7 +64,7 @@ export const NetworkPetPlan = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-white p-8 rounded-card card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
+            <div className="bg-white p-8 rounded-2xl card-elevated transition-all duration-300 hover:shadow-xl border border-navy-100">
               <h3 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                 <svg className="h-7 w-7 text-navy-600 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 0A9.953 9.953 0 0112 5c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8c0-1.78-.58-3.43-1.55-4.764zM12 17a4 4 0 100-8 4 4 0 000 8z" />

@@ -26,7 +26,7 @@ const Rightsidebar = () => {
               alt={"Admin"}
               width={800}  // Set the width of the image (adjust based on your design needs)
               height={800} // Set the height of the image (adjust based on your design needs)
-              className="w-28 h-28 mx-auto rounded-full mb-6 border-4 border-red-500 card-elevated transform transition-all hover:scale-110"
+              className="object-cover w-28 h-28 mx-auto rounded-full mb-6 border-4 border-red-500 card-elevated transform transition-all hover:scale-110"
               loading="lazy" // Lazy load the image
             />
             <h3 className="text-2xl font-semibold text-custom-black mb-2">"WMH INDIA"</h3>

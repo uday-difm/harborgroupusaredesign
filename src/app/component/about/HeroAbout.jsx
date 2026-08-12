@@ -65,7 +65,7 @@ export const HeroAbout = () => {
                     >
                         <div className="absolute inset-0 w-full lg:ml-auto lg:mr-0">
                             <motion.div
-                                className="relative w-full h-full rounded-card overflow-hidden card-elevated img-duotone"
+                                className="relative w-full h-full rounded-2xl overflow-hidden card-elevated img-duotone"
                                 ref={imageTilt.ref}
                                 style={{ ...imageTilt.style, skewY: skew, filter: velocityBlur }}
                                 onMouseMove={imageTilt.handleMouseMove}

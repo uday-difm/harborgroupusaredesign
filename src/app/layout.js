@@ -10,8 +10,8 @@ import CookiesBanner from "@/common/CookiesBanner";
 import Script from 'next/script'; // Import the Script component
 import Holidayspopup from "@/common/Holidayspopup";
 import Snowfall from "react-snowfall";
-import Preloader from "@/common/Preloader";
 import ScrollProgress from "@/common/ScrollProgress";
+import CustomScrollbar from "@/common/CustomScrollbar";
 import SmoothScrollProvider from "@/common/SmoothScrollProvider";
 import { Inter, Sora } from 'next/font/google';
 
@@ -129,8 +129,8 @@ export default function RootLayout({ children }) {
       </head>
       <body className="" cz-shortcut-listen="true">
         <SmoothScrollProvider>
-          <Preloader />
           <ScrollProgress />
+          <CustomScrollbar />
           {!isDashboardPage && (
             <>
               <Header />

@@ -32,12 +32,12 @@ export default function page() {
       
       
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center rounded-[32px] shadow-xl p-8 md:p-12 lg:p-16 animate-scale-in bg-white border border-navy-50">
+      <div className="relative z-10 w-full max-w-6xl mx-auto text-center rounded-[32px] shadow-xl p-8 md:p-12 lg:p-16 animate-scale-in bg-white border border-navy-50">
         <h2 className="text-4xl sm:text-5xl font-display font-extrabold mb-10 text-navy-900 tracking-tight">
           Major Service Keypoints
         </h2>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
           {keypoints.map((keypoint, index) => (
             <div
               key={index}
@@ -58,61 +58,7 @@ export default function page() {
       </div>
 
       {/* Tailwind CSS Custom Animations */}
-      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-          from { opacity: 0; transform: scale(0.95); }
-          to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes blob-slow-anim {
-          0% { transform: translate(-50%, -50%) scale(1); }
-          25% { transform: translate(-40%, -60%) scale(1.02); }
-          50% { transform: translate(-60%, -40%) scale(0.98); }
-          75% { transform: translate(-55%, -55%) scale(1.01); }
-          100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        @keyframes blob-slow-anim-alt {
-          0% { transform: translate(50%, 50%) scale(1); }
-          25% { transform: translate(60%, 40%) scale(0.98); }
-          50% { transform: translate(40%, 60%) scale(1.02); }
-          75% { transform: translate(45%, 45%) scale(0.99); }
-          100% { transform: translate(50%, 50%) scale(1); }
-        }
-
-        @keyframes iconBounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-
-        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
-        .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
-        .animate-scale-in { animation: scaleIn 0.7s ease-out forwards; }
-        .animate-blob-slow { animation: blob-slow-anim 25s infinite alternate ease-in-out; }
-        .animate-blob-slow.animation-delay-2000 { animation-delay: 2s; }
-        .animate-icon-bounce { animation: iconBounce 1s ease-in-out infinite alternate; }
-
-        /* Staggered fade in for keypoint items */
-        .animate-fade-in-up-staggered {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-      `}</style>
-    </section>
+      {/* Ensure these keyframes and animations are added to your tailwind.config.js */}</section>
     </>
   )
 }

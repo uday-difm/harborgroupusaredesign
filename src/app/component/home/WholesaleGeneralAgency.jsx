@@ -15,8 +15,6 @@ const featureCardVariant = {
 
 const FeatureCard = ({ feature }) => {
     const tilt = useTilt(3);
-    const prefersReduced = useReducedMotion();
-    const [isActive, setIsActive] = React.useState(false);
 
     return (
         <motion.div
@@ -25,21 +23,14 @@ const FeatureCard = ({ feature }) => {
             style={{ ...tilt.style }}
             onMouseMove={tilt.handleMouseMove}
             onMouseLeave={tilt.handleMouseLeave}
-            onViewportEnter={() => {
-                if (!prefersReduced) setIsActive(true);
-            }}
-            onViewportLeave={() => {
-                if (!prefersReduced) setIsActive(false);
-            }}
-            viewport={{ amount: 0.5 }}
-            className={`p-7 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${isActive ? 'border border-accent shadow-lg scale-[1.02]' : 'border border-navy-100/80'}`}
+            className="card-elevated p-7 rounded-2xl border-navy-100/80 flex flex-col justify-between group"
         >
             <div>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors ${isActive ? 'bg-accent border-accent text-white' : 'bg-navy-50 border-navy-100 group-hover:bg-accent group-hover:border-accent text-accent group-hover:text-white'}`}>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-5 transition-colors bg-navy-50 border border-navy-100 text-accent group-hover:bg-accent group-hover:border-accent group-hover:text-white">
                     {React.cloneElement(feature.icon, { className: "h-6 w-6 transition-colors" })}
                 </div>
-                <h3 className={`text-lg font-bold font-display mb-2.5 transition-colors ${isActive ? 'text-accent' : 'text-navy-900 group-hover:text-accent'}`}>{feature.title}</h3>
-                <p className={`text-sm leading-relaxed transition-colors ${isActive ? 'text-navy-800' : 'text-navy-600'}`}>{feature.description}</p>
+                <h3 className="text-lg font-bold font-display mb-2.5 text-navy-900 group-hover:text-accent transition-colors">{feature.title}</h3>
+                <p className="text-sm leading-relaxed text-navy-600">{feature.description}</p>
             </div>
         </motion.div>
     );
@@ -78,7 +69,7 @@ export const WholesaleGeneralAgency = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.7 }}
-            className="bg-surface py-24 font-body border-b border-navy-100/60 relative overflow-hidden origin-top"
+            className="bg-surface py-20 md:py-28 font-body border-b border-navy-100/60 relative overflow-hidden origin-top"
         >
             <SectionGlow position="bottomRight" className="opacity-40" />
 
@@ -115,7 +106,7 @@ export const WholesaleGeneralAgency = () => {
                     <div className="lg:col-span-5 relative h-full">
                         <div className="sticky top-24 h-fit">
                             <motion.div
-                                className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy-100/80"
+                                className="card relative rounded-2xl overflow-hidden border-navy-100/80"
                             >
                                 <Image
                                     src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Home-2.jpeg"

@@ -35,7 +35,7 @@ export const PlanDescriptions = () => {
   ];
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-navy-50 to-blue-100 font-inter">
+    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface-alt font-inter">
       <div className="max-w-7xl mx-auto">
         {/* Main Title */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-12 text-center leading-tight tracking-tight drop-shadow-sm">
@@ -47,10 +47,10 @@ export const PlanDescriptions = () => {
           {plansData.map((plan, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-blue-200 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+              className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-navy-100 flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
             >
               {/* Plan Name */}
-              <h2 className="text-2xl sm:text-3xl font-bold text-blue-700 mb-6 text-center">
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-6 text-center">
                 {plan.name}
               </h2>
 
@@ -58,7 +58,7 @@ export const PlanDescriptions = () => {
               <ul className="space-y-4 text-gray-700 text-base flex-grow">
                 {plan.details.map((detail, detailIndex) => (
                   <li key={detailIndex} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-5 h-5 text-accent mr-2 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <div>

@@ -5,7 +5,7 @@ export const RXPlanHeroSection = () => {
   return (
     <>
     <section
-      className="relative py-24 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50" // Light gradient applied here
+      className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden bg-surface-alt" // Light gradient applied here
     >
       {/* Subtle background pattern for unique texture */}
       <div className="absolute inset-0 opacity-10" style={{

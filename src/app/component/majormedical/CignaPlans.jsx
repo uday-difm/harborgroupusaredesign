@@ -8,7 +8,7 @@ const CignaNetworkLogo = () => (
     alt="Cigna Logo"
     width={50}
     height={50}
-    className="inline-block rounded-full mr-2"
+    className="object-cover inline-block rounded-full mr-2"
   />
 );
 
@@ -103,42 +103,42 @@ const cignaPlansData = {
 
 export const CignaPlans  = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8 lg:p-12 font-inter flex flex-col items-center">
+    <div className="min-h-screen bg-surface-alt p-4 sm:p-8 lg:p-12 font-inter flex flex-col items-center">
       {/* Main Title with a modern twist */}
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-blue-800 mb-10 text-center leading-tight tracking-tight drop-shadow-md">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-10 text-center leading-tight tracking-tight drop-shadow-md">
         {cignaPlansData.header}
       </h1>
 
       {/* Responsive Table Container */}
-      <div className="w-full max-w-7xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-blue-200">
+      <div className="w-full max-w-7xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-navy-100">
 
         {/* Top Header Row for Plan Names and Network/Availability */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 bg-blue-100 text-blue-800  font-bold text-base sm:text-lg rounded-t-2xl">
-          <div className="hidden sm:block p-4 border-r border-blue-600 flex items-center justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-4 bg-navy-100 text-primary  font-bold text-base sm:text-lg rounded-t-2xl">
+          <div className="hidden sm:block p-4 border-r border-navy-400 flex items-center justify-center">
             <span className="text-xl">Plan Details</span>
           </div>
           {cignaPlansData.plans.map((plan, index) => (
-            <div key={index} className={`p-4 text-center flex flex-col items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-blue-600' : ''}`}>
+            <div key={index} className={`p-4 text-center flex flex-col items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-navy-400' : ''}`}>
               <span className="text-xl mb-1">{plan.name}</span>
             </div>
           ))}
         </div>
 
         {/* Network and Plan Availability Rows */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 bg-blue-50 text-blue-800 text-sm sm:text-base font-medium border-b border-blue-200">
-          <div className="p-3 sm:p-4 border-r border-blue-100 flex items-center justify-start sm:justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-4 bg-navy-50 text-primary text-sm sm:text-base font-medium border-b border-navy-100">
+          <div className="p-3 sm:p-4 border-r border-navy-50 flex items-center justify-start sm:justify-center">
             Network
           </div>
           {cignaPlansData.plans.map((plan, index) => (
-            <div key={index} className={`p-3 sm:p-4 text-center flex items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-blue-100' : ''}`}>
+            <div key={index} className={`p-3 sm:p-4 text-center flex items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-navy-50' : ''}`}>
               {plan.network}
             </div>
           ))}
-          <div className="p-3 sm:p-4 border-r border-blue-100 flex items-center justify-start sm:justify-center">
+          <div className="p-3 sm:p-4 border-r border-navy-50 flex items-center justify-start sm:justify-center">
             Plan Availability
           </div>
           {cignaPlansData.plans.map((plan, index) => (
-            <div key={index} className={`p-3 sm:p-4 text-center flex items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-blue-100' : ''}`}>
+            <div key={index} className={`p-3 sm:p-4 text-center flex items-center justify-center ${index < cignaPlansData.plans.length - 1 ? 'sm:border-r border-navy-50' : ''}`}>
               {plan.availability}
             </div>
           ))}
@@ -149,7 +149,7 @@ export const CignaPlans  = () => {
         {cignaPlansData.sections.map((section, sectionIndex) => (
           <React.Fragment key={sectionIndex}>
             {/* Section Title Row - visually distinct */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 bg-blue-100 text-blue-800  font-extrabold text-base sm:text-xl py-3 sm:py-4 border-t border-b border-blue-300">
+            <div className="grid grid-cols-1 sm:grid-cols-4 bg-navy-100 text-primary  font-extrabold text-base sm:text-xl py-3 sm:py-4 border-t border-b border-navy-200">
               <div className="col-span-1 sm:col-span-4 text-center">
                 {section.title}
               </div>
@@ -161,7 +161,7 @@ export const CignaPlans  = () => {
                 key={rowIndex}
                 className={`grid grid-cols-1 sm:grid-cols-4 text-gray-800 text-xs sm:text-sm lg:text-base ${
                   rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                } border-t border-gray-100 hover:bg-blue-50 transition duration-150 ease-in-out`}
+                } border-t border-gray-100 hover:bg-navy-50 transition duration-150 ease-in-out`}
               >
                 {/* Feature Label Column */}
                 <div className="p-3 sm:p-4 border-r border-gray-200 flex items-center font-semibold text-gray-700">

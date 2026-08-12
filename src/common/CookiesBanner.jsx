@@ -14,8 +14,8 @@ const CookiesBanner = () => {
     setMounted(true);
     // Only show if the cookie isn't already set
     if (!Cookies.get('cookieAccepted')) {
-      // Small delay so it slides in after page load
-      const timer = setTimeout(() => setIsVisible(true), 1500);
+      // Give visitors time to understand the page before asking for consent.
+      const timer = setTimeout(() => setIsVisible(true), 5000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -44,10 +44,18 @@ const CookiesBanner = () => {
       });
 
       if (!response.ok) {
-        console.error('Failed to record consent in database.');
+        if (process.env.NODE_ENV === 'development') {
+
+          console.error('Failed to record consent in database.');
+
+        }
       }
     } catch (error) {
-      console.error('Error while sending consent to server:', error);
+      if (process.env.NODE_ENV === 'development') {
+
+        console.error('Error while sending consent to server:', error);
+
+      }
     }
   };
 
@@ -72,9 +80,9 @@ const CookiesBanner = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0, scale: 0.95 }}
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] max-w-sm w-[calc(100%-2rem)] bg-white border border-navy-100 rounded-2xl shadow-2xl overflow-hidden font-body"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] max-w-[22rem] w-[calc(100%-2rem)] bg-white/95 backdrop-blur-md border border-navy-100 rounded-2xl shadow-xl overflow-hidden font-body"
         >
-          <div className="p-6">
+          <div className="p-5">
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -94,7 +102,7 @@ const CookiesBanner = () => {
             <div className="h-px w-full bg-navy-100 mb-4" />
 
             {/* Body */}
-            <p className="text-sm text-navy-700 leading-relaxed mb-6">
+            <p className="text-sm text-navy-700 leading-relaxed mb-4">
               We use cookies to improve your experience and analyze traffic. By continuing, you agree to our{' '}
               <Link
                 href="/privacy-policy"
@@ -117,13 +125,13 @@ const CookiesBanner = () => {
             <div className="flex items-center justify-end gap-4">
               <button
                 onClick={handleDecline}
-                className="text-sm font-medium text-navy-600 hover:text-navy-900 transition-all hover:bg-navy-50 rounded-full px-4 py-2.5"
+                className="text-sm font-medium text-navy-600 hover:text-navy-900 transition-all hover:bg-navy-50 rounded-full px-3 py-2"
               >
                 Decline
               </button>
               <button
                 onClick={handleAccept}
-                className="btn-primary px-5 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                className="btn-primary px-4 py-2 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
               >
                 Accept All
               </button>

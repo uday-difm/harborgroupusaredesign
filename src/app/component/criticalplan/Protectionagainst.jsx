@@ -149,7 +149,7 @@ export const Protectionagainst = () => {
   };
 
   return (
-    <div className="bg-navy-50 font-sans antialiased flex flex-col items-center justify-center">
+    <div className="bg-navy-50 font-body antialiased flex flex-col items-center justify-center">
       {/* SVG gradient defs */}
       <svg width="0" height="0" className="absolute">
         <defs>
@@ -163,7 +163,7 @@ export const Protectionagainst = () => {
 
       <section
         id="critical-plan-form"
-        className="relative w-full bg-gradient-to-br from-blue-100 to-blue-300 text-navy-800"
+        className="relative w-full bg-gradient-to-br from-navy-100 to-navy-200 text-navy-800"
         aria-labelledby="critical-plan-heading"
       >
         {/* Background image (fills section) */}
@@ -178,7 +178,7 @@ export const Protectionagainst = () => {
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1200px"
               className="object-cover object-center opacity-70"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-navy-100 to-navy-200 opacity-60"></div>
             <div className="absolute inset-0 bg-navy-50 opacity-40"></div>
           </div>
 
@@ -213,7 +213,7 @@ export const Protectionagainst = () => {
               </div>
 
               {/* Right: Form */}
-              <div className="mx-auto w-full max-w-lg bg-white p-6 sm:p-8 rounded-card card-elevated">
+              <div className="mx-auto w-full max-w-lg bg-white p-6 sm:p-8 rounded-2xl card-elevated">
                 <h3 className="text-xl sm:text-2xl font-bold text-navy-800 mb-4 text-center">Your Information</h3>
 
                 <form className="space-y-4" onSubmit={handleSubmit} noValidate>
@@ -233,7 +233,7 @@ export const Protectionagainst = () => {
                         placeholder="Your name"
                         aria-required="true"
                           aria-describedby={nameError ? "name-error" : undefined}
-                        className={`w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition ${
+                        className={`w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent transition ${
                           nameError ? "border-error" : "border-gray-300"
                         }`}
                       />
@@ -256,7 +256,7 @@ export const Protectionagainst = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent transition"
                         placeholder="you@example.com"
                         aria-required="true"
                       />
@@ -274,7 +274,7 @@ export const Protectionagainst = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition resize-y"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent/40 focus:border-accent transition resize-y"
                       placeholder="How can we help you?"
                       aria-required="true"
                     />
@@ -287,7 +287,7 @@ export const Protectionagainst = () => {
                       type="checkbox"
                       checked={formData.terms}
                       onChange={handleInputChange}
-                      className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                      className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-accent mt-1"
                       aria-required="true"
                     />
                     <label htmlFor="terms" className="ml-2 text-sm text-gray-700">
@@ -317,69 +317,6 @@ export const Protectionagainst = () => {
         </div>
       </section>
 
-      {/* Inline styles for animations */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        @keyframes slideInLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        .animate-shapeFloat1 {
-          animation: shapeFloat 15s infinite alternate ease-in-out;
-        }
-        .animate-shapeFloat2 {
-          animation: shapeFloat 17s infinite alternate ease-in-out;
-          animation-delay: 0.5s;
-        }
-        .animate-shapeFloat3 {
-          animation: shapeFloat 13s infinite alternate ease-in-out;
-          animation-delay: 1s;
-        }
-        .animate-shapeFloat4 {
-          animation: shapeFloat 16s infinite alternate ease-in-out;
-          animation-delay: 0.3s;
-        }
-        @keyframes shapeFloat {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          25% {
-            transform: translate(5px, 5px);
-          }
-          50% {
-            transform: translate(0, 10px);
-          }
-          75% {
-            transform: translate(-5px, 5px);
-          }
-        }
-      `}</style>
-    </div>
+      {/* Inline styles for animations */}</div>
   );
 };

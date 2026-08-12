@@ -38,7 +38,7 @@ export default function FounderSection() {
             viewport={{ once: true, amount: 0.2 }}
             variants={imageRevealVariants}
           >
-            <div className="relative w-full h-full rounded-card overflow-hidden card-elevated">
+            <div className="relative w-full h-full rounded-2xl overflow-hidden card-elevated">
                 <Image 
                     src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Douglas Muhlbauer.jpg" 
                     alt="Douglas Muhlbauer, Founder of Harbor Group USA"
@@ -76,10 +76,10 @@ export default function FounderSection() {
 
             {/* Book Highlight Section */}
             <motion.div variants={itemVariants} className="mt-10">
-                <div className="group relative p-6 bg-navy-50 border border-navy-100 rounded-card overflow-hidden transition-all duration-300 hover:shadow-lg">
+                <div className="group relative p-6 bg-navy-50 border border-navy-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg">
                     <div className="absolute top-0 left-0 h-full w-1 bg-accent transform -translate-x-full transition-transform duration-500 ease-out group-hover:translate-x-0"></div>
                     <div className="flex items-start space-x-5">
-                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-card bg-navy-800 text-white shadow-md group-hover:bg-accent transition-colors duration-300">
+                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-navy-800 text-white shadow-md group-hover:bg-accent transition-colors duration-300">
                             <Book className="h-7 w-7" />
                         </div>
                         <div>

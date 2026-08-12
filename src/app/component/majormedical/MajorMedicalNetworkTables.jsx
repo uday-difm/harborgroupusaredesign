@@ -136,7 +136,7 @@ export const MajorMedicalNetworkTables = () => {
   const currentData = getTableData(activeTab);
 
   return (
-    <section className="section-tint py-24 px-4 sm:px-6 lg:px-8">
+    <section className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-4">Detailed Breakdown</span>
@@ -166,7 +166,7 @@ export const MajorMedicalNetworkTables = () => {
         </div>
 
         {/* Active Tab Content */}
-        <div className="bg-white rounded-card shadow-xl border border-navy-100 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl border border-navy-100 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

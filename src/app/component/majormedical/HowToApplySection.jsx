@@ -4,7 +4,7 @@ import React from 'react';
 // Main App component
 export const HowToApplySection = ()=> {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 font-sans text-gray-800 flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 font-body text-gray-800 flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto w-full">
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -56,12 +56,12 @@ export const HowToApplySection = ()=> {
 // Reusable Step Card Component
 const StepCard = ({ iconPath, title, description }) => {
   return (
-    <div className="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105
+    <div className="bg-white p-8 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105
                     border border-gray-200
                     flex flex-col items-center text-center">
-      <div className="bg-gradient-to-br from-blue-300 to-teal-400 p-5 rounded-full mb-6 shadow-lg
+      <div className="bg-gradient-to-br from-accent to-accent-light p-5 rounded-full mb-6 shadow-lg
                       relative after:absolute after:inset-0 after:rounded-full after:border-2 after:border-transparent
-                      hover:after:border-blue-200 hover:after:scale-110 after:transition-all after:duration-300">
+                      hover:after:border-accent-light hover:after:scale-110 after:transition-all after:duration-300">
         <svg className="w-14 h-14 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d={iconPath} />
         </svg>

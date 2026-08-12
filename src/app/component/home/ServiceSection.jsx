@@ -66,7 +66,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
             <motion.div variants={cardVariant} className="h-full">
                 <a
                     href={service.href}
-                    className="group relative p-7 rounded-2xl bg-white border border-navy-100/80 shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full block"
+                    className="card-elevated group relative p-7 rounded-2xl overflow-hidden flex flex-col justify-between h-full block"
                     ref={tilt.ref}
                     style={{ ...tilt.style, '--glow-x': glow.x, '--glow-y': glow.y }}
                     onMouseMove={handleMouseMove}
@@ -81,7 +81,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
 
                     <div>
                         {/* Icon */}
-                        <div className="w-13 h-13 rounded-xl bg-navy-50 border border-navy-100/60 flex items-center justify-center text-navy-800 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 w-fit p-3.5 mb-5">
+                        <div className="w-13 h-13 rounded-lg bg-navy-50 border border-navy-100/60 flex items-center justify-center text-navy-800 group-hover:bg-accent group-hover:border-accent group-hover:text-white transition-all duration-300 w-fit p-3.5 mb-5">
                             {React.cloneElement(service.icon, { className: "h-6 w-6 stroke-[1.75]", strokeWidth: 1.75 })}
                         </div>
 
@@ -105,7 +105,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
     };
 
     return (
-        <section ref={gridRef} className="bg-surface-alt relative overflow-hidden py-24 border-y border-navy-100/60 font-body">
+        <section ref={gridRef} className="bg-surface-alt relative overflow-hidden py-20 md:py-28 border-y border-navy-100/60 font-body">
             <div className="bg-noise"></div>
             {/* Theme-Colored Dot Grid Graphic Background Pattern */}
             <div 
@@ -172,7 +172,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
                                 key={service.name}
                                 variants={cardVariant}
                                 href={service.href}
-                                className="flex items-center gap-2.5 px-5 py-3 rounded-full bg-white border border-navy-100 hover:border-accent hover:shadow-lg transition-all group"
+                                className="flex items-center gap-2.5 px-5 py-3 rounded-full bg-white border border-navy-100 hover:border-accent shadow-sm hover:shadow-md transition-[border-color,box-shadow] duration-300 group"
                             >
                                 <div className="text-navy-600 group-hover:text-accent transition-colors">
                                     {React.cloneElement(service.icon, { className: "h-5 w-5 stroke-[2]" })}
@@ -183,7 +183,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
                         <motion.a 
                             variants={cardVariant}
                             href="/health-plans"
-                            className="flex items-center gap-2 px-6 py-3 rounded-full bg-navy-50 text-navy-900 font-bold text-sm hover:bg-navy-100 transition-colors ml-auto sm:mt-0"
+                            className="flex items-center gap-2 px-6 py-3 rounded-full bg-navy-50 text-navy-900 font-bold text-sm hover:bg-navy-100 transition-colors duration-300 ml-auto sm:mt-0"
                         >
                             View Details <ArrowRight className="h-4 w-4" />
                         </motion.a>

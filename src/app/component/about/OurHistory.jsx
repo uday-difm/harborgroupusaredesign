@@ -30,10 +30,10 @@ const ValueCard = ({ icon: Icon, title, children }) => {
                 style={tilt.style}
                 onMouseMove={tilt.handleMouseMove}
                 onMouseLeave={tilt.handleMouseLeave}
-                className="group relative h-full p-8 bg-white border border-navy-100 rounded-card card-elevated transition-colors duration-300 hover:border-accent"
+                className="group relative h-full p-8 bg-white border border-navy-100 rounded-2xl card-elevated transition-colors duration-300 hover:border-accent"
             >
                 <div className="flex flex-col sm:flex-row sm:items-center items-start sm:space-x-5 space-y-4 sm:space-y-0 mb-6">
-                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-card bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                         <Icon className="w-7 h-7" strokeWidth={1.5} />
                     </div>
                     <h3 className="text-xl font-bold text-navy-800">{title}</h3>
@@ -70,7 +70,7 @@ export const OurHistory = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         variants={imageRevealVariants}
                     >
-                        <div className="relative w-full h-full rounded-card overflow-hidden card-elevated img-duotone">
+                        <div className="relative w-full h-full rounded-2xl overflow-hidden card-elevated img-duotone">
                             <motion.div
                                 initial={{ scale: 1.15 }}
                                 whileInView={{ scale: 1 }}

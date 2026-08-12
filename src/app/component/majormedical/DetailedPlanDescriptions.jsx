@@ -26,9 +26,9 @@ export const DetailedPlanDescriptions = () => {
 
   return (
     // Main container with a gradient background and responsive padding
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-inter text-gray-800 p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-surface-alt font-inter text-gray-800 p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
       {/* Page title */}
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-800 mb-10 text-center drop-shadow-lg">
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-primary mb-10 text-center drop-shadow-lg">
         Detailed Plan Descriptions
       </h1>
 
@@ -38,10 +38,10 @@ export const DetailedPlanDescriptions = () => {
           // Individual plan card
           <div
             key={index}
-            className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 flex flex-col border-t-4 border-blue-500"
+            className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 flex flex-col border-t-4 border-accent"
           >
             {/* Plan name */}
-            <h2 className="text-3xl font-bold text-blue-700 mb-6 text-center">
+            <h2 className="text-3xl font-bold text-primary mb-6 text-center">
               {plan.name}
             </h2>
 
@@ -70,7 +70,7 @@ export const DetailedPlanDescriptions = () => {
             {/* Coverage section */}
             <div className="mb-5">
               <h3 className="text-lg font-semibold text-gray-700 flex items-center mb-2">
-                <svg className="w-5 h-5 text-purple-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Coverage:
@@ -81,7 +81,7 @@ export const DetailedPlanDescriptions = () => {
             {/* Prescription Drug Benefits section */}
             <div className="mb-5">
               <h3 className="text-lg font-semibold text-gray-700 flex items-center mb-2">
-                <svg className="w-5 h-5 text-yellow-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-accent-dark mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M12 7V4l-2-2-2 2v3H2v10h16V7h-6zm-2 0H8V5.414L9.414 4l.586.586V7zm4 0h-2V5.414L13.414 4l.586.586V7zM4 9h12v7H4V9z" clipRule="evenodd" />
                 </svg>
                 Prescription Drug Benefits:
@@ -92,7 +92,7 @@ export const DetailedPlanDescriptions = () => {
             {/* Additional details section */}
             <div className="mb-0">
               <h3 className="text-lg font-semibold text-gray-700 flex items-center mb-2">
-                <svg className="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-accent mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zm-2 2a1 1 0 00-1 1v3a1 1 0 001 1h2a1 1 0 001-1v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                 </svg>
                 Additional details:

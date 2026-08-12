@@ -7,6 +7,7 @@ import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
 import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
 import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
 import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanNetwork } from '@/common/PlanTemplate/PlanNetwork';
 import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { MajorMedicalForm } from '../component/majormedical/MajorMedicalForm';
 
@@ -43,39 +44,35 @@ export default function MajorMedicalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions
+      <PlanNetwork
         title="Network"
         description="Our Major Medical Plans are available in all 50 states, offering a wide network of healthcare providers. Access to top-tier hospitals, specialists, and primary care physicians ensures you receive the best possible care."
-        plans={[
+        imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/network.jpeg"
+        features={[
           {
             title: "Nationwide Coverage",
-            features: [
-              "Available in all 50 states."
-            ]
+            description: "Available in all 50 states.",
+            icon: MapPin
           },
           {
             title: "Extensive Provider Network",
-            features: [
-              "Access to top-tier hospitals and specialists."
-            ]
+            description: "Access to top-tier hospitals and specialists.",
+            icon: Hospital
           },
           {
             title: "Primary Care Physicians",
-            features: [
-              "Ensure you receive comprehensive and continuous care."
-            ]
+            description: "Ensure you receive comprehensive and continuous care.",
+            icon: UserCheck
           },
           {
             title: "Specialist Access",
-            features: [
-              "Easy referrals to specialists for specific health needs."
-            ]
+            description: "Easy referrals to specialists for specific health needs.",
+            icon: UserSquare
           },
           {
             title: "Quality Care",
-            features: [
-              "High standards of care across the network to ensure optimal health outcomes."
-            ]
+            description: "High standards of care across the network to ensure optimal health outcomes.",
+            icon: Award
           }
         ]}
       />

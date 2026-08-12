@@ -185,7 +185,7 @@ export const RequestCallback = () => {
                   onPaste={handleNamePaste}
                   aria-required="true"
                   aria-describedby={nameError ? "name-error" : undefined}
-                  className={`w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ${
+                  className={`w-full px-4 py-2 rounded-lg focus:ring-2 focus:ring-accent focus:outline-none transition duration-200 ${
                     nameError ? "border-error border" : "border-gray-300 border"
                   }`}
                 />
@@ -207,7 +207,7 @@ export const RequestCallback = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 rounded-md border-gray-300 border focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200`}
+                  className={`w-full px-4 py-2 rounded-lg border-gray-300 border focus:ring-2 focus:ring-accent focus:outline-none transition duration-200`}
                 />
               </div>
 
@@ -221,7 +221,7 @@ export const RequestCallback = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  className={`w-full px-4 py-2 rounded-md border-gray-300 border focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200`}
+                  className={`w-full px-4 py-2 rounded-lg border-gray-300 border focus:ring-2 focus:ring-accent focus:outline-none transition duration-200`}
                 ></textarea>
               </div>
 
@@ -232,11 +232,11 @@ export const RequestCallback = () => {
                   name="terms"
                   checked={formData.terms}
                   onChange={handleChange}
-                  className="mt-1 mr-2 rounded text-accent focus:ring-teal-400"
+                  className="mt-1 mr-2 rounded text-accent focus:ring-accent"
                 />
                 <label htmlFor="terms" className={`text-sm text-navy-500`}>
                   By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also agree to our{" "}
-                  <a href="/sms-and-marketing-terms" className={`font-semibold text-sky-600 hover:underline`}>
+                  <a href="/sms-and-marketing-terms" className={`font-semibold text-primary hover:underline`}>
                     SMS and Marketing terms and conditions
                   </a>
                   .
@@ -245,7 +245,7 @@ export const RequestCallback = () => {
 
               <button
                 type="submit"
-                className={`w-full py-3 px-6 rounded-md font-semibold text-lg bg-sky-400 text-white hover:bg-accent-dark transition duration-300 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed`}
+                className={`w-full py-3 px-6 rounded-lg font-semibold text-lg bg-accent text-white hover:bg-accent-dark transition duration-300 ease-in-out shadow-md hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "SUBMIT"}

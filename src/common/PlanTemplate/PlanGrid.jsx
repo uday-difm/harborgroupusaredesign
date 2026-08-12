@@ -21,7 +21,7 @@ export const PlanGrid = ({
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-surface font-body overflow-hidden">
+    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         {/* Header */}
@@ -58,18 +58,15 @@ export const PlanGrid = ({
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
-            // Calculate offset based on column index (0, 1, 2)
-            const colIndex = index % 3;
-            const offsetClass = colIndex === 1 ? 'lg:translate-y-8' : colIndex === 2 ? 'lg:translate-y-16' : '';
             
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`card-elevated p-8 flex flex-col justify-center transition-all duration-300 hover:-translate-y-2 group ${offsetClass}`}
+                className="card-elevated p-8 flex flex-col justify-start transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 group"
               >
                 {Icon && (
-                  <div className="w-12 h-12 bg-navy-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
+                  <div className="w-12 h-12 bg-navy-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
                     <Icon className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-300" strokeWidth={2} />
                   </div>
                 )}
@@ -85,9 +82,6 @@ export const PlanGrid = ({
             );
           })}
         </motion.div>
-        
-        {/* Spacer to account for the offset grid's extra height at the bottom */}
-        <div className="hidden lg:block h-16"></div>
       </div>
     </section>
   );

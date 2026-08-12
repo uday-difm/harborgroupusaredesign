@@ -127,8 +127,8 @@ const BenefitsSection = () => {
 // Component for individual Benefit Card
 const BenefitCard = ({ icon, title, description }) => {
   return (
-    <div className="flex flex-col sm:flex-row items-start p-6 bg-white rounded-card shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-navy-100">
-      <div className="flex-shrink-0 p-3 rounded-full mb-4 sm:mb-0 sm:mr-6 bg-gradient-to-br from-sky-400 to-cyan-400"> {/* Icon background gradient */}
+    <div className="flex flex-col sm:flex-row items-start p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 border border-navy-100">
+      <div className="flex-shrink-0 p-3 rounded-full mb-4 sm:mb-0 sm:mr-6 bg-gradient-to-br from-accent to-accent-light"> {/* Icon background gradient */}
         {icon}
       </div>
       <div>

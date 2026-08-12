@@ -124,13 +124,13 @@ export const StartPlanSection = () => {
 
   return (
     <>
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white to-blue-50 overflow-hidden" id="rx-plan-form">
+      <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface overflow-hidden" id="rx-plan-form">
       {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
       }}></div>
 
-      <div className="relative max-w-7xl mx-auto rounded-3xl shadow-2xl overflow-hidden bg-white">
+      <div className="relative max-w-7xl mx-auto rounded-2xl shadow-2xl overflow-hidden bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Column: Image Section */}
           <div className="relative h-96 lg:h-auto overflow-hidden">
@@ -169,7 +169,7 @@ export const StartPlanSection = () => {
                       onChange={handleChange}
                       onKeyDown={handleNameKeyDown}
                       onPaste={handleNamePaste}
-                      className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg ${
+                      className={`mt-1 block w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent text-lg ${
                         nameError ? "border-error border" : "border-gray-300 border"
                       }`}
                       placeholder="John Doe"
@@ -190,7 +190,7 @@ export const StartPlanSection = () => {
                      name="email"
                       value={formData.email}
                       onChange={handleChange}
-                    className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                    className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-lg"
                     placeholder="john.doe@example.com"
                   />
                 </div>
@@ -207,7 +207,7 @@ export const StartPlanSection = () => {
                    value={formData.message}
                     onChange={handleChange}
                   rows="5"
-                  className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg resize-y"
+                  className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent text-lg resize-y"
                   placeholder="Tell us more about your needs..."
                 ></textarea>
               </div>
@@ -220,7 +220,7 @@ export const StartPlanSection = () => {
                   type="checkbox"
                    checked={formData.terms}
                     onChange={handleChange}
-                  className="h-5 w-5 text-navy-600 focus:ring-blue-500 border-gray-300 rounded mt-1 cursor-pointer"
+                  className="h-5 w-5 text-navy-600 focus:ring-accent border-gray-300 rounded mt-1 cursor-pointer"
                 />
                 <label htmlFor="start-terms" className="ml-3 text-sm text-navy-500">
                   By submiting you allow our team to reach out to you via email or phone as submitted
@@ -233,7 +233,7 @@ export const StartPlanSection = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg card-elevated text-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 transform hover:-translate-y-0.5"
+                  className="w-full inline-flex justify-center py-3 px-6 border border-transparent rounded-lg card-elevated text-xl font-semibold text-white bg-primary hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent transition-all duration-200 transform hover:-translate-y-0.5"
                 disabled={issubmiting}
                   >
                     {issubmiting ? 'submiting...' : 'Submit'}

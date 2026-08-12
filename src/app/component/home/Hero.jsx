@@ -3,7 +3,7 @@
 import React from 'react';
 import { Shield, Users, Handshake, ShieldCheck, Star } from 'lucide-react';
 import Image from 'next/image';
-import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, animate } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, animate, useSpring } from 'framer-motion';
 import { useMagnetic } from '@/common/motion/useMagnetic';
 import { useParallax } from '@/common/motion/useParallax';
 import { useTilt } from '@/common/motion/useTilt';
@@ -11,12 +11,12 @@ import { useCountUp } from '@/common/motion/useCountUp';
 
 const containerVariants = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } }
+    show: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } }
 };
 
 const itemVariants = (reduced) => ({
-    hidden: { opacity: 0, y: reduced ? 0 : 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: reduced ? 0 : 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
 });
 
 const STATS = [
@@ -33,10 +33,10 @@ const StatItem = ({ stat }) => {
             viewport={{ once: true }}
             className="flex flex-col items-center sm:items-start"
         >
-            <span className="text-3xl font-display font-bold text-navy-900">
+            <span className="text-2xl font-display font-bold text-navy-900">
                 {value}{stat.suffix}
             </span>
-            <span className="font-medium text-navy-600 text-sm mt-1">{stat.label}</span>
+            <span className="font-medium text-navy-600 text-xs mt-0.5">{stat.label}</span>
         </motion.div>
     );
 };
@@ -68,14 +68,33 @@ export const HeroSection = () => {
 
     const photoRotation = useTransform(scrollYProgress, [0.15, 0.4], [4, 1]);
 
+    // Mouse Parallax for background
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
+    const bgX = useSpring(mouseX, springConfig);
+    const bgY = useSpring(mouseY, springConfig);
+
+    const handleMouseMove = (e) => {
+        if (prefersReduced) return;
+        const { clientX, clientY } = e;
+        const targetX = (clientX / (typeof window !== 'undefined' ? window.innerWidth : 1000) - 0.5) * 40; // max 20px
+        const targetY = (clientY / (typeof window !== 'undefined' ? window.innerHeight : 1000) - 0.5) * 40; // max 20px
+        mouseX.set(targetX);
+        mouseY.set(targetY);
+    };
+
     return (
-        <section ref={sectionRef} className="relative w-full overflow-hidden bg-white font-body min-h-[calc(100vh-128px)] flex flex-col pt-10 pb-0">
+        <section ref={sectionRef} onMouseMove={handleMouseMove} className="relative w-full overflow-hidden bg-white font-body min-h-[calc(100vh-128px)] flex flex-col pt-10 pb-0">
             {/* Background Gradient & Arcs */}
             <div className="absolute inset-0 pointer-events-none" style={{
                 background: 'radial-gradient(circle at 10% 90%, #ECEEF5 0%, rgba(255,255,255,0) 60%), radial-gradient(circle at 90% 10%, #ECEEF5 0%, rgba(255,255,255,0) 60%)'
             }} />
             
-            <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-navy-200/50" fill="none" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+            <motion.svg 
+                style={{ x: bgX, y: bgY }}
+                className="absolute inset-0 w-full h-full pointer-events-none stroke-navy-200/50" fill="none" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice"
+            >
                 <motion.path 
                     style={{ pathLength: prefersReduced ? 1 : pathLength }}
                     initial={{ opacity: 0 }} 
@@ -97,7 +116,7 @@ export const HeroSection = () => {
                     transition={{ duration: 0.8, ease: "linear", delay: 0.4 }} 
                     d="M200,-100 C500,400 900,100 1200,900" strokeWidth="1" 
                 />
-            </svg>
+            </motion.svg>
 
             <motion.div 
                 style={{ opacity: prefersReduced ? 1 : scrollOpacity, y: prefersReduced ? 0 : scrollY }}
@@ -112,13 +131,19 @@ export const HeroSection = () => {
                         initial="hidden"
                         animate="show"
                     >
-                        <motion.h1 variants={iV} className="text-6xl sm:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] font-display font-bold leading-[1.05] tracking-tight mb-8">
-                            <span className="block text-navy-900">A Brighter</span>
-                            <span className="block text-accent">&amp; Healthier</span>
-                            <span className="block text-navy-900">Future</span>
+                        <motion.h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-display font-semibold leading-[1.05] tracking-tight mb-8">
+                            <span className="block overflow-hidden pb-2">
+                                <motion.span variants={iV} className="block text-navy-900 origin-bottom-left">A Brighter</motion.span>
+                            </span>
+                            <span className="block overflow-hidden pb-2">
+                                <motion.span variants={iV} className="block text-accent origin-bottom-left">&amp; Healthier</motion.span>
+                            </span>
+                            <span className="block overflow-hidden pb-2">
+                                <motion.span variants={iV} className="block text-navy-900 origin-bottom-left">Future</motion.span>
+                            </span>
                         </motion.h1>
 
-                        <motion.p variants={iV} className="text-xl sm:text-2xl text-navy-800 leading-relaxed mb-10 max-w-2xl font-medium">
+                        <motion.p variants={iV} className="text-lg sm:text-xl text-navy-800 leading-relaxed mb-10 max-w-2xl font-medium">
                             Harbor Group USA: Elevating health insurance for individuals and groups through expertise and personalized care.
                         </motion.p>
 
@@ -180,6 +205,7 @@ export const HeroSection = () => {
                                         src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Get-Your-Free-Health-Plan-Quote-Today.jpeg"
                                         alt="Advisor talking to client"
                                         fill
+                                        sizes="(max-width: 1023px) 100vw, 42vw"
                                         className="object-cover object-center"
                                         priority
                                     />
@@ -197,7 +223,7 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.8, duration: 0.6 }}
             >
-                <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto py-6 flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-4">
+                <div className="max-w-4xl mx-auto px-6 py-2.5 flex flex-col sm:flex-row items-center justify-between gap-4">
                     {STATS.map((stat, idx) => (
                         <StatItem key={idx} stat={stat} />
                     ))}

@@ -7,6 +7,7 @@ import { PlanGrid } from '@/common/PlanTemplate/PlanGrid';
 import { PlanEligibility } from '@/common/PlanTemplate/PlanEligibility';
 import { PlanHowToApply } from '@/common/PlanTemplate/PlanHowToApply';
 import { PlanCostOptions } from '@/common/PlanTemplate/PlanCostOptions';
+import { PlanNetwork } from '@/common/PlanTemplate/PlanNetwork';
 import { PlanFaq } from '@/common/PlanTemplate/PlanFaq';
 import { PlanCTA } from '@/common/PlanTemplate/PlanCTA';
 import { CriticalForm } from '../component/criticalplan/CriticalForm';
@@ -56,23 +57,26 @@ export default function CriticalPlanPage() {
         ]}
       />
 
-      <PlanCostOptions
+      <PlanNetwork
         title="Network"
         description="Accessing support for critical health moments is effortless with our extensive network of experienced professionals."
-        plans={[
+        imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/hospital-plan-benifit.jpeg"
+        features={[
           {
-            title: "Expert Network",
-            features: [
-              "Access our network of expert professionals who specialize in critical health conditions",
-              "Ensure tailored guidance for your unique health challenges"
-            ]
+            title: "Expert Professionals",
+            description: "Access our network of expert professionals who specialize in critical health conditions."
           },
           {
-            title: "Convenient Access",
-            features: [
-              "Your expansive network covers every corner of the United States",
-              "Find a qualified specialist conveniently, ensuring accessibility during critical health situations, wherever you are"
-            ]
+            title: "Tailored Guidance",
+            description: "Ensure tailored guidance for your unique health challenges."
+          },
+          {
+            title: "Nationwide Access",
+            description: "Your expansive network covers every corner of the United States, to provide you with critical coverage at your convenience."
+          },
+          {
+            title: "Convenient Accessibility",
+            description: "Find a qualified specialist conveniently, ensuring accessibility during critical health situations, wherever you are."
           }
         ]}
       />

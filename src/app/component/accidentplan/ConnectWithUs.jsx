@@ -115,10 +115,10 @@ export const ConnectWithUs = () => {
   };
 
   return (
-    <section className="w-full bg-navy-50 py-16 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
+    <section className="w-full bg-navy-50 py-20 md:py-28 px-4 sm:px-6 lg:px-8" id="accident-plan-form">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
         {/* Left Column: Connect With Us Form */}
-        <div className="bg-white p-8 rounded-card card-elevated animate-slideInLeft flex flex-col h-full">
+        <div className="bg-white p-8 rounded-2xl card-elevated  flex flex-col h-full">
           <h2 className="text-4xl font-extrabold text-navy-800 mb-6 text-center lg:text-left">
             Connect With Us
           </h2>
@@ -134,7 +134,7 @@ export const ConnectWithUs = () => {
                   id="name"
                   name="name"
                   ref={nameInputRef}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -155,7 +155,7 @@ export const ConnectWithUs = () => {
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent"
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -171,7 +171,7 @@ export const ConnectWithUs = () => {
                 id="message"
                 name="message"
                 rows="5"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 resize-y h-full"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent resize-y h-full"
                 placeholder="How can we help you?"
                 value={formData.message}
                 onChange={handleInputChange}
@@ -183,7 +183,7 @@ export const ConnectWithUs = () => {
                 type="checkbox"
                 id="terms"
                 name="terms"
-                className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
+                className="h-4 w-4 text-navy-600 rounded border-gray-300 focus:ring-accent mt-1"
                 checked={formData.terms}
                 onChange={handleInputChange}
               />
@@ -198,7 +198,7 @@ export const ConnectWithUs = () => {
 
             <button
               type="submit"
-              className="btn-primary w-full py-3 px-6 rounded-md"
+              className="btn-primary w-full py-3 px-6 rounded-lg"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Submitting..." : "SUBMIT"}
@@ -221,7 +221,7 @@ export const ConnectWithUs = () => {
         {/* Right Column: Image of Contact Form */}
         <div className="flex justify-center lg:justify-end animate-slideInRight h-full">
           <Image
-            className="w-full h-full object-cover rounded-card shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
+            className="w-full h-full object-cover rounded-2xl shadow-2xl transform transition-transform duration-700 ease-in-out hover:scale-105"
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident-plan-form-section.jpeg"
             alt="Screenshot of contact form"
             width={600}

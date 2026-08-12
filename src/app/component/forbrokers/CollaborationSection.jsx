@@ -7,7 +7,7 @@ import { useTilt } from '@/common/motion/useTilt';
 import { HarborArc } from '@/common/HarborArc';
 
 export const CollaborationSection = () => {
-  const tiltRef = useTilt({ max: 5, perspective: 1000, scale: 1.02 });
+  const { ref: tiltRef, style: tiltStyle, handleMouseMove, handleMouseLeave } = useTilt(5);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,7 +74,13 @@ export const CollaborationSection = () => {
             animate={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0% round 24px)' }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div ref={tiltRef} className="w-full h-full rounded-card overflow-hidden shadow-2xl bg-navy-800">
+            <motion.div 
+              ref={tiltRef} 
+              style={tiltStyle}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-800"
+            >
               <div className="absolute inset-0 img-duotone pointer-events-none z-10">
                 <div className="absolute inset-0 bg-navy-900/40 mix-blend-multiply"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 via-transparent to-transparent"></div>
@@ -87,7 +93,7 @@ export const CollaborationSection = () => {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>

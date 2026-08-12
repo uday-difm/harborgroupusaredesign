@@ -51,7 +51,7 @@ export const PurchaseStepsSection = () => {
   };
 
   return (
-    <section className="section-tint py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -100,7 +100,7 @@ export const PurchaseStepsSection = () => {
                 </div>
                 
                 {/* Content Card */}
-                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-card bg-white card-elevated border border-navy-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
+                <div className="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 rounded-2xl bg-white card-elevated border border-navy-100/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden">
                   
                   {/* Decorative background number */}
                   <div className="absolute -right-4 -bottom-6 font-display font-black text-9xl text-navy-50 opacity-50 pointer-events-none select-none">
@@ -108,7 +108,7 @@ export const PurchaseStepsSection = () => {
                   </div>
                   
                   <div className="relative z-10 flex flex-col items-start text-left">
-                    <div className="w-14 h-14 rounded-card bg-navy-50 text-accent flex items-center justify-center mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-navy-50 text-accent flex items-center justify-center mb-6">
                       {step.icon}
                     </div>
                     <h3 className="font-bold text-navy-900 text-2xl mb-3">{step.title}</h3>

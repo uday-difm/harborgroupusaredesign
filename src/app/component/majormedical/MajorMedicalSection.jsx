@@ -10,7 +10,7 @@ const FeatureHighlight = ({ icon: Icon, title, children, delay }) => {
       className="group text-center p-6 animate-fade-in-up card-dark"
       style={{ animationDelay: delay }}
     >
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-navy-700/50 border border-navy-600 mb-5 text-accent">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-navy-700/50 border border-navy-600 mb-5 text-accent">
         <Icon className="w-8 h-8" strokeWidth={1.5} />
       </div>
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
