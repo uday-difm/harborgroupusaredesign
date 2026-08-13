@@ -320,8 +320,7 @@ export const Header = () => {
                                                     ))}
                                                 </div>
 
-                                                <div className="px-6 py-3 bg-navy-50/40 border-t border-navy-50 flex justify-between items-center">
-                                                    <span className="text-xs text-navy-400">12 plans available</span>
+                                                <div className="px-6 py-3 bg-navy-50/40 border-t border-navy-50 flex justify-end items-center">
                                                     <Link href="/health-plans" onClick={() => navigate('/health-plans')} className="text-xs font-bold text-accent hover:underline">View all plans →</Link>
                                                 </div>
                                             </motion.div>

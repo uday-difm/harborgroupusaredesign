@@ -66,7 +66,8 @@ export const HeroSection = () => {
         }
     }, [prefersReduced, loadPathLength]);
 
-    const photoRotation = useTransform(scrollYProgress, [0.15, 0.4], [4, 1]);
+    // Keep the image level at the top of the page, then introduce a gentle tilt as the hero scrolls away.
+    const photoRotation = useTransform(scrollYProgress, [0.15, 0.4], [0, 4]);
 
     // Mouse Parallax for background
     const mouseX = useMotionValue(0);
@@ -192,10 +193,10 @@ export const HeroSection = () => {
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
                     >
                         <div className="relative w-full max-w-[550px] xl:max-w-[600px] aspect-[4/5] lg:aspect-auto lg:h-[550px] mt-8 lg:mt-0 lg:mr-10">
-                            {/* Rotated image container */}
+                            {/* Image tilts gradually as the visitor scrolls down. */}
                             <motion.div 
                                 className="w-full h-full bg-white p-3 pb-16 rounded-[40px] shadow-[0_20px_60px_-15px_rgba(19,30,73,0.1)] border border-navy-100"
-                                style={{ rotate: prefersReduced ? 4 : photoRotation }}
+                                style={{ rotate: prefersReduced ? 0 : photoRotation }}
                                 ref={imageTilt.ref}
                                 onMouseMove={imageTilt.handleMouseMove}
                                 onMouseLeave={imageTilt.handleMouseLeave}
