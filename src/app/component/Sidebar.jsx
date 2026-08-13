@@ -109,7 +109,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
           <NavItem href="/dashboard/add-category" icon={FolderPlus} label="Add Category" />
 
           {/* Manage Users Dropdown */}
-          {(userRole === "Super Admin" || userRole === "Administrator") && (
+          {(String(userRole) === "2" || String(userRole) === "1" || userRole === "Super Admin" || userRole === "Administrator") && (
             <li className="mt-1">
               <div
                 className={`flex items-center justify-between cursor-pointer px-4 py-2.5 rounded-r-lg transition-colors border-l-4 border-transparent text-gray-200 hover:text-accent hover:bg-navy-900/50 ${

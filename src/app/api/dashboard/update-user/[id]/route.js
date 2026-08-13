@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function PUT(req, context) {
   try {
     // Await params
-    const { params } = await context;
+    const params = await context.params;
     const id = params?.id;
 
     if (!id) {

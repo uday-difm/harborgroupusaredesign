@@ -18,7 +18,7 @@ export async function GET(request) {
     }
     const { payload } = await jwtVerify(token, secret);
     const [rows] = await pool.execute(
-      "SELECT `id`, `email` , `role` , `image` FROM `admin` WHERE `id` = ?",
+      "SELECT `id`, `name`, `email`, `role`, `image` FROM `admin` WHERE `id` = ?",
       [payload.id]
     );
 
@@ -35,6 +35,7 @@ export async function GET(request) {
       {
         user: {
           id: user.id,
+          name: user.name,
           email: user.email,
           role: user.role,
           image:user.image

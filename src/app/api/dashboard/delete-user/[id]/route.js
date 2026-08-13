@@ -1,9 +1,10 @@
 import pool from '../../../../../../lib/mysql';
 import { NextResponse } from 'next/server';
 
-export async function PUT(req, { params }) {
+export async function PUT(req, context) {
   try {
-    const id = params.id;
+    const params = await context.params;
+    const id = params?.id;
     if (!id) {
       return NextResponse.json({ message: 'User ID is required' }, { status: 400 });
     }

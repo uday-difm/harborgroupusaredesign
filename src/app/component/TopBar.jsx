@@ -5,30 +5,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Menu } from 'lucide-react';
 
-export default function TopBar({ onMenuClick }) {
+export default function TopBar({ user, onMenuClick }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const [user, setUser] = useState(null); 
   const router = useRouter();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await fetch('/api/dashboard/checkauth', { credentials: 'include' });
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data.user);
-        } else {
-          router.push('/dashboard/login');
-        }
-      } catch (err) {
-        if (process.env.NODE_ENV === 'development') {
-          console.error('Error fetching user:', err);
-        }
-      }
-    };
-    fetchUser();
-  }, [router]);
 
   useEffect(() => {
     function handleClickOutside(event) {
