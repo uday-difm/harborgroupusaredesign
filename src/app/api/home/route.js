@@ -41,10 +41,25 @@ export async function POST(req) {
 
     // Send email notification to your admin/support
     await sendMail({
-        to: "support@harborgroupusa.com",
       subject: "📩Get Your Free Health Plan Quote Submission",
       html: emailContent,
     });
+
+    // Send confirmation email to the submitter (fails silently in Resend testing mode)
+    try {
+      await sendMail({
+        to: email,
+        subject: "✅ We received your message!",
+        html: `<div style="font-family: Arial, sans-serif; color: #333;">
+          <h2>Thanks for reaching out, ${name}!</h2>
+          <p>We've received your message and will get back to you as soon as possible.</p>
+          <p>— Harbor Group USA Team</p>
+        </div>`,
+      });
+    } catch (confirmErr) {
+      // In Resend testing mode this will fail for non-registered emails — safe to ignore
+      console.error("Confirmation email failed (likely testing mode):", confirmErr.message);
+    }
 
     return new Response(
       JSON.stringify({
