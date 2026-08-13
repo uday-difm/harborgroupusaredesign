@@ -19,7 +19,7 @@ const query = `
         DATE_FORMAT(b.blog_date_time, '%H:%i') AS formatted_blog_time
       FROM blogs b
       LEFT JOIN categories c ON b.blog_category_id = c.id
-      WHERE b.blog_status = "0" AND b.blog_id = ?
+      WHERE b.blog_status = '0' AND b.blog_id = ?
       ORDER BY b.blog_date_time DESC
     `;
 

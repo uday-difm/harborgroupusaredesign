@@ -9,7 +9,7 @@ export async function GET(req) {
       SELECT blog_id, blog_title, blog_slug, blog_feature_image, 
         DATE_FORMAT(blog_date_time, '%Y-%m-%d ') AS formatted_blog_date
       FROM blogs 
-      WHERE blog_status = "0"
+      WHERE blog_status = '0'
       ORDER BY blog_date_time DESC 
       LIMIT 10
     `;

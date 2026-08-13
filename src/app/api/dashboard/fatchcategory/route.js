@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(req) {
   try {
     // Fetch categories from the database
-    const [rows] = await pool.execute('SELECT * FROM categories WHERE status = "0"');
+    const [rows] = await pool.execute("SELECT * FROM categories WHERE status = '0'");
 
     // Check if any categories were found
     if (rows.length === 0) {
