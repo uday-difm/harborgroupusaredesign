@@ -16,10 +16,10 @@ export default function ProtectionOverview() {
   return (
     <>
       {/* Existing Section: Protection Overview */}
-      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <section className="w-full section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <SectionGlow position="topLeft" className="opacity-30" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
+          <h2 className="text-4xl font-extrabold text-navy-800 mb-8 text-center">
            Protection Overview
           </h2>
           <p className="text-lg text-navy-500 mb-12 text-center max-w-3xl mx-auto">
@@ -36,7 +36,7 @@ export default function ProtectionOverview() {
               <h3 className="text-2xl font-bold text-navy-700 mb-4">
                Comprehensive Financial Safeguard
               </h3>
-              <p className="text-gray-700 leading-relaxed text-justify">
+              <p className="text-navy-600 leading-relaxed text-justify">
                 From the anticipated financial obligations to the unforeseen contingencies, each facet is meticulously addressed, providing a robust foundation for the financial security of your loved ones.
               </p>
             </div>
@@ -50,7 +50,7 @@ export default function ProtectionOverview() {
               <h3 className="text-2xl font-bold text-navy-700 mb-4">
                Tailored Coverage
               </h3>
-              <p className="text-gray-700 leading-relaxed text-justify">
+              <p className="text-navy-600 leading-relaxed text-justify">
                 Get a Term Life Plan built around your family’s specific needs and goals. Whether it’s covering college expenses, paying off bills, or fulfilling their dreams, we work with you to create a personalized plan that provides peace of mind, not just generic coverage.
               </p>
             </div>

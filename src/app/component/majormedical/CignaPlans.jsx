@@ -110,7 +110,7 @@ export const CignaPlans  = () => {
       </h1>
 
       {/* Responsive Table Container */}
-      <div className="w-full max-w-7xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-navy-100">
+      <div className="w-full max-w-7xl bg-white/90 rounded-2xl shadow-2xl overflow-hidden border border-navy-100">
 
         {/* Top Header Row for Plan Names and Network/Availability */}
         <div className="grid grid-cols-1 sm:grid-cols-4 bg-navy-100 text-primary  font-bold text-base sm:text-lg rounded-t-2xl">
@@ -160,11 +160,11 @@ export const CignaPlans  = () => {
               <div
                 key={rowIndex}
                 className={`grid grid-cols-1 sm:grid-cols-4 text-gray-800 text-xs sm:text-sm lg:text-base ${
-                  rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                } border-t border-gray-100 hover:bg-navy-50 transition duration-150 ease-in-out`}
+                  rowIndex % 2 === 0 ? 'bg-white/80' : 'bg-navy-50/70'
+                } border-t border-navy-100/70 hover:bg-navy-50 transition duration-150 ease-in-out`}
               >
                 {/* Feature Label Column */}
-                <div className="p-3 sm:p-4 border-r border-gray-200 flex items-center font-semibold text-gray-700">
+                <div className="p-3 sm:p-4 border-r border-navy-100 flex items-center font-semibold text-navy-700">
                   {row.label}
                 </div>
                 {/* Plan Values Columns */}
@@ -172,7 +172,7 @@ export const CignaPlans  = () => {
                   <div
                     key={planIndex}
                     className={`p-3 sm:p-4 text-center flex items-center justify-center ${
-                      planIndex < cignaPlansData.plans.length - 1 ? 'sm:border-r border-gray-200' : ''
+                      planIndex < cignaPlansData.plans.length - 1 ? 'sm:border-r border-navy-100' : ''
                     }`}
                   >
                     {row.values[plan.name]}

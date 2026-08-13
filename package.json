@@ -2,6 +2,23 @@
   "name": "harborgroupusa",
   "version": "0.1.0",
   "private": true,
+  "browserslist": {
+    "production": [
+      "> 0.5%",
+      "not dead",
+      "not op_mini all",
+      "Chrome >= 100",
+      "Edge >= 100",
+      "Firefox >= 100",
+      "Safari >= 15.4",
+      "iOS >= 15.4"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

@@ -29,10 +29,10 @@ export const MedicalPlanBenefitsSection = () => {
           <Image
             src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/benefits-of-best-cost-sharing-medical-plans.jpeg" // Placeholder for your image_3190c6.jpg
             alt="Medical Plan Benefits"
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="(max-width: 1023px) 100vw, 50vw"
             quality={100}
-            className="rounded-2xl transform hover:scale-105 transition-transform duration-500 ease-in-out"
+            className="object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500 ease-in-out"
           
           />
           {/* Overlay for the plus sign icon */}

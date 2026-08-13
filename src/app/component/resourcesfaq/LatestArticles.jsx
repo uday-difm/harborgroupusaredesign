@@ -94,9 +94,9 @@ export const LatestArticles = () => {
                   <Image
                     src={article.blog_feature_image || "https://placehold.co/600x400/E0F2F7/000000?text=No+Image"}
                     alt={article.blog_title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transform transition-transform duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 767px) 100vw, 33vw"
+                    className="object-cover transform transition-transform duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-navy-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>

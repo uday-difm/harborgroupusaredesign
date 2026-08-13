@@ -6,7 +6,7 @@ import { SectionGlow } from '@/common/SectionGlow';
 export const BenefitsofCriticalplan = () => {
   return (
     <>
-       <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+       <section className="w-full section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <SectionGlow position="topLeft" className="opacity-30" />
         <SectionGlow position="bottomRight" className="opacity-20" />
         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -21,19 +21,19 @@ export const BenefitsofCriticalplan = () => {
             {/* Left Column: Text Content with Checkmarks */}
             <div className="text-left space-y-6 ">
               <h3 className="text-2xl font-bold text-accent mb-4">Financial Protection for Critical Illness</h3>
-              <div className="flex items-start text-gray-700">
+              <div className="flex items-start text-navy-600">
                 <svg className="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                 <span>Receive a lump sum payout upon the diagnosis of a critical illness</span>
               </div>
-              <div className="flex items-start text-gray-700">
+              <div className="flex items-start text-navy-600">
                 <svg className="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                 <span>Alleviate financial stress and focus on recovery during challenging times</span>
               </div>
-              <div className="flex items-start text-gray-700">
+              <div className="flex items-start text-navy-600">
                 <svg className="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                 <span>Benefit from an easy and simple claims process designed for your convenience</span>
               </div>
-              <div className="flex items-start text-gray-700">
+              <div className="flex items-start text-navy-600">
                 <svg className="w-6 h-6 text-primary mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
                 <span>Tailor your plan with flexible payout options to align with your financial needs</span>
               </div>

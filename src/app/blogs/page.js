@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { BlogPostCard } from "@/app/component/about/BlogPostCard";
 import { fadeUp, staggerContainer } from "@/common/motion/variants";
+import { LayeredStacksIllustration } from "@/common/illustrations/LayeredStacksIllustration";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -56,6 +57,7 @@ export default function Blogs() {
 
       <section className="section-light relative overflow-hidden font-body">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_12%,rgba(201,162,75,0.12),transparent_24rem)]" />
+        <LayeredStacksIllustration className="absolute -right-16 -bottom-28 h-80 w-80 text-navy-300/30 rotate-[-14deg] pointer-events-none" />
         <motion.header variants={staggerContainer()} initial="hidden" animate="show" className="relative max-w-3xl mx-auto text-center px-6">
           <motion.span variants={fadeUp} className="text-xs font-bold text-accent uppercase tracking-widest">Harbor Journal</motion.span>
           <motion.h1 variants={fadeUp} className="mt-3 text-4xl md:text-6xl font-display font-bold text-navy-900 tracking-tight leading-tight">Our Insights</motion.h1>

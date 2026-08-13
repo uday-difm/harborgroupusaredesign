@@ -96,8 +96,9 @@ export const PlanFaq = ({
                 <Image
                   src={imageSrc}
                   alt="FAQ"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  sizes="40vw"
+                  className="object-cover"
                 />
               </motion.div>
             )}

@@ -34,17 +34,16 @@ export const PlanHero = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="lg:w-1/2 w-full relative h-[40vh] lg:h-auto img-duotone origin-left"
+        className="lg:w-1/2 w-full relative h-[40vh] lg:h-auto origin-left"
       >
         <Image
           src={imageSrc}
           alt={imageAlt}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
           priority
-          className="scale-105"
+          className="object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-navy-900/10 mix-blend-multiply pointer-events-none"></div>
       </motion.div>
 
       {/* Right Side Content & Form */}

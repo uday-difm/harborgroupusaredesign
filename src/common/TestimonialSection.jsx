@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Star, Quote } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { HarborArc } from "@/common/HarborArc";
-import { useVelocityEffect } from "@/common/motion/useVelocityEffect";
 
 const containerReveal = {
   hidden: {},
@@ -26,7 +25,6 @@ export const TestimonialSection = ({ testimonials = [] }) => {
   const [current, setCurrent] = useState(0);
   const intervalRef = useRef(null);
   const prefersReduced = useReducedMotion();
-  const { skew, scale } = useVelocityEffect(1, 2);
 
   useEffect(() => {
     setCurrent(0);
@@ -87,12 +85,11 @@ export const TestimonialSection = ({ testimonials = [] }) => {
                     zIndex: index === current ? 10 : 1,
                   }}
                 >
-                  <motion.div 
+                  <motion.div
                     className="relative w-full bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-navy-100/80 text-center"
-                    style={{ 
-                        skewY: prefersReduced ? 0 : skew, 
-                        scale: prefersReduced ? 1 : scale 
-                    }}
+                    initial={prefersReduced ? false : { opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: prefersReduced ? 0 : 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Quote className="absolute top-6 left-6 w-10 h-10 text-navy-100 stroke-[1.5] -z-0 pointer-events-none" />
 

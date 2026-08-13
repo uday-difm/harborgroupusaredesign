@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BriefcaseBusiness, ShieldCheck, UserRound } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { HarborArc } from "@/common/HarborArc";
@@ -79,6 +80,14 @@ export default function ForPage() {
                 transition={{ duration: 0.55, delay: reduceMotion ? 0 : index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className={`group relative min-h-[380px] overflow-hidden rounded-2xl border p-8 md:p-10 flex flex-col ${isDark ? "bg-navy-900 border-navy-800 text-white" : "bg-white border-navy-100 shadow-lg text-navy-900"}`}
               >
+                <Image
+                  src="/images/broker-partnership.png"
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className={`object-cover object-right pointer-events-none ${isDark ? "opacity-[0.16]" : "opacity-[0.1]"}`}
+                />
+                <div className={`absolute inset-0 pointer-events-none ${isDark ? "bg-gradient-to-r from-navy-900 via-navy-900/85 to-navy-900/25" : "bg-gradient-to-r from-white via-white/90 to-white/35"}`} />
                 <div className={`absolute -right-16 -top-16 h-56 w-56 rounded-full blur-3xl ${isDark ? "bg-accent/20" : "bg-navy-100"}`} />
                 <div className="relative z-10">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center border ${isDark ? "bg-white/10 border-white/15 text-accent" : "bg-navy-50 border-navy-100 text-accent"}`}>

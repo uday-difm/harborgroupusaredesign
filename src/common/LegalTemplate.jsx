@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ShieldCheck } from 'lucide-react';
 
 export const LegalTemplate = ({ title, children }) => {
   return (
@@ -17,6 +18,10 @@ export const LegalTemplate = ({ title, children }) => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
+          <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-accent/30 bg-white/70 text-accent shadow-sm">
+            <ShieldCheck className="h-7 w-7" aria-hidden="true" />
+          </div>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-navy-500">Harbor Group USA</p>
           <h1 className="text-display font-display font-bold text-navy-900 tracking-tight">
             {title}
           </h1>

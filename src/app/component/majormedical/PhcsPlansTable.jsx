@@ -104,14 +104,14 @@ export const PhcsPlansTable = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 sm:p-8 lg:p-12 font-inter flex flex-col items-center">
+    <div className="min-h-screen bg-surface-alt p-4 sm:p-8 lg:p-12 font-inter flex flex-col items-center">
       {/* Main Title */}
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-10 text-center leading-tight tracking-tight drop-shadow-sm">
         {plansData.header}
       </h1>
 
       {/* Table Container */}
-      <div className="w-full max-w-7xl bg-white rounded-lg shadow-xl overflow-hidden border border-gray-200">
+      <div className="w-full max-w-7xl bg-white/90 rounded-lg shadow-xl overflow-hidden border border-navy-100">
         {/* Table Header */}
         <div className="grid grid-cols-4 bg-navy-100 text-primary font-semibold text-sm sm:text-base lg:text-lg rounded-t-lg border-b border-navy-100">
           <div className="p-3 sm:p-4 text-center border-r border-navy-100">Major Medical Plans</div>
@@ -138,12 +138,12 @@ export const PhcsPlansTable = () => {
             {section.rows.map((row, rowIndex) => (
               <div
                 key={rowIndex}
-                className={`grid grid-cols-4 text-gray-800 text-xs sm:text-sm lg:text-base ${
-                  rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                } border-t border-gray-100 hover:bg-navy-50 transition duration-150 ease-in-out`}
+                className={`grid grid-cols-4 text-navy-800 text-xs sm:text-sm lg:text-base ${
+                  rowIndex % 2 === 0 ? 'bg-white/80' : 'bg-navy-50/70'
+                } border-t border-navy-100/70 hover:bg-navy-50 transition duration-150 ease-in-out`}
               >
                 {/* Label Column */}
-                <div className="p-3 sm:p-4 border-r border-gray-200 flex items-center font-medium text-gray-700">
+                <div className="p-3 sm:p-4 border-r border-navy-100 flex items-center font-medium text-navy-700">
                   {row.label}
                 </div>
                 {/* Values Columns */}
@@ -151,7 +151,7 @@ export const PhcsPlansTable = () => {
                   <div
                     key={planIndex}
                     className={`p-3 sm:p-4 flex items-center justify-center text-center ${
-                      planIndex < plansData.planNames.length - 1 ? 'border-r border-gray-200' : ''
+                      planIndex < plansData.planNames.length - 1 ? 'border-r border-navy-100' : ''
                     }`}
                   >
                     {row.values[planName]}

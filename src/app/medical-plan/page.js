@@ -42,7 +42,7 @@ export default function MedicalPlanPage() {
       <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Medical Plan" }]}
         title="Medical Plans for Complete Health Coverage"
         description="Stay healthy & covered with our personalized medical plans – go beyond the basics! Enjoy routine check-ups, preventive care, vaccinations, and even specialized support for chronic conditions."
-        imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg"
+        imageSrc="/images/broker-partnership.png"
         formComponent={<MedicalForm />}
       />
 

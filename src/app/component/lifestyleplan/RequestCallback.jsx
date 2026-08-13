@@ -28,9 +28,9 @@ import Image from "next/image";
             <Image
               src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Lifestyle-plan-hero-section.jpeg"
               alt="Doctor using a tablet"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              fill
+              sizes="(max-width: 1023px) 100vw, 50vw"
+              className="object-cover rounded-lg"
             />
           </div>
 

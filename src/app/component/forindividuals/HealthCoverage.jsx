@@ -80,12 +80,12 @@ export const HealthCoverage = () => {
               style={tiltStyle}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-50"
+              className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-50"
             >
               <Image
                 className="object-cover w-full h-full"
-                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/simplifying-path-health-coverage.jpeg"
-                alt="Health Coverage Illustration"
+                src="/images/broker-partnership.png"
+                alt="Advisor helping members understand their coverage options"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority

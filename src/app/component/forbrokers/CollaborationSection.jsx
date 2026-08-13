@@ -79,7 +79,7 @@ export const CollaborationSection = () => {
               style={tiltStyle}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-800"
+              className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-navy-800"
             >
               <div className="absolute inset-0 img-duotone pointer-events-none z-10">
                 <div className="absolute inset-0 bg-navy-900/40 mix-blend-multiply"></div>
@@ -87,8 +87,8 @@ export const CollaborationSection = () => {
               </div>
               <Image
                 className="object-cover w-full h-full"
-                src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Collaborate-with-Us.jpeg"
-                alt="Hands collaborating"
+                src="/images/broker-partnership.png"
+                alt="Insurance professionals collaborating on broker support"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority

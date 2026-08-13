@@ -144,8 +144,9 @@ export const MedicalFormLanding = () => {
         <Image
           src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/medical-plans-for-complete-health-coverage.jpeg"
           alt="Medical Background"
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          className="object-cover"
           priority
         />
         <div className="absolute inset-0 bg-navy-800/20 mix-blend-multiply pointer-events-none"></div>

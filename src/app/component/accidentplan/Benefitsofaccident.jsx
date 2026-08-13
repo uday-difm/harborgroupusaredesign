@@ -14,7 +14,7 @@ export const Benefitsofaccident = () => {
   return (
     <>
        {/* New Section: Benefits of Accident Plan */}
-      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <section className="w-full section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center relative">
           <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 ">
@@ -27,14 +27,14 @@ export const Benefitsofaccident = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4 mt-10 text-left">
             {/* Benefit List - Column 1 */}
             <ul className="space-y-4 animate-delayFadeIn">
-              <li className="flex items-center text-gray-700">
+              <li className="flex items-center text-navy-600">
                 <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> {/* Apply gradient */}
                   {mainIconGradient} {/* Render the gradient definition here */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                 Receive coverage for accident-related medical expenses
               </li>
-              <li className="flex items-center text-gray-700">
+              <li className="flex items-center text-navy-600">
                 <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> {/* Apply gradient */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
@@ -43,13 +43,13 @@ export const Benefitsofaccident = () => {
             </ul>
             {/* Benefit List - Column 2 */}
             <ul className="space-y-4 animate-delayFadeIn-2">
-              <li className="flex items-center text-gray-700">
+              <li className="flex items-center text-navy-600">
                 <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> {/* Apply gradient */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>
                 Comprehensive coverage for accidental death and dismemberment
               </li>
-              <li className="flex items-center text-gray-700">
+              <li className="flex items-center text-navy-600">
                 <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="url(#mainIconGradient)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> {/* Apply gradient */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                 </svg>

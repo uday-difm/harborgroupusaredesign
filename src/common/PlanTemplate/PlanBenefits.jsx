@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
@@ -24,6 +24,11 @@ export const PlanBenefits = ({
   const prefersReduced = useReducedMotion();
   const arcParallax = useParallax(15);
   const imageTilt = useTilt(3);
+  const [resolvedImageSrc, setResolvedImageSrc] = useState(imageSrc);
+
+  useEffect(() => {
+    setResolvedImageSrc(imageSrc);
+  }, [imageSrc]);
 
   const itemVariants = {
     hidden: { opacity: 0, y: prefersReduced ? 0 : 20 },
@@ -56,11 +61,12 @@ export const PlanBenefits = ({
               onMouseLeave={imageTilt.handleMouseLeave}
             >
               <Image
-                src={imageSrc}
+                src={resolvedImageSrc}
                 alt={imageAlt}
-                layout="fill"
-                objectFit="cover"
-                className="scale-105"
+                fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover scale-105"
+                onError={() => setResolvedImageSrc('/images/broker-partnership.png')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent pointer-events-none"></div>
             </div>

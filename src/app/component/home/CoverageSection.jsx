@@ -2,9 +2,8 @@
 
 import React from "react";
 import { Users, Briefcase, LifeBuoy, Clock } from "lucide-react";
-import { motion, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useParallax } from "@/common/motion/useParallax";
-import { useVelocityEffect } from "@/common/motion/useVelocityEffect";
 import { HarborArc } from "@/common/HarborArc";
 
 const sectionReveal = {
@@ -17,7 +16,7 @@ const sectionReveal = {
 };
 
 export default function CoverageSection({
-  image = "https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/coverage.webp",
+  image = "/images/coverage-guidance.png",
   title = "Comprehensive Coverage, Simplified for You",
   subtitle = "We’re proud to help individuals and businesses discover coverage that truly fits their needs.",
   services = [
@@ -50,7 +49,6 @@ export default function CoverageSection({
   const blobParallax = useParallax(25);
 
   const prefersReduced = useReducedMotion();
-  const { skew } = useVelocityEffect(1.5, 4);
 
   return (
     <section className="bg-navy-900 text-white py-20 md:py-28 font-body relative overflow-hidden">
@@ -101,7 +99,6 @@ export default function CoverageSection({
                 {services.map((s, idx) => (
                   <motion.article
                     key={idx}
-                    style={{ skewY: prefersReduced ? 0 : skew }}
                     className="flex flex-col p-6 rounded-2xl border-navy-700 bg-navy-800/60 backdrop-blur-md hover:border-accent/50 hover:bg-navy-800/90 group"
                   >
                     <div className="w-12 h-12 rounded-lg bg-navy-800 border border-navy-700 flex items-center justify-center shadow-inner mb-4 group-hover:bg-accent group-hover:border-accent transition-colors">
@@ -129,7 +126,6 @@ export default function CoverageSection({
                 style={{ y: prefersReduced ? 0 : imageParallax.y, scale: 1.1 }}
                 className="w-full h-[420px] lg:h-[560px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none"></div>
             </div>
 
             {/* Ambient Blob */}

@@ -43,7 +43,7 @@ export const Benefitsofcollaboration = () => {
   };
 
   return (
-    <section className="section-light relative py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="section-light relative overflow-hidden py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <SectionGlow position="top" color="rgba(26, 46, 91, 0.4)" />
 
       <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">

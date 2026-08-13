@@ -13,7 +13,7 @@ export function useMagnetic(strength = 0.4, radius = 40) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsTouch(window.matchMedia('(pointer: coarse)').matches);
+      setIsTouch(typeof window.matchMedia === 'function' && window.matchMedia('(pointer: coarse)').matches);
     }
   }, []);
 

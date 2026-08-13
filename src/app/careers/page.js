@@ -157,8 +157,8 @@ export default function Careers() {
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 img-duotone pointer-events-none">
           <Image
-            src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/careers-page-scaled.jpg"
-            alt="Careers at Harbor Group USA"
+            src="/images/broker-partnership.png"
+            alt="Harbor Group USA professionals collaborating in an office"
             className="object-cover object-center"
             fill
           />

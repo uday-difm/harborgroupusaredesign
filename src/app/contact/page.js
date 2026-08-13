@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
@@ -212,6 +213,17 @@ export default function ContactPage() {
             <p className="text-xl text-navy-600 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               Connect with us! Your questions matter. Fill out the form below; our dedicated support team is here and ready to assist you.
             </p>
+            <div className="relative mt-10 max-w-lg mx-auto lg:mx-0 h-44 rounded-2xl overflow-hidden border border-navy-100 shadow-lg shadow-navy-900/10">
+              <Image
+                src="/images/broker-partnership.png"
+                alt="Harbor Group USA advisor ready to help with coverage questions"
+                fill
+                sizes="(max-width: 1023px) 100vw, 42vw"
+                className="object-cover object-right"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-navy-900/35 via-navy-900/5 to-transparent pointer-events-none" />
+              <p className="absolute bottom-4 left-5 text-sm font-semibold text-white">Personal guidance, without pressure.</p>
+            </div>
           </motion.div>
 
           {/* Right Section: Contact Form */}

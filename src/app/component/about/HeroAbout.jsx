@@ -78,8 +78,8 @@ export const HeroAbout = () => {
                                     className="w-full h-full"
                                 >
                                     <Image
-                                        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Who-we-are.jpeg"
-                                        alt="Who we are!"
+                                        src="/images/broker-partnership.png"
+                                        alt="Harbor Group USA team collaborating on client coverage"
                                         className="w-full h-full object-cover"
                                         width={800}
                                         height={1000}

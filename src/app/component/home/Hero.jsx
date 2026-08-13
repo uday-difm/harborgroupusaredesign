@@ -33,10 +33,10 @@ const StatItem = ({ stat }) => {
             viewport={{ once: true }}
             className="flex flex-col items-center sm:items-start"
         >
-            <span className="text-2xl font-display font-bold text-navy-900">
+            <span className="text-2xl font-display font-bold text-white">
                 {value}{stat.suffix}
             </span>
-            <span className="font-medium text-navy-600 text-xs mt-0.5">{stat.label}</span>
+            <span className="font-medium text-navy-200 text-xs mt-0.5">{stat.label}</span>
         </motion.div>
     );
 };
@@ -202,7 +202,7 @@ export const HeroSection = () => {
                             >
                                 <div className="relative w-full h-full rounded-[30px] overflow-hidden">
                                     <Image
-                                        src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Get-Your-Free-Health-Plan-Quote-Today.jpeg"
+                                        src="/images/broker-partnership.png"
                                         alt="Advisor talking to client"
                                         fill
                                         sizes="(max-width: 1023px) 100vw, 42vw"
@@ -218,7 +218,7 @@ export const HeroSection = () => {
 
             {/* Bottom Feature Strip */}
             <motion.div 
-                className="relative z-20 w-full border-t border-navy-100 bg-white/80 backdrop-blur-sm mt-auto"
+                className="relative z-20 w-full border-t border-navy-800 bg-navy-900 mt-auto shadow-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.8, duration: 0.6 }}

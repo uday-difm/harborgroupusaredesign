@@ -251,9 +251,9 @@ export const RequestCallbackSection = () => {
                 <Image
                   src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/request-a-call-back.jpeg"
                   alt="A doctor using a tablet for a consultation"
-                  layout="fill"
-                  objectFit="cover"
-                  className="w-full h-full rounded-2xl shadow-xl"
+                  fill
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  className="object-cover w-full h-full rounded-2xl shadow-xl"
                 />
               </div>
             </div>

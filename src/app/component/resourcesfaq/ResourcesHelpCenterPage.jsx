@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { LayeredStacksIllustration } from '@/common/illustrations/LayeredStacksIllustration';
 
 export const ResourcesHelpCenterPage = () => {
   const containerVariants = {
@@ -22,6 +23,7 @@ export const ResourcesHelpCenterPage = () => {
     <section className="flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 bg-surface relative overflow-hidden">
       {/* Decorative Blobs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-accent/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse-slow"></div>
+      <LayeredStacksIllustration className="absolute -right-12 -bottom-24 w-80 text-navy-300/30 rotate-[-12deg] pointer-events-none" />
       
       <motion.div 
         className="relative z-10 max-w-5xl mx-auto text-center p-8 md:p-12 lg:p-16 card-elevated"

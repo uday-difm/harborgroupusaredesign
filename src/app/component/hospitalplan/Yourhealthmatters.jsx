@@ -7,7 +7,7 @@ export const Yourhealthmatters = () =>{
   return (
     <>
       
-      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <section className="w-full section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch"> {/* Changed items-center to items-stretch */}
          
 
@@ -16,7 +16,7 @@ export const Yourhealthmatters = () =>{
             <h2 className="text-4xl sm:text-5xl font-extrabold text-navy-800 mb-6 leading-tight ">
               Your health matters
             </h2>
-            <p className="text-lg text-gray-700 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 ">
+            <p className="text-lg text-navy-600 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0 ">
              Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies. Discover a simple and effective solution that focuses on your peace of mind during challenging times. It’s not just a plan; it’s a specialized approach to ensuring your financial well-being during hospitalization.
             </p>
           </div>
