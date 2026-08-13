@@ -129,7 +129,7 @@ export default function RootLayout({ children }) {
         />
 
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
           <SmoothScrollProvider>
             <ScrollProgress />

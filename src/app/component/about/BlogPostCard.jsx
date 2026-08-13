@@ -13,7 +13,7 @@ const sectionReveal = {
   }
 };
 
-export const BlogPostCard = ({ image, category, title, author, date }) => {
+export const BlogPostCard = ({ image, category, title, author, date, priority = false }) => {
   const prefersReduced = useReducedMotion();
   
   const itemVariant = {
@@ -31,6 +31,7 @@ export const BlogPostCard = ({ image, category, title, author, date }) => {
           src={image}
           alt={title}
           fill
+          priority={priority}
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />

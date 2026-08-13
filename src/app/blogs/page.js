@@ -68,9 +68,9 @@ export default function Blogs() {
 
       <section className="section-tint font-body">
         <motion.main variants={staggerContainer(0.1)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.1 }} className="w-full max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {blogs.slice(0, visibleCount).map((blog) => (
+          {blogs.slice(0, visibleCount).map((blog, index) => (
             <Link key={blog.blog_id} href={`/blog/${blog.blog_slug}`} className="block h-full">
-              <BlogPostCard image={blog.blog_feature_image} category={blog.blog_category} title={blog.blog_title} date={blog.formatted_blog_date} />
+              <BlogPostCard image={blog.blog_feature_image} category={blog.blog_category} title={blog.blog_title} date={blog.formatted_blog_date} priority={index < 2} />
             </Link>
           ))}
         </motion.main>
