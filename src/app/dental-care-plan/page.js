@@ -39,7 +39,7 @@ export default function DentalPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/dental-care-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Dental Care Plan" }]}
         title={<>360 degree dental care plans <span className="text-accent">to ensure your oral health.</span></>}
         description="Say goodbye to dental worries! Our dental care plans keep your smile healthy and your wallet happy. It’s affordable and easy to use!"
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Dental_Hero_section.jpg"

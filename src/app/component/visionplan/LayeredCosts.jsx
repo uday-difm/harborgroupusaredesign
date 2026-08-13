@@ -1,4 +1,5 @@
 import React from 'react';
+import { LayeredStacksIllustration } from '@/common/illustrations/LayeredStacksIllustration';
 
 // Main App component (can be integrated into your existing App or a new page)
 export const LayeredCosts = () => {
@@ -44,7 +45,8 @@ export const LayeredCosts = () => {
       </style>
 
       {/* Section Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeIn delay-100">
+      <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeIn delay-100 relative">
+        <LayeredStacksIllustration className="absolute top-0 right-4 w-32 h-32 text-accent opacity-15 pointer-events-none hidden md:block -translate-y-1/2" />
         <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-4 drop-shadow-sm">
           Costs Options and Coverage
         </h2>

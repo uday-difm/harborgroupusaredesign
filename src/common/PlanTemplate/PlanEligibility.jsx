@@ -49,7 +49,7 @@ export const PlanEligibility = ({
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="flex flex-wrap justify-center gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -61,7 +61,7 @@ export const PlanEligibility = ({
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                className="card-elevated p-8 group hover:-translate-y-2 transition-transform duration-500 ease-out"
+                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md card-elevated p-8 group hover:-translate-y-2 transition-transform duration-500 ease-out"
               >
                 <div className="flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
                   {Icon && <Icon className="w-8 h-8" />}

@@ -1,12 +1,15 @@
 "use client";
 import React from 'react'
 import Image from 'next/image'
+import { SectionGlow } from '@/common/SectionGlow';
 
 export const BenefitsofCriticalplan = () => {
   return (
     <>
-       <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+       <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <SectionGlow position="topLeft" className="opacity-30" />
+        <SectionGlow position="bottomRight" className="opacity-20" />
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 ">
          Benefits of Critical plan
           </h2>

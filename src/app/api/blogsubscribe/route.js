@@ -1,3 +1,4 @@
+import { verifyRecaptcha } from '@/lib/recaptcha';
 import { NextResponse } from 'next/server';
 import pool from '../../../../lib/mysql';
 import { sendMail } from '../../../../lib/nodemailer';
@@ -5,7 +6,15 @@ import { generateEmailTemplate } from '../../../../lib/emailTemplate';
 
 export async function POST(req) {
   try {
-    const { email } = await req.json();
+    const { email, recaptchaToken } = await req.json();
+
+    if (!recaptchaToken) {
+      return NextResponse.json({ message: 'reCAPTCHA token is missing' }, { status: 400 });
+    }
+    const isHuman = await verifyRecaptcha(recaptchaToken);
+    if (!isHuman) {
+      return NextResponse.json({ message: 'reCAPTCHA verification failed. Please try again.' }, { status: 400 });
+    }
 
     // Simple email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

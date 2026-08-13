@@ -3,8 +3,10 @@
 import React, { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const ApplyNowSection = ()=> {
+  const { executeRecaptcha } = useGoogleReCaptcha();
    const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,12 +104,19 @@ export const ApplyNowSection = ()=> {
     }
     // API Call to submit the form data
     try {
+      if (!executeRecaptcha) {
+        setErrorMessage('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch('/api/petplan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

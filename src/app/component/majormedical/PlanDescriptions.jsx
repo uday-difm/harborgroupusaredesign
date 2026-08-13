@@ -1,4 +1,5 @@
 import React from 'react';
+import { SectionGlow } from '@/common/SectionGlow';
 
 export const PlanDescriptions = () => {
   const plansData = [
@@ -35,8 +36,10 @@ export const PlanDescriptions = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface-alt font-inter">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface-alt font-inter relative overflow-hidden">
+      <SectionGlow position="topLeft" className="opacity-30" />
+      <SectionGlow position="bottomRight" className="opacity-20" />
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Title */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary mb-12 text-center leading-tight tracking-tight drop-shadow-sm">
           Detailed Plan Descriptions

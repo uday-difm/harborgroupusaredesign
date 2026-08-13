@@ -38,7 +38,7 @@ export default function PetPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/pet-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Pet Plan" }]}
         title="Because your furry friends deserve protection too"
         description="Extend your care to your four-legged family members with Pet Plans at Harbor Group USA. Our Pet Plans are designed to offer tailored protection for your beloved pets, ensuring their health and well-being are prioritized."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/pet-care-plans.jpg"

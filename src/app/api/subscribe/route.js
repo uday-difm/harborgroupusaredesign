@@ -1,10 +1,19 @@
+import { verifyRecaptcha } from "@/lib/recaptcha";
 import pool from "../../../../lib/mysql";
 import { sendMail } from "../../../../lib/nodemailer";
 import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 
 export async function POST(request) {
   try {
-    const { email } = await request.json();
+    const { email, recaptchaToken } = await request.json();
+
+    if (!recaptchaToken) {
+      return new Response(JSON.stringify({ message: 'reCAPTCHA token is missing' }), { status: 400 });
+    }
+    const isHuman = await verifyRecaptcha(recaptchaToken);
+    if (!isHuman) {
+      return new Response(JSON.stringify({ message: 'reCAPTCHA verification failed. Please try again.' }), { status: 400 });
+    }
 
     // 1️⃣ Validate email
     if (!email) {

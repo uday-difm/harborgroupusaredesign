@@ -73,16 +73,18 @@ export const WholesaleGeneralAgency = () => {
         >
             {/* Dynamic Background */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-                <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" 
-                    alt="" 
-                    className="absolute inset-0 w-full h-full object-cover object-center opacity-30 mix-blend-multiply"
+                <Image 
+                    src="/images/wholesale-team.jpg" 
+                    alt="Wholesale general agency team collaboration" 
+                    fill
+                    sizes="100vw"
+                    className="object-cover object-center opacity-30 mix-blend-multiply"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-surface/40" />
                 
-                {/* Atmospheric Glows */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/30 rounded-full blur-[100px] -translate-y-1/4 translate-x-1/4"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-navy-500/20 rounded-full blur-[120px] translate-y-1/4 -translate-x-1/4"></div>
+                {/* Atmospheric Glows - using radial-gradient instead of CSS blur for performance */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full -translate-y-1/4 translate-x-1/4" style={{ background: 'radial-gradient(circle, rgba(201,162,75,0.2) 0%, rgba(201,162,75,0) 70%)' }}></div>
+                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full translate-y-1/4 -translate-x-1/4" style={{ background: 'radial-gradient(circle, rgba(26,44,107,0.15) 0%, rgba(26,44,107,0) 70%)' }}></div>
             </div>
 
             <SectionGlow position="bottomRight" className="opacity-60 z-10" />

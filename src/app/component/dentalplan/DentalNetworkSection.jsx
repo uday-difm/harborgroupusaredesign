@@ -1,12 +1,13 @@
 import React from 'react';
+import { SectionGlow } from '@/common/SectionGlow';
+import { HarborArc } from '@/common/HarborArc';
 
 export const DentalNetworkSection = () => {
   return (
      <section className='bg-surface'>
     <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden relative">
-      {/* Subtle diagonal background pattern/shape with animation */}
-      
-       {/* Added a slight delay to the second one */}
+      <SectionGlow position="topLeft" className="opacity-30" />
+      <HarborArc position="bottomRight" className="text-navy-900 opacity-5" />
 
       <div className="text-center mb-16 relative z-10">
         <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-4 animate-slide-in-down">

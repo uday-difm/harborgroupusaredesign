@@ -1,9 +1,11 @@
 'use client';
+
 import { useState } from 'react';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
-import { baseUrl } from '@lib/config';
+import { baseUrl } from '@/lib/config';
+import { FormField } from '@/app/component/dashboard-ui/FormField';
 
 export default function ForgetPassword() {
   const [email, setEmail] = useState('');
@@ -13,29 +15,29 @@ export default function ForgetPassword() {
   const [otpmsg, setOptmsg] = useState('');
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handleOtpChange = (e) => setOtp(e.target.value);
-  const handleNewPasswordChange = (e) => setNewPassword(e.target.value);
-  const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
-
-  // const handleForgotPassword = async (e) => {
-  //   e.preventDefault();
-  //   setErrors('');
-  //   try {
-  //     await axios.post(`${baseUrl}/api/dashboard/admin/reset-password`, { email });
-  //     setOptmsg('Sent OTP to your email. Please check!');
-  //     setStep(2);
-  //   } catch (error) {
-  //     setErrors(error.response?.data?.error || 'Something went wrong.');
-  //   }
-  // };
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    setErrors('');
+    setLoading(true);
+    try {
+      await axios.post(`${baseUrl}/api/dashboard/admin/reset-password`, { email });
+      setOptmsg('Sent OTP to your email. Please check!');
+      setStep(2);
+    } catch (error) {
+      setErrors(error.response?.data?.error || 'Something went wrong.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleOtpVerification = async (e) => {
     e.preventDefault();
     setErrors('');
+    setLoading(true);
     try {
       const response = await axios.post(`${baseUrl}/api/dashboard/admin/verify-otp`, { email, otp });
 
@@ -47,6 +49,8 @@ export default function ForgetPassword() {
       }
     } catch (error) {
       setErrors(error.response?.data?.error || 'Failed to verify OTP');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,6 +61,7 @@ export default function ForgetPassword() {
       setErrors('Passwords do not match');
       return;
     }
+    setLoading(true);
 
     try {
       await axios.post(`${baseUrl}/api/dashboard/admin/update-password`, {
@@ -68,6 +73,8 @@ export default function ForgetPassword() {
       setStep(4);
     } catch (error) {
       setErrors(error.response?.data?.Error || 'Failed to update password');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -80,54 +87,50 @@ export default function ForgetPassword() {
     switch (step) {
       case 1:
         return (
-          <div className="mb-4">
-            <label className="text-sm font-semibold text-white mb-2 block">Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="Enter your email"
-              className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-          </div>
+          <FormField
+            type="email"
+            label="Email Address"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            required
+          />
         );
       case 2:
         return (
-          <div className="mb-4">
-            <label className="text-sm font-semibold text-white mb-2 block">OTP</label>
-            <input
-              type="text"
-              value={otp}
-              onChange={handleOtpChange}
-              placeholder="Enter verification code"
-              className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-            />
-          </div>
+          <FormField
+            type="text"
+            label="OTP Code"
+            name="otp"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+            placeholder="Enter verification code"
+            required
+          />
         );
       case 3:
         return (
-          <>
-            <div className="mb-4">
-              <label className="text-sm font-semibold text-white mb-2 block">New Password</label>
-              <input
-                type="password"
-                value={newPassword}
-                onChange={handleNewPasswordChange}
-                placeholder="New password"
-                className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="text-sm font-semibold text-white mb-2 block">Confirm Password</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                placeholder="Confirm password"
-                className="w-full rounded-lg px-4 py-3 bg-white/80 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500"
-              />
-            </div>
-          </>
+          <div className="space-y-6">
+            <FormField
+              type="password"
+              label="New Password"
+              name="newPassword"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="Enter new password"
+              required
+            />
+            <FormField
+              type="password"
+              label="Confirm Password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm new password"
+              required
+            />
+          </div>
         );
       default:
         return null;
@@ -137,45 +140,54 @@ export default function ForgetPassword() {
   return (
     <>
       <Head>
-        <title>Reset Password | WMH India</title>
+        <title>Reset Password - Dashboard</title>
       </Head>
 
-      <div
-        className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center px-4 py-10"
-        style={{
-          backgroundImage:
-            "url('https://worldmodelhunt.s3-eu-central-2.ionoscloud.com/dashboard_images/WMH_11zon.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 to-black/50 z-0" />
+      <div className="relative min-h-screen bg-navy-50 flex items-center justify-center p-4">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-navy-100/40 blur-3xl" />
+          <div className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/10 blur-3xl" />
+        </div>
 
-        <div className="relative z-10 w-full max-w-xl bg-white/10 backdrop-blur-md rounded-lg p-8 sm:p-10 shadow-2xl border border-white/30">
-          <h2 className="text-center text-3xl font-extrabold text-white mb-2">Forgot Password</h2>
-          <p className="text-center text-gray-200 mb-6 text-sm sm:text-base">
-            {otpmsg
-              ? 'Enter the verification code sent to your email.'
-              : 'Enter your verified email to receive a reset link.'}
-          </p>
+        <div className="relative z-10 w-full max-w-md">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-extrabold text-navy-900 font-display">Forgot Password</h1>
+            <p className="text-navy-500 mt-2">
+              {otpmsg ? otpmsg : 'Enter your verified email to receive a reset link.'}
+            </p>
+          </div>
 
-          {/* <form
-            onSubmit={
-              step === 1
-                ? handleForgotPassword
-                : step === 2
-                ? handleOtpVerification
-                : handleUpdatePassword
-            }
-          >
-            {renderStepFields()}
-            {errors && <p className="text-red-300 text-sm mb-4">{errors}</p>}
-
-            <button
-              type="submit"
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-300"
+          <div className="card-elevated p-8 sm:p-10 w-full">
+            <form
+              onSubmit={
+                step === 1
+                  ? handleForgotPassword
+                  : step === 2
+                  ? handleOtpVerification
+                  : handleUpdatePassword
+              }
+              className="space-y-6"
             >
-              {step === 3 ? 'Update Password' : 'Next'}
-            </button>
-          </form> */}
+              {renderStepFields()}
+
+              {errors && <p className="text-error text-sm font-medium">{errors}</p>}
+
+              <button
+                type="submit"
+                className={`w-full btn-primary ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={loading}
+              >
+                {loading ? 'Processing...' : step === 3 ? 'Update Password' : 'Next'}
+              </button>
+
+              <div className="text-center pt-4">
+                <a href="/dashboard/login" className="text-sm font-medium text-navy-500 hover:text-navy-900">
+                  Back to Login
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>

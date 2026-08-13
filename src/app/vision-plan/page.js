@@ -40,7 +40,7 @@ export default function VisionPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/vision-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Vision Plan" }]}
         title="Clear vision, clear path - our vision plans keep your focus right!"
         description="Our vision service plans go beyond just seeing — they're designed to keep your eyesight sharp and your outlook on life crystal clear. From routine eye exams to prescription eyewear, we're dedicated to ensuring your vision is at its best."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/vision-eye-plan.jpg"

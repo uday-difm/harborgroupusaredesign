@@ -21,8 +21,8 @@ export default function FounderSection() {
   };
 
   const imageRevealVariants = {
-    hidden: { clipPath: 'inset(0 50% 0 50%)' },
-    show: { clipPath: 'inset(0 0% 0 0%)', transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
@@ -40,11 +40,12 @@ export default function FounderSection() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden card-elevated">
                 <Image 
-                    src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Douglas Muhlbauer.jpg" 
+                    src="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Douglas%20Muhlbauer.jpg" 
                     alt="Douglas Muhlbauer, Founder of Harbor Group USA"
                     className="w-full h-full object-cover"
                     width={800}
                     height={1000}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                 />
             </div>
@@ -65,7 +66,7 @@ export default function FounderSection() {
               Douglas Muhlbauer
             </motion.h2>
             
-            <motion.div variants={itemVariants} className="mt-8 text-lg text-navy-500 space-y-6 text-justify leading-relaxed">
+            <motion.div variants={itemVariants} className="mt-8 text-lg text-navy-600 space-y-6 text-justify leading-relaxed">
                 <p>
                   Founded by <b className="text-navy-800">Douglas Muhlbauer, Harbor Group USA</b> was established with a mission of excellence in health coverage plans. Over the years, it has become a trusted name in the healthcare services industry, guiding clients through the complexities of health coverage with care, transparency, and expertise. With a deep understanding of the ever-changing landscape, Harbor Group USA remains committed to providing personalized solutions that meet the unique needs of every client.
                 </p>
@@ -84,7 +85,7 @@ export default function FounderSection() {
                         </div>
                         <div>
                             <h3 className="font-bold text-lg text-navy-800">Author & Advocate</h3>
-                            <p className="text-base text-navy-500 mt-2 text-justify leading-relaxed">
+                            <p className="text-base text-navy-600 mt-2 text-justify leading-relaxed">
                                 Douglas is the author of <strong className="text-navy-700">Breaking the Monopoly: The Fight for Affordability</strong>, exposing the healthcare system's impact on consumers.
                             </p>
                         </div>

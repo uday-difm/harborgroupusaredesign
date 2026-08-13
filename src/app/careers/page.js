@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useRef } from "react";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { motion } from "framer-motion";
 
 export default function Careers() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -102,10 +104,17 @@ export default function Careers() {
 
     setLoading(true);
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setLoading(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const res = await fetch("/api/career", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, recaptchaToken: token }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Submission failed");

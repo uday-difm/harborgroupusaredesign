@@ -39,6 +39,8 @@ export default function ForPage() {
       <title>Harbor Group USA | Health Plans & Broker Solutions</title>
       <meta name="keywords" content="health plans, small business health, individual health plans, broker solutions, healthcare coverage, benefits, group health, affordable health plans" />
       <meta name="description" content="Harbor Group USA offers tailored health plans for brokers, individuals, and small businesses. Get comprehensive coverage and expert support." />
+      <meta property="og:title" content="Harbor Group USA | Health Plans & Broker Solutions" />
+      <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
       <link rel="canonical" href="https://harborgroupusa.com/for/" />
 
       <section className="relative overflow-hidden bg-surface pt-20 pb-16 md:pt-28 md:pb-24">

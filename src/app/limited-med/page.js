@@ -38,7 +38,7 @@ export default function LimitedMedPage() {
       <meta property="og:url" content="https://harborgroupusa.com/limited-med/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Limited Med Plan" }]}
         title="Limited Med Plans offering coverage for specific needs"
         description="Experience targeted medical coverage with our Limited Med Plans at Harbor Group USA. Tailored to address specific health needs, our Limited Med Plans offer a specialized approach to ensure you receive the care you require. Discover a customer-centric solution that provides focused coverage for your distinct medical requirements."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/limited-med-plan-hero-section.jpeg"

@@ -5,6 +5,7 @@
 import "./globals.css";
 import { Header } from "@/common/Header";
 import { Footer } from "@/common/Footer";
+import { StickyMobileCTA } from "@/common/StickyMobileCTA";
 import { usePathname } from "next/navigation";
 import CookiesBanner from "@/common/CookiesBanner";
 import Script from 'next/script'; // Import the Script component
@@ -14,6 +15,7 @@ import ScrollProgress from "@/common/ScrollProgress";
 import CustomScrollbar from "@/common/CustomScrollbar";
 import SmoothScrollProvider from "@/common/SmoothScrollProvider";
 import { Inter, Sora } from 'next/font/google';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -128,37 +130,23 @@ export default function RootLayout({ children }) {
 
       </head>
       <body className="" cz-shortcut-listen="true">
-        <SmoothScrollProvider>
-          <ScrollProgress />
-          <CustomScrollbar />
-          {!isDashboardPage && (
-            <>
-              <Header />
-              {/* <Holidayspopup />
-      <Snowfall
-       snowflakeCount={160}
-        color="#C9A24B"   
-        speed={[0.5, 1.5]}
-        wind={[-0.3, 0.3]}
-        radius={[1, 3]}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          zIndex: 9999999,  
-          pointerEvents: "none",
-             }}
-      /> */}
-            </>
-          )}
-          <div className={!isDashboardPage ? "pt-24 md:pt-32" : ""}>
-            {children}
-          </div>
-          {!isDashboardPage && <Footer />}
-          <CookiesBanner />
-        </SmoothScrollProvider>
+        <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+          <SmoothScrollProvider>
+            <ScrollProgress />
+            <CustomScrollbar />
+            {!isDashboardPage && (
+              <>
+                <Header />
+              </>
+            )}
+            <main className={!isDashboardPage ? "pt-24 md:pt-32 pb-20 md:pb-0" : ""}>
+              {children}
+            </main>
+            {!isDashboardPage && <Footer />}
+            {!isDashboardPage && <StickyMobileCTA />}
+            <CookiesBanner />
+          </SmoothScrollProvider>
+        </GoogleReCaptchaProvider>
       </body>
     </html>
   );

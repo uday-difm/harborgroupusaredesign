@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react'
+import { SectionGlow } from '@/common/SectionGlow';
 
 export default function ProtectionOverview() {
      const gradientStops = (id) => (
@@ -15,8 +16,9 @@ export default function ProtectionOverview() {
   return (
     <>
       {/* Existing Section: Protection Overview */}
-      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <SectionGlow position="topLeft" className="opacity-30" />
+        <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl font-extrabold text-gray-800 mb-8 text-center">
            Protection Overview
           </h2>

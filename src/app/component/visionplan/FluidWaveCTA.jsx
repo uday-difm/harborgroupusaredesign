@@ -1,9 +1,11 @@
 import React from 'react';
+import { StepsPathIllustration } from '@/common/illustrations/StepsPathIllustration';
 
 // Main App component (can be integrated into your existing App or a new page)
 export const FluidWaveCTA = () => {
   return (
     <div className="min-h-[50vh] bg-gradient-to-br from-navy-50 to-navy-50 font-inter flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+      <StepsPathIllustration className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-16 text-accent opacity-[0.08] pointer-events-none rotate-3" />
       {/* Custom CSS for animations */}
       <style>
         {`

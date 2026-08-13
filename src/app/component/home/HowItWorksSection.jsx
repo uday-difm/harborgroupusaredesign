@@ -4,14 +4,17 @@ import React from 'react';
 import { Search, UserCheck, ShieldCheck, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { SectionGlow } from '@/common/SectionGlow';
+import Image from 'next/image';
 
 
-const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, onFocus, onBlur }) => {
+const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, onFocus, onBlur, onViewportEnter }) => {
     const prefersReduced = useReducedMotion();
     const cardOpacity = isActive ? 1 : 0.4;
 
     return (
-        <div
+        <motion.div
+            onViewportEnter={() => onViewportEnter?.(index)}
+            viewport={{ amount: 0.6, margin: "-10% 0px -10% 0px" }}
             onMouseEnter={() => onHoverStart?.(index)}
             onMouseLeave={() => onHoverEnd?.()}
             onFocus={() => onFocus?.(index)}
@@ -22,10 +25,12 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
             {/* Dynamic Background Image & Gradient */}
             <div className={`absolute inset-0 z-0 transition-opacity duration-700 overflow-hidden rounded-2xl ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}>
                 {step.bgImage && (
-                    <img 
+                    <Image 
                         src={step.bgImage} 
-                        alt="" 
-                        className="absolute inset-0 w-full h-full object-cover object-right opacity-70 transition-transform duration-700 group-hover:scale-105"
+                        alt={step.title || "How it works step illustration"}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover object-right opacity-70 transition-transform duration-700 group-hover:scale-105"
                     />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/10 z-10" />
@@ -76,7 +81,7 @@ const StepCard = ({ step, index, isActive, isDesktop, onHoverStart, onHoverEnd, 
                 </div>
             </motion.div>
 
-        </div>
+        </motion.div>
     );
 };
 
@@ -87,7 +92,7 @@ export const HowItWorksSection = () => {
             title: 'Explore & Compare Plans',
             description: 'Browse our comprehensive range of individual, family, and small business healthcare options.',
             icon: <Search className="w-6 h-6 text-accent" />,
-            bgImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80',
+            bgImage: '/images/how-it-works-1.jpg',
             detail: {
                 eyebrow: "What to expect",
                 points: [
@@ -103,7 +108,7 @@ export const HowItWorksSection = () => {
             title: 'Consult a Licensed Advisor',
             description: 'Connect 1-on-1 with an experienced healthcare advisor to review options tailored to your budget.',
             icon: <UserCheck className="w-6 h-6 text-accent" />,
-            bgImage: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80',
+            bgImage: '/images/how-it-works-2.jpg',
             detail: {
                 eyebrow: "Your dedicated expert",
                 points: [
@@ -119,7 +124,7 @@ export const HowItWorksSection = () => {
             title: 'Get Covered with Confidence',
             description: 'Complete quick enrollment and gain immediate peace of mind with ongoing member support.',
             icon: <ShieldCheck className="w-6 h-6 text-accent" />,
-            bgImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80',
+            bgImage: '/images/how-it-works-3.jpg',
             detail: {
                 eyebrow: "Fast & secure enrollment",
                 points: [
@@ -136,8 +141,9 @@ export const HowItWorksSection = () => {
     
     // Active Step Logic
     const [hoveredIndex, setHoveredIndex] = React.useState(null);
+    const [scrolledIndex, setScrolledIndex] = React.useState(0);
     const hoverTimerRef = React.useRef(null);
-    const activeIndex = hoveredIndex !== null ? hoveredIndex : 0;
+    const activeIndex = hoveredIndex !== null ? hoveredIndex : scrolledIndex;
 
     // Desktop check
     const [isDesktop, setIsDesktop] = React.useState(true);
@@ -185,6 +191,10 @@ export const HowItWorksSection = () => {
     const handleFocus = (index) => {
         clearHoverIntent();
         if (isDesktop && !prefersReduced) setHoveredIndex(index);
+    };
+
+    const handleViewportEnter = (index) => {
+        if (!prefersReduced) setScrolledIndex(index);
     };
 
     return (
@@ -239,6 +249,7 @@ export const HowItWorksSection = () => {
                                 onHoverEnd={handleHoverEnd}
                                 onFocus={handleFocus}
                                 onBlur={handleHoverEnd}
+                                onViewportEnter={handleViewportEnter}
                             />
                         ))}
                     </div>

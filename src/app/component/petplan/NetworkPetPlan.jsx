@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { NetworkMapIllustration } from '@/common/illustrations/NetworkMapIllustration';
 
 export const NetworkPetPlan = () => {
   return (
@@ -10,7 +11,8 @@ export const NetworkPetPlan = () => {
       }}></div>
 
       <div className="relative max-w-7xl mx-auto space-y-8">
-        <div className=" p-8 ">
+        <div className=" p-8 relative">
+          <NetworkMapIllustration className="absolute -top-8 right-0 w-48 h-48 text-accent opacity-10 pointer-events-none hidden lg:block" />
           <h2 className="text-4xl font-extrabold text-navy-800 sm:text-5xl lg:text-6xl leading-tight mb-6 text-center">
             Network
           </h2>

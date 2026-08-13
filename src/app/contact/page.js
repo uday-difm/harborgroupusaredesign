@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // Main Contact Page component
 export default function ContactPage() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   // State for form data
   const [formData, setFormData] = useState({
     fullName: '',
@@ -134,12 +136,19 @@ export default function ContactPage() {
     };
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify({ ...requestData, recaptchaToken: token }),
       });
 
       const data = await response.json();

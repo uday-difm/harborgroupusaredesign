@@ -1,4 +1,5 @@
 import React from 'react'
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 
 export const Benefits = () => {
       // Define the light blue gradient for icons
@@ -14,7 +15,8 @@ export const Benefits = () => {
     <>
       {/* New Section: Benefits Of Bundles Plan */}
       <section className="w-full bg-white py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center relative">
+          <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 ">
             Benefits Of Bundles Plan
           </h2>

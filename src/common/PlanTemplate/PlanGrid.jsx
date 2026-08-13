@@ -50,7 +50,7 @@ export const PlanGrid = ({
 
         {/* Offset Grid Layout */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="flex flex-wrap justify-center gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -63,7 +63,7 @@ export const PlanGrid = ({
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="card-elevated p-8 flex flex-col justify-start transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 group"
+                className={`w-full sm:w-[calc(50%-1rem)] ${features.length === 4 ? 'lg:w-[calc(25%-1.5rem)]' : (features.length === 2 ? 'lg:w-[calc(50%-1rem)]' : 'lg:w-[calc(33.333%-1.5rem)]')} max-w-sm lg:max-w-none card-elevated p-8 flex flex-col justify-start transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 group`}
               >
                 {Icon && (
                   <div className="w-12 h-12 bg-navy-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">

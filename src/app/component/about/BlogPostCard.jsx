@@ -41,7 +41,7 @@ export const BlogPostCard = ({ image, category, title, author, date }) => {
       </div>
       <div className="p-6">
         <h3 className="text-xl font-bold text-navy-800 mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">{title}</h3>
-        <div className="flex items-center text-sm text-navy-500 font-medium mt-4">
+        <div className="flex items-center text-sm text-navy-600 font-medium mt-4">
           <span>{date}</span>
         </div>
       </div>

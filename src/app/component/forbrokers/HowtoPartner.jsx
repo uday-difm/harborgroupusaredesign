@@ -2,8 +2,10 @@
 import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const HowtoPartner = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const plans = [
     "Medical Plans", "Dental Plans", "Vision Plans", "Term Life Plans",
     "Group Benefit", "Limited Med Plans", "Accident Plans", "Hospital Plans",
@@ -199,10 +201,17 @@ export const HowtoPartner = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setErrorMessage('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch("/api/forbrokers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
       const data = await response.json();
       if (response.ok) {
@@ -233,7 +242,7 @@ export const HowtoPartner = () => {
 
   return (
     <section id="broker-form" className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
           {/* Left Panel: Process Overview */}

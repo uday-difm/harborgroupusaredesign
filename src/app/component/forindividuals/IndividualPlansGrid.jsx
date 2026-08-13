@@ -1,7 +1,9 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { ArrowRight, PlusSquare, Smile, Eye, HeartPulse, Layers, FlaskConical, Bone, Hospital as HospitalIcon, HeartCrack, Bike, Dog, Pill } from 'lucide-react';
+import { NetworkMapIllustration } from '@/common/illustrations/NetworkMapIllustration';
 import { motion } from 'framer-motion';
 
 export const IndividualPlansGrid = () => {
@@ -35,10 +37,11 @@ export const IndividualPlansGrid = () => {
 
     return (
         <section className="section-light relative overflow-hidden py-24 font-body">
-            <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+            <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
                 
                 {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-16">
+                <div className="text-center max-w-2xl mx-auto mb-16 relative">
+                    <NetworkMapIllustration className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 text-accent opacity-10 pointer-events-none hidden md:block" />
                     <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">Our Coverage Options</span>
                     <h2 className="text-3xl md:text-5xl font-display font-bold text-navy-900 tracking-tight">Tailored to You</h2>
                     <p className="mt-3 text-lg text-navy-600">Choose from a variety of plans designed for individual and family needs.</p>
@@ -46,7 +49,7 @@ export const IndividualPlansGrid = () => {
 
                 {/* 12 Plan Grid */}
                 <motion.div 
-                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6"
                     variants={sectionReveal}
                     initial="hidden"
                     whileInView="show"

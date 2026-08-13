@@ -39,7 +39,7 @@ export default function HospitalPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/hospital-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Hospital Plan" }]}
         title="Specialized plans for hospitalization expenses"
         description="Navigate hospitalization expenses with confidence through our Specialized Hospital Plans at Harbor Group USA. Tailored to provide dedicated coverage for hospital stays, our plans are designed to alleviate the financial strain associated with medical emergencies. Discover a simple and effective solution that focuses on your peace of mind during challenging times."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Hospital-Plans-Page.jpg"

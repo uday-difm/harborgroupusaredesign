@@ -1,4 +1,5 @@
 import React from 'react';
+import { LayeredStacksIllustration } from '@/common/illustrations/LayeredStacksIllustration';
 
 // Main App component
 export const DetailedPlanDescriptions = () => {
@@ -28,9 +29,12 @@ export const DetailedPlanDescriptions = () => {
     // Main container with a gradient background and responsive padding
     <div className="min-h-screen bg-surface-alt font-inter text-gray-800 p-4 sm:p-8 lg:p-12 flex flex-col items-center justify-center">
       {/* Page title */}
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-primary mb-10 text-center drop-shadow-lg">
-        Detailed Plan Descriptions
-      </h1>
+      <div className="relative">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-primary mb-10 text-center drop-shadow-lg">
+          Detailed Plan Descriptions
+        </h1>
+        <LayeredStacksIllustration className="absolute -top-4 right-8 w-28 h-28 text-accent opacity-15 pointer-events-none hidden lg:block" />
+      </div>
 
       {/* Grid container for the plan cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">

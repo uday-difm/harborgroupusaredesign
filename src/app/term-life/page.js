@@ -38,7 +38,7 @@ export default function TermLifePage() {
       <meta property="og:url" content="https://harborgroupusa.com/term-life/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Term Life" }]}
         title="Protection for your loved ones with a comprehensive term life plan"
         description="Secure your family’s future — our life plans are meticulously crafted to offer more than just financial assurance. Our plans go beyond the numbers; they are a promise, a commitment to providing unwavering support in times of need."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Term-life-hero-section.jpeg"

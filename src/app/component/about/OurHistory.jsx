@@ -38,7 +38,7 @@ const ValueCard = ({ icon: Icon, title, children }) => {
                     </div>
                     <h3 className="text-xl font-bold text-navy-800">{title}</h3>
                 </div>
-                <p className="text-base text-navy-500 leading-relaxed text-justify">{children}</p>
+                <p className="text-base text-navy-600 leading-relaxed text-justify">{children}</p>
             </motion.div>
         </motion.div>
     );
@@ -47,8 +47,8 @@ const ValueCard = ({ icon: Icon, title, children }) => {
 export const OurHistory = () => {
     const prefersReduced = useReducedMotion();
     const imageRevealVariants = {
-        hidden: { clipPath: 'inset(100% 0 0 0)' },
-        show: { clipPath: 'inset(0% 0 0 0)', transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
+        hidden: { opacity: 0 },
+        show: { opacity: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
     };
 
     const itemVariants = {
@@ -83,6 +83,7 @@ export const OurHistory = () => {
                                     className="w-full h-full object-cover"
                                     width={800}
                                     height={600}
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
                                 />
                             </motion.div>
                         </div>
@@ -101,10 +102,10 @@ export const OurHistory = () => {
                         <motion.h2 variants={itemVariants} className="mt-4 text-3xl md:text-4xl font-display font-bold text-navy-800 tracking-tight">
                             Get Expert Advice and Start Saving
                         </motion.h2>
-                        <motion.p variants={itemVariants} className="mt-8 text-lg text-navy-500 text-justify leading-relaxed">
+                        <motion.p variants={itemVariants} className="mt-8 text-lg text-navy-600 text-justify leading-relaxed">
                             Founded with a mission of excellence in the field of Health Coverage Plans, Harbor Group USA has grown into a trusted name in the healthcare services industry. Our commitment to navigating the complex landscape of health services has remained steadfast since the beginning.
                         </motion.p>
-                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-500 text-justify leading-relaxed">
+                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-600 text-justify leading-relaxed">
                             Starting with a passion for handling clients with care and expertise, we have transformed over time, dedicating ourselves to understanding the ins and outs of health coverage plans from day one.
                         </motion.p>
                     </motion.div>
@@ -122,7 +123,7 @@ export const OurHistory = () => {
                         <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-display font-bold text-navy-800 tracking-tight">
                             Our Core Values
                         </motion.h2>
-                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-500">
+                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-600">
                             The principles that guide our every decision and action.
                         </motion.p>
                     </motion.div>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { LayeredStacksIllustration } from '@/common/illustrations/LayeredStacksIllustration';
 import { CheckCircle2, ShieldCheck, Stethoscope, Pill, Info } from 'lucide-react';
 
 export const MajorMedicalPlanSummaries = () => {
@@ -54,7 +55,8 @@ export const MajorMedicalPlanSummaries = () => {
   return (
     <section className="section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 relative">
+          <LayeredStacksIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-4">Plan Options</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-navy-900 tracking-tight mb-6">
             Detailed Plan Summaries

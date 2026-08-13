@@ -39,7 +39,7 @@ export default function AccidentPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/accident-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Accident Plan" }]}
         title="Coverage for unexpected accidents to ease financial burdens"
         description="Prepare for life’s unexpected turns with our Accident Plans at Harbor Group USA. We understand that accidents can happen when you least expect them, and our Accident Plans are designed to provide financial support precisely when you need it."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Accident.jpg"

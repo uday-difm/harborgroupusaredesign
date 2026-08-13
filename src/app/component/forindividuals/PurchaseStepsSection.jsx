@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StepsPathIllustration } from '@/common/illustrations/StepsPathIllustration';
 import { Globe, ArrowRightLeft, MousePointerClick, PhoneCall, ShieldCheck, CheckCircle } from 'lucide-react';
 
 export const PurchaseStepsSection = () => {
@@ -52,9 +53,9 @@ export const PurchaseStepsSection = () => {
 
   return (
     <section className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
         
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-20 relative">
           <motion.span 
             className="text-xs font-bold text-accent uppercase tracking-widest block mb-4"
             initial={{ opacity: 0, y: 20 }}
@@ -81,6 +82,7 @@ export const PurchaseStepsSection = () => {
           >
             At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your health plan.
           </motion.p>
+          <StepsPathIllustration className="w-full max-w-lg mx-auto h-10 text-accent opacity-25 mt-6" />
         </div>
 
         <motion.div 

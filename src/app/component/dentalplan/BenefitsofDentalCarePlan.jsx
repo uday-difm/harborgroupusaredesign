@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState , useRef} from 'react';
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 import Link from 'next/link';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const BenefitsofDentalCarePlan = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
    // State for form data, error messages, and submission status
   const [formData, setFormData] = useState({
@@ -114,13 +117,20 @@ export const BenefitsofDentalCarePlan = () => {
 
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       // Making the API call
       const response = await fetch('/api/dentalplan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();
@@ -141,7 +151,8 @@ export const BenefitsofDentalCarePlan = () => {
   return (
     <section className='section-tint' id ="dental-form">
     <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 overflow-hidden">
-      <div className="text-center mb-16">
+      <div className="text-center mb-16 relative">
+        <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
         <h2 className="text-h2 font-display font-bold text-navy-800 mb-4 animate-slide-in-down">
          Benefits of Dental Care Plan
         </h2>

@@ -3,8 +3,10 @@
 import React, { useState,useRef } from 'react';
 import Image from 'next/image'; 
 import Link from 'next/link';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const MedicalFormLanding = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   // State for form data and error/success messages
   const [formData, setFormData] = useState({
     name: '',
@@ -105,12 +107,19 @@ export const MedicalFormLanding = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch('/api/medicalplan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

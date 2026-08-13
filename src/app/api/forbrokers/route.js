@@ -1,3 +1,4 @@
+import { verifyRecaptcha } from "@/lib/recaptcha";
 import pool from "../../../../lib/mysql";
 import { sendMail } from "../../../../lib/nodemailer";
 import { generateEmailTemplate } from "../../../../lib/emailTemplate";
@@ -5,6 +6,15 @@ import { generateEmailTemplate } from "../../../../lib/emailTemplate";
 export async function POST(req) {
   try {
     const body = await req.json();
+    
+    const recaptchaToken = body.recaptchaToken;
+    if (!recaptchaToken) {
+      return Response.json({ error: 'reCAPTCHA token is missing' }, { status: 400 });
+    }
+    const isHuman = await verifyRecaptcha(recaptchaToken);
+    if (!isHuman) {
+      return Response.json({ error: 'reCAPTCHA verification failed. Please try again.' }, { status: 400 });
+    }
     //console.log("Received Data:", body);  
 
     const { name, state, dob, plans, email, phone } = body;

@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTilt } from '@/common/motion/useTilt';
+import { Breadcrumbs } from '@/common/Breadcrumbs';
 
 const containerVariants = {
   hidden: {},
@@ -15,7 +16,8 @@ export const PlanHero = ({
   description,
   imageSrc,
   imageAlt = "Plan Background",
-  formComponent = null
+  formComponent = null,
+  breadcrumbs = []
 }) => {
   const prefersReduced = useReducedMotion();
   const imageTilt = useTilt(3);
@@ -55,6 +57,7 @@ export const PlanHero = ({
         >
           {/* Text Section */}
           <div className="relative z-10">
+            {breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} variant="light" />}
             <motion.h1
               variants={itemVariants}
               className="text-h1 font-display font-bold text-navy-800 leading-tight mb-4"

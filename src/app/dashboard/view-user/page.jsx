@@ -7,6 +7,9 @@ import Head from 'next/head';
 import DashboardLayout from '@/app/component/DashboardLayout';
 import ReactPaginate from 'react-paginate';
 import { useRouter } from 'next/navigation';
+import { DataTable } from '@/app/component/dashboard-ui/DataTable';
+import { ConfirmDialog } from '@/app/component/dashboard-ui/ConfirmDialog';
+import { useToast } from '@/app/component/dashboard-ui/Toast';
 
 
 
@@ -15,8 +18,9 @@ export default function AdminTable() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
   const adminsPerPage = 15;
-
   const router = useRouter();
+  const { addToast } = useToast();
+  const [userToDelete, setUserToDelete] = useState(null);
 
   const fetchAdmins = async () => {
     try {
@@ -39,12 +43,11 @@ export default function AdminTable() {
   };
 
 
-const deleteUser = async (id) => {
-  const confirmDelete = confirm('Are you sure you want to delete this user?');
-  if (!confirmDelete) return;
+const confirmDelete = async () => {
+  if (!userToDelete) return;
 
   try {
-    const res = await fetch(`/api/dashboard/delete-user/${id}`, {
+    const res = await fetch(`/api/dashboard/delete-user/${userToDelete}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -54,12 +57,12 @@ const deleteUser = async (id) => {
       throw new Error(errorData.message || 'Failed to delete user');
     }
 
-    // Remove from local state
-    setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin.id !== id));
-
-    alert('User deleted successfully.');
+    setAdmins((prevAdmins) => prevAdmins.filter((admin) => admin.id !== userToDelete));
+    addToast('User deleted successfully.', 'success');
   } catch (err) {
-    alert('Error deleting user: ' + err.message);
+    addToast('Error deleting user: ' + err.message, 'error');
+  } finally {
+    setUserToDelete(null);
   }
 };
 
@@ -68,6 +71,30 @@ const deleteUser = async (id) => {
     (currentPage + 1) * adminsPerPage
   );
 
+  const columns = [
+    { label: "S.No", key: "sno", render: (row, index) => <span className="font-medium text-navy-700">{currentPage * adminsPerPage + index + 1}</span> },
+    { label: "Name", key: "name", render: (row) => <span className="text-navy-900 font-medium">{row.name}</span> },
+    { label: "Email", key: "email", render: (row) => row.email },
+    { label: "Role", key: "role", render: (row) => (
+      <span className="capitalize">{row.role}</span>
+    )},
+    { label: "Date Created", key: "date", render: (row) => (
+      <span className="bg-success/10 text-success px-3 py-1 rounded-full text-xs font-medium border border-success/20">
+        {row.formatted_created_date || '—'}
+      </span>
+    )},
+    { label: "Actions", key: "actions", render: (row) => (
+      <div className="flex space-x-3 justify-center">
+        <button onClick={() => router.push(`/dashboard/update-user/${row.id}`)}>
+          <Pencil className="w-4 h-4 text-navy-500 hover:text-accent cursor-pointer transition" />
+        </button>
+        <button onClick={() => setUserToDelete(row.id)}>
+          <Trash2 className="w-4 h-4 text-navy-500 hover:text-error cursor-pointer transition" />
+        </button>
+      </div>
+    )}
+  ];
+
   return (
     <DashboardLayout>
       <Head>
@@ -75,97 +102,53 @@ const deleteUser = async (id) => {
         <meta name="description" content="Paginated admin list" />
       </Head>
 
-      <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 shadow-md p-4 sm:p-6 space-y-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+      <div className="w-full">
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+            <h2 className="text-2xl font-bold text-navy-900 font-display">
               Total Admins: {admins.length}
             </h2>
           </div>
 
-          {/* Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto text-sm border-collapse">
-              <thead>
-                <tr className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200">
-                  <th className="px-4 py-3 text-left">S.no</th>
-                  <th className="px-4 py-3 text-left">Name</th>
-                  <th className="px-4 py-3 text-left">Email</th>
-                  <th className="px-4 py-3 text-left">Role</th>
-                  <th className="px-4 py-3 text-left">Date Created</th>
-                  <th className="px-4 py-3 text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {loading ? (
-                  <tr>
-                    <td colSpan="6" className="text-center py-4 text-gray-500">
-                      Loading admins...
-                    </td>
-                  </tr>
-                ) : paginatedAdmins.length === 0 ? (
-                  <tr>
-                    <td colSpan="6" className="text-center py-4 text-gray-500">
-                      No admins available
-                    </td>
-                  </tr>
-                ) : (
-                  paginatedAdmins.map((data, index) => (
-                    <tr
-                      key={data.id}
-                      className="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
-                    >
-                      <td className="px-4 py-3 text-gray-700 dark:text-gray-200">
-                        {currentPage * adminsPerPage + index + 1}
-                      </td>
-                      <td className="px-4 py-3 text-gray-800 dark:text-white">{data.name}</td>
-                      <td className="px-4 py-3 text-gray-800 dark:text-white">{data.email}</td>
-                      <td className="px-4 py-3 text-gray-800 dark:text-white">
-                     {data.role }
-                      </td>
-                      <td className="px-4 py-3">
-                        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium">
-                          {data.formatted_created_date || '—'}
-                        </span>
-                      </td>
-                      <td className="py-3">
-                        <div className="flex space-x-3 justify-center">
-                          {/* <Link href={`/admin/${data.slug || data.id}`}>
-                            <Eye className="w-4 h-4 text-slate-500 hover:text-blue-600 cursor-pointer" />
-                          </Link> */}
-                          <button onClick={() => router.push(`/dashboard/update-user/${data.id}`)}>
-                            <Pencil className="w-4 h-4 text-slate-500 hover:text-yellow-500 cursor-pointer" />
-                          </button>
-                          <button onClick={() => deleteUser(data.id)}>
-                            <Trash2 className="w-4 h-4 text-slate-500 hover:text-red-600 cursor-pointer" />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+          <DataTable 
+            columns={columns}
+            data={paginatedAdmins}
+            isLoading={loading}
+            keyField="id"
+            emptyMessage="No admins available"
+          />
 
           {/* Pagination */}
-          <div className="pt-4 flex justify-center">
-            <ReactPaginate
-              pageCount={Math.ceil(admins.length / adminsPerPage)}
-              onPageChange={handlePageChange}
-              forcePage={currentPage}
-              containerClassName="flex flex-wrap gap-2"
-              pageClassName="px-3 py-2 border border-gray-300 rounded text-sm text-gray-700 hover:bg-primary dark:hover:bg-gray-600 dark:text-white"
-              activeClassName="bg-primary text-white"
-              previousLabel="Prev"
-              nextLabel="Next"
-              breakLabel="..."
-              previousClassName="px-3 py-2 border border-gray-300 rounded text-sm text-gray-700 hover:bg-primary dark:hover:bg-gray-600 dark:text-white"
-              nextClassName="px-3 py-2 border border-gray-300 rounded text-sm text-gray-700 hover:bg-primary dark:hover:bg-gray-600 dark:text-white"
-            />
-          </div>
+          {!loading && Math.ceil(admins.length / adminsPerPage) > 1 && (
+            <div className="pt-4 flex justify-center">
+              <ReactPaginate
+                pageCount={Math.ceil(admins.length / adminsPerPage)}
+                onPageChange={handlePageChange}
+                forcePage={currentPage}
+                containerClassName="inline-flex space-x-2"
+                pageClassName="border border-navy-200 rounded transition hover:bg-navy-50"
+                pageLinkClassName="block px-3 py-2 text-sm text-navy-700 cursor-pointer"
+                activeLinkClassName="bg-navy-900 text-white border-navy-900"
+                previousLabel="Prev"
+                nextLabel="Next"
+                breakLabel="..."
+                previousClassName="border border-navy-200 rounded transition hover:bg-navy-50 text-sm text-navy-700 cursor-pointer flex items-center px-3"
+                nextClassName="border border-navy-200 rounded transition hover:bg-navy-50 text-sm text-navy-700 cursor-pointer flex items-center px-3"
+                disabledClassName="opacity-50 cursor-not-allowed hover:bg-transparent"
+              />
+            </div>
+          )}
         </div>
       </div>
+      
+      <ConfirmDialog 
+        isOpen={!!userToDelete}
+        title="Delete User"
+        message="Are you sure you want to delete this user? This action cannot be undone."
+        onConfirm={confirmDelete}
+        onCancel={() => setUserToDelete(null)}
+        confirmText="Delete"
+      />
     </DashboardLayout>
   );
 }

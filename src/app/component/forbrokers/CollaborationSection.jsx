@@ -27,7 +27,7 @@ export const CollaborationSection = () => {
       {/* Subtle B2B background element */}
       <HarborArc position="topLeft" className="text-navy-700 opacity-20 scale-150 -translate-x-1/4 -translate-y-1/4" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Text Content */}

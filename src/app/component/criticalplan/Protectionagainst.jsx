@@ -2,8 +2,10 @@
 import React, { useState,useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const Protectionagainst = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const primaryBlueGradient = (id) => (
     <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style={{ stopColor: "var(--color-navy-300)", stopOpacity: 1 }} /> {/* blue-400 */}
@@ -127,10 +129,17 @@ export const Protectionagainst = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIsSubmitting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch("/api/criticalplan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

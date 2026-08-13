@@ -1,4 +1,5 @@
 import React from 'react';
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 
 export const BenefitsofLifestylePlan = () => {
   return (
@@ -100,7 +101,8 @@ const BenefitsSection = () => {
   return (
     <div className="max-w-6xl mx-auto  p-8 md:p-12 lg:p-16">
      
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 relative">
+        <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
         <h1 className="text-4xl sm:text-5xl font-extrabold text-navy-800 leading-tight mb-4">
          Benefits of Lifestyle Plan
         </h1>

@@ -53,7 +53,7 @@ export const PlanCostOptions = ({
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16"
+          className="flex flex-wrap justify-center gap-8 lg:gap-12 mb-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -63,7 +63,7 @@ export const PlanCostOptions = ({
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card-elevated p-8 lg:p-10 relative overflow-hidden group"
+              className="w-full lg:w-[calc(50%-1.5rem)] max-w-2xl card-elevated p-8 lg:p-10 relative overflow-hidden group"
             >
               {/* Subtle hover glow */}
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[inherit] pointer-events-none"></div>

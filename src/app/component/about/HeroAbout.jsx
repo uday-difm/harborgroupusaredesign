@@ -48,10 +48,10 @@ export const HeroAbout = () => {
                             </div>
                         </h1>
 
-                        <motion.p variants={itemVariants} className="mt-8 max-w-xl mx-auto lg:mx-0 text-lg text-navy-500 leading-relaxed text-justify">
+                        <motion.p variants={itemVariants} className="mt-8 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed text-justify">
                             At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
                         </motion.p>
-                        <motion.p variants={itemVariants} className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-navy-500 leading-relaxed text-justify">
+                        <motion.p variants={itemVariants} className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed text-justify">
                             With a track record that spans a considerable period, we’ve accumulated valuable know-how about healthcare. Our focus is straightforward – helping individuals and businesses navigate the healthcare world. We believe in being upfront, honest, and always putting you first.
                         </motion.p>
                     </motion.div>
@@ -59,8 +59,8 @@ export const HeroAbout = () => {
                     {/* --- Right Column: Image Composition --- */}
                     <motion.div
                         className="relative h-[400px] lg:h-[600px] w-full xl:-mr-20 origin-bottom"
-                        initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
-                        animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                     >
                         <div className="absolute inset-0 w-full lg:ml-auto lg:mr-0">
@@ -83,6 +83,7 @@ export const HeroAbout = () => {
                                         className="w-full h-full object-cover"
                                         width={800}
                                         height={1000}
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         priority
                                     />
                                 </motion.div>

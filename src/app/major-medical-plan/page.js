@@ -26,7 +26,7 @@ export default function MajorMedicalPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/major-medical-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Major Medical Plan" }]}
         title="Comprehensive Healthcare Coverage with Major Medical Plans"
         description="Prioritizing overall well-being is essential. Our Major Medical Plans are crafted to deliver extensive healthcare coverage, ensuring top-notch care without financial stress. These plans offer a wide range of benefits tailored to diverse needs, including comprehensive medical coverage, preventive care services, and flexible options to suit various budgets and requirements."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/Major-Medical-Plans.jpg"

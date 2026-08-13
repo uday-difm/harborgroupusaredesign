@@ -1,4 +1,5 @@
 import React from 'react';
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 
 // Main App component (can be integrated into your existing App or a new page)
 export const BenefitsVisionplan = () => {
@@ -33,7 +34,8 @@ export const BenefitsVisionplan = () => {
       </style>
 
       {/* Section Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100">
+      <div className="max-w-4xl mx-auto text-center mb-12 opacity-0 animate-fadeInSlideUp delay-100 relative">
+        <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
         <h2 className="text-4xl md:text-5xl font-extrabold text-navy-800 mb-4 drop-shadow-sm">
           Benefits of Vision Plan
         </h2>

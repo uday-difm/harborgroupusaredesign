@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 export  const PetPlanBenefits = () => {
 
   const primaryBlueGradient = (id) => (
@@ -46,7 +47,9 @@ export  const PetPlanBenefits = () => {
       </svg>
       <section className="w-full px-4 sm:px-4 lg:px-6 py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left ">
+          <div className="text-center lg:text-left relative">
+            <BenefitsShieldIllustration className="absolute -top-4 -left-4 w-20 h-20 text-accent opacity-10 pointer-events-none hidden lg:block -z-0" />
+            <div className="relative z-10">
             <h2 className="text-4xl font-extrabold text-navy-800 mb-4 leading-tight">
               Benefits of Pet Plan
             </h2>
@@ -85,6 +88,7 @@ export  const PetPlanBenefits = () => {
                 <span>Access 24/7 veterinary experts for any health concerns or questions about your pet's well-being</span>
               </li>
             </ul>
+            </div>
           </div>
           <div className="flex justify-center  animate-slideInRight">
             <img

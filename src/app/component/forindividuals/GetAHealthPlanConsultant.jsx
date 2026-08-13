@@ -5,8 +5,10 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, UserCheck, HeartHandshake } from "lucide-react";
 import { HarborArc } from "@/common/HarborArc";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const GetAHealthPlanConsultant = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -99,12 +101,19 @@ export const GetAHealthPlanConsultant = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setErrorMessage('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch("/api/forindividuals", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();
@@ -145,7 +154,7 @@ export const GetAHealthPlanConsultant = () => {
     <section id="individual-form" className="section-dark relative overflow-hidden py-24">
       <HarborArc position="bottomRight" className="text-navy-700 opacity-20 scale-150" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left Panel */}

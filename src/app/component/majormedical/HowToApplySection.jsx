@@ -1,14 +1,16 @@
 // App.js
 import React from 'react';
+import { StepsPathIllustration } from '@/common/illustrations/StepsPathIllustration';
 
 // Main App component
 export const HowToApplySection = ()=> {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 font-body text-gray-800 flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-navy-50 to-navy-100 font-body text-gray-800 flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto w-full">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 relative">
           <h1 className="text-5xl font-extrabold text-primary mb-4 leading-tight">How to Apply</h1>
+          <StepsPathIllustration className="w-full max-w-md mx-auto h-12 text-accent opacity-30 my-6" />
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
           At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your Major Medical plan.
           </p>

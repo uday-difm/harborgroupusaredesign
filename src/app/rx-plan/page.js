@@ -38,7 +38,7 @@ export default function RxPlanPage() {
       <meta property="og:url" content="https://harborgroupusa.com/rx-plan/" />
       <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
 
-      <PlanHero
+      <PlanHero breadcrumbs={[{ label: "Home", href: "/" }, { label: "Health Plans", href: "/health-plans" }, { label: "Rx Plan" }]}
         title="Affordable prescription plans for your medication needs"
         description="Experience affordable health care with our Rx Plans at The Harbor Group. Tailored to cater to your medication needs, our Rx Plans provide a robust solution designed to alleviate the financial burden of prescription expenses."
         imageSrc="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/home/RX-plan-hero-section.jpeg"

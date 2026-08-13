@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { BenefitsShieldIllustration } from '@/common/illustrations/BenefitsShieldIllustration';
 import { staggerContainer, fadeUp } from '@/common/motion/variants';
 
 export const BenefitsofHospitalPlan = () => {
@@ -16,7 +17,8 @@ export const BenefitsofHospitalPlan = () => {
   return (
     <>
      <section className="w-full bg-navy-50 py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center relative">
+          <BenefitsShieldIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
           <h2 className="text-4xl font-extrabold text-navy-800 mb-4 ">
            Benefits of Hospital Plan
           </h2>

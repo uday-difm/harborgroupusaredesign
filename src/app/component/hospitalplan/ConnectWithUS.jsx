@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const ConnectWithUS = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   // Form state
   const [formData, setFormData] = useState({
     name: "",
@@ -119,10 +121,17 @@ export const ConnectWithUS = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIsSubmitting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch("/api/hospitalplan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

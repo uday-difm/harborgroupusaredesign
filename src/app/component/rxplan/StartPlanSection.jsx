@@ -2,8 +2,10 @@
 
 import React, { useState,useRef } from 'react'
 import Image from 'next/image'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export const StartPlanSection = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
    const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -93,13 +95,20 @@ export const StartPlanSection = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setErrorMessage('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       // Sending the form data to the API
       const response = await fetch('/api/rxplan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

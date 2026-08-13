@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { User, Mail, MessageSquare, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // A reusable component for the form input fields
 const FormInput = ({
@@ -82,6 +83,7 @@ const FormInput = ({
 };
 
 export const RequestCallbackSection = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   // State for form data and handling error/success messages
   const [formData, setFormData] = useState({
     name: "",
@@ -202,12 +204,19 @@ export const RequestCallbackSection = () => {
     }
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch("/api/majormedical", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const data = await response.json();

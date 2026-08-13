@@ -51,6 +51,7 @@ export default function Blogs() {
       <title>Harbor Group USA Blog | Health & Plans Insights</title>
       <meta name="keywords" content="Harbor Group USA, health blog, Plans insights, major medical plans, healthcare tips, wellness blog, health Plans advice, medical coverage updates" />
       <meta name="description" content="Read expert articles from Harbor Group USA on major medical plans, health Plans tips, and wellness strategies for individuals and businesses." />
+      <meta property="og:image" content="https://harborgroupusa.s3-eu-central-2.ionoscloud.com/logo/Harbor Logo.png" />
       <link rel="canonical" href="https://harborgroupusa.com/blogs/" />
 
       <section className="section-light relative overflow-hidden font-body">

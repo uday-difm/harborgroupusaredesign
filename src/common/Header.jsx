@@ -8,10 +8,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
-
-const Link = ({ href, children, onClick, className }) => (
-    <a href={href} onClick={onClick} className={className}>{children}</a>
-);
+import Link from 'next/link';
 
 const Logo = () => (
     <img
@@ -159,6 +156,7 @@ export const Header = () => {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                         className="hidden md:block overflow-hidden bg-primary border-b border-white/[0.05]"
+                        role="region"
                         aria-label="Credentials and network access"
                     >
                         <div 
@@ -235,9 +233,9 @@ export const Header = () => {
 
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <a href="/" onClick={() => navigate('/')} className="flex items-center">
+                        <Link href="/" onClick={() => navigate('/')} className="flex items-center">
                             <Logo />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Desktop Nav */}
@@ -285,10 +283,10 @@ export const Header = () => {
                                                 {/* Featured highlight */}
                                                 <div className="px-6 pt-4 pb-3 border-b border-navy-50 flex items-center justify-between">
                                                     <span className="text-[10px] font-bold text-navy-400 uppercase tracking-widest">All Coverage Plans</span>
-                                                    <a href="/major-medical-plan" onClick={() => navigate('/major-medical-plan')} className="flex items-center gap-2 text-xs font-bold text-accent hover:text-accent/80 transition-colors bg-accent/5 rounded-full px-3 py-1.5">
+                                                    <Link href="/major-medical-plan" onClick={() => navigate('/major-medical-plan')} className="flex items-center gap-2 text-xs font-bold text-accent hover:text-accent/80 transition-colors bg-accent/5 rounded-full px-3 py-1.5">
                                                         <Star className="w-3 h-3" />
                                                         Most Popular: Major Medical
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 {/* 3-column grid */}
@@ -324,7 +322,7 @@ export const Header = () => {
 
                                                 <div className="px-6 py-3 bg-navy-50/40 border-t border-navy-50 flex justify-between items-center">
                                                     <span className="text-xs text-navy-400">12 plans available</span>
-                                                    <a href="/health-plans" onClick={() => navigate('/health-plans')} className="text-xs font-bold text-accent hover:underline">View all plans →</a>
+                                                    <Link href="/health-plans" onClick={() => navigate('/health-plans')} className="text-xs font-bold text-accent hover:underline">View all plans →</Link>
                                                 </div>
                                             </motion.div>
                                         )}
@@ -443,9 +441,9 @@ export const Header = () => {
 
                         {/* Header */}
                         <div className="relative flex items-center justify-between p-6 border-b border-white/5">
-                            <a href="/" onClick={() => navigate('/')} className="brightness-0 invert">
+                            <Link href="/" onClick={() => navigate('/')} className="brightness-0 invert">
                                 <Logo />
-                            </a>
+                            </Link>
                             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/60 hover:text-white rounded-lg transition-colors">
                                 <X className="h-7 w-7" />
                             </button>

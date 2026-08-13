@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useMagnetic } from '@/common/motion/useMagnetic';
 import { Send, ShieldCheck } from 'lucide-react';
 import { HarborArc } from '@/common/HarborArc';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const sectionReveal = {
   hidden: { opacity: 0, y: 32 },
@@ -18,6 +19,7 @@ const sectionReveal = {
 };
 
 export default function HealthPlanQuoteToday() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -123,12 +125,19 @@ export default function HealthPlanQuoteToday() {
     };
 
     try {
+      if (!executeRecaptcha) {
+        setError('reCAPTCHA not ready');
+        setIssubmiting(false);
+        return;
+      }
+      const token = await executeRecaptcha('form_submit');
+
       const response = await fetch('/api/home', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify({ ...requestData, recaptchaToken: token }),
       });
 
       const data = await response.json();

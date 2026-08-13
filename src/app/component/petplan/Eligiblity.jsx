@@ -1,8 +1,11 @@
 import React from 'react';
+import { SectionGlow } from '@/common/SectionGlow';
 
 export const Eligibility = () => {
   return (
     <section className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-surface-alt overflow-hidden">
+      <SectionGlow position="topLeft" className="opacity-40" />
+      <SectionGlow position="bottomRight" className="opacity-30" />
       {/* Optional: Add a subtle overlay for visual texture or depth */}
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: 'radial-gradient(circle at top left, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(19,30,73,0.05) 0%, transparent 50%)'
