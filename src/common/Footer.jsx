@@ -242,7 +242,7 @@ export const Footer = () => {
             {isBackToTopVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 p-3.5 bg-accent text-navy-950 rounded-full shadow-2xl hover:bg-accent-dark hover:scale-105 transition-all duration-300 focus:outline-none z-50 border border-accent/40"
+                    className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 p-3.5 bg-accent text-navy-950 rounded-full shadow-2xl hover:bg-accent-dark hover:scale-105 transition-all duration-300 focus:outline-none z-50 border border-accent/40 md:bottom-8 md:right-8"
                     aria-label="Back to top"
                 >
                     <ChevronUp size={22} className="stroke-[2.5]" />

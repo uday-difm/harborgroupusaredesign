@@ -432,7 +432,7 @@ export const Header = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="xl:hidden fixed inset-0 z-[60] bg-navy-950 overflow-y-auto flex flex-col"
+                        className="xl:hidden fixed inset-0 z-[60] flex flex-col overflow-x-hidden overflow-y-auto bg-navy-950"
                     >
                         {/* Decorative gradient */}
                         <div className="absolute inset-0 pointer-events-none">
@@ -441,7 +441,7 @@ export const Header = () => {
 
                         {/* Header */}
                         <div className="relative flex items-center justify-between p-6 border-b border-white/5">
-                            <Link href="/" onClick={() => navigate('/')} className="brightness-0 invert">
+                            <Link href="/" onClick={() => navigate('/')} className="flex items-center rounded-full ring-2 ring-white/20">
                                 <Logo />
                             </Link>
                             <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-white/60 hover:text-white rounded-lg transition-colors">

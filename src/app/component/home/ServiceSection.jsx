@@ -163,9 +163,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
                         className="flex flex-wrap items-center gap-4 mt-8"
                         variants={sectionReveal}
                         initial="hidden"
-                        whileInView={!animateOnLoad ? "show" : undefined}
-                        animate={animateOnLoad ? "show" : undefined}
-                        viewport={{ once: true, amount: 0.1 }}
+                        animate="show"
                     >
                         {services.map((service) => (
                             <motion.a
@@ -199,9 +197,7 @@ export const ServicesSection = ({ animateOnLoad = false, isCompact = false }) =>
                             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10"
                             variants={sectionReveal}
                             initial="hidden"
-                            whileInView={!animateOnLoad ? "show" : undefined}
-                            animate={animateOnLoad ? "show" : undefined}
-                            viewport={{ once: true, amount: 0.1 }}
+                            animate="show"
                         >
                             {services.map((service) => (
                                 <ServiceCard key={service.name} service={service} />
