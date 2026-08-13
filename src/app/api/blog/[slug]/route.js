@@ -3,8 +3,7 @@ import pool from "../../../../../lib/mysql";
 import { NextResponse } from 'next/server';
 
 export async function GET(req, context) {
-  const { params } = await context;
-  const { slug } = params;
+  const { slug } = await context.params;
 
   if (!slug) {
     return NextResponse.json(

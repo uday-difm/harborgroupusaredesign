@@ -9,7 +9,8 @@ const generateSlug = (str) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-export async function PUT(req, { params }) {
+export async function PUT(req, props) {
+  const params = await props.params;
   console.log('=== UPDATE BLOG PUT ===');
   try {
     // 1) parse content-type and payload (JSON or FormData)

@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import DashboardLayout from '@/app/component/DashboardLayout';
+import { FormField } from '@/app/component/dashboard-ui/FormField';
+import { useToast } from '@/app/component/dashboard-ui/Toast';
 
 export default function UpdateAdminPage() {
     const params = useParams();
@@ -21,7 +23,7 @@ export default function UpdateAdminPage() {
 
     const [loading, setLoading] = useState(false);
     const [fetching, setFetching] = useState(true);
-    const [message, setMessage] = useState('');
+    const { addToast } = useToast();
 
     useEffect(() => {
         async function fetchAdmin() {
@@ -45,11 +47,11 @@ export default function UpdateAdminPage() {
                         instagram: user['instagram'] || ''
                     });
                 } else {
-                    setMessage(data.message || 'Failed to fetch admin data');
+                    addToast(data.message || 'Failed to fetch admin data', 'error');
                 }
             } catch (err) {
                 console.error(err);
-                setMessage('Error fetching admin data');
+                addToast('Error fetching admin data', 'error');
             } finally {
                 setFetching(false);
             }
@@ -78,10 +80,15 @@ export default function UpdateAdminPage() {
 
             const data = await res.json();
             console.log("PUT API Response:", data);
-            setMessage(data.message);
+            
+            if (res.ok) {
+                addToast(data.message || 'Admin updated successfully!', 'success');
+            } else {
+                addToast(data.message || 'Failed to update admin', 'error');
+            }
         } catch (err) {
             console.error(err);
-            setMessage('Something went wrong!');
+            addToast('Something went wrong!', 'error');
         } finally {
             setLoading(false);
         }
@@ -97,112 +104,111 @@ export default function UpdateAdminPage() {
 
     return (
         <DashboardLayout>
-            <div className="flex justify-center items-center min-h-screen bg-gray-100 py-12">
-                <div className="max-w-6xl w-full p-8 bg-white shadow-2xl rounded-lg border border-gray-200">
-                    <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Update Admin</h2>
+            <div className="w-full max-w-4xl mx-auto">
+                <div className="card-elevated p-0 overflow-hidden">
+                    <div className="border-b border-navy-100 py-5 px-6 bg-navy-50/50">
+                        <h3 className="text-xl font-bold text-navy-900 font-display">Update Admin</h3>
+                    </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="p-6 space-y-6">
                         {/* Row 1: Name & Email */}
-                        <div className="flex gap-4">
-                            <input
-                                type="text"
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormField
+                                label="Full Name"
                                 name="name"
                                 placeholder="Full Name"
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
 
-                            <input
+                            <FormField
                                 type="email"
+                                label="Email"
                                 name="email"
                                 placeholder="Email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
                         {/* Row 2: Role & Bio */}
-                        <div className="flex gap-4">
-                            <select
-                                name="role"
-                                value={formData.role}
-                                onChange={handleChange}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
-                            >
-                                <option value="Administrator">Administrator</option>
-                                <option value="Subscriber">Subscriber</option>
-                                <option value="SEO Editor">SEO Editor</option>
-                                <option value="SEO Manager">SEO Manager</option>
-                                <option value="Contributor">Contributor</option>
-                                <option value="Author">Author</option>
-                                <option value="Editor">Editor</option>
-                            </select>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="flex flex-col gap-1.5">
+                                <label className="text-sm font-medium text-navy-800">Role</label>
+                                <select
+                                    name="role"
+                                    value={formData.role}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2.5 bg-white border border-navy-200 rounded-lg text-navy-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent hover:border-navy-300"
+                                >
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Subscriber">Subscriber</option>
+                                    <option value="SEO Editor">SEO Editor</option>
+                                    <option value="SEO Manager">SEO Manager</option>
+                                    <option value="Contributor">Contributor</option>
+                                    <option value="Author">Author</option>
+                                    <option value="Editor">Editor</option>
+                                </select>
+                            </div>
 
-                            <textarea
+                            <FormField
+                                as="textarea"
+                                label="Bio"
                                 name="bio"
                                 placeholder="Bio"
                                 value={formData.bio}
                                 onChange={handleChange}
                                 rows={1}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
                         {/* Row 3: Facebook & Twitter */}
-                        <div className="flex gap-4">
-                            <input
-                                type="text"
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormField
+                                label="Facebook URL"
                                 name="facebook"
                                 placeholder="Facebook URL"
                                 value={formData.facebook}
                                 onChange={handleChange}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-blue-600 focus:outline-none transition-all duration-300"
                             />
-                            <input
-                                type="text"
+                            <FormField
+                                label="Twitter URL"
                                 name="twitter"
                                 placeholder="Twitter URL"
                                 value={formData.twitter}
                                 onChange={handleChange}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
                         {/* Row 4: LinkedIn & Instagram */}
-                        <div className="flex gap-4">
-                            <input
-                                type="text"
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <FormField
+                                label="LinkedIn URL"
                                 name="linkedin"
                                 placeholder="LinkedIn URL"
                                 value={formData.linkedin}
                                 onChange={handleChange}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-700 focus:outline-none transition-all duration-300"
                             />
-                            <input
-                                type="text"
+                            <FormField
+                                label="Instagram URL"
                                 name="instagram"
                                 placeholder="Instagram URL"
                                 value={formData.instagram}
                                 onChange={handleChange}
-                                className="w-1/2 px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-400 focus:outline-none transition-all duration-300"
                             />
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="btn-accent px-10 py-4 font-bold"
-                        >
-                            {loading ? 'Updating...' : 'Update Admin'}
-                        </button>
-
-                        {message && (
-                            <p className="mt-4 text-sm text-center text-gray-600">{message}</p>
-                        )}
+                        <div className="flex justify-end pt-4">
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="btn-primary min-w-[140px]"
+                            >
+                                {loading ? 'Updating...' : 'Update Admin'}
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>

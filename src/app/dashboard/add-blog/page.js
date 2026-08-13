@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import DashboardLayout from '@/app/component/DashboardLayout';
 import { useRouter } from 'next/navigation';
+import { FormField } from '@/app/component/dashboard-ui/FormField';
+import { useToast } from '@/app/component/dashboard-ui/Toast';
 
 const JoditEditor = dynamic(() => import('jodit-react'), { ssr: false });
 
@@ -48,6 +50,7 @@ const AddBlog = () => {
   const [savedStatus, setSavedStatus] = useState(null); // null | '0' | '1'
   const imageInputRef = useRef(null);
   const router = useRouter();
+  const { addToast } = useToast();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -137,7 +140,7 @@ const AddBlog = () => {
       });
 
       if (missingFields.length > 0) {
-        alert(`Please fill required fields: ${missingFields.join(', ')}`);
+        addToast(`Please fill required fields: ${missingFields.join(', ')}`, 'error');
         setActionLoading(null);
         return;
       }
@@ -170,7 +173,7 @@ const AddBlog = () => {
       if (res.message) {
         // set saved status so UI disables/enables accordingly
         setSavedStatus(String(status));
-        alert(res.message);
+        addToast(res.message, 'success');
 
         // On publish you may want to clear or redirect. For drafts we keep form contents.
         if (status === '1') {
@@ -179,11 +182,11 @@ const AddBlog = () => {
           // router.push('/dashboard/blogs'); // uncomment to redirect
         }
       } else {
-        alert('Unexpected response from server.');
+        addToast('Unexpected response from server.', 'error');
       }
     } catch (err) {
       console.error('Submission error:', err);
-      alert('Submission error: ' + (err.message || 'Unknown error'));
+      addToast('Submission error: ' + (err.message || 'Unknown error'), 'error');
     } finally {
       setActionLoading(null);
     }
@@ -194,10 +197,10 @@ const AddBlog = () => {
       <title>Add Blog</title>
       <meta name="description" content="Add a new blog post" />
 
-      <div className="px-4 sm:px-6 lg:px-8 py-8">
-        <div className="rounded border border-stroke bg-white shadow-md dark:border-strokedark dark:bg-boxdark">
-          <div className="border-b border-stroke py-5 px-6 dark:border-strokedark">
-            <h3 className="text-lg font-semibold text-black dark:text-white">Post a Blog</h3>
+      <div className="w-full">
+        <div className="card-elevated p-0 overflow-hidden">
+          <div className="border-b border-navy-100 py-5 px-6 bg-navy-50/50">
+            <h3 className="text-xl font-bold text-navy-900 font-display">Post a Blog</h3>
           </div>
 
           {/* form: publish uses status '1' */}
@@ -205,90 +208,71 @@ const AddBlog = () => {
             <div className="p-6 space-y-8">
               {/* Title and Tags */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="mb-2 block text-black dark:text-white">Blog Title</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Title"
-                    name="blogTitle"
-                    value={values.blogTitle}
-                    onChange={handleChange}
-                    className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                  />
-                </div>
-                <div>
-                  <label className="mb-2 block text-black dark:text-white">Tags</label>
-                  <input
-                    type="text"
-                    placeholder="Enter Tags"
-                    name="tags"
-                    value={values.tags}
-                    onChange={handleChange}
-                    className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                  />
-                </div>
+                <FormField
+                  label="Blog Title"
+                  name="blogTitle"
+                  placeholder="Enter Title"
+                  value={values.blogTitle}
+                  onChange={handleChange}
+                />
+                <FormField
+                  label="Tags"
+                  name="tags"
+                  placeholder="Enter Tags"
+                  value={values.tags}
+                  onChange={handleChange}
+                />
               </div>
 
               {/* Slug Field */}
               <div>
-                <label className="mb-2 block text-black dark:text-white">Manual Slug (Optional)</label>
-                <input
-                  type="text"
-                  placeholder="Enter Slug"
+                <FormField
+                  label="Manual Slug (Optional)"
                   name="manualBlogSlug"
+                  placeholder="Enter Slug"
                   value={values.manualBlogSlug}
                   onChange={handleChange}
-                  className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
                 />
-                <p className="text-sm text-gray-500 dark:text-gray-300">If left blank, a slug will be automatically generated from the title.</p>
+                <p className="text-sm text-navy-400 mt-1">If left blank, a slug will be automatically generated from the title.</p>
               </div>
 
               {/* Image, Date, Time */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div>
-                  <label className="mb-2 block text-black dark:text-white">Feature Image</label>
-                  <input
-                    type="file"
-                    ref={imageInputRef}
-                    name="featureImage"
-                    onChange={handleFileChange}
-                    className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                  />
-                </div>
+                <FormField
+                  type="file"
+                  label="Feature Image"
+                  name="featureImage"
+                  ref={imageInputRef}
+                  onChange={handleFileChange}
+                />
 
                 <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <label className="mb-2 block text-black dark:text-white">Date</label>
-                    <input
-                      type="date"
-                      name="date"
-                      value={values.date}
-                      onChange={handleChange}
-                      className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-black dark:text-white">Time</label>
-                    <input
-                      type="time"
-                      name="time"
-                      value={values.time || '09:00'}
-                      onChange={handleChange}
-                      className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                    />
-                  </div>
+                  <FormField
+                    type="date"
+                    label="Date"
+                    name="date"
+                    value={values.date}
+                    onChange={handleChange}
+                  />
+                  <FormField
+                    type="time"
+                    label="Time"
+                    name="time"
+                    value={values.time || '09:00'}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
 
               {/* Category, Description */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="mb-2 block text-black dark:text-white">Blog Category</label>
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-medium text-navy-800">Blog Category</label>
                   <select
                     name="blogCategory"
                     value={values.blogCategory}
                     onChange={handleChange}
-                    className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
+                    className="w-full px-4 py-2.5 bg-white border border-navy-200 rounded-lg text-navy-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent hover:border-navy-300"
                   >
                     <option value="">Choose Category</option>
                     {categories.length > 0 ? (
@@ -303,21 +287,19 @@ const AddBlog = () => {
                   </select>
                 </div>
 
-                <div>
-                  <label className="mb-2 block text-black dark:text-white">Description</label>
-                  <textarea
-                    rows={4}
-                    name="description"
-                    value={values.description}
-                    onChange={handleChange}
-                    className="w-full rounded border border-stroke py-3 px-4 dark:border-form-strokedark dark:bg-form-input"
-                  />
-                </div>
+                <FormField
+                  as="textarea"
+                  rows={4}
+                  label="Description"
+                  name="description"
+                  value={values.description}
+                  onChange={handleChange}
+                />
               </div>
 
               {/* Content Editor */}
               <div>
-                <label className="mb-2 block text-black dark:text-white">Content</label>
+                <label className="text-sm font-medium text-navy-800 mb-1.5 block">Content</label>
                 <JoditEditor
                   config={editorConfig}
                   value={values.content}
@@ -329,10 +311,10 @@ const AddBlog = () => {
               </div>
 
               {/* Buttons */}
-              <div className="flex justify-end gap-4 pt-4">
+              <div className="flex flex-wrap justify-end gap-4 pt-4">
                 <button
                   type="button"
-                  className="rounded border border-stroke py-2 px-6 text-black hover:bg-gray-100 dark:border-strokedark dark:text-white"
+                  className="btn-secondary"
                   onClick={() => clearForm(true)}
                 >
                   Cancel
@@ -343,7 +325,7 @@ const AddBlog = () => {
                   type="button"
                   onClick={() => handleSubmit('0')}
                   disabled={actionLoading === 'draft'}
-                  className={`rounded bg-yellow-400 py-2 px-6 text-white hover:bg-opacity-90 ${actionLoading === 'draft' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`px-6 py-2 rounded-lg font-medium border transition ${actionLoading === 'draft' ? 'opacity-50 cursor-not-allowed' : 'border-accent text-accent hover:bg-accent/5'}`}
                 >
                   {actionLoading === 'draft' ? 'Saving...' : savedStatus === '0' ? 'Draft Saved' : 'Save Draft'}
                 </button>
@@ -352,7 +334,7 @@ const AddBlog = () => {
                 <button
                   type="submit"
                   disabled={actionLoading === 'post' || savedStatus === '1'}
-                  className={`rounded bg-[#244A78] py-2 px-6 text-white hover:bg-opacity-90 ${(actionLoading === 'post' || savedStatus === '0') ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`btn-primary ${actionLoading === 'post' || savedStatus === '1' ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {actionLoading === 'post' ? 'Submitting...' : 'Post'}
                 </button>

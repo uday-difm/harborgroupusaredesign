@@ -179,7 +179,7 @@ export default function BlogDetail() {
             <meta property="og:url" content={`https://harborgroupusa.com/blogs/${slug}`} />
 
             <div className="bg-surface text-navy-900 font-body">
-                <motion.article variants={staggerContainer(0.1)} initial="hidden" animate="show" className="max-w-4xl mx-auto px-6 py-16 md:py-24">
+                <motion.article variants={staggerContainer(0.1)} initial="hidden" animate="show" className="w-full max-w-7xl mx-auto px-6 lg:px-12 xl:px-20 py-16 md:py-24">
                     <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-display font-bold tracking-tight leading-tight mb-4 text-navy-900">
                         {blog.blog_title}
                     </motion.h1>
@@ -190,17 +190,17 @@ export default function BlogDetail() {
                             <Image
                                 src={blog.blog_feature_image}
                                 alt={blog.blog_title}
-                                width={800}
-                                height={400}
-                                className="w-full object-cover"
-                                sizes="(max-width: 896px) 100vw, 896px"
+                                width={1200}
+                                height={600}
+                                className="w-full object-cover max-h-[600px]"
+                                sizes="(max-width: 1200px) 100vw, 1200px"
                             />
                         </motion.div>
                     )}
 
                     <motion.div
                         variants={fadeUp}
-                        className="prose max-w-none mb-10 text-justify font-body text-navy-800 leading-relaxed prose-headings:font-display prose-headings:text-navy-900 prose-a:text-accent prose-a:font-semibold"
+                        className="prose max-w-none mb-10 text-justify font-body text-navy-800 leading-relaxed prose-headings:font-display prose-headings:text-navy-900 prose-a:text-accent prose-a:font-semibold [&_*]:!bg-transparent"
                         dangerouslySetInnerHTML={{ __html: blog.blog_content }}
                     />
 

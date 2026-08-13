@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import DashboardLayout from '@/app/component/DashboardLayout';
+import { FormField } from '@/app/component/dashboard-ui/FormField';
+import { useToast } from '@/app/component/dashboard-ui/Toast';
 
 export default function CreateAdminPage() {
     const [form, setForm] = useState({
@@ -13,8 +15,7 @@ export default function CreateAdminPage() {
     });
 
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('');
-    const [passwordMatch, setPasswordMatch] = useState(true);
+    const { addToast } = useToast();
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -25,16 +26,13 @@ export default function CreateAdminPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        setMessage('');
 
         // Validate password match
         if (form.password !== form.confirmPassword) {
-            setPasswordMatch(false);
+            addToast('Passwords do not match!', 'error');
             setLoading(false);
             return;
         }
-        
-        setPasswordMatch(true); // Reset password match error state
 
         try {
             const response = await fetch(`/api/dashboard/add-user`, {
@@ -54,20 +52,20 @@ export default function CreateAdminPage() {
             const result = await response.json();
 
             if (response.status === 201) {
-                setMessage('Admin created successfully!');
+                addToast('Admin created successfully!', 'success');
                 setForm({
                     name: '',
                     email: '',
                     password: '',
                     confirmPassword: '',
-                    role: 'Contributor', // Reset role to default 'Contributor'
+                    role: 'Contributor',
                 });
             } else {
-                setMessage(result.message || 'Something went wrong.');
+                addToast(result.message || 'Something went wrong.', 'error');
             }
         } catch (error) {
             console.error('API error:', error);
-            setMessage('Server error. Please try again later.');
+            addToast('Server error. Please try again later.', 'error');
         } finally {
             setLoading(false);
         }
@@ -75,70 +73,60 @@ export default function CreateAdminPage() {
 
     return (
         <DashboardLayout>
-            <div className="flex justify-center items-center min-h-screen bg-gray-100 py-12">
-                <div className="max-w-lg w-full p-8 bg-white shadow-2xl rounded-lg border border-gray-200">
-                    <h2 className="text-4xl font-bold mb-8 text-center text-gray-800">Create Admin</h2>
+            <div className="w-full max-w-2xl mx-auto">
+                <div className="card-elevated p-0 overflow-hidden">
+                    <div className="border-b border-navy-100 py-5 px-6 bg-navy-50/50">
+                        <h3 className="text-xl font-bold text-navy-900 font-display">Create Admin</h3>
+                    </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        {/* Name Input */}
-                        <div>
-                            <input
-                                type="text"
-                                name="name"
-                                value={form.name}
-                                onChange={handleChange}
-                                placeholder="Full Name"
-                                required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
-                            />
-                        </div>
+                    <form onSubmit={handleSubmit} className="p-6 space-y-6">
+                        <FormField
+                            label="Full Name"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            placeholder="Full Name"
+                            required
+                        />
 
-                        {/* Email Input */}
-                        <div>
-                            <input
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleChange}
-                                placeholder="Email"
-                                required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
-                            />
-                        </div>
+                        <FormField
+                            type="email"
+                            label="Email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            placeholder="Email"
+                            required
+                        />
 
-                        {/* Password Input */}
-                        <div>
-                            <input
-                                type="password"
-                                name="password"
-                                value={form.password}
-                                onChange={handleChange}
-                                placeholder="Password"
-                                required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
-                            />
-                        </div>
+                        <FormField
+                            type="password"
+                            label="Password"
+                            name="password"
+                            value={form.password}
+                            onChange={handleChange}
+                            placeholder="Password"
+                            required
+                        />
 
-                        {/* Confirm Password Input */}
-                        <div>
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                value={form.confirmPassword}
-                                onChange={handleChange}
-                                placeholder="Confirm Password"
-                                required
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
-                            />
-                        </div>
+                        <FormField
+                            type="password"
+                            label="Confirm Password"
+                            name="confirmPassword"
+                            value={form.confirmPassword}
+                            onChange={handleChange}
+                            placeholder="Confirm Password"
+                            required
+                        />
 
                         {/* Role Selection */}
-                        <div>
+                        <div className="flex flex-col gap-1.5">
+                            <label className="text-sm font-medium text-navy-800">Role</label>
                             <select
                                 name="role"
                                 value={form.role}
                                 onChange={handleChange}
-                                className="w-full px-6 py-4 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-sky-500 focus:outline-none transition-all duration-300"
+                                className="w-full px-4 py-2.5 bg-white border border-navy-200 rounded-lg text-navy-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent hover:border-navy-300"
                             >
                                 <option value="Administrator">Administrator</option>
                                 <option value="Subscriber">Subscriber</option>
@@ -151,25 +139,15 @@ export default function CreateAdminPage() {
                         </div>
 
                         {/* Submit Button */}
-                        <div>
+                        <div className="flex justify-end pt-4">
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="btn-accent px-10 py-4 font-bold"
+                                className="btn-primary min-w-[140px]"
                             >
                                 {loading ? 'Creating...' : 'Create Admin'}
                             </button>
                         </div>
-
-                        {/* Password Match Error Message */}
-                        {!passwordMatch && (
-                            <p className="text-red-500 text-sm text-center">
-                                Passwords do not match!
-                            </p>
-                        )}
-
-                        {/* Success/Error Message */}
-                        {message && <p className="mt-4 text-sm text-center text-gray-600">{message}</p>}
                     </form>
                 </div>
             </div>
