@@ -159,11 +159,11 @@ export const Header = () => {
                         role="region"
                         aria-label="Credentials and network access"
                     >
-                        <div 
+                        <div
                             className="marquee-wrapper h-10 flex items-center overflow-hidden"
-                            style={{ 
-                                maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', 
-                                WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
+                            style={{
+                                maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
                             }}
                         >
                             {prefersReducedMotion ? (
@@ -172,13 +172,13 @@ export const Header = () => {
                                     {MARQUEE_ITEMS.slice(0, 6).map((item, i) => {
                                         const Icon = item.icon;
                                         return (
-                                        <React.Fragment key={i}>
-                                            <div className="flex items-center gap-1.5 px-3">
-                                                <Icon className="h-4 w-4 text-accent" />
-                                                <span className="text-[13px] font-bold text-navy-100 tracking-wider uppercase whitespace-nowrap">{item.text}</span>
-                                            </div>
-                                            {i < 5 && <span className="mx-2 text-accent text-[10px]" aria-hidden="true">|</span>}
-                                        </React.Fragment>
+                                            <React.Fragment key={i}>
+                                                <div className="flex items-center gap-1.5 px-3">
+                                                    <Icon className="h-4 w-4 text-accent" />
+                                                    <span className="text-[13px] font-bold text-navy-100 tracking-wider uppercase whitespace-nowrap">{item.text}</span>
+                                                </div>
+                                                {i < 5 && <span className="mx-2 text-accent text-[10px]" aria-hidden="true">|</span>}
+                                            </React.Fragment>
                                         );
                                     })}
                                 </div>
@@ -190,13 +190,13 @@ export const Header = () => {
                                             {MARQUEE_ITEMS.map((item, i) => {
                                                 const Icon = item.icon;
                                                 return (
-                                                <React.Fragment key={`${copy}-${i}`}>
-                                                    <div className="flex items-center gap-1.5 px-3">
-                                                        <Icon className="h-4 w-4 text-accent" />
-                                                        <span className="text-[13px] font-bold text-navy-100 tracking-wider uppercase whitespace-nowrap">{item.text}</span>
-                                                    </div>
-                                                    <span className="text-accent text-[10px] mx-1" aria-hidden="true">|</span>
-                                                </React.Fragment>
+                                                    <React.Fragment key={`${copy}-${i}`}>
+                                                        <div className="flex items-center gap-1.5 px-3">
+                                                            <Icon className="h-4 w-4 text-accent" />
+                                                            <span className="text-[13px] font-bold text-navy-100 tracking-wider uppercase whitespace-nowrap">{item.text}</span>
+                                                        </div>
+                                                        <span className="text-accent text-[10px] mx-1" aria-hidden="true">|</span>
+                                                    </React.Fragment>
                                                 );
                                             })}
                                         </span>
@@ -231,195 +231,191 @@ export const Header = () => {
 
 
 
-                    {/* Logo */}
-                    <div className="flex-shrink-0">
-                        <Link href="/" onClick={() => navigate('/')} className="flex items-center">
-                            <Logo />
-                        </Link>
-                    </div>
+                        {/* Logo */}
+                        <div className="flex-shrink-0">
+                            <Link href="/" onClick={() => navigate('/')} className="flex items-center">
+                                <Logo />
+                            </Link>
+                        </div>
 
-                    {/* Desktop Nav */}
-                    <nav className="hidden xl:flex xl:items-center xl:space-x-1">
-                        {navLinks.map((link) => {
-                            const active = isActive(link);
-                            const open = openDesktopDropdown === link.name;
-                            return (
-                                <div
-                                    key={link.name}
-                                    className="relative"
-                                    onMouseEnter={() => link.dropdown && handleMouseEnter(link.name)}
-                                    onMouseLeave={() => link.dropdown && handleMouseLeave()}
-                                >
-                                    <a
-                                        href={link.href}
-                                        onClick={() => navigate(link.href)}
-                                        className={`relative flex items-center gap-1 px-4 py-2.5 rounded-full text-base xl:text-[17px] font-medium transition-colors duration-200 whitespace-nowrap ${
-                                            scrolled
+                        {/* Desktop Nav */}
+                        <nav className="hidden xl:flex xl:items-center xl:space-x-1">
+                            {navLinks.map((link) => {
+                                const active = isActive(link);
+                                const open = openDesktopDropdown === link.name;
+                                return (
+                                    <div
+                                        key={link.name}
+                                        className="relative"
+                                        onMouseEnter={() => link.dropdown && handleMouseEnter(link.name)}
+                                        onMouseLeave={() => link.dropdown && handleMouseLeave()}
+                                    >
+                                        <a
+                                            href={link.href}
+                                            onClick={() => navigate(link.href)}
+                                            className={`relative flex items-center gap-1 px-4 py-2.5 rounded-full text-base xl:text-[17px] font-medium transition-colors duration-200 whitespace-nowrap ${scrolled
                                                 ? active ? 'text-accent-light' : 'text-white/80 hover:text-white hover:bg-white/10'
                                                 : active ? 'text-accent' : 'text-navy-700 hover:text-navy-900 hover:bg-navy-50/80'
-                                        }`}
-                                    >
-                                        {link.name}
-                                        {link.dropdown && (
-                                            <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? 'rotate-180' : ''} ${scrolled ? 'text-white/40' : 'text-navy-400'}`} />
-                                        )}
-                                    </a>
+                                                }`}
+                                        >
+                                            {link.name}
+                                            {link.dropdown && (
+                                                <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? 'rotate-180' : ''} ${scrolled ? 'text-white/40' : 'text-navy-400'}`} />
+                                            )}
+                                        </a>
 
-                                    {/* Mega Menu — Plans */}
-                                    <AnimatePresence>
-                                        {link.dropdown === 'plans' && open && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 8, scale: 0.97 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                                                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                                className="absolute left-1/2 -translate-x-1/2 mt-3 w-[680px] bg-white rounded-2xl shadow-[0_24px_64px_-12px_rgba(13,19,47,0.2)] border border-navy-100/80 overflow-hidden"
-                                                onMouseEnter={() => handleMouseEnter(link.name)}
-                                                onMouseLeave={handleMouseLeave}
-                                            >
-                                                {/* Top accent strip */}
-                                                <div className="h-1 bg-gradient-to-r from-accent via-accent-dark to-accent/60" />
+                                        {/* Mega Menu — Plans */}
+                                        <AnimatePresence>
+                                            {link.dropdown === 'plans' && open && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                                                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="absolute left-1/2 -translate-x-1/2 mt-3 w-[680px] bg-white rounded-2xl shadow-[0_24px_64px_-12px_rgba(13,19,47,0.2)] border border-navy-100/80 overflow-hidden"
+                                                    onMouseEnter={() => handleMouseEnter(link.name)}
+                                                    onMouseLeave={handleMouseLeave}
+                                                >
+                                                    {/* Top accent strip */}
+                                                    <div className="h-1 bg-gradient-to-r from-accent via-accent-dark to-accent/60" />
 
-                                                {/* Featured highlight */}
-                                                <div className="px-6 pt-4 pb-3 border-b border-navy-50 flex items-center justify-between">
-                                                    <span className="text-[10px] font-bold text-navy-400 uppercase tracking-widest">All Coverage Plans</span>
-                                                    <Link href="/major-medical-plan" onClick={() => navigate('/major-medical-plan')} className="flex items-center gap-2 text-xs font-bold text-accent hover:text-accent/80 transition-colors bg-accent/5 rounded-full px-3 py-1.5">
-                                                        <Star className="w-3 h-3" />
-                                                        Most Popular: Major Medical
-                                                    </Link>
-                                                </div>
+                                                    {/* Featured highlight */}
+                                                    <div className="px-6 pt-4 pb-3 border-b border-navy-50 flex items-center justify-between">
+                                                        <span className="text-[10px] font-bold text-navy-400 uppercase tracking-widest">All Coverage Plans</span>
+                                                        <Link href="/major-medical-plan" onClick={() => navigate('/major-medical-plan')} className="flex items-center gap-2 text-xs font-bold text-accent hover:text-accent/80 transition-colors bg-accent/5 rounded-full px-3 py-1.5">
+                                                            <Star className="w-3 h-3" />
+                                                            Most Popular: Major Medical
+                                                        </Link>
+                                                    </div>
 
-                                                {/* 3-column grid */}
-                                                <div className="grid grid-cols-3 divide-x divide-navy-50/80 px-2 py-4">
-                                                    {planColumns.map((col) => (
-                                                        <div key={col.label} className="px-4 py-2">
-                                                            <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-3">{col.label}</p>
-                                                            <div className="space-y-0.5">
-                                                                {col.plans.map((plan) => {
-                                                                    const Icon = plan.icon;
-                                                                    const isPlanActive = currentPath === plan.href;
-                                                                    return (
-                                                                        <a
-                                                                            key={plan.name}
-                                                                            href={plan.href}
-                                                                            onClick={() => navigate(plan.href)}
-                                                                            className={`flex items-start gap-3 px-3 py-2.5 rounded-lg transition-all group ${isPlanActive ? 'bg-accent/8 text-accent' : 'hover:bg-navy-50/70'}`}
-                                                                        >
-                                                                            <div className={`flex-shrink-0 mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center transition-all ${isPlanActive ? 'bg-accent text-white' : 'bg-navy-100/60 text-navy-500 group-hover:bg-accent/10 group-hover:text-accent'}`}>
-                                                                                <Icon className="w-3.5 h-3.5" />
-                                                                            </div>
-                                                                            <div>
-                                                                                <div className={`text-sm font-semibold leading-tight ${isPlanActive ? 'text-accent' : 'text-navy-900 group-hover:text-navy-900'}`}>{plan.name}</div>
-                                                                                <div className="text-[11px] text-navy-400 mt-0.5">{plan.desc}</div>
-                                                                            </div>
-                                                                        </a>
-                                                                    );
-                                                                })}
+                                                    {/* 3-column grid */}
+                                                    <div className="grid grid-cols-3 divide-x divide-navy-50/80 px-2 py-4">
+                                                        {planColumns.map((col) => (
+                                                            <div key={col.label} className="px-4 py-2">
+                                                                <p className="text-[10px] font-bold text-accent uppercase tracking-widest mb-3">{col.label}</p>
+                                                                <div className="space-y-0.5">
+                                                                    {col.plans.map((plan) => {
+                                                                        const Icon = plan.icon;
+                                                                        const isPlanActive = currentPath === plan.href;
+                                                                        return (
+                                                                            <a
+                                                                                key={plan.name}
+                                                                                href={plan.href}
+                                                                                onClick={() => navigate(plan.href)}
+                                                                                className={`flex items-start gap-3 px-3 py-2.5 rounded-lg transition-all group ${isPlanActive ? 'bg-accent/8 text-accent' : 'hover:bg-navy-50/70'}`}
+                                                                            >
+                                                                                <div className={`flex-shrink-0 mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center transition-all ${isPlanActive ? 'bg-accent text-white' : 'bg-navy-100/60 text-navy-500 group-hover:bg-accent/10 group-hover:text-accent'}`}>
+                                                                                    <Icon className="w-3.5 h-3.5" />
+                                                                                </div>
+                                                                                <div>
+                                                                                    <div className={`text-sm font-semibold leading-tight ${isPlanActive ? 'text-accent' : 'text-navy-900 group-hover:text-navy-900'}`}>{plan.name}</div>
+                                                                                    <div className="text-[11px] text-navy-400 mt-0.5">{plan.desc}</div>
+                                                                                </div>
+                                                                            </a>
+                                                                        );
+                                                                    })}
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
+                                                        ))}
+                                                    </div>
 
-                                                <div className="px-6 py-3 bg-navy-50/40 border-t border-navy-50 flex justify-end items-center">
-                                                    <Link href="/health-plans" onClick={() => navigate('/health-plans')} className="text-xs font-bold text-accent hover:underline">View all plans →</Link>
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                                    <div className="px-6 py-3 bg-navy-50/40 border-t border-navy-50 flex justify-end items-center">
+                                                        <Link href="/health-plans" onClick={() => navigate('/health-plans')} className="text-xs font-bold text-accent hover:underline">View all plans →</Link>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
 
-                                    {/* Dropdown — For */}
-                                    <AnimatePresence>
-                                        {link.dropdown === 'for' && open && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 8, scale: 0.97 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                                                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                                                className="absolute left-1/2 -translate-x-1/2 mt-3 w-72 bg-white rounded-2xl shadow-[0_24px_48px_-12px_rgba(13,19,47,0.18)] border border-navy-100/80 overflow-hidden"
-                                                onMouseEnter={() => handleMouseEnter(link.name)}
-                                                onMouseLeave={handleMouseLeave}
-                                            >
-                                                <div className="h-1 bg-gradient-to-r from-accent via-accent-dark to-accent/60" />
-                                                <div className="p-3 space-y-1.5">
-                                                    {forOptions.map((item) => {
-                                                        const Icon = item.icon;
-                                                        const isOpt = currentPath === item.href;
-                                                        return (
-                                                            <a
-                                                                key={item.name}
-                                                                href={item.href}
-                                                                onClick={() => navigate(item.href)}
-                                                                className={`flex items-start gap-4 p-3.5 rounded-lg transition-all group ${isOpt ? 'bg-accent/8' : 'hover:bg-navy-50/70'}`}
-                                                            >
-                                                                <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all ${isOpt ? 'bg-accent text-white' : 'bg-navy-100/70 text-navy-500 group-hover:bg-accent/10 group-hover:text-accent'}`}>
-                                                                    <Icon className="w-5 h-5" />
-                                                                </div>
-                                                                <div>
-                                                                    <div className={`text-sm font-bold ${isOpt ? 'text-accent' : 'text-navy-900'}`}>{item.name}</div>
-                                                                    <div className="text-[11px] text-navy-400 mt-0.5 leading-snug">{item.desc}</div>
-                                                                </div>
-                                                            </a>
-                                                        );
-                                                    })}
-                                                </div>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            );
-                        })}
-                    </nav>
+                                        {/* Dropdown — For */}
+                                        <AnimatePresence>
+                                            {link.dropdown === 'for' && open && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                                                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                                                    className="absolute left-1/2 -translate-x-1/2 mt-3 w-72 bg-white rounded-2xl shadow-[0_24px_48px_-12px_rgba(13,19,47,0.18)] border border-navy-100/80 overflow-hidden"
+                                                    onMouseEnter={() => handleMouseEnter(link.name)}
+                                                    onMouseLeave={handleMouseLeave}
+                                                >
+                                                    <div className="h-1 bg-gradient-to-r from-accent via-accent-dark to-accent/60" />
+                                                    <div className="p-3 space-y-1.5">
+                                                        {forOptions.map((item) => {
+                                                            const Icon = item.icon;
+                                                            const isOpt = currentPath === item.href;
+                                                            return (
+                                                                <a
+                                                                    key={item.name}
+                                                                    href={item.href}
+                                                                    onClick={() => navigate(item.href)}
+                                                                    className={`flex items-start gap-4 p-3.5 rounded-lg transition-all group ${isOpt ? 'bg-accent/8' : 'hover:bg-navy-50/70'}`}
+                                                                >
+                                                                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all ${isOpt ? 'bg-accent text-white' : 'bg-navy-100/70 text-navy-500 group-hover:bg-accent/10 group-hover:text-accent'}`}>
+                                                                        <Icon className="w-5 h-5" />
+                                                                    </div>
+                                                                    <div>
+                                                                        <div className={`text-sm font-bold ${isOpt ? 'text-accent' : 'text-navy-900'}`}>{item.name}</div>
+                                                                        <div className="text-[11px] text-navy-400 mt-0.5 leading-snug">{item.desc}</div>
+                                                                    </div>
+                                                                </a>
+                                                            );
+                                                        })}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                );
+                            })}
+                        </nav>
 
-                    {/* Desktop CTA */}
-                    <div className="hidden xl:flex items-center gap-4">
-                        <a
-                            href="tel:18004733241"
-                            className={`group flex items-center gap-2.5 px-4 py-2 rounded-full border transition-all duration-300 ${
-                                scrolled
+                        {/* Desktop CTA */}
+                        <div className="hidden xl:flex items-center gap-4">
+                            <a
+                                href="tel:18004733241"
+                                className={`group flex items-center gap-2.5 px-4 py-2 rounded-full border transition-all duration-300 ${scrolled
                                     ? 'border-white/15 bg-white/5 hover:bg-white/10 hover:border-white/30'
                                     : 'border-navy-200 bg-white shadow-sm hover:border-accent hover:shadow-md hover:-translate-y-0.5'
-                            }`}
-                        >
-                            <div className={`flex items-center justify-center w-7 h-7 rounded-full transition-colors duration-300 ${
-                                scrolled
+                                    }`}
+                            >
+                                <div className={`flex items-center justify-center w-7 h-7 rounded-full transition-colors duration-300 ${scrolled
                                     ? 'bg-accent/20 text-accent-light group-hover:bg-accent group-hover:text-white'
                                     : 'bg-accent/15 text-accent group-hover:bg-accent group-hover:text-white'
-                            }`}>
-                                <Phone className="h-3.5 w-3.5" />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                                <span className={`text-[9px] font-bold uppercase tracking-widest leading-none mb-0.5 whitespace-nowrap ${scrolled ? 'text-white/60' : 'text-navy-400'}`}>
-                                    Questions? Call Us
-                                </span>
-                                <span className={`text-[15px] font-bold leading-none tracking-tight whitespace-nowrap ${scrolled ? 'text-white' : 'text-navy-900'}`}>
-                                    (800) 473-3241
-                                </span>
-                            </div>
-                        </a>
-                        <a
-                            href="#h-form"
-                            className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all duration-300 ${
-                                scrolled
+                                    }`}>
+                                    <Phone className="h-3.5 w-3.5" />
+                                </div>
+                                <div className="flex flex-col items-start justify-center">
+                                    <span className={`text-[9px] font-bold uppercase tracking-widest leading-none mb-0.5 whitespace-nowrap ${scrolled ? 'text-white/60' : 'text-navy-400'}`}>
+                                        Questions? Call Us
+                                    </span>
+                                    <span className={`text-[15px] font-bold leading-none tracking-tight whitespace-nowrap ${scrolled ? 'text-white' : 'text-navy-900'}`}>
+                                        +1 (800) 473-3241
+                                    </span>
+                                </div>
+                            </a>
+                            <a
+                                href="#h-form"
+                                className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold shadow-sm transition-all duration-300 ${scrolled
                                     ? 'bg-accent text-primary hover:bg-accent-light hover:-translate-y-0.5 shadow-accent/20'
                                     : 'btn-accent shadow-accent/20'
-                            }`}
-                        >
-                            Get a Free Quote
-                        </a>
-                    </div>
+                                    }`}
+                            >
+                                Get a Free Quote
+                            </a>
+                        </div>
 
-                    {/* Mobile hamburger */}
-                    <div className="xl:hidden flex items-center">
-                        <button
-                            onClick={() => setIsMobileMenuOpen(true)}
-                            type="button"
-                            className={`p-2.5 rounded-lg focus:outline-none transition-colors ${scrolled ? 'text-white hover:bg-white/10' : 'text-navy-800 hover:bg-navy-50'}`}
-                        >
-                            <span className="sr-only">Open menu</span>
-                            <Menu className="h-7 w-7" />
-                        </button>
-                    </div>
-                </motion.div>
+                        {/* Mobile hamburger */}
+                        <div className="xl:hidden flex items-center">
+                            <button
+                                onClick={() => setIsMobileMenuOpen(true)}
+                                type="button"
+                                className={`p-2.5 rounded-lg focus:outline-none transition-colors ${scrolled ? 'text-white hover:bg-white/10' : 'text-navy-800 hover:bg-navy-50'}`}
+                            >
+                                <span className="sr-only">Open menu</span>
+                                <Menu className="h-7 w-7" />
+                            </button>
+                        </div>
+                    </motion.div>
                 </div>
             </motion.div>
 
@@ -530,7 +526,7 @@ export const Header = () => {
                             </a>
                             <a href="tel:18004733241" className="flex items-center justify-center gap-2 text-white/60 hover:text-white transition-colors">
                                 <Phone className="h-4 w-4 text-accent" />
-                                <span className="text-sm font-medium">1 (800) 473-3241</span>
+                                <span className="text-sm font-medium">+1 (800) 473-3241</span>
                             </a>
                         </motion.div>
                     </motion.div>
