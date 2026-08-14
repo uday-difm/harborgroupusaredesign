@@ -1,11 +1,10 @@
 "use client";
 
 import React from 'react';
-import { Shield, Users, Handshake, ShieldCheck, Star } from 'lucide-react';
+import { ShieldCheck, Star } from 'lucide-react';
 import Image from 'next/image';
 import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, animate, useSpring } from 'framer-motion';
 import { useMagnetic } from '@/common/motion/useMagnetic';
-import { useParallax } from '@/common/motion/useParallax';
 import { useTilt } from '@/common/motion/useTilt';
 import { useCountUp } from '@/common/motion/useCountUp';
 
@@ -28,7 +27,7 @@ const STATS = [
 const StatItem = ({ stat }) => {
     const { value, start } = useCountUp(stat.displayTarget || stat.target, 1200);
     return (
-        <motion.div 
+        <motion.div
             onViewportEnter={start}
             viewport={{ once: true }}
             className="flex flex-col items-center sm:items-start"
@@ -57,7 +56,7 @@ export const HeroSection = () => {
     const scrollPathLength = useTransform(scrollYProgress, [0.6, 1], [1, 0]);
     const loadPathLength = useMotionValue(0);
     const pathLength = useTransform([scrollPathLength, loadPathLength], ([scroll, load]) => Math.min(scroll, load));
-    
+
     React.useEffect(() => {
         if (!prefersReduced) {
             animate(loadPathLength, 1, { duration: 1.5, ease: "linear" });
@@ -91,42 +90,42 @@ export const HeroSection = () => {
             <div className="absolute inset-0 pointer-events-none" style={{
                 background: 'radial-gradient(circle at 10% 90%, #ECEEF5 0%, rgba(255,255,255,0) 60%), radial-gradient(circle at 90% 10%, #ECEEF5 0%, rgba(255,255,255,0) 60%)'
             }} />
-            
-            <motion.svg 
+
+            <motion.svg
                 style={{ x: bgX, y: bgY }}
                 className="absolute inset-0 w-full h-full pointer-events-none stroke-navy-200/50" fill="none" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice"
             >
-                <motion.path 
+                <motion.path
                     style={{ pathLength: prefersReduced ? 1 : pathLength }}
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }} 
-                    transition={{ duration: 0.8, ease: "linear", delay: 0 }} 
-                    d="M-100,600 C300,800 600,200 1500,400" strokeWidth="1" 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "linear", delay: 0 }}
+                    d="M-100,600 C300,800 600,200 1500,400" strokeWidth="1"
                 />
-                <motion.path 
+                <motion.path
                     style={{ pathLength: prefersReduced ? 1 : pathLength }}
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }} 
-                    transition={{ duration: 0.8, ease: "linear", delay: 0.2 }} 
-                    d="M-200,400 C400,100 800,900 1600,200" strokeWidth="1" 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "linear", delay: 0.2 }}
+                    d="M-200,400 C400,100 800,900 1600,200" strokeWidth="1"
                 />
-                <motion.path 
+                <motion.path
                     style={{ pathLength: prefersReduced ? 1 : pathLength }}
-                    initial={{ opacity: 0 }} 
-                    animate={{ opacity: 1 }} 
-                    transition={{ duration: 0.8, ease: "linear", delay: 0.4 }} 
-                    d="M200,-100 C500,400 900,100 1200,900" strokeWidth="1" 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "linear", delay: 0.4 }}
+                    d="M200,-100 C500,400 900,100 1200,900" strokeWidth="1"
                 />
             </motion.svg>
 
-            <motion.div 
+            <motion.div
                 style={{ opacity: prefersReduced ? 1 : scrollOpacity, y: prefersReduced ? 0 : scrollY }}
                 className="relative z-10 w-full px-6 lg:px-12 xl:px-20 2xl:px-32 mx-auto flex-1 flex flex-col justify-center pb-20"
             >
                 <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                    
+
                     {/* Left Content */}
-                    <motion.div 
+                    <motion.div
                         className="max-w-3xl lg:max-w-none lg:col-span-7 xl:col-span-7"
                         variants={containerVariants}
                         initial="hidden"
@@ -172,7 +171,7 @@ export const HeroSection = () => {
                                 <span className="border-b border-navy-900/30 group-hover:border-accent pb-0.5 transition-colors">Talk to an Advisor</span>
                             </a>
                         </motion.div>
-                        
+
                         <motion.div variants={iV} className="mt-8 flex flex-wrap items-center gap-4 text-sm font-medium text-navy-800">
                             <div className="flex items-center gap-1.5 bg-navy-50/50 px-3 py-1.5 rounded-full border border-navy-100">
                                 <Star className="w-4 h-4 text-accent fill-accent" />
@@ -186,7 +185,7 @@ export const HeroSection = () => {
                     </motion.div>
 
                     {/* Right Image */}
-                    <motion.div 
+                    <motion.div
                         className="relative lg:h-[600px] w-full flex justify-center lg:justify-end lg:col-span-5 xl:col-span-5"
                         initial={{ opacity: 0, x: 40 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -194,8 +193,8 @@ export const HeroSection = () => {
                     >
                         <div className="relative w-full max-w-[550px] xl:max-w-[600px] aspect-[4/5] lg:aspect-auto lg:h-[550px] mt-8 lg:mt-0 lg:mr-10">
                             {/* Image tilts gradually as the visitor scrolls down. */}
-                            <motion.div 
-                                className="w-full h-full bg-white p-3 pb-16 rounded-[40px] shadow-[0_20px_60px_-15px_rgba(19,30,73,0.1)] border border-navy-100"
+                            <motion.div
+                                className="w-full h-full bg-white p-3 rounded-[40px] shadow-[0_20px_60px_-15px_rgba(19,30,73,0.1)] border border-navy-100"
                                 style={{ rotate: prefersReduced ? 0 : photoRotation }}
                                 ref={imageTilt.ref}
                                 onMouseMove={imageTilt.handleMouseMove}
@@ -218,7 +217,7 @@ export const HeroSection = () => {
             </motion.div>
 
             {/* Bottom Feature Strip */}
-            <motion.div 
+            <motion.div
                 className="relative z-20 w-full border-t border-navy-800 bg-navy-900 mt-auto shadow-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
