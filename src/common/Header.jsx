@@ -92,11 +92,25 @@ export const Header = () => {
         return () => window.removeEventListener('popstate', handlePopState);
     }, []);
 
+    const lenis = useLenis();
     useLenis(({ scroll }) => setScrolled(scroll > 30));
 
     useEffect(() => {
-        document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
-    }, [isMobileMenuOpen]);
+        if (isMobileMenuOpen) {
+            document.documentElement.classList.add('mobile-menu-open');
+            document.body.style.overflow = 'hidden';
+            lenis?.stop();
+        } else {
+            document.documentElement.classList.remove('mobile-menu-open');
+            document.body.style.overflow = 'unset';
+            lenis?.start();
+        }
+        return () => {
+            document.documentElement.classList.remove('mobile-menu-open');
+            document.body.style.overflow = 'unset';
+            lenis?.start();
+        };
+    }, [isMobileMenuOpen, lenis]);
 
     useEffect(() => {
         const handler = (e) => {
@@ -427,7 +441,8 @@ export const Header = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="xl:hidden fixed inset-0 z-[60] flex flex-col overflow-x-hidden overflow-y-auto bg-navy-950"
+                        data-lenis-prevent="true"
+                        className="xl:hidden fixed inset-0 z-[60] flex flex-col bg-navy-950"
                     >
                         {/* Decorative gradient */}
                         <div className="absolute inset-0 pointer-events-none">
@@ -435,7 +450,7 @@ export const Header = () => {
                         </div>
 
                         {/* Header */}
-                        <div className="relative flex items-center justify-between p-6 border-b border-white/5">
+                        <div className="relative flex-shrink-0 flex items-center justify-between p-6 border-b border-white/5">
                             <Link href="/" onClick={() => navigate('/')} className="flex items-center rounded-full ring-2 ring-white/20">
                                 <Logo />
                             </Link>
@@ -444,12 +459,13 @@ export const Header = () => {
                             </button>
                         </div>
 
-                        {/* Links */}
+                        {/* Links Container with Active Custom Scroller */}
                         <motion.div
                             initial="hidden"
                             animate="show"
                             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } } }}
-                            className="relative flex-grow flex flex-col justify-center px-6 py-8 space-y-1"
+                            data-lenis-prevent="true"
+                            className="relative flex-1 overflow-y-auto custom-nav-scrollbar px-6 py-6 space-y-1"
                         >
                             {navLinks.map((link) => {
                                 const active = isActive(link);
@@ -477,7 +493,7 @@ export const Header = () => {
                                                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                                                             className="overflow-hidden"
                                                         >
-                                                            <div className="ml-4 mt-2 mb-2 pl-4 border-l-2 border-accent/30 space-y-1">
+                                                            <div data-lenis-prevent="true" className="ml-4 mt-2 mb-2 pl-4 border-l-2 border-accent/30 space-y-1 max-h-64 sm:max-h-72 overflow-y-auto pr-2 custom-nav-scrollbar">
                                                                 {(link.dropdown === 'plans'
                                                                     ? planColumns.flatMap(c => c.plans)
                                                                     : forOptions
@@ -515,7 +531,7 @@ export const Header = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4, duration: 0.5 }}
-                            className="relative p-6 border-t border-white/5 space-y-4"
+                            className="relative flex-shrink-0 p-6 border-t border-white/5 space-y-4 bg-navy-950/90 backdrop-blur-sm"
                         >
                             <a
                                 href="#h-form"

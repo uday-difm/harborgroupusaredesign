@@ -201,6 +201,10 @@
     }
   }
 
+  html.mobile-menu-open .custom-scrollbar-track {
+    display: none !important;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .custom-scrollbar-thumb {
       transition: none;
@@ -508,4 +512,32 @@ section.bg-white {
   .marquee-track {
     animation: none !important;
   }
+}
+
+/* ── Custom Navigation Scrollbar ── */
+.custom-nav-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) rgba(255, 255, 255, 0.08);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.custom-nav-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-nav-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+}
+
+.custom-nav-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 9999px;
+}
+
+.custom-nav-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-light);
 }
