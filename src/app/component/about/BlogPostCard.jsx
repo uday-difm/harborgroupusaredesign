@@ -24,9 +24,9 @@ export const BlogPostCard = ({ image, category, title, author, date, priority = 
   return (
     <motion.div
       variants={itemVariant}
-      className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 overflow-hidden card-elevated h-full border border-navy-100 hover:border-accent"
+      className="group relative bg-white rounded-2xl card-elevated h-full border border-navy-100 hover:border-accent hover:-translate-y-1.5 transition-all duration-300 overflow-hidden flex flex-col justify-between"
     >
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-56 w-full overflow-hidden bg-navy-50">
         <Image
           src={image}
           alt={title}
@@ -40,9 +40,11 @@ export const BlogPostCard = ({ image, category, title, author, date, priority = 
           {category}
         </span>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-navy-800 mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-2">{title}</h3>
-        <div className="flex items-center text-sm text-navy-600 font-medium mt-4">
+      <div className="p-6 lg:p-8 flex flex-col justify-between flex-1">
+        <h3 className="text-lg lg:text-xl font-bold font-display text-navy-900 mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+          {title}
+        </h3>
+        <div className="flex items-center text-sm text-navy-500 font-medium mt-4">
           <span>{date}</span>
         </div>
       </div>

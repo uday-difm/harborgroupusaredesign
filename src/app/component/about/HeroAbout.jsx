@@ -48,10 +48,10 @@ export const HeroAbout = () => {
                             </div>
                         </h1>
 
-                        <motion.p variants={itemVariants} className="mt-8 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed text-justify">
+                        <motion.p variants={itemVariants} className="mt-8 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed">
                             At Harbor Group USA, our journey is rooted in a rich legacy of healthcare expertise. Established with a mission to cater to small business owners, employees, and self-employed workers, we are committed to upholding values of integrity, transparency, and client-centricity.
                         </motion.p>
-                        <motion.p variants={itemVariants} className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed text-justify">
+                        <motion.p variants={itemVariants} className="mt-4 max-w-xl mx-auto lg:mx-0 text-lg text-navy-600 leading-relaxed">
                             With a track record that spans a considerable period, we’ve accumulated valuable know-how about healthcare. Our focus is straightforward – helping individuals and businesses navigate the healthcare world. We believe in being upfront, honest, and always putting you first.
                         </motion.p>
                     </motion.div>
@@ -95,4 +95,4 @@ export const HeroAbout = () => {
             </div>
         </section>
     );
-}
+};

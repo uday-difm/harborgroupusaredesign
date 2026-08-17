@@ -15,7 +15,7 @@ const sectionReveal = {
 
 // A reusable component for the glassmorphism value cards
 const ValueCard = ({ icon: Icon, title, children }) => {
-    const tilt = useTilt(10);
+    const tilt = useTilt(8);
     const prefersReduced = useReducedMotion();
 
     const itemVariant = {
@@ -30,15 +30,13 @@ const ValueCard = ({ icon: Icon, title, children }) => {
                 style={tilt.style}
                 onMouseMove={tilt.handleMouseMove}
                 onMouseLeave={tilt.handleMouseLeave}
-                className="group relative h-full p-8 bg-white border border-navy-100 rounded-2xl card-elevated transition-colors duration-300 hover:border-accent"
+                className="group relative h-full p-6 lg:p-8 bg-white border border-navy-100 rounded-2xl card-elevated transition-all duration-300 hover:border-accent hover:-translate-y-1.5 flex flex-col justify-start"
             >
-                <div className="flex flex-col sm:flex-row sm:items-center items-start sm:space-x-5 space-y-4 sm:space-y-0 mb-6">
-                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                        <Icon className="w-7 h-7" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-xl font-bold text-navy-800">{title}</h3>
+                <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-6 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.5} />
                 </div>
-                <p className="text-base text-navy-600 leading-relaxed text-justify">{children}</p>
+                <h3 className="text-lg lg:text-xl font-bold text-navy-900 mb-3 font-display">{title}</h3>
+                <p className="text-sm lg:text-base text-navy-600 leading-relaxed">{children}</p>
             </motion.div>
         </motion.div>
     );
@@ -102,10 +100,10 @@ export const OurHistory = () => {
                         <motion.h2 variants={itemVariants} className="mt-4 text-3xl md:text-4xl font-display font-bold text-navy-800 tracking-tight">
                             Get Expert Advice and Start Saving
                         </motion.h2>
-                        <motion.p variants={itemVariants} className="mt-8 text-lg text-navy-600 text-justify leading-relaxed">
+                        <motion.p variants={itemVariants} className="mt-8 text-lg text-navy-600 leading-relaxed">
                             Founded with a mission of excellence in the field of Health Coverage Plans, Harbor Group USA has grown into a trusted name in the healthcare services industry. Our commitment to navigating the complex landscape of health services has remained steadfast since the beginning.
                         </motion.p>
-                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-600 text-justify leading-relaxed">
+                        <motion.p variants={itemVariants} className="mt-4 text-lg text-navy-600 leading-relaxed">
                             Starting with a passion for handling clients with care and expertise, we have transformed over time, dedicating ourselves to understanding the ins and outs of health coverage plans from day one.
                         </motion.p>
                     </motion.div>

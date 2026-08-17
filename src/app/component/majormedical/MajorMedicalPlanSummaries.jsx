@@ -1,96 +1,158 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { LayeredStacksIllustration } from '@/common/illustrations/LayeredStacksIllustration';
+import { motion, useReducedMotion } from 'framer-motion';
 import { CheckCircle2, ShieldCheck, Stethoscope, Pill, Info } from 'lucide-react';
 
 export const MajorMedicalPlanSummaries = () => {
+  const prefersReduced = useReducedMotion();
+
   const plansData = [
     {
       name: 'Ultra 6000',
+      tag: 'Essential Value',
+      popular: false,
+      description: 'Lower monthly payments with robust protection for major unexpected medical expenses.',
       details: [
-        { label: 'Network', text: 'Available in all 50 states.', icon: <ShieldCheck className="w-5 h-5 text-accent" /> },
-        { label: 'Deductibles and Out-of-Pocket Costs', text: 'Individual deductible of $6,000, family deductible of $12,000. Individual max out of pocket $9,450, family max out of pocket $18,900.', icon: <Info className="w-5 h-5 text-accent" /> },
-        { label: 'Coverage', text: 'Preventive care covered 100%, primary care copay $30, specialist care copay $60, urgent care $60, and so on.', icon: <Stethoscope className="w-5 h-5 text-accent" /> },
-        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $100.', icon: <Pill className="w-5 h-5 text-accent" /> },
-        { label: 'Additional details', text: 'Additional details about laboratory, radiology services, emergency room, inpatient, and outpatient services.', icon: <CheckCircle2 className="w-5 h-5 text-accent" /> },
+        { label: 'Network Coverage', text: 'Available in all 50 states nationwide.', icon: ShieldCheck },
+        { label: 'Deductibles & Out-of-Pocket', text: 'Individual deductible: $6,000 | Family: $12,000. Individual max out-of-pocket: $9,450 | Family: $18,900.', icon: Info },
+        { label: 'Routine & Specialist Care', text: 'Preventive care 100% covered. Primary care copay $30, specialist copay $60, urgent care $60.', icon: Stethoscope },
+        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $100.', icon: Pill },
+        { label: 'Facility & Inpatient Services', text: 'Comprehensive coverage for lab work, radiology, emergency room, inpatient, and outpatient services.', icon: CheckCircle2 },
       ],
     },
     {
       name: 'Ultra 3000',
+      tag: 'Balanced Choice',
+      popular: true,
+      description: 'Moderate deductibles paired with extensive everyday coverage and preventive health benefits.',
       details: [
-        { label: 'Network', text: 'Available in all 50 states.', icon: <ShieldCheck className="w-5 h-5 text-accent" /> },
-        { label: 'Deductibles and Out-of-Pocket Costs', text: 'Individual deductible of $3,000, family deductible of $6,000. Individual max out of pocket $9,450, family max out of pocket $18,900.', icon: <Info className="w-5 h-5 text-accent" /> },
-        { label: 'Coverage', text: 'Preventive care covered 100%, primary care copay $30, specialist care copay $60, urgent care $60, and so on.', icon: <Stethoscope className="w-5 h-5 text-accent" /> },
-        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $100.', icon: <Pill className="w-5 h-5 text-accent" /> },
-        { label: 'Additional details', text: 'Additional details about laboratory, radiology services, emergency room, inpatient, and outpatient services.', icon: <CheckCircle2 className="w-5 h-5 text-accent" /> },
+        { label: 'Network Coverage', text: 'Available in all 50 states nationwide.', icon: ShieldCheck },
+        { label: 'Deductibles & Out-of-Pocket', text: 'Individual deductible: $3,000 | Family: $6,000. Individual max out-of-pocket: $9,450 | Family: $18,900.', icon: Info },
+        { label: 'Routine & Specialist Care', text: 'Preventive care 100% covered. Primary care copay $30, specialist copay $60, urgent care $60.', icon: Stethoscope },
+        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $100.', icon: Pill },
+        { label: 'Facility & Inpatient Services', text: 'Comprehensive coverage for lab work, radiology, emergency room, inpatient, and outpatient services.', icon: CheckCircle2 },
       ],
     },
     {
       name: 'Ultra 1000',
+      tag: 'Maximum Protection',
+      popular: false,
+      description: 'Lowest out-of-pocket costs with highest coinsurance coverage for frequent care needs.',
       details: [
-        { label: 'Network', text: 'Available in all 50 states.', icon: <ShieldCheck className="w-5 h-5 text-accent" /> },
-        { label: 'Deductibles and Out-of-Pocket Costs', text: 'Individual deductible of $1,000 family deductible of $2,000. Individual max out of pocket $5,000, family max out of pocket $10,000.', icon: <Info className="w-5 h-5 text-accent" /> },
-        { label: 'Coverage', text: 'Preventive care covered 100%, primary care copay $20, specialist care copay $40, urgent care $90, and so on.', icon: <Stethoscope className="w-5 h-5 text-accent" /> },
-        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $85.', icon: <Pill className="w-5 h-5 text-accent" /> },
-        { label: 'Additional details', text: 'Additional details about laboratory, radiology services, emergency room, inpatient, and outpatient services.', icon: <CheckCircle2 className="w-5 h-5 text-accent" /> },
+        { label: 'Network Coverage', text: 'Available in all 50 states nationwide.', icon: ShieldCheck },
+        { label: 'Deductibles & Out-of-Pocket', text: 'Individual deductible: $1,000 | Family: $2,000. Individual max out-of-pocket: $5,000 | Family: $10,000.', icon: Info },
+        { label: 'Routine & Specialist Care', text: 'Preventive care 100% covered. Primary care copay $20, specialist copay $40, urgent care $40.', icon: Stethoscope },
+        { label: 'Prescription Drug Benefits', text: 'Generic $15, preferred brand $65, non-preferred brand $85.', icon: Pill },
+        { label: 'Facility & Inpatient Services', text: 'Comprehensive coverage for lab work, radiology, emergency room, inpatient, and outpatient services.', icon: CheckCircle2 },
       ],
     },
   ];
 
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {},
     show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: { staggerChildren: 0.12 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: prefersReduced ? 0 : 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
-    <section className="section-light py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16 relative">
-          <LayeredStacksIllustration className="absolute -top-6 right-0 w-24 h-24 text-accent opacity-15 pointer-events-none hidden md:block" />
-          <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-4">Plan Options</span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-navy-900 tracking-tight mb-6">
+    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden relative border-t border-navy-100/50">
+      <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <motion.span 
+            variants={itemVariants} 
+            className="text-xs font-bold text-accent uppercase tracking-widest block mb-4"
+          >
+            Plan Options
+          </motion.span>
+          <motion.h2 
+            variants={itemVariants}
+            className="text-h2 font-display font-bold text-navy-900 tracking-tight mb-6"
+          >
             Detailed Plan Summaries
-          </h2>
-          <p className="text-lg text-navy-600 leading-relaxed">
-            Review the high-level details of our three core Ultra plans before exploring the specific network tables below.
-          </p>
-        </div>
+          </motion.h2>
+          <motion.p 
+            variants={itemVariants}
+            className="text-lg text-navy-600 leading-relaxed"
+          >
+            Review the key features and coverage details of our three core Ultra major medical plans to find the right fit for your healthcare needs.
+          </motion.p>
+        </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
           {plansData.map((plan, index) => (
-            <motion.div key={index} variants={itemVariants} className="h-full">
-              <div className="card-elevated bg-white p-8 flex flex-col h-full border-t-4 border-accent transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                <h3 className="text-2xl font-bold text-navy-900 mb-8 text-center font-display">
-                  {plan.name}
-                </h3>
-                <div className="space-y-6 flex-grow">
-                  {plan.details.map((detail, detailIndex) => (
-                    <div key={detailIndex} className="flex items-start">
-                      <div className="flex-shrink-0 mt-0.5 w-8 flex justify-center">
-                        {detail.icon}
-                      </div>
-                      <div>
-                        <div className="font-bold text-navy-900 text-sm mb-1">{detail.label}</div>
-                        <div className="text-navy-600 text-sm leading-relaxed">{detail.text}</div>
-                      </div>
-                    </div>
-                  ))}
+            <motion.div key={index} variants={itemVariants} className="h-full flex">
+              <div className={`card-elevated p-6 lg:p-8 flex flex-col justify-between h-full w-full relative group hover:-translate-y-2 transition-transform duration-500 ease-out ${
+                plan.popular ? 'ring-2 ring-accent/30 shadow-lg' : ''
+              }`}>
+                {plan.popular && (
+                  <div className="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-accent text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
+                    Most Popular
+                  </div>
+                )}
+
+                <div>
+                  <div className="mb-6 border-b border-navy-100 pb-6">
+                    <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-2">
+                      {plan.tag}
+                    </span>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-navy-900 font-display mb-3">
+                      {plan.name}
+                    </h3>
+                    <p className="text-sm text-navy-600 leading-relaxed">
+                      {plan.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-5">
+                    {plan.details.map((detail, detailIndex) => {
+                      const Icon = detail.icon;
+                      return (
+                        <div key={detailIndex} className="flex items-start gap-4">
+                          <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                            <Icon className="w-5 h-5" strokeWidth={1.75} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="font-bold text-navy-900 text-sm mb-1 font-display">
+                              {detail.label}
+                            </div>
+                            <div className="text-navy-600 text-sm leading-relaxed">
+                              {detail.text}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-navy-100">
+                  <a
+                    href="#major-medical-plan-form"
+                    className="btn-accent w-full py-3 text-sm text-center block rounded-xl font-bold tracking-wide transition-all"
+                  >
+                    Request Info on {plan.name}
+                  </a>
                 </div>
               </div>
             </motion.div>

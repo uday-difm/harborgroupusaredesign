@@ -49,7 +49,7 @@ export const PlanEligibility = ({
         </motion.div>
 
         <motion.div 
-          className="flex flex-wrap justify-center gap-8"
+          className="flex flex-wrap justify-center gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -57,19 +57,25 @@ export const PlanEligibility = ({
         >
           {criteria.map((item, index) => {
             const Icon = item.icon;
+            const widthClass = criteria.length === 4 
+              ? 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.5rem)]' 
+              : criteria.length === 2 
+                ? 'w-full md:w-[calc(50%-1rem)] max-w-lg' 
+                : 'w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md';
+
             return (
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                className="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md card-elevated p-8 group hover:-translate-y-2 transition-transform duration-500 ease-out"
+                className={`${widthClass} card-elevated p-6 lg:p-8 flex flex-col justify-start group hover:-translate-y-2 transition-transform duration-500 ease-out`}
               >
-                <div className="flex items-center justify-center w-16 h-16 mb-6 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-                  {Icon && <Icon className="w-8 h-8" />}
+                <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-6 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                  {Icon && <Icon className="w-7 h-7 sm:w-8 sm:h-8" />}
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-3 font-display">
+                <h3 className="text-lg lg:text-xl font-bold text-navy-900 mb-3 font-display">
                   {item.title}
                 </h3>
-                <p className="text-base text-navy-600 leading-relaxed text-justify">
+                <p className="text-sm lg:text-base text-navy-600 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>

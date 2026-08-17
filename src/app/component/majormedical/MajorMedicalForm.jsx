@@ -186,7 +186,7 @@ export const MajorMedicalForm = () => {
               className="mt-1 mr-2 flex-shrink-0"
             />
             <label htmlFor="terms" className="text-sm text-navy-600">
-              By submiting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-accent underline font-semibold">SMS and Marketing terms and conditions</Link>.
+              By submitting you allow our team to reach out to you via email or phone as submitted information by you and you also allow to agree to our <Link href="/sms-and-marketing-terms" className="text-accent underline font-semibold">SMS and Marketing terms and conditions</Link>.
             </label>
           </div>
         </div>
@@ -197,7 +197,7 @@ export const MajorMedicalForm = () => {
         <button
           type="submit"
           disabled={issubmiting}
-          className="btn-accent w-full py-4 text-base"
+          className="btn-accent w-full py-4 text-base rounded-xl font-bold tracking-wide transition-all"
         >
           {issubmiting ? 'Submitting...' : 'SUBMIT'}
         </button>

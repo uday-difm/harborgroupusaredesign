@@ -66,7 +66,7 @@ export default function FounderSection() {
               Douglas Muhlbauer
             </motion.h2>
             
-            <motion.div variants={itemVariants} className="mt-8 text-lg text-navy-600 space-y-6 text-justify leading-relaxed">
+            <motion.div variants={itemVariants} className="mt-8 text-lg text-navy-600 space-y-6 leading-relaxed">
                 <p>
                   Founded by <b className="text-navy-800">Douglas Muhlbauer, Harbor Group USA</b> was established with a mission of excellence in health coverage plans. Over the years, it has become a trusted name in the healthcare services industry, guiding clients through the complexities of health coverage with care, transparency, and expertise. With a deep understanding of the ever-changing landscape, Harbor Group USA remains committed to providing personalized solutions that meet the unique needs of every client.
                 </p>
@@ -77,16 +77,15 @@ export default function FounderSection() {
 
             {/* Book Highlight Section */}
             <motion.div variants={itemVariants} className="mt-10">
-                <div className="group relative p-6 bg-navy-50 border border-navy-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg">
-                    <div className="absolute top-0 left-0 h-full w-1 bg-accent transform -translate-x-full transition-transform duration-500 ease-out group-hover:translate-x-0"></div>
-                    <div className="flex items-start space-x-5">
-                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl bg-navy-800 text-white shadow-md group-hover:bg-accent transition-colors duration-300">
-                            <Book className="h-7 w-7" />
+                <div className="group relative p-6 lg:p-8 bg-white border border-navy-100 rounded-2xl card-elevated transition-all duration-300 hover:border-accent hover:-translate-y-1.5">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                            <Book className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.5} />
                         </div>
                         <div>
-                            <h3 className="font-bold text-lg text-navy-800">Author & Advocate</h3>
-                            <p className="text-base text-navy-600 mt-2 text-justify leading-relaxed">
-                                Douglas is the author of <strong className="text-navy-700">Breaking the Monopoly: The Fight for Affordability</strong>, exposing the healthcare system's impact on consumers.
+                            <h3 className="text-lg lg:text-xl font-bold text-navy-900 font-display">Author &amp; Advocate</h3>
+                            <p className="text-sm lg:text-base text-navy-600 mt-2 leading-relaxed">
+                                Douglas is the author of <strong className="text-navy-800 font-semibold">Breaking the Monopoly: The Fight for Affordability</strong>, exposing the healthcare system&apos;s impact on consumers.
                             </p>
                         </div>
                     </div>

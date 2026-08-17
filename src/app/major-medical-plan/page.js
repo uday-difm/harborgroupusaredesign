@@ -95,15 +95,17 @@ export default function MajorMedicalPlanPage() {
           {
             title: "Tailored Premium Options",
             features: [
-              "Higher Deductibles, Lower Premiums: Lower monthly payments, higher out-of-pocket costs.",
-              "Lower Deductibles, Higher Premiums: Minimize out-of-pocket expenses.",
-              "Balanced Options: Moderate deductibles and premiums."
+              "<strong>Higher Deductibles, Lower Premiums:</strong> Enjoy lower monthly payments with coverage designed for unexpected medical events.",
+              "<strong>Lower Deductibles, Higher Premiums:</strong> Minimize out-of-pocket expenses when accessing regular care and specialist visits.",
+              "<strong>Balanced Deductible Options:</strong> Choose moderate deductibles and premiums for well-rounded, predictable coverage."
             ]
           },
           {
-            title: "Customizable Plans",
+            title: "Customizable Plan Tiers",
             features: [
-              "Tailor plans for frequent specialist visits (Ultra 1000), basic coverage needs (Ultra 6000), chronic condition management, and preventive care."
+              "<strong>Ultra 1000:</strong> Tailored for frequent care needs, lower copays, and minimal out-of-pocket maximums.",
+              "<strong>Ultra 3000:</strong> Balanced for comprehensive routine wellness and chronic condition management.",
+              "<strong>Ultra 6000:</strong> Designed for cost-effective protection with robust essential coverage."
             ]
           }
         ]}

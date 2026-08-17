@@ -136,27 +136,29 @@ export const MajorMedicalNetworkTables = () => {
   const currentData = getTableData(activeTab);
 
   return (
-    <section className="section-tint py-20 md:py-28 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+    <section className="py-20 md:py-28 bg-surface-alt font-body relative overflow-hidden border-t border-navy-100/60">
+      <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs font-bold text-accent uppercase tracking-widest block mb-4">Detailed Breakdown</span>
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-navy-900 tracking-tight mb-6">
+          <h2 className="text-h2 font-display font-bold text-navy-900 tracking-tight mb-6">
             Network Plan Comparison
           </h2>
           <p className="text-lg text-navy-600 leading-relaxed">
-            Select a network below to view detailed coverage information, deductibles, and out-of-pocket maximums across our Ultra plans.
+            Select a network below to view detailed coverage specifications, deductibles, and out-of-pocket maximums across our Ultra major medical plans.
           </p>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 rounded-full font-bold text-sm sm:text-base transition-all duration-300 ${
+              className={`px-7 py-3 rounded-full font-bold text-sm sm:text-base transition-all duration-300 ${
                 activeTab === tab.id 
-                  ? 'bg-navy-900 text-white shadow-lg shadow-navy-900/20' 
+                  ? 'bg-navy-900 text-white shadow-lg shadow-navy-900/25 scale-105' 
                   : 'bg-white text-navy-600 border border-navy-200 hover:border-accent hover:text-accent shadow-sm'
               }`}
             >
@@ -165,8 +167,8 @@ export const MajorMedicalNetworkTables = () => {
           ))}
         </div>
 
-        {/* Active Tab Content */}
-        <div className="bg-white rounded-2xl shadow-xl border border-navy-100 overflow-hidden">
+        {/* Active Tab Content in Card Elevated */}
+        <div className="card-elevated overflow-hidden overflow-x-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -174,10 +176,11 @@ export const MajorMedicalNetworkTables = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
+              className="min-w-[640px]"
             >
               {/* Header Row */}
-              <div className="grid grid-cols-4 bg-navy-50 border-b border-navy-100">
-                <div className="p-4 sm:p-6 font-bold text-navy-900 flex items-center border-r border-navy-100 hidden sm:flex">
+              <div className="grid grid-cols-4 bg-navy-50/80 border-b border-navy-100">
+                <div className="p-4 sm:p-6 font-display font-bold text-navy-900 flex items-center border-r border-navy-100 text-base">
                   Plan Details
                 </div>
                 {currentData.planNames.map((name, idx) => (
@@ -191,16 +194,16 @@ export const MajorMedicalNetworkTables = () => {
               <div className="flex flex-col">
                 {currentData.sections.map((section, sIdx) => (
                   <div key={sIdx} className="mb-0">
-                    <div className="bg-navy-900 text-white p-3 px-6 font-bold text-sm tracking-widest uppercase">
+                    <div className="bg-navy-900 text-white p-3 px-6 font-bold text-xs tracking-widest uppercase font-display">
                       {section.title}
                     </div>
                     {section.rows.map((row, rIdx) => (
-                      <div key={rIdx} className="grid grid-cols-4 border-b border-navy-50 hover:bg-navy-50/50 transition-colors">
-                        <div className="col-span-4 sm:col-span-1 p-4 sm:p-6 text-sm font-semibold text-navy-800 flex items-center sm:border-r border-navy-50 bg-navy-50/20">
+                      <div key={rIdx} className="grid grid-cols-4 border-b border-navy-100/60 hover:bg-navy-50/40 transition-colors">
+                        <div className="col-span-1 p-4 sm:p-5 text-sm font-semibold text-navy-800 flex items-center border-r border-navy-100/60 bg-navy-50/20">
                           {row.label}
                         </div>
                         {currentData.planNames.map((name, pIdx) => (
-                          <div key={pIdx} className={`col-span-1 p-4 sm:p-6 text-sm text-navy-600 flex items-center justify-center text-center ${pIdx !== 2 ? 'border-r border-navy-50' : ''}`}>
+                          <div key={pIdx} className={`col-span-1 p-4 sm:p-5 text-sm text-navy-600 flex items-center justify-center text-center ${pIdx !== 2 ? 'border-r border-navy-100/60' : ''}`}>
                             {row.values[name]}
                           </div>
                         ))}

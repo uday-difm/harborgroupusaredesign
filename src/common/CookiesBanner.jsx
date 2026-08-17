@@ -110,6 +110,14 @@ const CookiesBanner = () => {
                 className="text-primary underline hover:text-primary-hover font-semibold transition-colors"
               >
                 Privacy Policy
+              </Link>
+              ,{' '}
+              <Link
+                href="/cookie-policy"
+                onClick={scrollToTop}
+                className="text-primary underline hover:text-primary-hover font-semibold transition-colors"
+              >
+                Cookie Policy
               </Link>{' '}
               and{' '}
               <Link

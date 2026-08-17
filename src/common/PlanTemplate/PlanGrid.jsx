@@ -21,8 +21,9 @@ export const PlanGrid = ({
   };
 
   return (
-    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-20 md:py-28 bg-surface font-body overflow-hidden relative">
+      <div className="absolute inset-0 bg-noise opacity-[0.02] mix-blend-overlay pointer-events-none"></div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
         {/* Header */}
         <motion.div 
@@ -41,16 +42,16 @@ export const PlanGrid = ({
           {description && (
             <motion.p 
               variants={itemVariants}
-              className="text-lg text-navy-500 leading-relaxed"
+              className="text-lg text-navy-600 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>
           )}
         </motion.div>
 
-        {/* Offset Grid Layout */}
+        {/* Grid Layout */}
         <motion.div 
-          className="flex flex-wrap justify-center gap-8"
+          className="flex flex-wrap justify-center gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -58,23 +59,28 @@ export const PlanGrid = ({
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const widthClass = features.length === 4 
+              ? 'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.5rem)]' 
+              : features.length === 2 
+                ? 'w-full md:w-[calc(50%-1rem)] max-w-lg' 
+                : 'w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md';
             
             return (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`w-full sm:w-[calc(50%-1rem)] ${features.length === 4 ? 'lg:w-[calc(25%-1.5rem)]' : (features.length === 2 ? 'lg:w-[calc(50%-1rem)]' : 'lg:w-[calc(33.333%-1.5rem)]')} max-w-sm lg:max-w-none card-elevated p-8 flex flex-col justify-start transition-[border-color,box-shadow,color,background-color] shadow-sm duration-300 group`}
+                className={`${widthClass} card-elevated p-6 lg:p-8 flex flex-col justify-start group hover:-translate-y-2 transition-transform duration-500 ease-out`}
               >
                 {Icon && (
-                  <div className="w-12 h-12 bg-navy-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-300">
-                    <Icon className="h-6 w-6 text-accent group-hover:text-white transition-colors duration-300" strokeWidth={2} />
+                  <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 mb-6 rounded-2xl bg-navy-50 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                    <Icon className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={1.75} />
                   </div>
                 )}
-                <h3 className="text-xl font-bold text-navy-800 leading-snug group-hover:text-accent transition-colors duration-300">
+                <h3 className="text-lg lg:text-xl font-bold text-navy-900 mb-3 font-display">
                   {feature.title}
                 </h3>
                 {feature.description && (
-                  <p className="mt-3 text-navy-500">
+                  <p className="text-sm lg:text-base text-navy-600 leading-relaxed">
                     {feature.description}
                   </p>
                 )}

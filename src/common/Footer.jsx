@@ -31,6 +31,8 @@ export const Footer = () => {
         { name: 'Privacy Policy', href: '/privacy-policy' },
         { name: 'Terms Of Service', href: '/terms-and-conditions' },
         { name: 'SMS & Marketing Terms', href: '/sms-and-marketing-terms' },
+        { name: 'Cookie Policy', href: '/cookie-policy' },
+        { name: 'Health & Medical Disclaimer', href: '/health-medical-disclaimer' },
     ];
 
     const socialLinks = [
