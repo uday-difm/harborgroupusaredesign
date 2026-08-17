@@ -1,12 +1,11 @@
 "use client";
 
 import React from 'react';
-import { ShieldCheck, Star } from 'lucide-react';
+import { ShieldCheck, Star, Users, SlidersHorizontal, Headphones, Zap } from 'lucide-react';
 import Image from 'next/image';
 import { motion, useReducedMotion, useScroll, useTransform, useMotionValue, animate, useSpring } from 'framer-motion';
 import { useMagnetic } from '@/common/motion/useMagnetic';
 import { useTilt } from '@/common/motion/useTilt';
-import { useCountUp } from '@/common/motion/useCountUp';
 
 const containerVariants = {
     hidden: {},
@@ -18,27 +17,12 @@ const itemVariants = (reduced) => ({
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
 });
 
-const STATS = [
-    { target: 12, label: 'Health Plans', suffix: '+' },
-    { target: 10, label: 'Years of Expertise', suffix: '+' },
-    { target: 50000, label: 'Members Covered', suffix: 'k+', displayTarget: 50 }
+const FEATURES = [
+    { label: 'Experienced Professionals', icon: Users },
+    { label: 'Tailored Solutions', icon: SlidersHorizontal },
+    { label: 'Reliable 24/7 Support', icon: Headphones },
+    { label: 'Fast Turnaround Time', icon: Zap }
 ];
-
-const StatItem = ({ stat }) => {
-    const { value, start } = useCountUp(stat.displayTarget || stat.target, 1200);
-    return (
-        <motion.div
-            onViewportEnter={start}
-            viewport={{ once: true }}
-            className="flex flex-col items-center sm:items-start"
-        >
-            <span className="text-2xl font-display font-bold text-white">
-                {value}{stat.suffix}
-            </span>
-            <span className="font-medium text-navy-200 text-xs mt-0.5">{stat.label}</span>
-        </motion.div>
-    );
-};
 
 export const HeroSection = () => {
     const prefersReduced = useReducedMotion();
@@ -223,10 +207,20 @@ export const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.8, duration: 0.6 }}
             >
-                <div className="max-w-4xl mx-auto px-6 py-2.5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    {STATS.map((stat, idx) => (
-                        <StatItem key={idx} stat={stat} />
-                    ))}
+                <div className="max-w-[70rem] mx-auto px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 md:gap-6">
+                    {FEATURES.map((feature, idx) => {
+                        const Icon = feature.icon;
+                        return (
+                            <div key={idx} className="flex items-center gap-2.5 sm:gap-3">
+                                <div className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-navy-800 border border-navy-700/80 flex items-center justify-center text-accent">
+                                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                </div>
+                                <span className="text-sm sm:text-base font-semibold text-white tracking-tight">
+                                    {feature.label}
+                                </span>
+                            </div>
+                        );
+                    })}
                 </div>
             </motion.div>
         </section>

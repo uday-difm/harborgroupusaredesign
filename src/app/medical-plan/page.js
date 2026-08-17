@@ -83,12 +83,7 @@ export default function MedicalPlanPage() {
 
       <PlanHowToApply
         title="How To Apply For Medical Plan"
-        description="Enrolling in a medical plan is straightforward and user-friendly."
-        steps={[
-          { title: "Step 1", description: "Determine what you need in terms of coverage based on your healthcare needs." },
-          { title: "Step 2", description: "Review and compare various medical plans." },
-          { title: "Step 3", description: "Provide required personal and financial information." }
-        ]}
+        description="At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to purchase your Medical Plan."
       />
 
       <PlanCostOptions

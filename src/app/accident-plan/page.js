@@ -96,12 +96,7 @@ export default function AccidentPlanPage() {
 
       <PlanHowToApply
         title="How To Apply"
-        description="Enrolling in a plan is straightforward and user-friendly."
-        steps={[
-          { title: "Step 1", description: "Determine what you need in terms of coverage based on your healthcare needs." },
-          { title: "Step 2", description: "Review and compare various plans." },
-          { title: "Step 3", description: "Provide required personal and financial information." }
-        ]}
+        description="At Harbor Group USA, getting the coverage you need is a straightforward process. Follow these simple steps to enroll in your Accident Plan."
       />
 
       <PlanFaq
